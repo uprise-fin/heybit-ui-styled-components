@@ -1,0 +1,32 @@
+{
+  "name": "heybit-ui-components",
+  "version": "0.1.0",
+  "main": "dist/style.css",
+  "keywords": [
+    "front-end",
+    "apple",
+    "scroll",
+    "scrolling",
+    "animation",
+    "transition",
+    "plugin",
+    "library"
+  ],
+  "repository": "https://github.com/uprise-fin/heybit-ui-components",
+  "author": "uprise",
+  "scripts": {
+    "dev": "npx webpack watch",
+    "build": "npx webpack build"
+  },
+  "devDependencies": {
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.4.5",
+    "sass": "^1.45.2",
+    "sass-loader": "^12.4.0",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "webpack-fix-style-only-entries": "^0.6.1"
+  }
+}
