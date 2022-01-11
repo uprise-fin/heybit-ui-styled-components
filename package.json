@@ -13,7 +13,8 @@
     "library"
   ],
   "repository": "https://github.com/uprise-fin/heybit-ui-scss",
-  "author": "uprise",
+  "author": "heybit",
+  "license": "MIT",
   "scripts": {
     "dev": "npx webpack watch",
     "build": "npx webpack build"
