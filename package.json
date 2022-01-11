@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-scss",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/index.css",
   "keywords": [
     "front-end",
