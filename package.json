@@ -12,6 +12,9 @@
     "plugin",
     "library"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": "https://github.com/uprise-fin/heybit-ui-scss",
   "author": "heybit",
   "license": "MIT",
