@@ -16,7 +16,7 @@ jobs:
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v2
         with:
-          node-version: "16.3.2"
+          node-version: "16.x"
           registry-url: "https://npm.pkg.github.com/"
       - run: yarn
       - run: yarn build
