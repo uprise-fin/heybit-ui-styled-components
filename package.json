@@ -1,7 +1,7 @@
 {
-  "name": "heybit-ui-components",
+  "name": "heybit-ui-scss",
   "version": "0.1.0",
-  "main": "dist/style.css",
+  "main": "dist/index.css",
   "keywords": [
     "front-end",
     "apple",
@@ -12,7 +12,7 @@
     "plugin",
     "library"
   ],
-  "repository": "https://github.com/uprise-fin/heybit-ui-components",
+  "repository": "https://github.com/uprise-fin/heybit-ui-scss",
   "author": "uprise",
   "scripts": {
     "dev": "npx webpack watch",

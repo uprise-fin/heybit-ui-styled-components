@@ -1,3 +1,3 @@
-# heybit-ui-components
+# heybit-ui-scss
 
 platform cell
