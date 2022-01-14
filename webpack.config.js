@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     index: ["./src/index.scss"],
     "hb-input": ["./src/hb-input.scss"],
+    "hb-dialog": ["./src/hb-dialog.scss"],
     // "sce-frontend": ["./src/variables.scss"],
   },
 

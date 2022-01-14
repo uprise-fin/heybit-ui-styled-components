@@ -1,13 +1,13 @@
 @import "variables";
-$ui-input__height: $box__height !default;
-$ui-input__padding: $box__padding !default;
-$ui-input__border-width: $box__border-width !default;
-$ui-input__font-size: $box__font-size !default;
-$ui-input__border-color: $box__border-color !default;
-$ui-input__border-color--warning: $box__border-color--warning !default;
-$ui-input__border-radius: $box__border-radius !default;
-$ui-input__background: $box__background !default;
-$ui-input__background--warning: $box__background !default;
+$hb-input__height: $box__height !default;
+$hb-input__padding: $box__padding !default;
+$hb-input__border-width: $box__border-width !default;
+$hb-input__font-size: $box__font-size !default;
+$hb-input__border-color: $box__border-color !default;
+$hb-input__border-color--warning: $box__border-color--warning !default;
+$hb-input__border-radius: $box__border-radius !default;
+$hb-input__background: $box__background !default;
+$hb-input__background--warning: $box__background !default;
 .hb-input {
   position: relative;
   display: flex;
@@ -18,27 +18,27 @@ $ui-input__background--warning: $box__background !default;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    border: #{$ui-input__border-width} solid #{$ui-input__border-color};
-    border-radius: $ui-input__border-radius;
+    border: #{$hb-input__border-width} solid #{$hb-input__border-color};
+    border-radius: $hb-input__border-radius;
     pointer-events: none;
     .has-error & {
-      border-color: $ui-input__border-color--warning;
+      border-color: $hb-input__border-color--warning;
     }
   }
   &__el {
     width: 0;
     flex: 1;
-    height: $ui-input__height;
-    padding: $ui-input__padding;
-    font-size: $ui-input__font-size;
+    height: $hb-input__height;
+    padding: $hb-input__padding;
+    font-size: $hb-input__font-size;
     box-sizing: border-box;
     border: 0;
     outline: none;
-    box-shadow: 0 0 0 999px #{$ui-input__background} inset;
-    background: $ui-input__background;
+    box-shadow: 0 0 0 999px #{$hb-input__background} inset;
+    background: $hb-input__background;
     .has-error & {
-      box-shadow: 0 0 0 999px #{$ui-input__background--warning} inset;
-      background: $ui-input__background--warning;
+      box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
+      background: $hb-input__background--warning;
     }
   }
   &__slot {
