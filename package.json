@@ -1,16 +1,12 @@
 {
   "name": "@uprise-fin/heybit-ui-styles",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "dist/index.css",
   "keywords": [
     "front-end",
-    "apple",
-    "scroll",
-    "scrolling",
-    "animation",
-    "transition",
-    "plugin",
-    "library"
+    "uprise-fin",
+    "heybit",
+    "ui"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
