@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-styles",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "files": [
     "dist/**"
   ],
@@ -11,9 +11,6 @@
     "heybit",
     "ui"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "repository": "git://github.com/uprise-fin/heybit-ui-styles.git",
   "author": "uprise-fin",
   "license": "MIT",
