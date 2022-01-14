@@ -1,7 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-styles",
-  "version": "0.0.14",
-  "main": "dist/index.css",
+  "version": "0.0.15",
   "keywords": [
     "front-end",
     "uprise-fin",
