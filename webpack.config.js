@@ -6,10 +6,10 @@ module.exports = {
   mode: "production",
   entry: {
     index: ["./src/index.scss"],
+    "hb-input": ["./src/hb-input.scss"],
     // "sce-frontend": ["./src/variables.scss"],
   },
 
-  output: {},
   module: {
     rules: [
       {
