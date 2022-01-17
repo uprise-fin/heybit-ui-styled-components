@@ -1,0 +1,13 @@
+<div class="hb-select">
+  <input
+    class="hb-select__label hb-select__option"
+    type="text"
+    readonly
+    value="{{value}}"
+    name="{{name}}"
+  />
+  <div class="hb-select__list">
+    <slot name="option"></slot>
+  </div>
+  <i class="hb-select__layer"></i>
+</div>

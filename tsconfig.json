@@ -1,0 +1,13 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "outDir": "dist",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "ES2015",
+    "moduleResolution": "node"
+  },
+  "exclude": ["node_modules"]
+}

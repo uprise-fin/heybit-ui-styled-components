@@ -4,70 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../dist/index.css" rel="stylesheet" />
     <title>Document</title>
   </head>
   <body>
-    <div class="hb-input">
-      <input class="hb-input__el" value="ddd" type="text" />
-      <i class="hb-input__border"></i>
-    </div>
-    <div class="hb-input">
-      <input class="hb-input__el" type="text" />
-      <i class="hb-input__border"></i>
-      <button class="hb-input__slot">블라</button>
-    </div>
-    <!-- <details class="hb-dialog">
-      <summary class="hb-dialog__summary">팝업오픈</summary>
-      <div class="hb-dialog__container">
-        <div class="hb-dialog__body">
-          <button class="hb-dialog__close-btn"></button>
-          <div class="hb-dialog__header">header</div>
-          <div class="hb-dialog__content">content</div>
-          <div class="hb-dialog__footer">footer</div>
-        </div>
-      </div>
-    </details> -->
-    <div class="hb-dialog">
-      <div class="hb-dialog__container">
-        <button class="hb-dialog__close-btn"></button>
-        <div class="hb-dialog__header">header</div>
-        <div class="hb-dialog__content">content</div>
-        <div class="hb-dialog__footer">footer</div>
-      </div>
-    </div>
-    <div class="hb-select">
-      <input
-        class="hb-select__label hb-select__option"
-        type="text"
-        readonly
-        value="블라블라"
-        name="dd"
-      />
-      <div class="hb-select__list">
-        <input
-          readonly
-          value="1"
-          name="11"
-          class="hb-select__option"
-          onclick="this.parentNode.parentNode.removeAttribute('open');this.parentNode.parentNode.children[0].value = this.value;"
-        />
-        <input
-          readonly
-          value="2"
-          name="22"
-          class="hb-select__option"
-          onclick="this.parentNode.parentNode.removeAttribute('open');this.parentNode.parentNode.children[0].value = this.value;"
-        />
-        <input
-          readonly
-          value="3"
-          name="33"
-          class="hb-select__option"
-          onclick="this.parentNode.parentNode.removeAttribute('open');this.parentNode.parentNode.children[0].value = this.value;"
-        />
-      </div>
-      <i class="hb-select__layer"></i>
-    </div>
+    <hb-input oninput="console.log(this)" value="111" class="dd"
+      ><button slot="right-slot">dddd</button></hb-input
+    >
+    <hb-select onchange="console.log(this)">
+      <input slot="option" readonly type="text" value="1" name="2" />
+      <input slot="option" readonly type="text" value="1" name="2" />
+      <input slot="option" readonly type="text" value="1" name="2" />
+    </hb-select>
+
+    <hb-input></hb-input>
+    <style>
+      hb-input:not([data-styled]) {
+        display: none;
+      }
+      /* hb-input::part(i) {
+        display: none;
+      } */
+    </style>
+    <script src="../dist/index.js"></script>
   </body>
 </html>

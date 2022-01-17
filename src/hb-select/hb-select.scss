@@ -1,4 +1,4 @@
-@import "variables";
+@import "../variables";
 // $hb-dialog__layer__background: $layer__background !default;
 // $hb-dialog__background: $box__background !default;
 // $hb-dialog__border-radius: $box__border-radius !default;
@@ -11,28 +11,33 @@ $hb-select__border-color--warning: $box__border-color--warning !default;
 $hb-select__border-radius: $box__border-radius !default;
 $hb-select__background: $box__background !default;
 $hb-select__background--warning: $box__background !default;
+%option {
+  display: flex;
+  width: 100%;
+  height: $hb-select__height;
+  padding: $hb-select__padding;
+  border: 0;
+  align-items: center;
+  box-sizing: border-box;
+  outline: none;
+  background: none;
+}
 .hb-select {
   font-size: $hb-select__font-size;
 
   &__list {
-    display: none;
     border: 1px solid #000;
     border-radius: $hb-select__border-radius;
     transition: opacity 5s;
+    ::slotted(*) {
+      @extend %option;
+    }
     .open & {
       display: block;
     }
   }
   &__option {
-    display: flex;
-    width: 100%;
-    height: $hb-select__height;
-    padding: $hb-select__padding;
-    border: 0;
-    align-items: center;
-    box-sizing: border-box;
-    outline: none;
-    background: none;
+    @extend %option;
   }
   &__label {
     border: #{$hb-select__border-width} solid #{$hb-select__border-color};
