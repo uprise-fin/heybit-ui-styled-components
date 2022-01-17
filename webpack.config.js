@@ -1,6 +1,5 @@
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
 
 module.exports = {
   mode: "production",
@@ -8,6 +7,7 @@ module.exports = {
     index: ["./src/index.scss"],
     "hb-input": ["./src/hb-input.scss"],
     "hb-dialog": ["./src/hb-dialog.scss"],
+    "hb-select": ["./src/hb-select.scss"],
     // "sce-frontend": ["./src/variables.scss"],
   },
 

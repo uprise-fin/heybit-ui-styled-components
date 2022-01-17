@@ -17,9 +17,12 @@ $hb-dialog__border-radius: $box__border-radius !default;
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
+  display: none;
   align-items: center;
   background: $hb-dialog__layer__background;
+  &.open {
+    display: flex;
+  }
   &__container {
     position: relative;
     margin: auto;
@@ -35,3 +38,43 @@ $hb-dialog__border-radius: $box__border-radius !default;
     transform: translate(50%, -50%);
   }
 }
+// .hb-dialog {
+//   &__summary {
+//     &::marker {
+//       font-size: 0;
+//     }
+//   }
+//   &__body {
+//     position: relative;
+//     margin: auto;
+//     border-radius: $hb-dialog__border-radius;
+//     background: $hb-dialog__background;
+//   }
+//   &__container {
+//     position: fixed;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     display: flex;
+//     align-items: center;
+//     background: $hb-dialog__layer__background;
+//     animation: dialog-open 1s;
+//     @keyframes dialog-open {
+//       0% {
+//         opacity: 0;
+//       }
+//       100% {
+//         opacity: 1;
+//       }
+//     }
+//   }
+//   &__close-btn {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     width: 50px;
+//     height: 50px;
+//     transform: translate(50%, -50%);
+//   }
+// }
