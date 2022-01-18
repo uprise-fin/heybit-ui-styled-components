@@ -5,16 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .test::after {
+        content: attr(data-key);
+      }
+      .cccc {
+        overflow: hidden;
+      }
+      .dddddd {
+        font-size: 20px;
+      }
+      .dddddd:focus {
+        border: 1px solid;
+      }
+    </style>
   </head>
   <body>
-    <hb-input oninput="console.log(this)" value="111" class="dd"
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <hb-input onchange="console.log(this)" value="111" class="dd"
       ><button slot="right-slot">dddd</button></hb-input
     >
-    <hb-select onchange="console.log(this)">
-      <input slot="option" readonly type="text" value="1" name="2" />
-      <input slot="option" readonly type="text" value="1" name="2" />
-      <input slot="option" readonly type="text" value="1" name="2" />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <input type="text" />
+    <hb-select value="ddd" key="ddd">
+      <div
+        class="dddddd"
+        slot="option"
+        tabindex="0"
+        data-value="1"
+        data-key="2"
+      >
+        ㅂ브ㄹ라블라
+      </div>
+      <div
+        class="dddddd"
+        slot="option"
+        tabindex="0"
+        data-value="aaa"
+        data-key="bbb"
+      >
+        3242423
+      </div>
+      <div
+        class="dddddd"
+        slot="option"
+        tabindex="0"
+        data-value="444"
+        data-key="666"
+      >
+        dawdawd
+      </div>
     </hb-select>
+    <div class="cccc"></div>
 
     <hb-input></hb-input>
     <style>

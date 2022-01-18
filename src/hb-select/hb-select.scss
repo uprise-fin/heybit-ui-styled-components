@@ -22,17 +22,27 @@ $hb-select__background--warning: $box__background !default;
   outline: none;
   background: none;
 }
-.hb-select {
+:host(*) {
+  display: block;
   font-size: $hb-select__font-size;
+}
+.hb-select {
+  // &__input {
+  //   display: none;
+  // }
 
   &__list {
+    z-index: 1;
+    position: fixed;
+    display: none;
     border: 1px solid #000;
+    box-sizing: border-box;
     border-radius: $hb-select__border-radius;
     transition: opacity 5s;
-    ::slotted(*) {
+    &::slotted(*) {
       @extend %option;
     }
-    .open & {
+    :host(.open) & {
       display: block;
     }
   }
@@ -42,9 +52,14 @@ $hb-select__background--warning: $box__background !default;
   &__label {
     border: #{$hb-select__border-width} solid #{$hb-select__border-color};
     border-radius: $hb-select__border-radius;
+    &:not([custom-label="true"]) {
+      &::before {
+        content: attr(data-key);
+      }
+    }
   }
   &__layer {
-    .open & {
+    :host(.open) & {
       z-index: -1;
       position: fixed;
       top: 0;
