@@ -11,7 +11,7 @@ $hb-dialog__border-radius: $box__border-radius !default;
 // $hb-input__border-radius: $box__border-radius !default;
 // $hb-input__background: $box__background !default;
 // $hb-input__background--warning: $box__background !default;
-.hb-dialog {
+:host(*) {
   position: fixed;
   top: 0;
   right: 0;
@@ -20,9 +20,11 @@ $hb-dialog__border-radius: $box__border-radius !default;
   display: none;
   align-items: center;
   background: $hb-dialog__layer__background;
-  &.open {
-    display: flex;
-  }
+}
+:host(.open) {
+  display: flex;
+}
+.hb-dialog {
   &__container {
     position: relative;
     margin: auto;
@@ -36,6 +38,28 @@ $hb-dialog__border-radius: $box__border-radius !default;
     width: 50px;
     height: 50px;
     transform: translate(50%, -50%);
+  }
+  &__header,
+  &__content,
+  &__footer {
+    &::slotted(*) {
+      &:empty {
+        display: none;
+      }
+    }
+  }
+  &__header {
+  }
+  &__content {
+  }
+  &__footer {
+    display: flex;
+    &::slotted(*) {
+      flex: 1;
+      border: 0;
+      min-width: 60px;
+      min-height: 50px;
+    }
   }
 }
 // .hb-dialog {

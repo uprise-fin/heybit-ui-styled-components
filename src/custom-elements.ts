@@ -18,7 +18,8 @@ export default class CustomElement extends HTMLElement {
     return this.isStyles + this.isTemplate;
   }
 
-  get isAttributes() {
+  get isAttributes(): { [key: string]: string } {
+    // get isAttributes() {
     return this.getAttributeNames().reduce(
       (a, v) => ({
         ...a,

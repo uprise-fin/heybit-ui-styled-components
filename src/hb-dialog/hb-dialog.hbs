@@ -1,8 +1,6 @@
-<div class="hb-dialog">
-  <div class="hb-dialog__container">
-    <button class="hb-dialog__close-btn"></button>
-    <div class="hb-dialog__header">header</div>
-    <div class="hb-dialog__content">content</div>
-    <div class="hb-dialog__footer">footer</div>
-  </div>
+<div class="hb-dialog__container">
+  <button class="hb-dialog__close-btn"></button>
+  <slot name="header" class="hb-dialog__header"></slot>
+  <slot name="content" class="hb-dialog__content"></slot>
+  <slot name="footer" class="hb-dialog__footer"></slot>
 </div>

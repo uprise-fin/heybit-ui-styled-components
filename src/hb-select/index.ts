@@ -6,8 +6,20 @@ const HbSelect = customElements.define(
     template = require("./hb-select.hbs");
     css = require("./hb-select.scss").default;
     sto: any;
+    options: {
+      [value: string]: string;
+    } = {};
+    properties = {
+      selectedClass: "selected",
+      openClass: "open",
+      listId: "list",
+      labelId: "label",
+      labelSlot: "label",
+      optionSlot: "option",
+    };
     constructor() {
       super();
+      const value = this.isAttributes.value;
       this.tabIndex = 0;
       this.onfocus = () => this.onShow();
       this.onblur = () => {
@@ -15,9 +27,18 @@ const HbSelect = customElements.define(
       };
 
       this.attachShadow({ mode: "open" }).innerHTML = this.isInnerHTML;
-      this.isOptionEls.forEach((element: HTMLElement, i: number) => {
-        element.onclick = (evt: Event) => {
+      // this.isLabelEl.dataset.value = this.isAttributes.value;
+      // this.isLabelEl.dataset.key = this.isAttributes.key;
+      this.isOptionEls.forEach((element: HTMLElement) => {
+        element.onkeyup = (evt: KeyboardEvent) => {
+          if (evt.key === "Enter") {
+            this.onSelect(evt);
+            this.onHide();
+          }
+        };
+        element.onclick = (evt: MouseEvent) => {
           this.onSelect(evt);
+          this.onHide();
         };
         element.onfocus = () => {
           clearTimeout(this.sto);
@@ -28,48 +49,66 @@ const HbSelect = customElements.define(
             this.onHide();
           }, 0);
         };
+
+        if (element.dataset.value === value)
+          element.classList.add(this.properties.selectedClass);
+
+        this.options[element.dataset.value] = element.dataset.key;
       });
+      this.isLabelEl.dataset.value = value;
+      this.isLabelEl.dataset.key = this.options[value];
     }
     // get isInputEl() {
     //   return this.shadowRoot.getElementById("input") as HTMLInputElement;
     // }
     get isListEl() {
-      return this.shadowRoot.getElementById("list") as HTMLInputElement;
+      return this.shadowRoot.getElementById(
+        this.properties.listId
+      ) as HTMLInputElement;
     }
-    get isLabelEl() {
-      return this.shadowRoot.getElementById("label") as HTMLElement;
+    // get isLabelSlotEl() {
+    //   return this.shadowRoot.getElementById("label") as HTMLElement;
+    // }
+    get isChildren(): HTMLElement[] {
+      return Array.call(null, ...this.children);
+    }
+    get isLabelEl(): HTMLElement {
+      return (
+        this.isChildren.filter(
+          (x: HTMLElement) => x.slot === this.properties.labelSlot
+        )[0] || this.shadowRoot.getElementById(this.properties.labelId)
+      );
     }
     get isOptionEls(): HTMLElement[] {
-      return Array.call(null, ...this.children);
+      return this.isChildren.filter(
+        (x: HTMLElement) => x.slot === this.properties.optionSlot
+      );
     }
     onSelect(evt: Event) {
       const element = evt.target as HTMLElement;
       const { value, key } = element.dataset;
+
+      this.onselect && this.onselect(evt);
+      if (this.isLabelEl.dataset.value === value) return;
+
+      this.isOptionEls.forEach((x) => {
+        if (x === element)
+          return element.classList.add(this.properties.selectedClass);
+        x.classList.remove(this.properties.selectedClass);
+      });
+
+      this.onchange && this.onchange(evt);
       this.isLabelEl.dataset.value = value;
       this.isLabelEl.dataset.key = key;
-      // this.isInputEl.value = value;
-      this.isOptionEls.forEach((x) => {
-        if (x === element) return element.classList.add("selected");
-        x.classList.remove("selected");
-      });
-      this.onchange && this.onchange(evt);
-      // this.onToggle();
     }
-    // onToggle() {
-    //   if (this.classList.contains("open")) return this.classList.remove("open");
-    //   this.classList.add("open");
-    //   const { width } = this.getBoundingClientRect();
-    //   this.isListEl.style.width = `${width}px`;
-    // }
     onShow() {
       clearTimeout(this.sto);
-      this.classList.add("open");
       const { width } = this.getBoundingClientRect();
+      this.classList.add(this.properties.openClass);
       this.isListEl.style.width = `${width}px`;
     }
     onHide() {
-      console.log("33333");
-      this.classList.remove("open");
+      this.classList.remove(this.properties.openClass);
     }
   }
 );

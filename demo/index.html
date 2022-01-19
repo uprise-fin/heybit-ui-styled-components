@@ -15,8 +15,11 @@
       .dddddd {
         font-size: 20px;
       }
-      .dddddd:focus {
-        border: 1px solid;
+      .dddddd.selected {
+        border: 1px solid red;
+      }
+      .dawdawdawd::before {
+        content: attr(data-value);
       }
     </style>
   </head>
@@ -36,7 +39,8 @@
     <br />
     <br />
     <input type="text" />
-    <hb-select value="ddd" key="ddd">
+    <hb-select value="aaa" onchange="console.log('ddd')">
+      <!-- <div class="dawdawdawd" slot="label"></div> -->
       <div
         class="dddddd"
         slot="option"
@@ -65,9 +69,13 @@
         dawdawd
       </div>
     </hb-select>
-    <div class="cccc"></div>
 
     <hb-input></hb-input>
+    <hb-dialog class="open">
+      <div slot="header">ddd</div>
+      <button slot="footer">ddd</button>
+      <button slot="footer">222</button>
+    </hb-dialog>
     <style>
       hb-input:not([data-styled]) {
         display: none;
