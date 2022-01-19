@@ -9,16 +9,19 @@ const HbSelect = customElements.define(
     options: {
       [value: string]: string;
     } = {};
-    properties = {
-      selectedClass: "selected",
-      openClass: "open",
-      listId: "list",
-      labelId: "label",
-      labelSlot: "label",
-      optionSlot: "option",
-    };
+
     constructor() {
       super();
+      this.properties = {
+        id: {
+          list: "list",
+          label: "label",
+        },
+        slot: {
+          label: "label",
+          option: "option",
+        },
+      };
       const value = this.isAttributes.value;
       this.tabIndex = 0;
       this.onfocus = () => this.onShow();
@@ -51,7 +54,7 @@ const HbSelect = customElements.define(
         };
 
         if (element.dataset.value === value)
-          element.classList.add(this.properties.selectedClass);
+          element.classList.add(this.isProperties.classList.selected);
 
         this.options[element.dataset.value] = element.dataset.key;
       });
@@ -63,10 +66,10 @@ const HbSelect = customElements.define(
     // }
     get isListEl() {
       return this.shadowRoot.getElementById(
-        this.properties.listId
+        this.isProperties.id.list
       ) as HTMLInputElement;
     }
-    // get isLabelSlotEl() {
+    // get islabelEl() {
     //   return this.shadowRoot.getElementById("label") as HTMLElement;
     // }
     get isChildren(): HTMLElement[] {
@@ -75,13 +78,13 @@ const HbSelect = customElements.define(
     get isLabelEl(): HTMLElement {
       return (
         this.isChildren.filter(
-          (x: HTMLElement) => x.slot === this.properties.labelSlot
-        )[0] || this.shadowRoot.getElementById(this.properties.labelId)
+          (x: HTMLElement) => x.slot === this.isProperties.slot.label
+        )[0] || this.shadowRoot.getElementById(this.isProperties.id.label)
       );
     }
     get isOptionEls(): HTMLElement[] {
       return this.isChildren.filter(
-        (x: HTMLElement) => x.slot === this.properties.optionSlot
+        (x: HTMLElement) => x.slot === this.isProperties.slot.option
       );
     }
     onSelect(evt: Event) {
@@ -93,8 +96,8 @@ const HbSelect = customElements.define(
 
       this.isOptionEls.forEach((x) => {
         if (x === element)
-          return element.classList.add(this.properties.selectedClass);
-        x.classList.remove(this.properties.selectedClass);
+          return element.classList.add(this.isProperties.classList.selected);
+        x.classList.remove(this.isProperties.classList.selected);
       });
 
       this.onchange && this.onchange(evt);
@@ -104,11 +107,11 @@ const HbSelect = customElements.define(
     onShow() {
       clearTimeout(this.sto);
       const { width } = this.getBoundingClientRect();
-      this.classList.add(this.properties.openClass);
+      this.classList.add(this.isProperties.classList.open);
       this.isListEl.style.width = `${width}px`;
     }
     onHide() {
-      this.classList.remove(this.properties.openClass);
+      this.classList.remove(this.isProperties.classList.open);
     }
   }
 );

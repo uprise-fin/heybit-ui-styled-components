@@ -17,12 +17,14 @@ $hb-dialog__border-radius: $box__border-radius !default;
   right: 0;
   bottom: 0;
   left: 0;
-  display: none;
   align-items: center;
+  animation: close 1s;
+  animation-fill-mode: forwards;
   background: $hb-dialog__layer__background;
 }
 :host(.open) {
-  display: flex;
+  animation: open 1s;
+  animation-fill-mode: forwards;
 }
 .hb-dialog {
   &__container {
@@ -102,3 +104,28 @@ $hb-dialog__border-radius: $box__border-radius !default;
 //     transform: translate(50%, -50%);
 //   }
 // }
+@keyframes open {
+  0% {
+    display: none;
+  }
+  1% {
+    display: flex;
+    opacity: 0;
+  }
+  100% {
+    display: flex;
+    opacity: 1;
+  }
+}
+@keyframes close {
+  0% {
+    display: flex;
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    display: none;
+  }
+}
