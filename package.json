@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-style-components",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "files": [
     "dist/**"
   ],

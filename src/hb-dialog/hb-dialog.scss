@@ -11,20 +11,25 @@ $hb-dialog__border-radius: $box__border-radius !default;
 // $hb-input__border-radius: $box__border-radius !default;
 // $hb-input__background: $box__background !default;
 // $hb-input__background--warning: $box__background !default;
-:host(*) {
+:host {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  display: none;
   align-items: center;
   animation: close 1s;
-  animation-fill-mode: forwards;
   background: $hb-dialog__layer__background;
 }
+:host(.animation) {
+  display: flex;
+  pointer-events: none;
+}
 :host(.open) {
+  display: flex;
   animation: open 1s;
-  animation-fill-mode: forwards;
+  pointer-events: auto;
 }
 .hb-dialog {
   &__container {
@@ -123,6 +128,7 @@ $hb-dialog__border-radius: $box__border-radius !default;
     opacity: 1;
   }
   99% {
+    display: flex;
     opacity: 0;
   }
   100% {

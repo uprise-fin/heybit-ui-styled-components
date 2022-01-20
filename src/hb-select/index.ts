@@ -107,11 +107,8 @@ const HbSelect = customElements.define(
     onShow() {
       clearTimeout(this.sto);
       const { width } = this.getBoundingClientRect();
-      this.classList.add(this.isProperties.classList.open);
+      super.onShow();
       this.isListEl.style.width = `${width}px`;
-    }
-    onHide() {
-      this.classList.remove(this.isProperties.classList.open);
     }
   }
 );

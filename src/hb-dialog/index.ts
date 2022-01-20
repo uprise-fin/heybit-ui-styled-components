@@ -14,15 +14,19 @@ const HbDialog = customElements.define(
         },
       };
       this.attachShadow({ mode: "open" }).innerHTML = this.isInnerHTML;
-      this.isCloseBtnEl.onclick = () => this.onClose();
+      this.onanimationstart = () => this.onAnimationStart();
+      this.onanimationend = () => this.onAnimationEnd();
+      this.isCloseBtnEl.onclick = () => this.onHide();
     }
     get isCloseBtnEl() {
       return this.shadowRoot.getElementById(
         this.isProperties.id.closeBtn
       ) as HTMLButtonElement;
     }
-    onClose() {
-      this.classList.remove(this.isProperties.classList.open);
+
+    onHide() {
+      this.classList.add(this.isProperties.classList.animation);
+      super.onHide();
     }
   }
 );

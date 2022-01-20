@@ -3,6 +3,7 @@ export default class CustomElement extends HTMLElement {
   template: any;
   readonly _properties: { [group: string]: { [key: string]: string } } = {
     classList: {
+      animation: "animation",
       selected: "selected",
       open: "open",
     },
@@ -39,5 +40,17 @@ export default class CustomElement extends HTMLElement {
       }),
       {}
     );
+  }
+  onAnimationStart() {
+    this.classList.add(this.isProperties.classList.animation);
+  }
+  onAnimationEnd() {
+    this.classList.remove(this.isProperties.classList.animation);
+  }
+  onShow() {
+    this.classList.add(this.isProperties.classList.open);
+  }
+  onHide() {
+    this.classList.remove(this.isProperties.classList.open);
   }
 }
