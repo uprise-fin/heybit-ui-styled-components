@@ -5,16 +5,15 @@ const common = require("./webpack.common.js");
 const dotenv = require("dotenv");
 
 module.exports = (_, options) => {
-  const mode = "production";
-  const env = dotenv.config({
-    path: `.env/${mode}.env`,
-  }).parsed;
+  const env = {
+    MODE: "production",
+  };
   const envKeys = Object.keys(env).reduce((prev, next) => {
     prev[`process.env.${next}`] = JSON.stringify(env[next]);
     return prev;
   }, {});
   return merge(common, {
-    mode,
+    mode: env.MODE,
     plugins: [new webpack.DefinePlugin(envKeys), new MiniCssExtractPlugin()],
   });
 };

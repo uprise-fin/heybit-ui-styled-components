@@ -6,18 +6,16 @@ const common = require("./webpack.common.js");
 const dotenv = require("dotenv");
 
 module.exports = () => {
-  const mode = "development";
-  const env = dotenv.config({
-    path: `.env/${mode}.env`,
-  }).parsed;
+  const env = {
+    MODE: "development",
+  };
   const envKeys = Object.keys(env).reduce((prev, next) => {
     prev[`process.env.${next}`] = JSON.stringify(env[next]);
     return prev;
   }, {});
-  console.log(envKeys);
 
   return merge(common, {
-    mode,
+    mode: env.MODE,
     devtool: "source-map",
     devServer: {
       watchFiles: ["src/**/*"],
