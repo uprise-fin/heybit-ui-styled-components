@@ -1,6 +1,6 @@
 {
-  "name": "@uprise-fin/heybit-ui-style-components",
-  "version": "0.0.25",
+  "name": "@uprise-fin/heybit-ui-styled-components",
+  "version": "0.0.26",
   "files": [
     "dist/**"
   ],
@@ -11,7 +11,7 @@
     "heybit",
     "ui"
   ],
-  "repository": "git://github.com/uprise-fin/heybit-ui-style-components.git",
+  "repository": "git://github.com/uprise-fin/heybit-ui-styled-components.git",
   "author": "uprise-fin",
   "license": "MIT",
   "scripts": {
