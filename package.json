@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-styled-components",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "files": [
     "dist/**"
   ],
@@ -37,8 +37,5 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.3",
     "webpack-merge": "^5.8.0"
-  },
-  "dependencies": {
-    "@uprise-fin/heybit-ui-styled-components": "^0.0.32"
   }
 }
