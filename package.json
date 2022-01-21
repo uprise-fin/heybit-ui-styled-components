@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-styled-components",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "files": [
     "dist/**"
   ],
@@ -15,9 +15,9 @@
   "author": "uprise-fin",
   "license": "MIT",
   "scripts": {
-    "dev": "npx webpack watch --config webpack.dev.js --mode development",
-    "start": "npx webpack serve --config webpack.dev.js --mode development",
-    "build": "npx webpack build --config webpack.prod.js --mode development"
+    "dev": "npx webpack watch --config webpack.dev.js",
+    "start": "npx webpack serve --config webpack.dev.js",
+    "build": "npx webpack build --config webpack.dev.js"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",

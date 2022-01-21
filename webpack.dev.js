@@ -5,8 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const common = require("./webpack.common.js");
 const dotenv = require("dotenv");
 
-module.exports = (_, options) => {
-  const mode = options.mode;
+module.exports = () => {
+  const mode = "development";
   const env = dotenv.config({
     path: `.env/${mode}.env`,
   }).parsed;

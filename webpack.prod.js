@@ -5,7 +5,7 @@ const common = require("./webpack.common.js");
 const dotenv = require("dotenv");
 
 module.exports = (_, options) => {
-  const mode = options.mode;
+  const mode = "production";
   const env = dotenv.config({
     path: `.env/${mode}.env`,
   }).parsed;
