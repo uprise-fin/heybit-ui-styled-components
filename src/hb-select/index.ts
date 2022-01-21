@@ -13,6 +13,7 @@ customElements.get(NAME) ||
 
       constructor() {
         super();
+        this.logger(NAME, "constructor");
         this.properties = {
           id: {
             list: "list",
@@ -23,6 +24,7 @@ customElements.get(NAME) ||
             option: "option",
           },
         };
+        this.logger(NAME, "properties");
         const value = this.isAttributes.value;
         this.tabIndex = 0;
         this.onfocus = () => this.onShow();

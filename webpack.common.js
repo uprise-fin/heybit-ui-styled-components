@@ -47,7 +47,6 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss", ".hbs"],
   },
-  plugins: [new MiniCssExtractPlugin()],
   // plugins: [new FixStyleOnlyEntriesPlugin(), new MiniCssExtractPlugin()],
 
   output: {

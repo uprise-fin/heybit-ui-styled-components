@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-styled-components",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "files": [
     "dist/**"
   ],
@@ -15,9 +15,9 @@
   "author": "uprise-fin",
   "license": "MIT",
   "scripts": {
-    "dev": "npx webpack watch --config webpack.dev.js",
-    "start": "npx webpack serve --config webpack.dev.js",
-    "build": "npx webpack build --config webpack.dev.js"
+    "dev": "npx webpack watch --config webpack.dev.js --mode development",
+    "start": "npx webpack serve --config webpack.dev.js --mode development",
+    "build": "npx webpack build --config webpack.prod.js --mode development"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -25,6 +25,7 @@
     "@types/hbs": "^4.0.1",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "dotenv": "^14.2.0",
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^5.5.0",
