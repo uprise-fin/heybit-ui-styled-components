@@ -7,35 +7,33 @@ customElements.get(NAME) ||
       template = require(`./${NAME}.hbs`);
       css = require(`./${NAME}.scss`).default;
       sto = setTimeout(() => null, 0);
+      properties = {
+        id: {
+          list: "list",
+          label: "label",
+        },
+        slot: {
+          label: "label",
+          option: "option",
+        },
+      };
       options: {
         [value: string]: string;
       } = {};
 
       constructor() {
         super();
-        this.properties = {
-          id: {
-            list: "list",
-            label: "label",
-          },
-          slot: {
-            label: "label",
-            option: "option",
-          },
-        };
       }
       connectedCallback(): void {
-        this.tabIndex = 0;
-        this.logger("1", this.children);
         super.connectedCallback();
-        this.logger("3", this.children);
+        this.tabIndex = 0;
         this.onfocus = () => this.onShow();
         this.onblur = () => {
           this.sto = setTimeout(() => this.onHide(), 0);
         };
-        this.test();
+        this.onEventBind();
       }
-      async test() {
+      async onEventBind() {
         const value = this.isAttributes.value;
 
         await this.getChildren();
@@ -98,8 +96,7 @@ customElements.get(NAME) ||
       onSelect(evt: Event) {
         const element = evt.target as HTMLElement;
         const { value, key } = element.dataset;
-
-        this.onselect && this.onselect(evt);
+        this.dispatchEvent(new Event("select", evt));
         if (this.isLabelEl.dataset.value === value) return;
 
         this.isOptionEls.forEach((x) => {
@@ -108,7 +105,7 @@ customElements.get(NAME) ||
           x.classList.remove(this.isProperties.classList.selected);
         });
 
-        this.onchange && this.onchange(evt);
+        this.dispatchEvent(new Event("change", evt));
         this.isLabelEl.dataset.value = value;
         this.isLabelEl.dataset.key = key;
       }

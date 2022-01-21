@@ -6,15 +6,14 @@ customElements.get(NAME) ||
     class extends CustomElement {
       template = require(`./${NAME}.hbs`);
       css = require(`./${NAME}.scss`).default;
-
+      properties = {
+        id: {
+          closeBtn: "close-btn",
+          wrap: "wrap",
+        },
+      };
       constructor() {
         super();
-        this.properties = {
-          id: {
-            closeBtn: "close-btn",
-            wrap: "wrap",
-          },
-        };
       }
       connectedCallback(): void {
         super.connectedCallback();

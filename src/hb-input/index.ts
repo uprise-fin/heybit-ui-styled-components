@@ -17,7 +17,7 @@ customElements.get(NAME) ||
         };
         this.isInputEl.onblur = (evt: Event) => {
           if (this.value !== this.isInputEl.value)
-            this.onchange && this.onchange(evt);
+            this.dispatchEvent(new Event("change", evt));
         };
       }
       get isInputEl() {

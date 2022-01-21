@@ -25,7 +25,6 @@ export default class CustomElement extends HTMLElement {
   }
   connectedCallback() {
     this.render();
-    this.logger("2");
   }
   // disconnectedCallback() {}
   // adoptedCallback() {}
