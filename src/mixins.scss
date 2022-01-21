@@ -1,6 +1,6 @@
 @mixin host-styled() {
   :host([data-hb-styled]) {
-    animation: hb-styled 0.3s;
+    animation: hb-styled 0.2s;
   }
   :host {
     @content;

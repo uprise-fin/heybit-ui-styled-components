@@ -9,7 +9,9 @@ customElements.get(NAME) ||
       value: string;
       constructor() {
         super();
-        super.render();
+      }
+      connectedCallback(): void {
+        super.connectedCallback();
         this.isInputEl.onfocus = () => {
           this.value = this.isInputEl.value;
         };

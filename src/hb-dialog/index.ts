@@ -15,7 +15,9 @@ customElements.get(NAME) ||
             wrap: "wrap",
           },
         };
-        super.render();
+      }
+      connectedCallback(): void {
+        super.connectedCallback();
         this.isWrapEl.onanimationstart = () => this.onAnimationStart();
         this.isWrapEl.onanimationend = () => this.onAnimationEnd();
         this.isCloseBtnEl.onclick = () => this.onHide();

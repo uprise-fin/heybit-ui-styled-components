@@ -15,12 +15,24 @@ export default class CustomElement extends HTMLElement {
   properties: { [group: string]: { [key: string]: string } };
   constructor() {
     super();
-    this.logger("커스텀 엘리먼트 작동완료");
   }
 
   protected logger(...str: string[]) {
     if (process.env.MODE)
       console.info(str instanceof Array ? str.join("\n") : str);
+  }
+  connectedCallback() {
+    this.logger(this.tagName, "connectedCallback");
+    this.render();
+  }
+  disconnectedCallback() {
+    this.logger(this.tagName, "connectedCallback");
+  }
+  adoptedCallback() {
+    this.logger(this.tagName, "adoptedCallback");
+  }
+  attributeChangedCallback() {
+    this.logger(this.tagName, "adoptedCallback");
   }
 
   get isProperties() {

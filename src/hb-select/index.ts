@@ -13,7 +13,6 @@ customElements.get(NAME) ||
 
       constructor() {
         super();
-        this.logger(NAME, "constructor");
         this.properties = {
           id: {
             list: "list",
@@ -24,7 +23,9 @@ customElements.get(NAME) ||
             option: "option",
           },
         };
-        this.logger(NAME, "properties");
+      }
+      connectedCallback(): void {
+        super.connectedCallback();
         const value = this.isAttributes.value;
         this.tabIndex = 0;
         this.onfocus = () => this.onShow();
@@ -32,7 +33,6 @@ customElements.get(NAME) ||
           this.sto = setTimeout(() => this.onHide(), 0);
         };
 
-        super.render();
         // this.isLabelEl.dataset.value = this.isAttributes.value;
         // this.isLabelEl.dataset.key = this.isAttributes.key;
         this.isOptionEls.forEach((element: HTMLElement) => {
