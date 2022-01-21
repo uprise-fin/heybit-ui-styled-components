@@ -7,22 +7,22 @@ customElements.get(NAME) ||
       template = require(`./${NAME}.hbs`);
       css = require(`./${NAME}.scss`).default;
       value: string;
-      inputEl: HTMLInputElement;
       constructor() {
         super();
+        super.render();
       }
       connectedCallback(): void {
         super.connectedCallback();
-        this.inputEl = this.shadowRoot.getElementById(
-          "input"
-        ) as HTMLInputElement;
-        this.inputEl.onfocus = () => {
-          this.value = this.inputEl.value;
+        this.isInputEl.onfocus = () => {
+          this.value = this.isInputEl.value;
         };
-        this.inputEl.onblur = (evt: Event) => {
-          if (this.value !== this.inputEl.value)
+        this.isInputEl.onblur = (evt: Event) => {
+          if (this.value !== this.isInputEl.value)
             this.onchange && this.onchange(evt);
         };
+      }
+      get isInputEl() {
+        return this.shadowRoot?.getElementById("input") as HTMLInputElement;
       }
     }
   );
