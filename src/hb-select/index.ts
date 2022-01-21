@@ -29,7 +29,7 @@ const HbSelect = customElements.define(
         this.sto = setTimeout(() => this.onHide(), 0);
       };
 
-      this.attachShadow({ mode: "open" }).innerHTML = this.isInnerHTML;
+      super.render();
       // this.isLabelEl.dataset.value = this.isAttributes.value;
       // this.isLabelEl.dataset.key = this.isAttributes.key;
       this.isOptionEls.forEach((element: HTMLElement) => {

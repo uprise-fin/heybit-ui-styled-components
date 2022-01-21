@@ -1,0 +1,16 @@
+@mixin host-styled() {
+  :host([data-hb-styled]) {
+    animation: hb-styled 0.3s;
+  }
+  :host {
+    @content;
+  }
+}
+@keyframes hb-styled {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,4 +1,6 @@
 @import "../variables";
+@import "../mixins";
+
 $hb-input__height: $box__height !default;
 $hb-input__padding: $box__padding !default;
 $hb-input__border-width: $box__border-width !default;
@@ -8,7 +10,7 @@ $hb-input__border-color--warning: $box__border-color--warning !default;
 $hb-input__border-radius: $box__border-radius !default;
 $hb-input__background: $box__background !default;
 $hb-input__background--warning: $box__background !default;
-:host {
+@include host-styled {
   position: relative;
   display: flex;
 }

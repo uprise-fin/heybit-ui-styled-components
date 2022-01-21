@@ -1,14 +1,13 @@
 import CustomElement from "../custom-elements";
-
 const HbInput = customElements.define(
   "hb-input",
   class extends CustomElement {
     template = require("./hb-input.hbs");
     css = require("./hb-input.scss").default;
-    value = "";
+    value: string;
     constructor() {
       super();
-      this.attachShadow({ mode: "open" }).innerHTML = this.isInnerHTML;
+      super.render();
       this.isInputEl.onfocus = () => {
         this.value = this.isInputEl.value;
       };

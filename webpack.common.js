@@ -1,10 +1,9 @@
 const path = require("path");
-// const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  mode: "production",
   entry: {
+    initial: [path.resolve(__dirname, "./src/initial.scss")],
     index: [path.resolve(__dirname, "./src/index.ts")],
     "hb-input": [path.resolve(__dirname, "./src/hb-input/index.ts")],
     "hb-dialog": [path.resolve(__dirname, "./src/hb-dialog/index.ts")],
@@ -34,15 +33,21 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: [path.resolve(__dirname, "./src/initial.scss")],
         use: ["css-loader", "sass-loader"],
+      },
+      {
+        test: /\.scss$/,
+        include: [path.resolve(__dirname, "./src/initial.scss")],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
-  devtool: "source-map",
 
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".hbs"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss", ".hbs"],
   },
+  plugins: [new MiniCssExtractPlugin()],
   // plugins: [new FixStyleOnlyEntriesPlugin(), new MiniCssExtractPlugin()],
 
   output: {

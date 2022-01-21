@@ -1,7 +1,10 @@
+interface Attribute<T> {
+  [key: string]: T;
+}
 export default class CustomElement extends HTMLElement {
   css: any;
   template: any;
-  readonly _properties: { [group: string]: { [key: string]: string } } = {
+  readonly _properties: Attribute<Attribute<string>> = {
     classList: {
       animation: "animation",
       selected: "selected",
@@ -11,8 +14,8 @@ export default class CustomElement extends HTMLElement {
   properties: { [group: string]: { [key: string]: string } };
   constructor() {
     super();
-    this.setAttribute("data-styled", "true");
   }
+
   get isProperties() {
     return {
       ...this._properties,
@@ -31,7 +34,7 @@ export default class CustomElement extends HTMLElement {
     return this.isStyles + this.isTemplate;
   }
 
-  get isAttributes(): { [key: string]: string } {
+  get isAttributes(): Attribute<string> {
     // get isAttributes() {
     return this.getAttributeNames().reduce(
       (a, v) => ({
@@ -40,6 +43,10 @@ export default class CustomElement extends HTMLElement {
       }),
       {}
     );
+  }
+  render() {
+    this.attachShadow({ mode: "open" }).innerHTML = this.isInnerHTML;
+    this.dataset.hbStyled = "true";
   }
   onAnimationStart() {
     this.classList.add(this.isProperties.classList.animation);

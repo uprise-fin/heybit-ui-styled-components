@@ -1,4 +1,6 @@
 @import "../variables";
+@import "../mixins";
+
 // $hb-dialog__layer__background: $layer__background !default;
 // $hb-dialog__background: $box__background !default;
 // $hb-dialog__border-radius: $box__border-radius !default;
@@ -22,7 +24,7 @@ $hb-select__background--warning: $box__background !default;
   outline: none;
   background: none;
 }
-:host {
+@include host-styled {
   display: block;
   font-size: $hb-select__font-size;
 }

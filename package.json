@@ -4,7 +4,7 @@
   "files": [
     "dist/**"
   ],
-  "main": "dist/index.css",
+  "main": "dist/index.js",
   "keywords": [
     "front-end",
     "uprise-fin",
@@ -15,8 +15,9 @@
   "author": "uprise-fin",
   "license": "MIT",
   "scripts": {
-    "dev": "npx webpack watch",
-    "build": "npx webpack build"
+    "dev": "npx webpack watch --config webpack.dev.js",
+    "start": "npx webpack serve --config webpack.dev.js",
+    "build": "npx webpack build --config webpack.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -26,11 +27,15 @@
     "css-loader": "^6.5.1",
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.5.2",
     "sass": "^1.45.2",
     "sass-loader": "^12.4.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.4",
     "webpack": "^5.64.4",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3",
+    "webpack-merge": "^5.8.0"
   }
 }

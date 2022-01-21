@@ -1,18 +1,10 @@
-<slot
-  name="left-slot"
-  part="hb-input__slot--left"
-  class="hb-input__slot"
-></slot>
+<slot name="left-slot" part="slot--left" class="hb-input__slot"></slot>
 <input
   id="input"
   class="hb-input__el"
-  part="hb-input__el"
+  part="el"
   value="{{value}}"
   type="text"
 />
-<i class="hb-input__border" part="hb-input__border"></i>
-<slot
-  name="right-slot"
-  part="hb-input__slot--right"
-  class="hb-input__slot"
-></slot>
+<i class="hb-input__border" part="border"></i>
+<slot name="right-slot" part="slot--right" class="hb-input__slot"></slot>
