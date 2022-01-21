@@ -37,6 +37,13 @@ customElements.get(NAME) ||
 
         // this.isLabelEl.dataset.value = this.isAttributes.value;
         // this.isLabelEl.dataset.key = this.isAttributes.key;
+        this.logger(
+          NAME,
+          "connectedCallback",
+          "this.isOptionEls",
+          this.isOptionEls,
+          this.isOptionEls.length
+        );
         this.isOptionEls.forEach((element: HTMLElement) => {
           element.onkeyup = (evt: KeyboardEvent) => {
             if (evt.key === "Enter") {
