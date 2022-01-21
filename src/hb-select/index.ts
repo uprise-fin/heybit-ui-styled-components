@@ -31,6 +31,7 @@ customElements.get(NAME) ||
       connectedCallback(): void {
         super.connectedCallback();
         const value = this.isAttributes.value;
+        this.logger("this.children", this.children);
         this.childrenEls = Array.call(null, ...this.children);
         this.optionsEls = this.childrenEls.filter(
           (x: HTMLElement) => x.slot === this.isProperties.slot.option

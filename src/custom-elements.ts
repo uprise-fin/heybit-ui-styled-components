@@ -19,7 +19,9 @@ export default class CustomElement extends HTMLElement {
 
   protected logger(...str: any[]) {
     if (process.env.MODE)
-      console.info(str instanceof Array ? str.join("\n") : str);
+      if (str instanceof Array)
+        str.map((x) => console.log(x)) ? str.join("\n") : str;
+      else console.log(str);
   }
   connectedCallback() {
     this.logger(this.tagName, "connectedCallback");
