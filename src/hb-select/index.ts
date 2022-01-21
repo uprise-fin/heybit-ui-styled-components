@@ -6,7 +6,7 @@ customElements.get(NAME) ||
     class extends CustomElement {
       template = require(`./${NAME}.hbs`);
       css = require(`./${NAME}.scss`).default;
-      sto: any;
+      sto = setTimeout(() => null, 0);
       options: {
         [value: string]: string;
       } = {};
@@ -85,18 +85,15 @@ customElements.get(NAME) ||
       // get islabelEl() {
       //   return this.shadowRoot.getElementById("label") as HTMLElement;
       // }
-      get isChildren(): HTMLElement[] {
-        return Array.call(null, ...this.children);
-      }
       get isLabelEl(): HTMLElement {
         return (
-          this.isChildren.filter(
+          Array.call(null, ...this.children).filter(
             (x: HTMLElement) => x.slot === this.isProperties.slot.label
           )[0] || this.shadowRoot.getElementById(this.isProperties.id.label)
         );
       }
       get isOptionEls(): HTMLElement[] {
-        return this.isChildren.filter(
+        return Array.call(null, ...this.children).filter(
           (x: HTMLElement) => x.slot === this.isProperties.slot.option
         );
       }

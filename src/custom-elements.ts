@@ -26,13 +26,13 @@ export default class CustomElement extends HTMLElement {
     this.render();
   }
   disconnectedCallback() {
-    this.logger(this.tagName, "connectedCallback");
+    this.logger(this.tagName, "disconnectedCallback");
   }
   adoptedCallback() {
     this.logger(this.tagName, "adoptedCallback");
   }
   attributeChangedCallback() {
-    this.logger(this.tagName, "adoptedCallback");
+    this.logger(this.tagName, "attributeChangedCallback");
   }
 
   get isProperties() {
