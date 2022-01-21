@@ -1,10 +1,10 @@
 {
   "name": "@uprise-fin/heybit-ui-styled-components",
-  "version": "0.0.28",
+  "version": "0.0.30",
   "files": [
     "dist/**"
   ],
-  "main": "dist/index.js",
+  "main": "dist/index.ts",
   "keywords": [
     "front-end",
     "uprise-fin",
