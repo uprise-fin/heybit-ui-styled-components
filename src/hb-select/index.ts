@@ -25,7 +25,6 @@ customElements.get(NAME) ||
         };
       }
       connectedCallback(): void {
-        const value = this.isAttributes.value;
         this.tabIndex = 0;
         this.logger("1", this.children);
         super.connectedCallback();
@@ -34,15 +33,12 @@ customElements.get(NAME) ||
         this.onblur = () => {
           this.sto = setTimeout(() => this.onHide(), 0);
         };
-        console.log(
-          this.isListEl,
-          this.isChildren,
-          this.isLabelEl,
-          this.isOptionEls
-        );
+        this.test();
+      }
+      async test() {
+        const value = this.isAttributes.value;
 
-        // this.isLabelEl.dataset.value = this.isAttributes.value;
-        // this.isLabelEl.dataset.key = this.isAttributes.key;
+        await this.getChildren();
         this.isOptionEls.forEach((element: HTMLElement) => {
           element.onkeyup = (evt: KeyboardEvent) => {
             if (evt.key === "Enter") {
@@ -98,6 +94,7 @@ customElements.get(NAME) ||
           (x: HTMLElement) => x.slot === this.isProperties.slot.option
         );
       }
+
       onSelect(evt: Event) {
         const element = evt.target as HTMLElement;
         const { value, key } = element.dataset;

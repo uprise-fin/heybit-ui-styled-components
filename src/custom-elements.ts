@@ -27,9 +27,9 @@ export default class CustomElement extends HTMLElement {
     this.render();
     this.logger("2");
   }
-  disconnectedCallback() {}
-  adoptedCallback() {}
-  attributeChangedCallback() {}
+  // disconnectedCallback() {}
+  // adoptedCallback() {}
+  // attributeChangedCallback() {}
 
   get isProperties() {
     return {
@@ -58,6 +58,14 @@ export default class CustomElement extends HTMLElement {
       }),
       {}
     );
+  }
+  async getChildren(): Promise<HTMLElement[]> {
+    if (this.children.length === 0) {
+      setTimeout(() => {
+        return this.getChildren();
+      }, 10);
+    }
+    return Array.call(this, this.children);
   }
   render() {
     this.attachShadow({ mode: "open" }).innerHTML = this.isInnerHTML;
