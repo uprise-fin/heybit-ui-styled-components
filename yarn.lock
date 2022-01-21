@@ -1062,6 +1062,11 @@
   dependencies:
     "@types/node" "*"
 
+"@uprise-fin/heybit-ui-styled-components@^0.0.32":
+  version "0.0.32"
+  resolved "https://npm.pkg.github.com/download/@uprise-fin/heybit-ui-styled-components/0.0.32/f92ddcdd2715ed39458a9b71cb14879c532294b11de696c19ceb76ad42823d9d#81e9db8e1cef94c652863c6eb0f75c45acc9672b"
+  integrity sha512-xwJIZqdbs6te8ol1+OkdANS4KBBv/a4jTofENQz+0B7YfJ6DGtJo1lqXuJpznutW31AOA9h+cVXRYxsdJdIPXA==
+
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.1.tgz#2bfd767eae1a6996f432ff7e8d7fc75679c0b6a7"
