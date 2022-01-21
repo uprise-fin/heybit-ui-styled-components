@@ -17,9 +17,13 @@ export default class CustomElement extends HTMLElement {
     super();
   }
 
-  protected logger(...str: string[]) {
+  protected logger(...str: any[]) {
     if (process.env.MODE)
-      console.info(str instanceof Array ? str.join("\n") : str);
+      console.info(
+        str instanceof Array
+          ? str.map((x) => JSON.stringify(x)).join("\n")
+          : str
+      );
   }
   connectedCallback() {
     this.logger(this.tagName, "connectedCallback");

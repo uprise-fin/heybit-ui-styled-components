@@ -25,9 +25,11 @@ customElements.get(NAME) ||
         };
       }
       connectedCallback(): void {
-        super.connectedCallback();
         const value = this.isAttributes.value;
         this.tabIndex = 0;
+        this.logger(NAME, "connectedCallback", value);
+        super.connectedCallback();
+
         this.onfocus = () => this.onShow();
         this.onblur = () => {
           this.sto = setTimeout(() => this.onHide(), 0);
@@ -61,6 +63,7 @@ customElements.get(NAME) ||
 
           this.options[element.dataset.value] = element.dataset.key;
         });
+        this.logger(NAME, "connectedCallback", this.options);
         this.isLabelEl.dataset.value = value;
         this.isLabelEl.dataset.key = this.options[value];
       }
@@ -91,6 +94,7 @@ customElements.get(NAME) ||
         );
       }
       onSelect(evt: Event) {
+        this.logger(NAME, "onSelect", evt);
         const element = evt.target as HTMLElement;
         const { value, key } = element.dataset;
 

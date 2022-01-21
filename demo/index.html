@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="../dist/index.js"></script>
     <style>
       .test::after {
         content: attr(data-key);
@@ -17,9 +18,6 @@
       }
       .dddddd.selected {
         border: 1px solid red;
-      }
-      .dawdawdawd::before {
-        content: attr(data-value);
       }
     </style>
   </head>
@@ -39,7 +37,7 @@
     <br />
     <br />
     <input type="text" />
-    <hb-select value="aaa" onchange="console.log('ddd')">
+    <hb-select value="aaa">
       <!-- <div class="dawdawdawd" slot="label"></div> -->
       <div
         class="dddddd"
