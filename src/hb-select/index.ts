@@ -8,6 +8,9 @@ customElements.get(NAME) ||
       css = require(`./${NAME}.scss`).default;
       sto = setTimeout(() => null, 0);
       optionsEls: HTMLElement[];
+      childrenEls: HTMLElement[];
+      labelEl: HTMLElement;
+      listEl: HTMLElement;
       options: {
         [value: string]: string;
       } = {};
@@ -27,20 +30,27 @@ customElements.get(NAME) ||
       }
       connectedCallback(): void {
         super.connectedCallback();
-        this.optionsEls = this.isChildren.filter(
+        const value = this.isAttributes.value;
+        this.childrenEls = Array.call(null, ...this.children);
+        this.optionsEls = this.childrenEls.filter(
           (x: HTMLElement) => x.slot === this.isProperties.slot.option
         );
-        const value = this.isAttributes.value;
+        this.labelEl =
+          this.childrenEls.filter(
+            (x: HTMLElement) => x.slot === this.isProperties.slot.label
+          )[0] || this.shadowRoot.getElementById(this.isProperties.id.label);
+        this.listEl = this.shadowRoot.getElementById(
+          this.isProperties.id.list
+        ) as HTMLInputElement;
         this.tabIndex = 0;
-        this.logger(NAME, "connectedCallback", value);
 
         this.onfocus = () => this.onShow();
         this.onblur = () => {
           this.sto = setTimeout(() => this.onHide(), 0);
         };
 
-        // this.isLabelEl.dataset.value = this.isAttributes.value;
-        // this.isLabelEl.dataset.key = this.isAttributes.key;
+        // this.labelEl.dataset.value = this.isAttributes.value;
+        // this.labelEl.dataset.key = this.isAttributes.key;
 
         this.optionsEls.forEach((element: HTMLElement) => {
           element.onkeyup = (evt: KeyboardEvent) => {
@@ -69,29 +79,8 @@ customElements.get(NAME) ||
           this.options[element.dataset.value] = element.dataset.key;
         });
         this.logger(NAME, "connectedCallback", this.options);
-        this.isLabelEl.dataset.value = value;
-        this.isLabelEl.dataset.key = this.options[value];
-      }
-      // get isInputEl() {
-      //   return this.shadowRoot.getElementById("input") as HTMLInputElement;
-      // }
-      get isListEl() {
-        return this.shadowRoot.getElementById(
-          this.isProperties.id.list
-        ) as HTMLInputElement;
-      }
-      // get islabelEl() {
-      //   return this.shadowRoot.getElementById("label") as HTMLElement;
-      // }
-      get isChildren(): HTMLElement[] {
-        return Array.call(null, ...this.children);
-      }
-      get isLabelEl(): HTMLElement {
-        return (
-          this.isChildren.filter(
-            (x: HTMLElement) => x.slot === this.isProperties.slot.label
-          )[0] || this.shadowRoot.getElementById(this.isProperties.id.label)
-        );
+        this.labelEl.dataset.value = value;
+        this.labelEl.dataset.key = this.options[value];
       }
       onSelect(evt: Event) {
         this.logger(NAME, "onSelect", evt);
@@ -99,7 +88,7 @@ customElements.get(NAME) ||
         const { value, key } = element.dataset;
 
         this.onselect && this.onselect(evt);
-        if (this.isLabelEl.dataset.value === value) return;
+        if (this.labelEl.dataset.value === value) return;
 
         this.optionsEls.forEach((x) => {
           if (x === element)
@@ -108,14 +97,14 @@ customElements.get(NAME) ||
         });
 
         this.onchange && this.onchange(evt);
-        this.isLabelEl.dataset.value = value;
-        this.isLabelEl.dataset.key = key;
+        this.labelEl.dataset.value = value;
+        this.labelEl.dataset.key = key;
       }
       onShow() {
         clearTimeout(this.sto);
         const { width } = this.getBoundingClientRect();
         super.onShow();
-        this.isListEl.style.width = `${width}px`;
+        this.listEl.style.width = `${width}px`;
       }
     }
   );

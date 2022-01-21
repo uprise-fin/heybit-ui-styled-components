@@ -6,7 +6,8 @@ customElements.get(NAME) ||
     class extends CustomElement {
       template = require(`./${NAME}.hbs`);
       css = require(`./${NAME}.scss`).default;
-
+      wrapEl: HTMLElement;
+      closeBtnEl: HTMLElement;
       constructor() {
         super();
         this.properties = {
@@ -18,19 +19,15 @@ customElements.get(NAME) ||
       }
       connectedCallback(): void {
         super.connectedCallback();
-        this.isWrapEl.onanimationstart = () => this.onAnimationStart();
-        this.isWrapEl.onanimationend = () => this.onAnimationEnd();
-        this.isCloseBtnEl.onclick = () => this.onHide();
-      }
-      get isCloseBtnEl() {
-        return this.shadowRoot.getElementById(
-          this.isProperties.id.closeBtn
-        ) as HTMLButtonElement;
-      }
-      get isWrapEl() {
-        return this.shadowRoot.getElementById(
+        this.wrapEl = this.shadowRoot.getElementById(
           this.isProperties.id.wrap
         ) as HTMLButtonElement;
+        this.closeBtnEl = this.shadowRoot.getElementById(
+          this.isProperties.id.closeBtn
+        ) as HTMLButtonElement;
+        this.wrapEl.onanimationstart = () => this.onAnimationStart();
+        this.wrapEl.onanimationend = () => this.onAnimationEnd();
+        this.closeBtnEl.onclick = () => this.onHide();
       }
 
       onHide() {
