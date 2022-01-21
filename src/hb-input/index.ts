@@ -21,7 +21,7 @@ customElements.get(NAME) ||
         };
       }
       get isInputEl() {
-        return this.shadowRoot?.getElementById("input") as HTMLInputElement;
+        return this.shadowRoot.getElementById("input") as HTMLInputElement;
       }
     }
   );

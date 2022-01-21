@@ -34,6 +34,12 @@ customElements.get(NAME) ||
         this.onblur = () => {
           this.sto = setTimeout(() => this.onHide(), 0);
         };
+        console.log(
+          this.isListEl,
+          this.isChildren,
+          this.isLabelEl,
+          this.isOptionEls
+        );
 
         // this.isLabelEl.dataset.value = this.isAttributes.value;
         // this.isLabelEl.dataset.key = this.isAttributes.key;
