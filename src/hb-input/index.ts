@@ -9,7 +9,6 @@ customElements.get(NAME) ||
       value: string;
       constructor() {
         super();
-        super.render();
       }
       connectedCallback(): void {
         super.connectedCallback();

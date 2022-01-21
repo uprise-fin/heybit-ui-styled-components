@@ -24,17 +24,12 @@ export default class CustomElement extends HTMLElement {
       else console.log(str);
   }
   connectedCallback() {
-    this.logger(this.tagName, "connectedCallback");
+    this.render();
+    this.logger("2");
   }
-  disconnectedCallback() {
-    this.logger(this.tagName, "disconnectedCallback");
-  }
-  adoptedCallback() {
-    this.logger(this.tagName, "adoptedCallback");
-  }
-  attributeChangedCallback() {
-    this.logger(this.tagName, "attributeChangedCallback");
-  }
+  disconnectedCallback() {}
+  adoptedCallback() {}
+  attributeChangedCallback() {}
 
   get isProperties() {
     return {

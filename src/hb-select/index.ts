@@ -23,14 +23,13 @@ customElements.get(NAME) ||
             option: "option",
           },
         };
-        super.render();
       }
       connectedCallback(): void {
         const value = this.isAttributes.value;
         this.tabIndex = 0;
-        this.logger(NAME, "connectedCallback", value);
+        this.logger("1", this.children);
         super.connectedCallback();
-
+        this.logger("3", this.children);
         this.onfocus = () => this.onShow();
         this.onblur = () => {
           this.sto = setTimeout(() => this.onHide(), 0);
@@ -38,13 +37,6 @@ customElements.get(NAME) ||
 
         // this.isLabelEl.dataset.value = this.isAttributes.value;
         // this.isLabelEl.dataset.key = this.isAttributes.key;
-        this.logger(
-          NAME,
-          "connectedCallback",
-          "this.isOptionEls",
-          this.isOptionEls,
-          this.isOptionEls.length
-        );
         this.isOptionEls.forEach((element: HTMLElement) => {
           element.onkeyup = (evt: KeyboardEvent) => {
             if (evt.key === "Enter") {
@@ -71,7 +63,6 @@ customElements.get(NAME) ||
 
           this.options[element.dataset.value] = element.dataset.key;
         });
-        this.logger(NAME, "connectedCallback", this.options);
         this.isLabelEl.dataset.value = value;
         this.isLabelEl.dataset.key = this.options[value];
       }
@@ -87,7 +78,7 @@ customElements.get(NAME) ||
       //   return this.shadowRoot.getElementById("label") as HTMLElement;
       // }
       get isChildren(): HTMLElement[] {
-        return Array.call(null, ...this.children);
+        return Array.call(this, ...this.children);
       }
       get isLabelEl(): HTMLElement {
         return (
@@ -102,7 +93,6 @@ customElements.get(NAME) ||
         );
       }
       onSelect(evt: Event) {
-        this.logger(NAME, "onSelect", evt);
         const element = evt.target as HTMLElement;
         const { value, key } = element.dataset;
 

@@ -15,7 +15,6 @@ customElements.get(NAME) ||
             wrap: "wrap",
           },
         };
-        super.render();
       }
       connectedCallback(): void {
         super.connectedCallback();
