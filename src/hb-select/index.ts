@@ -7,6 +7,7 @@ customElements.get(NAME) ||
       template = require(`./${NAME}.hbs`);
       css = require(`./${NAME}.scss`).default;
       sto = setTimeout(() => null, 0);
+      optionsEls: HTMLElement[];
       options: {
         [value: string]: string;
       } = {};
@@ -25,10 +26,13 @@ customElements.get(NAME) ||
         };
       }
       connectedCallback(): void {
+        super.connectedCallback();
+        this.optionsEls = this.isChildren.filter(
+          (x: HTMLElement) => x.slot === this.isProperties.slot.option
+        );
         const value = this.isAttributes.value;
         this.tabIndex = 0;
         this.logger(NAME, "connectedCallback", value);
-        super.connectedCallback();
 
         this.onfocus = () => this.onShow();
         this.onblur = () => {
@@ -37,14 +41,8 @@ customElements.get(NAME) ||
 
         // this.isLabelEl.dataset.value = this.isAttributes.value;
         // this.isLabelEl.dataset.key = this.isAttributes.key;
-        this.logger(
-          NAME,
-          "connectedCallback",
-          "this.isOptionEls",
-          this.isOptionEls,
-          this.isOptionEls.length
-        );
-        this.isOptionEls.forEach((element: HTMLElement) => {
+
+        this.optionsEls.forEach((element: HTMLElement) => {
           element.onkeyup = (evt: KeyboardEvent) => {
             if (evt.key === "Enter") {
               this.onSelect(evt);
@@ -85,16 +83,14 @@ customElements.get(NAME) ||
       // get islabelEl() {
       //   return this.shadowRoot.getElementById("label") as HTMLElement;
       // }
+      get isChildren(): HTMLElement[] {
+        return Array.call(null, ...this.children);
+      }
       get isLabelEl(): HTMLElement {
         return (
-          Array.call(null, ...this.children).filter(
+          this.isChildren.filter(
             (x: HTMLElement) => x.slot === this.isProperties.slot.label
           )[0] || this.shadowRoot.getElementById(this.isProperties.id.label)
-        );
-      }
-      get isOptionEls(): HTMLElement[] {
-        return Array.call(null, ...this.children).filter(
-          (x: HTMLElement) => x.slot === this.isProperties.slot.option
         );
       }
       onSelect(evt: Event) {
@@ -105,7 +101,7 @@ customElements.get(NAME) ||
         this.onselect && this.onselect(evt);
         if (this.isLabelEl.dataset.value === value) return;
 
-        this.isOptionEls.forEach((x) => {
+        this.optionsEls.forEach((x) => {
           if (x === element)
             return element.classList.add(this.isProperties.classList.selected);
           x.classList.remove(this.isProperties.classList.selected);
