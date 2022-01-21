@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "npx webpack watch --config webpack.dev.js",
     "start": "npx webpack serve --config webpack.dev.js",
-    "build": "npx webpack build --config webpack.dev.js"
+    "build": "npx webpack build --config webpack.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",

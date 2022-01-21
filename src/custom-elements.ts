@@ -1,10 +1,9 @@
 interface Attribute<T> {
   [key: string]: T;
 }
-
 export default class CustomElement extends HTMLElement {
-  css: any;
-  template: any;
+  readonly css: any;
+  readonly template: any;
   readonly _properties: Attribute<Attribute<string>> = {
     classList: {
       animation: "animation",
@@ -58,11 +57,13 @@ export default class CustomElement extends HTMLElement {
       {}
     );
   }
-  async getChildren(): Promise<HTMLElement[]> {
+  async getChildren(timer?: number): Promise<HTMLElement[]> {
+    const index = timer ? ++timer : 0;
+    if (index > 10) return [];
     if (this.children.length === 0) {
       setTimeout(() => {
-        return this.getChildren();
-      }, 10);
+        return this.getChildren(index);
+      }, 10 * index);
     }
     return Array.call(this, this.children);
   }
