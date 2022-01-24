@@ -34,7 +34,18 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: [path.resolve(__dirname, "./src/initial.scss")],
-        use: ["css-loader", "sass-loader"],
+        // use: ["css-loader", "sass-loader"],
+        use: [
+          {
+            loader: "lit-scss-loader",
+            options: {
+              minify: true, // defaults to false
+            },
+          },
+          "extract-loader",
+          "css-loader",
+          "sass-loader",
+        ],
       },
       {
         test: /\.scss$/,
