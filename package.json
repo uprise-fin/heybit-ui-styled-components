@@ -32,7 +32,6 @@
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^5.5.0",
-    "lit": "^2.1.1",
     "lit-scss-loader": "^1.1.0",
     "mini-css-extract-plugin": "^2.5.2",
     "sass": "^1.45.2",
@@ -43,5 +42,9 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.3",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.6.0",
+    "lit": "^2.1.1"
   }
 }
