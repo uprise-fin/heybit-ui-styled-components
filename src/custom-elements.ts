@@ -65,7 +65,7 @@ export default class CustomElement extends HTMLElement {
         return this.getChildren(index);
       }, 10 * index);
     }
-    return Array.call(this, this.children);
+    return Array.call(this, this.children as HTMLCollection);
   }
   render() {
     this.attachShadow({ mode: "open" }).innerHTML = this.isInnerHTML;

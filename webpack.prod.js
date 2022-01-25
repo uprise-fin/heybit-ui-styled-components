@@ -1,8 +1,7 @@
+const path = require("path");
 const webpack = require("webpack");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
-const dotenv = require("dotenv");
 
 module.exports = (_, options) => {
   const env = {
@@ -12,8 +11,12 @@ module.exports = (_, options) => {
     prev[`process.env.${next}`] = JSON.stringify(env[next]);
     return prev;
   }, {});
+  console.log(common.entry);
   return merge(common, {
+    entry: {
+      index: [path.resolve(__dirname, "./src/index.ts")],
+    },
     mode: env.MODE,
-    plugins: [new webpack.DefinePlugin(envKeys), new MiniCssExtractPlugin()],
+    plugins: [new webpack.DefinePlugin(envKeys)],
   });
 };

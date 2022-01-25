@@ -1,10 +1,9 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { getChildren } from "../utils";
 import style from "./hb-select.scss";
 // import CustomElement from "../custom-elements";
-interface Attribute<T> {
-  [key: string]: T;
-}
+
 /**
  * An example element.
  *
@@ -15,11 +14,18 @@ interface Attribute<T> {
 
 @customElement("hb-select")
 export class HbSelect extends LitElement {
-  width = "12px";
-  sto: any;
   static override get styles() {
     return [style];
   }
+
+  @property()
+  width!: string;
+  @property()
+  value!: string;
+
+  sto = setTimeout(() => {}, 0);
+  optionEls!: HTMLElement[];
+  labelEl!: HTMLElement;
   // readonly _properties: Attribute<Attribute<string>> = {
   //   classList: {
   //     animation: "animation",
@@ -81,26 +87,69 @@ export class HbSelect extends LitElement {
   // } = {};
 
   override render() {
-    return html` <slot
+    return html`<slot
         id="label"
         part="label"
-        @click="${this.onShow}"
         name="label"
         class="hb-select__label hb-select__option"
       ></slot>
       <slot
         class="hb-select__list"
-        @click="${this.onClcickd}"
-        style="${this.width}"
+        @click="${this.onSelect}"
+        style="width: ${this.width}px"
         part="list"
         id="list"
         name="option"
       ></slot>`;
   }
-  onClcickd(evt: Event) {
-    console.log(evt);
+  override connectedCallback() {
+    super.connectedCallback();
+    this.tabIndex = 0;
+    this.onfocus = () => this.onShow();
+    this.onblur = () => {
+      this.sto = setTimeout(() => this.onHide(), 0);
+    };
+    this.bindEvents();
+  }
+  async bindEvents() {
+    const children = await getChildren(this.children);
+    let label;
+    this.labelEl =
+      children.filter((x) => x.slot === "label")[0] ||
+      this.shadowRoot?.getElementById("label");
+    this.optionEls = children.filter((x) => x.slot === "option");
+    this.optionEls.forEach((element: HTMLElement) => {
+      element.onkeyup = (evt: KeyboardEvent) => {
+        if (evt.key === "Enter") {
+          this.onSelect(evt);
+          this.onHide();
+        }
+      };
+      element.onclick = (evt: MouseEvent) => {
+        this.onSelect(evt);
+        this.onHide();
+      };
+      element.onfocus = () => {
+        clearTimeout(this.sto);
+        this.onShow();
+      };
+      element.onblur = () => {
+        this.sto = setTimeout(() => {
+          this.onHide();
+        }, 0);
+      };
+
+      if (element.dataset.value === this.value) {
+        label = element.dataset.label;
+        element.classList.add("selected");
+      }
+    });
+    this.labelEl.dataset.value = this.value;
+    this.labelEl.dataset.label = label;
+    console.log(this.labelEl.dataset);
   }
   // connectedCallback(): void {
+  //   super.connectedCallback();
   //   this.tabIndex = 0;
   //   this.onfocus = () => this.onShow();
   //   this.onblur = () => {
@@ -168,35 +217,38 @@ export class HbSelect extends LitElement {
   //   );
   // }
 
-  // onSelect(evt: Event) {
-  //   const element = evt.target as HTMLElement;
-  //   const { value, key } = element.dataset;
-  //   this.dispatchEvent(new Event("select", evt));
-  //   if (this.isLabelEl.dataset.value === value) return;
+  onSelect(evt: Event) {
+    const element = evt.target as HTMLElement;
+    const { value, label } = element.dataset;
+    if (this.value === value) return;
 
-  //   this.isOptionEls.forEach((x) => {
-  //     if (x === element)
-  //       return element.classList.add(this.isProperties.classList.selected);
-  //     x.classList.remove(this.isProperties.classList.selected);
-  //   });
+    this.optionEls.forEach((x) => {
+      if (x === element) return element.classList.add("selected");
+      x.classList.remove("selected");
+    });
 
-  //   this.dispatchEvent(new Event("change", evt));
-  //   this.isLabelEl.dataset.value = value;
-  //   this.isLabelEl.dataset.key = key;
-  // }
+    this.dispatchEvent(new Event("change", evt));
+    this.value = value!;
+    if (this.labelEl) {
+      this.labelEl.dataset.value = value;
+      this.labelEl.dataset.label = label;
+    }
+    // this.dispatchEvent(new Event("select", evt));
+    // value && (this.value = value);
+    // label && (this.label = label);
+    // this.dispatchEvent(new Event("change", evt));
+  }
   onShow() {
     clearTimeout(this.sto);
     const { width } = this.getBoundingClientRect();
+    this.width = `${width}`;
     this.classList.add("open");
-    this.width = `width: ${width}px`;
   }
 
-  // onHide() {
-  //   this.classList.remove(this.isProperties.classList.open);
-  // }
+  onHide() {
+    this.classList.remove("open");
+  }
 }
-console.log(customElements.get("hb-select"));
-customElements.get("hb-select") || customElements.define("hb-select", HbSelect);
 
 declare global {
   interface HTMLElementTagNameMap {
