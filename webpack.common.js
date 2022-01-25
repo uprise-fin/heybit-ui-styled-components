@@ -4,15 +4,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: {
     initial: [path.resolve(__dirname, "./src/initial.scss")],
-    index: [path.resolve(__dirname, "./src/index.ts")],
     "hb-input": [path.resolve(__dirname, "./src/hb-input/index.ts")],
     "hb-dialog": [path.resolve(__dirname, "./src/hb-dialog/index.ts")],
     "hb-select": [path.resolve(__dirname, "./src/hb-select/index.ts")],
-    // index: ["./src/index.scss"],
-    // "hb-input": ["./src/hb-input.scss"],
-    // "hb-dialog": ["./src/hb-dialog.scss"],
-    // "hb-select": ["./src/hb-select.scss"],
-    // "sce-frontend": ["./src/variables.scss"],
   },
   module: {
     rules: [
@@ -34,7 +28,18 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: [path.resolve(__dirname, "./src/initial.scss")],
-        use: ["css-loader", "sass-loader"],
+        // use: ["css-loader", "sass-loader"],
+        use: [
+          {
+            loader: "lit-scss-loader",
+            options: {
+              minify: true, // defaults to false
+            },
+          },
+          "extract-loader",
+          "css-loader",
+          "sass-loader",
+        ],
       },
       {
         test: /\.scss$/,
@@ -43,6 +48,7 @@ module.exports = {
       },
     ],
   },
+  plugins: [new MiniCssExtractPlugin()],
 
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss", ".hbs"],

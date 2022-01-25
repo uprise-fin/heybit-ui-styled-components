@@ -54,10 +54,8 @@ $hb-select__background--warning: $box__background !default;
   &__label {
     border: #{$hb-select__border-width} solid #{$hb-select__border-color};
     border-radius: $hb-select__border-radius;
-    &:not([custom-label="true"]) {
-      &::before {
-        content: attr(data-key);
-      }
+    &::before {
+      content: attr(data-label);
     }
   }
   &__layer {
