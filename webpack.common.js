@@ -1,7 +1,9 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
+    initial: [path.resolve(__dirname, "./src/initial.scss")],
     "hb-input": [path.resolve(__dirname, "./src/hb-input/index.ts")],
     "hb-dialog": [path.resolve(__dirname, "./src/hb-dialog/index.ts")],
     "hb-select": [path.resolve(__dirname, "./src/hb-select/index.ts")],
@@ -24,8 +26,8 @@ module.exports = {
         ],
       },
       {
-        test: /\.css|\.s(c|a)ss$/,
-        // exclude: [path.resolve(__dirname, "./src/initial.scss")],
+        test: /\.scss$/,
+        exclude: [path.resolve(__dirname, "./src/initial.scss")],
         // use: ["css-loader", "sass-loader"],
         use: [
           {
@@ -39,13 +41,14 @@ module.exports = {
           "sass-loader",
         ],
       },
-      // {
-      //   test: /\.scss$/,
-      //   include: [path.resolve(__dirname, "./src/initial.scss")],
-      //   use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      // },
+      {
+        test: /\.scss$/,
+        include: [path.resolve(__dirname, "./src/initial.scss")],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
     ],
   },
+  plugins: [new MiniCssExtractPlugin()],
 
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss", ".hbs"],

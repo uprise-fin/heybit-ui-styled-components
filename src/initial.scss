@@ -1,7 +1,7 @@
-// hb-input,
-// hb-dialog,
-// hb-select {
-//   &:not([data-hb-styled]) {
-//     visibility: hidden;
-//   }
-// }
+hb-input,
+hb-dialog,
+hb-select {
+  &:not([data-hb-styled]) {
+    visibility: hidden;
+  }
+}

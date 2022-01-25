@@ -2,7 +2,7 @@ export const getChildren = (
   children: HTMLCollection,
   timer?: number
 ): PromiseLike<HTMLElement[]> => {
-  const index = timer ? ++timer : 0;
+  const index = typeof timer === "number" ? ++timer : 0;
   if (children.length === 0 && index < 10) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -13,4 +13,20 @@ export const getChildren = (
   return new Promise((resolve) =>
     resolve(Array.call(null, ...children) as HTMLElement[])
   );
+};
+export const getElement = <T extends HTMLElement>(
+  root: ShadowRoot | null,
+  id: string,
+  timer?: number
+): PromiseLike<T | null | undefined> => {
+  const index = typeof timer === "number" ? ++timer : 0;
+  const element = root?.getElementById(id) as T;
+  if (!element && index < 10) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(getElement(root, id, index));
+      }, 100 * index);
+    });
+  }
+  return new Promise((resolve) => resolve(element));
 };
