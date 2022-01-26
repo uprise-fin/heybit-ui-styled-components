@@ -17,13 +17,16 @@
   "scripts": {
     "dev": "npx webpack watch --config webpack.dev.js",
     "start": "npx webpack serve --config webpack.dev.js",
-    "build": "npx webpack build --config webpack.prod.js"
+    "build": "npx webpack build --config webpack.prod.js",
+    "cem": "cem analyze"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@babel/plugin-transform-runtime": "^7.16.10",
     "@babel/preset-env": "^7.16.8",
+    "@babel/preset-typescript": "^7.16.7",
     "@babel/runtime": "^7.16.7",
+    "@custom-elements-manifest/analyzer": "^0.5.7",
     "@types/hbs": "^4.0.1",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
@@ -47,5 +50,6 @@
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "lit": "^2.1.1"
-  }
+  },
+  "customElements": "custom-elements.json"
 }

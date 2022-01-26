@@ -2,6 +2,10 @@ import Base from "../base";
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { getElement } from "../../utils";
+import * as schema from "custom-elements-manifest/schema";
+const customElementManifestSchema = require("custom-elements-manifest");
+console.log(customElementManifestSchema);
+
 /**
  * An example element.
  *
