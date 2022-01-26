@@ -1,7 +1,7 @@
 import Base from "../base";
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { getElement } from "../utils";
+import { getElement } from "../../utils";
 /**
  * An example element.
  *
@@ -18,7 +18,7 @@ import { getElement } from "../utils";
 @customElement("hb-dialog")
 export class HbDialog extends Base {
   static override get styles() {
-    return [require("./style.scss").default];
+    return [require("../../styles/dialog/index.scss").default];
   }
 
   @property()
@@ -26,7 +26,7 @@ export class HbDialog extends Base {
 
   override render() {
     return html`
-      <div class="hb-dialog" id="wrap">
+      <div class="hb-dialog__wrap" id="wrap">
         <div class="hb-dialog__container" part="container">
           <button
             class="hb-dialog__close-btn"

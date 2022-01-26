@@ -18,7 +18,7 @@ import { customElement, property } from "lit/decorators.js";
 @customElement("hb-input")
 export class HbInput extends Base {
   static override get styles() {
-    return [require("./style.scss").default];
+    return [require("../../styles/form/input/index.scss").default];
   }
 
   @property()

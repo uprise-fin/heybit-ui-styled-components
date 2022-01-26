@@ -1,5 +1,5 @@
-@import "../variables";
-@import "../mixins";
+@import "../../utils/_variables";
+@import "../../utils/_mixins";
 
 // $hb-dialog__layer__background: $layer__background !default;
 // $hb-dialog__background: $box__background !default;
@@ -24,18 +24,17 @@ $hb-select__background--warning: $box__background !default;
   outline: none;
   background: none;
 }
-@include host-styled {
-  display: block;
-  font-size: $hb-select__font-size;
-}
+
 .hb-select {
-  // &__input {
-  //   display: none;
-  // }
+  @include host-animation;
+  @include host-styled {
+    display: block;
+    font-size: $hb-select__font-size;
+  }
 
   &__list {
     z-index: 1;
-    position: fixed;
+    position: absolute;
     display: none;
     border: 1px solid #000;
     box-sizing: border-box;
