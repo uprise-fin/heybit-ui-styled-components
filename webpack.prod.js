@@ -11,7 +11,6 @@ module.exports = (_, options) => {
     prev[`process.env.${next}`] = JSON.stringify(env[next]);
     return prev;
   }, {});
-  console.log(common.entry);
   return merge(common, {
     entry: {
       index: [path.resolve(__dirname, "./src/index.ts")],

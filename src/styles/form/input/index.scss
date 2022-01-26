@@ -1,6 +1,5 @@
-@import "../variables";
-@import "../mixins";
-
+@import "../../utils/_variables";
+@import "../../utils/_mixins";
 $hb-input__height: $box__height !default;
 $hb-input__padding: $box__padding !default;
 $hb-input__border-width: $box__border-width !default;
@@ -10,12 +9,15 @@ $hb-input__border-color--warning: $box__border-color--warning !default;
 $hb-input__border-radius: $box__border-radius !default;
 $hb-input__background: $box__background !default;
 $hb-input__background--warning: $box__background !default;
-@include host-styled {
-  position: relative;
-  display: flex;
-}
 .hb-input {
+  @include host-animation;
+  @include host-styled {
+    position: relative;
+    display: flex;
+  }
   &__border {
+    // 브라우저의 자동완성기능에 인풋의 배경색이 브라우저에서 컨트롤하게 됩니다. box-shadow 해당 속성으로만 그 색상을 덮을 수 있어서,
+    // 인풋의 보더라인을 새로운 돔을 추가해서 관리합니다.
     position: absolute;
     top: 0;
     left: 0;

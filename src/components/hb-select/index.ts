@@ -1,7 +1,7 @@
 import Base from "../base";
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { getChildren } from "../utils";
+import { getChildren } from "../../utils";
 
 /**
  * An example element.
@@ -18,7 +18,7 @@ import { getChildren } from "../utils";
 @customElement("hb-select")
 export class HbSelect extends Base {
   static override get styles() {
-    return [require("./style.scss").default];
+    return [require("../../styles/form/select/index.scss").default];
   }
 
   @property()
@@ -41,7 +41,7 @@ export class HbSelect extends Base {
       <slot
         class="hb-select__list"
         @click="${this.onSelect}"
-        style="width: ${this.width}px"
+        style="width: ${this.width}px;"
         part="list"
         id="list"
         name="option"
@@ -52,9 +52,7 @@ export class HbSelect extends Base {
     super.connectedCallback();
     this.tabIndex = 0;
     this.onfocus = () => this.onShow();
-    this.onblur = () => {
-      this.sto = setTimeout(() => this.onHide(), 0);
-    };
+    this.onblur = () => this.onHide();
     this.bindEvents();
   }
   async bindEvents() {
@@ -80,9 +78,7 @@ export class HbSelect extends Base {
         this.onShow();
       };
       element.onblur = () => {
-        this.sto = setTimeout(() => {
-          this.onHide();
-        }, 0);
+        this.onHide();
       };
 
       if (element.dataset.value === this.value) {
@@ -112,12 +108,15 @@ export class HbSelect extends Base {
   onShow() {
     clearTimeout(this.sto);
     const { width } = this.getBoundingClientRect();
-    this.width = `${width}`;
     this.classList.add("open");
+    this.width = `${width}`;
+    // this.top = `${top}`;
   }
 
   onHide() {
-    this.classList.remove("open");
+    this.sto = setTimeout(() => {
+      this.classList.remove("open");
+    }, 0);
   }
 }
 

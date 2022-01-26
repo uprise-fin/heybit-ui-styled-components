@@ -1,5 +1,5 @@
-@import "../variables";
-@import "../mixins";
+@import "../utils/_variables";
+@import "../utils/_mixins";
 
 $hb-dialog__layer__background: $layer__background !default;
 $hb-dialog__background: $box__background !default;
@@ -13,30 +13,37 @@ $hb-dialog__border-radius: $box__border-radius !default;
 // $hb-input__border-radius: $box__border-radius !default;
 // $hb-input__background: $box__background !default;
 // $hb-input__background--warning: $box__background !default;
-@include host-styled {
-  display: none;
-}
-:host(.animation) {
-  display: flex;
-  pointer-events: none;
-}
-:host(.open) {
-  display: flex;
-  pointer-events: auto;
-}
+
 .hb-dialog {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  background: $hb-dialog__layer__background;
-  animation: close 1s;
-  :host(.open) & {
-    animation: open 1s;
+  @include host-animation;
+  @include host-styled {
+    display: none;
   }
+  @include host-styled(".animation") {
+    display: flex;
+    pointer-events: none;
+  }
+  @include host-styled(".open") {
+    display: flex;
+    pointer-events: auto;
+    > * {
+      animation: open 1s;
+    }
+  }
+  &__wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background: $hb-dialog__layer__background;
+    animation: close 1s;
+  }
+  // :host(.open) & {
+  //   animation: open 1s;
+  // }
   &__container {
     position: relative;
     margin: auto;

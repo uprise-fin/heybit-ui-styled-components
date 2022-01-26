@@ -4,14 +4,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: {
     initial: [path.resolve(__dirname, "./src/initial.scss")],
-    "hb-input": [path.resolve(__dirname, "./src/hb-input/index.ts")],
-    "hb-dialog": [path.resolve(__dirname, "./src/hb-dialog/index.ts")],
-    "hb-select": [path.resolve(__dirname, "./src/hb-select/index.ts")],
+    "hb-input": [path.resolve(__dirname, "./src/components/hb-input/index.ts")],
+    "hb-dialog": [
+      path.resolve(__dirname, "./src/components/hb-dialog/index.ts"),
+    ],
+    "hb-select": [
+      path.resolve(__dirname, "./src/components/hb-select/index.ts"),
+    ],
   },
   module: {
     rules: [
-      { test: /\.hbs$/, loader: "handlebars-loader" },
-
       {
         test: /\.ts$/,
         exclude: /(node_modules|bower_components)/,
@@ -51,7 +53,7 @@ module.exports = {
   plugins: [new MiniCssExtractPlugin()],
 
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss", ".hbs"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss"],
   },
   // plugins: [new FixStyleOnlyEntriesPlugin(), new MiniCssExtractPlugin()],
 
