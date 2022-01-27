@@ -58,7 +58,7 @@ module.exports = {
   // plugins: [new FixStyleOnlyEntriesPlugin(), new MiniCssExtractPlugin()],
 
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "./build"),
     filename: "[name].js",
     library: "@uprise-fin/heybit-ui-styled-components",
     libraryTarget: "umd",

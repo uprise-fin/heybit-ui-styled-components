@@ -1,6 +1,11 @@
 {
-  "include": ["src/**/*", "node_modules/lit-scss-loader/types.d.ts"],
+  "include": [
+    "src/**/*",
+    "test/**/*",
+    "node_modules/lit-scss-loader/types.d.ts"
+  ],
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "allowJs": true,
     "declaration": true,

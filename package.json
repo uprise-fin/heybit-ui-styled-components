@@ -2,9 +2,11 @@
   "name": "@uprise-fin/heybit-ui-styled-components",
   "version": "0.0.802",
   "files": [
-    "dist/**"
+    "build/**"
   ],
-  "main": "dist/index.js",
+  "type": "commonjs",
+  "types": "build/index.d.ts",
+  "main": "build/index.js",
   "keywords": [
     "front-end",
     "uprise-fin",
@@ -18,7 +20,8 @@
     "dev": "npx webpack watch --config webpack.dev.js",
     "start": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
-    "cem": "cem analyze"
+    "cem": "cem analyze",
+    "test": "tsc && web-test-runner dist/test/**/*.test.js --node-resolve"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -27,7 +30,9 @@
     "@babel/preset-typescript": "^7.16.7",
     "@babel/runtime": "^7.16.7",
     "@custom-elements-manifest/analyzer": "^0.5.7",
-    "@web/dev-server-legacy": "^0.1.7",
+    "@open-wc/testing": "^3.0.3",
+    "@web/dev-server": "^0.1.29",
+    "@web/test-runner": "^0.13.26",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
     "css-modules-typescript-loader": "^4.0.1",
