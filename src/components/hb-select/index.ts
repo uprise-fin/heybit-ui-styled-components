@@ -51,8 +51,8 @@ export class HbSelect extends Base {
   override connectedCallback() {
     super.connectedCallback();
     this.tabIndex = 0;
-    this.onfocus = () => this.onShow();
-    this.onblur = () => this.onHide();
+    this.onfocus = this.onShow;
+    this.onblur = this.onHide;
     this.bindEvents();
   }
   async bindEvents() {
@@ -73,13 +73,8 @@ export class HbSelect extends Base {
         this.onSelect(evt);
         this.onHide();
       };
-      element.onfocus = () => {
-        clearTimeout(this.sto);
-        this.onShow();
-      };
-      element.onblur = () => {
-        this.onHide();
-      };
+      element.onfocus = () => this.onShow();
+      element.onblur = () => this.onHide();
 
       if (element.dataset.value === this.value) {
         label = element.dataset.label;
