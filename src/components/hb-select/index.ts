@@ -1,8 +1,8 @@
-import Base from "../base";
-import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { getChildren } from "../../utils";
-
+import Base from '../base';
+import {html} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
+import {getChildren} from '../../utils';
+import style from '../../styles/form/select/index.scss';
 /**
  * An example element.
  *
@@ -15,10 +15,10 @@ import { getChildren } from "../../utils";
  * @csspart list
  */
 
-@customElement("hb-select")
+@customElement('hb-select')
 export class HbSelect extends Base {
   static override get styles() {
-    return [require("../../styles/form/select/index.scss").default];
+    return [style];
   }
 
   @property()
@@ -59,12 +59,12 @@ export class HbSelect extends Base {
     const children = await getChildren(this.children);
     let label;
     this.labelEl =
-      children.filter((x) => x.slot === "label")[0] ||
-      this.shadowRoot?.getElementById("label");
-    this.optionEls = children.filter((x) => x.slot === "option");
+      children.filter((x) => x.slot === 'label')[0] ||
+      this.shadowRoot?.getElementById('label');
+    this.optionEls = children.filter((x) => x.slot === 'option');
     this.optionEls.forEach((element: HTMLElement) => {
       element.onkeyup = (evt: KeyboardEvent) => {
-        if (evt.key === "Enter") {
+        if (evt.key === 'Enter') {
           this.onSelect(evt);
           this.onHide();
         }
@@ -83,7 +83,7 @@ export class HbSelect extends Base {
 
       if (element.dataset.value === this.value) {
         label = element.dataset.label;
-        element.classList.add("selected");
+        element.classList.add('selected');
       }
     });
     this.labelEl.dataset.value = this.value;
@@ -92,36 +92,36 @@ export class HbSelect extends Base {
 
   onSelect(evt: Event) {
     const element = evt.target as HTMLElement;
-    const { value, label } = element.dataset;
+    const {value, label} = element.dataset;
     if (this.value === value) return;
 
     this.optionEls.forEach((x) => {
-      if (x === element) return element.classList.add("selected");
-      x.classList.remove("selected");
+      if (x === element) return element.classList.add('selected');
+      x.classList.remove('selected');
     });
 
-    this.dispatchEvent(new Event("change", evt));
+    this.dispatchEvent(new Event('change', evt));
     this.value = value!;
     this.labelEl.dataset.value = value;
     this.labelEl.dataset.label = label;
   }
   onShow() {
     clearTimeout(this.sto);
-    const { width } = this.getBoundingClientRect();
-    this.classList.add("open");
+    const {width} = this.getBoundingClientRect();
+    this.classList.add('open');
     this.width = `${width}`;
     // this.top = `${top}`;
   }
 
   onHide() {
     this.sto = setTimeout(() => {
-      this.classList.remove("open");
+      this.classList.remove('open');
     }, 0);
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-select": HbSelect;
+    'hb-select': HbSelect;
   }
 }
