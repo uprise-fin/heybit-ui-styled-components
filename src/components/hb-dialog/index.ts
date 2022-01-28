@@ -1,4 +1,4 @@
-import Base from '../base';
+import Base from '../../utils/base';
 import {html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {getElement} from '../../utils';

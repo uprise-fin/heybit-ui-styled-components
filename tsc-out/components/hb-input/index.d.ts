@@ -1,4 +1,4 @@
-import Base from '../base';
+import Base from '../../utils/base';
 /**
  * An example element.
  *

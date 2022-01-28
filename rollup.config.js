@@ -5,7 +5,6 @@
  */
 import styles from 'rollup-plugin-styles';
 import litcss from 'rollup-plugin-lit-css';
-
 import summary from 'rollup-plugin-summary';
 import {terser} from 'rollup-plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
@@ -13,9 +12,10 @@ import replace from '@rollup/plugin-replace';
 import Sass from 'sass';
 
 export default {
-  input: 'my-element.js',
+  // input: 'my-element.js',
+  input: ['tsc-out/**/*.js'],
   output: {
-    file: 'my-element.bundled.js',
+    dir: 'dist',
     format: 'esm',
   },
   onwarn(warning) {
