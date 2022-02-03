@@ -16,6 +16,6 @@ module.exports = (_, options) => {
       index: [path.resolve(__dirname, "./src/index.ts")],
     },
     mode: env.MODE,
-    plugins: [...common.plugins, new webpack.DefinePlugin(envKeys)],
+    plugins: [new webpack.DefinePlugin(envKeys)],
   });
 };

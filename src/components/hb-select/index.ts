@@ -38,7 +38,6 @@ export class HbSelect extends Base {
       ></slot>
       <slot
         class="hb-select__list"
-        @click="${this.onSelect}"
         style="width: ${this.width}px;"
         part="list"
         id="list"
@@ -46,12 +45,12 @@ export class HbSelect extends Base {
       ></slot>
     `;
   }
-  override connectedCallback() {
+  override async connectedCallback() {
     super.connectedCallback();
     this.tabIndex = 0;
     this.onfocus = () => this.onShow();
     this.onblur = () => this.onHide();
-    this.bindEvents();
+    await this.bindEvents();
   }
   async bindEvents() {
     const children = await getChildren(this.children);
