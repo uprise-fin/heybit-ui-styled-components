@@ -1,14 +1,10 @@
 //button.spec.ts
 import { LitElement } from "lit";
+import { getShadowRoot, getElement } from "./utils";
 describe("hb-select", () => {
   const AWESOME_BUTTON_TAG = "hb-select";
   // const ELEMENT_ID = "label";
   let buttonElement: LitElement;
-
-  const getShadowRoot = (tagName: string): ShadowRoot => {
-    // return document.body.getElementsByTagName(tagName)[0].shadowRoot;
-    return document.body.getElementsByTagName(tagName)[0].shadowRoot;
-  };
 
   beforeEach(async () => {
     buttonElement = window.document.createElement(
@@ -46,12 +42,12 @@ describe("hb-select", () => {
     //     .classList.add("open")
     // );
 
-    await document.body.getElementsByTagName(AWESOME_BUTTON_TAG)[0].focus();
+    await getElement(AWESOME_BUTTON_TAG)?.focus();
     // // console.log(getComputedStyle(label));
-    console.log(
-      getComputedStyle(getShadowRoot(AWESOME_BUTTON_TAG).getElementById("list"))
-        .display
-    );
+    if (getShadowRoot(AWESOME_BUTTON_TAG)?.getElementById("list")) {
+      const a = getShadowRoot(AWESOME_BUTTON_TAG)?.getElementById("list");
+      console.log(a);
+    }
     buttonElement.setAttribute("value", "1");
     buttonElement.innerHTML = `
       <div
@@ -86,12 +82,13 @@ describe("hb-select", () => {
     //     .getElementsByTagName("hb-select")[0]
     //     .querySelectorAll("*")[0]
     // );
-    console.log(document.getElementsByTagName("div")[0].focus());
+    await document.body.focus();
+    await setTimeout(() => {}, 1000);
     // document.body.querySelector(".dwad").click();
-    await setTimeout(() => {}, 2000);
     console.log(
-      getComputedStyle(getShadowRoot(AWESOME_BUTTON_TAG).getElementById("list"))
-        .display
+      getComputedStyle(
+        getShadowRoot(AWESOME_BUTTON_TAG)!.getElementById("list")!
+      ).display
     );
     // console.log(getComputedStyle(list));
     // expect(mockClickFunction).toHaveBeenCalledTimes(2);

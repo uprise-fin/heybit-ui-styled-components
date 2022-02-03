@@ -1,13 +1,10 @@
 //button.spec.ts
 import { LitElement } from "lit";
+import { getShadowRoot } from "./utils";
 describe("hb-dialog", () => {
   const AWESOME_BUTTON_TAG = "hb-dialog";
   const ELEMENT_ID = "close-btn";
   let buttonElement: LitElement;
-
-  const getShadowRoot = (tagName: string): ShadowRoot => {
-    return document.body.getElementsByTagName(tagName)[0].shadowRoot;
-  };
 
   beforeEach(() => {
     buttonElement = window.document.createElement(
@@ -26,7 +23,7 @@ describe("hb-dialog", () => {
     await buttonElement.updateComplete;
 
     const renderedText =
-      getShadowRoot(AWESOME_BUTTON_TAG).getElementById(ELEMENT_ID).innerText;
+      getShadowRoot(AWESOME_BUTTON_TAG)?.getElementById(ELEMENT_ID)?.innerText;
 
     expect(renderedText).toEqual(dummyText);
   });
