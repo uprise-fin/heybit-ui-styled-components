@@ -4,8 +4,6 @@ import { customElement, property } from "lit/decorators.js";
 import { getChildren } from "../../utils";
 
 /**
- * An example element.
- *
  * @fires select 옵션을 선택할때 발생
  * @fires change 값이 변경될때 발생
  * @property value 기본 값

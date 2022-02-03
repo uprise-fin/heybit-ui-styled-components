@@ -2,13 +2,8 @@ import Base from "../base";
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { getElement } from "../../utils";
-import * as schema from "custom-elements-manifest/schema";
-const customElementManifestSchema = require("custom-elements-manifest");
-console.log(customElementManifestSchema);
 
 /**
- * An example element.
- *
  * @fires input 입력할때
  * @fires change 값이 변경될때 발생
  * @property value 기본 값
