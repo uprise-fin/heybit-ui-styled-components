@@ -13,16 +13,14 @@ describe(SHADOW_TAG, () => {
   beforeEach(() => {
     SHADOW_ELEMENT = window.document.createElement(SHADOW_TAG) as HbSelect;
     SHADOW_ELEMENT.setAttribute("value", value);
-    SHADOW_ELEMENT.innerHTML = options
-      .map(
-        ({ label, value }) => `<div
-        slot="option"
-        tabindex="0"
-        data-value="${value}"
-        data-label="${label}"
-      >${label}</div>`
-      )
-      .join("");
+    options.map(({ label, value }) => {
+      const div = document.createElement("div");
+      div.slot = "option";
+      div.tabIndex = 0;
+      div.dataset.value = value;
+      div.dataset.label = label;
+      SHADOW_ELEMENT.appendChild(div);
+    });
     document.body.appendChild(SHADOW_ELEMENT);
   });
 
@@ -35,16 +33,16 @@ describe(SHADOW_TAG, () => {
       options.find((x) => x.value === value)?.label
     );
   });
-  // it(`${SHADOW_TAG}에 option slot이 선택되면 value와 label이 바뀐다.`, async () => {
-  //   const selectedElement = SHADOW_ELEMENT.optionEls[getRandom(options)];
-  //   selectedElement.click();
-  //   expect(SHADOW_ELEMENT.getAttribute("value")).toEqual(
-  //     selectedElement.dataset.value
-  //   );
-  //   expect(SHADOW_ELEMENT.labelEl.dataset.label).toEqual(
-  //     selectedElement.dataset.label
-  //   );
-  //   expect(SHADOW_ELEMENT.value).toEqual(selectedElement.dataset.value);
-  //   expect(SHADOW_ELEMENT.label).toEqual(selectedElement.dataset.label);
-  // });
+  it(`${SHADOW_TAG}에 option slot이 선택되면 value와 label이 바뀐다.`, async () => {
+    const selectedElement = SHADOW_ELEMENT.optionEls[getRandom(options)];
+    selectedElement.click();
+    expect(SHADOW_ELEMENT.getAttribute("value")).toEqual(
+      selectedElement.dataset.value
+    );
+    expect(SHADOW_ELEMENT.labelEl.dataset.label).toEqual(
+      selectedElement.dataset.label
+    );
+    expect(SHADOW_ELEMENT.value).toEqual(selectedElement.dataset.value);
+    expect(SHADOW_ELEMENT.label).toEqual(selectedElement.dataset.label);
+  });
 });
