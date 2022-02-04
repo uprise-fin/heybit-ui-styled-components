@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-styled-components",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "files": [
     "dist/**"
   ],
@@ -25,7 +25,6 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.7",
     "@types/jest": "^27.4.0",
-    "babel-jest": "^27.4.6",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "css-modules-typescript-loader": "^4.0.1",
