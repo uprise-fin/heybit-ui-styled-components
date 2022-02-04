@@ -9,9 +9,8 @@ describe(SHADOW_TAG, () => {
     document.body.appendChild(SHADOW_ELEMENT);
   });
 
-  afterEach((done) => {
+  afterEach(() => {
     getShadowElement(SHADOW_TAG)?.remove();
-    done();
   });
 
   it(`${SHADOW_TAG}의 value속성은 초기 value값을 설정한다`, (done) => {
