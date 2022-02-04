@@ -35,16 +35,16 @@ describe(SHADOW_TAG, () => {
       options.find((x) => x.value === value)?.label
     );
   });
-  it(`${SHADOW_TAG}에 option slot이 선택되면 value와 label이 바뀐다.`, async () => {
-    const selectedElement = SHADOW_ELEMENT.optionEls[getRandom(options)];
-    selectedElement.click();
-    expect(SHADOW_ELEMENT.getAttribute("value")).toEqual(
-      selectedElement.dataset.value
-    );
-    expect(SHADOW_ELEMENT.labelEl.dataset.label).toEqual(
-      selectedElement.dataset.label
-    );
-    expect(SHADOW_ELEMENT.value).toEqual(selectedElement.dataset.value);
-    expect(SHADOW_ELEMENT.label).toEqual(selectedElement.dataset.label);
-  }, 0);
+  // it(`${SHADOW_TAG}에 option slot이 선택되면 value와 label이 바뀐다.`, async () => {
+  //   const selectedElement = SHADOW_ELEMENT.optionEls[getRandom(options)];
+  //   selectedElement.click();
+  //   expect(SHADOW_ELEMENT.getAttribute("value")).toEqual(
+  //     selectedElement.dataset.value
+  //   );
+  //   expect(SHADOW_ELEMENT.labelEl.dataset.label).toEqual(
+  //     selectedElement.dataset.label
+  //   );
+  //   expect(SHADOW_ELEMENT.value).toEqual(selectedElement.dataset.value);
+  //   expect(SHADOW_ELEMENT.label).toEqual(selectedElement.dataset.label);
+  // });
 });
