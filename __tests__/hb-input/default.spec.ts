@@ -1,4 +1,3 @@
-//button.spec.ts
 import { HbInput } from "../../src";
 import { getShadowElement } from "../utils";
 const SHADOW_TAG = "hb-input";
@@ -10,15 +9,21 @@ describe(SHADOW_TAG, () => {
     document.body.appendChild(SHADOW_ELEMENT);
   });
 
-  afterEach(() => {
+  afterEach((done) => {
     getShadowElement(SHADOW_TAG)?.remove();
+    done();
   });
 
-  it(`${SHADOW_TAG}의 value속성은 초기 value값을 설정한다`, async () => {
+  it(`${SHADOW_TAG}의 value속성은 초기 value값을 설정한다`, (done) => {
     const value = "blahblah";
     SHADOW_ELEMENT.setAttribute("value", value);
-    await SHADOW_ELEMENT.updateComplete;
-    expect(SHADOW_ELEMENT.value).toEqual(value);
+    try {
+      SHADOW_ELEMENT.updateComplete;
+      expect(SHADOW_ELEMENT.value).toEqual(value);
+      done();
+    } catch (error) {
+      done(error);
+    }
     // const list = SHADOW_ROOT?.getElementById("list");
     // expect(getComputedStyle(list!).display).toEqual("none");
   });

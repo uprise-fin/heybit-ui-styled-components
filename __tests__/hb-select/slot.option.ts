@@ -24,8 +24,9 @@ describe(SHADOW_TAG, () => {
     document.body.appendChild(SHADOW_ELEMENT);
   });
 
-  afterEach(() => {
+  afterEach((done) => {
     getShadowElement(SHADOW_TAG)?.remove();
+    done();
   });
 
   it(`${SHADOW_TAG}에 value와 option slot이 입력되면 value에 맞는 라벨이 적용된다.`, async () => {

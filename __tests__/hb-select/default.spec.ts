@@ -12,8 +12,9 @@ describe(SHADOW_TAG, () => {
     SHADOW_ROOT = getShadowRoot(SHADOW_TAG);
   });
 
-  afterEach(() => {
+  afterEach((done) => {
     getShadowElement(SHADOW_TAG)?.remove();
+    done();
   });
 
   it(`${SHADOW_TAG}의 리스트는 화면에 보이지 않아야 한다.`, async () => {
