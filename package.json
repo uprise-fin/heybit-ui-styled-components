@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-styled-components",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "files": [
     "dist/**"
   ],
@@ -19,7 +19,7 @@
     "start": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
-    "test": "jest",
+    "test": "jest --no-sandbox",
     "pre-publish": "yarn cem && yarn build && yarn test"
   },
   "devDependencies": {
@@ -33,7 +33,6 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "26.0.1",
     "jest-electron": "^0.1.12",
-    "jest-environment-jsdom-sixteen": "^2.0.0",
     "lit-scss-loader": "^1.1.0",
     "mini-css-extract-plugin": "^2.5.2",
     "sass": "^1.45.2",

@@ -28,6 +28,10 @@ describe(SHADOW_TAG, () => {
     getShadowElement(SHADOW_TAG)?.remove();
   });
 
+  afterAll((done) => {
+    done();
+  });
+
   it(`${SHADOW_TAG}에 value와 option slot이 입력되면 value에 맞는 라벨이 적용된다.`, async () => {
     expect(SHADOW_ELEMENT.label).toEqual(
       options.find((x) => x.value === value)?.label
