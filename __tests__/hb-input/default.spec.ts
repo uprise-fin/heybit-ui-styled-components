@@ -12,9 +12,6 @@ describe(SHADOW_TAG, () => {
   afterEach(() => {
     getShadowElement(SHADOW_TAG)?.remove();
   });
-  afterAll((done) => {
-    done();
-  });
 
   it(`${SHADOW_TAG}의 value속성은 초기 value값을 설정한다`, async () => {
     const value = "blahblah";

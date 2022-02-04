@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-styled-components",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "files": [
     "dist/**"
   ],
@@ -14,13 +14,26 @@
   "repository": "git://github.com/uprise-fin/heybit-ui-styled-components.git",
   "author": "uprise-fin",
   "license": "MIT",
+  "jest": {
+    "runner": "jest-electron/runner",
+    "testEnvironment": "jest-electron/environment",
+    "preset": "ts-jest",
+    "setupFiles": [
+      "./dist/index.js"
+    ],
+    "collectCoverage": false,
+    "testRegex": ".*\\.spec\\.ts$",
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ]
+  },
   "scripts": {
     "dev": "npx webpack watch --config webpack.dev.js",
     "start": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
-    "test": "jest --no-sandbox",
-    "pre-publish": "yarn cem && yarn build && yarn test"
+    "test": "jest",
+    "pre-publish": "yarn cem && yarn build"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.7",
