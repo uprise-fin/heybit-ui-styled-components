@@ -40,7 +40,6 @@ describe(SHADOW_TAG, () => {
   it(`${SHADOW_TAG}에 블러되면 'open'클래스가 제거된다.`, async () => {
     SHADOW_ELEMENT.classList.add("open");
     SHADOW_ELEMENT.onHide();
-    await SHADOW_ELEMENT.updateComplete;
     expect(SHADOW_ELEMENT.className).not.toContain("open");
   }, 0);
 });
