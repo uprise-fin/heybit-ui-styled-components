@@ -19,7 +19,8 @@
     "start": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
-    "test": "jest"
+    "test": "jest",
+    "publish": "yarn cem && yarn build && yarn test"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",

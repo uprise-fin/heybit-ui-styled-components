@@ -32,7 +32,7 @@ export class HbDialog extends Base {
             class="hb-dialog__close-btn"
             part="close-btn"
             id="close-btn"
-          >test</button>
+          ></button>
           <slot name="header" part="header" class="hb-dialog__header"></slot>
           <slot name="content" part="content" class="hb-dialog__content"></slot>
           <slot name="footer" part="footer" class="hb-dialog__footer"></slot>

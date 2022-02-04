@@ -1,6 +1,7 @@
 module.exports = {
   preset: "ts-jest",
   runner: "jest-electron/runner",
+  testRegex: ".*\\.spec\\.ts$",
   testEnvironment: "jest-electron/environment",
   setupFiles: ["./dist/index.js"],
 };

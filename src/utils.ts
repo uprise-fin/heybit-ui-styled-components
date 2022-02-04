@@ -11,7 +11,7 @@ export function getChildren(
     });
   }
   return new Promise((resolve) =>
-    resolve(Array.call(null, ...children) as HTMLElement[])
+    resolve(Array.call(null, ...Array.from(children)) as HTMLElement[])
   );
 }
 export function getElement<T extends HTMLElement>(

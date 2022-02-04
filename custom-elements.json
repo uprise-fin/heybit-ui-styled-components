@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "An example element.",
+          "description": "",
           "name": "HbDialog",
           "cssParts": [
             {
@@ -188,7 +188,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "An example element.",
+          "description": "",
           "name": "HbSelect",
           "cssParts": [
             {
@@ -228,6 +228,13 @@
                 "text": "string"
               },
               "description": "기본 값"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              }
             },
             {
               "kind": "field",
@@ -273,7 +280,15 @@
             },
             {
               "kind": "method",
+              "name": "adapterShow"
+            },
+            {
+              "kind": "method",
               "name": "onHide"
+            },
+            {
+              "kind": "method",
+              "name": "adapterHide"
             }
           ],
           "events": [

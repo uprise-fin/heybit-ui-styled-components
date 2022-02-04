@@ -23,6 +23,8 @@ export class HbSelect extends Base {
   width!: string;
   @property()
   value!: string;
+  @property()
+  label!: string;
 
   sto = setTimeout(() => {}, 0);
   optionEls!: HTMLElement[];
@@ -48,13 +50,13 @@ export class HbSelect extends Base {
   override async connectedCallback() {
     super.connectedCallback();
     this.tabIndex = 0;
-    this.onfocus = () => this.onShow();
-    this.onblur = () => this.onHide();
+    this.onfocus = () => this.adapterShow();
+    this.onblur = () => this.adapterHide();
     await this.bindEvents();
   }
   async bindEvents() {
     const children = await getChildren(this.children);
-    let label;
+
     this.labelEl =
       children.filter((x) => x.slot === "label")[0] ||
       this.shadowRoot?.getElementById("label");
@@ -70,21 +72,16 @@ export class HbSelect extends Base {
         this.onSelect(evt);
         this.onHide();
       };
-      element.onfocus = () => {
-        clearTimeout(this.sto);
-        this.onShow();
-      };
-      element.onblur = () => {
-        this.onHide();
-      };
+      element.onfocus = () => this.adapterShow();
+      element.onblur = () => this.adapterHide();
 
       if (element.dataset.value === this.value) {
-        label = element.dataset.label;
+        this.label = element.dataset.label || "";
         element.classList.add("selected");
       }
     });
     this.labelEl.dataset.value = this.value;
-    this.labelEl.dataset.label = label;
+    this.labelEl.dataset.label = this.label;
   }
 
   onSelect(evt: Event) {
@@ -98,22 +95,30 @@ export class HbSelect extends Base {
     });
 
     this.dispatchEvent(new Event("change", evt));
+    this.setAttribute("value", value!);
     this.value = value!;
+    this.label = label!;
     this.labelEl.dataset.value = value;
     this.labelEl.dataset.label = label;
   }
   onShow() {
-    clearTimeout(this.sto);
     const { width } = this.getBoundingClientRect();
     this.classList.add("open");
     this.width = `${width}`;
     // this.top = `${top}`;
   }
 
+  adapterShow() {
+    clearTimeout(this.sto);
+    this.onShow();
+  }
+
   onHide() {
-    this.sto = setTimeout(() => {
-      this.classList.remove("open");
-    }, 0);
+    this.classList.remove("open");
+  }
+
+  adapterHide() {
+    this.sto = setTimeout(() => this.onHide(), 0);
   }
 }
 
