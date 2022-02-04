@@ -7,8 +7,7 @@
 // customElements.define(HbSelectName, HbSelect);
 // customElements.define(HbDialogName, HbDialog);
 // export { HbInput, HbInputName, HbSelect, HbSelectName, HbDialog, HbDialogName };
-const customElementManifestSchema = require("custom-elements-manifest");
-console.log(customElementManifestSchema);
-import "./components/hb-input";
-import "./components/hb-select";
-import "./components/hb-dialog";
+import { HbInput } from "./components/hb-input";
+import { HbSelect } from "./components/hb-select";
+import { HbDialog } from "./components/hb-dialog";
+export { HbSelect, HbDialog, HbInput };

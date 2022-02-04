@@ -2,13 +2,8 @@ import Base from "../base";
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { getElement } from "../../utils";
-import * as schema from "custom-elements-manifest/schema";
-const customElementManifestSchema = require("custom-elements-manifest");
-console.log(customElementManifestSchema);
 
 /**
- * An example element.
- *
  * @fires input 입력할때
  * @fires change 값이 변경될때 발생
  * @property value 기본 값
@@ -33,6 +28,7 @@ export class HbDialog extends Base {
       <div class="hb-dialog__wrap" id="wrap">
         <div class="hb-dialog__container" part="container">
           <button
+            @click=${this.onHide}
             class="hb-dialog__close-btn"
             part="close-btn"
             id="close-btn"
@@ -44,21 +40,15 @@ export class HbDialog extends Base {
       </div>
     `;
   }
-  override connectedCallback() {
+  override async connectedCallback() {
     super.connectedCallback();
-    this.bindEvent();
+    await this.bindEvent();
   }
   async bindEvent() {
     // const a = this.shadowRoot;
     const wrapEl = await getElement<HTMLDivElement>(this.shadowRoot, "wrap");
-    const closeBtnEl = await getElement<HTMLButtonElement>(
-      this.shadowRoot,
-      "close-btn"
-    );
-    console.log(this);
     wrapEl!.onanimationstart = () => this.onAnimationStart();
     wrapEl!.onanimationend = () => this.onAnimationEnd();
-    closeBtnEl!.onclick = () => this.onHide();
   }
   onAnimationStart() {
     this.classList.add("animation");

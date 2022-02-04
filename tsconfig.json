@@ -1,6 +1,12 @@
 {
   "include": ["src/**/*", "node_modules/lit-scss-loader/types.d.ts"],
   "compilerOptions": {
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
     "experimentalDecorators": true,
     "allowJs": true,
     "declaration": true,

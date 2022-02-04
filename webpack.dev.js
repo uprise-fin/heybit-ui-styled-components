@@ -20,7 +20,6 @@ module.exports = () => {
       watchFiles: ["src/**/*"],
     },
     plugins: [
-      ...common.plugins,
       new webpack.DefinePlugin(envKeys),
       new HtmlWebpackPlugin({
         // index.html 템플릿을 기반으로 빌드 결과물을 추가해줌
