@@ -19,7 +19,9 @@ jobs:
           node-version: "16.x"
           registry-url: "https://npm.pkg.github.com"
       - run: yarn
-      - run: yarn pre-publish
+      - run: yarn cem
+      - run: yarn build
+      - run: yarn test
       - name: remove demo
         uses: JesseTG/rm@v1.0.2
         with:
