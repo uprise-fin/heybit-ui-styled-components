@@ -15,8 +15,8 @@
   "author": "uprise-fin",
   "license": "MIT",
   "jest": {
-    "runner": "jest-electron/runner",
-    "testEnvironment": "jest-electron/environment",
+    "runner": "@jest-runner/electron",
+    "testEnvironment": "@jest-runner/electron/environment",
     "preset": "ts-jest",
     "setupFiles": [
       "./dist/index.js"
@@ -32,20 +32,21 @@
     "start": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
-    "test": "jest",
-    "pre-publish": "yarn cem && yarn build"
+    "test": "jest -i",
+    "pre-publish": "yarn cem && yarn build && yarn test"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.7",
+    "@jest-runner/electron": "^3.0.1",
     "@types/jest": "^27.4.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "css-modules-typescript-loader": "^4.0.1",
     "dotenv": "^14.2.0",
+    "electron": "^11.4.6",
     "extract-loader": "^5.1.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "26.0.1",
-    "jest-electron": "^0.1.12",
     "lit-scss-loader": "^1.1.0",
     "mini-css-extract-plugin": "^2.5.2",
     "sass": "^1.45.2",
