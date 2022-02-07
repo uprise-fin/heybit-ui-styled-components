@@ -1,6 +1,7 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import './index';
+import '../../../dist/hb-dialog';
+// import "./index";
 import type { HbDialog } from './index';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
