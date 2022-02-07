@@ -22,6 +22,11 @@ export class HbDialog extends Base {
 
   @property()
   value!: string;
+  static get properties() {
+    return {
+      value: { type: String, reflect: true },
+    };
+  }
 
   override render() {
     return html`
