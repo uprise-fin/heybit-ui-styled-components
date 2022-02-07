@@ -25,7 +25,7 @@ module.exports = {
           "css-loader",
           "sass-loader",
         ],
-      },
+      }
     );
 
     // Return the altered config
