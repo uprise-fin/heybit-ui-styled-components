@@ -1,6 +1,7 @@
 {
   "include": ["src/**/*", "node_modules/lit-scss-loader/types.d.ts"],
   "compilerOptions": {
+    "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": false,
