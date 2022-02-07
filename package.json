@@ -33,12 +33,22 @@
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
     "test": "jest -i",
-    "pre-publish": "yarn cem && yarn build && yarn test"
+    "pre-publish": "yarn cem && yarn build && yarn test",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.0",
     "@custom-elements-manifest/analyzer": "^0.5.7",
     "@jest-runner/electron": "^3.0.1",
+    "@storybook/addon-actions": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/addon-links": "^6.4.18",
+    "@storybook/builder-webpack5": "^6.4.18",
+    "@storybook/manager-webpack5": "^6.4.18",
+    "@storybook/web-components": "^6.4.18",
     "@types/jest": "^27.4.0",
+    "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "css-modules-typescript-loader": "^4.0.1",
@@ -64,5 +74,8 @@
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "lit": "^2.1.1"
   },
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "resolutions": {
+    "@storybook/{app}/webpack": "^5"
+  }
 }
