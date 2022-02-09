@@ -1,18 +1,18 @@
-@import "../../utils/_variables";
-@import "../../utils/_mixins";
+@import "../../utils/variables";
+@import "../../utils/mixins";
 
-// $hb-dialog__layer__background: $layer__background !default;
-// $hb-dialog__background: $box__background !default;
-// $hb-dialog__border-radius: $box__border-radius !default;
-$hb-select__height: $box__height !default;
-$hb-select__padding: $box__padding !default;
-$hb-select__border-width: $box__border-width !default;
-$hb-select__font-size: $box__font-size !default;
-$hb-select__border-color: $box__border-color !default;
-$hb-select__border-color--warning: $box__border-color--warning !default;
-$hb-select__border-radius: $box__border-radius !default;
-$hb-select__background: $box__background !default;
-$hb-select__background--warning: $box__background !default;
+$hb-select__height: map-get($variables, box__height) !default;
+$hb-select__padding: map-get($variables, box__padding) !default;
+$hb-select__border-width: map-get($variables, box__border-width) !default;
+$hb-select__font-size: map-get($variables, box__font-size) !default;
+$hb-select__border-color: map-get($variables, box__border-color) !default;
+$hb-select__border-color--warning: map-get(
+  $variables,
+  box__border-color--warning
+) !default;
+$hb-select__border-radius: map-get($variables, box__border-radius) !default;
+$hb-select__background: map-get($variables, box__background) !default;
+$hb-select__background--warning: map-get($variables, box__background) !default;
 %option {
   display: flex;
   width: 100%;
@@ -42,6 +42,9 @@ $hb-select__background--warning: $box__background !default;
     transition: opacity 5s;
     &::slotted(*) {
       @extend %option;
+    }
+    &::slotted(.selected) {
+      background: rgba(#000, 0.3);
     }
     :host(.open) & {
       display: block;
