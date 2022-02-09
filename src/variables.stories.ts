@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-const variables = Object.values(
-  require("./initial.scss").default.styleSheet.cssRules
-).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
+// const variables = Object.values(
+//   require("./initial.scss").default.styleSheet.cssRules
+// ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
 
-console.log(variables.cssText);
+// console.log(variables.cssText);
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
   title: "variables/css",
