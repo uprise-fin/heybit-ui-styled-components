@@ -1,6 +1,6 @@
 import Base from "../base";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 /**
  * An example element.
@@ -8,6 +8,7 @@ import { customElement, property } from "lit/decorators.js";
  * @fires input 입력할때
  * @fires change 값이 변경될때 발생
  * @property value 기본 값
+ * @property has-error 오류가 있을 때
  * @slot slot--left - optional, 왼쪽 영역(아이콘)
  * @slot slot--right - optional, 오른쪽 영역(버튼)
  * @csspart slot--left
@@ -20,10 +21,14 @@ export class HbInput extends Base {
   static override get styles() {
     return [require("../../styles/form/input/index.scss").default];
   }
-
-  @property()
-  value!: string;
   inputEl!: HTMLInputElement;
+
+  value = '';
+  static get properties() {
+    return {
+      value: { type: String, Reflect: true },
+    };
+  }
 
   override render() {
     return html`
