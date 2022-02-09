@@ -1,6 +1,6 @@
 import Base from "../base";
-import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { html, PropertyDeclaration } from "lit";
+import { customElement } from "lit/decorators.js";
 import { getChildren } from "../../utils";
 
 /**
@@ -19,12 +19,18 @@ export class HbSelect extends Base {
     return [require("../../styles/form/select/index.scss").default];
   }
 
-  @property()
-  width!: string;
-  @property()
-  value!: string;
-  @property()
-  label!: string;
+  width = '';
+  value = '';
+  label = '';
+
+
+  static get properties() {
+    return {
+      width: { type: String, Reflect: true },
+      value: { type: String, Reflect: true },
+      label: { type: String, Reflect: true },
+    };
+  }
 
   sto = setTimeout(() => {}, 0);
   optionEls!: HTMLElement[];
@@ -40,6 +46,8 @@ export class HbSelect extends Base {
       ></slot>
       <slot
         class="hb-select__list"
+        @click=${this.onSelect}
+        @keyup=${(evt:KeyboardEvent)=>evt.key === "Enter" && this.onSelect(evt)}
         style="width: ${this.width}px;"
         part="list"
         id="list"
@@ -54,6 +62,10 @@ export class HbSelect extends Base {
     this.onblur = () => this.adapterHide();
     await this.bindEvents();
   }
+  override requestUpdate() {
+    super.requestUpdate();
+    
+  }
   async bindEvents() {
     const children = await getChildren(this.children);
 
@@ -62,16 +74,7 @@ export class HbSelect extends Base {
       this.shadowRoot?.getElementById("label");
     this.optionEls = children.filter((x) => x.slot === "option");
     this.optionEls.forEach((element: HTMLElement) => {
-      element.onkeyup = (evt: KeyboardEvent) => {
-        if (evt.key === "Enter") {
-          this.onSelect(evt);
-          this.onHide();
-        }
-      };
-      element.onclick = (evt: MouseEvent) => {
-        this.onSelect(evt);
-        this.onHide();
-      };
+      element.tabIndex = 0;
       element.onfocus = () => this.adapterShow();
       element.onblur = () => this.adapterHide();
 
@@ -80,20 +83,23 @@ export class HbSelect extends Base {
         element.classList.add("selected");
       }
     });
+    
     this.labelEl.dataset.value = this.value;
     this.labelEl.dataset.label = this.label;
   }
 
   onSelect(evt: Event) {
+    this.adapterHide();
+
     const element = evt.target as HTMLElement;
+    if (element.slot !== 'option') return;
+
     const { value, label } = element.dataset;
     if (this.value === value) return;
-
     this.optionEls.forEach((x) => {
       if (x === element) return element.classList.add("selected");
       x.classList.remove("selected");
     });
-
     this.dispatchEvent(new Event("change", evt));
     this.setAttribute("value", value!);
     this.value = value!;
@@ -115,6 +121,7 @@ export class HbSelect extends Base {
 
   onHide() {
     this.classList.remove("open");
+    this.blur()
   }
 
   adapterHide() {

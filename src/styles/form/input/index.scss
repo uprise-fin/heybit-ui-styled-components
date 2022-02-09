@@ -1,14 +1,17 @@
-@import "../../utils/_variables";
-@import "../../utils/_mixins";
-$hb-input__height: $box__height !default;
-$hb-input__padding: $box__padding !default;
-$hb-input__border-width: $box__border-width !default;
-$hb-input__font-size: $box__font-size !default;
-$hb-input__border-color: $box__border-color !default;
-$hb-input__border-color--warning: $box__border-color--warning !default;
-$hb-input__border-radius: $box__border-radius !default;
-$hb-input__background: $box__background !default;
-$hb-input__background--warning: $box__background !default;
+@import "../../utils/variables";
+@import "../../utils/mixins";
+$hb-input__height: map-get($variables, box__height) !default;
+$hb-input__padding: map-get($variables, box__padding) !default;
+$hb-input__border-width: map-get($variables, box__border-width) !default;
+$hb-input__font-size: map-get($variables, box__font-size) !default;
+$hb-input__border-color: map-get($variables, box__border-color) !default;
+$hb-input__border-color--warning: map-get(
+  $variables,
+  box__border-color--warning
+) !default;
+$hb-input__border-radius: map-get($variables, box__border-radius) !default;
+$hb-input__background: map-get($variables, box__background) !default;
+$hb-input__background--warning: map-get($variables, box__background) !default;
 .hb-input {
   @include host-animation;
   @include host-styled {
@@ -27,7 +30,7 @@ $hb-input__background--warning: $box__background !default;
     border: #{$hb-input__border-width} solid #{$hb-input__border-color};
     border-radius: $hb-input__border-radius;
     pointer-events: none;
-    :host(.has-error) & {
+    :host([has-error]) & {
       border-color: $hb-input__border-color--warning;
     }
   }
@@ -42,7 +45,7 @@ $hb-input__background--warning: $box__background !default;
     outline: none;
     box-shadow: 0 0 0 999px #{$hb-input__background} inset;
     background: $hb-input__background;
-    :host(.has-error) & {
+    :host([has-error]) & {
       box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
       background: $hb-input__background--warning;
     }

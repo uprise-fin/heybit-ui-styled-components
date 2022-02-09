@@ -60,9 +60,8 @@
     "jest": "26.0.1",
     "lit-scss-loader": "^1.1.0",
     "mini-css-extract-plugin": "^2.5.2",
-    "sass": "^1.45.2",
+    "sass": "^1.49.7",
     "sass-loader": "^12.4.0",
-    "storybook-addon-sass-postcss": "^0.1.0",
     "terser-webpack-plugin": "^5.3.1",
     "ts-jest": "^26.0.0",
     "ts-loader": "^9.2.6",
@@ -73,6 +72,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@uprise-fin/heybit-ui-styled-components": "^0.1.14",
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "lit": "^2.1.1"
   },
