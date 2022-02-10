@@ -1,6 +1,6 @@
 {
   "name": "@uprise-fin/heybit-ui-styled-components",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "files": [
     "dist/**"
   ],
@@ -72,7 +72,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@uprise-fin/heybit-ui-styled-components": "^0.1.14",
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "lit": "^2.1.1"
   },
