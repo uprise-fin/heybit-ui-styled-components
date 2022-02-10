@@ -71,7 +71,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "[name].js",
-    library: "@uprise-fin/heybit-ui-styled-components",
+    library: "heybit-ui-styled-components",
     libraryTarget: "umd",
     globalObject: "this",
     umdNamedDefine: true,
