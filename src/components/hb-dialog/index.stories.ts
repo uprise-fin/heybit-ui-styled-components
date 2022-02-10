@@ -25,7 +25,7 @@ const Template: Story<HbDialogExpns> = ({ open,
     <hb-dialog ?open=${open}>
       ${header ? html`<div slot="header">${header}</div>` : ''}
       ${content ? html`<div slot="content">${content}</div>` : ''}
-      ${footer ? footer.map(f=>html`<button slot="footer">${footer}</button>`) : ''}
+      ${footer ? footer.map(f=>html`<button slot="footer">${f}</button>`) : ''}
     </hb-dialog>
   `;
 
