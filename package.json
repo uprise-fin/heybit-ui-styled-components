@@ -36,7 +36,7 @@
     "test": "jest -i",
     "storybook": "start-storybook -p 6006",
     "pre-publish": "yarn cem && yarn build && yarn test",
-    "build-storybook": "build-storybook -s public",
+    "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "devDependencies": {
