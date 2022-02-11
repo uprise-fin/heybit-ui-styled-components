@@ -1,4 +1,5 @@
-import  '!style-loader!css-loader!sass-loader!../src/initial.scss';
+import "!style-loader!css-loader!sass-loader!../src/initial.scss";
+import "!style-loader!css-loader!sass-loader!../src/styles/index.scss";
 // import { setCustomElementsManifest } from '@storybook/web-components';
 
 // import customElementsManifest from '../custom-elements.json';

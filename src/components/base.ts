@@ -5,4 +5,10 @@ export default class extends LitElement {
     super.connectedCallback();
     this.dataset.hbStyled = "true";
   }
+  static get themes() {
+    return ['primary', 'secondary', 'tertiary', 'quaternary', 'quinary', 'senary']
+  }
+  static get size() {
+    return ['large', 'medium', 'small']
+  }
 }

@@ -1,4 +1,4 @@
-import Base from "../base";
+import Base from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 
@@ -19,7 +19,7 @@ import { customElement } from "lit/decorators.js";
 @customElement("hb-input")
 export class HbInput extends Base {
   static override get styles() {
-    return [require("../../styles/form/input/index.scss").default];
+    return [require("../../../styles/forms/hb-input/index.scss").default];
   }
   inputEl!: HTMLInputElement;
 
@@ -32,7 +32,7 @@ export class HbInput extends Base {
 
   override render() {
     return html`
-      <slot name="left-slot" part="slot--left" class="hb-input__slot"></slot>
+      <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
       <input
         id="input"
         class="hb-input__el"
@@ -41,7 +41,7 @@ export class HbInput extends Base {
         type="text"
       />
       <i class="hb-input__border" part="border"></i>
-      <slot name="right-slot" part="slot--right" class="hb-input__slot"></slot>
+      <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `;
   }
   override connectedCallback() {

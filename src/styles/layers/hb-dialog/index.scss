@@ -1,5 +1,5 @@
-@import "../utils/variables";
-@import "../utils/mixins";
+@import "../../utils/variables";
+@import "../../utils/mixins";
 
 $hb-dialog__layer__background: map-get($variables, layer__background) !default;
 $hb-dialog__background: map-get($variables, box__background) !default;

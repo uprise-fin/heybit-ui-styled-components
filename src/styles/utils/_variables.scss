@@ -1,18 +1,37 @@
-$variables: (
-  positive--color: blue,
-  warning--color: red,
+$colors: (
+  primary: #000,
+  secondary: #333,
+  tertiary: #555,
+  quaternary: #999,
+  quinary: #efefef,
+  senary: #fff,
+);
+$sizes: (
+  large: 1,
+  medium: 0.8,
+  small: 0.5,
+);
+$fonts: (
   font--1: #000,
   font--2: #333,
   font--3: #555,
-  box__height: 50px,
-  box__padding: 5px 10px,
-  box__border-width: 1px,
-  box__font-size: 15px,
-  box__border-color: #333,
-  box__border-color--warning: red,
-  box__border-radius: 12px,
-  box__background: #fff,
-  layer__background: rgba(#000, 0.1),
-  close-btn__size: 20px,
-  close-btn__border-radius: 12px,
+);
+$box: (
+  height: 50px,
+  padding: 5px 10px,
+  border-width: 1px,
+  font-size: 15px,
+  border-color: #333,
+  border-color--warning: red,
+  border-radius: 12px,
+  background: #fff,
+);
+$layer: (
+  background: rgba(#000, 0.1),
+);
+$variables: (
+  colors: $colors,
+  fonts: $fonts,
+  box: $box,
+  layer: $layer,
 );

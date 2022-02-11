@@ -1,0 +1,52 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+@import "./index.scss";
+$hb-button--fab__height: map-get($variables, box, height) * 2/3 !default;
+$hb-button--fab__padding: map-get($variables, box, padding) !default;
+$hb-button--fab__border-width: map-get($variables, box, border-width) !default;
+$hb-button--fab__font-size: map-get($variables, box, font-size) !default;
+$hb-button--fab__border-color: map-get($variables, box, border-color) !default;
+$hb-button--fab__border-color--warning: map-get(
+  $variables,
+  box,
+  border-color--warning
+) !default;
+$hb-button--fab__border-radius: map-get(
+  $variables,
+  box,
+  border-radius
+) !default;
+$hb-button--fab__background: map-get($variables, box, background) !default;
+$hb-button--fab__background--warning: map-get(
+  $variables,
+  box,
+  background
+) !default;
+
+.hb-button--fab {
+  @include host-animation;
+  @include host-styled {
+    border: #{$hb-button--fab__border-width} solid #{$hb-button--fab__border-color};
+    border-radius: $hb-button--fab__border-radius;
+    font-size: $hb-button--fab__font-size;
+    &::before,
+    &::after {
+      flex: auto;
+      content: "";
+    }
+  }
+  @each $class, $color in $colors {
+    @include host-styled("[theme='#{$class}']") {
+      background: $color;
+    }
+  }
+  @each $class, $size in $sizes {
+    @include host-styled("[size='#{$class}']") {
+      height: $size * $hb-button--fab__height;
+    }
+  }
+  @include host-styled("[type='fab']") {
+    display: inline-flex;
+    border-radius: 100px;
+  }
+}

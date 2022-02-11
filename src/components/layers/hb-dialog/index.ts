@@ -1,7 +1,7 @@
-import Base from "../base";
+import Base from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { getElement } from "../../utils";
+import { getElement } from "../../../utils";
 
 /**
  * @property open 온 오프
@@ -17,7 +17,7 @@ import { getElement } from "../../utils";
 @customElement("hb-dialog")
 export class HbDialog extends Base {
   static override get styles() {
-    return [require("../../styles/dialog/index.scss").default];
+    return [require("../../../styles/layers/hb-dialog/index.scss").default];
   }
   _open = false;
 

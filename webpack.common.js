@@ -6,12 +6,20 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   entry: {
     initial: [path.resolve(__dirname, "./src/initial.scss")],
-    "hb-input": [path.resolve(__dirname, "./src/components/hb-input/index.ts")],
-    "hb-dialog": [
-      path.resolve(__dirname, "./src/components/hb-dialog/index.ts"),
+    index: [path.resolve(__dirname, "./src/styles/index.scss")],
+
+    "components/forms/hb-input/index": [
+      path.resolve(__dirname, "./src/components/forms/hb-input/index.ts"),
     ],
-    "hb-select": [
-      path.resolve(__dirname, "./src/components/hb-select/index.ts"),
+    "components/forms/hb-select/index": [
+      path.resolve(__dirname, "./src/components/forms/hb-select/index.ts"),
+    ],
+    "components/forms/hb-button/index": [
+      path.resolve(__dirname, "./src/components/forms/hb-button/index.ts"),
+    ],
+
+    "components/layers/hb-dialog/index": [
+      path.resolve(__dirname, "./src/components/layers/hb-dialog/index.ts"),
     ],
   },
   module: {

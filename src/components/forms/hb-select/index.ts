@@ -1,14 +1,15 @@
-import Base from "../base";
+import Base from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { getChildren } from "../../utils";
+import { getChildren } from "../../../utils";
 
 /**
  * @fires select 옵션을 선택할때 발생
  * @fires change 값이 변경될때 발생
  * @property value 기본 값
+ * @slot icon - optional, icon부분을 커스텀할때 사용
+ * @slot caret - optional, caret부분을 커스텀할때 사용
  * @slot option - required, select의 옵션 엘리먼트
- * @slot label - optional, label부분을 커스텀할때 사용
  * @csspart label
  * @csspart list
  */
@@ -16,12 +17,14 @@ import { getChildren } from "../../utils";
 @customElement("hb-select")
 export class HbSelect extends Base {
   static override get styles() {
-    return [require("../../styles/form/select/index.scss").default];
+    return [require("../../../styles/forms/hb-select/index.scss").default];
   }
 
   width = '';
   value = '';
   label = '';
+  placeholder = '비었습니다.'
+  emptyText="비었습니닷"
 
 
   static get properties() {
@@ -29,7 +32,16 @@ export class HbSelect extends Base {
       width: { type: String, Reflect: true },
       value: { type: String, Reflect: true },
       label: { type: String, Reflect: true },
+      emptyText: { type: String, Reflect: true },
     };
+  }
+
+  get isLabel() {
+    return this.label || this.placeholder
+  }
+
+  get isPlaceholder() {
+    return !this.label
   }
 
   sto = setTimeout(() => {}, 0);
@@ -38,15 +50,25 @@ export class HbSelect extends Base {
 
   override render() {
     return html`
-      <slot
-        id="label"
+      <div
         part="label"
-        name="label"
-        class="hb-select__label hb-select__option"
-      ></slot>
+        data-value=${this.value}
+        data-label=${this.isLabel}
+        class=${`hb-select__label hb-select__option ${this.isPlaceholder ? 'is-placeholder' : ''}`}
+      >
+        <slot
+          name="icon"
+          class="hb-select__label--icon"
+        ></slot>
+        <slot
+          name="caret"
+          class="hb-select__label--caret"
+        ></slot>
+      </div>
       <slot
         class="hb-select__list"
         @click=${this.onSelect}
+        data-empty-text=${this.emptyText}
         @keyup=${(evt:KeyboardEvent)=>evt.key === "Enter" && this.onSelect(evt)}
         style="width: ${this.width}px;"
         part="list"
@@ -64,14 +86,10 @@ export class HbSelect extends Base {
   }
   override requestUpdate() {
     super.requestUpdate();
-    
   }
   async bindEvents() {
     const children = await getChildren(this.children);
-
-    this.labelEl =
-      children.filter((x) => x.slot === "label")[0] ||
-      this.shadowRoot?.getElementById("label");
+    
     this.optionEls = children.filter((x) => x.slot === "option");
     this.optionEls.forEach((element: HTMLElement) => {
       element.tabIndex = 0;
@@ -83,9 +101,6 @@ export class HbSelect extends Base {
         element.classList.add("selected");
       }
     });
-    
-    this.labelEl.dataset.value = this.value;
-    this.labelEl.dataset.label = this.label;
   }
 
   onSelect(evt: Event) {
@@ -104,8 +119,6 @@ export class HbSelect extends Base {
     this.setAttribute("value", value!);
     this.value = value!;
     this.label = label!;
-    this.labelEl.dataset.value = value;
-    this.labelEl.dataset.label = label;
   }
   onShow() {
     const { width } = this.getBoundingClientRect();

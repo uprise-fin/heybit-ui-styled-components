@@ -1,6 +1,6 @@
 export default {
   /** Globs to analyze */
-  globs: ["src/components/*/*.ts"],
+  globs: ["src/components/**/*.ts"],
   /** Globs to exclude */
   //   exclude: ["src/foo.js"],
   //   /** Directory to output CEM to */

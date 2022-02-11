@@ -1,21 +1,28 @@
-@mixin host-animation() {
+@mixin host-animation {
   @at-root :host([data-hb-styled]) {
     animation: hb-styled 0.2s;
   }
 }
-@mixin host-styled($class: "*") {
-  @if ($class == "*") {
+
+@mixin host-styled($selector: "*") {
+  @if ($selector == "*") {
     @at-root :host {
       @content;
     }
     @content;
   } @else {
-    @at-root :host(#{$class}) {
+    @at-root :host(#{$selector}) {
       @content;
     }
-    &#{$class} {
+    &#{$selector} {
       @content;
     }
+  }
+}
+@mixin hostchild-styled($selector) {
+  :host(#{$selector}) &,
+  #{$selector} & {
+    @content;
   }
 }
 @keyframes hb-styled {
