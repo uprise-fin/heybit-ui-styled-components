@@ -4,7 +4,11 @@
 name: 'Chromatic Deployment'
 
 # Event for the workflow
-on: push
+on:
+  push:
+    tags:
+      - "v*"
+
 
 # List of jobs
 jobs:
