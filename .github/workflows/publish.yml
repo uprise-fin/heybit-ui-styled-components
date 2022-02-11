@@ -21,12 +21,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn
       - run: yarn build-storybook
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./storybook-static
-          force_orphan: true
+      - run: yarn deploy-storybook
       - run: yarn pre-publish
       - name: remove demo
         uses: JesseTG/rm@v1.0.2
