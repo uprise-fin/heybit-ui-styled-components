@@ -1,27 +1,42 @@
-import Base from "../base";
+import Base from "../../base";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { getElement } from "../../utils";
+import { customElement } from "lit/decorators.js";
+import { getElement } from "../../../utils";
 
 /**
- * @fires input 입력할때
- * @fires change 값이 변경될때 발생
- * @property value 기본 값
- * @slot slot--left - optional, 왼쪽 영역(아이콘)
- * @slot slot--right - optional, 오른쪽 영역(버튼)
- * @csspart slot--left
- * @csspart border
- * @csspart slot--right
+ * @property open 온 오프
+ * @slot header - optional, 헤더
+ * @slot content - optional, 내용
+ * @slot footer - optional, 푸터
+ * @csspart container
+ * @csspart header
+ * @csspart content
+ * @csspart footer
  */
 
 @customElement("hb-dialog")
 export class HbDialog extends Base {
   static override get styles() {
-    return [require("../../styles/dialog/index.scss").default];
+    return [require("../../../styles/layers/hb-dialog/index.scss").default];
   }
+  _open = false;
 
-  @property()
-  value!: string;
+  get open() {
+    return this._open;
+  }
+  set open(val: boolean) {
+    this.onToggle(val)
+    if(this._open !== val) this._open = val
+  }
+   
+
+  // @property()
+  // value!: string;
+  static get properties() {
+    return {
+      open: { type: Boolean, Reflect: true },
+    };
+  }
 
   override render() {
     return html`
@@ -56,9 +71,14 @@ export class HbDialog extends Base {
   onAnimationEnd() {
     this.classList.remove("animation");
   }
+  onToggle(val: boolean) {
+    if(val) return this.onShow();
+    this.onHide()
+  }
   onShow() {
     this.classList.add("open");
   }
+  
   onHide() {
     this.classList.add("animation");
     this.classList.remove("open");

@@ -1,6 +1,6 @@
 {
-  "name": "@uprise-fin/heybit-ui-styled-components",
-  "version": "0.1.14",
+  "name": "heybit-ui-styled-components",
+  "version": "0.1.15",
   "files": [
     "dist/**"
   ],
@@ -29,16 +29,27 @@
   },
   "scripts": {
     "dev": "npx webpack watch --config webpack.dev.js",
-    "start": "npx webpack serve --config webpack.dev.js",
+    "__start": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
     "test": "jest -i",
-    "pre-publish": "yarn cem && yarn build && yarn test"
+    "pre-publish": "yarn cem && yarn build && yarn test",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.0",
     "@custom-elements-manifest/analyzer": "^0.5.7",
     "@jest-runner/electron": "^3.0.1",
+    "@storybook/addon-actions": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/addon-links": "^6.4.18",
+    "@storybook/builder-webpack5": "^6.4.18",
+    "@storybook/manager-webpack5": "^6.4.18",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/web-components": "^6.4.18",
     "@types/jest": "^27.4.0",
+    "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "css-modules-typescript-loader": "^4.0.1",
@@ -49,7 +60,7 @@
     "jest": "26.0.1",
     "lit-scss-loader": "^1.1.0",
     "mini-css-extract-plugin": "^2.5.2",
-    "sass": "^1.45.2",
+    "sass": "^1.49.7",
     "sass-loader": "^12.4.0",
     "terser-webpack-plugin": "^5.3.1",
     "ts-jest": "^26.0.0",
@@ -64,5 +75,8 @@
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "lit": "^2.1.1"
   },
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "resolutions": {
+    "@storybook/{app}/webpack": "^5"
+  }
 }

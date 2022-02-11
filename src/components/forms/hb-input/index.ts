@@ -1,6 +1,6 @@
-import Base from "../base";
+import Base from "../../base";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 /**
  * An example element.
@@ -8,6 +8,7 @@ import { customElement, property } from "lit/decorators.js";
  * @fires input 입력할때
  * @fires change 값이 변경될때 발생
  * @property value 기본 값
+ * @property has-error 오류가 있을 때
  * @slot slot--left - optional, 왼쪽 영역(아이콘)
  * @slot slot--right - optional, 오른쪽 영역(버튼)
  * @csspart slot--left
@@ -18,16 +19,20 @@ import { customElement, property } from "lit/decorators.js";
 @customElement("hb-input")
 export class HbInput extends Base {
   static override get styles() {
-    return [require("../../styles/form/input/index.scss").default];
+    return [require("../../../styles/forms/hb-input/index.scss").default];
   }
-
-  @property()
-  value!: string;
   inputEl!: HTMLInputElement;
+
+  value = '';
+  static get properties() {
+    return {
+      value: { type: String, Reflect: true },
+    };
+  }
 
   override render() {
     return html`
-      <slot name="left-slot" part="slot--left" class="hb-input__slot"></slot>
+      <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
       <input
         id="input"
         class="hb-input__el"
@@ -36,7 +41,7 @@ export class HbInput extends Base {
         type="text"
       />
       <i class="hb-input__border" part="border"></i>
-      <slot name="right-slot" part="slot--right" class="hb-input__slot"></slot>
+      <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `;
   }
   override connectedCallback() {

@@ -1,0 +1,74 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+
+$hb-button__height: map-get($variables, box, height) !default;
+$hb-button__padding: map-get($variables, box, padding) !default;
+$hb-button__border-width: map-get($variables, box, border-width) !default;
+$hb-button__font-size: map-get($variables, box, font-size) !default;
+$hb-button__border-color: map-get($variables, box, border-color) !default;
+$hb-button__border-color--warning: map-get(
+  $variables,
+  box,
+  border-color--warning
+) !default;
+$hb-button__border-radius: map-get($variables, box, border-radius) !default;
+$hb-button__background: map-get($variables, box, background) !default;
+$hb-button__background--warning: map-get($variables, box, background) !default;
+
+.hb-button {
+  @include host-animation;
+  @include host-styled {
+    position: relative;
+    border: #{$hb-button__border-width} solid #{$hb-button__border-color};
+    border-radius: $hb-button__border-radius;
+    font-size: $hb-button__font-size;
+    &::before,
+    &::after {
+      flex: auto;
+      content: "";
+    }
+  }
+  @each $class, $color in $colors {
+    @include host-styled("[theme='#{$class}']") {
+      background: $color;
+    }
+  }
+  @each $class, $size in $sizes {
+    @include host-styled("[size='#{$class}']") {
+      height: $size * $hb-button__height;
+    }
+  }
+  @include host-styled("[type='block']") {
+    display: flex;
+  }
+  @include host-styled("[type='inline']") {
+    display: inline-flex;
+  }
+  @include host-styled("[disabled]") {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  &__icon {
+    display: flex;
+    align-self: center;
+  }
+  &__label {
+    display: flex;
+    align-self: center;
+  }
+  &__spinner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    width: auto;
+    border-radius: inherit;
+    background: #fff;
+    @include hostchild-styled([loading]) {
+      display: inline-flex;
+    }
+  }
+}

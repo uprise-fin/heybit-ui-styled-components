@@ -1,8 +1,17 @@
+@import "./styles/utils/variables";
 hb-input,
+hb-button,
 hb-dialog,
 hb-select {
   &:not([data-hb-styled]) {
     visibility: hidden;
+  }
+}
+:root {
+  @each $group, $variable in $variables {
+    @each $name, $color in $variable {
+      --#{$group}__#{$name}: #{$color};
+    }
   }
 }
 // [data-hb-component] {

@@ -1,18 +1,19 @@
-@import "../../utils/_variables";
-@import "../../utils/_mixins";
+@import "../../utils/variables";
+@import "../../utils/mixins";
 
-// $hb-dialog__layer__background: $layer__background !default;
-// $hb-dialog__background: $box__background !default;
-// $hb-dialog__border-radius: $box__border-radius !default;
-$hb-select__height: $box__height !default;
-$hb-select__padding: $box__padding !default;
-$hb-select__border-width: $box__border-width !default;
-$hb-select__font-size: $box__font-size !default;
-$hb-select__border-color: $box__border-color !default;
-$hb-select__border-color--warning: $box__border-color--warning !default;
-$hb-select__border-radius: $box__border-radius !default;
-$hb-select__background: $box__background !default;
-$hb-select__background--warning: $box__background !default;
+$hb-select__height: map-get($variables, box, height) !default;
+$hb-select__padding: map-get($variables, box, padding) !default;
+$hb-select__border-width: map-get($variables, box, border-width) !default;
+$hb-select__font-size: map-get($variables, box, font-size) !default;
+$hb-select__border-color: map-get($variables, box, border-color) !default;
+$hb-select__border-color--warning: map-get(
+  $variables,
+  box,
+  border-color--warning
+) !default;
+$hb-select__border-radius: map-get($variables, box, border-radius) !default;
+$hb-select__background: map-get($variables, box, background) !default;
+$hb-select__background--warning: map-get($variables, box, background) !default;
 %option {
   display: flex;
   width: 100%;
@@ -23,6 +24,9 @@ $hb-select__background--warning: $box__background !default;
   box-sizing: border-box;
   outline: none;
   background: none;
+  &.is-placeholder {
+    color: #999;
+  }
 }
 
 .hb-select {
@@ -40,8 +44,16 @@ $hb-select__background--warning: $box__background !default;
     box-sizing: border-box;
     border-radius: $hb-select__border-radius;
     transition: opacity 5s;
+    &:empty {
+      &::after {
+        content: attr(data-empty-text);
+      }
+    }
     &::slotted(*) {
       @extend %option;
+    }
+    &::slotted(.selected) {
+      background: rgba(#000, 0.3);
     }
     :host(.open) & {
       display: block;
@@ -57,16 +69,16 @@ $hb-select__background--warning: $box__background !default;
       content: attr(data-label);
     }
   }
-  &__layer {
-    :host(.open) & {
-      z-index: -1;
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-  }
+  // &__layer {
+  //   :host(.open) & {
+  //     z-index: -1;
+  //     position: fixed;
+  //     top: 0;
+  //     right: 0;
+  //     bottom: 0;
+  //     left: 0;
+  //   }
+  // }
 }
 // .hb-dialog {
 //   &__summary {

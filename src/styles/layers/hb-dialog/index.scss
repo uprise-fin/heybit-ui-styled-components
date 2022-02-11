@@ -1,9 +1,9 @@
-@import "../utils/_variables";
-@import "../utils/_mixins";
+@import "../../utils/variables";
+@import "../../utils/mixins";
 
-$hb-dialog__layer__background: $layer__background !default;
-$hb-dialog__background: $box__background !default;
-$hb-dialog__border-radius: $box__border-radius !default;
+$hb-dialog__layer__background: map-get($variables, layer__background) !default;
+$hb-dialog__background: map-get($variables, box__background) !default;
+$hb-dialog__border-radius: map-get($variables, box__border-radius) !default;
 // $hb-input__height: $box__height !default;
 // $hb-input__padding: $box__padding !default;
 // $hb-input__border-width: $box__border-width !default;
