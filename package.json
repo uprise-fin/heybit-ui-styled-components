@@ -11,6 +11,7 @@
     "heybit",
     "ui"
   ],
+  "homepage": "https://uprise-fin.github.io/heybit-ui-styled-components/",
   "repository": "git://github.com/uprise-fin/heybit-ui-styled-components.git",
   "author": "uprise-fin",
   "license": "MIT",
@@ -33,9 +34,9 @@
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
     "test": "jest -i",
-    "pre-publish": "yarn cem && yarn build && yarn test",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "pre-publish": "yarn cem && yarn build && yarn test",
+    "build-storybook": "build-storybook -o docs-build"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
