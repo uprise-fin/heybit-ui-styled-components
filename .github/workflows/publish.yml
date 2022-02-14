@@ -20,11 +20,16 @@ jobs:
 #           registry-url: "https://npm.pkg.github.com"
           registry-url: https://registry.npmjs.org/
       - run: yarn
+      - run: yarn deploy
       - run: yarn pre-publish
       - name: remove demo
         uses: JesseTG/rm@v1.0.2
         with:
           path: ./demo
+      - name: remove storybook-static
+        uses: JesseTG/rm@v1.0.2
+        with:
+          path: ./storybook-static
       - name: remove test
         uses: JesseTG/rm@v1.0.2
         with:
