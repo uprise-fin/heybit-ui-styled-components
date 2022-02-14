@@ -19,8 +19,15 @@ jobs:
           node-version: "16.x"
 #           registry-url: "https://npm.pkg.github.com"
           registry-url: https://registry.npmjs.org/
+      - name: 디펜선시 설치
       - run: yarn
-      - run: yarn deploy
+      - name: 스토리북 빌드
+      - run: yarn build-storybook
+      - name: 스토리북 배포(깃허브페이지)
+      - run: yarn deploy-storybook
+        env:
+          GH_TOKEN: uprise-fin:${{ secrets.GITHUB_TOKEN }}
+      - name: 빌드
       - run: yarn pre-publish
       - name: remove demo
         uses: JesseTG/rm@v1.0.2
@@ -38,6 +45,7 @@ jobs:
         uses: JesseTG/rm@v1.0.2
         with:
           path: ./src
+      - name: 패키지 배포
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
