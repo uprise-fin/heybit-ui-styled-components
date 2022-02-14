@@ -36,9 +36,7 @@
     "test": "jest -i",
     "storybook": "start-storybook -p 6006",
     "pre-publish": "yarn cem && yarn build && yarn test",
-    "build-storybook": "build-storybook",
-    "deploy-storybook": "gh-pages -d storybook-static",
-    "deploy": "yarn build-storybook && yarn deploy-storybook"
+    "build-storybook": "build-storybook -o docs"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
