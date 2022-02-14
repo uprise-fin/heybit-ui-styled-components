@@ -37,7 +37,7 @@
     "storybook": "start-storybook -p 6006",
     "pre-publish": "yarn cem && yarn build && yarn test",
     "build-storybook": "build-storybook",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
@@ -51,13 +51,13 @@
     "@storybook/web-components": "^6.4.18",
     "@types/jest": "^27.4.0",
     "babel-loader": "^8.2.3",
-    "chromatic": "^6.4.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "css-modules-typescript-loader": "^4.0.1",
     "dotenv": "^14.2.0",
     "electron": "^11.4.6",
     "extract-loader": "^5.1.0",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.5.0",
     "jest": "26.0.1",
     "lit-scss-loader": "^1.1.0",
