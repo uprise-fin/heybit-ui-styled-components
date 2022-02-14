@@ -24,9 +24,11 @@ jobs:
 
       - run: yarn build-storybook
 
-      - run: yarn deploy-storybook
-        env:
-          GH_TOKEN: uprise-fin:${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
 
       - run: yarn pre-publish
       - name: remove demo
