@@ -1,0 +1,38 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v2
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+#           registry-url: "https://npm.pkg.github.com"
+          registry-url: https://registry.npmjs.org/
+      - run: yarn
+      - run: yarn pre-publish
+      - name: remove demo
+        uses: JesseTG/rm@v1.0.2
+        with:
+          path: ./demo
+      - name: remove test
+        uses: JesseTG/rm@v1.0.2
+        with:
+          path: ./__tests__
+      - name: remove src
+        uses: JesseTG/rm@v1.0.2
+        with:
+          path: ./src
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
