@@ -8,8 +8,8 @@ on:
 jobs:
   publish:
 #     jest electron 이 macos아니면 오류가 나네요(멈춤)
-    runs-on: ubuntu-latest
-#     runs-on: macOS-latest
+#     runs-on: ubuntu-latest
+    runs-on: macOS-latest
     permissions: write-all
     steps:
       - uses: actions/checkout@v2
