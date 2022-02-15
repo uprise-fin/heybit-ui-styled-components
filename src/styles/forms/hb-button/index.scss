@@ -22,11 +22,11 @@ $hb-button__background--warning: map-get($variables, box, background) !default;
     border: #{$hb-button__border-width} solid #{$hb-button__border-color};
     border-radius: $hb-button__border-radius;
     font-size: $hb-button__font-size;
-    &::before,
-    &::after {
-      flex: auto;
-      content: "";
-    }
+    // &::before,
+    // &::after {
+    //   flex: auto;
+    //   content: "";
+    // }
   }
   @each $class, $color in $colors {
     @include host-styled("[theme='#{$class}']") {
@@ -49,13 +49,21 @@ $hb-button__background--warning: map-get($variables, box, background) !default;
     pointer-events: none;
   }
 
-  &__icon {
+  &__slot {
+    // position: absolute;
     display: flex;
     align-self: center;
+    // &--left {
+    //   left: 0;
+    // }
+    // &--right {
+    //   right: 0;
+    // }
   }
   &__label {
     display: flex;
     align-self: center;
+    margin: auto;
   }
   &__spinner {
     position: absolute;

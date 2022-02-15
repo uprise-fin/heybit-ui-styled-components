@@ -5,8 +5,8 @@ import { customElement } from "lit/decorators.js";
  * @fires select 옵션을 선택할때 발생
  * @fires change 값이 변경될때 발생
  * @property value 기본 값
- * @slot icon - optional, icon부분을 커스텀할때 사용
- * @slot caret - optional, caret부분을 커스텀할때 사용
+ * @slot slot--left - optional, slot--left부분을 커스텀할때 사용
+ * @slot slot--right - optional, slot--right부분을 커스텀할때 사용
  * @slot option - required, select의 옵션 엘리먼트
  * @csspart label
  * @csspart list
@@ -39,9 +39,9 @@ export class HbButton extends Base {
 
   override render() {
     return html`
-      <slot name="left--icon" class="hb-button__icon"></slot>
+      <slot name="slot--left" part="slot--left" class="hb-button__slot hb-button__slot--left"></slot>
       <div class="hb-button__label">${this.label}</div>
-      <slot name="right--icon" class="hb-button__icon"></slot>
+      <slot name="slot--right" part="slot--right" class="hb-button__slot hb-button__slot--right"></slot>
       <hb-spinner class="hb-button__spinner" loading=${this.loading}></hb-spinner>
       <!-- <div class="hb-button__hb-spinner hb-spinner">
         <span class="hb-spinner__icon hb-spinner__icon--inner-1"></span>
