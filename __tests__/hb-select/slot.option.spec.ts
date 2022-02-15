@@ -1,6 +1,6 @@
 //button.spec.ts
 import { HbSelect } from "../../src";
-import { getShadowElement, getRandom } from "../utils";
+import { getShadowElement, getShadowRoot, getRandom } from "../utils";
 const SHADOW_TAG = "hb-select";
 describe(SHADOW_TAG, () => {
   let SHADOW_ELEMENT: HbSelect;
@@ -39,10 +39,11 @@ describe(SHADOW_TAG, () => {
     expect(SHADOW_ELEMENT.getAttribute("value")).toEqual(
       selectedElement.dataset.value
     );
-    expect(SHADOW_ELEMENT.labelEl.dataset.label).toEqual(
-      selectedElement.dataset.label
-    );
+
     expect(SHADOW_ELEMENT.value).toEqual(selectedElement.dataset.value);
     expect(SHADOW_ELEMENT.label).toEqual(selectedElement.dataset.label);
+    const shadowRoot = await getShadowRoot(SHADOW_TAG);
+    const labelEl = await shadowRoot.getElementById("label");
+    expect(labelEl.dataset.label).toEqual(selectedElement.dataset.label);
   });
 });

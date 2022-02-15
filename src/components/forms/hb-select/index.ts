@@ -46,11 +46,11 @@ export class HbSelect extends Base {
 
   sto = setTimeout(() => {}, 0);
   optionEls!: HTMLElement[];
-  labelEl!: HTMLElement;
 
   override render() {
     return html`
       <div
+        id="label"
         part="label"
         data-value=${this.value}
         data-label=${this.isLabel}
