@@ -10,7 +10,7 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbButtonFab> = ({ loading, disabled, type }) =>
+const Template: Story<HbButtonFab> = ({ loading, disabled }) =>
   html`
     ${Base.themes.map((theme) =>
       Base.size.map(
