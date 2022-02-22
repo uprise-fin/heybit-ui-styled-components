@@ -1,7 +1,6 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
 @import "./index.scss";
-$hb-button--fab__height: map-get($variables, box, height) * 2/3 !default;
 $hb-button--fab__padding: map-get($variables, box, padding) !default;
 $hb-button--fab__border-width: map-get($variables, box, border-width) !default;
 $hb-button--fab__font-size: map-get($variables, box, font-size) !default;
@@ -23,6 +22,11 @@ $hb-button--fab__background--warning: map-get(
   background
 ) !default;
 
+$hb-button--fab--size: (
+  large: 50px,
+  medium: 41px,
+  small: 33px,
+);
 .hb-button--fab {
   @include host-animation;
   @include host-styled {
@@ -35,14 +39,15 @@ $hb-button--fab__background--warning: map-get(
       content: "";
     }
   }
-  @each $class, $color in $colors {
-    @include host-styled("[theme='#{$class}']") {
-      background: $color;
-    }
-  }
-  @each $class, $size in $sizes {
+
+  // @each $class, $color in $colors {
+  //   @include host-styled("[theme='#{$class}']") {
+  //     background: $color;
+  //   }
+  // }
+  @each $class, $size in $hb-button__size {
     @include host-styled("[size='#{$class}']") {
-      height: $size * $hb-button--fab__height;
+      height: $size;
     }
   }
   @include host-styled("[type='fab']") {

@@ -9,75 +9,62 @@ export default {
   title: "components/forms/hb-button",
 } as Meta;
 
-const Template: Story<HbButton> = ({ loading, disabled, type }) =>
-  html`
-    ${Base.themes.map((theme) =>
-      Base.size.map(
-        (size) => html`<hb-button
-            theme="${theme}"
-            label=${`${theme} ${size} ${type}`}
-            size=${size}
-            type=${type}
-            ?loading=${loading}
-            ?disabled=${disabled}
-          >
-          </hb-button>
-          <br />`
-      )
-    )}
-  `;
+const Template: Story<HbButton> = ({ loading, disabled, type, theme, size }) =>
+  html`<hb-button
+    theme="${theme}"
+    label=${`${theme} ${size} ${type}`}
+    size=${size}
+    type=${type}
+    ?loading=${loading}
+    ?disabled=${disabled}
+  >
+  </hb-button>`;
 
-const IconSlot: Story<HbButton> = ({ loading, disabled, type }) =>
-  html`
-    ${Base.themes.map((theme) =>
-      Base.size.map(
-        (size) => html`<hb-button
-            theme="${theme}"
-            label=${`${theme} ${size} ${type}`}
-            size=${size}
-            type=${type}
-            ?loading=${loading}
-            ?disabled=${disabled}
-          >
-            <div slot="slot--left">ddd</div>
-          </hb-button>
-          <br />`
-      )
-    )}
-  `;
-const CaretSlot: Story<HbButton> = ({ loading, disabled, type }) =>
-  html`
-    ${Base.themes.map((theme) =>
-      Base.size.map(
-        (size) => html`<hb-button
-            theme="${theme}"
-            label=${`${theme} ${size} ${type}`}
-            size=${size}
-            type=${type}
-            ?loading=${loading}
-            ?disabled=${disabled}
-          >
-            <div slot="slot--right">ddd</div>
-          </hb-button>
-          <br />`
-      )
-    )}
-  `;
-
-export const normal: Story<HbButton> = Template.bind({});
-normal.args = {
+export const primary: Story<HbButton> = Template.bind({});
+primary.args = {
+  theme: "primary",
+  size: "large",
   type: "block",
   loading: false,
   disabled: false,
 };
-export const icon: Story<HbButton> = IconSlot.bind({});
-icon.args = {
+
+export const secondary: Story<HbButton> = Template.bind({});
+secondary.args = {
+  theme: "secondary",
+  size: "large",
   type: "block",
   loading: false,
   disabled: false,
 };
-export const caret: Story<HbButton> = CaretSlot.bind({});
-caret.args = {
+export const tertiary: Story<HbButton> = Template.bind({});
+tertiary.args = {
+  theme: "tertiary",
+  size: "large",
+  type: "block",
+  loading: false,
+  disabled: false,
+};
+export const quaternary: Story<HbButton> = Template.bind({});
+quaternary.args = {
+  theme: "quaternary",
+  size: "large",
+  type: "block",
+  loading: false,
+  disabled: false,
+};
+export const quinary: Story<HbButton> = Template.bind({});
+quinary.args = {
+  theme: "quinary",
+  size: "large",
+  type: "block",
+  loading: false,
+  disabled: false,
+};
+export const senary: Story<HbButton> = Template.bind({});
+senary.args = {
+  theme: "senary",
+  size: "large",
   type: "block",
   loading: false,
   disabled: false,
