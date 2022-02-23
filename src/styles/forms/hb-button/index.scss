@@ -4,6 +4,8 @@
 $hb-button__padding: map-get($variables, box, padding) !default;
 $hb-button__border-width: map-get($variables, box, border-width) !default;
 $hb-button__font-size: map-get($variables, box, font-size) !default;
+$hb-button--inline__font-size: $hb-button__font-size - 1px !default;
+$hb-button--fab__font-size: $hb-button__font-size - 2px !default;
 $hb-button__border-color: map-get($variables, box, border-color) !default;
 $hb-button__border-color--warning: map-get(
   $variables,
@@ -25,29 +27,29 @@ $hb-button--fab__size: (
 );
 $hb-button__theme: (
   primary: (
-    bg: map-get($variables, colors, primary),
-    color: map-get($variables, fonts, font--void),
+    bg: map-get($themes, primary, void),
+    color: map-get($themes, primary, solid),
   ),
   secondary: (
-    bg: map-get($variables, colors, secondary),
-    color: map-get($variables, fonts, font--void),
+    bg: map-get($themes, secondary, void),
+    color: map-get($themes, secondary, solid),
   ),
   tertiary: (
-    bg: map-get($variables, colors, tertiary),
-    color: map-get($variables, fonts, font--solid),
+    bg: map-get($themes, tertiary, void),
+    color: map-get($themes, tertiary, solid),
   ),
   quaternary: (
-    bg: map-get($variables, colors, quaternary),
-    color: map-get($variables, fonts, font--solid),
+    bg: map-get($themes, quaternary, void),
+    color: map-get($themes, quaternary, solid),
   ),
   quinary: (
-    bg: map-get($variables, colors, quinary),
-    color: map-get($variables, fonts, font--solid),
+    bg: map-get($themes, quinary, void),
+    color: map-get($themes, quinary, solid),
   ),
   senary: (
-    bg: map-get($variables, colors, senary),
+    bg: map-get($themes, senary, void),
     bd: map-get($variables, box, border-color),
-    color: map-get($variables, fonts, font--solid),
+    color: map-get($themes, senary, solid),
   ),
 );
 .hb-button {
@@ -91,14 +93,17 @@ $hb-button__theme: (
   }
   @include host-styled("[type='block']") {
     display: flex;
+    font-size: $hb-button__font-size;
   }
   @include host-styled("[type='inline']") {
     display: inline-flex;
     min-width: 96px;
+    font-size: $hb-button--inline__font-size;
   }
   @include host-styled("[type='fab']") {
     display: inline-flex;
     min-width: 61px;
+    font-size: $hb-button--fab__font-size;
     border-radius: 1000px;
   }
   @include host-styled("[disabled]") {

@@ -1,6 +1,7 @@
 $font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
   "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
   "Malgun Gothic", sans-serif;
+
 $colors: (
   primary: #f05014,
   secondary: #303030,
@@ -15,12 +16,12 @@ $sizes: (
   small: 0.6,
 );
 $fonts: (
-  font--solid: #292929,
-  font--void: #fff,
+  solid: #292929,
+  void: #fff,
 );
 $box: (
   height: 54px,
-  padding: 8px 20px,
+  padding: 0 20px,
   border-width: 1px,
   font-size: 16px,
   border-color: #e2e4e6,
@@ -36,4 +37,30 @@ $variables: (
   fonts: $fonts,
   box: $box,
   layer: $layer,
+);
+$themes: (
+  primary: (
+    void: map-get($colors, primary),
+    solid: map-get($fonts, void),
+  ),
+  secondary: (
+    void: map-get($colors, secondary),
+    solid: map-get($fonts, void),
+  ),
+  tertiary: (
+    void: map-get($colors, tertiary),
+    solid: map-get($fonts, solid),
+  ),
+  quaternary: (
+    void: map-get($colors, quaternary),
+    solid: map-get($fonts, solid),
+  ),
+  quinary: (
+    void: map-get($colors, quinary),
+    solid: map-get($fonts, solid),
+  ),
+  senary: (
+    void: map-get($colors, senary),
+    solid: map-get($fonts, solid),
+  ),
 );

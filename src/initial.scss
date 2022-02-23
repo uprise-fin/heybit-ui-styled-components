@@ -1,6 +1,5 @@
 @import url("/node_modules/pretendard/dist/web/static/pretendard.css");
 @import "./styles/utils/variables";
-
 hb-input,
 hb-button,
 hb-dialog,
@@ -10,6 +9,7 @@ hb-select {
     visibility: hidden;
   }
 }
+
 :root {
   @each $group, $variable in $variables {
     @each $name, $color in $variable {

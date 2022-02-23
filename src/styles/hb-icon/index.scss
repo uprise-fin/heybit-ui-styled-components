@@ -1,0 +1,30 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+$hb-icon__size: (
+  large: 54px,
+  medium: 50px,
+  small: 46px,
+);
+
+.hb-icon {
+  @include host-animation;
+  @include host-styled {
+    display: inline-block;
+    font-size: 0;
+  }
+  @include host-styled('[icon="ic-system-menu-24-white"]') {
+  }
+  // @each $class, $value in $hb-button__theme {
+  //   @include host-styled("[theme='#{$class}']") {
+  //     $bd: map-get($value, bd);
+  //     $bg: map-get($value, bg);
+  //     @if ($bd) {
+  //       border: 1px solid $bd;
+  //     } @else {
+  //       border: 1px solid $bg;
+  //     }
+  //     color: map-get($value, color);
+  //     background: $bg;
+  //   }
+  // }
+}
