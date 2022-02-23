@@ -1,5 +1,4 @@
 name: deploy
-
 on:
   push:
     tags:
