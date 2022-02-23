@@ -18,6 +18,11 @@ $hb-button__size: (
   medium: 50px,
   small: 46px,
 );
+$hb-button--fab__size: (
+  large: 50px,
+  medium: 41px,
+  small: 33px,
+);
 $hb-button__theme: (
   primary: (
     bg: map-get($variables, colors, primary),
@@ -75,7 +80,12 @@ $hb-button__theme: (
     }
   }
   @each $class, $size in $hb-button__size {
-    @include host-styled("[size='#{$class}']") {
+    @include host-styled(":not([type='fab'])[size='#{$class}']") {
+      height: $size;
+    }
+  }
+  @each $class, $size in $hb-button--fab__size {
+    @include host-styled("[type='fab'][size='#{$class}']") {
       height: $size;
     }
   }
