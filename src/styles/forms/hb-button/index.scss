@@ -86,6 +86,11 @@ $hb-button__theme: (
     display: inline-flex;
     min-width: 96px;
   }
+  @include host-styled("[type='fab']") {
+    display: inline-flex;
+    min-width: 61px;
+    border-radius: 1000px;
+  }
   @include host-styled("[disabled]") {
     opacity: 0.5;
     pointer-events: none;
