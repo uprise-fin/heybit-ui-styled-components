@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "hb-icon";
+  src: url('hb-icon.eot?t=1645668699246'); /* IE9*/
+  src: url('hb-icon.eot?t=1645668699246#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("hb-icon.woff2?t=1645668699246") format("woff2"),
+  url("hb-icon.woff?t=1645668699246") format("woff"),
+  url('hb-icon.ttf?t=1645668699246') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('hb-icon.svg?t=1645668699246#hb-icon') format('svg'); /* iOS 4.1- */
+}
+
+[class^="hb-icon-"], [class*=" hb-icon-"] {
+  font-family: 'hb-icon' !important;
+  font-size:12px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.hb-icon-ic-account-clear-24-black:before { content: "\ea01"; }
+.hb-icon-ic-account-clear-24-grey:before { content: "\ea02"; }
+.hb-icon-ic-account-clear-24-red:before { content: "\ea03"; }
+.hb-icon-ic-account-email-36:before { content: "\ea04"; }
+.hb-icon-ic-account-googleotp-36:before { content: "\ea05"; }
+.hb-icon-ic-identification-step-01:before { content: "\ea06"; }
+.hb-icon-ic-identification-step-02:before { content: "\ea07"; }
+.hb-icon-ic-identification-step-03:before { content: "\ea08"; }
+.hb-icon-ic-invest-states-caution-18-yellow:before { content: "\ea09"; }
+.hb-icon-ic-invest-states-danger-18-red:before { content: "\ea0a"; }
+.hb-icon-ic-invest-states-normal_18-green:before { content: "\ea0b"; }
+.hb-icon-ic-my-setting-botname:before { content: "\ea0c"; }
+.hb-icon-ic-my-setting-delete:before { content: "\ea0d"; }
+.hb-icon-ic-my-setting-referral:before { content: "\ea0e"; }
+.hb-icon-ic-my-setting-renewal:before { content: "\ea0f"; }
+.hb-icon-ic-my-setting-revocation:before { content: "\ea10"; }
+.hb-icon-ic-my-setting-withdraw:before { content: "\ea11"; }
+.hb-icon-ic-system-add-24-black:before { content: "\ea12"; }
+.hb-icon-ic-system-arrow-down-18-black-1:before { content: "\ea13"; }
+.hb-icon-ic-system-arrow-down-18-black:before { content: "\ea14"; }
+.hb-icon-ic-system-arrow-right-18-black:before { content: "\ea15"; }
+.hb-icon-ic-system-arrow-right-24-black:before { content: "\ea16"; }
+.hb-icon-ic-system-arrow-right-24-white:before { content: "\ea17"; }
+.hb-icon-ic-system-back-24-black:before { content: "\ea18"; }
+.hb-icon-ic-system-check-18-black:before { content: "\ea19"; }
+.hb-icon-ic-system-check-18-green:before { content: "\ea1a"; }
+.hb-icon-ic-system-close-24-black:before { content: "\ea1b"; }
+.hb-icon-ic-system-infomation-black:before { content: "\ea1c"; }
+.hb-icon-ic-system-menu-24-black:before { content: "\ea1d"; }
+.hb-icon-ic-system-service-binance:before { content: "\ea1e"; }
+.hb-icon-ic-system-service-bit:before { content: "\ea1f"; }
+.hb-icon-ic-system-service-eth:before { content: "\ea20"; }
+.hb-icon-ic-system-service-fb_black:before { content: "\ea21"; }
+.hb-icon-ic-system-service-tether:before { content: "\ea22"; }
+.hb-icon-ic-system-service-trx:before { content: "\ea23"; }
+.hb-icon-ic-system-service-twitter-black:before { content: "\ea24"; }

@@ -29,6 +29,7 @@
     ]
   },
   "scripts": {
+    "font": "svgtofont --sources ./src/assets/icons --output ./hb-icon --fontName hb-icon",
     "dev": "npx webpack watch --config webpack.dev.js",
     "__start": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
@@ -37,6 +38,12 @@
     "storybook": "start-storybook -p 6006",
     "pre-publish": "yarn cem && yarn build && yarn test",
     "build-storybook": "build-storybook"
+  },
+  "svgtofont": {
+    "css": {
+      "fontSize": "12px"
+    },
+    "outSVGReact": false
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
@@ -74,7 +81,8 @@
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "lit": "^2.1.1",
-    "pretendard": "^1.2.1"
+    "pretendard": "^1.2.1",
+    "svgtofont": "^3.17.4"
   },
   "customElements": "custom-elements.json",
   "resolutions": {
