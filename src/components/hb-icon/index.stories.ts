@@ -13,4 +13,4 @@ const Template: Story<HbIcon> = ({ icon }) =>
   html`<hb-icon icon=${icon}></hb-icon>`;
 
 export const primary: Story<HbIcon> = Template.bind({});
-primary.args = { icon: "ic-system-menu-24-white" };
+primary.args = { icon: "ic-system-service-trx.svg" };

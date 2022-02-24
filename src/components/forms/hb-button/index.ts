@@ -43,11 +43,6 @@ export class HbButton extends Base {
       <div class="hb-button__label">${this.label}</div>
       <slot name="slot--right" part="slot--right" class="hb-button__slot hb-button__slot--right"></slot>
       <hb-spinner class="hb-button__spinner" loading=${this.loading}></hb-spinner>
-      <!-- <div class="hb-button__hb-spinner hb-spinner">
-        <span class="hb-spinner__icon hb-spinner__icon--inner-1"></span>
-        <span class="hb-spinner__icon hb-spinner__icon--inner-2"></span>
-        <span class="hb-spinner__icon hb-spinner__icon--inner-3"></span>
-      </div> -->
     `;
   }
   override async connectedCallback() {

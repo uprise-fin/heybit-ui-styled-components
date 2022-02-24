@@ -11,9 +11,9 @@ $hb-icon__size: (
   @include host-styled {
     display: inline-block;
     font-size: 0;
+    width: 24px;
   }
-  @include host-styled('[icon="ic-system-menu-24-white"]') {
-  }
+
   // @each $class, $value in $hb-button__theme {
   //   @include host-styled("[theme='#{$class}']") {
   //     $bd: map-get($value, bd);

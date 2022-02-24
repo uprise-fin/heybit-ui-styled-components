@@ -1,5 +1,4 @@
 import { Meta, Story } from "@storybook/web-components";
-import Base from "../../base";
 import { html } from "lit";
 import "./index";
 import "../../layers/hb-spinner/index";

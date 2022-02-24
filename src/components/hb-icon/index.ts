@@ -1,6 +1,15 @@
 import Base from "../base";
 import { html } from "lit";
+import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
 import { customElement } from "lit/decorators.js";
+// import H from '../../assets/icons/ic-system-infomation-black.svg'
+const SVG: any = {}
+function importAll(svgs: __WebpackModuleApi.RequireContext) {
+  svgs.keys().forEach(x => {
+      SVG[x.substring(2)] = require(`../../assets/icons${x.substring(1)}`)
+  });
+}
+importAll(require.context('../../assets/icons', true, /\.svg$/));
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
  * @property open 온 오프
@@ -25,12 +34,13 @@ export class HbIcon extends Base {
       icon: { type: String, Reflect: true },
     };
   }
+  convert(str: string) {
+      const start = str.indexOf('<', 1)
+      return str.substring(start, str.length - 6);
+  }
 
   override render() {
-    return html`
-      <object class="hb-icon" part="object" type="image/svg+xml" data="static/media/src/assets/icons/${this.icon}.svg">
-      </object>
-    `;
+    return html`${unsafeSVG(SVG[this.icon])}`;
   }
   override async connectedCallback() {
     super.connectedCallback();

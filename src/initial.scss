@@ -1,8 +1,9 @@
-@import url("/node_modules/pretendard/dist/web/static/pretendard.css");
+@import url("~/node_modules/pretendard/dist/web/static/pretendard.css");
 @import "./styles/utils/variables";
 hb-input,
 hb-button,
 hb-dialog,
+hb-icon,
 hb-select {
   font-family: $font-family;
   &:not([data-hb-styled]) {

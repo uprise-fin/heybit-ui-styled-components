@@ -8,6 +8,9 @@ module.exports = {
     initial: [path.resolve(__dirname, "./src/initial.scss")],
     index: [path.resolve(__dirname, "./src/styles/index.scss")],
 
+    "components/hb-icon/index": [
+      path.resolve(__dirname, "./src/components/hb-icon/index.ts"),
+    ],
     "components/forms/hb-input/index": [
       path.resolve(__dirname, "./src/components/forms/hb-input/index.ts"),
     ],
@@ -45,7 +48,6 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: [path.resolve(__dirname, "./src/initial.scss")],
-        // use: ["css-loader", "sass-loader"],
         use: [
           {
             loader: "lit-scss-loader",
@@ -63,12 +65,16 @@ module.exports = {
         include: [path.resolve(__dirname, "./src/initial.scss")],
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
+      {
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
+      },
     ],
   },
   plugins: [new MiniCssExtractPlugin(), new CleanWebpackPlugin()],
 
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", "svg", "css", ".scss"],
   },
   optimization: {
     minimize: true,
