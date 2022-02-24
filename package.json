@@ -56,7 +56,6 @@
     "dotenv": "^14.2.0",
     "electron": "^11.4.6",
     "extract-loader": "^5.1.0",
-    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "26.0.1",
     "lit-scss-loader": "^1.1.0",
