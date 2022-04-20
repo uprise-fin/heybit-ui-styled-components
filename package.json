@@ -77,8 +77,5 @@
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "lit": "^2.1.1"
   },
-  "customElements": "custom-elements.json",
-  "resolutions": {
-    "@storybook/{app}/webpack": "^5"
-  }
+  "customElements": "custom-elements.json"
 }
