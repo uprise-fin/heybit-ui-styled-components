@@ -9,8 +9,8 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbIcon> = ({ icon }) =>
-  html`<hb-icon icon=${icon}></hb-icon>`;
+const Template: Story<HbIcon> = ({ icon,size }) =>
+  html`<hb-icon icon=${icon} size=${size}></hb-icon>`;
 
 export const primary: Story<HbIcon> = Template.bind({});
-primary.args = { icon: "ic-system-service-trx.svg" };
+primary.args = { icon: "ic-system-service-trx.svg", size:'small' };

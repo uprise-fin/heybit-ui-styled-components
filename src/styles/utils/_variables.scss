@@ -33,11 +33,11 @@ $layer: (
   background: rgba(#000, 0.1),
 );
 $variables: (
-  colors: $colors,
   fonts: $fonts,
   box: $box,
   layer: $layer,
 );
+$level: 100;
 $themes: (
   primary: (
     void: map-get($colors, primary),

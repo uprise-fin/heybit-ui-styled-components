@@ -1,5 +1,7 @@
 @import url("~/node_modules/pretendard/dist/web/static/pretendard.css");
+@import "./styles/utils/mixins";
 @import "./styles/utils/variables";
+
 hb-input,
 hb-button,
 hb-dialog,
@@ -13,8 +15,21 @@ hb-select {
 
 :root {
   @each $group, $variable in $variables {
-    @each $name, $color in $variable {
-      --#{$group}__#{$name}: #{$color};
+    @each $key, $value in $variable {
+      --#{$group}__#{$key}: #{$value};
+    }
+  }
+}
+:root {
+  @each $name, $color in $colors {
+    @for $lv from 0 through $level {
+      $vl: $lv - 50;
+      $c: toHSL($color, $vl);
+      $l-name: --#{$vl};
+      @if ($vl == 0) {
+        $l-name: "";
+      }
+      --color__#{$name}#{$l-name}: hsl(#{$c});
     }
   }
 }

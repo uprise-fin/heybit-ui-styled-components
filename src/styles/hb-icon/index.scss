@@ -11,7 +11,11 @@ $hb-icon__size: (
   @include host-styled {
     display: inline-block;
     font-size: 0;
-    width: 24px;
+  }
+  @each $class, $size in $hb-icon__size {
+    @include host-styled("[size='#{$class}']") {
+      width: #{$size};
+    }
   }
 
   // @each $class, $value in $hb-button__theme {

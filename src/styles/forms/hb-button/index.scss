@@ -1,5 +1,5 @@
-@import "../../utils/variables";
 @import "../../utils/mixins";
+@import "../../utils/variables";
 
 $hb-button__padding: map-get($variables, box, padding) !default;
 $hb-button__border-width: map-get($variables, box, border-width) !default;
@@ -69,16 +69,23 @@ $hb-button__theme: (
     // }
   }
   @each $class, $value in $hb-button__theme {
+    $bd: map-get($value, bd);
+    $bg: map-get($value, bg);
     @include host-styled("[theme='#{$class}']") {
-      $bd: map-get($value, bd);
-      $bg: map-get($value, bg);
       @if ($bd) {
         border: 1px solid $bd;
       } @else {
         border: 1px solid $bg;
       }
       color: map-get($value, color);
+      transition: background 0.2s;
       background: $bg;
+    }
+    @include host-styled("[theme='#{$class}']:hover") {
+      background: lighten($bg, 9%);
+    }
+    @include host-styled("[theme='#{$class}']:active") {
+      background: lighten($bg, 16%);
     }
   }
   @each $class, $size in $hb-button__size {
