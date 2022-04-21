@@ -2,8 +2,7 @@
 // import { getChildren, getElement } from "../utils";
 
 function scss() {
-  console.log("first(): factory evaluated");
-  return function (
+  return function(
     target: any,
     propertyKey: string,
     descriptor: PropertyDescriptor

@@ -9,6 +9,7 @@ function importAll(svgs: __WebpackModuleApi.RequireContext) {
       SVG[x.substring(2)] = require(`../../assets/icons${x.substring(1)}`)
   });
 }
+
 importAll(require.context('../../assets/icons', true, /\.svg$/));
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**

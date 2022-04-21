@@ -11,4 +11,5 @@ export default class extends LitElement {
   static get size() {
     return ['large', 'medium', 'small']
   }
+
 }
