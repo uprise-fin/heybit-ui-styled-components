@@ -3,7 +3,7 @@ import { html } from "lit";
 import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
 import { customElement } from "lit/decorators.js";
 // import H from '../../assets/icons/ic-system-infomation-black.svg'
-const SVG: any = {}
+const SVG: {[src: string]: string} = {}
 function importAll(svgs: __WebpackModuleApi.RequireContext) {
   svgs.keys().forEach(x => {
       SVG[x.substring(2)] = require(`../../assets/icons${x.substring(1)}`)
