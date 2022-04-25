@@ -5,14 +5,14 @@ css
 ```html
 <link
   rel="stylesheet"
-  href="node_modules/@uprise-fin/heybit-ui-styled-components/dist/initial.css"
+  href="node_modules/heybit-ui-styled-components/dist/initial.css"
 />
 ```
 
 ```javascript
-import "@uprise-fin/heybit-ui-styled-components/forms/hb-input"; // selected
+import "heybit-ui-styled-components/forms/hb-input"; // selected
 //or
-import "@uprise-fin/heybit-ui-styled-components"; // all components
+import "heybit-ui-styled-components"; // all components
 ```
 
 EEEE
