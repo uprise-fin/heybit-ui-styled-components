@@ -23,7 +23,7 @@ jobs:
       - uses: pnpm/action-setup@v2.1.0
         with:
           version: 6.0.2
-
+      - run: pnpm install
       - run: pnpm pre-publish
       - name: remove demo
         uses: JesseTG/rm@v1.0.2
