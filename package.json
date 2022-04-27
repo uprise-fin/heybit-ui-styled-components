@@ -64,6 +64,7 @@
     "pretendard": "^1.2.1",
     "sass": "^1.49.7",
     "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
     "svg-inline-loader": "^0.8.2",
     "terser-webpack-plugin": "^5.3.1",
     "ts-jest": "^26.0.0",

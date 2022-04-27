@@ -41,7 +41,6 @@ specifiers:
 dependencies:
   '@webcomponents/webcomponentsjs': 2.6.0
   lit: 2.2.2
-  style-loader: 3.3.1_webpack@5.72.0
 
 devDependencies:
   '@babel/core': 7.17.9
@@ -68,6 +67,7 @@ devDependencies:
   pretendard: 1.2.2
   sass: 1.50.1
   sass-loader: 12.6.0_sass@1.50.1+webpack@5.72.0
+  style-loader: 3.3.1_webpack@5.72.0
   svg-inline-loader: 0.8.2
   terser-webpack-plugin: 5.3.1_webpack@5.72.0
   ts-jest: 26.5.6_jvbthsajtxlaekn4ck7li5p2kq
@@ -14271,7 +14271,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       webpack: 5.72.0_webpack-cli@4.9.2
-    dev: false
+    dev: true
 
   /style-to-object/0.3.0:
     resolution: {integrity: sha512-CzFnRRXhzWIdItT3OmF8SQfWyahHhjq3HwcMNCNLn+N7klOOqPjMeG/4JSu77D7ypZdGvSzvkrbyeTMizz2VrA==}
