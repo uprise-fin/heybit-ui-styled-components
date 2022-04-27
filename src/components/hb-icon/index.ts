@@ -2,15 +2,7 @@ import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import Base from "../base";
-// import H from '../../assets/icons/ic-system-infomation-black.svg'
-const SVG: {[src: string]: string} = {}
-
-function importAll(svgs: __WebpackModuleApi.RequireContext) {
-  svgs.keys().forEach(x => {
-      SVG[x.substring(2)] = require(`../../assets/icons${x.substring(1)}`)
-  });
-}
-
+import SVG from './svg'
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -20,8 +12,8 @@ function importAll(svgs: __WebpackModuleApi.RequireContext) {
  * @slot footer - optional, 푸터
  * @csspart container
  * @csspart header
- * @csspart content
- * @csspart footer
+ * @csspart content 
+ * @csspart footer 
  */
 
 @customElement("hb-icon")
@@ -46,7 +38,6 @@ export class HbIcon extends Base {
     return html`${unsafeSVG(SVG[this.icon])}`;
   }
   override async connectedCallback() {
-    if (!Object.keys(SVG).length) importAll(require.context('../../assets/icons', true, /\.svg$/));
     super.connectedCallback();
   }
 }

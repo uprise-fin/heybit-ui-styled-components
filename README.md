@@ -5,7 +5,7 @@ css
 ```html
 <link
   rel="stylesheet"
-  href="node_modules/heybit-ui-styled-components/dist/initial.css"
+  href="/node_modules/heybit-ui-styled-components/dist/initial.css"
 />
 ```
 

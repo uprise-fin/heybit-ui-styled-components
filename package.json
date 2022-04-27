@@ -29,14 +29,15 @@
     ]
   },
   "scripts": {
+    "svg": "node node/svg.js",
     "dev": "npx webpack watch --config webpack.dev.js",
     "__start": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
     "test": "jest -i",
     "storybook": "start-storybook -p 6006",
-    "pre-publish": "yarn cem && yarn build && yarn test",
-    "build-storybook": "build-storybook"
+    "pre-publish": "pnpm svg && pnpm cem && pnpm build && pnpm test",
+    "build-storybook": "pnpm svg && build-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
