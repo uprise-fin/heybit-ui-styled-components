@@ -31,7 +31,6 @@ specifiers:
   react-dom: ^16.8.0
   sass: ^1.49.7
   sass-loader: ^12.4.0
-  ssr-webpack-plugin: ^2.0.1
   style-loader: ^3.3.1
   svg-inline-loader: ^0.8.2
   terser-webpack-plugin: ^5.3.1
@@ -79,7 +78,6 @@ devDependencies:
   pretendard: 1.2.2
   sass: 1.50.1
   sass-loader: 12.6.0_sass@1.50.1+webpack@5.72.0
-  ssr-webpack-plugin: 2.0.1
   svg-inline-loader: 0.8.2
   terser-webpack-plugin: 5.3.1_webpack@5.72.0
   ts-jest: 26.5.6_jvbthsajtxlaekn4ck7li5p2kq
@@ -3935,7 +3933,7 @@ packages:
   /@types/webpack-sources/3.2.0:
     resolution: {integrity: sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==}
     dependencies:
-      '@types/node': 14.18.13
+      '@types/node': 17.0.25
       '@types/source-list-map': 0.1.2
       source-map: 0.7.3
     dev: true
@@ -3943,7 +3941,7 @@ packages:
   /@types/webpack/4.41.32:
     resolution: {integrity: sha512-cb+0ioil/7oz5//7tZUSwbrSAN/NWHrQylz5cW8G0dWTcF/g+/dSdMlKVZspBYuMAN1+WnwHrkxiRrLcwd0Heg==}
     dependencies:
-      '@types/node': 14.18.13
+      '@types/node': 17.0.25
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.13.2
       '@types/webpack-sources': 3.2.0
@@ -8309,10 +8307,6 @@ packages:
       inherits: 2.0.4
       readable-stream: 3.6.0
       safe-buffer: 5.2.1
-    dev: true
-
-  /hash-sum/1.0.2:
-    resolution: {integrity: sha1-M7QHd3VMZDJXPBIMw4CLvRDUfwQ=}
     dev: true
 
   /hash.js/1.1.7:
@@ -13308,14 +13302,6 @@ packages:
       jsbn: 0.1.1
       safer-buffer: 2.1.2
       tweetnacl: 0.14.5
-    dev: true
-
-  /ssr-webpack-plugin/2.0.1:
-    resolution: {integrity: sha512-+yyDhodVb45oipG8stkoiazesMqLsjewkVYef4eiYSvRfZJkX71q84Mc7qpbIxNPzEvt2gMFtbBNp/u8pW577g==}
-    dependencies:
-      chalk: 2.4.2
-      hash-sum: 1.0.2
-      lodash.uniq: 4.5.0
     dev: true
 
   /ssri/6.0.2:

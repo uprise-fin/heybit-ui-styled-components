@@ -1,6 +1,11 @@
 # heybit-ui-styled-components
 
-css
+## 사용법
+
+기본적으로 javascript 만 사용해도 문제는 없습니다. 다만 렌더링 되는 도중에 스타일이 덜 불러와졌을때 깜밖이는 현상을 제거하기 위해
+css를 우선 불러올 것을 권장합니다.
+
+### css
 
 ```html
 <link
@@ -11,22 +16,20 @@ css
 
 ```javascript
 import "/node_modules/heybit-ui-styled-components/dist/initial.css";
+```
 
+자바스크립트는 두가지 방법이 있는데,
+필요한 컴포넌트만 불러오거나 전체를 불러오는 방법입니다.
+
+```javascript
 import "heybit-ui-styled-components/dist/components/forms/hb-input"; // selected
 //or
 import "heybit-ui-styled-components"; // all components
 ```
 
-EEEE
+### 주의사항
 
-1. theme
-1. size
-1. type
-1. loading
-1. disabled
-1. error
-
-XXX
+넉스트에서 ssr 활성화 시 window에러가 나는데, 이거는 라이프사이클에서 window가 있을때 require방식으로 주입하는 방법으로 해결 가능합니다.
 
 1. 데코레이터를 안쓴이유
    스토리북 사용 시 properties를 써야 되서, 데코레이터제거하고 properties를 씀
