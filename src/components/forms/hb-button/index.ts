@@ -1,6 +1,11 @@
-import Base from "../../base";
+import Base, { size, theme } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
+export enum type {
+  "block" = "block",
+  "inline" = "inline",
+  "fab" = "fab",
+}
 /**
  * @fires select 옵션을 선택할때 발생
  * @fires change 값이 변경될때 발생
@@ -18,12 +23,12 @@ export class HbButton extends Base {
     return [require("../../../styles/forms/hb-button/index.scss").default];
   }
   label = '';
-  type="";
-  size="";
+  type: type;
+  size: size;
   loading = false;
   disabled = false;
   placeholder = '비었습니다.'
-  theme =  '';
+  theme: theme;
 
 
   static get properties() {
