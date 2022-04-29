@@ -12,9 +12,29 @@
   }
 }
 :root {
+  @function getAmount($name) {
+    @if ($name == "primary") {
+      @return 3;
+    }
+    @if ($name == "secondary") {
+      @return 0;
+    }
+    @if ($name == "tertiary") {
+      @return 50;
+    }
+    @if ($name == "quaternary") {
+      @return 50;
+    }
+    @if ($name == "quinary") {
+      @return 50;
+    }
+    @if ($name == "senary") {
+      @return 40;
+    }
+  }
   @each $name, $color in $colors {
     @for $lv from 0 through $level {
-      $vl: $lv - 50;
+      $vl: $lv - ($level / 2) + getAmount($name);
       $c: toHSL($color, $vl);
       $l-name: --#{$vl};
       @if ($vl == 0) {

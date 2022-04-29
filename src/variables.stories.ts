@@ -11,18 +11,25 @@ export default {
   title: "variables/css",
 } as Meta;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
+const r = document.querySelector(":root");
+const rs = getComputedStyle(r);
+console.log(rs.getPropertyValue("--color__primary---31"));
 const Template: Story<any> = () =>
   html`
-    ${Base.themes.map((x) =>
-      Array(101)
+    ${Base.themes.map((theme) =>
+      Array(200)
         .fill(null)
         .map((_, i) => {
-          const name = i - 50 ? `${x}--${i - 50}` : x;
-
-          return html`
-            <p style="color: var(--color__${name})">${name}</p>
-          `;
+          const name = i - 100 ? `${theme}--${i - 100}` : theme;
+          return `--color__${name}`;
         })
+        .filter((x) => rs.getPropertyValue(x))
+        .map(
+          (x) =>
+            html`
+              <p style="color: var(${x})">${x}</p>
+            `
+        )
     )}
   `;
 
