@@ -37,3 +37,34 @@ import "heybit-ui-styled-components"; // all components
    호스트를 직접 사용하면 css 스타일만 사용할때에 적용되지 않습니다. 하여 `mixins host*`를 이용해야 합니다.
    host 자체를 스타일링 할때 `@include host-styled{}`
    host의 변경에 따른 내부 엘리먼트에 스타일링 할때 `@include hostchild-styled{}`
+
+#### part
+
+shadow 내부를 접근하기 위해서는 part라는 속성이 있어야합니다.
+
+```html
+<hb-icon icon="ddd.svg">
+  shadow~~
+  <svg path="svg">
+    <path></path>
+  </svg>
+</hb-icon>
+```
+
+```css
+hb-icon::part(svg)
+```
+
+#### hb-icon custom color
+
+theme 라는 속성으로 기본 테마컬러 적용하는 방법과 part로 커스텀 컬러를 적용할 수 있습니다.
+
+```html
+<hb-icon icon="ddd.svg" theme="primary"> </hb-icon>
+```
+
+```css
+hb-icon::part(svg) {
+  fill: var(--primary--30);
+}
+```

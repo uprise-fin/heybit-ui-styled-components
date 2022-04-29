@@ -16,9 +16,9 @@ export default class extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     this.dataset.hbStyled = "true";
-    // this.classList.add(this.tagName.toLowerCase())
-    // console.log(, 'djwaldkaw')
+    this.customConnectedCallback()
   }
+  customConnectedCallback(){}
 
   
   static get themes() {

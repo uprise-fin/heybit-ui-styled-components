@@ -2,7 +2,10 @@ import Base from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
-
+enum open  {
+  'false' = 'false',
+  'true' = 'true',
+}
 /**
  * @property open 온 오프
  * @slot header - optional, 헤더
@@ -19,14 +22,19 @@ export class HbDialog extends Base {
   static override get styles() {
     return [require("../../../styles/layers/hb-dialog/index.scss").default];
   }
-  _open = false;
+  customConnectedCallback() {
+    this.initial()
+  }
+  _open: open = open.false
 
   get open() {
     return this._open;
   }
-  set open(val: boolean) {
-    this.onToggle(val)
-    if(this._open !== val) this._open = val
+  set open(val: open) {
+    if(this._open !== val) {
+      this.onToggle(val)
+      this._open = val
+    }
   }
    
 
@@ -34,7 +42,7 @@ export class HbDialog extends Base {
   // value!: string;
   static get properties() {
     return {
-      open: { type: Boolean, Reflect: true },
+      open: { type: String, Reflect: true },
     };
   }
 
@@ -71,8 +79,8 @@ export class HbDialog extends Base {
   onAnimationEnd() {
     this.classList.remove("animation");
   }
-  onToggle(val: boolean) {
-    if(val) return this.onShow();
+  onToggle(val: open) {
+    if(val === open.true) return this.onShow();
     this.onHide()
   }
   onShow() {
@@ -81,7 +89,12 @@ export class HbDialog extends Base {
   
   onHide() {
     this.classList.add("animation");
+    this.initial()
+  }
+
+  initial() {
     this.classList.remove("open");
+    this.setAttribute('open', open.false)
   }
 }
 

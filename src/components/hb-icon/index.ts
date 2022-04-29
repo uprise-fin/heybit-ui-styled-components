@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
-import Base, { size } from "../base";
+import Base, { size, theme } from "../base";
 import SVG from './svg';
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
@@ -23,6 +23,7 @@ export class HbIcon extends Base {
   }
 
   icon: string;
+  theme: theme;
   size: size;
   static get properties() {
     return {

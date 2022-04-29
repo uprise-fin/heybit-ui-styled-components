@@ -1,7 +1,7 @@
 {
   "name": "heybit-ui-styled-components",
   "customElements": "custom-elements.json",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "files": [
     "dist/**"
   ],
@@ -31,8 +31,7 @@
   },
   "scripts": {
     "svg": "node node/svg.js",
-    "dev": "npx webpack watch --config webpack.dev.js",
-    "__start": "npx webpack serve --config webpack.dev.js",
+    "dev": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
     "test": "jest -i",
