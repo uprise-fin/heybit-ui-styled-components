@@ -10,7 +10,9 @@ css
 ```
 
 ```javascript
-import "heybit-ui-styled-components/forms/hb-input"; // selected
+import "/node_modules/heybit-ui-styled-components/dist/initial.css";
+
+import "heybit-ui-styled-components/dist/components/forms/hb-input"; // selected
 //or
 import "heybit-ui-styled-components"; // all components
 ```

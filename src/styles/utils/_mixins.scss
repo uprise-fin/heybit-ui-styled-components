@@ -38,3 +38,38 @@
   $lightness: lightness($color) - ($level);
   @return hue($color), saturation($color), #{$lightness};
 }
+
+@function getInteractiveColor($color, $amount) {
+  @if (lightness($color) < 50) {
+    @return lighten($color, $amount);
+  } @else {
+    @return darken($color, $amount);
+  }
+}
+
+// @mixin initial($selector) {
+//   #{$selector} {
+//     font-family: $font-family;
+//     &:not([data-hb-styled]) {
+//       visibility: hidden;
+//     }
+//   }
+//   $class: "." + #{$selector};
+//   #{$class} {
+//     font-family: $font-family;
+//   }
+// }
+@mixin initial($selectors) {
+  @each $selector in $selectors {
+    #{$selector} {
+      font-family: $font-family;
+      &:not([data-hb-styled]) {
+        visibility: hidden;
+      }
+    }
+    $class: "." + #{$selector};
+    #{$class} {
+      font-family: $font-family;
+    }
+  }
+}

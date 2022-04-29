@@ -12,12 +12,12 @@ export class HbSpinner extends Base {
     return [require("../../../styles/layers/hb-spinner/index.scss").default];
   }
 
-  override render() {
+  render() {
     return html`
       <span class="hb-spinner__icon hb-spinner__icon--inner-1"></span>
       <span class="hb-spinner__icon hb-spinner__icon--inner-2"></span>
       <span class="hb-spinner__icon hb-spinner__icon--inner-3"></span>
-    `;
+    `
   }
 }
 

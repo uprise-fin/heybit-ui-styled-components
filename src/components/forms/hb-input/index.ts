@@ -30,7 +30,7 @@ export class HbInput extends Base {
     };
   }
 
-  override render() {
+  render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
       <input
@@ -42,7 +42,7 @@ export class HbInput extends Base {
       />
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
-    `;
+    `
   }
   override connectedCallback() {
     super.connectedCallback();

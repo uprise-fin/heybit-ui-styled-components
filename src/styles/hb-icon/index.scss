@@ -31,4 +31,8 @@ $hb-icon__size: (
   //     background: $bg;
   //   }
   // }
+  &__svg {
+    width: 100%;
+    height: auto;
+  }
 }

@@ -20,8 +20,9 @@ const svgs = {};
 // );
 const files = fs.readdirSync("node/assets/icons/");
 files.forEach((v) => {
-  if (v.includes(".svg"))
-    svgs[v] = fs.readFileSync(`node/assets/icons/${v}`, "utf8");
+  if (!v.includes(".svg")) return;
+  const svg = fs.readFileSync(`node/assets/icons/${v}`, "utf8");
+  svgs[v] = svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
 });
 // console.log("dddd", svgs);
 fs.writeFile(
@@ -30,7 +31,7 @@ fs.writeFile(
     JSON.stringify(svgs) +
     ";export default svgs as { [src: string]: string };",
   () => {
-    console.log("complete");
+    console.log("Complete conversion of svg file to text");
   }
 );
 // });

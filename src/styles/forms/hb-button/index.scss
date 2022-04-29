@@ -56,6 +56,8 @@ $hb-button__theme: (
   @include host-animation;
   @include host-styled {
     position: relative;
+    display: flex;
+    font-size: $hb-button__font-size;
     padding: $hb-button__padding;
     // border: #{$hb-button__border-width} solid #{$hb-button__border-color};
     border-radius: $hb-button__border-radius;
@@ -82,10 +84,10 @@ $hb-button__theme: (
       background: $bg;
     }
     @include host-styled("[theme='#{$class}']:hover") {
-      background: lighten($bg, 9%);
+      background: getInteractiveColor($bg, 9%);
     }
     @include host-styled("[theme='#{$class}']:active") {
-      background: lighten($bg, 16%);
+      background: getInteractiveColor($bg, 16%);
     }
   }
   @each $class, $size in $hb-button__size {
@@ -98,10 +100,10 @@ $hb-button__theme: (
       height: $size;
     }
   }
-  @include host-styled("[type='block']") {
-    display: flex;
-    font-size: $hb-button__font-size;
-  }
+  // @include host-styled("[type='block']") {
+  //   display: flex;
+  //   font-size: $hb-button__font-size;
+  // }
   @include host-styled("[type='inline']") {
     display: inline-flex;
     min-width: 96px;

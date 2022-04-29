@@ -37,13 +37,13 @@ export class HbButton extends Base {
     };
   }
 
-  override render() {
+  render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-button__slot hb-button__slot--left"></slot>
       <div class="hb-button__label">${this.label}</div>
       <slot name="slot--right" part="slot--right" class="hb-button__slot hb-button__slot--right"></slot>
       <hb-spinner class="hb-button__spinner" loading=${this.loading}></hb-spinner>
-    `;
+    `
   }
   override async connectedCallback() {
     super.connectedCallback();

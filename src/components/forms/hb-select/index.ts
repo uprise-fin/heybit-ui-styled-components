@@ -47,7 +47,7 @@ export class HbSelect extends Base {
   sto = setTimeout(() => {}, 0);
   optionEls!: HTMLElement[];
 
-  override render() {
+  render() {
     return html`
       <div
         id="label"
@@ -75,7 +75,7 @@ export class HbSelect extends Base {
         id="list"
         name="option"
       ></slot>
-    `;
+    `
   }
   override async connectedCallback() {
     super.connectedCallback();

@@ -38,7 +38,7 @@ export class HbDialog extends Base {
     };
   }
 
-  override render() {
+  render() {
     return html`
       <div class="hb-dialog__wrap" id="wrap">
         <div class="hb-dialog__container" part="container">
@@ -53,7 +53,7 @@ export class HbDialog extends Base {
           <slot name="footer" part="footer" class="hb-dialog__footer"></slot>
         </div>
       </div>
-    `;
+    `
   }
   override async connectedCallback() {
     super.connectedCallback();

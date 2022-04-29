@@ -2,16 +2,7 @@
 @import "./styles/utils/mixins";
 @import "./styles/utils/variables";
 
-hb-input,
-hb-button,
-hb-dialog,
-hb-icon,
-hb-select {
-  font-family: $font-family;
-  &:not([data-hb-styled]) {
-    visibility: hidden;
-  }
-}
+@include initial((hb-input, hb-button, hb-dialog, hb-icon, hb-select));
 
 :root {
   @each $group, $variable in $variables {
