@@ -30,7 +30,7 @@ $hb-icon__theme: (
       fill: $color;
     }
   }
-  @include host-styled("[theme]") {
+  @include host-styled("[theme]:not([theme=''])") {
     svg {
       fill: inherit;
       > path {

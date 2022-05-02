@@ -77,8 +77,7 @@ export class HbSelect extends Base {
       ></slot>
     `
   }
-  override async connectedCallback() {
-    super.connectedCallback();
+  async customConnectedCallback() {
     this.tabIndex = 0;
     this.onfocus = () => this.adapterShow();
     this.onblur = () => this.adapterHide();

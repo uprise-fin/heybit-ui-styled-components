@@ -2,7 +2,7 @@ import Base from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
-enum open  {
+export enum open  {
   'false' = 'false',
   'true' = 'true',
 }
@@ -23,6 +23,7 @@ export class HbDialog extends Base {
     return [require("../../../styles/layers/hb-dialog/index.scss").default];
   }
   customConnectedCallback() {
+    this.bindEvent()
     this.initial()
   }
   _open: open = open.false
@@ -55,17 +56,13 @@ export class HbDialog extends Base {
             class="hb-dialog__close-btn"
             part="close-btn"
             id="close-btn"
-          ></button>
+          ><hb-icon icon="ic-account-clear-24-black.svg" size="medium"></hb-icon></button>
           <slot name="header" part="header" class="hb-dialog__header"></slot>
           <slot name="content" part="content" class="hb-dialog__content"></slot>
           <slot name="footer" part="footer" class="hb-dialog__footer"></slot>
         </div>
       </div>
     `
-  }
-  override async connectedCallback() {
-    super.connectedCallback();
-    await this.bindEvent();
   }
   async bindEvent() {
     // const a = this.shadowRoot;
@@ -89,12 +86,13 @@ export class HbDialog extends Base {
   
   onHide() {
     this.classList.add("animation");
-    this.initial()
+    this.classList.remove("open");
+    this.setAttribute('open', open.false)
   }
 
   initial() {
-    this.classList.remove("open");
-    this.setAttribute('open', open.false)
+    this.open === open.true ? this.classList.add("open") : this.classList.remove("open")
+    this.setAttribute('open', this.open)
   }
 }
 

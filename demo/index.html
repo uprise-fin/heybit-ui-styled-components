@@ -7,12 +7,15 @@
     <title>Document</title>
   </head>
   <body>
-    <hb-button
-      theme="primary"
-      type="block"
-      label="ddd"
-      size="large"
-    ></hb-button>
+    <hb-button id="btn" theme="primary" type="block" size="large"
+      >ddd</hb-button
+    >
+    <hb-dialog id="dialog">
+      <div slot="header">가나다</div>
+      <div slot="content">가나다</div>
+      <div slot="footer">가나다</div>
+      <div slot="footer">가나다</div>
+    </hb-dialog>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
@@ -30,6 +33,16 @@
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-dialog></hb-dialog>
+    <script>
+      var clickEvnt = (function() {
+        var dialog = document.getElementById("dialog");
+        return function() {
+          var isOpen = dialog.getAttribute("open");
+          if (isOpen === "true") return dialog.setAttribute("open", "false");
+          dialog.setAttribute("open", "true");
+        };
+      })();
+      document.getElementById("btn").onclick = clickEvnt;
+    </script>
   </body>
 </html>

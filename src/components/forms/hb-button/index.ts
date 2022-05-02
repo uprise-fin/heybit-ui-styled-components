@@ -22,21 +22,20 @@ export class HbButton extends Base {
   static override get styles() {
     return [require("../../../styles/forms/hb-button/index.scss").default];
   }
-  label = '';
   type: type;
   size: size;
   loading = false;
   disabled = false;
-  placeholder = '비었습니다.'
+  placeholder = ''
   theme: theme;
 
 
   static get properties() {
     return {
-      label: { type: String, Reflect: true },
       theme: { type: String, Reflect: true },
       size: { type: String, Reflect: true },
       type: { type: String, Reflect: true },
+      placeholder: { type: String, Reflect: true },
       loading: { type: Boolean, Reflect: true },
       disabled: { type: Boolean, Reflect: true },
     };
@@ -45,13 +44,12 @@ export class HbButton extends Base {
   render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-button__slot hb-button__slot--left"></slot>
-      <div class="hb-button__label">${this.label}</div>
+      <slot part="label" class="hb-button__label" placeholder=${this.placeholder}></slot>
       <slot name="slot--right" part="slot--right" class="hb-button__slot hb-button__slot--right"></slot>
       <hb-spinner class="hb-button__spinner" loading=${this.loading}></hb-spinner>
     `
   }
-  override async connectedCallback() {
-    super.connectedCallback();
+  customConnectedCallback() {
     this.tabIndex = 0;
   }
 }
@@ -61,3 +59,4 @@ declare global {
     "hb-button": HbButton;
   }
 }
+ 

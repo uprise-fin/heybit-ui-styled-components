@@ -38,10 +38,6 @@ export class HbIcon extends Base {
   render() {
     return html`${unsafeSVG(SVG[this.icon])}`
   }
-  
-  override async connectedCallback() {
-    super.connectedCallback();
-  }
 }
 
 declare global {

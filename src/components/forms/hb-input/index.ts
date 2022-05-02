@@ -44,9 +44,7 @@ export class HbInput extends Base {
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `
   }
-  override connectedCallback() {
-    super.connectedCallback();
-
+  customConnectedCallback() {
     this.onfocus = () => {
       if (!this.inputEl)
         this.inputEl = this.shadowRoot?.getElementById(

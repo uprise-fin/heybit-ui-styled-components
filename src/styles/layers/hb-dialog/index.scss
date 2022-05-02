@@ -1,9 +1,10 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
 
-$hb-dialog__layer__background: map-get($variables, layer__background) !default;
-$hb-dialog__background: map-get($variables, box__background) !default;
-$hb-dialog__border-radius: map-get($variables, box__border-radius) !default;
+$hb-dialog__padding: map-get($variables, box, padding) !default;
+$hb-dialog__layer__background: map-get($variables, layer, background) !default;
+$hb-dialog__background: map-get($variables, box, background) !default;
+$hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
 // $hb-input__height: $box__height !default;
 // $hb-input__padding: $box__padding !default;
 // $hb-input__border-width: $box__border-width !default;
@@ -46,6 +47,7 @@ $hb-dialog__border-radius: map-get($variables, box__border-radius) !default;
   // }
   &__container {
     position: relative;
+    min-width: none;
     margin: auto;
     border-radius: $hb-dialog__border-radius;
     background: $hb-dialog__background;
@@ -54,30 +56,33 @@ $hb-dialog__border-radius: map-get($variables, box__border-radius) !default;
     position: absolute;
     top: 0;
     right: 0;
-    width: 50px;
-    height: 50px;
     transform: translate(50%, -50%);
+    padding: 0;
+    border: 0;
+    background: none;
   }
-  &__header,
-  &__content,
-  &__footer {
-    &::slotted(*) {
-      &:empty {
-        display: none;
-      }
-    }
-  }
+
   &__header {
+    display: block;
+    padding: $hb-dialog__padding;
+    padding-top: 10px;
   }
   &__content {
+    display: block;
+    padding: $hb-dialog__padding;
+    padding-top: 30px;
+    padding-bottom: 10px;
   }
   &__footer {
     display: flex;
+    align-items: center;
+    min-height: 30px;
+    padding: $hb-dialog__padding;
     &::slotted(*) {
       flex: 1;
+
       border: 0;
-      min-width: 60px;
-      min-height: 50px;
+      text-align: center;
     }
   }
 }

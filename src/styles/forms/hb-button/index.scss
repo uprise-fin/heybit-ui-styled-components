@@ -64,6 +64,7 @@ $hb-button__theme: (
     font-size: $hb-button__font-size;
     font-weight: 700;
     box-sizing: border-box;
+    cursor: pointer;
     // &::before,
     // &::after {
     //   flex: auto;
@@ -118,6 +119,12 @@ $hb-button__theme: (
   @include host-styled("[disabled]") {
     opacity: 0.5;
     pointer-events: none;
+  }
+  @include host-styled(":empty") {
+    .hb-button__label::before {
+      content: attr(placeholder);
+      opacity: 0.5;
+    }
   }
 
   &__slot {
