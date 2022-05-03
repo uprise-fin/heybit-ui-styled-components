@@ -38,11 +38,19 @@ export class HbInput extends Base {
         class="hb-input__el"
         part="el"
         value="${this.value}"
+        @keyup=${this.onKeyup}
         type="text"
       />
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `
+  }
+  onKeyup() {
+    if (this.value !== this.inputEl.value) this.onChange()
+  }
+  onChange() {
+    this.value = this.inputEl.value;
+    this.dispatchEvent(new Event("change"));
   }
   customConnectedCallback() {
     this.onfocus = () => {
@@ -50,11 +58,6 @@ export class HbInput extends Base {
         this.inputEl = this.shadowRoot?.getElementById(
           "input"
         ) as HTMLInputElement;
-      this.value = this.inputEl.value;
-    };
-    this.onblur = (evt: Event) => {
-      if (this.value !== this.inputEl.value)
-        this.dispatchEvent(new Event("change", evt));
     };
   }
 }

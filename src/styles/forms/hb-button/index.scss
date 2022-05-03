@@ -53,7 +53,6 @@ $hb-button__theme: (
   ),
 );
 .hb-button {
-  @include host-animation;
   @include host-styled {
     position: relative;
     display: flex;
@@ -154,7 +153,7 @@ $hb-button__theme: (
     width: auto;
     border-radius: inherit;
     background: #fff;
-    @include hostchild-styled([loading]) {
+    @include child-styled([loading]) {
       display: inline-flex;
     }
   }

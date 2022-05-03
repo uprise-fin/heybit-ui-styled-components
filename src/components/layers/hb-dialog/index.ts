@@ -1,7 +1,8 @@
-import Base from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
+import Base from "../../base";
+
 export enum open  {
   'false' = 'false',
   'true' = 'true',
@@ -24,14 +25,13 @@ export class HbDialog extends Base {
   }
   customConnectedCallback() {
     this.bindEvent()
-    this.initial()
   }
-  _open: open = open.false
-
+  _open = false
+  persistent: false;
   get open() {
     return this._open;
   }
-  set open(val: open) {
+  set open(val: boolean) {
     if(this._open !== val) {
       this.onToggle(val)
       this._open = val
@@ -43,16 +43,17 @@ export class HbDialog extends Base {
   // value!: string;
   static get properties() {
     return {
-      open: { type: String, Reflect: true },
+      open: { type: Boolean, Reflect: true },
+      persistent: { type: Boolean, Reflect: true },
     };
   }
 
   render() {
     return html`
-      <div class="hb-dialog__wrap" id="wrap">
-        <div class="hb-dialog__container" part="container">
+      <div class="hb-dialog__wrap" id="wrap" @click=${this.adapterOnClose}>
+        <div class="hb-dialog__container" part="container" @click=${this.stopPropagation}>
           <button
-            @click=${this.onHide}
+            @click=${this.onClose}
             class="hb-dialog__close-btn"
             part="close-btn"
             id="close-btn"
@@ -67,33 +68,28 @@ export class HbDialog extends Base {
   async bindEvent() {
     // const a = this.shadowRoot;
     const wrapEl = await getElement<HTMLDivElement>(this.shadowRoot, "wrap");
-    wrapEl!.onanimationstart = () => this.onAnimationStart();
-    wrapEl!.onanimationend = () => this.onAnimationEnd();
+    wrapEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
   }
-  onAnimationStart() {
-    this.classList.add("animation");
+  onAnimationEnd(event: AnimationEvent) {
+    console.log(event.animationName);
+    this.classList.remove(event.animationName);
   }
-  onAnimationEnd() {
-    this.classList.remove("animation");
-  }
-  onToggle(val: open) {
-    if(val === open.true) return this.onShow();
-    this.onHide()
-  }
-  onShow() {
-    this.classList.add("open");
-  }
-  
-  onHide() {
-    this.classList.add("animation");
-    this.classList.remove("open");
-    this.setAttribute('open', open.false)
+  onToggle(val: boolean) {
+    this.setAttribute('open', val.toString())
+    this.classList[val ? 'add' : 'remove']("open");
+    this.classList.add(val ? "show" : 'hide');
   }
 
-  initial() {
-    this.open === open.true ? this.classList.add("open") : this.classList.remove("open")
-    this.setAttribute('open', this.open)
+  onClose() {
+    this.open = false
   }
+
+  adapterOnClose(e: Event) {
+    e.stopImmediatePropagation()
+    if (this.persistent) return this.classList.add("shake")
+    this.onClose()
+    return false
+  } 
 }
 
 declare global {

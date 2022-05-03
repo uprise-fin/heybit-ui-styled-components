@@ -47,7 +47,10 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: [path.resolve(__dirname, "./src/initial.scss")],
+        exclude: [
+          path.resolve(__dirname, "./src/initial.scss"),
+          path.resolve(__dirname, "./src/styles/index.scss"),
+        ],
         use: [
           {
             loader: "lit-scss-loader",
@@ -62,7 +65,10 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: [path.resolve(__dirname, "./src/initial.scss")],
+        include: [
+          path.resolve(__dirname, "./src/initial.scss"),
+          path.resolve(__dirname, "./src/styles/index.scss"),
+        ],
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
@@ -74,7 +80,7 @@ module.exports = {
   plugins: [new MiniCssExtractPlugin(), new CleanWebpackPlugin()],
 
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", "svg", "css", ".scss"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".svg", ".css", ".scss"],
   },
   optimization: {
     minimize: true,

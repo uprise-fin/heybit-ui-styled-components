@@ -7,15 +7,51 @@
     <title>Document</title>
   </head>
   <body>
+    <hb-input
+      value="dddd"
+      onchange="function ddd(e) {console.log(e)}; ddd.call(this)"
+    ></hb-input>
     <hb-button id="btn" theme="primary" type="block" size="large"
       >ddd</hb-button
     >
-    <hb-dialog id="dialog">
+    <div class="hb-button" theme="primary" type="block" size="large">
+      <div class="hb-button__label" placeholder="dsd">dawdwa</div>
+    </div>
+    <hb-dialog id="dialog" persistent="true">
       <div slot="header">가나다</div>
       <div slot="content">가나다</div>
-      <div slot="footer">가나다</div>
-      <div slot="footer">가나다</div>
+      <button slot="footer">가나다</button>
+      <button slot="footer" id="btn2">가나다</button>
     </hb-dialog>
+    <hb-dialog id="dialog2">
+      <div slot="header">123</div>
+      <div slot="content">434</div>
+      <div slot="footer">545</div>
+      <div slot="footer">123</div>
+    </hb-dialog>
+    <div class="hb-dialog" persistent="true" data-hb-styled="true" open="false">
+      <div class="hb-dialog__wrap">
+        <div class="hb-dialog__container" part="container">
+          <button class="hb-dialog__close-btn" part="close-btn" id="close-btn">
+            <hb-icon
+              icon="ic-account-clear-24-black.svg"
+              size="medium"
+              data-hb-styled="true"
+            ></hb-icon>
+          </button>
+          <div name="header" part="header" class="hb-dialog__header">
+            <div slot="header">가나다</div>
+          </div>
+          <div name="content" part="content" class="hb-dialog__content">
+            <div slot="content">가나다</div>
+          </div>
+          <div name="footer" part="footer" class="hb-dialog__footer">
+            <button slot="footer">가나다</button>
+            <button slot="footer" id="btn2">가나다</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
@@ -42,7 +78,16 @@
           dialog.setAttribute("open", "true");
         };
       })();
+      var clickEvnt2 = (function() {
+        var dialog = document.getElementById("dialog2");
+        return function() {
+          var isOpen = dialog.getAttribute("open");
+          if (isOpen === "true") return dialog.setAttribute("open", "false");
+          dialog.setAttribute("open", "true");
+        };
+      })();
       document.getElementById("btn").onclick = clickEvnt;
+      document.getElementById("btn2").onclick = clickEvnt2;
     </script>
   </body>
 </html>

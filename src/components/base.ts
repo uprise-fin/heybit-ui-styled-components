@@ -20,6 +20,9 @@ export default class extends LitElement {
   }
   customConnectedCallback(){}
 
+  stopPropagation(e: Event) {
+    e.stopPropagation();
+  }
   
   static get themes() {
     return Object.keys(theme)

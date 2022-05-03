@@ -1,7 +1,7 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
 import "./index";
-import { HbDialog, open } from "./index";
+import { HbDialog } from "./index";
 interface HbDialogExpns extends HbDialog {
   header: string;
   content: string;
@@ -34,7 +34,7 @@ const Template: Story<HbDialogExpns> = ({
   footer,
 }) =>
   html`
-    <hb-dialog open=${open}>
+    <hb-dialog ?open=${open}>
       ${header
         ? html`
             <div slot="header">${header}</div>
@@ -55,7 +55,7 @@ const Template: Story<HbDialogExpns> = ({
 
 export const primary: Story<HbDialogExpns> = Template.bind({});
 primary.args = {
-  open: open.true,
+  open: false,
   header: "내용을 입력해주세요.",
   content: "내용을 입력해 주세요.",
   footer: "ddjawlkjda",

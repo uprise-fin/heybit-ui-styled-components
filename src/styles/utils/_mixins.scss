@@ -1,9 +1,3 @@
-@mixin host-animation {
-  @at-root :host([data-hb-styled]) {
-    animation: hb-styled 0.2s;
-  }
-}
-
 @mixin host-styled($selector: "*") {
   @if ($selector == "*") {
     @at-root :host {
@@ -19,9 +13,17 @@
     }
   }
 }
-@mixin hostchild-styled($selector) {
+@mixin child-styled($selector) {
   :host(#{$selector}) &,
   #{$selector} & {
+    @content;
+  }
+}
+@mixin slot-styled($selector) {
+  &::slotted(#{$selector}) {
+    @content;
+  }
+  > #{$selector} {
     @content;
   }
 }
@@ -60,11 +62,16 @@
 //   }
 // }
 @mixin initial($selectors) {
+  [data-hb-styled] {
+    animation: hb-styled 0.2s;
+  }
   @each $selector in $selectors {
     #{$selector} {
       font-family: $font-family;
-      &:not([data-hb-styled]) {
-        visibility: hidden;
+      visibility: hidden;
+      &[data-hb-styled] {
+        animation: hb-styled 0.2s;
+        visibility: visible;
       }
     }
     $class: "." + #{$selector};

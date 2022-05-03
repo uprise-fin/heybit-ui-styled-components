@@ -15,7 +15,6 @@ $hb-icon__theme: (
 );
 
 .hb-icon {
-  @include host-animation;
   @include host-styled {
     display: inline-block;
     font-size: 0;

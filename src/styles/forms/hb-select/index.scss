@@ -30,7 +30,6 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
 }
 
 .hb-select {
-  @include host-animation;
   @include host-styled {
     display: block;
     font-size: $hb-select__font-size;
