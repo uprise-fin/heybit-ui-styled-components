@@ -14,13 +14,8 @@ export default {
   component: "hb-dialog",
   argTypes: {
     open: {
-      options: ["true", "false"],
+      options: [true, false],
       control: { type: "radio" },
-    },
-    ddd: {
-      control: {
-        type: "html",
-      },
     },
   },
 } as Meta;
