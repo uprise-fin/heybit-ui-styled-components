@@ -70,10 +70,6 @@ export class HbInput extends Base {
       const ableData = Array(10).fill('').map((_,i) =>i + '').concat('.')
       if (data !== null && !ableData.includes(data)) this.inputEl.value = this.value
       else this.inputEl.value = this.toNumeric(this.inputEl.value)
-      // if (data === null) {
-      //   this.inputEl.value = this.toNumeric(this.inputEl.value)
-      // } else 
-      // else 
     }
     if (this.inputValue !== this.inputEl.value) this.onChange(ev)
   }
