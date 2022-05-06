@@ -33,8 +33,9 @@ import "heybit-ui-styled-components"; // all components
 
 넉스트에서 ssr 활성화 시 window에러가 나는데, 이거는 라이프사이클에서 window가 있을때 require방식으로 주입하는 방법으로 해결 가능합니다.
 
-1. 데코레이터를 안쓴이유
-   스토리북 사용 시 properties를 써야 되서, 데코레이터제거하고 properties를 씀
+1. property 데코레이터를 안쓴이유
+   ㄱ. 스토리북 사용 시 properties를 써야 되서, 데코레이터제거하고 properties를 씀
+   ㄴ. number에 대해 오류가 남(아마 boolean도 그럴듯)
 1. css의 host관련
    호스트를 직접 사용하면 css 스타일만 사용할때에 적용되지 않습니다. 하여 `mixins host*`를 이용해야 합니다.
    host 자체를 스타일링 할때 `@include host-styled{}`

@@ -47,6 +47,13 @@ $hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
     @include child-styled(".hide") {
       animation: hide 1s;
     }
+  }
+  &__container {
+    position: relative;
+    min-width: none;
+    margin: auto;
+    border-radius: $hb-dialog__border-radius;
+    background: $hb-dialog__background;
     @include child-styled(".shake") {
       animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
       @keyframes shake {
@@ -72,13 +79,6 @@ $hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
         }
       }
     }
-  }
-  &__container {
-    position: relative;
-    min-width: none;
-    margin: auto;
-    border-radius: $hb-dialog__border-radius;
-    background: $hb-dialog__background;
   }
   &__close-btn {
     position: absolute;

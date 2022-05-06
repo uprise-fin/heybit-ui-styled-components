@@ -1,5 +1,9 @@
 {
-  "include": ["src/**/*", "node_modules/lit-scss-loader/types.d.ts"],
+  "include": [
+    "src/**/*",
+    "node_modules/lit-scss-loader/types.d.ts",
+    "index.d.ts"
+  ],
   "compilerOptions": {
     "esModuleInterop": true,
     "noUnusedLocals": true,
@@ -16,6 +20,5 @@
     "module": "es6",
     "target": "ES2015",
     "moduleResolution": "node"
-  },
-  "exclude": ["node_modules/lit-scss-loader/types.d.ts"]
+  }
 }

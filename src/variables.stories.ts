@@ -13,7 +13,6 @@ export default {
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const r = document.querySelector(":root");
 const rs = getComputedStyle(r);
-console.log(rs.getPropertyValue("--color__primary---31"));
 const Template: Story<any> = () =>
   html`
     ${Base.themes.map((theme) =>

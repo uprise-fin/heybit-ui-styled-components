@@ -27,14 +27,17 @@ export class HbDialog extends Base {
     this.bindEvent()
   }
   _open = false
-  persistent: false;
+  persistent = false;
+  classNames = {
+
+  }
   get open() {
     return this._open;
   }
   set open(val: boolean) {
-    if(this._open !== val) {
-      this.onToggle(val)
+    if (this._open !== val) {
       this._open = val
+      this.onToggle(val)
     }
   }
    
@@ -71,13 +74,21 @@ export class HbDialog extends Base {
     wrapEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
   }
   onAnimationEnd(event: AnimationEvent) {
-    console.log(event.animationName);
-    this.classList.remove(event.animationName);
+    const obj: Obj<string[]> = {
+      'show': ['show'],
+      'shake': ['show','shake'],
+      'hide': ['hide'],
+    }
+    this.classList.remove(...obj[event.animationName]);
   }
   onToggle(val: boolean) {
-    this.setAttribute('open', val.toString())
-    this.classList[val ? 'add' : 'remove']("open");
-    this.classList.add(val ? "show" : 'hide');
+    if (!val) this.removeAttribute('open')
+    const obj: Obj<string[]> = {
+      true: ['open', 'show'],
+      false: ['hide']
+    }
+    this.classList.add(...obj[val + ''])
+    this.classList.remove(...obj[!val + ''])
   }
 
   onClose() {
@@ -87,8 +98,8 @@ export class HbDialog extends Base {
   adapterOnClose(e: Event) {
     e.stopImmediatePropagation()
     if (this.persistent) return this.classList.add("shake")
+
     this.onClose()
-    return false
   } 
 }
 
