@@ -71,6 +71,8 @@ export class HbInput extends Base {
       if (data !== null && !ableData.includes(data)) this.inputEl.value = this.value
       else this.inputEl.value = this.toNumeric(this.inputEl.value)
     }
+    // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
+    // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
     if (this.inputValue !== this.inputEl.value) this.onChange(ev)
   }
 
@@ -89,11 +91,7 @@ export class HbInput extends Base {
   }
 
   onChange(ev: InputEvent) {
-    let value  = this.inputEl.value
-    this.inputValue = value;
-    if (this.type === type.number) value = this.toNumeric(value, true)
-    this.value = value;
-    this.setAttribute('value', value)
+    this.setAttribute('value', this.inputEl.value)
     this.dispatchEvent(new Event("change", ev));
   }
   
