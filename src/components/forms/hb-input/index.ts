@@ -37,7 +37,6 @@ export class HbInput extends Base {
   static get properties() {
     return {
       value: { type: String, Reflect: true },
-      inputValue: { type: String, Reflect: true },
       type: { type: String, Reflect: true },
       maxlength: { type: Number, Reflect: true },
     };
@@ -48,6 +47,14 @@ export class HbInput extends Base {
     return this.type
   }
 
+  set originalValue (value: string) {
+    this.inputValue = value;
+  }
+  get originalValue () {
+    if (this.type === type.number) return this.toNumeric(this.inputValue, true)
+    return this.inputValue
+  }
+
   render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
@@ -55,7 +62,6 @@ export class HbInput extends Base {
         id="input"
         class="hb-input__el"
         part="el"
-        value="${this.inputValue}"
         @input=${this.onInput}
         type=${this.isType}
         maxlength=${this.maxlength}
@@ -65,15 +71,17 @@ export class HbInput extends Base {
     `
   }
   onInput(ev: InputEvent) {
+    console.log(2)
+    const { value } = this.inputEl
     if (this.type === type.number) { 
       const { data } = ev
       const ableData = Array(10).fill('').map((_,i) =>i + '').concat('.')
-      if (data !== null && !ableData.includes(data)) this.inputEl.value = this.value
-      else this.inputEl.value = this.toNumeric(this.inputEl.value)
+      if (data !== null && !ableData.includes(data)) this.inputEl.value = this.inputValue
+      else this.inputEl.value = this.toNumeric(value)
     }
     // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
     // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
-    if (this.inputValue !== this.inputEl.value) this.onChange(ev)
+    if (this.inputValue !== value) this.onChange(ev)
   }
 
   toNumeric(value: string, toNumber: boolean = false) {
@@ -91,19 +99,21 @@ export class HbInput extends Base {
   }
 
   onChange(ev: InputEvent) {
-    this.setAttribute('value', this.inputEl.value)
+    const { value } = this.inputEl
+    this.originalValue = value
+    this.setAttribute('value', this.originalValue)
     this.dispatchEvent(new Event("change", ev));
   }
   
   async customConnectedCallback() {
     this.inputEl = await getElement(this.shadowRoot, 'input')
-    this.inputValue = this.value
-    if (this.type === type.number) this.inputEl.value = this.toNumeric(this.inputValue)
+    this.originalValue = this.value
+    this.inputEl.value = this.inputValue
   }
   attributeChangedCallback(name: string, _: string, newVal: string) {
+    console.log(1)
     if (name === 'value') {
       if (this.type === type.number) newVal = this.toNumeric(newVal)
-      this.inputValue = newVal
       this.inputEl && (this.inputEl.value = newVal)
     }
 
