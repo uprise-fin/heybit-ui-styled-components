@@ -26,10 +26,9 @@ export class HbInput extends Base {
   static override get styles() {
     return [require("../../../styles/forms/hb-input/index.scss").default];
   }
+  _value = '';
   inputEl?: HTMLInputElement;
-
-  value = '';
-  inputValue = '';
+  attributeSync = false
   decimal: number = 2;
   comma: number = 3;
   maxlength?: number;
@@ -37,6 +36,7 @@ export class HbInput extends Base {
   static get properties() {
     return {
       value: { type: String, Reflect: true },
+      attributeSync: { type: Boolean, Reflect: true },
       type: { type: String, Reflect: true },
       maxlength: { type: Number, Reflect: true },
     };
@@ -47,12 +47,20 @@ export class HbInput extends Base {
     return this.type
   }
 
-  set originalValue (value: string) {
-    this.inputValue = value;
+  set value (value: string) {
+    if (this.type === type.number) {
+      this._value = this.toNumeric(value);
+    } else {
+      this._value = value;
+    }
   }
-  get originalValue () {
-    if (this.type === type.number) return this.toNumeric(this.inputValue, true)
-    return this.inputValue
+  get value () {
+    return this._value
+  }
+
+  get originalValue() {
+    if (this.type === type.number) return this.toNumeric(this._value, true)
+    return this._value
   }
 
   render() {
@@ -71,17 +79,17 @@ export class HbInput extends Base {
     `
   }
   onInput(ev: InputEvent) {
-    console.log(2)
-    const { value } = this.inputEl
+    const inputEl = this.inputEl
+    const { value } = inputEl
     if (this.type === type.number) { 
       const { data } = ev
       const ableData = Array(10).fill('').map((_,i) =>i + '').concat('.')
-      if (data !== null && !ableData.includes(data)) this.inputEl.value = this.inputValue
-      else this.inputEl.value = this.toNumeric(value)
+      if (data !== null && !ableData.includes(data)) inputEl.value = this.value
+      else inputEl.value = this.toNumeric(value)
     }
     // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
     // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
-    if (this.inputValue !== value) this.onChange(ev)
+    if (this.value !== value) this.onChange(ev)
   }
 
   toNumeric(value: string, toNumber: boolean = false) {
@@ -100,21 +108,22 @@ export class HbInput extends Base {
 
   onChange(ev: InputEvent) {
     const { value } = this.inputEl
-    this.originalValue = value
-    this.setAttribute('value', this.originalValue)
+    this.value = value
+    if (this.attributeSync) this.setAttribute('value', this.originalValue)
     this.dispatchEvent(new Event("change", ev));
   }
   
   async customConnectedCallback() {
-    this.inputEl = await getElement(this.shadowRoot, 'input')
-    this.originalValue = this.value
-    this.inputEl.value = this.inputValue
+    const inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'input')
+    this.inputEl = inputEl
+    this.value = this.getAttribute('value')
+    inputEl.value = this.value
   }
   attributeChangedCallback(name: string, _: string, newVal: string) {
-    console.log(1)
     if (name === 'value') {
+      const inputEl = this.inputEl
       if (this.type === type.number) newVal = this.toNumeric(newVal)
-      this.inputEl && (this.inputEl.value = newVal)
+      inputEl && inputEl.value !== newVal && (inputEl.value = newVal)
     }
 
     super.attributeChangedCallback(name, _, newVal);
