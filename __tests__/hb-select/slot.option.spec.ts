@@ -1,9 +1,10 @@
 //button.spec.ts
 import { HbSelect } from "../../src";
-import { getShadowElement, getShadowRoot, getRandom } from "../utils";
+import { getRandom, getShadowElement, getShadowRoot } from "../utils";
 const SHADOW_TAG = "hb-select";
 describe(SHADOW_TAG, () => {
   let SHADOW_ELEMENT: HbSelect;
+  let SHADOW_ROOT: ShadowRoot | null;
   const options = [
     { label: "aa", value: "aa" },
     { label: "가나다", value: "가나다" },
@@ -13,15 +14,9 @@ describe(SHADOW_TAG, () => {
   beforeEach(() => {
     SHADOW_ELEMENT = window.document.createElement(SHADOW_TAG) as HbSelect;
     SHADOW_ELEMENT.setAttribute("value", value);
-    options.map(({ label, value }) => {
-      const div = document.createElement("div");
-      div.slot = "option";
-      div.tabIndex = 0;
-      div.dataset.value = value;
-      div.dataset.label = label;
-      SHADOW_ELEMENT.appendChild(div);
-    });
+    SHADOW_ELEMENT.setAttribute("options", JSON.stringify(options));
     document.body.appendChild(SHADOW_ELEMENT);
+    SHADOW_ROOT = getShadowRoot(SHADOW_TAG);
   });
 
   afterEach(() => {
@@ -29,21 +24,14 @@ describe(SHADOW_TAG, () => {
   });
 
   it(`${SHADOW_TAG}에 value와 option slot이 입력되면 value에 맞는 라벨이 적용된다.`, async () => {
-    expect(SHADOW_ELEMENT.label).toEqual(
-      options.find((x) => x.value === value)?.label
-    );
+    const input = SHADOW_ROOT.getElementById("label") as HTMLInputElement;
+    expect(input.value).toEqual(options.find((x) => x.value === value)?.label);
   });
   it(`${SHADOW_TAG}에 option slot이 선택되면 value와 label이 바뀐다.`, async () => {
-    const selectedElement = SHADOW_ELEMENT.optionEls[getRandom(options)];
-    selectedElement.click();
-    expect(SHADOW_ELEMENT.getAttribute("value")).toEqual(
-      selectedElement.dataset.value
-    );
-
-    expect(SHADOW_ELEMENT.value).toEqual(selectedElement.dataset.value);
-    expect(SHADOW_ELEMENT.label).toEqual(selectedElement.dataset.label);
-    const shadowRoot = await getShadowRoot(SHADOW_TAG);
-    const labelEl = await shadowRoot.getElementById("label");
-    expect(labelEl.dataset.label).toEqual(selectedElement.dataset.label);
+    const value = options[getRandom(options)].value;
+    SHADOW_ELEMENT.setAttribute("value", value);
+    await SHADOW_ELEMENT.updateComplete;
+    const input = SHADOW_ROOT.getElementById("label") as HTMLInputElement;
+    expect(input.value).toEqual(options.find((x) => x.value === value).label);
   });
 });

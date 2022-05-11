@@ -41,6 +41,7 @@ export class HbInput extends Base {
       type: { type: String, Reflect: true },
       placeholder: { type: String, Reflect: true },
       maxlength: { type: Number, Reflect: true },
+      decimal: { type: Number, Reflect: true },
     };
   }
 

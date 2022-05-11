@@ -24,14 +24,11 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
   box-sizing: border-box;
   outline: none;
   background: none;
-  &::before {
-    content: attr(data-label);
-  }
-  &.is-placeholder {
-    color: #999;
-  }
   &[data-selected] {
     background: rgba(#000, 0.3);
+  }
+  &[hidden] {
+    display: none;
   }
 }
 
@@ -52,6 +49,7 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
     &:empty {
       &::after {
         content: attr(data-empty-text);
+        @extend %option;
       }
     }
     &__btn {
