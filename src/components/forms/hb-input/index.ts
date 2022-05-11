@@ -29,6 +29,7 @@ export class HbInput extends Base {
   _value = '';
   inputEl?: HTMLInputElement;
   attributeSync = false
+  placeholder = ''
   decimal: number = 2;
   comma: number = 3;
   maxlength?: number;
@@ -38,6 +39,7 @@ export class HbInput extends Base {
       value: { type: String, Reflect: true },
       attributeSync: { type: Boolean, Reflect: true },
       type: { type: String, Reflect: true },
+      placeholder: { type: String, Reflect: true },
       maxlength: { type: Number, Reflect: true },
     };
   }
@@ -72,7 +74,7 @@ export class HbInput extends Base {
         part="el"
         @input=${this.onInput}
         type=${this.isType}
-        maxlength=${this.maxlength}
+        placeholder=${this.placeholder}
       />
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
@@ -80,12 +82,19 @@ export class HbInput extends Base {
   }
   onInput(ev: InputEvent) {
     const inputEl = this.inputEl
-    const { value } = inputEl
-    if (this.type === type.number) { 
+    let { value } = inputEl
+    if (this.type === type.number) { //숫자만 입력받도록 값 변경
       const { data } = ev
       const ableData = Array(10).fill('').map((_,i) =>i + '').concat('.')
       if (data !== null && !ableData.includes(data)) inputEl.value = this.value
       else inputEl.value = this.toNumeric(value)
+      value = inputEl.value
+    }
+
+    if (this.maxlength > 0) { // 최대글자수 이하로 입력 받도록 값 변경
+      let length = value.length
+      if (this.type === type.number) length = inputEl.value.length - (inputEl.value.length - this.toNumeric(inputEl.value, true).length)
+      if (length > this.maxlength) return inputEl.value = this.value
     }
     // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
     // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
@@ -93,7 +102,8 @@ export class HbInput extends Base {
   }
 
   toNumeric(value: string, toNumber: boolean = false) {
-    const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, 'g')
+    if (!value || typeof value !== 'string') return ''
+    
     const dotIndex = value.indexOf('.')
     const hasDot = dotIndex > 0
     let decimal = ''
@@ -102,7 +112,11 @@ export class HbInput extends Base {
       value = value.substring(0, dotIndex)
     }
     value = value.replace(/[^0-9]/gi, '')
-    if (!toNumber) value = value.replace(req, ',')
+
+    if (!toNumber) {
+      const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, 'g')
+      value = value.replace(req, ',')
+    }
     return value + `${hasDot?'.':''}${decimal.replace(/[^0-9]/gi, '')}`
   }
 

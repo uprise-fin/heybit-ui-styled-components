@@ -1,7 +1,6 @@
 import Base from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { getChildren } from "../../../utils";
 
 /**
  * @fires select 옵션을 선택할때 발생
@@ -22,7 +21,7 @@ export class HbSelect extends Base {
 
   width = '';
   value = '';
-  label = '';
+  options: {label: string; value: string}[] = []
   placeholder = '비었습니다.'
   emptyText="비었습니닷"
 
@@ -32,8 +31,14 @@ export class HbSelect extends Base {
       width: { type: String, Reflect: true },
       value: { type: String, Reflect: true },
       label: { type: String, Reflect: true },
+      index: { type: Number, Reflect: true },
+      options: { type: Array, Reflect: true },
       emptyText: { type: String, Reflect: true },
     };
+  }
+
+  get label() {
+    return this.options.find(x => x.value === this.value)?.label
   }
 
   get isLabel() {
@@ -45,7 +50,6 @@ export class HbSelect extends Base {
   }
 
   sto = setTimeout(() => {}, 0);
-  optionEls!: HTMLElement[];
 
   render() {
     return html`
@@ -65,59 +69,35 @@ export class HbSelect extends Base {
           class="hb-select__label--caret"
         ></slot>
       </div>
-      <slot
-        class="hb-select__list"
+      <div
+        class=${'hb-select__list'}
         @click=${this.onSelect}
-        data-empty-text=${this.emptyText}
         @keyup=${(evt:KeyboardEvent)=>evt.key === "Enter" && this.onSelect(evt)}
+        data-empty-text=${this.emptyText}
         style="width: ${this.width}px;"
         part="list"
-        id="list"
-        name="option"
-      ></slot>
+      >${this.options.map(x => (html`
+        <button class="hb-select__list__btn" ?data-selected=${x.value === this.value} data-value=${x.value} data-label=${x.label}></button>
+      `))}</div>
     `
   }
   async customConnectedCallback() {
     this.tabIndex = 0;
     this.onfocus = () => this.adapterShow();
     this.onblur = () => this.adapterHide();
-    await this.bindEvents();
-  }
-  override requestUpdate() {
-    super.requestUpdate();
-  }
-  async bindEvents() {
-    const children = await getChildren(this.children);
-    
-    this.optionEls = children.filter((x) => x.slot === "option");
-    this.optionEls.forEach((element: HTMLElement) => {
-      element.tabIndex = 0;
-      element.onfocus = () => this.adapterShow();
-      element.onblur = () => this.adapterHide();
-
-      if (element.dataset.value === this.value) {
-        this.label = element.dataset.label || "";
-        element.classList.add("selected");
-      }
-    });
+    // await this.bindEvents();
   }
 
   onSelect(evt: Event) {
+    if (!(evt.target instanceof HTMLButtonElement)) return
+
     this.adapterHide();
-
-    const element = evt.target as HTMLElement;
-    if (element.slot !== 'option') return;
-
-    const { value, label } = element.dataset;
+    const {target} = evt;
+    const { value  } = target.dataset;
     if (this.value === value) return;
-    this.optionEls.forEach((x) => {
-      if (x === element) return element.classList.add("selected");
-      x.classList.remove("selected");
-    });
     this.dispatchEvent(new Event("change", evt));
     this.setAttribute("value", value!);
     this.value = value!;
-    this.label = label!;
   }
   onShow() {
     const { width } = this.getBoundingClientRect();

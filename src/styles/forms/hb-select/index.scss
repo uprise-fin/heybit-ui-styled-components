@@ -24,8 +24,14 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
   box-sizing: border-box;
   outline: none;
   background: none;
+  &::before {
+    content: attr(data-label);
+  }
   &.is-placeholder {
     color: #999;
+  }
+  &[data-selected] {
+    background: rgba(#000, 0.3);
   }
 }
 
@@ -48,13 +54,16 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
         content: attr(data-empty-text);
       }
     }
-    &::slotted(*) {
+    &__btn {
       @extend %option;
     }
-    &::slotted(.selected) {
-      background: rgba(#000, 0.3);
-    }
-    :host(.open) & {
+    // &::slotted(.selected) {
+    //   background: rgba(#000, 0.3);
+    // }
+    // :host(.open) & {
+    //   display: block;
+    // }
+    @include child-styled(".open") {
       display: block;
     }
   }
@@ -64,9 +73,6 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
   &__label {
     border: #{$hb-select__border-width} solid #{$hb-select__border-color};
     border-radius: $hb-select__border-radius;
-    &::before {
-      content: attr(data-label);
-    }
   }
   // &__layer {
   //   :host(.open) & {
