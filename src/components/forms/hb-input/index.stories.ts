@@ -14,17 +14,25 @@ const Template: Story<HbInput> = ({
   maxlength,
   placeholder,
   decimal,
+  comma,
 }) => html`
   <hb-input
     type=${type}
     placeholder=${placeholder}
     .maxlength=${maxlength}
     .decimal=${decimal}
+    .comma=${comma}
     @change=${($event: any) => console.log($event.target.originalValue)}
   ></hb-input>
 `;
 
 export const text: Story<HbInput> = Template.bind({});
-text.args = { type: type.text, maxlength: 10, placeholder: "" };
+text.args = { type: type.text, maxlength: 10, placeholder: "글자입력해주세요" };
 export const number: Story<HbInput> = Template.bind({});
-number.args = { type: type.number, maxlength: 10, placeholder: "", decimal: 2 };
+number.args = {
+  type: type.number,
+  maxlength: 10,
+  placeholder: "숫자를써볼까요?",
+  decimal: 2,
+  comma: 3,
+};

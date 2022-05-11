@@ -65,6 +65,10 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
       display: block;
     }
   }
+  &__input {
+    @extend %option;
+    font-size: inherit;
+  }
   &__option {
     @extend %option;
   }

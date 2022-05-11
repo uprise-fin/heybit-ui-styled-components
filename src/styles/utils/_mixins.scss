@@ -36,8 +36,11 @@
   }
 }
 
-@function toHSL($color, $level) {
-  $lightness: lightness($color) - ($level);
+@function toHSL($color, $level: "") {
+  $lightness: $level + "%";
+  @if $level == "" {
+    $lightness: lightness($color);
+  }
   @return hue($color), saturation($color), #{$lightness};
 }
 

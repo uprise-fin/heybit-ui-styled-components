@@ -59,14 +59,13 @@ export class HbSelect extends Base {
   render() {
     return html`
       <div
-        
         class='hb-select__label'
       >
         <slot
           name="icon"
           class="hb-select__label--icon"
         ></slot>
-        <input id="label" part="label" class="hb-select__option" ?readonly=${!this.search} .value=${this.label} placeholder=${this.placeholder} @input=${this.onInput} />
+        <input id="label" part="label" class="hb-select__input" ?readonly=${!this.search} .value=${this.label} placeholder=${this.placeholder} @input=${this.onInput} />
         <slot
           name="caret"
           class="hb-select__label--caret"

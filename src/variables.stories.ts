@@ -15,13 +15,19 @@ const r = document.querySelector(":root");
 const rs = getComputedStyle(r);
 const Template: Story<any> = () =>
   html`
+    ${Base.themes.map(
+      (theme) =>
+        html`
+          <p style="color: var(--color__${theme})">${theme}</p>
+        `
+    )}
+  `;
+const LevelTemplate: Story<any> = () =>
+  html`
     ${Base.themes.map((theme) =>
-      Array(200)
+      Array(101)
         .fill(null)
-        .map((_, i) => {
-          const name = i - 100 ? `${theme}--${i - 100}` : theme;
-          return `--color__${name}`;
-        })
+        .map((_, i) => `--color__${theme}--${i}`)
         .filter((x) => rs.getPropertyValue(x))
         .map(
           (x) =>
@@ -32,4 +38,5 @@ const Template: Story<any> = () =>
     )}
   `;
 
-export const primary: Story<any> = Template.bind({});
+export const base: Story<any> = Template.bind({});
+export const several: Story<any> = LevelTemplate.bind({});

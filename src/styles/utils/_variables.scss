@@ -38,7 +38,7 @@ $variables: (
   box: $box,
   layer: $layer,
 );
-$level: 60;
+$level: 101;
 $themes: (
   primary: (
     void: map-get($colors, primary),
