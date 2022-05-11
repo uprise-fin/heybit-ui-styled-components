@@ -24,7 +24,8 @@ export class HbSelect extends Base {
     return [require("../../../styles/forms/hb-select/index.scss").default];
   }
   search = false
-  width = '';
+  width: number;
+  height: number;
   value = '';
   options: Option[] = []
   placeholder = '검색어를 입력해주세요.'
@@ -36,7 +37,8 @@ export class HbSelect extends Base {
   static get properties() {
     return {
       search: { type: Boolean, Reflect: true },
-      width: { type: String, Reflect: true },
+      width: { type: Number, Reflect: true },
+      height: { type: Number, Reflect: true },
       value: { type: String, Reflect: true },
       options: { type: Array, Reflect: true },
       emptyText: { type: String, Reflect: true },
@@ -76,7 +78,7 @@ export class HbSelect extends Base {
         @click=${this.onSelect}
         @keyup=${(evt:KeyboardEvent)=>evt.key === "Enter" && this.onSelect(evt)}
         data-empty-text=${this.emptyText}
-        style="width: ${this.width}px;"
+        style="width: ${this.width}px; max-height:${this.height}px"
         part="list"
         id="list"
       >${this.options.filter(x => x.label.includes(this.inputValue)).map(x => (
@@ -110,9 +112,10 @@ export class HbSelect extends Base {
     this.inputValue = ''
   }
   onShow() {
-    const { width } = this.getBoundingClientRect();
+    const { width, bottom } = this.getBoundingClientRect();
     this.classList.add("open");
-    this.width = `${width}`;
+    this.width = width;
+    this.height = window.innerHeight - bottom - 50;
     this.search && (this.hasFocus = true)
 
     // this.top = `${top}`;
