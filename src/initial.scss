@@ -42,31 +42,41 @@
   }
 }
 :root {
-  @function getAmount($name) {
+  @function getAmount($name, $level) {
     @if ($name == "primary") {
-      @return 3;
+      $level: $level * 3;
+      @return 51 + $level;
     }
     @if ($name == "secondary") {
-      @return 0;
+      $level: $level * 3.6;
+      @return 19 + $level;
     }
     @if ($name == "tertiary") {
-      @return 50;
+      $level: $level * 1.5;
+      @return 92 + $level;
     }
     @if ($name == "quaternary") {
-      @return 50;
+      $level: $level * 1.5;
+      @return 94 + $level;
     }
     @if ($name == "quinary") {
-      @return 50;
+      $level: $level * 1.5;
+      @return 95 + $level;
     }
     @if ($name == "senary") {
-      @return 40;
+      $level: $level * 1.5;
+      @return 95 + $level;
     }
   }
   @each $name, $color in $colors {
     --color__#{$name}: hsl(#{toHSL($color)});
     @for $lv from 0 through $level {
-      $c: toHSL($color, $lv);
-      --color__#{$name}--#{$lv}: hsl(#{$c});
+      $vl: $lv - round($level / 2);
+      @if $vl != 0 {
+        $_lv: getAmount($name, $vl);
+        $c: toHSL($color, $_lv);
+        --color__#{$name}--#{$vl}: hsl(#{$c});
+      }
     }
   }
 }

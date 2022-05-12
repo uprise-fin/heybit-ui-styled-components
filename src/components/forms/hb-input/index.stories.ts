@@ -15,10 +15,12 @@ const Template: Story<HbInput> = ({
   placeholder,
   decimal,
   comma,
+  error,
 }) => html`
   <hb-input
     type=${type}
     placeholder=${placeholder}
+    ?error=${error}
     .maxlength=${maxlength}
     .decimal=${decimal}
     .comma=${comma}
@@ -27,7 +29,12 @@ const Template: Story<HbInput> = ({
 `;
 
 export const text: Story<HbInput> = Template.bind({});
-text.args = { type: type.text, maxlength: 10, placeholder: "글자입력해주세요" };
+text.args = {
+  type: type.text,
+  maxlength: 10,
+  placeholder: "글자입력해주세요",
+  error: false,
+};
 export const number: Story<HbInput> = Template.bind({});
 number.args = {
   type: type.number,
@@ -35,4 +42,5 @@ number.args = {
   placeholder: "숫자를써볼까요?",
   decimal: 2,
   comma: 3,
+  error: false,
 };

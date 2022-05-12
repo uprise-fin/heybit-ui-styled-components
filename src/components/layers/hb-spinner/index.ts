@@ -3,7 +3,7 @@ import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 
 /**
- * @csspart footer
+ * 
  */
 
 @customElement("hb-spinner")

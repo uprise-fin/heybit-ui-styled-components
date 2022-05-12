@@ -25,9 +25,12 @@ const Template: Story<any> = () =>
 const LevelTemplate: Story<any> = () =>
   html`
     ${Base.themes.map((theme) =>
-      Array(101)
+      Array(10)
         .fill(null)
-        .map((_, i) => `--color__${theme}--${i}`)
+        .map((_, i) => {
+          const j = i - 10 / 2;
+          return `--color__${theme}--${j}`;
+        })
         .filter((x) => rs.getPropertyValue(x))
         .map(
           (x) =>

@@ -13,7 +13,13 @@ export enum type {
  * @fires input 입력할때
  * @fires change 값이 변경될때 발생
  * @property value 기본 값
- * @property has-error 오류가 있을 때
+ * @property attributeSync true 시 value값이 arrtibute 싱크됨
+ * @property placeholder 
+ * @property decimal 소수점
+ * @property comma 콤마
+ * @property maxlength 최대글자수
+ * @property type 텍스트 숫자 비번
+ * @property error 텍스트 숫자 비번
  * @slot slot--left - optional, 왼쪽 영역(아이콘)
  * @slot slot--right - optional, 오른쪽 영역(버튼)
  * @csspart slot--left
@@ -30,6 +36,7 @@ export class HbInput extends Base {
   inputEl?: HTMLInputElement;
   attributeSync = false
   placeholder = ''
+  error = false
   decimal: number = 2;
   comma: number = 3;
   maxlength?: number;
@@ -43,6 +50,7 @@ export class HbInput extends Base {
       maxlength: { type: Number, Reflect: true },
       comma: { type: Number, Reflect: true },
       decimal: { type: Number, Reflect: true },
+      error: { type: Boolean, Reflect: true },
     };
   }
 
@@ -73,7 +81,7 @@ export class HbInput extends Base {
       <input
         id="input"
         class="hb-input__el"
-        part="el"
+        part="input"
         @input=${this.onInput}
         type=${this.isType}
         placeholder=${this.placeholder}

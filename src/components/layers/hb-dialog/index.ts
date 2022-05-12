@@ -9,6 +9,8 @@ export enum open  {
 }
 /**
  * @property open 온 오프
+ * @property persistent
+ * @property hideCloseBtn
  * @slot header - optional, 헤더
  * @slot content - optional, 내용
  * @slot footer - optional, 푸터
@@ -23,14 +25,17 @@ export class HbDialog extends Base {
   static override get styles() {
     return [require("../../../styles/layers/hb-dialog/index.scss").default];
   }
-  customConnectedCallback() {
-    this.bindEvent()
+  async customConnectedCallback() {
+    this.wrapEl = await getElement<HTMLDivElement>(this.shadowRoot, "wrap");
+    this.wrapEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
   }
+  disconnectedCallback() {
+    this.wrapEl.onanimationend = () => null
+  }
+  wrapEl?: HTMLDivElement
   _open = false
   persistent = false;
-  classNames = {
-
-  }
+  hideCloseBtn = false;
   get open() {
     return this._open;
   }
@@ -48,6 +53,7 @@ export class HbDialog extends Base {
     return {
       open: { type: Boolean, Reflect: true },
       persistent: { type: Boolean, Reflect: true },
+      hideCloseBtn: { type: Boolean, Reflect: true },
     };
   }
 
@@ -55,23 +61,23 @@ export class HbDialog extends Base {
     return html`
       <div class="hb-dialog__wrap" id="wrap" @click=${this.adapterOnClose}>
         <div class="hb-dialog__container" part="container" @click=${this.stopPropagation}>
-          <button
-            @click=${this.onClose}
-            class="hb-dialog__close-btn"
-            part="close-btn"
-            id="close-btn"
-          ><hb-icon icon="ic-account-clear-24-black.svg" size="medium"></hb-icon></button>
+          ${
+            this.hideCloseBtn ? '' : html`
+            <button
+              @click=${this.onClose}
+              type="button"
+              class="hb-dialog__close-btn"
+              part="close-btn"
+              id="close-btn"
+            ><hb-icon icon="ic-account-clear-24-black.svg" size="medium"></hb-icon></button>`
+          }
+          
           <slot name="header" part="header" class="hb-dialog__header"></slot>
           <slot name="content" part="content" class="hb-dialog__content"></slot>
           <slot name="footer" part="footer" class="hb-dialog__footer"></slot>
         </div>
       </div>
     `
-  }
-  async bindEvent() {
-    // const a = this.shadowRoot;
-    const wrapEl = await getElement<HTMLDivElement>(this.shadowRoot, "wrap");
-    wrapEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
   }
   onAnimationEnd(event: AnimationEvent) {
     const obj: Obj<string[]> = {

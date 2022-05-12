@@ -12,10 +12,12 @@ export default {
     theme: {
       options: Object.keys(theme),
       control: { type: 'radio' },
+      defaultValue: theme.primary
     },
     size: {
       options: Object.keys(size),
       control: { type: 'radio' },
+      defaultValue: size.large
     },
   },
 } as Meta;

@@ -12,7 +12,11 @@ $hb-input__border-color--warning: map-get(
 ) !default;
 $hb-input__border-radius: map-get($variables, box, border-radius) !default;
 $hb-input__background: map-get($variables, box, background) !default;
-$hb-input__background--warning: map-get($variables, box, background) !default;
+$hb-input__background--warning: map-get(
+  $variables,
+  box,
+  background--warning
+) !default;
 .hb-input {
   @include host-styled {
     position: relative;

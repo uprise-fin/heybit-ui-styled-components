@@ -9,10 +9,15 @@ export enum type {
 /**
  * @fires select 옵션을 선택할때 발생
  * @fires change 값이 변경될때 발생
- * @property value 기본 값
+ * @property theme
+ * @property size
+ * @property type
+ * @property loading
+ * @property disabled
+ * @property placeholder
  * @slot slot--left - optional, slot--left부분을 커스텀할때 사용
  * @slot slot--right - optional, slot--right부분을 커스텀할때 사용
- * @slot option - required, select의 옵션 엘리먼트
+ * @slot 내용 컨텐츠 영역
  * @csspart label
  * @csspart list
  */

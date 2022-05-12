@@ -19,10 +19,17 @@ export default {
     open: {
       options: [true, false],
       control: { type: "radio" },
+      defaultValue: false,
     },
     persistent: {
       options: [true, false],
       control: { type: "radio" },
+      defaultValue: false,
+    },
+    hideCloseBtn: {
+      options: [true, false],
+      control: { type: "radio" },
+      defaultValue: false,
     },
   },
 } as Meta;
@@ -31,13 +38,19 @@ export default {
 const Template: Story<HbDialogExpns> = ({
   open,
   persistent,
+  hideCloseBtn,
   // storybook 옵션
   header,
   content,
   footer,
 }) =>
   html`
-    <hb-dialog ?open=${open} id="dialog" ?persistent=${persistent}>
+    <hb-dialog
+      ?open=${open}
+      id="dialog"
+      ?persistent=${persistent}
+      ?hideCloseBtn=${hideCloseBtn}
+    >
       ${header
         ? html`
             <div slot="header">${header}</div>

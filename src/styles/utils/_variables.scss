@@ -29,6 +29,7 @@ $box: (
   border-radius: 6px,
   disabled: #cdd1d6,
   background: #fff,
+  background--warning: rgba(red, 0.05),
 );
 $layer: (
   background: rgba(#000, 0.1),
@@ -38,7 +39,7 @@ $variables: (
   box: $box,
   layer: $layer,
 );
-$level: 101;
+$level: 10;
 $themes: (
   primary: (
     void: map-get($colors, primary),

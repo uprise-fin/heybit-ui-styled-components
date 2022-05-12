@@ -83,7 +83,7 @@ export class HbSelect extends Base {
         id="list"
       >${this.options.filter(x => x.label.includes(this.inputValue)).map(x => (
         html`
-          <button class="hb-select__list__btn" ?data-selected=${x.value === this.value} data-value=${x.value}>${x.label}</button>
+          <button type="button" class="hb-select__list__btn" ?data-selected=${x.value === this.value} data-value=${x.value}>${x.label}</button>
         `))}</div>
     `
   }
@@ -92,6 +92,10 @@ export class HbSelect extends Base {
     this.onfocus = () => this.adapterShow();
     this.onblur = () => this.adapterHide();
     // await this.bindEvents();
+  }
+  disconnectedCallback() {
+    this.onfocus = () => null;
+    this.onblur = () => null;
   }
 
   onInput(ev: InputEvent) {

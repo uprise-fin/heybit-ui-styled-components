@@ -14,7 +14,11 @@ $hb-button__border-color--warning: map-get(
 ) !default;
 $hb-button__border-radius: map-get($variables, box, border-radius) !default;
 $hb-button__background: map-get($variables, box, background) !default;
-$hb-button__background--warning: map-get($variables, box, background) !default;
+$hb-button__background--warning: map-get(
+  $variables,
+  box,
+  background--warning
+) !default;
 $hb-button__size: (
   large: 54px,
   medium: 50px,

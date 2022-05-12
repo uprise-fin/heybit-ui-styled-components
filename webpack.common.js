@@ -11,6 +11,9 @@ module.exports = {
     "components/hb-icon/index": [
       path.resolve(__dirname, "./src/components/hb-icon/index.ts"),
     ],
+    "components/hb-img/index": [
+      path.resolve(__dirname, "./src/components/hb-img/index.ts"),
+    ],
     "components/forms/hb-input/index": [
       path.resolve(__dirname, "./src/components/forms/hb-input/index.ts"),
     ],
@@ -23,6 +26,14 @@ module.exports = {
 
     "components/layers/hb-dialog/index": [
       path.resolve(__dirname, "./src/components/layers/hb-dialog/index.ts"),
+    ],
+
+    "components/layers/hb-spinner/index": [
+      path.resolve(__dirname, "./src/components/layers/hb-spinner/index.ts"),
+    ],
+
+    "components/layers/hb-skeleton/index": [
+      path.resolve(__dirname, "./src/components/layers/hb-skeleton/index.ts"),
     ],
   },
   module: {
@@ -74,6 +85,10 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: "svg-inline-loader",
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset",
       },
     ],
   },

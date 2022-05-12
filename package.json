@@ -1,7 +1,7 @@
 {
   "name": "heybit-ui-styled-components",
   "customElements": "custom-elements.json",
-  "version": "0.7.10",
+  "version": "0.8.0",
   "files": [
     "dist/**"
   ],
@@ -53,6 +53,7 @@
     "@types/react": "^18.0.8",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.5.1",
     "css-modules-typescript-loader": "^4.0.1",
     "dotenv": "^14.2.0",
