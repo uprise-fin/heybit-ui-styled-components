@@ -41,12 +41,13 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
   &__list {
     z-index: 1;
     position: absolute;
-    display: none;
     overflow: auto;
+    display: none;
     border: 1px solid #000;
     box-sizing: border-box;
     border-radius: $hb-select__border-radius;
-    transition: opacity 5s;
+    transition: height 0.4s;
+    background: $hb-select__background;
     &:empty {
       &::after {
         content: attr(data-empty-text);
@@ -55,6 +56,7 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
     }
     &__btn {
       @extend %option;
+      cursor: pointer;
     }
     // &::slotted(.selected) {
     //   background: rgba(#000, 0.3);
@@ -69,9 +71,13 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
   &__input {
     @extend %option;
     font-size: inherit;
-  }
-  &__option {
-    @extend %option;
+    cursor: pointer;
+
+    @include child-styled(".open") {
+      &:not(:read-only) {
+        cursor: auto;
+      }
+    }
   }
   &__label {
     border: #{$hb-select__border-width} solid #{$hb-select__border-color};

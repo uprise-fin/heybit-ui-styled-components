@@ -6,7 +6,6 @@ export interface Option {
   value: string;
 }
 /**
- * @fires select 옵션을 선택할때 발생
  * @fires change 값이 변경될때 발생
  * @property value 기본 값
  * @property options Options[] 옵션
@@ -47,16 +46,20 @@ export class HbSelect extends Base {
     };
   }
 
+  get list() {
+    return this.options.filter(x => x.label.includes(this.inputValue)) || []
+  }
+
   get values() {
-    return this.options.map(x => x.value)
+    return this.options.map(x => x.value) || []
   }
 
   get label() {
-    if (this.hasFocus) return this.inputValue
+    if (this.hasFocus || !this.options) return this.inputValue
     return this.options.find(x => x.value === this.value)?.label || ''
   }
 
-  sto = setTimeout(() => {}, 0);
+  sto = setTimeout(() =>{}, 0);
 
   render() {
     return html`
@@ -81,7 +84,7 @@ export class HbSelect extends Base {
         style="width: ${this.width}px; max-height:${this.height}px"
         part="list"
         id="list"
-      >${this.options.filter(x => x.label.includes(this.inputValue)).map(x => (
+      >${this.list.map(x => (
         html`
           <button type="button" class="hb-select__list__btn" ?data-selected=${x.value === this.value} data-value=${x.value}>${x.label}</button>
         `))}</div>
