@@ -88,10 +88,10 @@ $hb-button__theme: (
       background: $bg;
     }
     @include host-styled("[theme='#{$class}']:hover") {
-      background: getInteractiveColor($bg, 9%);
+      background: getHoverColor($bg);
     }
     @include host-styled("[theme='#{$class}']:active") {
-      background: getInteractiveColor($bg, 16%);
+      background: getActiveColor($bg);
     }
   }
   @each $class, $size in $hb-button__size {

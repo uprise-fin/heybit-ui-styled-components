@@ -10,10 +10,15 @@
     <!-- <hb-img src="banner-kr.png" multiSource="3" breakPoint="0"></hb-img>
     <hb-img src="wall.jpg" multiSource="3" breakPoint="0"></hb-img> -->
     <hb-select
+      search="true"
       value="3"
       options='[{"value":"3","label":"3번"},{"value":"2","label":"2번"},{"value":"1","label":"1번"}]'
-    ></hb-select>
+      onchange="console.log(arguments)"
+    >
+      <hb-icon slot="caret" icon="ic-system-arrow-down-18-black.svg"></hb-icon>
+    </hb-select>
     <hb-img
+      style="width: 100%;"
       src="https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png"
     ></hb-img>
     <hb-input

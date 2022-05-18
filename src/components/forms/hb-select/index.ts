@@ -1,5 +1,6 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
+import { getElement } from "../../../utils";
 import Base from "../../base";
 export interface Option {
   label: string; 
@@ -7,6 +8,7 @@ export interface Option {
 }
 /**
  * @fires change 값이 변경될때 발생
+ * @property attributeSync true 시 value값이 arrtibute 싱크됨
  * @property value 기본 값
  * @property options Options[] 옵션
  * @property search 서치 온오프
@@ -22,9 +24,11 @@ export class HbSelect extends Base {
   static override get styles() {
     return [require("../../../styles/forms/hb-select/index.scss").default];
   }
+  inputEl?: HTMLInputElement;
+  attributeSync = false
   search = false
   width: number;
-  height: number;
+  maxHeight: number;
   value = '';
   options: Option[] = []
   placeholder = '검색어를 입력해주세요.'
@@ -36,8 +40,9 @@ export class HbSelect extends Base {
   static get properties() {
     return {
       search: { type: Boolean, Reflect: true },
+      attributeSync: { type: Boolean, Reflect: true },
       width: { type: Number, Reflect: true },
-      height: { type: Number, Reflect: true },
+      maxHeight: { type: Number, Reflect: true },
       value: { type: String, Reflect: true },
       options: { type: Array, Reflect: true },
       emptyText: { type: String, Reflect: true },
@@ -63,25 +68,17 @@ export class HbSelect extends Base {
 
   render() {
     return html`
-      <div
-        class='hb-select__label'
-      >
-        <slot
-          name="icon"
-          class="hb-select__label--icon"
-        ></slot>
+      <div class="hb-select__label" @click=${this.onClick}>
+        <slot name="icon" class="hb-select__label--icon"></slot>
         <input id="label" part="label" class="hb-select__input" ?readonly=${!this.search} .value=${this.label} placeholder=${this.placeholder} @input=${this.onInput} />
-        <slot
-          name="caret"
-          class="hb-select__label--caret"
-        ></slot>
+        <slot name="caret" class="hb-select__label--caret"></slot>
       </div>
       <div
         class="hb-select__list"
         @click=${this.onSelect}
         @keyup=${(evt:KeyboardEvent)=>evt.key === "Enter" && this.onSelect(evt)}
         data-empty-text=${this.emptyText}
-        style="width: ${this.width}px; max-height:${this.height}px"
+        style="width: ${this.width}px; max-height:${this.maxHeight}px;"
         part="list"
         id="list"
       >${this.list.map(x => (
@@ -91,16 +88,14 @@ export class HbSelect extends Base {
     `
   }
   async customConnectedCallback() {
-    this.tabIndex = 0;
+    this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'label')
     this.onfocus = () => this.adapterShow();
     this.onblur = () => this.adapterHide();
-    // await this.bindEvents();
   }
   disconnectedCallback() {
     this.onfocus = () => null;
     this.onblur = () => null;
   }
-
   onInput(ev: InputEvent) {
     const {target} = ev;
     if(!(target instanceof HTMLInputElement)) return
@@ -114,7 +109,7 @@ export class HbSelect extends Base {
     const { value  } = target.dataset;
     if (this.value === value || !this.values.includes(value)) return;
     this.dispatchEvent(new Event("change", evt));
-    this.setAttribute("value", value!);
+    this.attributeSync && this.setAttribute("value", value!);
     this.value = value!;
     this.inputValue = ''
   }
@@ -122,12 +117,13 @@ export class HbSelect extends Base {
     const { width, bottom } = this.getBoundingClientRect();
     this.classList.add("open");
     this.width = width;
-    this.height = window.innerHeight - bottom - 50;
+    this.maxHeight = window.innerHeight - bottom - 50;
     this.search && (this.hasFocus = true)
-
-    // this.top = `${top}`;
   }
 
+  onClick() {
+    this.search && this.inputEl.focus();
+  }
 
   adapterShow() {
     clearTimeout(this.sto);
@@ -135,8 +131,8 @@ export class HbSelect extends Base {
   }
 
   onHide() {
-    this.classList.remove("open");
     this.blur()
+    this.classList.remove("open");
     this.search && (this.hasFocus = false)
   }
 

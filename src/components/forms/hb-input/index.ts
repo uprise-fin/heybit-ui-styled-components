@@ -74,6 +74,7 @@ export class HbInput extends Base {
     if (this.type === type.number) return this.toNumeric(this._value, true)
     return this._value
   }
+  
 
   render() {
     return html`
@@ -133,7 +134,7 @@ export class HbInput extends Base {
   onChange(ev: InputEvent) {
     const { value } = this.inputEl
     this.value = value
-    if (this.attributeSync) this.setAttribute('value', this.originalValue)
+    this.attributeSync && this.setAttribute('value', this.originalValue)
     this.dispatchEvent(new Event("change", ev));
   }
   
@@ -142,6 +143,10 @@ export class HbInput extends Base {
     this.inputEl = inputEl
     this.value = this.getAttribute('value')
     inputEl.value = this.value
+    this.onclick = () => inputEl.focus()
+  }
+  disconnectedCallback() {
+    this.onclick = () => null;
   }
   attributeChangedCallback(name: string, _: string, newVal: string) {
     if (name === 'value') {

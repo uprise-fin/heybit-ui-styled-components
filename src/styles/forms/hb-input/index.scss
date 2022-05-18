@@ -21,6 +21,9 @@ $hb-input__background--warning: map-get(
   @include host-styled {
     position: relative;
     display: flex;
+    align-items: center;
+    padding: $hb-input__padding;
+    cursor: text;
   }
   &__border {
     // 브라우저의 자동완성기능에 인풋의 배경색이 브라우저에서 컨트롤하게 됩니다. box-shadow 해당 속성으로만 그 색상을 덮을 수 있어서,
@@ -42,11 +45,12 @@ $hb-input__background--warning: map-get(
     width: 0;
     flex: 1;
     height: $hb-input__height;
-    padding: $hb-input__padding;
+    padding: 0;
     font-size: $hb-input__font-size;
     box-sizing: border-box;
     border: 0;
     outline: none;
+    cursor: inherit;
     box-shadow: 0 0 0 999px #{$hb-input__background} inset;
     background: $hb-input__background;
     @include child-styled([error]) {

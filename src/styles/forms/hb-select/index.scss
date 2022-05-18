@@ -21,11 +21,12 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
   padding: $hb-select__padding;
   border: 0;
   align-items: center;
+  font-size: inherit;
   box-sizing: border-box;
   outline: none;
   background: none;
   &[data-selected] {
-    background: rgba(#000, 0.3);
+    background: rgba(#000, 0.3) !important;
   }
   &[hidden] {
     display: none;
@@ -57,6 +58,9 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
     &__btn {
       @extend %option;
       cursor: pointer;
+      &:hover {
+        background: getHoverColor(#fff);
+      }
     }
     // &::slotted(.selected) {
     //   background: rgba(#000, 0.3);
@@ -69,8 +73,20 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
     }
   }
   &__input {
-    @extend %option;
+    height: 100%;
+    padding: 0;
     font-size: inherit;
+    flex: 1;
+    border: 0;
+    outline: none;
+    cursor: inherit;
+  }
+  &__label {
+    @extend %option;
+    display: flex;
+    align-items: center;
+    border: #{$hb-select__border-width} solid #{$hb-select__border-color};
+    border-radius: $hb-select__border-radius;
     cursor: pointer;
 
     @include child-styled(".open") {
@@ -78,10 +94,6 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
         cursor: auto;
       }
     }
-  }
-  &__label {
-    border: #{$hb-select__border-width} solid #{$hb-select__border-color};
-    border-radius: $hb-select__border-radius;
   }
   // &__layer {
   //   :host(.open) & {
