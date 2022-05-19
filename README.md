@@ -24,7 +24,7 @@ import "/node_modules/heybit-ui-styled-components/dist/initial.css";
 필요한 컴포넌트만 불러오거나 전체를 불러오는 방법입니다.
 
 ```javascript
-import "heybit-ui-styled-components/dist/components/forms/hb-input"; // selected
+import "heybit-ui-styled-components/dist/components/organism/hb-input"; // selected
 //or
 import "heybit-ui-styled-components"; // all components
 ```

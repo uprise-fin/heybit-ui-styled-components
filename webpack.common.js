@@ -8,32 +8,31 @@ module.exports = {
     initial: [path.resolve(__dirname, "./src/initial.scss")],
     index: [path.resolve(__dirname, "./src/styles/index.scss")],
 
-    "components/hb-icon/index": [
-      path.resolve(__dirname, "./src/components/hb-icon/index.ts"),
+    "components/molecule/hb-icon/index": [
+      path.resolve(__dirname, "./src/components/molecule/hb-icon/index.ts"),
     ],
-    "components/hb-img/index": [
-      path.resolve(__dirname, "./src/components/hb-img/index.ts"),
+    "components/molecule/hb-img/index": [
+      path.resolve(__dirname, "./src/components/molecule/hb-img/index.ts"),
     ],
-    "components/forms/hb-input/index": [
-      path.resolve(__dirname, "./src/components/forms/hb-input/index.ts"),
+    "components/molecule/hb-spinner/index": [
+      path.resolve(__dirname, "./src/components/molecule/hb-spinner/index.ts"),
     ],
-    "components/forms/hb-select/index": [
-      path.resolve(__dirname, "./src/components/forms/hb-select/index.ts"),
-    ],
-    "components/forms/hb-button/index": [
-      path.resolve(__dirname, "./src/components/forms/hb-button/index.ts"),
+    "components/molecule/hb-skeleton/index": [
+      path.resolve(__dirname, "./src/components/molecule/hb-skeleton/index.ts"),
     ],
 
-    "components/layers/hb-dialog/index": [
-      path.resolve(__dirname, "./src/components/layers/hb-dialog/index.ts"),
+    "components/organism/hb-input/index": [
+      path.resolve(__dirname, "./src/components/organism/hb-input/index.ts"),
+    ],
+    "components/organism/hb-select/index": [
+      path.resolve(__dirname, "./src/components/organism/hb-select/index.ts"),
+    ],
+    "components/organism/hb-button/index": [
+      path.resolve(__dirname, "./src/components/organism/hb-button/index.ts"),
     ],
 
-    "components/layers/hb-spinner/index": [
-      path.resolve(__dirname, "./src/components/layers/hb-spinner/index.ts"),
-    ],
-
-    "components/layers/hb-skeleton/index": [
-      path.resolve(__dirname, "./src/components/layers/hb-skeleton/index.ts"),
+    "components/template/hb-dialog/index": [
+      path.resolve(__dirname, "./src/components/template/hb-dialog/index.ts"),
     ],
   },
   module: {

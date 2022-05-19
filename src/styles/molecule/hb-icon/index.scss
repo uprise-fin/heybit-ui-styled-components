@@ -1,0 +1,58 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+$hb-icon__size: (
+  large: 54px,
+  medium: 50px,
+  small: 46px,
+);
+$hb-icon__theme: (
+  primary: map-get($themes, primary, void),
+  secondary: map-get($themes, secondary, void),
+  tertiary: map-get($themes, tertiary, void),
+  quaternary: map-get($themes, quaternary, void),
+  quinary: map-get($themes, quinary, void),
+  senary: map-get($themes, senary, void),
+);
+
+.hb-icon {
+  @include host-styled {
+    display: inline-block;
+    font-size: 0;
+  }
+  @each $class, $size in $hb-icon__size {
+    @include host-styled("[size='#{$class}']") {
+      width: #{$size};
+    }
+  }
+  @each $class, $color in $hb-icon__theme {
+    @include host-styled("[theme='#{$class}']") {
+      fill: $color;
+    }
+  }
+  @include host-styled("[theme]:not([theme=''])") {
+    svg {
+      fill: inherit;
+      > *:first-child {
+        fill: inherit;
+      }
+    }
+  }
+
+  // @each $class, $value in $hb-button__theme {
+  //   @include host-styled("[theme='#{$class}']") {
+  //     $bd: map-get($value, bd);
+  //     $bg: map-get($value, bg);
+  //     @if ($bd) {
+  //       border: 1px solid $bd;
+  //     } @else {
+  //       border: 1px solid $bg;
+  //     }
+  //     color: map-get($value, color);
+  //     background: $bg;
+  //   }
+  // }
+  &__svg {
+    width: 100%;
+    height: auto;
+  }
+}

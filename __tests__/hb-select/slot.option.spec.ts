@@ -30,8 +30,8 @@ describe(SHADOW_TAG, () => {
   it(`${SHADOW_TAG}에 option slot이 선택되면 value와 label이 바뀐다.`, async () => {
     const value = options[getRandom(options)].value;
     SHADOW_ELEMENT.setAttribute("value", value);
+    const input = SHADOW_ROOT?.getElementById("label") as HTMLInputElement;
     await SHADOW_ELEMENT.updateComplete;
-    const input = SHADOW_ROOT.getElementById("label") as HTMLInputElement;
     expect(input.value).toEqual(options.find((x) => x.value === value).label);
   });
 });

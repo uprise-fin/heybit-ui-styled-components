@@ -13,12 +13,12 @@ export enum theme {
 'senary' ='senary',
 }
 export default class extends LitElement {
-  override connectedCallback() {
+  override async connectedCallback() {
     super.connectedCallback();
     this.dataset.hbStyled = "true";
-    this.customConnectedCallback()
+    await this.customConnectedCallback()
   }
-  customConnectedCallback(){}
+  async customConnectedCallback(){}
 
   stopPropagation(e: Event) {
     e.stopPropagation();

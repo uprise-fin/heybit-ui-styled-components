@@ -207,7 +207,7 @@
           !1
         );
     },
-    "./src/components/forms/hb-button/index.stories.ts": (
+    "./src/components/organism/hb-button/index.stories.ts": (
       __unused_webpack_module,
       __webpack_exports__,
       __webpack_require__
@@ -539,7 +539,7 @@
                   get: function get() {
                     return [
                       __webpack_require__(
-                        "./src/styles/forms/hb-button/index.scss"
+                        "./src/styles/organism/hb-button/index.scss"
                       ).Z,
                     ];
                   },
@@ -714,7 +714,7 @@
                   get: function get() {
                     return [
                       __webpack_require__(
-                        "./src/styles/layers/hb-spinner/index.scss"
+                        "./src/styles/template/hb-spinner/index.scss"
                       ).Z,
                     ];
                   },
@@ -725,7 +725,7 @@
           );
         })(base.Z))
       );
-      const index_stories = { title: "components/forms/hb-button" };
+      const index_stories = { title: "components/organism/hb-button" };
       var Template = function Template(_ref) {
           var loading = _ref.loading,
             disabled = _ref.disabled,
@@ -861,8 +861,8 @@
           senary.parameters
         ));
     },
-    "./src/components/forms/hb-input/index.stories.ts": () => {},
-    "./src/components/forms/hb-select/index.stories.ts": () => {},
+    "./src/components/organism/hb-input/index.stories.ts": () => {},
+    "./src/components/organism/hb-select/index.stories.ts": () => {},
     "./src/components/hb-icon/index.stories.ts": (
       __unused_webpack_module,
       __webpack_exports__,
@@ -1314,8 +1314,8 @@
           primary.parameters
         ));
     },
-    "./src/components/layers/hb-dialog/index.stories.ts": () => {},
-    "./src/components/layers/hb-spinner/index.stories.ts": () => {},
+    "./src/components/template/hb-dialog/index.stories.ts": () => {},
+    "./src/components/template/hb-spinner/index.stories.ts": () => {},
     "./src/variables.stories.ts": (
       __unused_webpack_module,
       __webpack_exports__,
@@ -1675,11 +1675,11 @@
           version: 3,
           sources: [
             "webpack://./src/styles/utils/_mixins.scss",
-            "webpack://./src/styles/forms/hb-button/index.scss",
-            "webpack://./src/styles/forms/hb-input/index.scss",
-            "webpack://./src/styles/forms/hb-select/index.scss",
-            "webpack://./src/styles/layers/hb-dialog/index.scss",
-            "webpack://./src/styles/layers/hb-spinner/index.scss",
+            "webpack://./src/styles/organism/hb-button/index.scss",
+            "webpack://./src/styles/organism/hb-input/index.scss",
+            "webpack://./src/styles/organism/hb-select/index.scss",
+            "webpack://./src/styles/template/hb-dialog/index.scss",
+            "webpack://./src/styles/template/hb-spinner/index.scss",
           ],
           names: [],
           mappings:
@@ -1697,7 +1697,7 @@
       ]);
       const __WEBPACK_DEFAULT_EXPORT__ = ___CSS_LOADER_EXPORT___;
     },
-    "./src/styles/forms/hb-button/index.scss": (
+    "./src/styles/organism/hb-button/index.scss": (
       __unused_webpack_module,
       __webpack_exports__,
       __webpack_require__
@@ -1725,7 +1725,7 @@
       )
         .iv`@keyframes hb-styled{0%{opacity:0}100%{opacity:1}}.hb-icon{display:inline-block;font-size:0}:host([data-hb-styled]){animation:hb-styled .2s}:host{display:inline-block;font-size:0}:host([size=large]){width:54px}.hb-icon[size=large]{width:54px}:host([size=medium]){width:50px}.hb-icon[size=medium]{width:50px}:host([size=small]){width:46px}.hb-icon[size=small]{width:46px}`;
     },
-    "./src/styles/layers/hb-spinner/index.scss": (
+    "./src/styles/template/hb-spinner/index.scss": (
       __unused_webpack_module,
       __webpack_exports__,
       __webpack_require__
@@ -1745,18 +1745,18 @@
       __webpack_require__
     ) => {
       var map = {
-        "./components/forms/hb-button/index.stories.ts":
-          "./src/components/forms/hb-button/index.stories.ts",
-        "./components/forms/hb-input/index.stories.ts":
-          "./src/components/forms/hb-input/index.stories.ts",
-        "./components/forms/hb-select/index.stories.ts":
-          "./src/components/forms/hb-select/index.stories.ts",
+        "./components/organism/hb-button/index.stories.ts":
+          "./src/components/organism/hb-button/index.stories.ts",
+        "./components/organism/hb-input/index.stories.ts":
+          "./src/components/organism/hb-input/index.stories.ts",
+        "./components/organism/hb-select/index.stories.ts":
+          "./src/components/organism/hb-select/index.stories.ts",
         "./components/hb-icon/index.stories.ts":
           "./src/components/hb-icon/index.stories.ts",
-        "./components/layers/hb-dialog/index.stories.ts":
-          "./src/components/layers/hb-dialog/index.stories.ts",
-        "./components/layers/hb-spinner/index.stories.ts":
-          "./src/components/layers/hb-spinner/index.stories.ts",
+        "./components/template/hb-dialog/index.stories.ts":
+          "./src/components/template/hb-dialog/index.stories.ts",
+        "./components/template/hb-spinner/index.stories.ts":
+          "./src/components/template/hb-spinner/index.stories.ts",
         "./variables.stories.ts": "./src/variables.stories.ts",
       };
       function webpackContext(req) {
