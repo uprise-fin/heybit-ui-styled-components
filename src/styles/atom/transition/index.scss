@@ -1,0 +1,38 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+
+.hb-transition {
+  @include host-styled {
+    display: none;
+    animation: hide $transition__duration;
+    @keyframes hide {
+      0% {
+        display: block;
+        opacity: 1;
+      }
+      100% {
+        display: block;
+        opacity: 0;
+      }
+    }
+  }
+  @include host-styled(".visible") {
+    display: block;
+  }
+
+  @include host-styled("[show]") {
+    display: block;
+    animation: show $transition__duration;
+    opacity: 1;
+    @keyframes show {
+      0% {
+        display: block;
+        opacity: 0;
+      }
+      100% {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -40,6 +40,7 @@ $variables: (
   layer: $layer,
 );
 $level: 10;
+$transition__duration: 0.3s;
 $themes: (
   primary: (
     void: map-get($colors, primary),

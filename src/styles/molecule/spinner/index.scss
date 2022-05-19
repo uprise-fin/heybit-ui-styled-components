@@ -1,0 +1,96 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+$hb-spinner__color: #000 !default;
+$hb-spinner__background: #fff !default;
+$hb-spinner__size: (
+  large: 18px,
+  medium: 16px,
+  small: 14px,
+) !default;
+$hb-spinner__theme: (
+  primary: map-get($themes, primary, solid),
+  secondary: map-get($themes, secondary, solid),
+  tertiary: map-get($themes, tertiary, solid),
+  quaternary: map-get($themes, quaternary, solid),
+  quinary: map-get($themes, quinary, solid),
+  senary: map-get($themes, senary, solid),
+) !default;
+// $hb-input__height: $box__height !default;
+// $hb-input__padding: $box__padding !default;
+// $hb-input__border-width: $box__border-width !default;
+// $hb-input__font-size: $box__font-size !default;
+// $hb-input__border-color: $box__border-color !default;
+// $hb-input__border-color--warning: $box__border-color--warning !default;
+// $hb-input__border-radius: $box__border-radius !default;
+// $hb-input__background: $box__background !default;
+// $hb-input__background--warning: $box__background !default;
+
+.hb-spinner {
+  @include host-styled {
+    display: inline-flex;
+    align-items: center;
+    &::before,
+    &::after {
+      content: "";
+      flex: auto;
+    }
+  }
+  @each $class, $size in $hb-spinner__size {
+    @include host-styled("[size='#{$class}']") {
+      width: $size * 4;
+    }
+  }
+
+  &__icon {
+    border-radius: 100%;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+
+    @each $class, $color in $hb-spinner__theme {
+      @include child-styled("[theme='#{$class}']") {
+        background: $color;
+      }
+    }
+    @each $class, $size in $hb-spinner__size {
+      @include child-styled("[size='#{$class}']") {
+        width: $size;
+        height: $size;
+        margin: 0 #{$size / 6};
+      }
+    }
+
+    &--inner-1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+
+    &--inner-2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+  }
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

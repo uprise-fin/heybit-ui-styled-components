@@ -8,31 +8,39 @@ module.exports = {
     initial: [path.resolve(__dirname, "./src/initial.scss")],
     index: [path.resolve(__dirname, "./src/styles/index.scss")],
 
-    "components/molecule/hb-icon/index": [
-      path.resolve(__dirname, "./src/components/molecule/hb-icon/index.ts"),
-    ],
-    "components/molecule/hb-img/index": [
-      path.resolve(__dirname, "./src/components/molecule/hb-img/index.ts"),
-    ],
-    "components/molecule/hb-spinner/index": [
-      path.resolve(__dirname, "./src/components/molecule/hb-spinner/index.ts"),
-    ],
-    "components/molecule/hb-skeleton/index": [
-      path.resolve(__dirname, "./src/components/molecule/hb-skeleton/index.ts"),
+    "components/atom/transition/index": [
+      path.resolve(__dirname, "./src/components/atom/transition/index.ts"),
     ],
 
-    "components/organism/hb-input/index": [
-      path.resolve(__dirname, "./src/components/organism/hb-input/index.ts"),
-    ],
-    "components/organism/hb-select/index": [
-      path.resolve(__dirname, "./src/components/organism/hb-select/index.ts"),
-    ],
-    "components/organism/hb-button/index": [
-      path.resolve(__dirname, "./src/components/organism/hb-button/index.ts"),
+    "components/atom/loading/index": [
+      path.resolve(__dirname, "./src/components/atom/loading/index.ts"),
     ],
 
-    "components/template/hb-dialog/index": [
-      path.resolve(__dirname, "./src/components/template/hb-dialog/index.ts"),
+    "components/molecule/icon/index": [
+      path.resolve(__dirname, "./src/components/molecule/icon/index.ts"),
+    ],
+    "components/molecule/img/index": [
+      path.resolve(__dirname, "./src/components/molecule/img/index.ts"),
+    ],
+    "components/molecule/spinner/index": [
+      path.resolve(__dirname, "./src/components/molecule/spinner/index.ts"),
+    ],
+    "components/molecule/skeleton/index": [
+      path.resolve(__dirname, "./src/components/molecule/skeleton/index.ts"),
+    ],
+
+    "components/organism/input/index": [
+      path.resolve(__dirname, "./src/components/organism/input/index.ts"),
+    ],
+    "components/organism/select/index": [
+      path.resolve(__dirname, "./src/components/organism/select/index.ts"),
+    ],
+    "components/organism/button/index": [
+      path.resolve(__dirname, "./src/components/organism/button/index.ts"),
+    ],
+
+    "components/template/dialog/index": [
+      path.resolve(__dirname, "./src/components/template/dialog/index.ts"),
     ],
   },
   module: {
@@ -115,7 +123,7 @@ module.exports = {
 //   mode: "production",
 //   entry: {
 //     index: [path.resolve(__dirname, "./src/index.ts")],
-//     "hb-input": [path.resolve(__dirname, "./src/hb-input/index.ts")],
+//     "input": [path.resolve(__dirname, "./src/input/index.ts")],
 //   },
 //   module: {
 //     rules: [

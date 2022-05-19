@@ -75,7 +75,7 @@
       font-family: $font-family;
       visibility: hidden;
       &[data-hb-styled] {
-        animation: hb-styled 0.2s;
+        animation: hb-styled $transition__duration;
         visibility: visible;
       }
     }
