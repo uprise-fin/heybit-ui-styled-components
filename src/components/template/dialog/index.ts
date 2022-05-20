@@ -60,7 +60,7 @@ export class HbDialog extends Base {
 
   render() {
     return html`
-      <hb-transition ?show=${this.open} type=${transitionType.fade}>
+      <hb-transition id="transition" ?show=${this.open} type=${transitionType.fade}>
         <div class="hb-dialog__wrap" id="wrap" @click=${this.adapterOnClose}>
           <hb-transition ?show=${this.open} type=${transitionType.zoom}>
             <div class="hb-dialog__container" part="container" @click=${this.stopPropagation}>

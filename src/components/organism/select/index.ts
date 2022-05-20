@@ -78,8 +78,8 @@ export class HbSelect extends Base {
         <input id="label" part="label" class="hb-select__input" ?readonly=${!this.search} .value=${this.label} placeholder=${this.placeholder} @input=${this.onInput} />
         <slot name="caret" class="hb-select__label--caret"></slot>
       </div>
-      <hb-transition ?show=${this.open} type=${transitionType.fade}>
-        <hb-list class="hb-select__list" style="width: ${this.width}px;transform: translateY(-${this.top}px);max-height:${this.maxHeight}px;" @change=${this.onSelect} .options=${this.options} .value=${this.value}></hb-list>
+      <hb-transition id="transition" ?show=${this.open} type=${transitionType.fade}>
+        <hb-list id="list" class="hb-select__list" style="width: ${this.width}px;transform: translateY(-${this.top}px);max-height:${this.maxHeight}px;" @change=${this.onSelect} .options=${this.options} .value=${this.value}></hb-list>
       </hb-transition>
     `
   }
