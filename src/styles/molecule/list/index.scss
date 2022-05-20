@@ -35,18 +35,19 @@ $hb-list__background--warning: map-get($variables, box, background) !default;
 
 .hb-list {
   @include host-styled {
+    overflow: hidden;
     display: block;
     font-size: $hb-list__font-size;
+    border-radius: $hb-list__border-radius;
+    border: 1px solid #000;
+    box-sizing: border-box;
   }
 
   &__wrap {
     overflow: auto;
-    width: calc(100% - 2px);
+    // width: calc(100% - 2px);
+    // margin-left: 1px;
     max-height: inherit;
-    margin-left: 1px;
-    border-radius: $hb-list__border-radius;
-    box-sizing: border-box;
-    outline: 1px solid #000;
     background: $hb-list__background;
     &:empty {
       &::after {

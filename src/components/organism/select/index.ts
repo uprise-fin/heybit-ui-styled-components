@@ -31,6 +31,7 @@ export class HbSelect extends Base {
   search = false
   open = false;
   top: number;
+  left: number;
   width: number;
   maxHeight: number;
   value = '';
@@ -46,6 +47,7 @@ export class HbSelect extends Base {
       search: { type: Boolean, Reflect: true },
       attributeSync: { type: Boolean, Reflect: true },
       top: { type: Number, Reflect: true },
+      left: { type: Number, Reflect: true },
       width: { type: Number, Reflect: true },
       maxHeight: { type: Number, Reflect: true },
       value: { type: String, Reflect: true },
@@ -79,7 +81,7 @@ export class HbSelect extends Base {
         <slot name="caret" class="hb-select__label--caret"></slot>
       </div>
       <hb-transition id="transition" ?show=${this.open} type=${transitionType.fade}>
-        <hb-list id="list" class="hb-select__list" style="width: ${this.width}px;transform: translateY(-${this.top}px);max-height:${this.maxHeight}px;" @change=${this.onSelect} .options=${this.options} .value=${this.value}></hb-list>
+        <hb-list id="list" class="hb-select__list" style="width: ${this.width}px;transform: translate(-${this.left}px,-${this.top}px);max-height:${this.maxHeight}px;" @change=${this.onSelect} .options=${this.list} .value=${this.value}></hb-list>
       </hb-transition>
     `
   }
@@ -94,6 +96,7 @@ export class HbSelect extends Base {
   }
   onScroll() {
     this.top = window.scrollY
+    this.left = window.scrollX
   }
   
   onScrollBound = this.onScroll.bind(this)
