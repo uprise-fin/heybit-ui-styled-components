@@ -3,6 +3,7 @@ import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
 import { transitionType } from "../../atom/transition";
 import Base from "../../base";
+import { HbList } from "../../molecule/list";
 export interface Option {
   label: string; 
   value: string;
@@ -29,6 +30,7 @@ export class HbSelect extends Base {
   attributeSync = false
   search = false
   open = false;
+  top: number;
   width: number;
   maxHeight: number;
   value = '';
@@ -38,12 +40,12 @@ export class HbSelect extends Base {
   hasFocus = false
   inputValue = ''
 
-
   static get properties() {
     return {
       open: { type: Boolean, Reflect: true },
       search: { type: Boolean, Reflect: true },
       attributeSync: { type: Boolean, Reflect: true },
+      top: { type: Number, Reflect: true },
       width: { type: Number, Reflect: true },
       maxHeight: { type: Number, Reflect: true },
       value: { type: String, Reflect: true },
@@ -77,18 +79,7 @@ export class HbSelect extends Base {
         <slot name="caret" class="hb-select__label--caret"></slot>
       </div>
       <hb-transition ?show=${this.open} type=${transitionType.fade}>
-        <div
-          class="hb-select__list"
-          @click=${this.onSelect}
-          @keyup=${(evt:KeyboardEvent)=>evt.key === "Enter" && this.onSelect(evt)}
-          data-empty-text=${this.emptyText}
-          style="width: ${this.width}px; max-height:${this.maxHeight}px;"
-          part="list"
-          id="list"
-        >${this.list.map(x => (
-          html`
-            <button type="button" class="hb-select__list__btn" ?data-selected=${x.value === this.value} data-value=${x.value}>${x.label}</button>
-          `))}</div>
+        <hb-list class="hb-select__list" style="width: ${this.width}px;transform: translateY(-${this.top}px);max-height:${this.maxHeight}px;" @change=${this.onSelect} .options=${this.options} .value=${this.value}></hb-list>
       </hb-transition>
     `
   }
@@ -101,6 +92,12 @@ export class HbSelect extends Base {
     this.onfocus = () => null;
     this.onblur = () => null;
   }
+  onScroll() {
+    this.top = window.scrollY
+  }
+  
+  onScrollBound = this.onScroll.bind(this)
+
   onInput(ev: InputEvent) {
     const {target} = ev;
     if(!(target instanceof HTMLInputElement)) return
@@ -109,21 +106,22 @@ export class HbSelect extends Base {
 
   onSelect(evt: Event) {
     this.adapterHide();
-    if (!(evt.target instanceof HTMLButtonElement)) return
-    const { target } = evt;
-    const { value  } = target.dataset;
-    if (this.value === value || !this.values.includes(value)) return;
-    this.dispatchEvent(new Event("change", evt));
+    const {target} = evt;
+    if(!(target instanceof HbList)) return
+    const { value  } = target;
     this.attributeSync && this.setAttribute("value", value!);
     this.value = value!;
     this.inputValue = ''
+    this.dispatchEvent(new Event("change", evt));
   }
   onShow() {
     const { width, bottom } = this.getBoundingClientRect();
     this.open = true;
-    this.width = width;
+    this.width = width
     this.maxHeight = window.innerHeight - bottom - 50;
     this.search && (this.hasFocus = true)
+    this.onScrollBound()
+    window.addEventListener('scroll', this.onScrollBound)
   }
 
   onClick() {
@@ -139,6 +137,7 @@ export class HbSelect extends Base {
     this.blur()
     this.open = false;
     this.search && (this.hasFocus = false)
+    window.removeEventListener('scroll', this.onScrollBound)
   }
 
   adapterHide() {

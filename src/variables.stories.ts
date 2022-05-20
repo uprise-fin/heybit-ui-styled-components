@@ -25,7 +25,7 @@ const Template: Story<any> = () =>
 const LevelTemplate: Story<any> = () =>
   html`
     ${Base.themes.map((theme) =>
-      Array(10)
+      Array(11)
         .fill(null)
         .map((_, i) => {
           const j = i - 10 / 2;

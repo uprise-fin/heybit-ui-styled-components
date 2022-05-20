@@ -1,41 +1,21 @@
-import { Meta, Story } from '@storybook/web-components';
-import { html } from 'lit';
+import { Meta, Story } from "@storybook/web-components";
+import { html } from "lit";
 import "./index";
-import type { HbSelect } from './index';
+import type { HbList } from "./index";
 
-// More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: "components/organism/hb-select",
-  component: "hb-select",
+  title: "components/molecule/hb-list",
+  component: "hb-list",
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options }) =>
-  html`
-    <style>
-      .wrap {
-        position: relative;
-        display: inline-block;
-        overflow: hidden;
-        width: 500px;
-        height: 300px;
-        background: blue;
-      }
-      
-    </style>
-    <div class="wrap">
-      <hb-select value=${value} ?search=${search} .options=${options} @change=${($event: any) => console.log($event)}></hb-select>
-    </div>
-    <script>
-      window.onscroll = function() {
-        console.log("event");
-      };
-    </script>
-  `;
 
-export const primary: Story<HbSelect> = OpionSlotTmpl.bind({});
+// More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
+const OpionSlotTmpl: Story<HbList> = ({ value, options }) =>
+  html`<hb-list value=${value} .options=${options} @change=${($event: any) => console.log($event)}></hb-list>`;
+
+export const primary: Story<HbList> = OpionSlotTmpl.bind({});
 primary.args = {
-  search: false,
   value: "1",
   options: [
     {label: '1번', value:'1'},

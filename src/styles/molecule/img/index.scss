@@ -16,7 +16,7 @@
     min-width: inherit;
     min-height: inherit;
   }
-  &__skeleton {
+  &__loading {
     z-index: -1;
     opacity: 1;
     transition: opacity $transition__duration;

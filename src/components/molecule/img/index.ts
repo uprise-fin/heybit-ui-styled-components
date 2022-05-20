@@ -92,7 +92,7 @@ export class HbImg extends Base {
           `
         : ''
       }
-      <hb-skeleton class="hb-img__skeleton float" part="skeleton" ?hidden=${this.loaded || this.error}></hb-skeleton>
+      <hb-loading class="hb-img__loading float" part="loading" ?hidden=${this.loaded || this.error}></hb-loading>
       <img class="hb-img__img" part="img" src=${this.src} @error=${this.onError} @load=${this.onLoad} ?loaded=${this.loaded} ?error=${this.error}>
     </picture>
     `

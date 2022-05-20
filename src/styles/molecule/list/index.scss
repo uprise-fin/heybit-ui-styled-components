@@ -1,0 +1,66 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+
+$hb-list__height: map-get($variables, box, height) !default;
+$hb-list__padding: map-get($variables, box, padding) !default;
+$hb-list__border-width: map-get($variables, box, border-width) !default;
+$hb-list__font-size: map-get($variables, box, font-size) !default;
+$hb-list__border-color: map-get($variables, box, border-color) !default;
+$hb-list__border-color--warning: map-get(
+  $variables,
+  box,
+  border-color--warning
+) !default;
+$hb-list__border-radius: map-get($variables, box, border-radius) !default;
+$hb-list__background: map-get($variables, box, background) !default;
+$hb-list__background--warning: map-get($variables, box, background) !default;
+%option {
+  display: flex;
+  width: 100%;
+  height: $hb-list__height;
+  padding: $hb-list__padding;
+  border: 0;
+  align-items: center;
+  font-size: inherit;
+  box-sizing: border-box;
+  outline: none;
+  background: none;
+  &[data-selected] {
+    background: rgba(#000, 0.3) !important;
+  }
+  &[hidden] {
+    display: none;
+  }
+}
+
+.hb-list {
+  @include host-styled {
+    display: block;
+    font-size: $hb-list__font-size;
+  }
+
+  &__wrap {
+    overflow: auto;
+    width: calc(100% - 2px);
+    max-height: inherit;
+    margin-left: 1px;
+    border-radius: $hb-list__border-radius;
+    box-sizing: border-box;
+    outline: 1px solid #000;
+    background: $hb-list__background;
+    &:empty {
+      &::after {
+        content: attr(data-empty-text);
+        @extend %option;
+      }
+    }
+  }
+  &__btn {
+    @extend %option;
+    cursor: pointer;
+    &:focus,
+    &:hover {
+      background: getHoverColor(#fff);
+    }
+  }
+}

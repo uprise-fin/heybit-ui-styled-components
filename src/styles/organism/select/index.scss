@@ -37,35 +37,11 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
   @include host-styled {
     display: block;
     font-size: $hb-select__font-size;
+    background: $hb-select__background;
   }
 
   &__list {
-    z-index: 1;
-    position: absolute;
-    overflow: auto;
-    border: 1px solid #000;
-    box-sizing: border-box;
-    border-radius: $hb-select__border-radius;
-    background: $hb-select__background;
-    &:empty {
-      &::after {
-        content: attr(data-empty-text);
-        @extend %option;
-      }
-    }
-    &__btn {
-      @extend %option;
-      cursor: pointer;
-      &:hover {
-        background: getHoverColor(#fff);
-      }
-    }
-    // &::slotted(.selected) {
-    //   background: rgba(#000, 0.3);
-    // }
-    // :host(.open) & {
-    //   display: block;
-    // }
+    position: fixed;
   }
   &__input {
     height: 100%;
