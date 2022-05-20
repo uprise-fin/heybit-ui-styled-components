@@ -1,6 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
+import { transitionType } from "../../atom/transition";
 import Base from "../../base";
 export interface Option {
   label: string; 
@@ -27,6 +28,7 @@ export class HbSelect extends Base {
   inputEl?: HTMLInputElement;
   attributeSync = false
   search = false
+  open = false;
   width: number;
   maxHeight: number;
   value = '';
@@ -39,6 +41,7 @@ export class HbSelect extends Base {
 
   static get properties() {
     return {
+      open: { type: Boolean, Reflect: true },
       search: { type: Boolean, Reflect: true },
       attributeSync: { type: Boolean, Reflect: true },
       width: { type: Number, Reflect: true },
@@ -73,18 +76,20 @@ export class HbSelect extends Base {
         <input id="label" part="label" class="hb-select__input" ?readonly=${!this.search} .value=${this.label} placeholder=${this.placeholder} @input=${this.onInput} />
         <slot name="caret" class="hb-select__label--caret"></slot>
       </div>
-      <div
-        class="hb-select__list"
-        @click=${this.onSelect}
-        @keyup=${(evt:KeyboardEvent)=>evt.key === "Enter" && this.onSelect(evt)}
-        data-empty-text=${this.emptyText}
-        style="width: ${this.width}px; max-height:${this.maxHeight}px;"
-        part="list"
-        id="list"
-      >${this.list.map(x => (
-        html`
-          <button type="button" class="hb-select__list__btn" ?data-selected=${x.value === this.value} data-value=${x.value}>${x.label}</button>
-        `))}</div>
+      <hb-transition ?show=${this.open} type=${transitionType.fade}>
+        <div
+          class="hb-select__list"
+          @click=${this.onSelect}
+          @keyup=${(evt:KeyboardEvent)=>evt.key === "Enter" && this.onSelect(evt)}
+          data-empty-text=${this.emptyText}
+          style="width: ${this.width}px; max-height:${this.maxHeight}px;"
+          part="list"
+          id="list"
+        >${this.list.map(x => (
+          html`
+            <button type="button" class="hb-select__list__btn" ?data-selected=${x.value === this.value} data-value=${x.value}>${x.label}</button>
+          `))}</div>
+      </hb-transition>
     `
   }
   async customConnectedCallback() {
@@ -115,14 +120,14 @@ export class HbSelect extends Base {
   }
   onShow() {
     const { width, bottom } = this.getBoundingClientRect();
-    this.classList.add("open");
+    this.open = true;
     this.width = width;
     this.maxHeight = window.innerHeight - bottom - 50;
     this.search && (this.hasFocus = true)
   }
 
   onClick() {
-    this.search && this.inputEl.focus();
+    this.inputEl.focus();
   }
 
   adapterShow() {
@@ -132,7 +137,7 @@ export class HbSelect extends Base {
 
   onHide() {
     this.blur()
-    this.classList.remove("open");
+    this.open = false;
     this.search && (this.hasFocus = false)
   }
 

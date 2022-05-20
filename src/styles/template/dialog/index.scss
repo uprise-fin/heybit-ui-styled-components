@@ -17,20 +17,16 @@ $hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
 
 .hb-dialog {
   @include host-styled {
-    display: none;
-  }
-  @include host-styled(".open") {
     display: flex;
-    pointer-events: auto;
   }
-  @include host-styled(".show") {
-    display: flex;
-    pointer-events: auto;
-  }
-  @include host-styled(".hide") {
-    display: flex;
-    pointer-events: none;
-  }
+  // @include host-styled(".show") {
+  //   display: flex;
+  //   pointer-events: auto;
+  // }
+  // @include host-styled(".hide") {
+  //   display: flex;
+  //   pointer-events: none;
+  // }
 
   &__wrap {
     position: fixed;
@@ -41,17 +37,19 @@ $hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
     display: flex;
     align-items: center;
     background: $hb-dialog__layer__background;
-    @include child-styled(".show") {
-      animation: show $transition__duration;
-    }
-    @include child-styled(".hide") {
-      animation: hide $transition__duration;
+    // @include child-styled(".show") {
+    //   animation: show $transition__duration;
+    // }
+    // @include child-styled(".hide") {
+    //   animation: hide $transition__duration;
+    // }
+    > * {
+      margin: auto;
     }
   }
   &__container {
     position: relative;
     min-width: none;
-    margin: auto;
     border-radius: $hb-dialog__border-radius;
     background: $hb-dialog__background;
     @include child-styled(".shake") {

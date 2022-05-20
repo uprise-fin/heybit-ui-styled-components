@@ -4,27 +4,27 @@
 .hb-transition {
   @include host-styled {
     display: none;
-    animation: hide $transition__duration;
-    @keyframes hide {
-      0% {
-        display: block;
-        opacity: 1;
-      }
-      100% {
-        display: block;
-        opacity: 0;
-      }
-    }
   }
-  @include host-styled(".visible") {
-    display: block;
-  }
-
   @include host-styled("[show]") {
     display: block;
-    animation: show $transition__duration;
-    opacity: 1;
-    @keyframes show {
+  }
+  @include host-styled("[type='fade']") {
+    animation: hide-fade $transition__duration;
+    @keyframes hide-fade {
+      0% {
+        display: block;
+        opacity: 1;
+      }
+      100% {
+        display: block;
+        opacity: 0;
+      }
+    }
+  }
+
+  @include host-styled("[show][type='fade']") {
+    animation: show-fade $transition__duration;
+    @keyframes show-fade {
       0% {
         display: block;
         opacity: 0;
@@ -34,5 +34,36 @@
         opacity: 1;
       }
     }
+  }
+  @include host-styled("[type='zoom']") {
+    animation: hide-zoom $transition__duration;
+    @keyframes hide-zoom {
+      0% {
+        display: block;
+        transform: scale(1);
+      }
+      100% {
+        display: block;
+        transform: scale(0.7);
+      }
+    }
+  }
+
+  @include host-styled("[show][type='zoom']") {
+    animation: show-zoom $transition__duration;
+    @keyframes show-zoom {
+      0% {
+        display: block;
+        transform: scale(0.7);
+      }
+      100% {
+        display: block;
+        transform: scale(1);
+      }
+    }
+  }
+
+  @include host-styled(".visible") {
+    display: block;
   }
 }

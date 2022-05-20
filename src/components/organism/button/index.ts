@@ -1,6 +1,7 @@
 import Base, { size, theme } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
+import { transitionType } from "../../atom/transition";
 export enum type {
   "block" = "block",
   "inline" = "inline",
@@ -51,7 +52,7 @@ export class HbButton extends Base {
       <slot name="slot--left" part="slot--left" class="hb-button__slot hb-button__slot--left"></slot>
       <slot part="label" class="hb-button__label" placeholder=${this.placeholder}></slot>
       <slot name="slot--right" part="slot--right" class="hb-button__slot hb-button__slot--right"></slot>
-      <hb-transition ?show=${this.loading}><hb-spinner theme=${this.theme} size=${this.size} class="hb-button__spinner"></hb-spinner></hb-transition> 
+      <hb-transition type=${transitionType.fade} ?show=${this.loading}><hb-spinner theme=${this.theme} size=${this.size} class="hb-button__spinner"></hb-spinner></hb-transition> 
     `
   }
   async customConnectedCallback() {

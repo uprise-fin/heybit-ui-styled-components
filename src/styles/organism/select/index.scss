@@ -43,7 +43,6 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
     z-index: 1;
     position: absolute;
     overflow: auto;
-    display: none;
     border: 1px solid #000;
     box-sizing: border-box;
     border-radius: $hb-select__border-radius;
@@ -67,9 +66,6 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
     // :host(.open) & {
     //   display: block;
     // }
-    @include child-styled(".open") {
-      display: block;
-    }
   }
   &__input {
     height: 100%;

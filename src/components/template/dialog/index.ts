@@ -1,6 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
+import { transitionType } from "../../atom/transition";
 import Base from "../../base";
 
 export enum open  {
@@ -33,18 +34,18 @@ export class HbDialog extends Base {
     this.wrapEl.onanimationend = () => null
   }
   wrapEl?: HTMLDivElement
-  _open = false
+  open = false
   persistent = false;
   hideCloseBtn = false;
-  get open() {
-    return this._open;
-  }
-  set open(val: boolean) {
-    if (this._open !== val) {
-      this._open = val
-      this.onToggle(val)
-    }
-  }
+  // get open() {
+  //   return this._open;
+  // }
+  // set open(val: boolean) {
+  //   if (this._open !== val) {
+  //     this._open = val
+  //     this.onToggle(val)
+  //   }
+  // }
    
 
   // @property()
@@ -59,33 +60,32 @@ export class HbDialog extends Base {
 
   render() {
     return html`
-      <div class="hb-dialog__wrap" id="wrap" @click=${this.adapterOnClose}>
-        <div class="hb-dialog__container" part="container" @click=${this.stopPropagation}>
-          ${
-            this.hideCloseBtn ? '' : html`
-            <button
-              @click=${this.onClose}
-              type="button"
-              class="hb-dialog__close-btn"
-              part="close-btn"
-              id="close-btn"
-            ><hb-icon icon="ic-account-clear-24-black.svg" size="medium"></hb-icon></button>`
-          }
-          
-          <slot name="header" part="header" class="hb-dialog__header"></slot>
-          <slot name="content" part="content" class="hb-dialog__content"></slot>
-          <slot name="footer" part="footer" class="hb-dialog__footer"></slot>
+      <hb-transition ?show=${this.open} type=${transitionType.fade}>
+        <div class="hb-dialog__wrap" id="wrap" @click=${this.adapterOnClose}>
+          <hb-transition ?show=${this.open} type=${transitionType.zoom}>
+            <div class="hb-dialog__container" part="container" @click=${this.stopPropagation}>
+              ${
+                this.hideCloseBtn ? '' : html`
+                <button
+                  @click=${this.onClose}
+                  type="button"
+                  class="hb-dialog__close-btn"
+                  part="close-btn"
+                  id="close-btn"
+                ><hb-icon icon="ic-account-clear-24-black.svg" size="medium"></hb-icon></button>`
+              }
+              
+              <slot name="header" part="header" class="hb-dialog__header"></slot>
+              <slot name="content" part="content" class="hb-dialog__content"></slot>
+              <slot name="footer" part="footer" class="hb-dialog__footer"></slot>
+            </div>
+          </hb-transition>
         </div>
-      </div>
+      </hb-transition>
     `
   }
   onAnimationEnd(event: AnimationEvent) {
-    const obj: Obj<string[]> = {
-      'show': ['show'],
-      'shake': ['show','shake'],
-      'hide': ['hide'],
-    }
-    this.classList.remove(...obj[event.animationName]);
+    this.classList.remove(event.animationName);
   }
   onToggle(val: boolean) {
     if (!val) this.removeAttribute('open')
