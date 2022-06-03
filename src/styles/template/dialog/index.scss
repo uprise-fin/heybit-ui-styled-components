@@ -29,6 +29,7 @@ $hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
   // }
 
   &__wrap {
+    z-index: zIndex("팝업");
     position: fixed;
     top: 0;
     right: 0;
@@ -95,6 +96,8 @@ $hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
   }
   &__content {
     display: block;
+    overflow: auto;
+    max-height: calc(100vh - 200px);
     padding: $hb-dialog__padding;
     padding-top: 30px;
     padding-bottom: 10px;

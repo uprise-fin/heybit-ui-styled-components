@@ -1,7 +1,8 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
 import "./index";
-import { HbTransition, transitionType } from "./index";
+import type { HbTransition } from "./index";
+import { transitionType } from "./index";
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {

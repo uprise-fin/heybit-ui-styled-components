@@ -1,10 +1,9 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
-import "./index";
-import {type} from './index'
-import "../../molecule/spinner/index";
-import type { HbButton } from "./index";
 import { size, theme } from "../../base";
+import "./index";
+import type { HbButton } from "./index";
+import { type } from './index';
 
 export default {
   title: "components/organism/hb-button",

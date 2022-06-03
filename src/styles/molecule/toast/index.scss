@@ -1,0 +1,24 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+
+.hb-toast {
+  @include host-styled {
+    z-index: zindex("토스트");
+    position: relative;
+  }
+  &__msg {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &__transition {
+    padding: 30px;
+    font-size: 30px;
+    color: #fff;
+    background: #000;
+    & + * {
+      margin-top: 20px;
+    }
+  }
+}

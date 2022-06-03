@@ -1,7 +1,7 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
 import "./index";
-import { HbDialog } from "./index";
+import type { HbDialog } from "./index";
 interface HbDialogExpns extends HbDialog {
   header: string;
   content: string;
@@ -45,6 +45,7 @@ const Template: Story<HbDialogExpns> = ({
   footer,
 }) =>
   html`
+    <div style="height:9999px;"></div>
     <hb-dialog
       ?open=${open}
       id="dialog"
@@ -58,7 +59,7 @@ const Template: Story<HbDialogExpns> = ({
         : ""}
       ${content
         ? html`
-            <div slot="content">${content}</div>
+            <div slot="content" id="ww" style="height: 500px;overflow: auto;"><hb-select parentQuery="#ww" .options='${[{label: '1번', value:'1'},{label: '2번', value:'2'},{label: '3번', value:'3'},{label: '4번', value:'4'},{label: '5번', value:'5'},{label: '6번', value:'6'},{label: '7번', value:'7'},{label: '8번', value:'8'},{label: '9번', value:'9'},{label: '10번', value:'10'},{label: '11번', value:'11'},{label: '12번', value:'12'},{label: '13번', value:'13'},{label: '14번', value:'14'},{label: '15번', value:'15'},{label: '16번', value:'16'},{label: '17번', value:'17'},{label: '18번', value:'18'},{label: '19번', value:'19'},{label: '20번', value:'20'},{label: '21번', value:'21'},{label: '22번', value:'22'},{label: '23번', value:'23'},{label: '24번', value:'24'}]}' @change=${($event: any) => console.log($event)}></hb-select><div style="height:9999px;"></div></div>
           `
         : ""}
       ${footer

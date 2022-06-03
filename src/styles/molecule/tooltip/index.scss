@@ -1,0 +1,22 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+
+.hb-tooltip {
+  @include host-styled {
+    position: relative;
+    display: inline-block;
+  }
+  &__front {
+    display: block;
+    @include slot-styled("*") {
+      display: block;
+    }
+  }
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    display: block;
+    border: 1px solid red;
+  }
+}

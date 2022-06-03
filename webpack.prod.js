@@ -13,7 +13,47 @@ module.exports = (_, options) => {
   }, {});
   return merge(common, {
     entry: {
-      index: [path.resolve(__dirname, "./src/index.ts")],
+      "components/atom/transition/index": [
+        path.resolve(__dirname, "./src/components/atom/transition/index.ts"),
+      ],
+
+      "components/atom/loading/index": [
+        path.resolve(__dirname, "./src/components/atom/loading/index.ts"),
+      ],
+
+      "components/atom/transition/index": [
+        path.resolve(__dirname, "./src/components/atom/transition/index.ts"),
+      ],
+
+      "components/molecule/icon/index": [
+        path.resolve(__dirname, "./src/components/molecule/icon/index.ts"),
+      ],
+      "components/molecule/img/index": [
+        path.resolve(__dirname, "./src/components/molecule/img/index.ts"),
+      ],
+      "components/molecule/spinner/index": [
+        path.resolve(__dirname, "./src/components/molecule/spinner/index.ts"),
+      ],
+      "components/molecule/skeleton/index": [
+        path.resolve(__dirname, "./src/components/molecule/skeleton/index.ts"),
+      ],
+
+      "components/organism/input/index": [
+        path.resolve(__dirname, "./src/components/organism/input/index.ts"),
+      ],
+      "components/organism/select/index": [
+        path.resolve(__dirname, "./src/components/organism/select/index.ts"),
+      ],
+      "components/organism/button/index": [
+        path.resolve(__dirname, "./src/components/organism/button/index.ts"),
+      ],
+      "components/organism/tab/index": [
+        path.resolve(__dirname, "./src/components/organism/tab/index.ts"),
+      ],
+
+      "components/template/dialog/index": [
+        path.resolve(__dirname, "./src/components/template/dialog/index.ts"),
+      ],
     },
     mode: env.MODE,
     plugins: [new webpack.DefinePlugin(envKeys)],

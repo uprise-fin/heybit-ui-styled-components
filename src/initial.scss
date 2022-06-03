@@ -4,14 +4,17 @@
 
 @include initial(
   (
+    hb-icon,
+    hb-img,
+    hb-list,
+    hb-skeleton,
+    hb-spinner,
+    hb-tooltip,
     hb-button,
     hb-input,
     hb-select,
-    hb-icon,
-    hb-img,
-    hb-dialog,
-    hb-skeleton,
-    hb-spinner
+    hb-tab,
+    hb-dialog
   )
 );
 

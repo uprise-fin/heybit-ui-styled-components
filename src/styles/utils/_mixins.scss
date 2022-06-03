@@ -35,7 +35,20 @@
     opacity: 1;
   }
 }
-
+@function zIndex($name) {
+  @if $name == "레이어" {
+    @return 10;
+  }
+  @if $name == "헤더" {
+    @return 100;
+  }
+  @if $name == "팝업" {
+    @return 1000;
+  }
+  @if $name == "토스트" {
+    @return 10000;
+  }
+}
 @function toHSL($color, $level: "") {
   $lightness: $level + "%";
   @if $level == "" {

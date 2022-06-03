@@ -10,21 +10,32 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options }) =>
+const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options, fixed }) =>
   html`
     <style>
       .wrap {
         position: relative;
         display: inline-block;
-        overflow: hidden;
+        overflow: scroll;
         width: 500px;
-        height: 300px;
+        height: 9900px;
+        padding: 30px;
         background: blue;
       }
       
     </style>
     <div class="wrap">
-      <hb-select value=${value} ?search=${search} .options=${options} @change=${($event: any) => console.log($event)}></hb-select>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <hb-select value=${value} ?fixed=${fixed} ?search=${search} .options=${options} @change=${($event: any) => console.log($event)}></hb-select>
+      <!-- <div style="height: 99999px;"></div> -->
     </div>
     <script>
       window.onscroll = function() {
@@ -36,6 +47,7 @@ const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options }) =>
 export const primary: Story<HbSelect> = OpionSlotTmpl.bind({});
 primary.args = {
   search: false,
+  fixed: false,
   value: "1",
   options: [
     {label: '1번', value:'1'},

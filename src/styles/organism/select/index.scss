@@ -35,29 +35,31 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
 
 .hb-select {
   @include host-styled {
+    z-index: zIndex("레이어");
+    position: relative;
     display: block;
     font-size: $hb-select__font-size;
     background: $hb-select__background;
   }
 
   &__list {
-    position: fixed;
+    position: absolute;
+    @include child-styled("[fixed]") {
+      position: fixed;
+      will-change: transform;
+    }
   }
-  &__input {
-    height: 100%;
-    padding: 0;
-    font-size: inherit;
-    flex: 1;
-    border: 0;
-    outline: none;
-    cursor: inherit;
-  }
+  // &__input {
+  //   height: 100%;
+  //   padding: 0;
+  //   font-size: inherit;
+  //   flex: 1;
+  //   border: 0;
+  //   outline: none;
+  //   cursor: inherit;
+  // }
   &__label {
     @extend %option;
-    display: flex;
-    align-items: center;
-    border: #{$hb-select__border-width} solid #{$hb-select__border-color};
-    border-radius: $hb-select__border-radius;
     cursor: pointer;
 
     @include child-styled(".open") {

@@ -1,0 +1,38 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.hb-tab {
+  @include host-styled {
+    display: block;
+  }
+  &__header {
+    position: relative;
+    display: inline-block;
+    &__btns {
+      display: flex;
+      border: 1px solid #000;
+      @include slot-styled("*") {
+        padding: 20px;
+        border: 0;
+        cursor: pointer;
+        background: none;
+      }
+    }
+    &__indicator {
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #000;
+      transition: width 0.3s, transform 0.3s;
+    }
+  }
+  &__content {
+    @include slot-styled("*") {
+      display: none;
+    }
+    @include slot-styled("[active]") {
+      display: block;
+    }
+  }
+}

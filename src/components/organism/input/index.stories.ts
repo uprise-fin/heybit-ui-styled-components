@@ -1,7 +1,8 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
 import "./index";
-import { HbInput, type } from "./index";
+import type { HbInput } from "./index";
+import { type } from "./index";
 
 export default {
   title: "components/organism/hb-input",

@@ -5,20 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- <style>
+      .tab-btn {
+        border: 0;
+        padding: 30px;
+      }
+      .tab-btn:first-child {
+        width: 50px;
+      }
+      .tab-btn:nth-child(2) {
+        width: 160px;
+      }
+      .tab-btn:nth-child(3) {
+        width: 70px;
+      }
+    </style> -->
   </head>
   <body>
-    <hb-transition>
+    <hb-tab index="1">
+      <button class="tab-btn" slot="header">1</button>
+      <button class="tab-btn" slot="header">2</button>
+      <button class="tab-btn" slot="header">3</button>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </hb-tab>
+    <hb-transition type="fade">
       <div>dawjkdlawjdlakw</div>
     </hb-transition>
     <!-- <hb-img src="banner-kr.png" multiSource="3" breakPoint="0"></hb-img>
     <hb-img src="wall.jpg" multiSource="3" breakPoint="0"></hb-img> -->
     <hb-select
-      search="true"
+      search
       value="3"
       options='[{"value":"3","label":"3번"},{"value":"2","label":"2번"},{"value":"1","label":"1번"}]'
       onchange="console.log(arguments)"
     >
-      <hb-icon slot="caret" icon="ic-system-arrow-down-18-black.svg"></hb-icon>
     </hb-select>
     <hb-img
       style="width: 100%;"
@@ -49,27 +71,33 @@
       <div slot="footer">123</div>
     </hb-dialog>
     <div class="hb-dialog" persistent="true" data-hb-styled="true" open="false">
-      <div class="hb-dialog__wrap">
-        <div class="hb-dialog__container" part="container">
-          <button class="hb-dialog__close-btn" part="close-btn" id="close-btn">
-            <hb-icon
-              icon="ic-account-clear-24-black.svg"
-              size="medium"
-              data-hb-styled="true"
-            ></hb-icon>
-          </button>
-          <div name="header" part="header" class="hb-dialog__header">
-            <div slot="header">가나다</div>
-          </div>
-          <div name="content" part="content" class="hb-dialog__content">
-            <div slot="content">가나다</div>
-          </div>
-          <div name="footer" part="footer" class="hb-dialog__footer">
-            <button slot="footer">가나다</button>
-            <button slot="footer" id="btn2">가나다</button>
+      <hb-transition type="fade">
+        <div class="hb-dialog__wrap">
+          <div class="hb-dialog__container" part="container">
+            <button
+              class="hb-dialog__close-btn"
+              part="close-btn"
+              id="close-btn"
+            >
+              <hb-icon
+                icon="ic-account-clear-24-black.svg"
+                size="medium"
+                data-hb-styled="true"
+              ></hb-icon>
+            </button>
+            <div name="header" part="header" class="hb-dialog__header">
+              <div slot="header">가나다</div>
+            </div>
+            <div name="content" part="content" class="hb-dialog__content">
+              <div slot="content">가나다</div>
+            </div>
+            <div name="footer" part="footer" class="hb-dialog__footer">
+              <button slot="footer">가나다</button>
+              <button slot="footer" id="btn2">가나다</button>
+            </div>
           </div>
         </div>
-      </div>
+      </hb-transition>
     </div>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
     <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
