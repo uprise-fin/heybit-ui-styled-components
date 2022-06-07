@@ -8,6 +8,60 @@ export enum open  {
   'false' = 'false',
   'true' = 'true',
 }
+export interface Dialog {
+  header?: Header
+  content: Content[]
+  footer?: Footer
+}
+interface Header {
+  title: Title
+  image: Image
+}
+interface Content {
+  text?: Sentence<'black',16,400>[]
+  desc?: Sentence<'black',16,400,'.',[0,0,0,40]>[]
+  custom?: string
+}
+interface Footer {
+  button: {
+    heybit?: Button<'black','heybit'>;
+    gray?: Button<'white','gray'>;
+    red?: Button<'black','red'>;
+  }
+  anchor?: Anchor
+}
+interface Title {
+  text: Font<'black',20,700>
+}
+interface Button<C,B> {
+  text: Font<C,20,700>,
+  backgroundColor: B;
+}
+interface Anchor extends Font<'black',16,400> {
+  decoration: 'underline'
+}
+interface Sentence<C,S,W,I = '',P = [0,0,0,0]> {
+  icon?: I;
+  padding?: P;
+  text: Font<C,S,W>;
+  height: number;
+  br?: true;
+}
+interface Font<C,S,W> {
+  color: C;
+  text: string;
+  size: S;
+  weight: W;
+}
+interface Image {
+  width: number;
+  align: align;
+}
+enum align {
+  center = 'center',
+  left = 'left',
+  right = 'right',
+}
 /**
  * @property open 온 오프
  * @property persistent

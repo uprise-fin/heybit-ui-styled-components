@@ -15,7 +15,7 @@ export default {
       defaultValue: false,
     },
     type: {
-      options: Object.keys(transitionType),
+      options: Object.values(transitionType),
       control: { type: "radio" },
       defaultValue: transitionType.fade,
     },

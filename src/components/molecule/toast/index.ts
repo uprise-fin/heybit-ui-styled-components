@@ -48,7 +48,7 @@ export class HbToast extends Base {
   }
   
   render() {
-    return html`<div class="hb-toast__msg">${this._messages.map((x, i) => (html`<hb-transition class="hb-toast__transition" type=${transitionType.fade} ?show=${this.timer[i] > this.now}>${x}</hb-transition>`))}</div>`
+    return this._messages.map((x, i) => (html`<hb-transition class="hb-toast__position" type=${transitionType.fade} ?show=${this.timer[i] > this.now}><hb-transition type=${transitionType.bottomScroll} ?show=${this.timer[i] > this.now}><div class="hb-toast__text-wrap"><div class="hb-toast__text-wrap__text">${x}</div></div></hb-transition></hb-transition>`))
   }
 }
 

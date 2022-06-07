@@ -1,24 +1,39 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
-
+$hb-toast__height: 60px;
 .hb-toast {
   @include host-styled {
     z-index: zindex("토스트");
     position: relative;
   }
-  &__msg {
-    position: fixed;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  &__transition {
-    padding: 30px;
-    font-size: 30px;
+  &__text-wrap {
+    display: flex;
+    width: 100%;
+    height: $hb-toast__height;
+    padding: 0 10px;
+    font-size: 20px;
     color: #fff;
+    align-items: center;
     background: #000;
-    & + * {
-      margin-top: 20px;
+    &__text {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  &__position {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: calc(100vw - 100px);
+    transform: translateX(-50%);
+    transition: transform $transition__duration;
+    @for $i from 1 through 10 {
+      &:nth-last-child(#{$i}) {
+        transform: translate(
+          -50%,
+          -(30px + ($i - 1) * ($hb-toast__height + 10px))
+        );
+      }
     }
   }
 }

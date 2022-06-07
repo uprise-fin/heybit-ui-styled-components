@@ -1,6 +1,5 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
-
 .hb-transition {
   @include host-styled {
     display: none;
@@ -8,6 +7,8 @@
   @include host-styled("[show]") {
     display: block;
   }
+}
+.hb-transition {
   @include host-styled("[type='fade']") {
     animation: hide-fade $transition__duration;
     @keyframes hide-fade {
@@ -62,7 +63,41 @@
       }
     }
   }
+  @include host-styled("[type='bottom-scroll']") {
+    animation: hide-bottom-scroll $transition__duration;
+    transform-origin: bottom;
+    @keyframes hide-bottom-scroll {
+      0% {
+        display: block;
+        transform: scaleY(1);
+        transform-origin: bottom;
+      }
+      100% {
+        display: block;
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+    }
+  }
 
+  @include host-styled("[show][type='bottom-scroll']") {
+    animation: show-bottom-scroll $transition__duration;
+    @keyframes show-bottom-scroll {
+      0% {
+        display: block;
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+      100% {
+        display: block;
+        transform: scaleY(1);
+        transform-origin: bottom;
+      }
+    }
+  }
+}
+
+.hb-transition {
   @include host-styled(".visible") {
     display: block;
   }

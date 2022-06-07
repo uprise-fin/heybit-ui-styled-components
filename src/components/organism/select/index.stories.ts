@@ -18,7 +18,7 @@ const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options, fixed }) =>
         display: inline-block;
         overflow: scroll;
         width: 500px;
-        height: 9900px;
+        /* height: 900px; */
         padding: 30px;
         background: blue;
       }
@@ -34,8 +34,9 @@ const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options, fixed }) =>
       <br>
       <br>
       <br>
+      <div style="height: 299px;"></div>
       <hb-select value=${value} ?fixed=${fixed} ?search=${search} .options=${options} @change=${($event: any) => console.log($event)}></hb-select>
-      <!-- <div style="height: 99999px;"></div> -->
+      <div style="height: 99999px;"></div>
     </div>
     <script>
       window.onscroll = function() {

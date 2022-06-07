@@ -3,7 +3,8 @@ import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 export enum transitionType {
   fade = 'fade',
-  zoom = 'zoom'
+  zoom = 'zoom',
+  bottomScroll = 'bottom-scroll',
 }
 @customElement("hb-transition")
 export class HbTransition extends Base {
@@ -11,7 +12,7 @@ export class HbTransition extends Base {
     return [require("../../../styles/atom/transition/index.scss").default];
   }
   show = false
-  type = transitionType.fade
+  type: transitionType
   static get properties() {
     return {
       show: { type: Boolean, Reflect: true },

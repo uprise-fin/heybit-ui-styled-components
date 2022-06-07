@@ -54,7 +54,7 @@ export class HbTab extends Base {
     const width = target.offsetWidth
     const left = target.offsetLeft
     this._index = index;
-    this.left = left;
+    this.left = left - this.offsetLeft;
     this.width = width;
     this.contents.map(x => x.removeAttribute('active'));
     this.contents[number].setAttribute('active', '')

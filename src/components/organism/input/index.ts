@@ -54,6 +54,11 @@ export class HbInput extends Base {
     };
   }
 
+  get pattern() {
+    if (this.type === 'number') return '[0-9]*'
+    return null
+  }
+
   get isType () {
     if (this.type === type.number) return type.text
     return this.type
@@ -83,10 +88,12 @@ export class HbInput extends Base {
         id="input"
         class="hb-input__el"
         part="input"
+        pattern=${this.pattern}
         @input=${this.onInput}
         type=${this.isType}
         placeholder=${this.placeholder}
       />
+      <div>${this._value}</div>
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `
