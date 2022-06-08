@@ -50,9 +50,22 @@ export class HbButton extends Base {
   render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-button__slot hb-button__slot--left"></slot>
-      <slot part="label" class="hb-button__label" placeholder=${this.placeholder}></slot>
+      <div class="hb-button__label">
+        ${
+          this.loading ? html`
+          <hb-transition type=${transitionType.fade} ?show=${this.loading}>
+            <hb-spinner theme=${this.theme} size=${this.size} class="hb-button__spinner"></hb-spinner>
+          </hb-transition> 
+          ` : html`
+          <hb-transition type=${transitionType.fade} ?show=${!this.loading}>
+            <slot part="label" placeholder=${this.placeholder}></slot>
+          </hb-transition> 
+          `
+        }
+        
+        
+      </div>
       <slot name="slot--right" part="slot--right" class="hb-button__slot hb-button__slot--right"></slot>
-      <hb-transition type=${transitionType.fade} ?show=${this.loading}><hb-spinner theme=${this.theme} size=${this.size} class="hb-button__spinner"></hb-spinner></hb-transition> 
     `
   }
   async customConnectedCallback() {

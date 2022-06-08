@@ -58,7 +58,6 @@ $hb-button__theme: (
 );
 .hb-button {
   @include host-styled {
-    position: relative;
     display: flex;
     font-size: $hb-button__font-size;
     padding: $hb-button__padding;
@@ -147,23 +146,10 @@ $hb-button__theme: (
   }
   &__label {
     display: flex;
-    align-self: center;
+    align-items: center;
     margin: auto;
     font-family: map-get($variables, fonts, family);
-    transition: opacity $transition__duration;
-    @include child-styled([loading]) {
-      opacity: 0;
-    }
   }
   &__spinner {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: inline-flex;
-    width: auto;
-    border-radius: inherit;
-    background: none;
   }
 }

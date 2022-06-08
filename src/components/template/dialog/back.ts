@@ -8,49 +8,47 @@ export enum open  {
   'false' = 'false',
   'true' = 'true',
 }
-export enum buttonAlign  {
-  'vertical' = 'vertical',
-  'horizon' = 'horizon',
-}
 export interface Dialog {
   header?: Header
   content: Content[]
   footer?: Footer
 }
 interface Header {
-  text?: Font;
-  image?: Image;
+  text?: Font<'black',20,700,position.center>
+  image?: Image
 }
-type Content = Sentence[] | Description | Custom;
-type Custom = string;
+type Content = text | desc | custom;
+type text = Sentence<'black',16,400,position.left>[]
+type desc = Sentence<'black',16,400,position.left,'.',[0,0,0,40]>[];
+type custom = string;
 interface Footer {
-  buttons: {
-    button: Button[]
+  button: {
     align: 'vertical' | 'horizon';
+    heybit?: Button<'black','heybit'>;
+    gray?: Button<'white','gray'>;
+    red?: Button<'black','red'>;
   }
   anchor?: Anchor
 }
-interface Button {
-  text: Font;
-  backgroundColor: string;
+interface Button<C,B> {
+  text: Font<C,20,700,position.center>,
+  backgroundColor: B;
 }
-interface Anchor extends Font {
+interface Anchor extends Font<'black',16,400,position.center> {
   decoration: 'underline'
 }
-interface Sentence extends Font {
+interface Sentence<C,S,W,position,I = '',P = [0,0,0,0]> {
+  icon?: I;
+  padding?: P;
+  text: Font<C,S,W,position>;
   height: number;
   br?: true;
 }
-interface Description extends Font {
-  icon?: string;
-  padding: [number, number, number, number];
-  height: number;
-}
-interface Font {
-  color: string;
+interface Font<C,S,W,position> {
+  color: C;
   text: string;
-  size: number;
-  weight: number;
+  size: S;
+  weight: W;
   align: position;
 }
 interface Image {
@@ -66,17 +64,13 @@ enum position {
  * @property open 온 오프
  * @property persistent
  * @property hideCloseBtn
- * @slot icon - optional, 헤더
- * @slot title - optional, 헤더
+ * @slot header - optional, 헤더
  * @slot content - optional, 내용
- * @slot buttons - optional, 푸터
- * @slot anchor - optional, 푸터
+ * @slot footer - optional, 푸터
  * @csspart container
- * @csspart icon
- * @csspart title
+ * @csspart header
  * @csspart content
- * @csspart buttons
- * @csspart anchor
+ * @csspart footer
  */
 
 @customElement("hb-dialog")
@@ -95,7 +89,6 @@ export class HbDialog extends Base {
   open = false
   persistent = false;
   hideCloseBtn = false;
-  buttonAlign = buttonAlign.horizon
   // get open() {
   //   return this._open;
   // }
@@ -114,7 +107,6 @@ export class HbDialog extends Base {
       open: { type: Boolean, Reflect: true },
       persistent: { type: Boolean, Reflect: true },
       hideCloseBtn: { type: Boolean, Reflect: true },
-      buttonAlign: { type: String, Reflect: true },
     };
   }
 
@@ -132,13 +124,12 @@ export class HbDialog extends Base {
                   class="hb-dialog__close-btn"
                   part="close-btn"
                   id="close-btn"
-                ><hb-icon icon="ic-system-close-24-black.svg" size="small"></hb-icon></button>`
+                ><hb-icon icon="ic-account-clear-24-black.svg" size="medium"></hb-icon></button>`
               }
-              <slot name="icon" part="icon" class="hb-dialog__icon"></slot>
-              <slot name="title" part="title" class="hb-dialog__title"></slot>
+              
+              <slot name="header" part="header" class="hb-dialog__header"></slot>
               <slot name="content" part="content" class="hb-dialog__content"></slot>
-              <slot name="button" part="button" class="hb-dialog__button ${this.buttonAlign}"></slot>
-              <slot name="anchor" part="anchor" class="hb-dialog__anchor"></slot>
+              <slot name="footer" part="footer" class="hb-dialog__footer"></slot>
             </div>
           </hb-transition>
         </div>

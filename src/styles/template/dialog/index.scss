@@ -1,10 +1,13 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
 
-$hb-dialog__padding: map-get($variables, box, padding) !default;
+$hb-dialog__padding-top: 52px !default;
+$hb-dialog__padding-right: 20px !default;
+$hb-dialog__padding-bottom: 24px !default;
+$hb-dialog__padding-left: 20px !default;
 $hb-dialog__layer__background: map-get($variables, layer, background) !default;
 $hb-dialog__background: map-get($variables, box, background) !default;
-$hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
+$hb-dialog__border-radius: 16px !default;
 // $hb-input__height: $box__height !default;
 // $hb-input__padding: $box__padding !default;
 // $hb-input__border-width: $box__border-width !default;
@@ -50,7 +53,9 @@ $hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
   }
   &__container {
     position: relative;
-    min-width: none;
+    min-width: 300px;
+    padding: $hb-dialog__padding-top $hb-dialog__padding-right
+      $hb-dialog__padding-bottom $hb-dialog__padding-left;
     border-radius: $hb-dialog__border-radius;
     background: $hb-dialog__background;
     @include child-styled(".shake") {
@@ -89,35 +94,74 @@ $hb-dialog__border-radius: map-get($variables, box, border-radius) !default;
     background: none;
   }
 
-  &__header {
+  &__icon {
     display: block;
-    padding: $hb-dialog__padding;
-    padding-top: 10px;
+    width: fit-content;
+    margin: auto;
+  }
+  &__title {
+    display: block;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    @include slot-styled("*") {
+      margin-top: 12px;
+    }
+    @include slot-styled("*:first-child") {
+      margin-top: 0;
+    }
   }
   &__content {
     display: block;
     overflow: auto;
     max-height: calc(100vh - 200px);
-    padding: $hb-dialog__padding;
-    padding-top: 30px;
-    padding-bottom: 10px;
+    @include slot-styled("*") {
+      margin-top: 12px;
+    }
+    @include slot-styled("*:first-child") {
+      margin-top: 0;
+    }
   }
-  &__footer {
-    display: flex;
-    align-items: center;
-    min-height: 30px;
-    padding: $hb-dialog__padding;
+  &__button {
+    $button-margin-top: 24px;
+    &.horizon {
+      display: flex;
+      margin-left: -10px;
+      margin-top: $button-margin-top;
+      flex-direction: row;
+      @include slot-styled("*") {
+        flex: 1;
+        margin: 0 0 0 10px;
+        border: 0;
+        text-align: center;
+      }
+    }
     // &::slotted(*) {
     //   flex: 1;
-
     //   border: 0;
     //   text-align: center;
     // }
+    &.vertical {
+      display: block;
+      margin-top: $button-margin-top;
+      @include slot-styled("*") {
+        margin-top: 10px;
+      }
+    }
+  }
+  &__anchor {
+    display: block;
+    font-size: 0;
+    text-align: center;
     @include slot-styled("*") {
-      flex: 1;
-
-      border: 0;
-      text-align: center;
+      display: inline-block;
+      margin-top: 16px;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 16px;
+      color: #a2a4a6;
+      text-decoration: underline;
     }
   }
 }

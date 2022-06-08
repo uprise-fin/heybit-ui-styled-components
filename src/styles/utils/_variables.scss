@@ -5,8 +5,8 @@ $font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
 $colors: (
   primary: #f05014,
   secondary: #303030,
-  tertiary: #e7f3f3,
-  quaternary: #fdece4,
+  tertiary: blue,
+  quaternary: #e04450,
   quinary: #f2f4f6,
   senary: #fff,
 );
@@ -56,7 +56,7 @@ $themes: (
   ),
   quaternary: (
     void: map-get($colors, quaternary),
-    solid: map-get($fonts, solid),
+    solid: map-get($fonts, void),
   ),
   quinary: (
     void: map-get($colors, quinary),
