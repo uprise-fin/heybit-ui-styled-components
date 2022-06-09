@@ -5,6 +5,8 @@ import { HbImg } from "./components/molecule/img";
 import { HbList } from "./components/molecule/list";
 import { HbSkeleton } from "./components/molecule/skeleton";
 import { HbSpinner } from "./components/molecule/spinner";
+import { HbToast } from "./components/molecule/toast";
+import { HbTooltip } from "./components/molecule/tooltip";
 import { HbButton } from "./components/organism/button";
 import { HbInput } from "./components/organism/input";
 import { HbSelect } from "./components/organism/select";
@@ -18,6 +20,8 @@ export {
   HbList,
   HbSkeleton,
   HbSpinner,
+  HbToast,
+  HbTooltip,
   HbButton,
   HbInput,
   HbSelect,

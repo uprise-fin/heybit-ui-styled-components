@@ -120,9 +120,12 @@ export class HbDialog extends Base {
 
   render() {
     return html`
-      <hb-transition id="dialog-transition" ?show=${this.open} type=${transitionType.fade}>
+      <hb-transition ?show=${this.open} id="dialog-transition" type=${transitionType.fade}>
         <div class="hb-dialog__wrap" id="wrap" @click=${this.adapterOnClose}>
+          <!-- <hb-delay delay="100" name="show" value=${this.open}> -->
+          <!-- <hb-transition type=${transitionType.zoom}> -->
           <hb-transition ?show=${this.open} type=${transitionType.zoom}>
+          <!-- <hb-transition ?show=${this.open} type=${transitionType.zoom} style="animation-delay:100ms;"> -->
             <div class="hb-dialog__container" part="container" @click=${this.stopPropagation}>
               ${
                 this.hideCloseBtn ? '' : html`
@@ -134,15 +137,23 @@ export class HbDialog extends Base {
                   id="close-btn"
                 ><hb-icon icon="ic-system-close-24-black.svg" size="small"></hb-icon></button>`
               }
-              <slot name="icon" part="icon" class="hb-dialog__icon"></slot>
-              <slot name="title" part="title" class="hb-dialog__title"></slot>
-              <slot name="content" part="content" class="hb-dialog__content"></slot>
-              <slot name="button" part="button" class="hb-dialog__button ${this.buttonAlign}"></slot>
-              <slot name="anchor" part="anchor" class="hb-dialog__anchor"></slot>
+              <div class="hb-dialog__head">
+                <slot name="icon" part="icon" class="hb-dialog__head__icon"></slot>
+                <slot name="title" part="title" class="hb-dialog__head__title"></slot>
+              </div>
+              <div class="hb-dialog__body">
+                <slot name="content" part="content" class="hb-dialog__body__content"></slot>
+              </div>
+              <div class="hb-dialog__foot">
+                <slot name="button" part="button" class="hb-dialog__foot__button ${this.buttonAlign}"></slot>
+                <slot name="anchor" part="anchor" class="hb-dialog__foot__anchor"></slot>
+              </div>
             </div>
           </hb-transition>
+          <!-- </hb-delay> -->
         </div>
       </hb-transition>
+    
     `
   }
   onAnimationEnd(event: AnimationEvent) {

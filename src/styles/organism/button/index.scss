@@ -149,7 +149,8 @@ $hb-button__theme: (
     align-items: center;
     margin: auto;
     font-family: map-get($variables, fonts, family);
-  }
-  &__spinner {
+    &__transition[show] {
+      display: inline-flex;
+    }
   }
 }

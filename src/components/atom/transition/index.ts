@@ -23,6 +23,7 @@ export class HbTransition extends Base {
     this.onanimationend = (evnt) => this.onAnimationEnd(evnt)
   }
   onAnimationEnd(evnt: AnimationEvent) {
+    evnt.stopPropagation()
     if (evnt.animationName.includes('show')) return this.classList.add('visible')
     return this.classList.remove('visible')
   }

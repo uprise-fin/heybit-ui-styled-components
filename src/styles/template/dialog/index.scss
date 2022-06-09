@@ -51,10 +51,12 @@ $hb-dialog__border-radius: 16px !default;
       margin: auto;
     }
   }
+  $head-margin-top: 12px;
+
   &__container {
     position: relative;
     min-width: 300px;
-    padding: $hb-dialog__padding-top $hb-dialog__padding-right
+    padding: #{$hb-dialog__padding-top - $head-margin-top} $hb-dialog__padding-right
       $hb-dialog__padding-bottom $hb-dialog__padding-left;
     border-radius: $hb-dialog__border-radius;
     background: $hb-dialog__background;
@@ -91,77 +93,71 @@ $hb-dialog__border-radius: 16px !default;
     transform: translate(50%, -50%);
     padding: 0;
     border: 0;
+    cursor: pointer;
     background: none;
   }
-
-  &__icon {
-    display: block;
-    width: fit-content;
-    margin: auto;
-  }
-  &__title {
-    display: block;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: center;
-    @include slot-styled("*") {
-      margin-top: 12px;
-    }
-    @include slot-styled("*:first-child") {
-      margin-top: 0;
-    }
-  }
-  &__content {
-    display: block;
-    overflow: auto;
-    max-height: calc(100vh - 200px);
-    @include slot-styled("*") {
-      margin-top: 12px;
-    }
-    @include slot-styled("*:first-child") {
-      margin-top: 0;
-    }
-  }
-  &__button {
-    $button-margin-top: 24px;
-    &.horizon {
-      display: flex;
-      margin-left: -10px;
-      margin-top: $button-margin-top;
-      flex-direction: row;
-      @include slot-styled("*") {
-        flex: 1;
-        margin: 0 0 0 10px;
-        border: 0;
-        text-align: center;
-      }
-    }
-    // &::slotted(*) {
-    //   flex: 1;
-    //   border: 0;
-    //   text-align: center;
-    // }
-    &.vertical {
+  &__head {
+    &__icon {
       display: block;
-      margin-top: $button-margin-top;
-      @include slot-styled("*") {
-        margin-top: 10px;
-      }
+      width: fit-content;
+      margin: $head-margin-top auto 0;
+    }
+    &__title {
+      display: block;
+      margin-top: $head-margin-top;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: center;
     }
   }
-  &__anchor {
-    display: block;
-    font-size: 0;
-    text-align: center;
-    @include slot-styled("*") {
-      display: inline-block;
+  &__body {
+    margin-top: $head-margin-top;
+    &__content {
+      display: block;
+      overflow: auto;
+      max-height: calc(100vh - 200px);
+    }
+  }
+
+  &__foot {
+    margin-top: 24px;
+    &__button {
+      &.horizon {
+        display: flex;
+        margin-left: -10px;
+        flex-direction: row;
+        @include slot-styled("*") {
+          flex: 1;
+          margin: 0 0 0 10px;
+          border: 0;
+          text-align: center;
+        }
+      }
+      // &::slotted(*) {
+      //   flex: 1;
+      //   border: 0;
+      //   text-align: center;
+      // }
+      &.vertical {
+        display: block;
+        @include slot-styled("*") {
+          margin-top: 10px;
+        }
+      }
+    }
+    &__anchor {
+      display: block;
       margin-top: 16px;
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 16px;
-      color: #a2a4a6;
-      text-decoration: underline;
+      font-size: 0;
+      text-align: center;
+      @include slot-styled("*") {
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 16px;
+        color: #a2a4a6;
+        text-decoration: underline;
+      }
     }
   }
 }

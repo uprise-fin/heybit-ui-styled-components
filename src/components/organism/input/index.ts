@@ -93,7 +93,6 @@ export class HbInput extends Base {
         type=${this.isType}
         placeholder=${this.placeholder}
       />
-      <div>${this._value}</div>
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `

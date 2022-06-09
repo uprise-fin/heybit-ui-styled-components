@@ -1,9 +1,9 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
 $hb-icon__size: (
-  large: 54px,
-  medium: 50px,
-  small: 46px,
+  large: 24px,
+  medium: 20px,
+  small: 18px,
 );
 $hb-icon__theme: (
   primary: map-get($themes, primary, void),

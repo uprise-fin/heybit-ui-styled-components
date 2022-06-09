@@ -9,7 +9,7 @@ interface HbDialogExpns extends HbDialog {
   content: string;
   anchor?: string;
   button: {
-    key: string;
+    name: string;
     theme: theme;
   }[];
 }
@@ -37,7 +37,7 @@ export default {
     buttonAlign: {
       options: Object.keys(buttonAlign),
       control: { type: "radio" },
-      defaultValue: buttonAlign.horizon,
+      defaultValue: buttonAlign.vertical,
     },
   },
 } as Meta;
@@ -108,14 +108,14 @@ const Template: Story<HbDialogExpns> = ({
             (x) =>
               html`
                 <hb-button slot="button" theme=${x.theme} size="medium"
-                  >${x.key}</hb-button
+                  >${x.name}</hb-button
                 >
               `
           )
         : ""}
       ${anchor
         ? html`
-            <a href="#" slot="anchor">${anchor}</a>
+            <a href="javascript:alert('클릭됨');" slot="anchor">${anchor}</a>
           `
         : ""}
     </hb-dialog>
@@ -127,19 +127,19 @@ primary.args = {
   persistent: false,
   title: "내용을 입력해주세요.",
   content: "내용을 입력해 주세요.",
-  buttonAlign: buttonAlign.horizon,
+  buttonAlign: buttonAlign.vertical,
   anchor: "탈퇴하기",
   button: [
     {
-      key: "닫기",
+      name: "닫기",
       theme: theme.primary,
     },
     {
-      key: "열기",
+      name: "열기",
       theme: theme.quaternary,
     },
     {
-      key: "열기",
+      name: "열기",
       theme: theme.quinary,
     },
   ],

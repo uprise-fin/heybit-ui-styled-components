@@ -13,14 +13,12 @@ module.exports = (_, options) => {
   }, {});
   return merge(common, {
     entry: {
-      "components/atom/transition/index": [
-        path.resolve(__dirname, "./src/components/atom/transition/index.ts"),
+      "components/atom/delay/index": [
+        path.resolve(__dirname, "./src/components/atom/delay/index.ts"),
       ],
-
       "components/atom/loading/index": [
         path.resolve(__dirname, "./src/components/atom/loading/index.ts"),
       ],
-
       "components/atom/transition/index": [
         path.resolve(__dirname, "./src/components/atom/transition/index.ts"),
       ],
@@ -31,21 +29,30 @@ module.exports = (_, options) => {
       "components/molecule/img/index": [
         path.resolve(__dirname, "./src/components/molecule/img/index.ts"),
       ],
-      "components/molecule/spinner/index": [
-        path.resolve(__dirname, "./src/components/molecule/spinner/index.ts"),
+      "components/molecule/list/index": [
+        path.resolve(__dirname, "./src/components/molecule/list/index.ts"),
       ],
       "components/molecule/skeleton/index": [
         path.resolve(__dirname, "./src/components/molecule/skeleton/index.ts"),
       ],
+      "components/molecule/spinner/index": [
+        path.resolve(__dirname, "./src/components/molecule/spinner/index.ts"),
+      ],
+      "components/molecule/toast/index": [
+        path.resolve(__dirname, "./src/components/molecule/toast/index.ts"),
+      ],
+      "components/molecule/tooltip/index": [
+        path.resolve(__dirname, "./src/components/molecule/tooltip/index.ts"),
+      ],
 
+      "components/organism/button/index": [
+        path.resolve(__dirname, "./src/components/organism/button/index.ts"),
+      ],
       "components/organism/input/index": [
         path.resolve(__dirname, "./src/components/organism/input/index.ts"),
       ],
       "components/organism/select/index": [
         path.resolve(__dirname, "./src/components/organism/select/index.ts"),
-      ],
-      "components/organism/button/index": [
-        path.resolve(__dirname, "./src/components/organism/button/index.ts"),
       ],
       "components/organism/tab/index": [
         path.resolve(__dirname, "./src/components/organism/tab/index.ts"),

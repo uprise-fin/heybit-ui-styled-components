@@ -53,11 +53,11 @@ export class HbButton extends Base {
       <div class="hb-button__label">
         ${
           this.loading ? html`
-          <hb-transition type=${transitionType.fade} ?show=${this.loading}>
-            <hb-spinner theme=${this.theme} size=${this.size} class="hb-button__spinner"></hb-spinner>
+          <hb-transition class="hb-button__label__transition" type=${transitionType.fade} ?show=${this.loading}>
+            <hb-spinner theme=${this.theme} size=${this.size}></hb-spinner>
           </hb-transition> 
           ` : html`
-          <hb-transition type=${transitionType.fade} ?show=${!this.loading}>
+          <hb-transition class="hb-button__label__transition" type=${transitionType.fade} ?show=${!this.loading}>
             <slot part="label" placeholder=${this.placeholder}></slot>
           </hb-transition> 
           `

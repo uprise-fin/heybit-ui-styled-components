@@ -60,6 +60,7 @@ $hb-input__background--warning: map-get(
   }
   &__slot {
     position: relative;
+    display: inline-flex;
     flex: 0;
   }
 }

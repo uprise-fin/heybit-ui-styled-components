@@ -25,12 +25,4 @@ describe(SHADOW_TAG, () => {
     const list = SHADOW_ROOT?.getElementById("list");
     expect(getComputedStyle(list!).display).not.toEqual("none");
   });
-  it(`${SHADOW_TAG}에 리스트의 너비는 부모엘리먼트의 너비와 동일해야 한다.`, async () => {
-    (SHADOW_ROOT?.getElementById("label") as HTMLInputElement).focus();
-    const list = SHADOW_ROOT?.getElementById("list");
-    await SHADOW_ELEMENT.updateComplete;
-    expect(getComputedStyle(list!).width).toEqual(
-      getComputedStyle(SHADOW_ELEMENT).width
-    );
-  });
 });
