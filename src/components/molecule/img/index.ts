@@ -84,7 +84,7 @@ export class HbImg extends Base {
 
   render() {
     return html`
-    <picture class="hb-img__picture" part="picture">
+    <picture class="hb-img__picture" part="picture" style=${this.loaded ? '' : `width:${this.loadingWidth}px; height:${this.loadingHeight}px;`}>
       ${this.multiSource > 0 ?
         this.breakPoint > 0 ? 
           html`

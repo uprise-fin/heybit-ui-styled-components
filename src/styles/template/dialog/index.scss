@@ -163,10 +163,11 @@ $hb-dialog__border-radius: 16px !default;
     }
     &__anchor {
       display: block;
-      margin-top: 16px;
       font-size: 0;
       text-align: center;
       @include slot-styled("*") {
+        display: inline-block;
+        margin-top: 16px;
         font-weight: 700;
         font-size: 13px;
         line-height: 16px;

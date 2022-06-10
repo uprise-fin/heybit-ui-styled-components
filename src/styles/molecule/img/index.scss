@@ -11,6 +11,7 @@
   }
   &__loading {
     position: absolute;
+    pointer-events: none;
     transition: opacity $transition__duration;
     &[hidden] {
       opacity: 0;

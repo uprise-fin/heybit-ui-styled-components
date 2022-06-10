@@ -57,7 +57,6 @@ const Template: Story<HbDialogExpns> = ({
 }) =>
   html`
     <div style="height:9999px;"></div>
-    <hb-dialog ?open=${true}></hb-dialog>
     <hb-dialog
       ?open=${open}
       id="dialog"
@@ -141,6 +140,66 @@ primary.args = {
     },
     {
       name: "열기",
+      theme: theme.quinary,
+    },
+  ],
+};
+const EventPopupTemplate: Story<HbDialogExpns> = ({
+  open,
+  persistent,
+  hideCloseBtn,
+  buttonAlign,
+  anchor,
+  // storybook 옵션
+  icon,
+  title,
+  content,
+  button,
+}) =>
+  html`
+    <hb-dialog
+      width=${400}
+      ?open=${open}
+      id="dialog"
+      icon=${icon}
+      title=${title}
+      buttonAlign=${buttonAlign}
+      ?persistent=${persistent}
+      ?hideCloseBtn=${hideCloseBtn}
+    >
+      <hb-img
+        slot="content"
+        src=${content}
+        loadingWidth="400"
+        loadingHeight="490"
+      ></hb-img>
+      ${button
+        ? button.map(
+            (x) =>
+              html`
+                <hb-button slot="button" theme=${x.theme} size="medium"
+                  >${x.name}</hb-button
+                >
+              `
+          )
+        : ""}
+    </hb-dialog>
+  `;
+
+export const event: Story<HbDialogExpns> = EventPopupTemplate.bind({});
+event.args = {
+  open: false,
+  persistent: false,
+  buttonAlign: buttonAlign.horizon,
+  content:
+    "https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png",
+  button: [
+    {
+      name: "닫기",
+      theme: theme.primary,
+    },
+    {
+      name: "3일동안 안열기",
       theme: theme.quinary,
     },
   ],
