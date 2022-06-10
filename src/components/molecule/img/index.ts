@@ -18,8 +18,8 @@ export class HbImg extends Base {
     return [require("../../../styles/molecule/img/index.scss").default];
   }
   src: string
-  width: string
-  height: string
+  loadingWidth: number
+  loadingHeight: number
   breakPoint = 1020
   multiSource = 0
   pcPrefix = '-pc'
@@ -29,8 +29,8 @@ export class HbImg extends Base {
   static get properties() {
     return {
       src: { type: String, Reflect: true },
-      width: { type: String, Reflect: true },
-      height: { type: String, Reflect: true },
+      loadingWidth: { type: Number, Reflect: true },
+      loadingHeight: { type: Number, Reflect: true },
       multiSource: { type: Number, Reflect: true },
       breakPoint: { type: Number, Reflect: true },
       pcPrefix: { type: String, Reflect: true },
@@ -84,7 +84,7 @@ export class HbImg extends Base {
 
   render() {
     return html`
-    <picture class="hb-img__picture" part="picture" style="width: ${this.width}; height: ${this.height};">
+    <picture class="hb-img__picture" part="picture">
       ${this.multiSource > 0 ?
         this.breakPoint > 0 ? 
           html`
@@ -96,7 +96,7 @@ export class HbImg extends Base {
           `
         : ''
       }
-      <hb-loading class="hb-img__loading" part="loading" ?hidden=${this.loaded || this.error} width=${this.width} height=${this.height}></hb-loading>
+      <hb-loading class="hb-img__loading" part="loading" ?hidden=${this.loaded || this.error} style="width:${this.loadingWidth}px; height:${this.loadingHeight}px;"></hb-loading>
       <img class="hb-img__img" part="img" src=${this.src} @error=${this.onError} @load=${this.onLoad} ?loaded=${this.loaded} ?error=${this.error}>
     </picture>
     `

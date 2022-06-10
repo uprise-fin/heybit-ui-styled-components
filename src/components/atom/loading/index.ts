@@ -7,8 +7,6 @@ export class HbLoading extends Base {
   static override get styles() {
     return [require("../../../styles/atom/loading/index.scss").default];
   }
-  width: string = '300px';
-  height: string = '300px';
   // length = 1
   static get properties() {
     return {
@@ -26,7 +24,7 @@ export class HbLoading extends Base {
 
   render() {
     return html`
-      <div class="hb-loading__wall" part="wall" style="width: ${this.width}; height: ${this.height};"></div>
+      <div class="hb-loading__wall" part="wall"></div>
     `
   }
 }
