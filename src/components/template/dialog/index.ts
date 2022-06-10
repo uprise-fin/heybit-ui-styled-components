@@ -64,6 +64,7 @@ enum position {
 }
 /**
  * @property open 온 오프
+ * @property width
  * @property persistent
  * @property hideCloseBtn
  * @slot icon - optional, 헤더
@@ -85,14 +86,17 @@ export class HbDialog extends Base {
     return [require("../../../styles/template/dialog/index.scss").default];
   }
   async customConnectedCallback() {
-    this.wrapEl = await getElement<HTMLDivElement>(this.shadowRoot, "wrap");
-    this.wrapEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
+    this.containerEl = await getElement<HTMLDivElement>(this.shadowRoot, "container");
+    this.containerEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
   }
   disconnectedCallback() {
-    this.wrapEl.onanimationend = () => null
+    this.containerEl.onanimationend = () => null
   }
-  wrapEl?: HTMLDivElement
+  containerEl?: HTMLDivElement
+  width = 300
   open = false
+  icon = ''
+  title = ''
   persistent = false;
   hideCloseBtn = false;
   buttonAlign = buttonAlign.horizon
@@ -114,19 +118,19 @@ export class HbDialog extends Base {
       open: { type: Boolean, Reflect: true },
       persistent: { type: Boolean, Reflect: true },
       hideCloseBtn: { type: Boolean, Reflect: true },
+      width: { type: Number, Reflect: true },
       buttonAlign: { type: String, Reflect: true },
+      title: { type: String, Reflect: true },
+      icon: { type: String, Reflect: true },
     };
   }
 
   render() {
     return html`
       <hb-transition ?show=${this.open} id="dialog-transition" type=${transitionType.fade}>
-        <div class="hb-dialog__wrap" id="wrap" @click=${this.adapterOnClose}>
-          <!-- <hb-delay delay="100" name="show" value=${this.open}> -->
-          <!-- <hb-transition type=${transitionType.zoom}> -->
+        <div class="hb-dialog__wrap" @click=${this.adapterOnClose}>
           <hb-transition ?show=${this.open} type=${transitionType.zoom}>
-          <!-- <hb-transition ?show=${this.open} type=${transitionType.zoom} style="animation-delay:100ms;"> -->
-            <div class="hb-dialog__container" part="container" @click=${this.stopPropagation}>
+            <div class="hb-dialog__container" style="width: ${this.width}px;" id="container" part="container" @click=${this.stopPropagation}>
               ${
                 this.hideCloseBtn ? '' : html`
                 <button
@@ -135,12 +139,9 @@ export class HbDialog extends Base {
                   class="hb-dialog__close-btn"
                   part="close-btn"
                   id="close-btn"
-                ><hb-icon icon="ic-system-close-24-black.svg" size="small"></hb-icon></button>`
+                ><hb-icon icon="ic-system-close-24-gray.svg" size="small"></hb-icon></button>`
               }
-              <div class="hb-dialog__head">
-                <slot name="icon" part="icon" class="hb-dialog__head__icon"></slot>
-                <slot name="title" part="title" class="hb-dialog__head__title"></slot>
-              </div>
+              <div class="hb-dialog__head">${this.icon ? html`<hb-img part="icon" src=${this.icon} class="hb-dialog__head__icon"></hb-img>` : ''}${this.title ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>` : ''}</div>
               <div class="hb-dialog__body">
                 <slot name="content" part="content" class="hb-dialog__body__content"></slot>
               </div>
@@ -150,23 +151,14 @@ export class HbDialog extends Base {
               </div>
             </div>
           </hb-transition>
-          <!-- </hb-delay> -->
         </div>
       </hb-transition>
     
     `
   }
   onAnimationEnd(event: AnimationEvent) {
+    console.log(event.animationName)
     this.classList.remove(event.animationName);
-  }
-  onToggle(val: boolean) {
-    if (!val) this.removeAttribute('open')
-    const obj: Obj<string[]> = {
-      true: ['open', 'show'],
-      false: ['hide']
-    }
-    this.classList.add(...obj[val + ''])
-    this.classList.remove(...obj[!val + ''])
   }
 
   onClose() {

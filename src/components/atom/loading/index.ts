@@ -7,12 +7,15 @@ export class HbLoading extends Base {
   static override get styles() {
     return [require("../../../styles/atom/loading/index.scss").default];
   }
+  width: string = '300px';
+  height: string = '300px';
   // length = 1
-  // static get properties() {
-  //   return {
-  //     length: { type: Number, Reflect: true },
-  //   };
-  // }
+  static get properties() {
+    return {
+      width: { type: String, Reflect: true },
+      height: { type: String, Reflect: true },
+    };
+  }
 
   // render() {
   //   return Array(this.length).fill(null).map((_,i) => html`
@@ -23,7 +26,7 @@ export class HbLoading extends Base {
 
   render() {
     return html`
-      <div class="hb-loading__wall" part="wall"></div>
+      <div class="hb-loading__wall" part="wall" style="width: ${this.width}; height: ${this.height};"></div>
     `
   }
 }

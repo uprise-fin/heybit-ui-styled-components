@@ -26,7 +26,7 @@ files.forEach((v) => {
 });
 // console.log("dddd", svgs);
 fs.writeFile(
-  "src/components/molecule/hb-icon/svg.ts",
+  "src/components/molecule/icon/svg.ts",
   "const svgs = " +
     JSON.stringify(svgs) +
     ";export default svgs as { [src: string]: string };",

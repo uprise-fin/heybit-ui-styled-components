@@ -15,7 +15,7 @@ export enum theme {
 export default class extends LitElement {
   override async connectedCallback() {
     super.connectedCallback();
-    this.dataset.hbStyled = "true";
+    // this.dataset.hbStyled = "true";
     await this.customConnectedCallback()
   }
   async customConnectedCallback(){}

@@ -82,19 +82,19 @@
 //     font-family: $font-family;
 //   }
 // }
-@mixin initial($selectors) {
-  @each $selector in $selectors {
-    #{$selector} {
-      font-family: $font-family;
-      visibility: hidden;
-      &[data-hb-styled] {
-        animation: hb-styled $transition__duration;
-        visibility: visible;
-      }
-    }
-    $class: "." + #{$selector};
-    #{$class} {
-      font-family: $font-family;
-    }
-  }
-}
+// @mixin initial($selectors) {
+//   @each $selector in $selectors {
+//     #{$selector} {
+//       font-family: $font-family;
+//       visibility: hidden;
+//       &[data-hb-styled] {
+//         animation: hb-styled $transition__duration;
+//         visibility: visible;
+//       }
+//     }
+//     $class: "." + #{$selector};
+//     #{$class} {
+//       font-family: $font-family;
+//     }
+//   }
+// }

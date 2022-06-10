@@ -32,7 +32,6 @@ $hb-dialog__border-radius: 16px !default;
   // }
 
   &__wrap {
-    z-index: zIndex("팝업");
     position: fixed;
     top: 0;
     right: 0;
@@ -51,13 +50,16 @@ $hb-dialog__border-radius: 16px !default;
       margin: auto;
     }
   }
-  $head-margin-top: 12px;
 
   &__container {
     position: relative;
-    min-width: 300px;
-    padding: #{$hb-dialog__padding-top - $head-margin-top} $hb-dialog__padding-right
-      $hb-dialog__padding-bottom $hb-dialog__padding-left;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(
+      100vh - #{$hb-dialog__padding-top + $hb-dialog__padding-bottom}
+    );
+    padding: #{$hb-dialog__padding-top} $hb-dialog__padding-right $hb-dialog__padding-bottom
+      $hb-dialog__padding-left;
     border-radius: $hb-dialog__border-radius;
     background: $hb-dialog__background;
     @include child-styled(".shake") {
@@ -90,35 +92,47 @@ $hb-dialog__border-radius: 16px !default;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(50%, -50%);
+    width: 52px;
+    height: 52px;
     padding: 0;
     border: 0;
     cursor: pointer;
     background: none;
   }
   &__head {
+    margin-bottom: 12px;
+    &:empty {
+      margin-bottom: 0;
+    }
     &__icon {
       display: block;
-      width: fit-content;
-      margin: $head-margin-top auto 0;
+      max-width: 56px;
+      max-height: 56px;
+      margin: auto;
     }
     &__title {
       display: block;
-      margin-top: $head-margin-top;
+      margin: 12px 0 0;
       font-weight: 700;
       font-size: 20px;
-      line-height: 24px;
+      line-height: 1.2;
       text-align: center;
+      &:first-child {
+        margin-top: 0;
+      }
     }
   }
   &__body {
-    margin-top: $head-margin-top;
+    overflow: auto;
     &__content {
       display: block;
-      overflow: auto;
-      max-height: calc(100vh - 200px);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      text-align: center;
+      color: #727476;
     }
-  }
+  } //pnpm add -g pnpm
 
   &__foot {
     margin-top: 24px;
@@ -141,6 +155,7 @@ $hb-dialog__border-radius: 16px !default;
       // }
       &.vertical {
         display: block;
+        margin-top: 14px;
         @include slot-styled("*") {
           margin-top: 10px;
         }
