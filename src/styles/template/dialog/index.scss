@@ -100,14 +100,13 @@ $hb-dialog__border-radius: 16px !default;
     background: none;
   }
   &__head {
-    margin-bottom: 12px;
+    margin: 0 10px 12px;
     &:empty {
       margin-bottom: 0;
     }
     &__icon {
       display: block;
-      max-width: 56px;
-      max-height: 56px;
+      max-width: 60px;
       margin: auto;
     }
     &__title {
@@ -124,6 +123,7 @@ $hb-dialog__border-radius: 16px !default;
   }
   &__body {
     overflow: auto;
+    margin: 0 10px;
     &__content {
       display: block;
       font-weight: 400;

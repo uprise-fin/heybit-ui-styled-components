@@ -14,6 +14,7 @@
       @include slot-styled("*") {
         padding: 20px;
         border: 0;
+        font-size: inherit;
         cursor: pointer;
         background: none;
       }

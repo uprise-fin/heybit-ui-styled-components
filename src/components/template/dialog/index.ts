@@ -4,6 +4,7 @@ import { getElement } from "../../../utils";
 import { transitionType } from "../../atom/transition";
 import Base from "../../base";
 
+
 export enum open  {
   'false' = 'false',
   'true' = 'true',
@@ -141,7 +142,7 @@ export class HbDialog extends Base {
                   id="close-btn"
                 ><hb-icon icon="ic-system-close-24-gray.svg" size="small"></hb-icon></button>`
               }
-              <div class="hb-dialog__head">${this.icon ? html`<hb-img part="icon" src=${this.icon} class="hb-dialog__head__icon"></hb-img>` : ''}${this.title ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>` : ''}</div>
+              <div class="hb-dialog__head">${this.icon ? html`<hb-img part="icon" loadingWidth="60" loadingHeight="60" src=${this.icon} class="hb-dialog__head__icon"></hb-img>` : ''}${this.title ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>` : ''}</div>
               <div class="hb-dialog__body">
                 <slot name="content" part="content" class="hb-dialog__body__content"></slot>
               </div>

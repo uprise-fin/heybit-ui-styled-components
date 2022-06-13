@@ -8,24 +8,25 @@
   }
   &__picture {
     display: flex;
+    &__img {
+      flex: 1;
+      max-width: 100%;
+      max-height: 100%;
+      opacity: 0;
+      transition: opacity $transition__duration;
+      &[loaded] {
+        opacity: 1;
+      }
+    }
   }
   &__loading {
     position: absolute;
+    width: inherit;
+    height: inherit;
     pointer-events: none;
     transition: opacity $transition__duration;
     &[hidden] {
       opacity: 0;
-    }
-  }
-
-  &__img {
-    flex: 1;
-    max-width: 100%;
-    max-height: 100%;
-    opacity: 0;
-    transition: opacity $transition__duration;
-    &[loaded] {
-      opacity: 1;
     }
   }
 }

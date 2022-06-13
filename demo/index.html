@@ -42,12 +42,15 @@
       onchange="console.log(arguments)"
     >
     </hb-select>
-    <div style="background-color: red;">
+    <div style="background: white; position: relative;z-index: 10">
       <hb-img
-        width="160px"
-        height="195px"
+        style="width: 400px; height:490px;"
         src="https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png"
       ></hb-img>
+      <img
+        style="display: block;width: 400px; height:490px;"
+        src="https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png"
+      ></img>
     </div>
     <hb-input
       value="123124124"
@@ -61,18 +64,23 @@
     <div class="hb-button" theme="primary" type="block" size="large">
       <div class="hb-button__label" placeholder="dsd">dawdwa</div>
     </div>
-    <hb-dialog id="dialog" persistent="true" title="가나다">
+    <hb-dialog
+      id="dialog"
+      persistent="true"
+      title="가나다"
+      style="position: relative;z-index: 11;"
+    >
       <div slot="content">가나다</div>
-      <hb-button slot="button" size="medium" theme="primary">가나다</hb-button>
+      <hb-button slot="button" size="medium" theme="primary" id="btn2"
+        >가나다</hb-button
+      >
       <hb-button slot="button" size="medium" theme="secondary"
         >가나다</hb-button
       >
     </hb-dialog>
-    <hb-dialog id="dialog2">
-      <div slot="title">123</div>
-      <div slot="content">434</div>
-      <div slot="button">545</div>
-      <div slot="button">123</div>
+    <hb-dialog id="dialog2" title="하하호호">
+      <div slot="content">우하하하하</div>
+      <a href="#" slot="anchor">닫기</a>
     </hb-dialog>
     <div class="hb-dialog" persistent="true" data-hb-styled="true" open="false">
       <hb-transition type="fade">

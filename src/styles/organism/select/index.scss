@@ -59,7 +59,7 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
   //   cursor: inherit;
   // }
   &__label {
-    @extend %option;
+    // @extend %option;
     cursor: pointer;
 
     @include child-styled(".open") {

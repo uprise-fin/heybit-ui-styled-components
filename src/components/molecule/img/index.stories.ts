@@ -14,7 +14,9 @@ breakPoint,
 loadingWidth,
 loadingHeight
  }) =>
-  html`<hb-img loadingWidth=${loadingWidth} loadingHeight=${loadingHeight} src=${src} multiSource=${multiSource} breakPoint=${breakPoint} ></hb-img>`;
+  html`
+  <hb-img loadingWidth=${loadingWidth} loadingHeight=${loadingHeight} src=${src} multiSource=${multiSource} breakPoint=${breakPoint} ></hb-img>
+  `;
 export const primary: Story<HbImg> = Template.bind({});
 primary.args = { src: "https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png",
  multiSource: 0,
