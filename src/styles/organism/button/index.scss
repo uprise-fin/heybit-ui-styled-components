@@ -126,12 +126,12 @@ $hb-button__theme: (
     pointer-events: none;
   }
 
-  @include host-styled(":empty") {
-    .hb-button__label::before {
-      content: attr(placeholder);
-      opacity: 0.5;
-    }
-  }
+  // @include host-styled(":empty") {
+  //   .hb-button__label::before {
+  //     content: attr(placeholder);
+  //     opacity: 0.5;
+  //   }
+  // }
 
   &__slot {
     // position: absolute;

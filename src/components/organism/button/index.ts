@@ -15,7 +15,6 @@ export enum type {
  * @property type
  * @property loading
  * @property disabled
- * @property placeholder
  * @slot slot--left - optional, slot--left부분을 커스텀할때 사용
  * @slot slot--right - optional, slot--right부분을 커스텀할때 사용
  * @slot 내용 컨텐츠 영역
@@ -32,7 +31,6 @@ export class HbButton extends Base {
   size: size=size.large;
   loading = false;
   disabled = false;
-  placeholder = ''
   theme: theme = theme.primary;
 
 
@@ -41,7 +39,6 @@ export class HbButton extends Base {
       theme: { type: String, Reflect: true },
       size: { type: String, Reflect: true },
       type: { type: String, Reflect: true },
-      placeholder: { type: String, Reflect: true },
       loading: { type: Boolean, Reflect: true },
       disabled: { type: Boolean, Reflect: true },
     };
@@ -58,7 +55,7 @@ export class HbButton extends Base {
           </hb-transition> 
           ` : html`
           <hb-transition class="hb-button__label__transition" type=${transitionType.fade} ?show=${!this.loading}>
-            <slot part="label" placeholder=${this.placeholder}></slot>
+            <slot part="label"></slot>
           </hb-transition> 
           `
         }

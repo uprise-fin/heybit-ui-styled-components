@@ -19,27 +19,17 @@ $hb-input__background--warning: map-get(
 ) !default;
 .hb-input {
   @include host-styled {
-    position: relative;
     display: flex;
     align-items: center;
     padding: $hb-input__padding;
     cursor: text;
-  }
-  &__border {
-    // 브라우저의 자동완성기능에 인풋의 배경색이 브라우저에서 컨트롤하게 됩니다. box-shadow 해당 속성으로만 그 색상을 덮을 수 있어서,
-    // 인풋의 보더라인을 새로운 돔을 추가해서 관리합니다.
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
     border: #{$hb-input__border-width} solid #{$hb-input__border-color};
     border-radius: $hb-input__border-radius;
-    pointer-events: none;
-    @include child-styled([error]) {
-      border-color: $hb-input__border-color--warning;
-    }
+    background: $hb-input__background;
+  }
+  @include host-styled([error]) {
+    border-color: $hb-input__border-color--warning;
+    background: $hb-input__background--warning;
   }
   &__el {
     width: 0;
@@ -52,10 +42,8 @@ $hb-input__background--warning: map-get(
     outline: none;
     cursor: inherit;
     box-shadow: 0 0 0 999px #{$hb-input__background} inset;
-    background: $hb-input__background;
     @include child-styled([error]) {
       box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
-      background: $hb-input__background--warning;
     }
   }
   &__slot {

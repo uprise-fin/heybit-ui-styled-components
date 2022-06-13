@@ -21,14 +21,13 @@ export default {
   },
 } as Meta;
 
-const BlockTem: Story<HbButton> = ({ loading, disabled, theme, size, title,placeholder }) =>
+const BlockTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
   html`<hb-button
     theme="${theme}"
     size=${size}
     type=${type.block}
     ?loading=${loading}
     ?disabled=${disabled}
-    placeholder=${placeholder}
   >${title}</hb-button>`;
 
 export const block: Story<HbButton> = BlockTem.bind({});
@@ -36,31 +35,28 @@ block.args = {
   title: '내용을 입력해보세요',
   theme: theme.primary,
   size: size.large,
-  placeholder:'',
   loading: false,
   disabled: false,
 };
-const InlineTem: Story<HbButton> = ({ loading, disabled, theme, size, title,placeholder }) =>
+const InlineTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
   html`<hb-button
     theme="${theme}"
     size=${size}
     type=${type.inline}
     ?loading=${loading}
     ?disabled=${disabled}
-    placeholder=${placeholder}
   >${title}</hb-button>`;
 export const inline: Story<HbButton> = InlineTem.bind({});
 inline.args = {
   ...block.args,
 };
-const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title,placeholder }) =>
+const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
   html`<hb-button
     theme="${theme}"
     size=${size}
     type=${type.fab}
     ?loading=${loading}
     ?disabled=${disabled}
-    placeholder=${placeholder}
   >${title}</hb-button>`;
 export const fab: Story<HbButton> = FabTem.bind({});
 fab.args = {
