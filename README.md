@@ -32,12 +32,12 @@ import "/node_modules/heybit-ui-styled-components/dist/initial.css";
 필요한 컴포넌트만 불러오거나 전체를 불러오는 방법입니다.
 
 ```javascript
-import "heybit-ui-styled-components/dist/components/organism/hb-input"; // selected
+import "heybit-ui-styled-components/dist/components/organism/hb-input"; // part
 //or
 import "heybit-ui-styled-components"; // all components
 ```
 
-### 주의사항
+### 사용 시 주의사항
 
 넉스트에서 ssr 활성화 시 window에러가 나는데, 이거는 라이프사이클에서 window가 있을때 require방식으로 주입하는 방법으로 해결 가능합니다.
 
@@ -49,7 +49,7 @@ import "heybit-ui-styled-components"; // all components
    host 자체를 스타일링 할때 `@include host-styled{}`
    host의 변경에 따른 내부 엘리먼트에 스타일링 할때 `@include child-styled{}`
 
-#### part
+#### css part
 
 shadow 내부를 접근하기 위해서는 part라는 속성이 있어야합니다.
 
@@ -79,3 +79,19 @@ hb-icon::part(svg) {
   fill: var(--primary--30);
 }
 ```
+
+### 제작 시 주의사항
+
+#### mixin 이용하기
+
+host-styled, slot-styled 같은 믹싱을 이용하여 스타일 처리를 해야
+컴포넌트를 css로만도 제공이 가능합니다.
+쉐도우돔과 일반돔의 차이는
+부모가 처음 돔이 태그 이름이냐(`hb-button`) 호스트냐(`:host`)의 차이와
+슬럿 내부 접근 시에도(`:slot(*)`) 유의해야 하기 때문에 위의 믹싱을 이용하여 작업해야합니다.
+
+#### position relative 지양하기
+
+컴포넌트 생성 시 해당 돔을 기준으로 잡고 설계하면 많은 부분이 쉬워집니다.
+하지만 그만큼 해결하기 어려운 문제도 야기되기때문에
+relative를 주지 않는 방법으로 설계해야합니다.

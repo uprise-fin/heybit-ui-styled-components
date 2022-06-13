@@ -1,0 +1,13 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+
+.hb-anchor {
+  &__el {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    color: #a2a4a6;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

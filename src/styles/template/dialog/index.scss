@@ -135,7 +135,6 @@ $hb-dialog__border-radius: 16px !default;
   } //pnpm add -g pnpm
 
   &__foot {
-    margin-top: 24px;
     &__button {
       &.horizon {
         display: flex;
@@ -143,7 +142,7 @@ $hb-dialog__border-radius: 16px !default;
         flex-direction: row;
         @include slot-styled("*") {
           flex: 1;
-          margin: 0 0 0 10px;
+          margin: 24px 0 0 10px;
           border: 0;
           text-align: center;
         }
@@ -155,7 +154,9 @@ $hb-dialog__border-radius: 16px !default;
       // }
       &.vertical {
         display: block;
-        margin-top: 14px;
+        @include slot-styled("*:first-of-type") {
+          margin-top: 24px;
+        }
         @include slot-styled("*") {
           margin-top: 10px;
         }
@@ -168,11 +169,6 @@ $hb-dialog__border-radius: 16px !default;
       @include slot-styled("*") {
         display: inline-block;
         margin-top: 16px;
-        font-weight: 700;
-        font-size: 13px;
-        line-height: 16px;
-        color: #a2a4a6;
-        text-decoration: underline;
       }
     }
   }

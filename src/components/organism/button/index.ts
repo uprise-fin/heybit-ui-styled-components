@@ -59,8 +59,6 @@ export class HbButton extends Base {
           </hb-transition> 
           `
         }
-        
-        
       </div>
       <slot name="slot--right" part="slot--right" class="hb-button__slot hb-button__slot--right"></slot>
     `
