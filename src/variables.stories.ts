@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
-import Base from "./components/base";
+import { Base } from "./components/base";
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;

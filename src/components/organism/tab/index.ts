@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getChildren } from "../../../utils";
-import Base from "../../base";
+import {Base} from "../../base";
 /**
  * @property index
  * @slot content 기본 컨텐츠 영역

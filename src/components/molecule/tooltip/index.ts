@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { transitionType } from "../../atom/transition";
-import Base from "../../base";
+import {Base} from "../../base";
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**

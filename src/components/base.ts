@@ -1,4 +1,14 @@
 import { LitElement } from "lit";
+export enum verticalAlign {
+  middle,
+  top,
+  bottom,
+}
+export enum horizonAlign {
+  center,
+  right,
+  left,
+}
 export enum size {
   'small'= 'small' ,
   'medium'= 'medium',
@@ -12,7 +22,7 @@ export enum theme {
 'quinary' ='quinary',
 'senary' ='senary',
 }
-export default class extends LitElement {
+export class Base extends LitElement {
   override async connectedCallback() {
     super.connectedCallback();
     // this.dataset.hbStyled = "true";

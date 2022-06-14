@@ -71,10 +71,10 @@
       }
     }
   }
-  @include host-styled("[type='bottom-scroll']") {
-    animation: hide-bottom-scroll $transition__duration;
+  @include host-styled("[type='bottom-up-height']") {
+    animation: hide-bottom-up-height $transition__duration;
     transform-origin: bottom;
-    @keyframes hide-bottom-scroll {
+    @keyframes hide-bottom-up-height {
       0% {
         display: block;
         transform: scaleY(1);
@@ -90,9 +90,9 @@
     }
   }
 
-  @include host-styled("[show][type='bottom-scroll']") {
-    animation: show-bottom-scroll $transition__duration;
-    @keyframes show-bottom-scroll {
+  @include host-styled("[show][type='bottom-up-height']") {
+    animation: show-bottom-up-height $transition__duration;
+    @keyframes show-bottom-up-height {
       0% {
         display: block;
         transform: scaleY(0);
@@ -102,6 +102,42 @@
       100% {
         display: block;
         transform: scaleY(1);
+        transform-origin: bottom;
+        will-change: unset;
+      }
+    }
+  }
+  @include host-styled("[type='bottom-up']") {
+    animation: hide-bottom-up $transition__duration;
+    transform-origin: bottom;
+    @keyframes hide-bottom-up {
+      0% {
+        display: block;
+        transform: translateY(0);
+        transform-origin: bottom;
+        will-change: transform;
+      }
+      100% {
+        display: block;
+        transform: translateY(100%);
+        transform-origin: bottom;
+        will-change: unset;
+      }
+    }
+  }
+
+  @include host-styled("[show][type='bottom-up']") {
+    animation: show-bottom-up $transition__duration;
+    @keyframes show-bottom-up {
+      0% {
+        display: block;
+        transform: translateY(100%);
+        transform-origin: bottom;
+        will-change: transform;
+      }
+      100% {
+        display: block;
+        transform: translateY(0);
         transform-origin: bottom;
         will-change: unset;
       }

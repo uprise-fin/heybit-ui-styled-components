@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { transitionType } from "../../atom/transition";
-import Base from "../../base";
+import {Base} from "../../base";
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -48,7 +48,7 @@ export class HbToast extends Base {
   }
   
   render() {
-    return this._messages.map((x, i) => (html`<hb-transition class="hb-toast__position" type=${transitionType.fade} ?show=${this.timer[i] > this.now}><hb-transition type=${transitionType.bottomScroll} ?show=${this.timer[i] > this.now}><div class="hb-toast__text-wrap"><div class="hb-toast__text-wrap__text">${x}</div></div></hb-transition></hb-transition>`))
+    return this._messages.map((x, i) => (html`<hb-transition class="hb-toast__position" type=${transitionType.fade} ?show=${this.timer[i] > this.now}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.timer[i] > this.now}><div class="hb-toast__text-wrap"><div class="hb-toast__text-wrap__text">${x}</div></div></hb-transition></hb-transition>`))
   }
 }
 

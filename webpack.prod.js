@@ -58,6 +58,9 @@ module.exports = (_, options) => {
         path.resolve(__dirname, "./src/components/organism/tab/index.ts"),
       ],
 
+      "components/template/modal/index": [
+        path.resolve(__dirname, "./src/components/template/modal/index.ts"),
+      ],
       "components/template/dialog/index": [
         path.resolve(__dirname, "./src/components/template/dialog/index.ts"),
       ],

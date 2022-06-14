@@ -2,10 +2,10 @@ import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
 import { theme } from "../../base";
 import "./index";
-import { buttonAlign, HbDialog } from "./index";
+import { buttonAlign, HbSheet } from "./index";
 import thunderImg from "/static/sample-thunder.svg";
 import desktopImg from "/static/sample-desktop.png";
-interface HbDialogExpns extends HbDialog {
+interface HbSheetExpns extends HbSheet {
   icon: string;
   title: string;
   content: string;
@@ -18,8 +18,8 @@ interface HbDialogExpns extends HbDialog {
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: "components/template/hb-dialog",
-  component: "hb-dialog",
+  title: "components/template/hb-sheet",
+  component: "hb-sheet",
   argTypes: {
     open: {
       options: [true, false],
@@ -43,13 +43,13 @@ export default {
     // },
   },
 } as Meta;
-const Template = (props: HbDialogExpns) => html`
+const Template = (props: HbSheetExpns) => html`
   <style>
     body {
       background: url(${desktopImg}) no-repeat top center;
     }
   </style>
-  <hb-dialog
+  <hb-sheet
     ?open=${props.open}
     icon=${props.icon}
     title=${props.title}
@@ -83,19 +83,19 @@ const Template = (props: HbDialogExpns) => html`
           >
         `
       : ""}
-  </hb-dialog>
+  </hb-sheet>
 `;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const HorizonTemplate: Story<HbDialogExpns> = (props) => {
+const HorizonTemplate: Story<HbSheetExpns> = (props) => {
   props.buttonAlign = buttonAlign.horizon;
   return Template(props);
 };
-const VerticalTemplate: Story<HbDialogExpns> = (props) => {
+const VerticalTemplate: Story<HbSheetExpns> = (props) => {
   props.buttonAlign = buttonAlign.vertical;
   return Template(props);
 };
 
-export const horizon: Story<HbDialogExpns> = HorizonTemplate.bind({});
+export const horizon: Story<HbSheetExpns> = HorizonTemplate.bind({});
 horizon.args = {
   open: true,
   persistent: true,
@@ -118,12 +118,12 @@ horizon.args = {
     },
   ],
 };
-export const vertical: Story<HbDialogExpns> = VerticalTemplate.bind({});
+export const vertical: Story<HbSheetExpns> = VerticalTemplate.bind({});
 vertical.args = {
   ...horizon.args,
   anchor: "탈퇴하기",
 };
-const EventPopupTemplate: Story<HbDialogExpns> = ({
+const EventPopupTemplate: Story<HbSheetExpns> = ({
   open,
   persistent,
   hideCloseBtn,
@@ -139,7 +139,7 @@ const EventPopupTemplate: Story<HbDialogExpns> = ({
         background-image: url(${desktopImg});
       }
     </style>
-    <hb-dialog
+    <hb-sheet
       width=${460}
       ?open=${open}
       icon=${icon}
@@ -165,10 +165,10 @@ const EventPopupTemplate: Story<HbDialogExpns> = ({
               `
           )
         : ""}
-    </hb-dialog>
+    </hb-sheet>
   `;
 
-export const event: Story<HbDialogExpns> = EventPopupTemplate.bind({});
+export const event: Story<HbSheetExpns> = EventPopupTemplate.bind({});
 event.args = {
   open: true,
   persistent: true,

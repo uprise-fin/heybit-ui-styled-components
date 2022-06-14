@@ -1,4 +1,4 @@
-import Base, { size, theme } from "../../base";
+import { Base, size, theme } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 

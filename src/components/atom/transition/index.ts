@@ -1,10 +1,11 @@
-import Base from "../../base";
+import {Base} from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 export enum transitionType {
   fade = 'fade',
   zoom = 'zoom',
-  bottomScroll = 'bottom-scroll',
+  bottomUpHeight = 'bottom-up-height',
+  bottomUp = 'bottom-up',
 }
 @customElement("hb-transition")
 export class HbTransition extends Base {
