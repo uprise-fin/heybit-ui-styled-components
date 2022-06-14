@@ -13,55 +13,55 @@ module.exports = (_, options) => {
   }, {});
   return merge(common, {
     entry: {
-      "components/atom/delay/index": [
+      "components/atom/delay": [
         path.resolve(__dirname, "./src/components/atom/delay/index.ts"),
       ],
-      "components/atom/loading/index": [
+      "components/atom/loading": [
         path.resolve(__dirname, "./src/components/atom/loading/index.ts"),
       ],
-      "components/atom/transition/index": [
+      "components/atom/transition": [
         path.resolve(__dirname, "./src/components/atom/transition/index.ts"),
       ],
 
-      "components/molecule/icon/index": [
+      "components/molecule/icon": [
         path.resolve(__dirname, "./src/components/molecule/icon/index.ts"),
       ],
-      "components/molecule/img/index": [
+      "components/molecule/img": [
         path.resolve(__dirname, "./src/components/molecule/img/index.ts"),
       ],
-      "components/molecule/list/index": [
+      "components/molecule/list": [
         path.resolve(__dirname, "./src/components/molecule/list/index.ts"),
       ],
-      "components/molecule/skeleton/index": [
+      "components/molecule/skeleton": [
         path.resolve(__dirname, "./src/components/molecule/skeleton/index.ts"),
       ],
-      "components/molecule/spinner/index": [
+      "components/molecule/spinner": [
         path.resolve(__dirname, "./src/components/molecule/spinner/index.ts"),
       ],
-      "components/molecule/toast/index": [
+      "components/molecule/toast": [
         path.resolve(__dirname, "./src/components/molecule/toast/index.ts"),
       ],
-      "components/molecule/tooltip/index": [
+      "components/molecule/tooltip": [
         path.resolve(__dirname, "./src/components/molecule/tooltip/index.ts"),
       ],
 
-      "components/organism/button/index": [
+      "components/organism/button": [
         path.resolve(__dirname, "./src/components/organism/button/index.ts"),
       ],
-      "components/organism/input/index": [
+      "components/organism/input": [
         path.resolve(__dirname, "./src/components/organism/input/index.ts"),
       ],
-      "components/organism/select/index": [
+      "components/organism/select": [
         path.resolve(__dirname, "./src/components/organism/select/index.ts"),
       ],
-      "components/organism/tab/index": [
+      "components/organism/tab": [
         path.resolve(__dirname, "./src/components/organism/tab/index.ts"),
       ],
 
-      "components/template/modal/index": [
+      "components/template/modal": [
         path.resolve(__dirname, "./src/components/template/modal/index.ts"),
       ],
-      "components/template/dialog/index": [
+      "components/template/dialog": [
         path.resolve(__dirname, "./src/components/template/dialog/index.ts"),
       ],
     },

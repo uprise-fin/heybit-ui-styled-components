@@ -4,7 +4,6 @@ import { getElement } from "../../../utils";
 import { transitionType } from "../../atom/transition";
 import {Base, horizonAlign, verticalAlign} from "../../base";
 
-
 export enum open  {
   'false' = 'false',
   'true' = 'true',
@@ -43,11 +42,7 @@ export class HbModal extends Base {
   containerEl?: HTMLDivElement
   width = 300
   open = false
-  icon = ''
-  title = ''
   persistent = false;
-  hideCloseBtn = false;
-  buttonAlign = buttonAlign.horizon
   get position() {
     const obj = {
       0: ['auto', 'auto'],

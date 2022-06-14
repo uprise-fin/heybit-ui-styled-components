@@ -6,7 +6,7 @@ describe(SHADOW_TAG, () => {
   let SHADOW_ELEMENT: HbModal;
   let SHADOW_ROOT: ShadowRoot | null;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     SHADOW_ELEMENT = window.document.createElement(SHADOW_TAG) as HbModal;
     document.body.appendChild(SHADOW_ELEMENT);
     SHADOW_ROOT = getShadowRoot(SHADOW_TAG);
