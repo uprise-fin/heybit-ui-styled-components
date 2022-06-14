@@ -17,7 +17,7 @@ describe(SHADOW_TAG, () => {
   });
 
   it(`${SHADOW_TAG}는 화면에 보이지 않아야 한다.`, async () => {
-    const list = SHADOW_ROOT?.getElementById("modal-transition");
+    const list = SHADOW_ROOT?.getElementById("modal-transition") as HTMLElement;
     expect(getComputedStyle(list!).display).toEqual("none");
   });
   it(`${SHADOW_TAG}에 'open' 프로퍼티가 있으면 화면에 보여야 한다.`, async () => {

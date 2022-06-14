@@ -17,12 +17,14 @@ describe(SHADOW_TAG, () => {
   });
 
   it(`${SHADOW_TAG}의 리스트는 화면에 보이지 않아야 한다.`, async () => {
-    const list = SHADOW_ROOT?.getElementById("select-transition");
+    const list = SHADOW_ROOT?.getElementById(
+      "select-transition"
+    ) as HTMLElement;
     expect(getComputedStyle(list!).display).toEqual("none");
   });
   it(`${SHADOW_TAG}에 'open'클래스가 있으면 리스트는 화면에 보여야 한다.`, async () => {
     (SHADOW_ROOT?.getElementById("label") as HTMLInputElement).focus();
-    const list = SHADOW_ROOT?.getElementById("list");
+    const list = SHADOW_ROOT?.getElementById("list") as HTMLElement;
     expect(getComputedStyle(list!).display).not.toEqual("none");
   });
 });

@@ -24,7 +24,7 @@ describe(SHADOW_TAG, () => {
   });
 
   it(`${SHADOW_TAG}에 value와 option slot이 입력되면 value에 맞는 라벨이 적용된다.`, async () => {
-    const input = SHADOW_ROOT.getElementById("label") as HTMLInputElement;
+    const input = SHADOW_ROOT?.getElementById("label") as HTMLInputElement;
     expect(input.value).toEqual(options.find((x) => x.value === value)?.label);
   });
   it(`${SHADOW_TAG}에 option slot이 선택되면 value와 label이 바뀐다.`, async () => {
@@ -32,6 +32,6 @@ describe(SHADOW_TAG, () => {
     SHADOW_ELEMENT.setAttribute("value", value);
     const input = SHADOW_ROOT?.getElementById("label") as HTMLInputElement;
     await SHADOW_ELEMENT.updateComplete;
-    expect(input.value).toEqual(options.find((x) => x.value === value).label);
+    expect(input.value).toEqual(options.find((x) => x.value === value)?.label);
   });
 });
