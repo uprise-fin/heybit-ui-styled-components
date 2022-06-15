@@ -21,18 +21,20 @@ export class HbAnchor extends Base {
     return [require("../../../styles/molecule/anchor/index.scss").default];
   }
   href = ''
+  target = '_blank'
   text: string;
 
   static get properties() {
     return {
       href: { type: String, Reflect: true },
+      target: { type: String, Reflect: true },
     };
   }
 
   render() {
     return this.href 
       ? 
-      html`<a class="hb-anchor__el" href=${this.href}><slot></slot></a>`
+      html`<a class="hb-anchor__el" href=${this.href} target=${this.target} rel="noreferer noopener"><slot></slot></a>`
       :
       html`<a class="hb-anchor__el"><slot></slot></a>`
   }

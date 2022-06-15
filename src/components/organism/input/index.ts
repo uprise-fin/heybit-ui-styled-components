@@ -39,6 +39,7 @@ export class HbInput extends Base {
   error = false
   decimal: number = 2;
   comma: number = 3;
+  readonly = false
   maxlength?: number;
   type: type = type.text;
   static get properties() {
@@ -51,6 +52,7 @@ export class HbInput extends Base {
       comma: { type: Number, Reflect: true },
       decimal: { type: Number, Reflect: true },
       error: { type: Boolean, Reflect: true },
+      readonly: { type: Boolean, Reflect: true },
     };
   }
 
@@ -92,6 +94,7 @@ export class HbInput extends Base {
         @input=${this.onInput}
         type=${this.isType}
         placeholder=${this.placeholder}
+        ?readonly=${this.readonly}
       />
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>

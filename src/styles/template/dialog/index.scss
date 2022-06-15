@@ -5,9 +5,7 @@ $hb-dialog__padding-top: 52px !default;
 $hb-dialog__padding-right: 20px !default;
 $hb-dialog__padding-bottom: 24px !default;
 $hb-dialog__padding-left: 20px !default;
-$hb-dialog__layer__background: map-get($variables, layer, background) !default;
-$hb-dialog__background: map-get($variables, box, background) !default;
-$hb-dialog__border-radius: 16px !default;
+// $hb-dialog__border-radius: 16px !default;
 // $hb-input__height: $box__height !default;
 // $hb-input__padding: $box__padding !default;
 // $hb-input__border-width: $box__border-width !default;
@@ -28,8 +26,8 @@ $hb-dialog__border-radius: 16px !default;
     );
     padding: #{$hb-dialog__padding-top} $hb-dialog__padding-right $hb-dialog__padding-bottom
       $hb-dialog__padding-left;
-    border-radius: $hb-dialog__border-radius;
-    background: $hb-dialog__background;
+    border-radius: var(--modal__border-radius);
+    background: var(--box__background);
   }
   &__close-btn {
     position: absolute;

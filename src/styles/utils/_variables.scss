@@ -31,13 +31,15 @@ $box: (
   background: #fff,
   background--warning: red,
 );
-$layer: (
+$modal: (
+  width: 400px,
+  border-radius: 16px,
   background: rgba(#000, 0.1),
 );
 $variables: (
   fonts: $fonts,
   box: $box,
-  layer: $layer,
+  modal: $modal,
 );
 $level: 10;
 $transition__duration: 0.3s;

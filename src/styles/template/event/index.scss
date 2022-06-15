@@ -1,23 +1,15 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
 
-$hb-sheet__padding-top: 52px !default;
-$hb-sheet__padding-right: 20px !default;
-$hb-sheet__padding-bottom: 24px !default;
-$hb-sheet__padding-left: 20px !default;
-
-.hb-sheet {
+.hb-event {
   &__container {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    max-height: calc(
-      100vh - #{$hb-sheet__padding-top + $hb-sheet__padding-bottom}
-    );
-    padding: #{$hb-sheet__padding-top} $hb-sheet__padding-right $hb-sheet__padding-bottom
-      $hb-sheet__padding-left;
+    overflow: hidden;
     border-radius: var(--modal__border-radius);
     background: var(--box__background);
+    &__img {
+      display: block;
+    }
   }
   &__close-btn {
     position: absolute;

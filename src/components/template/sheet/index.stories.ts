@@ -2,9 +2,10 @@ import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
 import { theme } from "../../base";
 import "./index";
-import { buttonAlign, HbSheet } from "./index";
+import { HbSheet } from "./index";
 import thunderImg from "/static/sample-thunder.svg";
 import desktopImg from "/static/sample-desktop.png";
+import { buttonAlign } from "../modal";
 interface HbSheetExpns extends HbSheet {
   icon: string;
   title: string;
@@ -123,65 +124,65 @@ vertical.args = {
   ...horizon.args,
   anchor: "탈퇴하기",
 };
-const EventPopupTemplate: Story<HbSheetExpns> = ({
-  open,
-  persistent,
-  hideCloseBtn,
-  // storybook 옵션
-  icon,
-  title,
-  content,
-  button,
-}) =>
-  html`
-    <style>
-      body {
-        background-image: url(${desktopImg});
-      }
-    </style>
-    <hb-sheet
-      width=${460}
-      ?open=${open}
-      icon=${icon}
-      title=${title}
-      buttonAlign=${buttonAlign.horizon}
-      ?persistent=${persistent}
-      ?hideCloseBtn=${hideCloseBtn}
-    >
-      <hb-img
-        style="display: block;"
-        slot="content"
-        src=${content}
-        loadingWidth="400"
-        loadingHeight="490"
-      ></hb-img>
-      ${button
-        ? button.map(
-            (x) =>
-              html`
-                <hb-button slot="button" theme=${x.theme} size="medium"
-                  >${x.name}</hb-button
-                >
-              `
-          )
-        : ""}
-    </hb-sheet>
-  `;
+// const EventPopupTemplate: Story<HbSheetExpns> = ({
+//   open,
+//   persistent,
+//   hideCloseBtn,
+//   // storybook 옵션
+//   icon,
+//   title,
+//   content,
+//   button,
+// }) =>
+//   html`
+//     <style>
+//       body {
+//         background-image: url(${desktopImg});
+//       }
+//     </style>
+//     <hb-sheet
+//       width=${460}
+//       ?open=${open}
+//       icon=${icon}
+//       title=${title}
+//       buttonAlign=${buttonAlign.horizon}
+//       ?persistent=${persistent}
+//       ?hideCloseBtn=${hideCloseBtn}
+//     >
+//       <hb-img
+//         style="display: block;"
+//         slot="content"
+//         src=${content}
+//         loadingWidth="400"
+//         loadingHeight="490"
+//       ></hb-img>
+//       ${button
+//         ? button.map(
+//             (x) =>
+//               html`
+//                 <hb-button slot="button" theme=${x.theme} size="medium"
+//                   >${x.name}</hb-button
+//                 >
+//               `
+//           )
+//         : ""}
+//     </hb-sheet>
+//   `;
 
-export const event: Story<HbSheetExpns> = EventPopupTemplate.bind({});
-event.args = {
-  open: true,
-  persistent: true,
-  content:
-    "https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png",
-  button: [
-    {
-      name: "닫기",
-      theme: theme.primary,
-    },
-    {
-      name: "3일동안 안열기",
-      theme: theme.quinary,
-    },
-  ],
-};
+// export const event: Story<HbSheetExpns> = EventPopupTemplate.bind({});
+// event.args = {
+//   open: true,
+//   persistent: true,
+//   content:
+//     "https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png",
+//   button: [
+//     {
+//       name: "닫기",
+//       theme: theme.primary,
+//     },
+//     {
+//       name: "3일동안 안열기",
+//       theme: theme.quinary,
+//     },
+//   ],
+// };

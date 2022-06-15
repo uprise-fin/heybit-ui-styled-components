@@ -2,16 +2,8 @@ import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { transitionType } from "../../atom/transition";
 import { Base, verticalAlign } from "../../base";
+import { buttonAlign } from "../modal";
 
-
-export enum open  {
-  'false' = 'false',
-  'true' = 'true',
-}
-export enum buttonAlign  {
-  'vertical' = 'vertical',
-  'horizon' = 'horizon',
-}
 /**
  * @property open 온 오프
  * @property width
@@ -35,7 +27,7 @@ export class HbSheet extends Base {
   static override get styles() {
     return [require("../../../styles/template/sheet/index.scss").default];
   }
-  width = 300
+  width = 0
   open = false
   icon = ''
   title = ''

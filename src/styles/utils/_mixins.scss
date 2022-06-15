@@ -27,14 +27,14 @@
     @content;
   }
 }
-@keyframes hb-styled {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+// @keyframes hb-styled {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
 @function zIndex($name) {
   @if $name == "레이어" {
     @return 10;
@@ -82,19 +82,14 @@
 //     font-family: $font-family;
 //   }
 // }
-// @mixin initial($selectors) {
-//   @each $selector in $selectors {
-//     #{$selector} {
-//       font-family: $font-family;
-//       visibility: hidden;
-//       &[data-hb-styled] {
-//         animation: hb-styled $transition__duration;
-//         visibility: visible;
-//       }
-//     }
-//     $class: "." + #{$selector};
-//     #{$class} {
-//       font-family: $font-family;
-//     }
-//   }
-// }
+@mixin initial($selectors) {
+  @each $selector in $selectors {
+    #{$selector} {
+      font-family: $font-family;
+    }
+    $class: "." + #{$selector};
+    #{$class} {
+      font-family: $font-family;
+    }
+  }
+}

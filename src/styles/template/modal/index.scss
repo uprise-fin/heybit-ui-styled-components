@@ -1,9 +1,5 @@
-@import "../../utils/variables";
+// @import "../../utils/variables";
 @import "../../utils/mixins";
-
-$hb-modal__layer__background: map-get($variables, layer, background) !default;
-$hb-modal__background: map-get($variables, box, background) !default;
-$hb-modal__border-radius: 16px !default;
 
 .hb-modal {
   @include host-styled {
@@ -17,10 +13,12 @@ $hb-modal__border-radius: 16px !default;
     bottom: 0;
     left: 0;
     display: flex;
-    background: $hb-modal__layer__background;
+    background: var(--modal__background);
   }
 
   &__container {
+    width: var(--modal__width);
+
     @include child-styled(".shake") {
       animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
       @keyframes shake {

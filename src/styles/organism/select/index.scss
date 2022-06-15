@@ -68,7 +68,7 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
       }
     }
   }
-  // &__layer {
+  // &__modal {
   //   :host(.open) & {
   //     z-index: -1;
   //     position: fixed;
@@ -99,7 +99,7 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
 //     left: 0;
 //     display: flex;
 //     align-items: center;
-//     background: $hb-dialog__layer__background;
+//     background: $hb-dialog__modal__background;
 //     animation: dialog-open 1s;
 //     @keyframes dialog-open {
 //       0% {

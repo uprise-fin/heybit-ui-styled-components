@@ -40,7 +40,7 @@ export class HbModal extends Base {
   horizonAlign: horizonAlign = horizonAlign.center
   transitionType: transitionType
   containerEl?: HTMLDivElement
-  width = 300
+  width = 0
   open = false
   persistent = false;
   get position() {
@@ -67,7 +67,7 @@ export class HbModal extends Base {
       <hb-transition ?show=${this.open} id="modal-transition" type=${transitionType.fade}>
         <div class="hb-modal__wrap" @click=${this.adapterOnClose}>
           <hb-transition ?show=${this.open} type=${this.transitionType} style="margin: ${this.position};">
-            <div class="hb-modal__container" style="width: ${this.width}px;" id="container" part="container" @click=${this.stopPropagation}>
+            <div class="hb-modal__container" style=${this.width ? `width: ${this.width}px;` : ''} id="container" part="container" @click=${this.stopPropagation}>
               <slot></slot>
             </div>
           </hb-transition>
