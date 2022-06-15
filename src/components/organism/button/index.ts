@@ -8,8 +8,7 @@ export enum type {
   "fab" = "fab",
 }
 /**
- * @fires select 옵션을 선택할때 발생
- * @fires change 값이 변경될때 발생
+ * @fires event 클릭할때
  * @property theme
  * @property size
  * @property type
@@ -32,7 +31,6 @@ export class HbButton extends Base {
   loading = false;
   disabled = false;
   theme: theme = theme.primary;
-
 
   static get properties() {
     return {
@@ -65,6 +63,10 @@ export class HbButton extends Base {
   }
   async customConnectedCallback() {
     this.tabIndex = 0;
+    this.onclick = (ev: Event) => {
+      if (this.loading || this.disabled) return
+      this.dispatchEvent(new Event("event", ev));
+    }
   }
 }
 

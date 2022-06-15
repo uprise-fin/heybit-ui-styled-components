@@ -7,14 +7,7 @@ import thunderImg from "/static/sample-thunder.svg";
 import desktopImg from "/static/sample-desktop.png";
 import { buttonAlign } from "../modal";
 interface HbDialogExpns extends HbDialog {
-  icon: string;
-  title: string;
   content: string;
-  anchor?: string;
-  button: {
-    name: string;
-    theme: theme;
-  }[];
 }
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
@@ -57,33 +50,15 @@ const Template = (props: HbDialogExpns) => html`
     buttonAlign=${props.buttonAlign}
     ?persistent=${props.persistent}
     ?hideCloseBtn=${props.hideCloseBtn}
+    .buttons=${props.buttons}
+    .anchor=${props.anchor}
   >
-    <div slot="title">
-      ${props.title}
-    </div>
     <div
       slot="content"
       style="font-weight: 400;font-size: 14px;line-height: 140%;text-align: center;color: #828486;"
     >
       ${props.content}
     </div>
-    ${props.button
-      ? props.button.map(
-          (x) =>
-            html`
-              <hb-button slot="button" theme=${x.theme} size="medium"
-                >${x.name}</hb-button
-              >
-            `
-        )
-      : ""}
-    ${props.anchor
-      ? html`
-          <hb-anchor onclick="console.log('djawkldjaw')" slot="anchor"
-            >${props.anchor}</hb-anchor
-          >
-        `
-      : ""}
   </hb-dialog>
 `;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
@@ -95,7 +70,6 @@ const VerticalTemplate: Story<HbDialogExpns> = (props) => {
   props.buttonAlign = buttonAlign.vertical;
   return Template(props);
 };
-
 export const horizon: Story<HbDialogExpns> = HorizonTemplate.bind({});
 horizon.args = {
   open: true,
@@ -104,25 +78,37 @@ horizon.args = {
   title: "팝업 예시입니다!",
   content:
     "팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.",
-  button: [
+  buttons: [
     {
       name: "닫기",
       theme: theme.primary,
+      event: function() {
+        console.log("1");
+      },
     },
     {
       name: "열기",
       theme: theme.quaternary,
+      event: function() {
+        console.log("2");
+      },
     },
     {
-      name: "열기",
+      name: "삼번",
       theme: theme.quinary,
+      event: function() {
+        console.log("3");
+      },
     },
   ],
 };
 export const vertical: Story<HbDialogExpns> = VerticalTemplate.bind({});
 vertical.args = {
   ...horizon.args,
-  anchor: "탈퇴하기",
+  anchor: {
+    name: "탈퇴하기",
+    href: "https://www.heybit.io",
+  },
 };
 // const EventPopupTemplate: Story<HbDialogExpns> = ({
 //   open,

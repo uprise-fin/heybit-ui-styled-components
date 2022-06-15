@@ -21,22 +21,37 @@ export class HbAnchor extends Base {
     return [require("../../../styles/molecule/anchor/index.scss").default];
   }
   href = ''
-  target = '_blank'
+  target = ''
   text: string;
+  disabled = false
 
   static get properties() {
     return {
       href: { type: String, Reflect: true },
       target: { type: String, Reflect: true },
+      disabled: { type: Boolean, Reflect: true },
     };
   }
 
+  async customConnectedCallback() {
+    this.tabIndex = 0;
+    this.onclick = (ev: Event) => {
+      if (this.disabled) return
+      this.href ? this.route() : this.dispatchEvent(new Event("event", ev));
+    }
+  }
+
+  route() {
+    const a = document.createElement('a')
+    a.href = this.href
+    a.target = this.target || '_blank'
+    a.rel = 'noreferer noopener'
+    a.click()
+    a.remove()
+  }
+
   render() {
-    return this.href 
-      ? 
-      html`<a class="hb-anchor__el" href=${this.href} target=${this.target} rel="noreferer noopener"><slot></slot></a>`
-      :
-      html`<a class="hb-anchor__el"><slot></slot></a>`
+    return html`<slot></slot>`
   }
 }
 

@@ -10,7 +10,7 @@ export interface Option {
   value: string;
 }
 /**
- * @fires change 값이 변경될때 발생
+ * @fires event 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
  * @property fixed true 시 overflow에서 넘어감
  * @property value 기본 값
@@ -92,7 +92,7 @@ export class HbSelect extends Base {
         <hb-icon slot="slot--right" icon="ic-system-arrow-down-18-black.svg" size=${size.small}></hb-icon>
       </hb-input>
       <hb-transition id="select-transition" ?show=${this.open} type=${transitionType.fade}>
-        <hb-list emptyText=${this.emptyText} id="list" class="hb-select__list" style="width: ${this.width}px;transform: translate(${this.left}px,${this.top}px);max-height:${this.maxHeight}px;" @change=${this.onSelect} .options=${this.list} .value=${this.value}></hb-list>
+        <hb-list emptyText=${this.emptyText} id="list" class="hb-select__list" style="width: ${this.width}px;transform: translate(${this.left}px,${this.top}px);max-height:${this.maxHeight}px;" @event=${this.onSelect} .options=${this.list} .value=${this.value}></hb-list>
       </hb-transition>
     `
   }
@@ -129,7 +129,7 @@ export class HbSelect extends Base {
     this.attributeSync && this.setAttribute("value", value!);
     this.value = value!;
     this.inputValue = ''
-    this.dispatchEvent(new Event("change", evt));
+    this.dispatchEvent(new Event("event", evt));
   }
   onShow() {
     const { width, bottom } = this.getBoundingClientRect();

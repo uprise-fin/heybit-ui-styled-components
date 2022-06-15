@@ -51,13 +51,20 @@ inline.args = {
   ...block.args,
 };
 const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
-  html`<hb-button
+{
+  function ddd () {
+    console.log('djaklwdjaw')
+  }
+  return html`<hb-button
+    @event=${ddd}
     theme="${theme}"
     size=${size}
     type=${type.fab}
     ?loading=${loading}
     ?disabled=${disabled}
   >${title}</hb-button>`;
+}
+  
 export const fab: Story<HbButton> = FabTem.bind({});
 fab.args = {
   ...block.args,

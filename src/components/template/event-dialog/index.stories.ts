@@ -1,13 +1,13 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
 import "./index";
-import { HbEvent } from "./index";
+import { HbEventDialog } from "./index";
 import desktopImg from "/static/sample-desktop.png";
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: "components/template/hb-event",
-  component: "hb-event",
+  title: "components/template/hb-event-dialog",
+  component: "hb-event-dialog",
   argTypes: {
     open: {
       options: [true, false],
@@ -21,21 +21,21 @@ export default {
     },
   },
 } as Meta;
-const Template = (props: HbEvent) => html`
+const Template = (props: HbEventDialog) => html`
   <style>
     body {
       background: url(${desktopImg}) no-repeat top center;
     }
   </style>
-  <hb-event
+  <hb-event-dialog
     ?open=${props.open}
     ?persistent=${props.persistent}
     image=${props.image}
     href=${props.href}
   >
-  </hb-event>
+  </hb-event-dialog>
 `;
-export const event: Story<HbEvent> = Template.bind({});
+export const event: Story<HbEventDialog> = Template.bind({});
 event.args = {
   open: true,
   persistent: true,

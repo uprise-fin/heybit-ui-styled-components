@@ -1,7 +1,8 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
+import { wait } from "../../../utils";
 import { transitionType } from "../../atom/transition";
-import { Base } from "../../base";
+import { Base, theme } from "../../base";
 import { buttonAlign } from "../modal";
 
 /**
@@ -21,7 +22,17 @@ import { buttonAlign } from "../modal";
  * @csspart buttons
  * @csspart anchor
  */
-
+export interface Button {
+  event: Function;
+  theme: theme;
+  name: string;
+}
+export interface Anchor {
+  event?: Function;
+  href?: string;
+  target?: string;
+  name?: string;
+}
 @customElement("hb-dialog")
 export class HbDialog extends Base {
   static override get styles() {
@@ -29,12 +40,15 @@ export class HbDialog extends Base {
   }
   
   width = 0
+  eventLoading = false
   open = false
   icon = ''
   title = ''
   persistent = false;
   hideCloseBtn = false;
   buttonAlign = buttonAlign.horizon
+  anchor: Anchor = {}
+  buttons: Button[] = []
   // get open() {
   //   return this._open;
   // }
@@ -51,6 +65,8 @@ export class HbDialog extends Base {
   static get properties() {
     return {
       open: { type: Boolean, Reflect: true },
+      buttons: { type: Array, Reflect: true },
+      eventLoading: { type: Boolean, Reflect: true },
       persistent: { type: Boolean, Reflect: true },
       hideCloseBtn: { type: Boolean, Reflect: true },
       width: { type: Number, Reflect: true },
@@ -73,6 +89,7 @@ export class HbDialog extends Base {
           ${
             this.hideCloseBtn ? '' : html`
             <button
+              ?disabled=${this.eventLoading}
               @click=${this.onClose}
               type="button"
               class="hb-dialog__close-btn"
@@ -85,12 +102,26 @@ export class HbDialog extends Base {
             <slot name="content" part="content" class="hb-dialog__body__content"></slot>
           </div>
           <div class="hb-dialog__foot">
-            <slot name="button" part="button" class="hb-dialog__foot__button ${this.buttonAlign}"></slot>
-            <slot name="anchor" part="anchor" class="hb-dialog__foot__anchor"></slot>
+            <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
+              ${this.buttons.map(x => html`<hb-button class="hb-dialog__foot__btn" ?loading=${this.eventLoading} @event=${this.onEvent.bind(this, x.event)} theme=${x.theme} size="medium">${x.name}</hb-button>`)}
+            </div>
+            ${
+              this.anchor && this.anchor.name
+                ?
+                  html`<hb-anchor ?disabled=${this.eventLoading} class="hb-dialog__foot__anc" href=${this.anchor.href} target=${this.anchor.target} @event=${this.anchor.event}>${this.anchor.name}</hb-anchor>`
+                :
+                  ''
+            }
           </div>
         </div>
       </hb-modal>
     `
+  }
+
+  async onEvent(f: Function) {
+    this.eventLoading = true
+    await Promise.all([f(), wait()])
+    this.eventLoading = false
   }
 
   onClose() {

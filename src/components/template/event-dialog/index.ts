@@ -11,10 +11,10 @@ import { Base } from "../../base";
  * @property image
  */
 
-@customElement("hb-event")
-export class HbEvent extends Base {
+@customElement("hb-event-dialog")
+export class HbEventDialog extends Base {
   static override get styles() {
-    return [require("../../../styles/template/event/index.scss").default];
+    return [require("../../../styles/template/event-dialog/index.scss").default];
   }
   width = 0
   loadingWidth = 400
@@ -47,20 +47,20 @@ export class HbEvent extends Base {
         ?persistent=${this.persistent} 
         transitionType=${transitionType.zoom}
       >
-        <div class="hb-event__container">
+        <div class="hb-event-dialog__container">
           ${
             this.hideCloseBtn ? '' : html`
             <button
               @click=${this.onClose}
               type="button"
-              class="hb-event__close-btn"
+              class="hb-event-dialog__close-btn"
               part="close-btn"
               id="close-btn"
             ><hb-icon icon="ic-system-close-24-gray.svg" size="small"></hb-icon></button>`
           }
           <hb-anchor href=${this.href}>
             <hb-img
-              class="hb-event__container__img"
+              class="hb-event-dialog__container__img"
               src=${this.image}
               loadingWidth=${this.loadingWidth}
               loadingHeight=${this.loadingHeight}
@@ -79,6 +79,6 @@ export class HbEvent extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-event": HbEvent;
+    "hb-event-dialog": HbEventDialog;
   }
 }

@@ -51,7 +51,7 @@ export class HbList extends Base {
     if (this.value === value || !this.values.includes(value)) return;
     this.attributeSync && this.setAttribute("value", value!);
     this.value = value!;
-    this.dispatchEvent(new Event("change", evt));
+    this.dispatchEvent(new Event("event", evt));
   }
 
   onHide() {

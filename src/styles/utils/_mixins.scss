@@ -64,6 +64,11 @@
     @return darken($color, $amount);
   }
 }
+@mixin disabled() {
+  @include host-styled("[disabled]") {
+    opacity: 0.5;
+  }
+}
 @function getHoverColor($color) {
   @return getInteractiveColor($color, 5);
 }

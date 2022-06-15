@@ -30,3 +30,11 @@ export function getElement<T extends HTMLElement>(
   }
   return new Promise((resolve) => resolve(element));
 }
+
+export function wait(time: number = 500): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+}

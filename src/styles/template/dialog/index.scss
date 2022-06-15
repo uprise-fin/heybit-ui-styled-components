@@ -76,12 +76,13 @@ $hb-dialog__padding-left: 20px !default;
   } //pnpm add -g pnpm
 
   &__foot {
-    &__button {
+    text-align: center;
+    &__button-wrap {
       &.horizon {
         display: flex;
         margin-left: -10px;
         flex-direction: row;
-        @include slot-styled("*") {
+        > * {
           flex: 1;
           margin: 24px 0 0 10px;
           border: 0;
@@ -95,22 +96,18 @@ $hb-dialog__padding-left: 20px !default;
       // }
       &.vertical {
         display: block;
-        @include slot-styled("*:first-of-type") {
-          margin-top: 24px;
-        }
-        @include slot-styled("*") {
+        > * {
           margin-top: 10px;
+          &:first-child {
+            margin-top: 24px;
+          }
         }
       }
     }
-    &__anchor {
-      display: block;
-      font-size: 0;
+    &__anc {
+      display: inline-block;
+      margin-top: 16px;
       text-align: center;
-      @include slot-styled("*") {
-        display: inline-block;
-        margin-top: 16px;
-      }
     }
   }
 }
