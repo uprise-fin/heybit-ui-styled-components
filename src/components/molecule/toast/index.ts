@@ -47,12 +47,17 @@ export class HbToast extends Base {
     return messages
   }
 
+  visibleIcon(msg: string) {
+    return msg.match(/\[!]/)
+  }
+
   messageConverter(msg: string) {
-    return msg.replace(/\\n/g, '\n')
+    msg = msg.replace(/\\n/g, '\n')
+    return msg.replace(/\[!]/g, '')
   }
   
   render() {
-    return this._messages.map((x, i) => (html`<hb-transition class="hb-toast__position" type=${transitionType.fade} ?show=${this.timer[i] > this.now}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.timer[i] > this.now}><div class="hb-toast__text-wrap"><div class="hb-toast__text-wrap__text">${this.messageConverter(x)}</div></div></hb-transition></hb-transition>`))
+    return this._messages.map((x, i) => (html`<hb-transition class="hb-toast__position" type=${transitionType.fade} ?show=${this.timer[i] > this.now}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.timer[i] > this.now}><div class="hb-toast__text-wrap"><div class="hb-toast__text-wrap__text"><hb-icon style="display: ${this.visibleIcon(x) ? 'inline-flex' : 'none'}" icon="ic-account-clear-24-black.svg" size="medium"></hb-icon>${this.messageConverter(x)}</div></div></hb-transition></hb-transition>`))
   }
 }
 

@@ -16,8 +16,8 @@ $hb-icon__theme: (
 
 .hb-icon {
   @include host-styled {
-    display: inline-block;
-    font-size: 0;
+    display: inline-flex;
+    vertical-align: middle;
   }
   @each $class, $size in $hb-icon__size {
     @include host-styled("[size='#{$class}']") {
