@@ -20,16 +20,19 @@ export class HbTooltip extends Base {
   static override get styles() {
     return [require("../../../styles/molecule/tooltip/index.scss").default];
   }
-
   open: boolean = false;
+  position = [false, false]
   static get properties() {
     return {
       open: { type: Boolean, Reflect: true },
+      width: { type: Number, Reflect: true },
+      height: { type: Number, Reflect: true },
+      position: { type: Array, Reflect: true },
     };
   }
   async customConnectedCallback() {
     this.tabIndex = 0
-    this.onfocus = () => {this.open = true}
+    this.onfocus = this.onOpen
     this.onblur = () => {this.open = false}
     this.onmouseenter = () => this.focus()
     this.onmouseleave = () => this.blur()
@@ -39,6 +42,14 @@ export class HbTooltip extends Base {
     this.onblur = () => null;
     this.onmouseenter = () => null;
     this.onmouseleave = () => null;
+  }
+  onOpen() {
+    const {x, y,width, height} = this.getBoundingClientRect()
+    const {innerWidth, innerHeight} = window;
+    this.position = [(x + width / 2) > innerWidth / 2, (y + height / 2) > innerHeight / 2]
+    // if ((x + width / 2) > innerWidth / 2) console.log('오른쪽')
+    // if ((y + height / 2) > innerHeight / 2) console.log('아래쪽')
+    this.open = true
   }
   render() {
     return html`

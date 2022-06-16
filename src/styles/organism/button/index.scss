@@ -58,6 +58,7 @@ $hb-button__theme: (
 );
 .hb-button {
   @include disabled();
+  @include loading();
   @include host-styled {
     display: flex;
     font-size: $hb-button__font-size;
@@ -118,6 +119,9 @@ $hb-button__theme: (
     min-width: 61px;
     font-size: $hb-button--fab__font-size;
     border-radius: 1000px;
+  }
+  @include host-styled("[type='custom']") {
+    padding: 0;
   }
 
   // @include host-styled(":empty") {

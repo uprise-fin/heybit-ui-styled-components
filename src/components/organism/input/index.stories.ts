@@ -25,7 +25,7 @@ const Template: Story<HbInput> = ({
     .maxlength=${maxlength}
     .decimal=${decimal}
     .comma=${comma}
-    @change=${($event: any) => console.log($event.target.originalValue)}
+    @event=${($event: any) => console.log($event.target.originalValue)}
   ></hb-input>
 `;
 

@@ -35,7 +35,7 @@ const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options, fixed }) =>
       <br>
       <br>
       <div style="height: 299px;"></div>
-      <hb-select value=${value} ?fixed=${fixed} ?search=${search} .options=${options} @change=${($event: any) => console.log($event)}></hb-select>
+      <hb-select value=${value} ?fixed=${fixed} ?search=${search} .options=${options} @event=${($event:Event) => console.log($event)}></hb-select>
       <div style="height: 99999px;"></div>
     </div>
     <script>

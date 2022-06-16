@@ -2,7 +2,7 @@ import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { wait } from "../../../utils";
 import { transitionType } from "../../atom/transition";
-import { Base, theme } from "../../base";
+import { Base, theme, verticalAlign } from "../../base";
 import { hbButtonType } from "../../organism/button";
 import { buttonAlign } from "../modal";
 
@@ -35,16 +35,15 @@ export interface Anchor {
   target?: string;
   name?: string;
 }
-@customElement("hb-dialog")
-export class HbDialog extends Base {
+@customElement("hb-sheet-dialog")
+export class HbSheetDialog extends Base {
   static override get styles() {
-    return [require("../../../styles/template/dialog/index.scss").default];
+    return [require("../../../styles/template/sheet-dialog/index.scss").default];
   }
   loading = false
   baseLoadingDuration = 500
   width = 0
   open = false
-  icon = ''
   title = ''
   persistent = false;
   hideCloseBtn = false;
@@ -80,7 +79,6 @@ export class HbDialog extends Base {
       baseLoadingDuration: { type: Number, Reflect: true },
       buttonAlign: { type: String, Reflect: true },
       title: { type: String, Reflect: true },
-      icon: { type: String, Reflect: true },
     };
   }
 
@@ -88,35 +86,36 @@ export class HbDialog extends Base {
     return html`
       <hb-modal 
         @close=${this.onClose}
+        verticalAlign=${verticalAlign.bottom}
         width=${this.width}
         ?open=${this.open} 
         ?persistent=${this.persistent || this.eventDisabled} 
-        transitionType=${transitionType.zoom}
+        transitionType=${transitionType.bottomUp}
       >
-        <div class="hb-dialog__container">
+        <div class="hb-sheet-dialog__container">
           ${
             this.hideCloseBtn ? '' : html`
             <hb-button
               ?disabled=${this.eventDisabled}
               @event=${this.onClose}
               type=${hbButtonType.custom}
-              class="hb-dialog__close-btn"
+              class="hb-sheet-dialog__close-btn"
               part="close-btn"
               id="close-btn"
             ><hb-icon icon="ic-system-close-24-gray.svg" size="small"></hb-icon></hb-button>`
           }
-          <div class="hb-dialog__head">${this.icon ? html`<hb-img part="icon" loadingWidth="60" loadingHeight="60" src=${this.icon} class="hb-dialog__head__icon"></hb-img>` : ''}${this.title ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>` : ''}</div>
-          <div class="hb-dialog__body">
-            <slot name="content" part="content" class="hb-dialog__body__content"></slot>
+          <div class="hb-sheet-dialog__head">${this.title ? html`<p part="title" class="hb-sheet-dialog__head__title">${this.title}</p>` : ''}</div>
+          <div class="hb-sheet-dialog__body">
+            <slot name="content" part="content" class="hb-sheet-dialog__body__content"></slot>
           </div>
-          <div class="hb-dialog__foot">
-            <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
+          <div class="hb-sheet-dialog__foot">
+            <div class="hb-sheet-dialog__foot__button-wrap ${this.buttonAlign}">
               ${this.buttons.map((x, i) => html`<hb-button class="hb-sheet-dialog__foot__btn" ?loading=${x.loading} ?disabled=${this.eventDisabled} @event=${this.onEvent.bind(this,x, i)} theme=${x.theme} size="medium">${x.name}</hb-button>`)}
             </div>
             ${
               this.anchor && this.anchor.name
                 ?
-                  html`<hb-anchor ?disabled=${this.eventDisabled} class="hb-dialog__foot__anc" href=${this.anchor.href} target=${this.anchor.target} @event=${this.anchor.event}>${this.anchor.name}</hb-anchor>`
+                  html`<hb-anchor ?disabled=${this.eventDisabled} class="hb-sheet-dialog__foot__anc" href=${this.anchor.href} target=${this.anchor.target} @event=${this.anchor.event}>${this.anchor.name}</hb-anchor>`
                 :
                   ''
             }
@@ -129,13 +128,13 @@ export class HbDialog extends Base {
   async onEvent(button: Button, index: number) {
     const {event}= button;
     if (this.loading) {
-      const on = this.buttons.slice()
-      const off = this.buttons.slice()
-      on[index].loading = true
-      this.buttons = on
+      const onBtns = this.buttons.slice()
+      const offBtns = this.buttons.slice()
+      onBtns[index].loading = true
+      this.buttons = onBtns
       if (this.loading) await Promise.all([event(), wait(this.baseLoadingDuration)])
-      off[index].loading = false
-      this.buttons = off
+      offBtns[index].loading = false
+      this.buttons = offBtns
     } else event()
   }
 
@@ -147,6 +146,6 @@ export class HbDialog extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-dialog": HbDialog;
+    "hb-sheet-dialog": HbSheetDialog;
   }
 }

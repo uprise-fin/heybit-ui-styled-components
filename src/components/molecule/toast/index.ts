@@ -46,9 +46,13 @@ export class HbToast extends Base {
     }
     return messages
   }
+
+  messageConverter(msg: string) {
+    return msg.replace(/\\n/g, '\n')
+  }
   
   render() {
-    return this._messages.map((x, i) => (html`<hb-transition class="hb-toast__position" type=${transitionType.fade} ?show=${this.timer[i] > this.now}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.timer[i] > this.now}><div class="hb-toast__text-wrap"><div class="hb-toast__text-wrap__text">${x}</div></div></hb-transition></hb-transition>`))
+    return this._messages.map((x, i) => (html`<hb-transition class="hb-toast__position" type=${transitionType.fade} ?show=${this.timer[i] > this.now}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.timer[i] > this.now}><div class="hb-toast__text-wrap"><div class="hb-toast__text-wrap__text">${this.messageConverter(x)}</div></div></hb-transition></hb-transition>`))
   }
 }
 

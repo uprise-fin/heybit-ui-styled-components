@@ -11,8 +11,10 @@ import { HbButton } from "./components/organism/button";
 import { HbInput } from "./components/organism/input";
 import { HbSelect } from "./components/organism/select";
 import { HbTab } from "./components/organism/tab";
-import { HbModal } from "./components/template/modal";
 import { HbDialog } from "./components/template/dialog";
+import { HbEventDialog } from "./components/template/event-dialog";
+import { HbModal } from "./components/template/modal";
+import { HbSheetDialog } from "./components/template/sheet-dialog";
 export {
   HbLoading,
   HbTransition,
@@ -29,4 +31,6 @@ export {
   HbTab,
   HbModal,
   HbDialog,
+  HbEventDialog,
+  HbSheetDialog,
 };

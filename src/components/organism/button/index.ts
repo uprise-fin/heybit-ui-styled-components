@@ -2,10 +2,11 @@ import {Base, size, theme } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { transitionType } from "../../atom/transition";
-export enum type {
+export enum hbButtonType {
   "block" = "block",
   "inline" = "inline",
   "fab" = "fab",
+  "custom" = "custom",
 }
 /**
  * @fires event 클릭할때
@@ -26,7 +27,7 @@ export class HbButton extends Base {
   static override get styles() {
     return [require("../../../styles/organism/button/index.scss").default];
   }
-  type: type;
+  type: hbButtonType;
   size: size=size.large;
   loading = false;
   disabled = false;
@@ -65,7 +66,7 @@ export class HbButton extends Base {
     this.tabIndex = 0;
     this.onclick = (ev: Event) => {
       if (this.loading || this.disabled) return
-      this.dispatchEvent(new Event("event", ev));
+      this.dispatchEvent(new CustomEvent("event", ev));
     }
   }
 }

@@ -10,8 +10,7 @@ export enum type {
 /**
  * An example element.
  *
- * @fires input 입력할때
- * @fires change 값이 변경될때 발생
+ * @fires event 값이 변경될때 발생
  * @property value 기본 값
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
  * @property placeholder 
@@ -144,7 +143,7 @@ export class HbInput extends Base {
     const { value } = this.inputEl
     this.value = value
     this.attributeSync && this.setAttribute('value', this.originalValue)
-    this.dispatchEvent(new Event("change", ev));
+    this.dispatchEvent(new CustomEvent("event", ev));
   }
   
   async customConnectedCallback() {
@@ -200,7 +199,7 @@ declare global {
 //         };
 //         this.isInputEl.onblur = (evt: Event) => {
 //           if (this.value !== this.isInputEl.value)
-//             this.dispatchEvent(new Event("change", evt));
+//             this.dispatchEvent(new CustomEvent("change", evt));
 //         };
 //       }
 //       get isInputEl() {

@@ -3,7 +3,7 @@ import { html } from "lit";
 import { size, theme } from "../../base";
 import "./index";
 import type { HbButton } from "./index";
-import { type } from './index';
+import { hbButtonType } from './index';
 
 export default {
   title: "components/organism/hb-button",
@@ -25,7 +25,6 @@ const BlockTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
   html`<hb-button
     theme="${theme}"
     size=${size}
-    type=${type.block}
     ?loading=${loading}
     ?disabled=${disabled}
   >${title}</hb-button>`;
@@ -42,7 +41,7 @@ const InlineTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =
   html`<hb-button
     theme="${theme}"
     size=${size}
-    type=${type.inline}
+    type=${hbButtonType.inline}
     ?loading=${loading}
     ?disabled=${disabled}
   >${title}</hb-button>`;
@@ -59,7 +58,7 @@ const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
     @event=${ddd}
     theme="${theme}"
     size=${size}
-    type=${type.fab}
+    type=${hbButtonType.fab}
     ?loading=${loading}
     ?disabled=${disabled}
   >${title}</hb-button>`;

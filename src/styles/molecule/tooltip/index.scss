@@ -5,18 +5,23 @@
   @include host-styled {
     position: relative;
     display: inline-block;
+    width: 18px;
+    height: 0.2em;
+    vertical-align: middle;
+    outline: none;
   }
   &__front {
     display: block;
     @include slot-styled("*") {
-      display: block;
+      position: absolute;
+      transform: translateY(-50%);
     }
   }
   &__content {
     position: absolute;
-    top: 50%;
-    left: 50px;
     display: block;
+    white-space: nowrap;
     border: 1px solid red;
+    background: var(--box__background);
   }
 }

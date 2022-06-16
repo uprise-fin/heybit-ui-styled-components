@@ -56,9 +56,8 @@
       value="123124124"
       type="number"
       attributeSync="true"
-      onchange="console.log(arguments)"
     ></hb-input>
-    <hb-button id="btn" theme="primary" type="block" size="large"
+    <hb-button id="btn" customEvent="clickEvnt" theme="primary" type="block" size="large"
       >ddd</hb-button
     >
     <div class="hb-button" theme="primary" type="block" size="large">
@@ -145,7 +144,7 @@
           dialog.setAttribute("open", "true");
         };
       })();
-      document.getElementById("btn").onclick = clickEvnt;
+      // document.getElementById("btn").addEventListener('event', clickEvnt)
       document.getElementById("btn2").onclick = clickEvnt2;
     </script>
   </body>

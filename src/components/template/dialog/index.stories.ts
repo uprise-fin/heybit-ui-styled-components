@@ -48,6 +48,8 @@ const Template = (props: HbDialogExpns) => html`
     icon=${props.icon}
     title=${props.title}
     buttonAlign=${props.buttonAlign}
+    ?loading=${props.loading}
+    baseLoadingDuration=${props.baseLoadingDuration}
     ?persistent=${props.persistent}
     ?hideCloseBtn=${props.hideCloseBtn}
     .buttons=${props.buttons}
@@ -74,6 +76,8 @@ export const horizon: Story<HbDialogExpns> = HorizonTemplate.bind({});
 horizon.args = {
   open: true,
   persistent: true,
+  loading: true,
+  baseLoadingDuration: 500,
   icon: thunderImg,
   title: "팝업 예시입니다!",
   content:

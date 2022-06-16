@@ -37,7 +37,7 @@ export class HbAnchor extends Base {
     this.tabIndex = 0;
     this.onclick = (ev: Event) => {
       if (this.disabled) return
-      this.href ? this.route() : this.dispatchEvent(new Event("event", ev));
+      this.href ? this.route() : this.dispatchEvent(new CustomEvent("event", ev));
     }
   }
 

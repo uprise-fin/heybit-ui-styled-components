@@ -65,8 +65,14 @@
   }
 }
 @mixin disabled() {
-  @include host-styled("[disabled]") {
+  @include host-styled("[disabled]:not([loading])") {
     opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+@mixin loading() {
+  @include host-styled("[loading]") {
+    cursor: progress;
   }
 }
 @function getHoverColor($color) {

@@ -103,11 +103,11 @@ export class HbImg extends Base {
   }
   onLoad(evt: Event) {
     this.loaded = true
-    this.dispatchEvent(new Event("load", evt));
+    this.dispatchEvent(new CustomEvent("load", evt));
   }
   onError(evt: Event) {
     this.error = true
-    this.dispatchEvent(new Event("error", evt));
+    this.dispatchEvent(new CustomEvent("error", evt));
   }
 }
 

@@ -1,22 +1,27 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
-$hb-toast__height: 60px;
+$hb-toast__height: 54px;
 .hb-toast {
   @include host-styled {
     z-index: zindex("토스트");
     position: relative;
   }
   &__text-wrap {
+    $padding: 16px;
     display: flex;
     width: 100%;
-    height: $hb-toast__height;
-    padding: 0 10px;
-    font-size: 20px;
+    min-height: $hb-toast__height - ($padding * 2);
+    padding: $padding 20px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.572;
     color: #fff;
     align-items: center;
-    background: #000;
+    border-radius: 8px;
+    background: rgba(#292929, 0.9);
     &__text {
       flex: 1;
+      white-space: pre-line;
       text-align: center;
     }
   }

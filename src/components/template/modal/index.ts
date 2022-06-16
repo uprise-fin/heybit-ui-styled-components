@@ -84,7 +84,7 @@ export class HbModal extends Base {
     e.stopImmediatePropagation()
     if (this.persistent) return this.classList.add("shake")
 
-    this.dispatchEvent(new Event("close", e));
+    this.dispatchEvent(new CustomEvent("close", e));
   } 
 }
 

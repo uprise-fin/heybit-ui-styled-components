@@ -3,6 +3,7 @@ import { customElement } from "lit/decorators.js";
 import {Base} from "../../base";
 
 /**
+ * @fires select
  * @property src 
  * @property multiSource 
  * @property breakPoint 
@@ -51,7 +52,7 @@ export class HbList extends Base {
     if (this.value === value || !this.values.includes(value)) return;
     this.attributeSync && this.setAttribute("value", value!);
     this.value = value!;
-    this.dispatchEvent(new Event("event", evt));
+    this.dispatchEvent(new CustomEvent("select", evt));
   }
 
   onHide() {

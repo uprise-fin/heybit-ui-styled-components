@@ -12,4 +12,4 @@ export default {
 const Template: Story<HbToast> = ({messages}) =>
   html`<hb-toast messages=${messages}></hb-toast>`;
 export const primary: Story<HbToast> = Template.bind({});
-primary.args = { messages: '' };
+primary.args = { messages: 'ㅇㅁㅈㅇㅁㅈㅇㅁㅈ \n dawd' };

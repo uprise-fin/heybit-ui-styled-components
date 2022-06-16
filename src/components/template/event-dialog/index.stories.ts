@@ -39,7 +39,7 @@ export const event: Story<HbEventDialog> = Template.bind({});
 event.args = {
   open: true,
   persistent: true,
-  href: "heybit.io",
+  href: "https://www.heybit.io/harvest/",
   image:
     "https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png",
 };
