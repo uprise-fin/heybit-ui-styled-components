@@ -67,7 +67,7 @@ export class HbModal extends Base {
       <hb-transition ?show=${this.open} id="modal-transition" type=${transitionType.fade}>
         <div class="hb-modal__wrap" @click=${this.adapterOnClose}>
           <hb-transition ?show=${this.open} type=${this.transitionType} style="margin: ${this.position};">
-            <div class="hb-modal__container" style=${this.width ? `width: ${this.width}px;` : ''} id="container" part="container" @click=${this.stopPropagation}>
+            <div class="hb-modal__container" style=${this.width ? `max-width: ${this.width}px;` : ''} id="container" part="container" @click=${this.stopPropagation}>
               <slot></slot>
             </div>
           </hb-transition>

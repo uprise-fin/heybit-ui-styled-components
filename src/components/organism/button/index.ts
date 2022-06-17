@@ -2,6 +2,7 @@ import {Base, size, theme } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { transitionType } from "../../atom/transition";
+import { wait } from "../../../utils";
 export enum hbButtonType {
   "block" = "block",
   "inline" = "inline",
@@ -30,6 +31,7 @@ export class HbButton extends Base {
   type: hbButtonType;
   size: size=size.large;
   loading = false;
+  baseLoadingDuration = 0
   disabled = false;
   theme: theme = theme.primary;
 
@@ -39,6 +41,7 @@ export class HbButton extends Base {
       size: { type: String, Reflect: true },
       type: { type: String, Reflect: true },
       loading: { type: Boolean, Reflect: true },
+      baseLoadingDuration: { type: Number, Reflect: true },
       disabled: { type: Boolean, Reflect: true },
     };
   }
@@ -64,9 +67,14 @@ export class HbButton extends Base {
   }
   async customConnectedCallback() {
     this.tabIndex = 0;
-    this.onclick = (ev: Event) => {
+    this.onclick = async (ev: Event) => {
       if (this.loading || this.disabled) return
       this.dispatchEvent(new CustomEvent("event", ev));
+      if (this.baseLoadingDuration) {
+        this.loading = true
+        await wait(this.baseLoadingDuration)
+        this.loading = false
+      }
     }
   }
 }

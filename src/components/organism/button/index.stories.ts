@@ -21,10 +21,11 @@ export default {
   },
 } as Meta;
 
-const BlockTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
+const BlockTem: Story<HbButton> = ({ loading, disabled, theme, size, title ,baseLoadingDuration }) =>
   html`<hb-button
     theme="${theme}"
     size=${size}
+    baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
   >${title}</hb-button>`;
@@ -34,14 +35,16 @@ block.args = {
   title: '내용을 입력해보세요',
   theme: theme.primary,
   size: size.large,
+  baseLoadingDuration: 500,
   loading: false,
   disabled: false,
 };
-const InlineTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
+const InlineTem: Story<HbButton> = ({ loading, disabled, theme, size, title,baseLoadingDuration }) =>
   html`<hb-button
     theme="${theme}"
     size=${size}
     type=${hbButtonType.inline}
+    baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
   >${title}</hb-button>`;
@@ -49,7 +52,7 @@ export const inline: Story<HbButton> = InlineTem.bind({});
 inline.args = {
   ...block.args,
 };
-const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
+const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title,baseLoadingDuration }) =>
 {
   function ddd () {
     console.log('djaklwdjaw')
@@ -59,6 +62,7 @@ const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title }) =>
     theme="${theme}"
     size=${size}
     type=${hbButtonType.fab}
+    baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
   >${title}</hb-button>`;

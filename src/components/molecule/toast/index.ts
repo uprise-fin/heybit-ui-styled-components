@@ -23,7 +23,7 @@ export class HbToast extends Base {
   now: number = 0
   messages: string = ''
   timer: number[] = []
-  duration: number = 3000
+  duration: number = 999999000
   static get properties() {
     return {
       messages: { type: String, Reflect: true },

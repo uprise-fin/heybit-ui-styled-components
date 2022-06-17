@@ -4,6 +4,13 @@ $hb-loading__border-radius: map-get($variables, box, border-radius) !default;
 .hb-loading {
   @include host-styled {
     display: block;
+    transition: opacity $transition__duration;
+  }
+  @include host-styled([loaded]) {
+    opacity: 0;
+  }
+  @include host-styled([done]) {
+    display: none;
   }
   &__wall {
     width: 100%;

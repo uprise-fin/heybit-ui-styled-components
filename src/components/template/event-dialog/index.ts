@@ -16,7 +16,7 @@ export class HbEventDialog extends Base {
   static override get styles() {
     return [require("../../../styles/template/event-dialog/index.scss").default];
   }
-  width = 0
+  width = 400
   loadingWidth = 400
   loadingHeight = 490
   open = false

@@ -1,6 +1,5 @@
 // @import "../../utils/variables";
 @import "../../utils/mixins";
-
 .hb-modal {
   @include host-styled {
     display: flex;
@@ -17,7 +16,7 @@
   }
 
   &__container {
-    width: var(--modal__width);
+    max-width: var(--modal__width);
 
     @include child-styled(".shake") {
       animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;

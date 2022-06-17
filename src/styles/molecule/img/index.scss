@@ -24,9 +24,5 @@
     width: inherit;
     height: inherit;
     pointer-events: none;
-    transition: opacity $transition__duration;
-    &[hidden] {
-      opacity: 0;
-    }
   }
 }

@@ -5,6 +5,8 @@
   &__container {
     position: relative;
     overflow: hidden;
+    max-width: calc(100vw - var(--modal__margin) - var(--modal__margin));
+    max-height: calc(100vh - var(--modal__margin) - var(--modal__margin));
     border-radius: var(--modal__border-radius);
     background: var(--box__background);
     &__img {

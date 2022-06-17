@@ -12,6 +12,7 @@ $hb-toast__height: 54px;
     width: 100%;
     min-height: $hb-toast__height - ($padding * 2);
     padding: $padding 20px;
+    box-sizing: border-box;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.572;

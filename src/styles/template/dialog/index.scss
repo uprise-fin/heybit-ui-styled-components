@@ -1,10 +1,6 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
 
-$hb-dialog__padding-top: 52px !default;
-$hb-dialog__padding-right: 20px !default;
-$hb-dialog__padding-bottom: 24px !default;
-$hb-dialog__padding-left: 20px !default;
 // $hb-dialog__border-radius: 16px !default;
 // $hb-input__height: $box__height !default;
 // $hb-input__padding: $box__padding !default;
@@ -19,13 +15,22 @@ $hb-dialog__padding-left: 20px !default;
 .hb-dialog {
   &__container {
     position: relative;
+    overflow: auto;
     display: flex;
+
     flex-direction: column;
-    max-height: calc(
-      100vh - #{$hb-dialog__padding-top + $hb-dialog__padding-bottom}
+    max-width: calc(
+      100vw - var(--modal__margin) - var(--modal__margin) -
+        var(--modal__dialog__padding-right) - var(--modal__dialog__padding-left)
     );
-    padding: #{$hb-dialog__padding-top} $hb-dialog__padding-right $hb-dialog__padding-bottom
-      $hb-dialog__padding-left;
+    max-height: calc(
+      100vh - var(--modal__margin) - var(--modal__margin) -
+        var(--modal__dialog__padding-top) - var(--modal__dialog__padding-bottom)
+    );
+
+    padding: var(--modal__dialog__padding-top)
+      var(--modal__dialog__padding-right) var(--modal__dialog__padding-bottom)
+      var(--modal__dialog__padding-left);
     border-radius: var(--modal__border-radius);
     background: var(--box__background);
   }
