@@ -13,3 +13,4 @@ export function getShadowRoot(tagName: string): ShadowRoot | null {
 export function getRandom(options: Array<any>) {
   return Math.ceil(Math.random() * options.length - 1);
 }
+// TODO 테스트코드 작성, 팝업 토스트

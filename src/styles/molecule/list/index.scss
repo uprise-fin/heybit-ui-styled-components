@@ -1,6 +1,6 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
-
+// TODO css변수로 변경
 $hb-list__height: map-get($variables, box, height) !default;
 $hb-list__padding: map-get($variables, box, padding) !default;
 $hb-list__border-width: map-get($variables, box, border-width) !default;
@@ -18,7 +18,7 @@ $hb-list__background--warning: map-get($variables, box, background) !default;
   display: flex;
   width: 100%;
   height: $hb-list__height;
-  padding: $hb-list__padding;
+  padding: 0 $hb-list__padding;
   border: 0;
   align-items: center;
   font-size: inherit;

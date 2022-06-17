@@ -1,6 +1,6 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
-
+// TODO css변수로 변경
 $hb-select__height: map-get($variables, box, height) !default;
 $hb-select__padding: map-get($variables, box, padding) !default;
 $hb-select__border-width: map-get($variables, box, border-width) !default;
@@ -18,7 +18,7 @@ $hb-select__background--warning: map-get($variables, box, background) !default;
   display: flex;
   width: 100%;
   height: $hb-select__height;
-  padding: $hb-select__padding;
+  padding: 0 $hb-select__padding;
   border: 0;
   align-items: center;
   font-size: inherit;

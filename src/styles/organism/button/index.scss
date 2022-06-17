@@ -1,6 +1,6 @@
 @import "../../utils/mixins";
 @import "../../utils/variables";
-
+// TODO css변수로 변경
 $hb-button__padding: map-get($variables, box, padding) !default;
 $hb-button__border-width: map-get($variables, box, border-width) !default;
 $hb-button__font-size: map-get($variables, box, font-size) !default;
@@ -62,7 +62,7 @@ $hb-button__theme: (
   @include host-styled {
     display: flex;
     font-size: $hb-button__font-size;
-    padding: $hb-button__padding;
+    padding: 0 $hb-button__padding;
     // border: #{$hb-button__border-width} solid #{$hb-button__border-color};
     border-radius: $hb-button__border-radius;
     font-size: $hb-button__font-size;
