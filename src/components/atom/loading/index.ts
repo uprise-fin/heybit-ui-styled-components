@@ -8,6 +8,7 @@ export class HbLoading extends Base {
     return [require("../../../styles/atom/loading/index.scss").default];
   }
   loaded = false
+  delete = false
   static get properties() {
     return {
       loaded: { type: Boolean, Reflect: true },
@@ -17,7 +18,7 @@ export class HbLoading extends Base {
   }
 
   async customConnectedCallback() {
-    this.ontransitionend = () => this.setAttribute('done', '')
+    this.ontransitionend = () => this.delete ? this.remove() : this.setAttribute('done', '')
   }
 
 

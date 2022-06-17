@@ -1,16 +1,22 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
-$hb-toast__height: 54px;
 .hb-toast {
   @include host-styled {
     z-index: zindex("토스트");
-    position: relative;
-  }
-  &__text-wrap {
-    $padding: 16px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
     display: flex;
     width: 100%;
-    min-height: $hb-toast__height - ($padding * 2);
+    max-width: var(--box__width);
+    flex-direction: column-reverse;
+    transform: translateX(-50%);
+  }
+  &__content {
+    $padding: 16px;
+    display: flex;
+    margin: auto;
+    min-height: calc(var(--box__height) - ($padding * 2));
     padding: $padding 20px;
     box-sizing: border-box;
     font-weight: 400;
@@ -23,23 +29,24 @@ $hb-toast__height: 54px;
     &__text {
       flex: 1;
       white-space: pre-line;
-      text-align: center;
+    }
+    &__icon {
+      margin-right: 5px;
     }
   }
   &__position {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    width: calc(100vw - 100px);
-    transform: translateX(-50%);
-    transition: transform $transition__duration;
-    @for $i from 1 through 10 {
-      &:nth-last-child(#{$i}) {
-        transform: translate(
-          -50%,
-          -(30px + ($i - 1) * ($hb-toast__height + 10px))
-        );
-      }
+    will-change: margin;
+    transition: margin $transition__duration;
+    &[show] {
+      margin: 10px !important;
     }
+    // @for $i from 1 through 10 {
+    //   &:nth-last-child(#{$i}) {
+    //     transform: translate(
+    //       -50%,
+    //       calc((30px + ($i - 1) * (var(--box__height) + 10px)) * -1)
+    //     );
+    //   }
+    // }
   }
 }

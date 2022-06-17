@@ -28,4 +28,4 @@ export default {
 const Template: Story<HbIcon> = ({ icon, size,theme }) =>
   html`<hb-icon icon=${icon} size=${size} theme=${theme}></hb-icon>`;
 export const primary: Story<HbIcon> = Template.bind({});
-primary.args = { icon: "ic-system-service-trx.svg", size: size.small };
+primary.args = { icon: "ic-system-service-trx", size: size.small };

@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { transitionType } from "../../atom/transition";
-import {Base} from "../../base";
+import {Base, theme} from "../../base";
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -14,50 +14,74 @@ import {Base} from "../../base";
  * @csspart content 
  * @csspart footer 
  */
-
+export interface Message {
+  text: string
+  theme?: theme
+  icon?: string
+  duration?: number
+}
+interface Timer {
+  time: number
+  index: number
+}
 @customElement("hb-toast")
 export class HbToast extends Base {
   static override get styles() {
     return [require("../../../styles/molecule/toast/index.scss").default];
   }
   now: number = 0
-  messages: string = ''
-  timer: number[] = []
-  duration: number = 999999000
+  messages: Message[] = []
+  timer: Timer[] = []
+  duration: number = 3000
   static get properties() {
     return {
-      messages: { type: String, Reflect: true },
+      messages: { type: Array, Reflect: true },
       duration: { type: Number, Reflect: true },
       now: { type: Number, Reflect: true },
       timer: { type: Array, Reflect: true },
     };
   }
   get _messages() {
-    if (!this.messages) {
+    if (!this.messages.length) {
       this.timer = []
       return []
     }
-    const messages = this.messages.split(',')
-    while(messages.length > this.timer.length) {
-      this.timer.push((new Date()).getTime() + this.duration - 1)
+    
+    while(this.messages.length > this.timer.length) {
+      const index = this.timer.length
+      const duration = (this.messages[index].duration || this.duration) - 1
+      this.timer.push({time:(new Date()).getTime() + duration, index })
       setTimeout(()=>{
         this.now = (new Date()).getTime()
-      }, this.duration)
+      }, duration)
     }
-    return messages
+    return this.messages
   }
 
-  visibleIcon(msg: string) {
-    return msg.match(/\[!]/)
+  getHeight(index: number) {
+    if (this.getShow(index)) return 0
+    return this.shadowRoot.querySelectorAll('.hb-toast__position')[index]?.clientHeight
   }
 
-  messageConverter(msg: string) {
-    msg = msg.replace(/\\n/g, '\n')
-    return msg.replace(/\[!]/g, '')
+  getShow(index: number) {
+    return this.timer[index].time > this.now
   }
+
+  // getIndex(index: number) {
+  //   return this.timer.filter((x) => x.time > this.now).findIndex(x => x.index === index)
+  // }
+
+  // visibleIcon(msg: string) {
+  //   return msg.match(/\[!]/)
+  // }
+
+  // messageConverter(msg: string) {
+  //   msg = msg.replace(/\\n/g, '\n')
+  //   return msg.replace(/\[!]/g, '')
+  // }
   
   render() {
-    return this._messages.map((x, i) => (html`<hb-transition class="hb-toast__position" type=${transitionType.fade} ?show=${this.timer[i] > this.now}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.timer[i] > this.now}><div class="hb-toast__text-wrap"><div class="hb-toast__text-wrap__text"><hb-icon style="display: ${this.visibleIcon(x) ? 'inline-flex' : 'none'}" icon="ic-account-clear-24-black.svg" size="medium"></hb-icon>${this.messageConverter(x)}</div></div></hb-transition></hb-transition>`))
+    return this._messages.map((x, i) => (html`<hb-transition style="margin-top: -${this.getHeight(i)}px;" class="hb-toast__position" type=${transitionType.fade} ?show=${this.getShow(i)}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.getShow(i)}><div class="hb-toast__content"><div class="hb-toast__content__text">${x.icon ? html`<hb-icon class="hb-toast__content__icon" icon=${x.icon} size="small"></hb-icon>` : ''}${x.text}</div></div></hb-transition></hb-transition>`))
   }
 }
 

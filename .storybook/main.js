@@ -8,10 +8,6 @@ module.exports = {
     builder: "webpack5",
   },
   webpackFinal: async (config, { configType }) => {
-    const svgRule = config.module.rules.find((rule) =>
-      "test.svg".match(rule.test)
-    );
-    svgRule.exclude = [AppSourceDir];
     config.module.rules.push(
       {
         test: /\.scss$/,

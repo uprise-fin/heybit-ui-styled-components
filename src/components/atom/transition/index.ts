@@ -13,10 +13,12 @@ export class HbTransition extends Base {
     return [require("../../../styles/atom/transition/index.scss").default];
   }
   show = false
+  delete = false
   type: transitionType
   static get properties() {
     return {
       show: { type: Boolean, Reflect: true },
+      delete: { type: Boolean, Reflect: true },
       type: { type: String, Reflect: true },
     };
   }
@@ -26,6 +28,7 @@ export class HbTransition extends Base {
   onAnimationEnd(evnt: AnimationEvent) {
     evnt.stopPropagation()
     if (evnt.animationName.includes('show')) return this.classList.add('visible')
+    if (this.delete) this.remove();
     return this.classList.remove('visible')
   }
   // render() {

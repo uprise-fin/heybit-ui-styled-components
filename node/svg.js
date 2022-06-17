@@ -22,7 +22,8 @@ const files = fs.readdirSync("node/assets/icons/");
 files.forEach((v) => {
   if (!v.includes(".svg")) return;
   const svg = fs.readFileSync(`node/assets/icons/${v}`, "utf8");
-  svgs[v] = svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
+  const name = v.replace(/.svg$/, "");
+  svgs[name] = svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
 });
 // console.log("dddd", svgs);
 fs.writeFile(

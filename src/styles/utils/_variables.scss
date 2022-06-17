@@ -20,8 +20,10 @@ $fonts: (
   void: #fff,
 );
 $box: (
+  width: 340px,
   height: 54px,
-  padding: 0 20px,
+  margin: 20px,
+  padding: 20px,
   border-width: 1px,
   font-size: 16px,
   border-color: #e2e4e6,
