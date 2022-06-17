@@ -103,7 +103,7 @@ export class HbDialog extends Base {
               class="hb-dialog__close-btn"
               part="close-btn"
               id="close-btn"
-            ><hb-icon icon="ic-system-close-24-gray.svg" size="small"></hb-icon></hb-button>`
+            ><hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon></hb-button>`
           }
           <div class="hb-dialog__head">${this.icon ? html`<hb-img part="icon" loadingWidth="60" loadingHeight="60" src=${this.icon} class="hb-dialog__head__icon"></hb-img>` : ''}${this.title ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>` : ''}</div>
           <div class="hb-dialog__body">

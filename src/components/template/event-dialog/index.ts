@@ -56,7 +56,7 @@ export class HbEventDialog extends Base {
               class="hb-event-dialog__close-btn"
               part="close-btn"
               id="close-btn"
-            ><hb-icon icon="ic-system-close-24-gray.svg" size="small"></hb-icon></button>`
+            ><hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon></button>`
           }
           <hb-anchor href=${this.href}>
             <hb-img

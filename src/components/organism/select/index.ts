@@ -89,7 +89,7 @@ export class HbSelect extends Base {
     return html`
       <hb-input class="hb-select__label" @click=${this.onClick} id="label" part="label" class="hb-select__input" ?readonly=${!this.search} value=${this.label} placeholder=${this.placeholder} @event=${this.onInput}>
         <slot name="icon" class="hb-select__label--icon"></slot>
-        <hb-icon slot="slot--right" icon="ic-system-arrow-down-18-black.svg" size=${size.small}></hb-icon>
+        <hb-icon slot="slot--right" icon="ic-system-arrow-down-18-black" size=${size.small}></hb-icon>
       </hb-input>
       <hb-transition id="select-transition" ?show=${this.open} type=${transitionType.fade}>
         <hb-list emptyText=${this.emptyText} id="list" class="hb-select__list" style="width: ${this.width}px;transform: translate(${this.left}px,${this.top}px);max-height:${this.maxHeight}px;" @select=${this.onSelect} .options=${this.list} .value=${this.value}></hb-list>

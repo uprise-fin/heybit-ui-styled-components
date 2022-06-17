@@ -102,7 +102,7 @@ export class HbSheetDialog extends Base {
               class="hb-sheet-dialog__close-btn"
               part="close-btn"
               id="close-btn"
-            ><hb-icon icon="ic-system-close-24-gray.svg" size="small"></hb-icon></hb-button>`
+            ><hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon></hb-button>`
           }
           <div class="hb-sheet-dialog__head">${this.title ? html`<p part="title" class="hb-sheet-dialog__head__title">${this.title}</p>` : ''}</div>
           <div class="hb-sheet-dialog__body">

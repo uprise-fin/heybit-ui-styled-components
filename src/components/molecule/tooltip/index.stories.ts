@@ -17,6 +17,6 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story<HbTooltip> = ({open}) =>
-  html`안녕하세요 헤이비트는 <hb-tooltip ?open=${open}><hb-icon icon="ic-my-setting-renewal.svg" slot="front" size=${size.small}></hb-icon><div>헤이비트</div></hb-tooltip>입니다.`;
+  html`안녕하세요 헤이비트는 <hb-tooltip ?open=${open}><hb-icon icon="ic-my-setting-renewal" slot="front" size=${size.small}></hb-icon><div>헤이비트</div></hb-tooltip>입니다.`;
 export const primary: Story<HbTooltip> = Template.bind({});
 primary.args = { open: false };
