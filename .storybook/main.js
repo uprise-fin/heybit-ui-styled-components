@@ -1,5 +1,7 @@
 const Path = require("path");
 const AppSourceDir = Path.join(__dirname, "..", "src");
+// TODO 환경변수 추가
+// TODO 환경변수에 따라 노출될 컴포넌트 분리(예: 체크된 컴포넌트는 완료, 아닌건 보여주지 않기)
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
