@@ -10,7 +10,7 @@
 
 ```javascript
 import "heybit-ui-styled-components";
-import "heybit-ui-styled-components/initial.css";
+import "heybit-ui-styled-components/dist/initial.css";
 ```
 
 or
