@@ -54,7 +54,6 @@ const Template = (props: HbSheetDialogExpns) => html`
     .anchor=${props.anchor}
   >
     <div
-      slot="content"
       style="font-weight: 400;font-size: 14px;line-height: 140%;text-align: center;color: #828486;"
     >
       ${props.content}

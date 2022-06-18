@@ -77,6 +77,7 @@ export class HbModal extends Base {
   }
   
   onAnimationEnd(event: AnimationEvent) {
+    //TODO 오픈드 이벤트 및 클로즈드 이벤트 생성가능
     this.classList.remove(event.animationName);
   }
 
@@ -84,7 +85,7 @@ export class HbModal extends Base {
     e.stopImmediatePropagation()
     if (this.persistent) return this.classList.add("shake")
 
-    this.dispatchEvent(new CustomEvent("close", e));
+    this.dispatchEvent(new CustomEvent("close"));
   } 
 }
 

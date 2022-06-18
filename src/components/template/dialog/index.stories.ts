@@ -44,6 +44,9 @@ const Template = (props: HbDialogExpns) => html`
     }
   </style>
   <hb-dialog
+    @close=${function() {
+      console.log("djakldjawlkjadwlk");
+    }}
     ?open=${props.open}
     icon=${props.icon}
     title=${props.title}
@@ -56,7 +59,6 @@ const Template = (props: HbDialogExpns) => html`
     .anchor=${props.anchor}
   >
     <div
-      slot="content"
       style="font-weight: 400;font-size: 14px;line-height: 140%;text-align: center;color: #828486;"
     >
       ${props.content}
