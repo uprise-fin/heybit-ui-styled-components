@@ -12,7 +12,7 @@ export class HbSpinner extends Base {
     return [require("../../../styles/molecule/spinner/index.scss").default];
   }
 
-  theme: theme = theme.primary;
+  theme: theme = theme.secondary;
   size: size = size.large
 
 

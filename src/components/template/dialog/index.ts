@@ -111,7 +111,7 @@ export class HbDialog extends Base {
           </div>
           <div class="hb-dialog__foot">
             <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
-              ${this.buttons.map((x, i) => html`<hb-button class="hb-sheet-dialog__foot__btn" ?loading=${x.loading} ?disabled=${this.eventDisabled} @event=${this.onEvent.bind(this,x, i)} theme=${x.theme} size="medium">${x.name}</hb-button>`)}
+              ${this.buttons.map((x, i) => html`<hb-button class="hb-sheet-dialog__foot__btn" ?loading=${x.loading} ?disabled=${this.eventDisabled} baseLoadingDuration=${this.baseLoadingDuration} @event=${this.onEvent.bind(this,x, i)} theme=${x.theme} size="medium">${x.name}</hb-button>`)}
             </div>
             ${
               this.anchor && this.anchor.name

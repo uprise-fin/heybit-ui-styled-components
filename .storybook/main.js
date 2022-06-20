@@ -1,4 +1,5 @@
 const Path = require("path");
+const Dotenv = require("dotenv-webpack");
 const AppSourceDir = Path.join(__dirname, "..", "src");
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -7,7 +8,8 @@ module.exports = {
   core: {
     builder: "webpack5",
   },
-  webpackFinal: async (config, { configType }) => {
+  webpackFinal: async (config) => {
+    config.plugins.push(new Dotenv());
     config.module.rules.push(
       {
         test: /\.scss$/,

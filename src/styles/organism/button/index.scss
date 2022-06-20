@@ -1,24 +1,7 @@
 @import "../../utils/mixins";
 @import "../../utils/variables";
 // TODO css변수로 변경
-$hb-button__padding: map-get($variables, box, padding) !default;
-$hb-button__border-width: map-get($variables, box, border-width) !default;
-$hb-button__font-size: map-get($variables, box, font-size) !default;
-$hb-button--inline__font-size: $hb-button__font-size - 1px !default;
-$hb-button--fab__font-size: $hb-button__font-size - 2px !default;
-$hb-button__border-color: map-get($variables, box, border-color) !default;
-$hb-button__border-color--warning: map-get(
-  $variables,
-  box,
-  border-color--warning
-) !default;
-$hb-button__border-radius: map-get($variables, box, border-radius) !default;
-$hb-button__background: map-get($variables, box, background) !default;
-$hb-button__background--warning: map-get(
-  $variables,
-  box,
-  background--warning
-) !default;
+// $hb-button__padding: map-get($variables, box, padding) !default;
 $hb-button__size: (
   large: 54px,
   medium: 50px,
@@ -61,14 +44,14 @@ $hb-button__theme: (
   @include loading();
   @include host-styled {
     display: flex;
-    font-size: $hb-button__font-size;
-    padding: 0 $hb-button__padding;
+    padding: 0 var(--box__padding);
     // border: #{$hb-button__border-width} solid #{$hb-button__border-color};
-    border-radius: $hb-button__border-radius;
-    font-size: $hb-button__font-size;
+    border-radius: var(--box__border-radius);
+    font-size: var(--box__font-size);
     font-weight: 700;
     box-sizing: border-box;
     cursor: pointer;
+    opacity: 1;
     // &::before,
     // &::after {
     //   flex: auto;
@@ -85,7 +68,8 @@ $hb-button__theme: (
         border: 1px solid $bg;
       }
       color: map-get($value, color);
-      transition: background $transition__duration;
+      transition: background $transition__duration,
+        opacity $transition__duration;
       background: $bg;
     }
     @include host-styled("[theme='#{$class}']:hover") {
@@ -112,12 +96,12 @@ $hb-button__theme: (
   @include host-styled("[type='inline']") {
     display: inline-flex;
     min-width: 96px;
-    font-size: $hb-button--inline__font-size;
+    font-size: calc(var(--box__font-size) - 1px);
   }
   @include host-styled("[type='fab']") {
     display: inline-flex;
     min-width: 61px;
-    font-size: $hb-button--fab__font-size;
+    font-size: calc(var(--box__font-size) - 2px);
     border-radius: 1000px;
   }
   @include host-styled("[type='custom']") {
@@ -147,8 +131,5 @@ $hb-button__theme: (
     align-items: center;
     margin: auto;
     font-family: map-get($variables, fonts, family);
-    &__transition[show] {
-      display: inline-flex;
-    }
   }
 }

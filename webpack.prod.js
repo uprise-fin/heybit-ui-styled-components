@@ -64,6 +64,7 @@ module.exports = (_, options) => {
       "components/template/dialog": [
         path.resolve(__dirname, "./src/components/template/dialog/index.ts"),
       ],
+      //TODO prod에 맞춰서 스토리북에 노출 여부를 처리하도록 변경
     },
     mode: env.MODE,
     plugins: [new webpack.DefinePlugin(envKeys)],

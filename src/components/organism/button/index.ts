@@ -2,7 +2,7 @@ import {Base, size, theme } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { transitionType } from "../../atom/transition";
-import { wait } from "../../../utils";
+import { getElement, wait } from "../../../utils";
 export enum hbButtonType {
   "block" = "block",
   "inline" = "inline",
@@ -28,8 +28,9 @@ export class HbButton extends Base {
   static override get styles() {
     return [require("../../../styles/organism/button/index.scss").default];
   }
-  type: hbButtonType;
-  size: size=size.large;
+  labelEl: HTMLElement
+  type: hbButtonType = hbButtonType.block;
+  size: size = size.large;
   loading = false;
   baseLoadingDuration = 0
   disabled = false;
@@ -67,14 +68,25 @@ export class HbButton extends Base {
   }
   async customConnectedCallback() {
     this.tabIndex = 0;
-    this.onclick = async (ev: Event) => {
-      if (this.loading || this.disabled) return
-      this.dispatchEvent(new CustomEvent("event", ev));
-      if (this.baseLoadingDuration) {
-        this.loading = true
-        await wait(this.baseLoadingDuration)
-        this.loading = false
-      }
+    this.setAttribute('type', this.type)
+    this.setAttribute('theme', this.theme)
+    this.setAttribute('size', this.size)
+    this.onclick = this.onEvent.bind(this)
+    this.onkeyup = (ev) => ev.key === 'Enter' && this.onEvent(ev)
+  }
+
+  async onEvent(ev: Event) {
+    if (this.loading || this.disabled) return
+    this.dispatchEvent(new CustomEvent("event", ev));
+    if (this.baseLoadingDuration) {
+      const width = this.style.width.substring(0, this.style.width.length - 2)
+      this.style.width = this.offsetWidth + 'px'
+      this.setAttribute('loading', '')
+      this.loading = true
+      await wait(this.baseLoadingDuration)
+      this.style.width = width ? width + 'px' : ''
+      this.removeAttribute('loading')
+      this.loading = false
     }
   }
 }

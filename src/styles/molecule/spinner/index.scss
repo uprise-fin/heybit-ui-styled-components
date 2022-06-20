@@ -1,7 +1,5 @@
 @import "../../utils/variables";
 @import "../../utils/mixins";
-$hb-spinner__color: #000 !default;
-$hb-spinner__background: #fff !default;
 $hb-spinner__size: (
   large: 18px,
   medium: 16px,
@@ -27,8 +25,8 @@ $hb-spinner__theme: (
 
 .hb-spinner {
   @include host-styled {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    margin: auto;
     &::before,
     &::after {
       content: "";
