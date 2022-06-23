@@ -38,3 +38,7 @@ export function wait(time: number = 500): Promise<void> {
     }, time);
   });
 }
+
+export function dev(str: string = "개발중/") {
+  return process.env.ENVIRONMENT === "dev" ? str : null;
+}

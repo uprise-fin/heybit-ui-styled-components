@@ -81,7 +81,8 @@
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.6.0",
-    "lit": "^2.1.1"
+    "lit": "^2.1.1",
+    "matercolors": "^2.3.0"
   },
   "optionalDependencies": {
     "lit-html": "^2.2.3",

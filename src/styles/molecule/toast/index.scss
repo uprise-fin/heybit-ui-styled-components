@@ -9,8 +9,9 @@
     display: flex;
     width: 100%;
     max-width: var(--box__width);
-    flex-direction: column-reverse;
+    height: 0;
     transform: translateX(-50%);
+    flex-direction: column-reverse;
   }
   &__content {
     $padding: 16px;
@@ -23,7 +24,7 @@
     font-size: 14px;
     line-height: 1.572;
     color: #fff;
-    align-items: center;
+    align-items: start;
     border-radius: 8px;
     background: rgba(#292929, 0.9);
     &__text {
@@ -31,6 +32,7 @@
       white-space: pre-line;
     }
     &__icon {
+      height: 22px;
       margin-right: 5px;
     }
   }
@@ -38,7 +40,7 @@
     will-change: margin;
     transition: margin $transition__duration;
     &[show] {
-      margin: 10px !important;
+      margin: 10px 0 !important;
     }
     // @for $i from 1 through 10 {
     //   &:nth-last-child(#{$i}) {

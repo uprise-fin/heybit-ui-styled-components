@@ -10,17 +10,18 @@ export enum horizonAlign {
   left,
 }
 export enum size {
+  'xsmall'= 'xsmall' ,
   'small'= 'small' ,
   'medium'= 'medium',
   'large' = 'large',
 }
 export enum theme {
   'primary' ='primary',
-'secondary' ='secondary',
-'tertiary' ='tertiary',
-'quaternary' ='quaternary',
-'quinary' ='quinary',
-'senary' ='senary',
+  'secondary' ='secondary',
+  'tertiary' ='tertiary',
+  'quaternary' ='quaternary',
+  'quinary' ='quinary',
+  'senary' ='senary',
 }
 export class Base extends LitElement {
   override async connectedCallback() {

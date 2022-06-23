@@ -3,13 +3,11 @@ import { html } from "lit";
 import "./index";
 import type { HbLoading } from "./index";
 
-// More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
   title: "components/atom/hb-loading",
   component: "hb-loading",
-} as Meta;
+} as Meta
 
-// More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story<HbLoading> = () => html`
 <style>
 .loading {

@@ -14,24 +14,6 @@ $hb-select__border-color--warning: map-get(
 $hb-select__border-radius: map-get($variables, box, border-radius) !default;
 $hb-select__background: map-get($variables, box, background) !default;
 $hb-select__background--warning: map-get($variables, box, background) !default;
-%option {
-  display: flex;
-  width: 100%;
-  height: $hb-select__height;
-  padding: 0 $hb-select__padding;
-  border: 0;
-  align-items: center;
-  font-size: inherit;
-  box-sizing: border-box;
-  outline: none;
-  background: none;
-  &[data-selected] {
-    background: rgba(#000, 0.3) !important;
-  }
-  &[hidden] {
-    display: none;
-  }
-}
 
 .hb-select {
   @include host-styled {

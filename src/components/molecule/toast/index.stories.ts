@@ -22,19 +22,20 @@ interface HbToastExns extends HbToast {
 }
 
 const Template: Story<HbToastExns> = ({ visibleIcon,contents ,icons}) => {
+  let element: HbToast
   function reset() {
-    const de = document.getElementById('toast')
-    de.messages = []
+    if (!element) element = document.getElementById('toast') as HbToast
+    element.messages = []
   }
   function event() {
-    const de = document.getElementById('toast')
+    if (!element) element = document.getElementById('toast') as HbToast
     const msgRandom = Math.floor(Math.random() * (contents.length))
     const iconRandom = Math.floor(Math.random() * (icons.length))
     const message = {
       text: contents.slice()[msgRandom],
       icon: visibleIcon ? icons.slice()[iconRandom] : null
     }
-    de.messages = [...de.messages, message]
+    element.messages = [...element.messages, message]
   }
   return html`<hb-button theme=${theme.secondary} @event=${reset}>토스트리셋</hb-button><br><hb-button @event=${event}>토스트 추가하기</hb-button><hb-toast id="toast"></hb-toast>`;
 }

@@ -1,3 +1,3 @@
-interface Obj<T> {
-  [key: string]: T;
-}
+type Obj<V, T> = {
+  [key in T]: V;
+};

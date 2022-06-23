@@ -52,23 +52,23 @@ export const inline: Story<HbButton> = InlineTem.bind({});
 inline.args = {
   ...block.args,
 };
-const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title,baseLoadingDuration }) =>
-{
-  function ddd () {
-    console.log('djaklwdjaw')
-  }
-  return html`<hb-button
-    @event=${ddd}
-    theme="${theme}"
-    size=${size}
-    type=${hbButtonType.fab}
-    baseLoadingDuration=${baseLoadingDuration}
-    ?loading=${loading}
-    ?disabled=${disabled}
-  >${title}</hb-button>`;
-}
+// const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title,baseLoadingDuration }) =>
+// {
+//   function ddd () {
+//     console.log('djaklwdjaw')
+//   }
+//   return html`<hb-button
+//     @event=${ddd}
+//     theme="${theme}"
+//     size=${size}
+//     type=${hbButtonType.fab}
+//     baseLoadingDuration=${baseLoadingDuration}
+//     ?loading=${loading}
+//     ?disabled=${disabled}
+//   >${title}</hb-button>`;
+// }
   
-export const fab: Story<HbButton> = FabTem.bind({});
-fab.args = {
-  ...block.args,
-};
+// export const fab: Story<HbButton> = FabTem.bind({});
+// fab.args = {
+//   ...block.args,
+// };

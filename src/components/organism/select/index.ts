@@ -92,7 +92,7 @@ export class HbSelect extends Base {
         <hb-icon slot="slot--right" icon="ic-system-arrow-down-18-black" size=${size.small}></hb-icon>
       </hb-input>
       <hb-transition id="select-transition" ?show=${this.open} type=${transitionType.fade}>
-        <hb-list emptyText=${this.emptyText} id="list" class="hb-select__list" style="width: ${this.width}px;transform: translate(${this.left}px,${this.top}px);max-height:${this.maxHeight}px;" @select=${this.onSelect} .options=${this.list} .value=${this.value}></hb-list>
+        <hb-list emptyText=${this.emptyText} id="list" class="hb-select__list" style="width: ${this.width}px;transform: translate(${this.left}px,${this.top}px);max-height:${this.maxHeight}px;" @event=${this.onSelect} .options=${this.list} .value=${this.value}></hb-list>
       </hb-transition>
     `
   }
@@ -122,7 +122,7 @@ export class HbSelect extends Base {
   }
 
   onSelect(evt: Event) {
-    console.log('djhwkdjw')
+    evt.stopImmediatePropagation()
     this.adapterHide();
     const {target} = evt;
     if(!(target instanceof HbList)) return

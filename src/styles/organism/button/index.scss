@@ -1,16 +1,26 @@
 @import "../../utils/mixins";
 @import "../../utils/variables";
-// TODO css변수로 변경
-// $hb-button__padding: map-get($variables, box, padding) !default;
 $hb-button__size: (
-  large: 54px,
-  medium: 50px,
-  small: 46px,
-);
-$hb-button--fab__size: (
-  large: 50px,
-  medium: 41px,
-  small: 33px,
+  large: (
+    font-size: 16px,
+    height: 60px,
+    border-radius: calc(var(--box__border-radius) * 2),
+  ),
+  medium: (
+    font-size: 15px,
+    height: 50px,
+    border-radius: calc(var(--box__border-radius) * 2),
+  ),
+  small: (
+    font-size: 14px,
+    height: 40px,
+    border-radius: var(--box__border-radius),
+  ),
+  xsmall: (
+    font-size: 14px,
+    height: 30px,
+    border-radius: var(--box__border-radius),
+  ),
 );
 $hb-button__theme: (
   primary: (
@@ -72,37 +82,22 @@ $hb-button__theme: (
         opacity $transition__duration;
       background: $bg;
     }
-    @include host-styled("[theme='#{$class}']:hover") {
+    @include host-styled(":not([loading])[theme='#{$class}']:hover") {
       background: getHoverColor($bg);
     }
-    @include host-styled("[theme='#{$class}']:active") {
+    @include host-styled(":not([loading])[theme='#{$class}']:active") {
       background: getActiveColor($bg);
     }
   }
   @each $class, $size in $hb-button__size {
-    @include host-styled(":not([type='fab'])[size='#{$class}']") {
-      height: $size;
+    @include host-styled("[size='#{$class}']") {
+      height: map-get($size, height);
+      font-size: map-get($size, font-size);
+      border-radius: map-get($size, border-radius);
     }
   }
-  @each $class, $size in $hb-button--fab__size {
-    @include host-styled("[type='fab'][size='#{$class}']") {
-      height: $size;
-    }
-  }
-  // @include host-styled("[type='block']") {
-  //   display: flex;
-  //   font-size: $hb-button__font-size;
-  // }
   @include host-styled("[type='inline']") {
     display: inline-flex;
-    min-width: 96px;
-    font-size: calc(var(--box__font-size) - 1px);
-  }
-  @include host-styled("[type='fab']") {
-    display: inline-flex;
-    min-width: 61px;
-    font-size: calc(var(--box__font-size) - 2px);
-    border-radius: 1000px;
   }
   @include host-styled("[type='custom']") {
     padding: 0;

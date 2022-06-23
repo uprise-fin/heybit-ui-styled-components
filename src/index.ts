@@ -1,5 +1,8 @@
+import { palette } from "./components/atom/color";
+import { HbDelay } from "./components/atom/delay";
 import { HbLoading } from "./components/atom/loading";
 import { HbTransition } from "./components/atom/transition";
+import { HbAnchor } from "./components/molecule/anchor";
 import { HbIcon } from "./components/molecule/icon";
 import { HbImg } from "./components/molecule/img";
 import { HbList } from "./components/molecule/list";
@@ -16,8 +19,11 @@ import { HbEventDialog } from "./components/template/event-dialog";
 import { HbModal } from "./components/template/modal";
 import { HbSheetDialog } from "./components/template/sheet-dialog";
 export {
+  palette,
+  HbDelay,
   HbLoading,
   HbTransition,
+  HbAnchor,
   HbIcon,
   HbImg,
   HbList,
@@ -29,8 +35,8 @@ export {
   HbInput,
   HbSelect,
   HbTab,
-  HbModal,
   HbDialog,
   HbEventDialog,
+  HbModal,
   HbSheetDialog,
 };

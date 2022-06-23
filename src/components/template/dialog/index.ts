@@ -53,7 +53,7 @@ export class HbDialog extends Base {
   buttons: Button[] = []
 
   get eventDisabled() {
-    return this.buttons.map(x => x.loading).some(x => x)
+    return this.buttons.map(x => x.loading).some(x => x) || this.loading
   }
   // get open() {
   //   return this._open;
@@ -111,7 +111,7 @@ export class HbDialog extends Base {
           </div>
           <div class="hb-dialog__foot">
             <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
-              ${this.buttons.map((x, i) => html`<hb-button class="hb-sheet-dialog__foot__btn" ?loading=${x.loading} ?disabled=${this.eventDisabled} baseLoadingDuration=${this.baseLoadingDuration} @event=${this.onEvent.bind(this,x, i)} theme=${x.theme} size="medium">${x.name}</hb-button>`)}
+              ${this.buttons.map((x, i) => html`<hb-button class="hb-sheet-dialog__foot__btn" ?loading=${this.loading || x.loading} ?disabled=${this.eventDisabled} baseLoadingDuration=${this.baseLoadingDuration} @event=${this.onEvent.bind(this,x, i)} theme=${x.theme} size="medium">${x.name}</hb-button>`)}
             </div>
             ${
               this.anchor && this.anchor.name
@@ -128,12 +128,12 @@ export class HbDialog extends Base {
 
   async onEvent(button: Button, index: number) {
     const {event}= button;
-    if (this.loading) {
+    if (this.baseLoadingDuration) {
       const on = this.buttons.slice()
       const off = this.buttons.slice()
       on[index].loading = true
       this.buttons = on
-      if (this.loading) await Promise.all([event(), wait(this.baseLoadingDuration)])
+      await Promise.all([event(), wait(this.baseLoadingDuration)])
       off[index].loading = false
       this.buttons = off
     } else event()

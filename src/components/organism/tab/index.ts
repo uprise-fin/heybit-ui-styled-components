@@ -47,15 +47,14 @@ export class HbTab extends Base {
     this.setAttribute('index', index.toString())
   }
 
-  setIndicator(index: string) {
+  async setIndicator(index: string) {
     if (!this.btns.length || this._index === index) return
     const number = +index
     const target = this.btns[number]
-    const width = target.offsetWidth
-    const left = target.offsetLeft
+    const {offsetWidth, offsetLeft} = await target
     this._index = index;
-    this.left = left - this.offsetLeft;
-    this.width = width;
+    this.left = offsetLeft - this.offsetLeft;
+    this.width = offsetWidth;
     this.contents.map(x => x.removeAttribute('active'));
     this.contents[number].setAttribute('active', '')
   }

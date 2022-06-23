@@ -58,6 +58,13 @@
 }
 
 @function getInteractiveColor($color, $amount) {
+  @if (lightness($color) > 50) {
+    @return lighten($color, $amount);
+  } @else {
+    @return darken($color, $amount);
+  }
+}
+@function getInteractiveRevertColor($color, $amount) {
   @if (lightness($color) < 50) {
     @return lighten($color, $amount);
   } @else {
@@ -76,11 +83,12 @@
   }
 }
 @function getHoverColor($color) {
-  @return getInteractiveColor($color, 5);
-}
-@function getActiveColor($color) {
   @return getInteractiveColor($color, 10);
 }
+@function getActiveColor($color) {
+  @return getInteractiveRevertColor($color, 5);
+}
+
 // @mixin initial($selector) {
 //   #{$selector} {
 //     font-family: $font-family;

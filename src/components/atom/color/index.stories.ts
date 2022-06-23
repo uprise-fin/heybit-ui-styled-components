@@ -1,6 +1,8 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
-import { Base } from "./components/base";
+import { palette } from "./index";
+import { Base } from "../../base";
+console.log(palette);
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
@@ -8,7 +10,7 @@ import { Base } from "./components/base";
 // console.log(variables.cssText);
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: "variables/css",
+  title: "components/atom/css",
 } as Meta;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const r = document.querySelector(":root");
@@ -18,26 +20,19 @@ const Template: Story<any> = () =>
     ${Base.themes.map(
       (theme) =>
         html`
-          <p style="color: var(--color__${theme})">${theme}</p>
+          <p style="background: var(--${theme})">${theme}</p>
         `
     )}
   `;
 const LevelTemplate: Story<any> = () =>
   html`
     ${Base.themes.map((theme) =>
-      Array(11)
-        .fill(null)
-        .map((_, i) => {
-          const j = i - 10 / 2;
-          return `--color__${theme}--${j}`;
-        })
-        .filter((x) => rs.getPropertyValue(x))
-        .map(
-          (x) =>
-            html`
-              <p style="color: var(${x})">${x}</p>
-            `
-        )
+      [50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(
+        (x) =>
+          html`
+            <p style="background: var(${`--${theme}__${x}`})">${x}</p>
+          `
+      )
     )}
   `;
 

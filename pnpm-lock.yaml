@@ -27,6 +27,7 @@ specifiers:
   lit: ^2.1.1
   lit-html: ^2.2.3
   lit-scss-loader: ^1.1.0
+  matercolors: ^2.3.0
   mini-css-extract-plugin: ^2.5.2
   pretendard: ^1.2.1
   react: ^16.8.0
@@ -47,6 +48,7 @@ specifiers:
 dependencies:
   '@webcomponents/webcomponentsjs': 2.6.0
   lit: 2.2.2
+  matercolors: 2.3.0
 
 optionalDependencies:
   lit-html: 2.2.3
@@ -10448,6 +10450,10 @@ packages:
       escape-string-regexp: 4.0.0
     dev: true
     optional: true
+
+  /matercolors/2.3.0:
+    resolution: {integrity: sha512-IqwCB/uao4mI/ZnySGxN5WVfuXj4+1k/IS8u+KvH1nrDEb8XkdZWR8sl9mZuh17GSVfGu0AuGAWYpWFZKGBF0A==}
+    dev: false
 
   /md5.js/1.3.5:
     resolution: {integrity: sha512-xitP+WxNPcTTOgnTJcrhM0xvdPepipPSf3I8EIpGKeFLjt3PlJLIDG3u8EX53ZIubkb+5U2+3rELYpEhHhzdkg==}

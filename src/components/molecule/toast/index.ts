@@ -81,7 +81,7 @@ export class HbToast extends Base {
   // }
   
   render() {
-    return this._messages.map((x, i) => (html`<hb-transition style="margin-top: -${this.getHeight(i)}px;" class="hb-toast__position" type=${transitionType.fade} ?show=${this.getShow(i)}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.getShow(i)}><div class="hb-toast__content"><div class="hb-toast__content__text">${x.icon ? html`<hb-icon class="hb-toast__content__icon" icon=${x.icon} size="small"></hb-icon>` : ''}${x.text}</div></div></hb-transition></hb-transition>`))
+    return this._messages.map((x, i) => (html`<hb-transition style="margin-top: -${this.getHeight(i)}px;" class="hb-toast__position" type=${transitionType.fade} ?show=${this.getShow(i)}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.getShow(i)}><div class="hb-toast__content">${x.icon ? html`<hb-icon class="hb-toast__content__icon" icon=${x.icon} size="small"></hb-icon>` : ''}<div class="hb-toast__content__text">${x.text}</div></div></hb-transition></hb-transition>`))
   }
 }
 

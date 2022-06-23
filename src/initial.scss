@@ -44,45 +44,6 @@
     }
   }
 }
-:root {
-  @function getAmount($name, $level) {
-    @if ($name == "primary") {
-      $level: $level * 3;
-      @return 51 + $level;
-    }
-    @if ($name == "secondary") {
-      $level: $level * 3.6;
-      @return 19 + $level;
-    }
-    @if ($name == "tertiary") {
-      $level: $level * 1.5;
-      @return 92 + $level;
-    }
-    @if ($name == "quaternary") {
-      $level: $level * 1.5;
-      @return 94 + $level;
-    }
-    @if ($name == "quinary") {
-      $level: $level * 1.5;
-      @return 95 + $level;
-    }
-    @if ($name == "senary") {
-      $level: $level * 1.5;
-      @return 95 + $level;
-    }
-  }
-  @each $name, $color in $colors {
-    --color__#{$name}: hsl(#{toHSL($color)});
-    @for $lv from 0 through $level {
-      $vl: $lv - round($level / 2);
-      @if $vl != 0 {
-        $_lv: getAmount($name, $vl);
-        $c: toHSL($color, $_lv);
-        --color__#{$name}--#{$vl}: hsl(#{$c});
-      }
-    }
-  }
-}
 // [data-hb-component] {
 //   &:not([data-hb-styled]) {
 //     visibility: hidden;

@@ -2,7 +2,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
+const Dotenv = require("dotenv-webpack");
 module.exports = {
   entry: {
     initial: [path.resolve(__dirname, "./src/initial.scss")],
@@ -52,7 +52,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin(), new CleanWebpackPlugin()],
+  plugins: [new MiniCssExtractPlugin(), new CleanWebpackPlugin(), new Dotenv()],
 
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".svg", ".css", ".scss"],

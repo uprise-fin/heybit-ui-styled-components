@@ -1,0 +1,25 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+
+.hb-carousel {
+  @include host-styled {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  &__wrap {
+    &--duraion {
+      transition: transform $transition__duration;
+    }
+  }
+  &__items {
+    display: inline-flex;
+    white-space: normal;
+    @include slot-styled("*") {
+      flex: 1;
+    }
+    &--fake-before {
+      margin-left: -100%;
+    }
+  }
+}
