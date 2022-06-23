@@ -6,7 +6,7 @@ import type { HbIcon } from "./index";
 import SVG from './svg';
 
 export default {
-  title: "components/molecule/hb-icon(작업중)",
+  title: "components/molecule/hb-icon",
   component: "hb-icon",
   argTypes: {
     icon: {

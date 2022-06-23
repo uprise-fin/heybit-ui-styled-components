@@ -7,15 +7,14 @@ import { hbButtonType } from "../../organism/button";
 import { buttonAlign } from "../modal";
 
 /**
+ * @fires close 닫기
  * @property open 온 오프
  * @property width
  * @property persistent
  * @property hideCloseBtn
  * @property icon
  * @property title
- * @slot content - optional, 내용
- * @slot button - optional, 버튼
- * @slot anchor - optional, 앵커
+ * @slot 내용
  * @csspart container
  * @csspart icon
  * @csspart title
@@ -106,7 +105,7 @@ export class HbSheetDialog extends Base {
           }
           <div class="hb-sheet-dialog__head">${this.title ? html`<p part="title" class="hb-sheet-dialog__head__title">${this.title}</p>` : ''}</div>
           <div class="hb-sheet-dialog__body">
-            <slot name="content" part="content" class="hb-sheet-dialog__body__content"></slot>
+            <slot class="hb-sheet-dialog__body__content"></slot>
           </div>
           <div class="hb-sheet-dialog__foot">
             <div class="hb-sheet-dialog__foot__button-wrap ${this.buttonAlign}">
@@ -141,6 +140,7 @@ export class HbSheetDialog extends Base {
   onClose() {
     this.open = false;
     this.removeAttribute('open')
+    this.dispatchEvent(new CustomEvent("close"));
   }
 }
 

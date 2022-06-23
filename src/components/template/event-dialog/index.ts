@@ -4,6 +4,7 @@ import { transitionType } from "../../atom/transition";
 import { Base } from "../../base";
 
 /**
+ * @fires close 닫기
  * @property open 온 오프
  * @property width
  * @property persistent
@@ -74,6 +75,7 @@ export class HbEventDialog extends Base {
   onClose() {
     this.open = false;
     this.removeAttribute('open')
+    this.dispatchEvent(new CustomEvent("close"));
   }
 }
 
