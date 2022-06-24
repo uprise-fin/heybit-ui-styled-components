@@ -39,6 +39,6 @@ export function wait(time: number = 500): Promise<void> {
   });
 }
 
-export function dev(str: string = "개발중/") {
-  return process.env.ENVIRONMENT === "dev" ? str : null;
+export function dev() {
+  return process.env.ENVIRONMENT === "dev";
 }

@@ -1,9 +1,10 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
+import { dev } from "../../../utils";
 import "./index";
 import type { HbCarousel } from "./index";
 
-export default {
+export default dev() && {
   title: "components/template/hb-carousel",
   component: "hb-carousel",
   argTypes: {
@@ -16,10 +17,11 @@ export default {
 } as Meta;
 
 
-const Template: Story<HbCarousel> = ({auto,index,items,visibleLength,infinite}) =>
+const Template: Story<HbCarousel> = ({auto,pause,index,items,visibleLength,infinite}) =>
   html`<hb-carousel 
       ?auto=${auto} 
       ?infinite=${infinite} 
+      ?pause=${pause} 
       index=${index} 
       items=${items} 
       visibleLength=${visibleLength}>
@@ -36,6 +38,7 @@ const Template: Story<HbCarousel> = ({auto,index,items,visibleLength,infinite}) 
 export const primary: Story<HbCarousel> = Template.bind({});
 primary.args = {
   auto: true,
+  pause: true,
   index: 0,
   items: 3,
   visibleLength: 3,

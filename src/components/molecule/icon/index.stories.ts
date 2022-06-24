@@ -1,11 +1,12 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
+import { dev } from "../../../utils";
 import { size, theme } from "../../base";
 import "./index";
 import type { HbIcon } from "./index";
 import SVG from './svg';
 
-export default {
+export default dev() && {
   title: "components/molecule/hb-icon",
   component: "hb-icon",
   argTypes: {

@@ -24,7 +24,8 @@ import { Base } from "../../base";
 enum eventStatus {
   start,
   doing,
-  done
+  done,
+  fake
 }
 @customElement("hb-carousel")
 export class HbCarousel extends Base {
@@ -38,8 +39,9 @@ export class HbCarousel extends Base {
   draggable: boolean = false;
   clickable: boolean = false;
   moveable: boolean = false;
-  _userIndex: number
-  index: number
+  duration: number = 3000
+  _userIndex: number // 인피니트등에 쓰이기 위해 내부에서 실제로 사용하는 인덱스
+  index: number // 현재 인덱스
   items: number
   visibleLength: number = 1
   itemElements: HTMLElement[]
@@ -67,14 +69,16 @@ export class HbCarousel extends Base {
   static get properties() {
     return {
       auto: { type: Boolean, Reflect: true },
+      pause: { type: Boolean, Reflect: true },
       infinite: { type: Boolean, Reflect: true },
       rolling: { type: Boolean, Reflect: true },
       eventStatus: { type: Number, Reflect: true },
       diffClientX: { type: Number, Reflect: true },
       index: { type: Number, Reflect: true },
       items: { type: Number, Reflect: true },
-      duration: { type: Boolean, Reflect: true },
+      transition: { type: Boolean, Reflect: true },
       visibleLength: { type: Number, Reflect: true },
+      duration: { type: Number, Reflect: true },
     };
   }
 
@@ -82,7 +86,7 @@ export class HbCarousel extends Base {
     return this.items / this.visibleLength * 100
   }
 
-  get duration() {
+  get transition() {
     if (this.eventStatus === eventStatus.done) return true
     return false
   }
@@ -102,8 +106,8 @@ export class HbCarousel extends Base {
   }
 
   get itemPosition() {
-    if (this.eventStatus === eventStatus.doing) {
-      const currentPosition = this.index * this.clientWidth / this.visibleLength
+    const currentPosition = this.index * this.clientWidth / this.visibleLength
+    if ([eventStatus.doing,eventStatus.fake].includes(this.eventStatus)) {
       const flagPosition = currentPosition + this.diffClientX
       const diff = this.positions.map(x => this.diff(x, flagPosition))
       const closePosition = Math.min(...diff)
@@ -126,17 +130,11 @@ export class HbCarousel extends Base {
     }
     window.addEventListener('mouseup', this.onEventDoneBound)
     window.addEventListener('mousemove', this.onEventDoingBound)
-    this.onAuto()
-    this.onmouseenter = () => {
-      if (!this.pause) {
-        this.pause = true
-        clearTimeout(this.sto)
-      }
-    }
-    this.onmouseleave = () => {
+    if(this.auto) {
+      this.onAuto()
       if (this.pause) {
-        this.pause = false; 
-        this.onAuto();
+        this.onmouseenter = () => clearTimeout(this.sto)
+        this.onmouseleave = () => this.onAuto()
       }
     }
   }
@@ -148,18 +146,24 @@ export class HbCarousel extends Base {
   onEventDoneBound = this.onEventDone.bind(this)
   onEventDoingBound = this.onEventDoing.bind(this)
 
-  async onAuto(): Promise<void> {
+  async onAuto(amount: number = 0): Promise<void> {
     if(!this.auto) return
-    if (this.index >= this.items) {
-      this.eventStatus = eventStatus.doing
-      this.index = -1
+    let duration = this.duration
+    clearTimeout(this.sto)
+    if (this.index < this.items - 1) {
+      this.eventStatus !== eventStatus.done && (this.eventStatus = eventStatus.done);
+      this.index += amount
+      amount = 1
     } else {
-      this.eventStatus = eventStatus.doing && (this.eventStatus = eventStatus.done);
-      this.index += 1
+      duration = 0
+      this.eventStatus = eventStatus.fake
+      this.index = 0
+      amount = 0
+      this.diffClientX = -this.clientWidth / this.visibleLength
+      this.userIndex = this.items - 1
     }
       
-    const duration = this.index !== -1 ? 1000 : 0
-    this.sto = setTimeout(() => this.onAuto(), duration)
+    this.sto = setTimeout(() => this.onAuto(amount), duration)
   }
 
   onClick(event: MouseEvent) {
@@ -174,24 +178,24 @@ export class HbCarousel extends Base {
   onEventStart(event: MouseEvent) {
     if (this.eventStatus === eventStatus.done) {
       this.eventStatus = eventStatus.start
-    }
-    const {clientX , clientY} = event
-    this.startPointer = {
-      clientX,
-      clientY
+      const {clientX , clientY} = event
+      this.startPointer = {
+        clientX,
+        clientY
+      }
     }
   }
   onEventDone(event: MouseEvent) {
     if (this.eventStatus === eventStatus.doing) event.stopImmediatePropagation() // drag 했을때 클릭 이벤트 발생시키지 않기
-    this.diffClientX = 0
     this.eventStatus = eventStatus.done
     this.index = this.userIndex
+    this.diffClientX = 0
   }
   diff(a: number,b:number) {
     return a > b  ? a - b : b - a
   }
   onEventDoing(event: MouseEvent) {
-    if (this.eventStatus !== eventStatus.done) {
+    if ([eventStatus.start,eventStatus.doing].includes(this.eventStatus)) {
       const {clientX , clientY} = event
       const starterClientX = this.startPointer.clientX
       const starterClientY = this.startPointer.clientY
@@ -205,7 +209,7 @@ export class HbCarousel extends Base {
   render() {
     return html`
      ${this.userIndex}${this.index}
-      <div class="hb-carousel__wrap${this.duration ? ` hb-carousel__wrap--duraion` : ''}" 
+      <div class="hb-carousel__wrap${this.transition ? ` hb-carousel__wrap--duraion` : ''}" 
         @mousedown="${this.onEventStart}" 
         style="transform: translateX(${this.itemPosition});">
         ${this.infinite ? html`<slot class="hb-carousel__items hb-carousel__items--fake-before" name="fake-before" style="width: ${this.totalWidth}%;"></slot>` : ''}
