@@ -1,7 +1,7 @@
 {
   "name": "heybit-ui-styled-components",
   "customElements": "custom-elements.json",
-  "version": "0.14.1",
+  "version": "0.14.2",
   "files": [
     "dist/**"
   ],
@@ -36,8 +36,8 @@
     "cem": "cem analyze",
     "test": "jest -i",
     "storybook": "pnpm env:dev && start-storybook -p 6006",
-    "pre-publish": "pnpm svg && pnpm cem && pnpm build && pnpm test",
-    "build-storybook": "pnpm env:prod && pnpm svg && build-storybook",
+    "pre-publish": "pnpm env:dev && pnpm svg && pnpm cem && pnpm build && pnpm test",
+    "build-storybook": "build-storybook",
     "env:dev": "cp ./env/.dev.env ./.env",
     "env:prod": "cp ./env/.prod.env ./.env"
   },

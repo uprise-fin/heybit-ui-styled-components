@@ -1,6 +1,6 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { getChildren, wait } from "../../../utils";
+import { getChildren } from "../../../utils";
 import { Base } from "../../base";
 // TODO 롤링 구현
 // TODO 인피니트 구현

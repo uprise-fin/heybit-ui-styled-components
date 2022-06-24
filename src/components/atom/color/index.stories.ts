@@ -13,8 +13,6 @@ export default {
   title: "components/atom/css",
 } as Meta;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const r = document.querySelector(":root");
-const rs = getComputedStyle(r);
 const Template: Story<any> = () =>
   html`
     ${Base.themes.map(
