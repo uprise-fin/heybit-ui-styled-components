@@ -6,6 +6,8 @@ import { customElement } from "lit/decorators.js";
  * 
  */
 
+
+// TODO 캔버스로 구성하기, css로 하니까 깨짐
 @customElement("hb-spinner")
 export class HbSpinner extends Base {
   static override get styles() {

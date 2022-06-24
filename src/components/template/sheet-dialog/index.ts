@@ -51,7 +51,7 @@ export class HbSheetDialog extends Base {
   buttons: Button[] = []
 
   get eventDisabled() {
-    return this.buttons.map(x => x.loading).some(x => x)
+    return this.buttons.map(x => x.loading).some(x => x) || this.loading
   }
   // get open() {
   //   return this._open;
@@ -109,7 +109,7 @@ export class HbSheetDialog extends Base {
           </div>
           <div class="hb-sheet-dialog__foot">
             <div class="hb-sheet-dialog__foot__button-wrap ${this.buttonAlign}">
-              ${this.buttons.map((x, i) => html`<hb-button class="hb-sheet-dialog__foot__btn" ?loading=${x.loading} ?disabled=${this.eventDisabled} @event=${this.onEvent.bind(this,x, i)} theme=${x.theme} size="medium">${x.name}</hb-button>`)}
+              ${this.buttons.map((x, i) => html`<hb-button ?loading=${this.loading || x.loading} ?disabled=${this.eventDisabled} baseLoadingDuration=${this.baseLoadingDuration} @event=${this.onEvent.bind(this,x, i)} theme=${x.theme} size="medium">${x.name}</hb-button>`)}
             </div>
             ${
               this.anchor && this.anchor.name
