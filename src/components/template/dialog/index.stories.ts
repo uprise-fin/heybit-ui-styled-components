@@ -78,7 +78,7 @@ export const horizon: Story<HbDialogExpns> = HorizonTemplate.bind({});
 horizon.args = {
   open: true,
   persistent: true,
-  loading: true,
+  loading: false,
   baseLoadingDuration: 500,
   icon: thunderImg,
   title: "팝업 예시입니다!",

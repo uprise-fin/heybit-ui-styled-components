@@ -15,14 +15,10 @@ export const palette = Object.entries(colors).reduce(
   }),
   {}
 );
-
 Object.entries(palette).forEach(([origin, obj]: [theme, Matercolor]) => {
   document.documentElement.style.setProperty(`--${origin}`, colors[origin]);
   Object.entries(obj).forEach(([level, color]) => {
-    if (+level > 0)
-      document.documentElement.style.setProperty(
-        `--${origin}__${level}`,
-        color
-      );
+    if (!(+level > 0)) return;
+    document.documentElement.style.setProperty(`--${origin}__${level}`, color);
   });
 });

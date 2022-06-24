@@ -8,15 +8,18 @@
     white-space: nowrap;
   }
   &__wrap {
+    font-size: 0;
     &--duraion {
       transition: transform $transition__duration;
     }
   }
   &__items {
     display: inline-flex;
+    font-size: 16px;
     white-space: normal;
     @include slot-styled("*") {
       flex: 1;
+      user-select: none;
     }
     &--fake-before {
       margin-left: -100%;

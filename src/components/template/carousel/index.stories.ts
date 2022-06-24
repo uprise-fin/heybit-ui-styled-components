@@ -8,28 +8,34 @@ export default {
   component: "hb-carousel",
   argTypes: {
     index: {
-      options: ['0','1','2'],
+      options: [0,1,2],
       control: { type: 'radio' },
-      defaultValue: '0'
+      defaultValue: 0
     },
   }
 } as Meta;
 
 
-const Template: Story<HbCarousel> = ({index,items,visibleLength,infinite}) =>
-  html`<hb-carousel ?infinite=${infinite} index=${index} items=${items} visibleLength=${visibleLength}>
+const Template: Story<HbCarousel> = ({auto,index,items,visibleLength,infinite}) =>
+  html`<hb-carousel 
+      ?auto=${auto} 
+      ?infinite=${infinite} 
+      index=${index} 
+      items=${items} 
+      visibleLength=${visibleLength}>
     <div>
-      업라이즈 블라블라
+      업라이즈
     </div>
     <div>
-      헤이비트 블라블라
+      ㄱㅁㅇㅈㅇㅁㅈㅇㅁㅈ
     </div>
     <div>
-      이루다 블라블라
+      dakljdjalwkjd awljalwa
     </div>
   </hb-carousel>`;
 export const primary: Story<HbCarousel> = Template.bind({});
 primary.args = {
+  auto: true,
   index: 0,
   items: 3,
   visibleLength: 3,

@@ -73,7 +73,7 @@ export const horizon: Story<HbSheetDialogExpns> = HorizonTemplate.bind({});
 horizon.args = {
   open: true,
   persistent: true,
-  loading: true,
+  loading: false,
   baseLoadingDuration: 500,
   title: "팝업 예시입니다!",
   content:
