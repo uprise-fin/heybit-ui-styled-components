@@ -9,9 +9,7 @@
   }
   &__wrap {
     font-size: 0;
-    &--duraion {
-      transition: transform $transition__duration;
-    }
+    transition: transform var(--type) var(--duration);
   }
   &__items {
     display: inline-flex;

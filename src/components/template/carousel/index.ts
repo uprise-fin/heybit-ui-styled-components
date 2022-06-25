@@ -40,6 +40,7 @@ export class HbCarousel extends Base {
   clickable: boolean = false;
   moveable: boolean = false;
   duration: number = 3000
+  speed: number = 300
   _userIndex: number // 인피니트등에 쓰이기 위해 내부에서 실제로 사용하는 인덱스
   index: number // 현재 인덱스
   items: number
@@ -79,6 +80,7 @@ export class HbCarousel extends Base {
       transition: { type: Boolean, Reflect: true },
       visibleLength: { type: Number, Reflect: true },
       duration: { type: Number, Reflect: true },
+      speed: { type: Number, Reflect: true },
     };
   }
 
@@ -108,11 +110,7 @@ export class HbCarousel extends Base {
   get itemPosition() {
     const currentPosition = this.index * this.clientWidth / this.visibleLength
     if ([eventStatus.doing,eventStatus.fake].includes(this.eventStatus)) {
-      const flagPosition = currentPosition + this.diffClientX
-      const diff = this.positions.map(x => this.diff(x, flagPosition))
-      const closePosition = Math.min(...diff)
-      const index = diff.findIndex(x => closePosition === x)
-      this.userIndex = index;
+      this.userIndex = this.closeIndex(currentPosition + this.diffClientX);
       return `${-currentPosition - this.diffClientX}px`
     }
     
@@ -131,10 +129,11 @@ export class HbCarousel extends Base {
     window.addEventListener('mouseup', this.onEventDoneBound)
     window.addEventListener('mousemove', this.onEventDoingBound)
     if(this.auto) {
-      this.onAuto()
+      const amount = this.rolling ? 1 : 0
+      this.onAuto(amount)
       if (this.pause) {
         this.onmouseenter = () => clearTimeout(this.sto)
-        this.onmouseleave = () => this.onAuto()
+        this.onmouseleave = () => this.onAuto(amount)
       }
     }
   }
@@ -150,17 +149,19 @@ export class HbCarousel extends Base {
     if(!this.auto) return
     let duration = this.duration
     clearTimeout(this.sto)
-    if (this.index < this.items - 1) {
+    if (this.index + amount < this.items) {
       this.eventStatus !== eventStatus.done && (this.eventStatus = eventStatus.done);
       this.index += amount
       amount = 1
     } else {
-      duration = 0
-      this.eventStatus = eventStatus.fake
       this.index = 0
+      duration = 0
       amount = 0
-      this.diffClientX = -this.clientWidth / this.visibleLength
-      this.userIndex = this.items - 1
+      if (this.infinite) {
+        this.eventStatus = eventStatus.fake
+        this.diffClientX =  -this.clientWidth / this.visibleLength
+        this.userIndex = this.items - 1
+      }
     }
       
     this.sto = setTimeout(() => this.onAuto(amount), duration)
@@ -186,10 +187,17 @@ export class HbCarousel extends Base {
     }
   }
   onEventDone(event: MouseEvent) {
-    if (this.eventStatus === eventStatus.doing) event.stopImmediatePropagation() // drag 했을때 클릭 이벤트 발생시키지 않기
+    if (this.eventStatus === eventStatus.doing) {
+      event.stopImmediatePropagation() // drag 했을때 클릭 이벤트 발생시키지 않기
+      this.index = this.userIndex
+      this.diffClientX = 0
+    }
     this.eventStatus = eventStatus.done
-    this.index = this.userIndex
-    this.diffClientX = 0
+  }
+  closeIndex(position: number) {
+    const diff = this.positions.map(x => this.diff(x, position))
+    const closePosition = Math.min(...diff)
+    return diff.findIndex(x => closePosition === x)
   }
   diff(a: number,b:number) {
     return a > b  ? a - b : b - a
@@ -208,10 +216,9 @@ export class HbCarousel extends Base {
 
   render() {
     return html`
-     ${this.userIndex}${this.index}
-      <div class="hb-carousel__wrap${this.transition ? ` hb-carousel__wrap--duraion` : ''}" 
+      <div class="hb-carousel__wrap" 
         @mousedown="${this.onEventStart}" 
-        style="transform: translateX(${this.itemPosition});">
+        style="transform: translateX(${this.itemPosition});--duration: ${this.transition ? `${this.rolling ? this.duration : this.speed}ms` : 0};--type: ${this.rolling ? 'linear': 'ease'};">
         ${this.infinite ? html`<slot class="hb-carousel__items hb-carousel__items--fake-before" name="fake-before" style="width: ${this.totalWidth}%;"></slot>` : ''}
         <slot class="hb-carousel__items" @click="${this.onClick}" style="width: ${this.totalWidth}%;"></slot>
         ${this.infinite ? html`<slot class="hb-carousel__items" name="fake-after" style="width: ${this.totalWidth}%;"></slot>` : ''}

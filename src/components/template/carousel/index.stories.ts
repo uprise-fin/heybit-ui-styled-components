@@ -17,11 +17,12 @@ export default dev() && {
 } as Meta;
 
 
-const Template: Story<HbCarousel> = ({auto,pause,index,items,visibleLength,infinite}) =>
+const Template: Story<HbCarousel> = ({rolling,auto,pause,index,items,visibleLength,infinite}) =>
   html`<hb-carousel 
       ?auto=${auto} 
       ?infinite=${infinite} 
       ?pause=${pause} 
+      ?rolling=${rolling} 
       index=${index} 
       items=${items} 
       visibleLength=${visibleLength}>
@@ -39,6 +40,7 @@ export const primary: Story<HbCarousel> = Template.bind({});
 primary.args = {
   auto: true,
   pause: true,
+  rolling: true,
   index: 0,
   items: 3,
   visibleLength: 3,
