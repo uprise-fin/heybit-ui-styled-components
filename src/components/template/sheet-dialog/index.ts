@@ -126,14 +126,14 @@ export class HbSheetDialog extends Base {
 
   async onEvent(button: Button, index: number) {
     const {event}= button;
-    if (this.loading) {
-      const onBtns = this.buttons.slice()
-      const offBtns = this.buttons.slice()
-      onBtns[index].loading = true
-      this.buttons = onBtns
-      if (this.loading) await Promise.all([event(), wait(this.baseLoadingDuration)])
-      offBtns[index].loading = false
-      this.buttons = offBtns
+    if (this.baseLoadingDuration) {
+      const on = this.buttons.slice()
+      const off = this.buttons.slice()
+      on[index].loading = true
+      this.buttons = on
+      await Promise.all([event(), wait(this.baseLoadingDuration)])
+      off[index].loading = false
+      this.buttons = off
     } else event()
   }
 

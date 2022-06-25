@@ -82,10 +82,10 @@ $hb-button__theme: (
         opacity $transition__duration;
       background: $bg;
     }
-    @include host-styled(":not([loading])[theme='#{$class}']:hover") {
+    @include host-styled(":not([disabled])[theme='#{$class}']:hover") {
       background: getHoverColor($bg);
     }
-    @include host-styled(":not([loading])[theme='#{$class}']:active") {
+    @include host-styled(":not([disabled])[theme='#{$class}']:active") {
       background: getActiveColor($bg);
     }
   }
