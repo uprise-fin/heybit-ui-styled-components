@@ -126,8 +126,11 @@ export class HbCarousel extends Base {
         this.append(element)
       })
     }
-    window.addEventListener('mouseup', this.onEventDoneBound)
-    window.addEventListener('mousemove', this.onEventDoingBound)
+    if (this.draggable) {
+      this.addEventListener('mousedown', this.onEventStartBound)
+      window.addEventListener('mouseup', this.onEventEndBound)
+      window.addEventListener('mousemove', this.onEventDoingBound)
+    }
     if(this.auto) {
       const amount = this.rolling ? 1 : 0
       this.onAuto(amount)
@@ -138,11 +141,15 @@ export class HbCarousel extends Base {
     }
   }
   disconnectedCallback() {
-    window.removeEventListener('mouseup', this.onEventDoneBound)
-    window.removeEventListener('mousemove', this.onEventDoingBound)
+    if (this.draggable) {
+      this.removeEventListener('mousedown', this.onEventStartBound)
+      window.removeEventListener('mouseup', this.onEventEndBound)
+      window.removeEventListener('mousemove', this.onEventDoingBound)
+    }
   }
 
-  onEventDoneBound = this.onEventDone.bind(this)
+  onEventStartBound = this.onEventStart.bind(this)
+  onEventEndBound = this.onEventEnd.bind(this)
   onEventDoingBound = this.onEventDoing.bind(this)
 
   async onAuto(amount: number = 0): Promise<void> {
@@ -186,7 +193,7 @@ export class HbCarousel extends Base {
       }
     }
   }
-  onEventDone(event: MouseEvent) {
+  onEventEnd(event: MouseEvent) {
     if (this.eventStatus === eventStatus.doing) {
       event.stopImmediatePropagation() // drag 했을때 클릭 이벤트 발생시키지 않기
       this.index = this.userIndex
@@ -217,7 +224,6 @@ export class HbCarousel extends Base {
   render() {
     return html`
       <div class="hb-carousel__wrap" 
-        @mousedown="${this.onEventStart}" 
         style="transform: translateX(${this.itemPosition});--duration: ${this.transition ? `${this.rolling ? this.duration : this.speed}ms` : 0};--type: ${this.rolling ? 'linear': 'ease'};">
         ${this.infinite ? html`<slot class="hb-carousel__items hb-carousel__items--fake-before" name="fake-before" style="width: ${this.totalWidth}%;"></slot>` : ''}
         <slot class="hb-carousel__items" @click="${this.onClick}" style="width: ${this.totalWidth}%;"></slot>
