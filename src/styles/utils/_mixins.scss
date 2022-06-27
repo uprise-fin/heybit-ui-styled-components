@@ -57,20 +57,20 @@
   @return hue($color), saturation($color), #{$lightness};
 }
 
-@function getInteractiveColor($color, $amount) {
-  @if (lightness($color) > 50) {
-    @return lighten($color, $amount);
-  } @else {
-    @return darken($color, $amount);
-  }
-}
-@function getInteractiveRevertColor($color, $amount) {
-  @if (lightness($color) < 50) {
-    @return lighten($color, $amount);
-  } @else {
-    @return darken($color, $amount);
-  }
-}
+// @function getInteractiveColor($color, $amount) {
+//   @if (lightness($color) > 50) {
+//     @return lighten($color, $amount);
+//   } @else {
+//     @return darken($color, $amount);
+//   }
+// }
+// @function getInteractiveRevertColor($color, $amount) {
+//   @if (lightness($color) < 50) {
+//     @return lighten($color, $amount);
+//   } @else {
+//     @return darken($color, $amount);
+//   }
+// }
 @mixin disabled() {
   @include host-styled("[disabled]:not([loading])") {
     opacity: 0.5;
@@ -82,11 +82,47 @@
     cursor: progress;
   }
 }
+// @function getHoverColor($color) {
+//   @return getInteractiveColor($color, 10);
+// }
+// @function getActiveColor($color) {
+//   @return getInteractiveRevertColor($color, 5);
+// }
+@function getLevel($level, $amount: 1) {
+  $result: $level + (100 * $amount);
+  @if ($result > 900) {
+    @return 900;
+  }
+  @if ($result < 50) {
+    @return 50;
+  }
+  @return $result;
+}
+@function getDefaultLevel($color) {
+  @if ($color == "primary") {
+    @return 600;
+  }
+  @if ($color == "secondary") {
+    @return 800;
+  }
+  @if ($color == "tertiary") {
+    @return 800;
+  }
+  @if ($color == "quaternary") {
+    @return 800;
+  }
+  @if ($color == "quinary") {
+    @return 800;
+  }
+  @if ($color == "senary") {
+    @return 800;
+  }
+}
 @function getHoverColor($color) {
-  @return getInteractiveColor($color, 10);
+  @return var(--#{$color}__#{getLevel(getDefaultLevel($color), -1)});
 }
 @function getActiveColor($color) {
-  @return getInteractiveRevertColor($color, 5);
+  @return var(--#{$color}__#{getLevel(getDefaultLevel($color), 2)});
 }
 
 // @mixin initial($selector) {

@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
-import { palette } from "./index";
+import { setRootStyleProperty, levels } from "./index";
 import { Base } from "../../base";
-console.log(palette);
+setRootStyleProperty();
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
@@ -18,19 +18,58 @@ const Template: Story<any> = () =>
     ${Base.themes.map(
       (theme) =>
         html`
-          <p style="background: var(--${theme})">${theme}</p>
+          <hb-button theme=${theme}>${theme}</hb-button>
         `
     )}
   `;
 const LevelTemplate: Story<any> = () =>
   html`
-    ${Base.themes.map((theme) =>
-      [50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(
+    <style>
+      .box {
+        display: flex;
+      }
+      .box__item {
+        display: flex;
+        flex-basis: 50px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+      }
+      .box__item--reversal {
+        color: #fff;
+        background: #000;
+      }
+      .box__item--title {
+        flex-basis: 100px;
+      }
+    </style>
+    <div class="box">
+      <div class="box__item box__item--title box__item--reversal"></div>
+      ${levels.map(
         (x) =>
           html`
-            <p style="background: var(${`--${theme}__${x}`})">${x}</p>
+            <div class="box__item box__item--reversal">${x}</div>
           `
-      )
+      )}
+    </div>
+    ${Base.themes.map(
+      (theme) =>
+        html`
+          <div class="box">
+            <div class="box__item box__item--title box__item--reversal">
+              ${theme}
+            </div>
+            ${levels.map(
+              (x) =>
+                html`
+                  <div
+                    class="box__item"
+                    style="background: var(${`--${theme}__${x}`})"
+                  ></div>
+                `
+            )}
+          </div>
+        `
     )}
   `;
 

@@ -33,11 +33,13 @@ export class HbToast extends Base {
   messages: Message[] = []
   timer: Timer[] = []
   duration: number = 3000
+  hide = false
   static get properties() {
     return {
       messages: { type: Array, Reflect: true },
       duration: { type: Number, Reflect: true },
       now: { type: Number, Reflect: true },
+      hide: { type: Boolean, Reflect: true },
       timer: { type: Array, Reflect: true },
     };
   }

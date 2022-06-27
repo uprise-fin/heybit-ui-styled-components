@@ -26,9 +26,11 @@ $hb-list__background--warning: map-get($variables, box, background) !default;
   outline: none;
   background: none;
   &:focus,
-  &[data-selected],
   &:hover {
-    background: getActiveColor(#fff);
+    background: getHoverColor("senary");
+  }
+  &[data-selected] {
+    background: getActiveColor("senary");
   }
   &[hidden] {
     display: none;

@@ -24,29 +24,29 @@ $hb-button__size: (
 );
 $hb-button__theme: (
   primary: (
-    bg: map-get($themes, primary, void),
-    color: map-get($themes, primary, solid),
+    bg: var(--primary),
+    color: var(--fonts__void),
   ),
   secondary: (
-    bg: map-get($themes, secondary, void),
-    color: map-get($themes, secondary, solid),
+    bg: var(--secondary),
+    color: var(--fonts__void),
   ),
   tertiary: (
-    bg: map-get($themes, tertiary, void),
-    color: map-get($themes, tertiary, solid),
+    bg: var(--tertiary),
+    color: var(--fonts__void),
   ),
   quaternary: (
-    bg: map-get($themes, quaternary, void),
-    color: map-get($themes, quaternary, solid),
+    bg: var(--quaternary),
+    color: var(--fonts__void),
   ),
   quinary: (
-    bg: map-get($themes, quinary, void),
-    color: map-get($themes, quinary, solid),
+    bg: var(--quinary),
+    color: var(--fonts__solid),
   ),
   senary: (
-    bg: map-get($themes, senary, void),
-    bd: map-get($variables, box, border-color),
-    color: map-get($themes, senary, solid),
+    bg: var(--senary),
+    // bd: map-get($variables, box, border-color),
+      color: var(--fonts__solid),
   ),
 );
 .hb-button {
@@ -75,7 +75,7 @@ $hb-button__theme: (
       @if ($bd) {
         border: 1px solid $bd;
       } @else {
-        border: 1px solid $bg;
+        border: none;
       }
       color: map-get($value, color);
       transition: background $transition__duration,
@@ -83,10 +83,10 @@ $hb-button__theme: (
       background: $bg;
     }
     @include host-styled(":not([disabled])[theme='#{$class}']:hover") {
-      background: getHoverColor($bg);
+      background: getHoverColor($class);
     }
     @include host-styled(":not([disabled])[theme='#{$class}']:active") {
-      background: getActiveColor($bg);
+      background: getActiveColor($class);
     }
   }
   @each $class, $size in $hb-button__size {

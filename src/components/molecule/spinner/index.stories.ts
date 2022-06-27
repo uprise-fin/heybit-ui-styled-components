@@ -14,19 +14,22 @@ export default {
       control: { type: 'radio' },
       defaultValue: theme.senary
     },
-    size: {
-      options: Object.keys(size),
-      control: { type: 'radio' },
-      defaultValue: size.large
-    },
+    // size: {
+    //   options: Object.keys(size),
+    //   control: { type: 'radio' },
+    //   defaultValue: size.large
+    // },
   },
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbSpinner> = ({theme,size}) => html`<hb-spinner theme=${theme} size=${size}></hb-spinner>`;
+const Template: Story<HbSpinner> = ({
+  theme,
+  // size
+}) => html`<hb-spinner theme=${theme}></hb-spinner>`;
 
 export const primary: Story<HbSpinner> = Template.bind({});
 primary.args = {
   theme: theme.senary,
-  size: size.large
+  // size: size.large
 };

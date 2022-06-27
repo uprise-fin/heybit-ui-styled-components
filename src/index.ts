@@ -1,4 +1,4 @@
-import { palette } from "./components/atom/color";
+import { palette, setRootStyleProperty } from "./components/atom/color";
 import { HbDelay } from "./components/atom/delay";
 import { HbLoading } from "./components/atom/loading";
 import { HbTransition } from "./components/atom/transition";
@@ -20,6 +20,7 @@ import { HbModal } from "./components/template/modal";
 import { HbSheetDialog } from "./components/template/sheet-dialog";
 export {
   palette,
+  setRootStyleProperty,
   HbDelay,
   HbLoading,
   HbTransition,

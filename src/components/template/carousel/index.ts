@@ -1,6 +1,6 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { getChildren } from "../../../utils";
+import { getChildren, wait } from "../../../utils";
 import { Base } from "../../base";
 // TODO 롤링 구현
 // TODO 인피니트 구현
@@ -73,6 +73,7 @@ export class HbCarousel extends Base {
       pause: { type: Boolean, Reflect: true },
       infinite: { type: Boolean, Reflect: true },
       rolling: { type: Boolean, Reflect: true },
+      draggable: { type: Boolean, Reflect: true },
       eventStatus: { type: Number, Reflect: true },
       diffClientX: { type: Number, Reflect: true },
       index: { type: Number, Reflect: true },
@@ -107,6 +108,11 @@ export class HbCarousel extends Base {
     return this._userIndex
   }
 
+  get transitionDuration() {
+    if (this.transition) return this.rolling ? this.duration : this.speed;
+    return 0
+  }
+
   get itemPosition() {
     const currentPosition = this.index * this.clientWidth / this.visibleLength
     if ([eventStatus.doing,eventStatus.fake].includes(this.eventStatus)) {
@@ -119,11 +125,13 @@ export class HbCarousel extends Base {
   async customConnectedCallback() {
     this.itemElements = await getChildren(this.children);
     if (this.infinite) {
-      this.itemElements.concat(this.itemElements).forEach((x, i) => {
-        const element = document.createElement(x.tagName)
-        element.innerHTML = x.innerHTML
-        element.slot = i < this.itemElements.length ? 'fake-before' : 'fake-after'
-        this.append(element)
+      this.itemElements.forEach(element => {
+        const cloneBefore = element.cloneNode(true) as HTMLElement;
+        const cloneAfter = element.cloneNode(true) as HTMLElement;
+        cloneBefore.setAttribute('slot','fake-before');
+        cloneAfter.setAttribute('slot','fake-after');
+        this.appendChild(cloneBefore);
+        this.appendChild(cloneAfter);
       })
     }
     if (this.draggable) {
@@ -132,11 +140,11 @@ export class HbCarousel extends Base {
       window.addEventListener('mousemove', this.onEventDoingBound)
     }
     if(this.auto) {
-      const amount = this.rolling ? 1 : 0
-      this.onAuto(amount)
+      const step = this.rolling ? 1 : 0
+      this.onAuto(step)
       if (this.pause) {
         this.onmouseenter = () => clearTimeout(this.sto)
-        this.onmouseleave = () => this.onAuto(amount)
+        this.onmouseleave = () => this.onAuto(0)
       }
     }
   }
@@ -152,26 +160,25 @@ export class HbCarousel extends Base {
   onEventEndBound = this.onEventEnd.bind(this)
   onEventDoingBound = this.onEventDoing.bind(this)
 
-  async onAuto(amount: number = 0): Promise<void> {
-    if(!this.auto) return
+  async onAuto(step: number = 0): Promise<void> {
     let duration = this.duration
     clearTimeout(this.sto)
-    if (this.index + amount < this.items) {
+    if (this.index + step < this.items) {
       this.eventStatus !== eventStatus.done && (this.eventStatus = eventStatus.done);
-      this.index += amount
-      amount = 1
+      this.index += step
+      step = 1
     } else {
       this.index = 0
       duration = 0
-      amount = 0
+      step = 0
       if (this.infinite) {
         this.eventStatus = eventStatus.fake
-        this.diffClientX =  -this.clientWidth / this.visibleLength
+        this.diffClientX = -this.clientWidth / this.visibleLength
         this.userIndex = this.items - 1
       }
     }
       
-    this.sto = setTimeout(() => this.onAuto(amount), duration)
+    this.sto = setTimeout(() => this.onAuto(step), duration)
   }
 
   onClick(event: MouseEvent) {
@@ -204,7 +211,12 @@ export class HbCarousel extends Base {
   closeIndex(position: number) {
     const diff = this.positions.map(x => this.diff(x, position))
     const closePosition = Math.min(...diff)
-    return diff.findIndex(x => closePosition === x)
+    let index = diff.findIndex(x => closePosition === x)
+    const max = (this.items * 2) - 1 // 안전장치. 기본 인덱스 이상으로 안보이기
+    const min = this.items // 기본 인덱스 이하로 안보이기
+    if (index > max) index = max
+    else if (index < min) index = min
+    return index
   }
   diff(a: number,b:number) {
     return a > b  ? a - b : b - a
@@ -224,7 +236,7 @@ export class HbCarousel extends Base {
   render() {
     return html`
       <div class="hb-carousel__wrap" 
-        style="transform: translateX(${this.itemPosition});--duration: ${this.transition ? `${this.rolling ? this.duration : this.speed}ms` : 0};--type: ${this.rolling ? 'linear': 'ease'};">
+        style="transform: translateX(${this.itemPosition});--duration: ${this.transitionDuration}ms;--type: ${this.rolling ? 'linear': 'ease'};">
         ${this.infinite ? html`<slot class="hb-carousel__items hb-carousel__items--fake-before" name="fake-before" style="width: ${this.totalWidth}%;"></slot>` : ''}
         <slot class="hb-carousel__items" @click="${this.onClick}" style="width: ${this.totalWidth}%;"></slot>
         ${this.infinite ? html`<slot class="hb-carousel__items" name="fake-after" style="width: ${this.totalWidth}%;"></slot>` : ''}

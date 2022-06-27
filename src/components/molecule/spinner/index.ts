@@ -15,13 +15,13 @@ export class HbSpinner extends Base {
   }
 
   theme: theme = theme.secondary;
-  size: size = size.large
+  // size: size = size.large
 
 
   static get properties() {
     return {
       theme: { type: String, Reflect: true },
-      size: { type: String, Reflect: true },
+      // size: { type: String, Reflect: true },
     };
   }
 

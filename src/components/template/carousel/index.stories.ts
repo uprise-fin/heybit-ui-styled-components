@@ -17,22 +17,36 @@ export default dev() && {
 } as Meta;
 
 
-const Template: Story<HbCarousel> = ({rolling,auto,pause,index,items,visibleLength,infinite}) =>
-  html`<hb-carousel 
+const Template: Story<HbCarousel> = ({draggable,rolling,auto,pause,index,items,visibleLength,infinite}) =>
+  html`
+  <style>
+    .a {
+      background: var(--primary);
+    }
+    .b {
+      background: var(--primary__100);
+    }
+    .c {
+      background: var(--primary__900);
+    }
+
+  </style>
+  <hb-carousel 
       ?auto=${auto} 
+      ?draggable=${draggable} 
       ?infinite=${infinite} 
       ?pause=${pause} 
       ?rolling=${rolling} 
       index=${index} 
       items=${items} 
       visibleLength=${visibleLength}>
-    <div>
+    <div class="a">
       업라이즈
     </div>
-    <div>
+    <div class="b">
       ㄱㅁㅇㅈㅇㅁㅈㅇㅁㅈ
     </div>
-    <div>
+    <div class="c">
       dakljdjalwkjd awljalwa
     </div>
   </hb-carousel>`;
@@ -41,6 +55,7 @@ primary.args = {
   auto: true,
   pause: true,
   rolling: true,
+  draggable: false,
   index: 0,
   items: 3,
   visibleLength: 3,
