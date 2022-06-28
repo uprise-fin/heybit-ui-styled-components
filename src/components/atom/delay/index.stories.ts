@@ -4,7 +4,7 @@ import { dev } from "../../../utils";
 import "./index";
 import type { HbDelay } from "./index";
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
-export default dev() && {
+export default dev() && { 
   title: "components/atom/hb-delay",
   component: "hb-delay",
 } as Meta;

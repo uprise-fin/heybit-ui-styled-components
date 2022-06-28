@@ -39,10 +39,13 @@
     "pre-publish": "pnpm env:dev && pnpm svg && pnpm cem && pnpm build && pnpm test",
     "build-storybook": "build-storybook",
     "env:dev": "cp ./env/.dev.env ./.env",
-    "env:prod": "cp ./env/.prod.env ./.env"
+    "env:prod": "cp ./env/.prod.env ./.env",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@custom-elements-manifest/analyzer": "^0.5.7",
     "@jest-runner/electron": "^3.0.1",
     "@storybook/addon-actions": "^6.5.6",
@@ -63,6 +66,7 @@
     "electron": "^11.4.6",
     "extract-loader": "^5.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
     "jest": "26.0.1",
     "lit-scss-loader": "^1.1.0",
     "mini-css-extract-plugin": "^2.5.2",
