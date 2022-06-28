@@ -3,9 +3,13 @@ import { theme } from "../../base";
 export const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 export const colors = {
-  [theme.primary]: "#f05014",
-  [theme.secondary]: "#323436",
-  [theme.tertiary]: "#C6C2BE",
+  [theme.black]: "#404244",
+  [theme.orange]: "#ff602f",
+  [theme.yellow]: "#ffbe02",
+  [theme.teal]: "#039985",
+  [theme.green]: "#27ae60",
+  [theme.blue]: "#2f80ed",
+  [theme.purple]: "#6f63f8",
 };
 export const palette = Object.entries(colors).reduce(
   (a, [name, color]: [theme, string]) => ({
