@@ -3,15 +3,15 @@ import { html } from "lit";
 import { size, theme } from "../../base";
 import "./index";
 import type { HbButton } from "./index";
-import { hbButtonType } from './index';
+import { hbButtonType, hbButtonTheme } from './index';
 
 export default {
   title: "components/organism/hb-button",
   argTypes: {
     theme: {
-      options: Object.keys(theme),
+      options: Object.keys(hbButtonTheme),
       control: { type: 'radio' },
-      defaultValue: theme.primary
+      defaultValue: hbButtonTheme.primary
     },
     size: {
       options: Object.keys(size),
@@ -33,7 +33,7 @@ const BlockTem: Story<HbButton> = ({ loading, disabled, theme, size, title ,base
 export const block: Story<HbButton> = BlockTem.bind({});
 block.args = {
   title: '내용을 입력해보세요',
-  theme: theme.primary,
+  theme: hbButtonTheme.primary,
   size: size.large,
   baseLoadingDuration: 500,
   loading: false,

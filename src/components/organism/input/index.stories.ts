@@ -1,7 +1,7 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
 import "./index";
-import type { HbInput } from "./index";
+import type { HbInput, HbInputEvent } from "./index";
 import { type } from "./index";
 
 export default {
@@ -25,7 +25,7 @@ const Template: Story<HbInput> = ({
     .maxlength=${maxlength}
     .decimal=${decimal}
     .comma=${comma}
-    @event=${($event: any) => console.log($event.target.originalValue)}
+    @event=${($event: HbInputEvent) => console.log($event.target.originalValue)}
   ></hb-input>
 `;
 

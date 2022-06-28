@@ -1,10 +1,15 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
+const package = require("./package.json");
 
 module.exports = (_, options) => {
+  console.log(package.tags, "dahjwkldjaw");
   return merge(common, {
     entry: {
+      "components/atom/color": [
+        path.resolve(__dirname, "./src/components/atom/color/index.ts"),
+      ],
       "components/atom/delay": [
         path.resolve(__dirname, "./src/components/atom/delay/index.ts"),
       ],
@@ -56,7 +61,6 @@ module.exports = (_, options) => {
       "components/template/dialog": [
         path.resolve(__dirname, "./src/components/template/dialog/index.ts"),
       ],
-      //TODO prod에 맞춰서 스토리북에 노출 여부를 처리하도록 변경
     },
   });
 };

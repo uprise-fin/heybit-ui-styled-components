@@ -12,7 +12,7 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const OpionSlotTmpl: Story<HbList> = ({ value, options }) =>
-  html`<hb-list value=${value} .options=${options} @change=${($event: any) => console.log($event)}></hb-list>`;
+  html`<hb-list value=${value} .options=${options} @change=${($event: Event) => console.log($event)}></hb-list>`;
 
 export const primary: Story<HbList> = OpionSlotTmpl.bind({});
 primary.args = {

@@ -5,14 +5,6 @@ $hb-icon__size: (
   medium: 24px,
   small: 18px,
 );
-$hb-icon__theme: (
-  primary: map-get($themes, primary, void),
-  secondary: map-get($themes, secondary, void),
-  tertiary: map-get($themes, tertiary, void),
-  quaternary: map-get($themes, quaternary, void),
-  quinary: map-get($themes, quinary, void),
-  senary: map-get($themes, senary, void),
-);
 
 .hb-icon {
   @include host-styled {
@@ -24,11 +16,11 @@ $hb-icon__theme: (
       width: #{$size};
     }
   }
-  @each $class, $color in $hb-icon__theme {
-    @include host-styled("[theme='#{$class}']") {
-      fill: $color;
-    }
-  }
+  // @each $class, $color in $hb-icon__theme {
+  //   @include host-styled("[theme='#{$class}']") {
+  //     fill: $color;
+  //   }
+  // }
   @include host-styled("[theme]:not([theme=''])") {
     svg {
       fill: inherit;

@@ -5,10 +5,7 @@ export const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 export const colors = {
   [theme.primary]: "#f05014",
   [theme.secondary]: "#323436",
-  [theme.tertiary]: "#323436",
-  [theme.quaternary]: "#323436",
-  [theme.quinary]: "#f2f4f6",
-  [theme.senary]: "#ffffff",
+  [theme.tertiary]: "#C6C2BE",
 };
 export const palette = Object.entries(colors).reduce(
   (a, [name, color]: [theme, string]) => ({

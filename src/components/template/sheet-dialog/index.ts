@@ -3,7 +3,7 @@ import { customElement } from "lit/decorators.js";
 import { wait } from "../../../utils";
 import { transitionType } from "../../atom/transition";
 import { Base, theme, verticalAlign } from "../../base";
-import { hbButtonType } from "../../organism/button";
+import { hbButtonTheme, hbButtonType } from "../../organism/button";
 import { buttonAlign } from "../modal";
 
 /**
@@ -24,7 +24,7 @@ import { buttonAlign } from "../modal";
  */
 export interface Button {
   event: Function;
-  theme: theme;
+  theme: hbButtonTheme;
   name: string;
   loading?: boolean;
 }

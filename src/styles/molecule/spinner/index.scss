@@ -6,12 +6,8 @@
 //   small: 14px,
 // ) !default;
 $hb-spinner__theme: (
-  primary: map-get($themes, primary, solid),
-  secondary: map-get($themes, secondary, solid),
-  tertiary: map-get($themes, tertiary, solid),
-  quaternary: map-get($themes, quaternary, solid),
-  quinary: map-get($themes, quinary, solid),
-  senary: map-get($themes, senary, solid),
+  void: map-get($fonts, void),
+  solid: map-get($fonts, solid),
 ) !default;
 // $hb-input__height: $box__height !default;
 // $hb-input__padding: $box__padding !default;

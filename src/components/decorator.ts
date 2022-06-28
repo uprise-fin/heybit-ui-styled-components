@@ -3,7 +3,7 @@
 
 function scss() {
   return function(
-    target: any,
+    target: unknown,
     propertyKey: string,
     descriptor: PropertyDescriptor
   ) {

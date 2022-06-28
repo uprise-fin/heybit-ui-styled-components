@@ -4,7 +4,8 @@
 .hb-skeleton {
   @include host-styled('[type="card"]') {
     display: grid;
-    grid-template-columns: 100px 100px;
+    // grid-template-columns: 100px 100px;
+    grid-template-columns: calc(50% - 5px) calc(50% - 5px);
     grid-template-rows: 100px 100px 50px;
     gap: 10px;
     > :first-child {

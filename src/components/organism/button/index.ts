@@ -3,11 +3,17 @@ import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { transitionType } from "../../atom/transition";
 import { wait } from "../../../utils";
+import { hbSpinnerTheme } from "../../molecule/spinner";
 export enum hbButtonType {
   "block" = "block",
   "inline" = "inline",
-  "fab" = "fab",
   "custom" = "custom",
+}
+export enum hbButtonTheme {
+  "primary" = "primary",
+  "secondary" = "secondary",
+  "tertiary" = "tertiary",
+  "quaternary" = "quaternary",
 }
 /**
  * @fires event 클릭할때
@@ -34,7 +40,7 @@ export class HbButton extends Base {
   loading = false;
   baseLoadingDuration = 0
   disabled = false;
-  theme: theme = theme.primary;
+  theme: hbButtonTheme = hbButtonTheme.primary;
 
   static get properties() {
     return {
@@ -47,6 +53,11 @@ export class HbButton extends Base {
     };
   }
 
+  get spinnerTheme(): hbSpinnerTheme {
+    if ([hbButtonTheme.tertiary, hbButtonTheme.primary].includes(this.theme)) return hbSpinnerTheme.solid
+    return hbSpinnerTheme.void
+  }
+
   render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-button__slot hb-button__slot--left"></slot>
@@ -54,7 +65,7 @@ export class HbButton extends Base {
         ${
           this.loading ? html`
           <hb-transition class="hb-button__label__transition" type=${transitionType.fade} ?show=${this.loading}>
-            <hb-spinner theme=${this.theme} size=${this.size}></hb-spinner>
+            <hb-spinner theme=${this.spinnerTheme} size=${this.size}></hb-spinner>
           </hb-transition> 
           ` : html`
           <hb-transition class="hb-button__label__transition" type=${transitionType.fade} ?show=${!this.loading}>

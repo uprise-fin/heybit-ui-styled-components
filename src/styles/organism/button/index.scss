@@ -24,33 +24,16 @@ $hb-button__size: (
 );
 $hb-button__theme: (
   primary: (
-    bg: var(--primary),
+    bg: var(--orange),
     color: var(--fonts__void),
-  ),
-  secondary: (
-    bg: var(--secondary),
-    color: var(--fonts__void),
-  ),
-  tertiary: (
-    bg: var(--tertiary),
-    color: var(--fonts__void),
-  ),
-  quaternary: (
-    bg: var(--quaternary),
-    color: var(--fonts__void),
-  ),
-  quinary: (
-    bg: var(--quinary),
-    color: var(--fonts__solid),
-  ),
-  senary: (
-    bg: var(--senary),
-    // bd: map-get($variables, box, border-color),
-      color: var(--fonts__solid),
+    active: var(--orange__800),
+    hover: var(--orange__600),
+    disabledBg: var(--orange__100),
+    disabledColor: var(--orange__200),
   ),
 );
 .hb-button {
-  @include disabled();
+  // @include disabled();
   @include loading();
   @include host-styled {
     display: flex;
@@ -82,11 +65,15 @@ $hb-button__theme: (
         opacity $transition__duration;
       background: $bg;
     }
+    @include host-styled("[theme='#{$class}'][disabled]") {
+      color: map-get($value, disabledColor);
+      background: map-get($value, disabledBg);
+    }
     @include host-styled(":not([disabled])[theme='#{$class}']:hover") {
-      background: getHoverColor($class);
+      background: map-get($value, hover);
     }
     @include host-styled(":not([disabled])[theme='#{$class}']:active") {
-      background: getActiveColor($class);
+      background: map-get($value, active);
     }
   }
   @each $class, $size in $hb-button__size {

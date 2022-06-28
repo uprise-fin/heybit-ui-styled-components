@@ -13,7 +13,7 @@ export default {
   title: "components/atom/css",
 } as Meta;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<any> = () =>
+const Template: Story<unknown> = () =>
   html`
     ${Base.themes.map(
       (theme) =>
@@ -22,7 +22,7 @@ const Template: Story<any> = () =>
         `
     )}
   `;
-const LevelTemplate: Story<any> = () =>
+const LevelTemplate: Story<unknown> = () =>
   html`
     <style>
       .box {
@@ -73,5 +73,5 @@ const LevelTemplate: Story<any> = () =>
     )}
   `;
 
-export const base: Story<any> = Template.bind({});
-export const several: Story<any> = LevelTemplate.bind({});
+export const base: Story<unknown> = Template.bind({});
+export const several: Story<unknown> = LevelTemplate.bind({});

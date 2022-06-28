@@ -3,12 +3,13 @@ $font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
   "Malgun Gothic", sans-serif;
 
 $colors: (
-  primary: #f05014,
-  secondary: #323436,
-  tertiary: blue,
-  quaternary: #333,
-  quinary: #f2f4f6,
-  senary: #fff,
+  black: black,
+  orange: orange,
+  yellow: yellow,
+  teal: teal,
+  green: green,
+  blue: blue,
+  purple: purple,
 );
 $sizes: (
   large: 1,
@@ -59,29 +60,3 @@ $variables: (
 );
 $level: 10;
 $transition__duration: map-get($variables, transition-duration) + ms;
-$themes: (
-  primary: (
-    void: map-get($colors, primary),
-    solid: map-get($fonts, void),
-  ),
-  secondary: (
-    void: map-get($colors, secondary),
-    solid: map-get($fonts, void),
-  ),
-  tertiary: (
-    void: map-get($colors, tertiary),
-    solid: map-get($fonts, solid),
-  ),
-  quaternary: (
-    void: map-get($colors, quaternary),
-    solid: map-get($fonts, void),
-  ),
-  quinary: (
-    void: map-get($colors, quinary),
-    solid: map-get($fonts, solid),
-  ),
-  senary: (
-    void: map-get($colors, senary),
-    solid: map-get($fonts, solid),
-  ),
-);

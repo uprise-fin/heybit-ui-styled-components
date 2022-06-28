@@ -96,33 +96,25 @@
   @if ($result < 50) {
     @return 50;
   }
-  @return $result;
+  @return floor($result / 100) * 100;
 }
 @function getDefaultLevel($color) {
   @if ($color == "primary") {
-    @return 600;
+    @return 700;
   }
   @if ($color == "secondary") {
     @return 800;
   }
   @if ($color == "tertiary") {
-    @return 800;
+    @return 100;
   }
-  @if ($color == "quaternary") {
-    @return 800;
-  }
-  @if ($color == "quinary") {
-    @return 800;
-  }
-  @if ($color == "senary") {
-    @return 800;
-  }
+  @return 700;
 }
-@function getHoverColor($color) {
-  @return var(--#{$color}__#{getLevel(getDefaultLevel($color), -1)});
+@function getHoverColor($color, $level, $amount: -2) {
+  @return var(--#{$color}__#{getLevel($level, $amount)});
 }
-@function getActiveColor($color) {
-  @return var(--#{$color}__#{getLevel(getDefaultLevel($color), 2)});
+@function getActiveColor($color, $level, $amount: 1) {
+  @return var(--#{$color}__#{getLevel($level, $amount)});
 }
 
 // @mixin initial($selector) {

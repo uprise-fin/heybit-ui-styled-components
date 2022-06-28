@@ -1,20 +1,22 @@
-import { Base, size, theme } from "../../base";
+import { Base } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 
 /**
  * 
  */
+export enum hbSpinnerTheme {
+  "void" = "void",
+  "solid" = "solid",
+}
 
-
-// TODO 캔버스로 구성하기, css로 하니까 깨짐
 @customElement("hb-spinner")
 export class HbSpinner extends Base {
   static override get styles() {
     return [require("../../../styles/molecule/spinner/index.scss").default];
   }
 
-  theme: theme = theme.secondary;
+  theme: hbSpinnerTheme = hbSpinnerTheme.solid;
   // size: size = size.large
 
 

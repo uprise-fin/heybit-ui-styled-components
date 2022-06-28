@@ -1,7 +1,7 @@
 import {Base} from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-export enum type {
+export enum skeletonType {
   card = 'card',
 }
 @customElement("hb-skeleton")
@@ -9,7 +9,7 @@ export class HbSkeleton extends Base {
   static override get styles() {
     return [require("../../../styles/molecule/skeleton/index.scss").default];
   }
-  type:type
+  type:skeletonType
   static get properties() {
     return {
       type: { type: String, Reflect: true },
@@ -24,7 +24,7 @@ export class HbSkeleton extends Base {
   // }
 
   render() {
-    if (this.type === type.card) return html`
+    if (this.type === skeletonType.card) return html`
       <hb-loading></hb-loading>
       <hb-loading></hb-loading>
       <hb-loading></hb-loading>

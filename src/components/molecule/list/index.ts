@@ -16,6 +16,9 @@ export interface Option {
   label: string; 
   value: string;
 }
+export interface HbListEvent extends Event {
+  target: HbList
+}
 @customElement("hb-list")
 export class HbList extends Base {
   static override get styles() {
@@ -44,7 +47,7 @@ export class HbList extends Base {
     return this.options.map(x => x.value) || []
   }
   sto = setTimeout(() =>{}, 0);
-  onSelect(evt: Event) {
+  onSelect(evt: HbListEvent) {
     this.adapterHide();
     if (!(evt.target instanceof HTMLButtonElement)) return
     const { target } = evt;
@@ -68,7 +71,7 @@ export class HbList extends Base {
       <div
         class="hb-list__wrap"
         @click=${this.onSelect}
-        @keyup=${(evt:KeyboardEvent)=>evt.key === "Enter" && this.onSelect(evt)}
+        @keyup=${(evt:KeyboardEvent) => evt.key === "Enter" && this.onSelect.call(this)}
         data-empty-text=${this.emptyText}
         part="list"
         id="list"

@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
-import { size, theme } from "../../base";
+
 import "./index";
-import type { HbSpinner } from "./index";
+import { HbSpinner, hbSpinnerTheme } from "./index";
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
@@ -10,9 +10,9 @@ export default {
   component: "hb-spinner",
   argTypes: {
     theme: {
-      options: Object.keys(theme),
-      control: { type: 'radio' },
-      defaultValue: theme.senary
+      options: Object.keys(hbSpinnerTheme),
+      control: { type: "radio" },
+      defaultValue: hbSpinnerTheme.solid,
     },
     // size: {
     //   options: Object.keys(size),
@@ -26,10 +26,13 @@ export default {
 const Template: Story<HbSpinner> = ({
   theme,
   // size
-}) => html`<hb-spinner theme=${theme}></hb-spinner>`;
+}) =>
+  html`
+    <hb-spinner theme=${theme}></hb-spinner>
+  `;
 
 export const primary: Story<HbSpinner> = Template.bind({});
 primary.args = {
-  theme: theme.senary,
+  theme: hbSpinnerTheme.solid,
   // size: size.large
 };

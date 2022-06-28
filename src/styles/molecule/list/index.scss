@@ -27,10 +27,10 @@ $hb-list__background--warning: map-get($variables, box, background) !default;
   background: none;
   &:focus,
   &:hover {
-    background: getHoverColor("senary");
+    background: getHoverColor("tertiary", 50);
   }
   &[data-selected] {
-    background: getActiveColor("senary");
+    background: getActiveColor("tertiary", 50, 2);
   }
   &[hidden] {
     display: none;

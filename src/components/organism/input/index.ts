@@ -7,6 +7,9 @@ export enum type {
   number = 'number',
   password = 'password',
 }
+export interface HbInputEvent extends InputEvent {
+  target: HbInput
+}
 /**
  * An example element.
  *
@@ -139,7 +142,7 @@ export class HbInput extends Base {
     return value + `${hasDot?'.':''}${decimal.replace(/[^0-9]/gi, '')}`
   }
 
-  onChange(ev: InputEvent) {
+  onChange(ev: HbInputEvent) {
     const { value } = this.inputEl
     this.value = value
     this.attributeSync && this.setAttribute('value', this.originalValue)
