@@ -1,14 +1,12 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
-const package = require("./package.json");
 
 module.exports = (_, options) => {
-  console.log(package.tags, "dahjwkldjaw");
   return merge(common, {
     entry: {
-      "components/atom/color": [
-        path.resolve(__dirname, "./src/components/atom/color/index.ts"),
+      "components/atom/variable": [
+        path.resolve(__dirname, "./src/components/atom/variable/index.ts"),
       ],
       "components/atom/delay": [
         path.resolve(__dirname, "./src/components/atom/delay/index.ts"),

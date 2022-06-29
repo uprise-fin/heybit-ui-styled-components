@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
-import { setRootStyleProperty, levels } from "./index";
+import { levels } from "./index";
 import { Base } from "../../base";
-setRootStyleProperty();
+// import { hbButtonTheme } from "../../organism/button";
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
@@ -10,18 +10,18 @@ setRootStyleProperty();
 // console.log(variables.cssText);
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: "components/atom/css",
+  title: "components/atom/variable",
 } as Meta;
-// More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<unknown> = () =>
-  html`
-    ${Base.themes.map(
-      (theme) =>
-        html`
-          <hb-button theme=${theme}>${theme}</hb-button>
-        `
-    )}
-  `;
+// // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
+// const Template: Story<unknown> = () =>
+//   html`
+//     ${Object.keys(hbButtonTheme).map(
+//       (theme) =>
+//         html`
+//           <hb-button theme=${theme}>${theme}</hb-button>
+//         `
+//     )}
+//   `;
 const LevelTemplate: Story<unknown> = () =>
   html`
     <style>
@@ -73,5 +73,5 @@ const LevelTemplate: Story<unknown> = () =>
     )}
   `;
 
-export const base: Story<unknown> = Template.bind({});
+// export const base: Story<unknown> = Template.bind({});
 export const several: Story<unknown> = LevelTemplate.bind({});

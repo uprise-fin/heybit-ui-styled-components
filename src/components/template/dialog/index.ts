@@ -2,7 +2,7 @@ import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { wait } from "../../../utils";
 import { transitionType } from "../../atom/transition";
-import { Base, theme } from "../../base";
+import { Base } from "../../base";
 import { hbButtonTheme, hbButtonType } from "../../organism/button";
 import { buttonAlign } from "../modal";
 

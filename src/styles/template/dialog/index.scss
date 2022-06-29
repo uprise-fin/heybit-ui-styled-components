@@ -31,8 +31,8 @@
     padding: var(--modal__dialog__padding-top)
       var(--modal__dialog__padding-right) var(--modal__dialog__padding-bottom)
       var(--modal__dialog__padding-left);
-    border-radius: var(--modal__border-radius);
-    background: var(--box__background);
+    border-radius: calc(var(--border__radius) * 3);
+    background: var(--modal__background);
   }
   &__close-btn {
     position: absolute;

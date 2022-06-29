@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
-import { theme } from "../../base";
+import { hbButtonTheme } from "../../organism/button";
 import "./index";
 import type { HbToast } from "./index";
 
@@ -37,7 +37,7 @@ const Template: Story<HbToastExns> = ({ visibleIcon,contents ,icons}) => {
     }
     element.messages = [...element.messages, message]
   }
-  return html`<hb-button theme=${theme.secondary} @event=${reset}>토스트리셋</hb-button><br><hb-button @event=${event}>토스트 추가하기</hb-button><hb-toast id="toast"></hb-toast>`;
+  return html`<hb-button theme=${hbButtonTheme.primary} @event=${reset}>토스트리셋</hb-button><br><hb-button @event=${event}>토스트 추가하기</hb-button><hb-toast id="toast"></hb-toast>`;
 }
 export const primary: Story<HbToastExns> = Template.bind({});
 primary.args = {

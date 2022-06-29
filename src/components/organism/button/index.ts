@@ -1,8 +1,8 @@
-import {Base, size, theme } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { transitionType } from "../../atom/transition";
 import { wait } from "../../../utils";
+import { transitionType } from "../../atom/transition";
+import { Base, size } from "../../base";
 import { hbSpinnerTheme } from "../../molecule/spinner";
 export enum hbButtonType {
   "block" = "block",

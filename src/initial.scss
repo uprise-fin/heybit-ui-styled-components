@@ -27,23 +27,23 @@
 );
 // @include initial();
 
-:root {
-  @each $group, $variable in $variables {
-    @if type-of($variable) == map {
-      @each $key, $value in $variable {
-        @if type-of($value) == map {
-          @each $k, $v in $value {
-            --#{$group}__#{$key}__#{$k}: #{$v};
-          }
-        } @else {
-          --#{$group}__#{$key}: #{$value};
-        }
-      }
-    } @else {
-      --#{$group}: #{$variable};
-    }
-  }
-}
+// :root {
+//   @each $group, $variable in $variables {
+//     @if type-of($variable) == map {
+//       @each $key, $value in $variable {
+//         @if type-of($value) == map {
+//           @each $k, $v in $value {
+//             --#{$group}__#{$key}__#{$k}: #{$v};
+//           }
+//         } @else {
+//           --#{$group}__#{$key}: #{$value};
+//         }
+//       }
+//     } @else {
+//       --#{$group}: #{$variable};
+//     }
+//   }
+// }
 // [data-hb-component] {
 //   &:not([data-hb-styled]) {
 //     visibility: hidden;

@@ -18,8 +18,9 @@
       var(--modal__sheet-dialog__padding-right)
       var(--modal__sheet-dialog__padding-bottom)
       var(--modal__sheet-dialog__padding-left);
-    border-radius: var(--modal__border-radius) var(--modal__border-radius) 0 0;
-    background: var(--box__background);
+    border-radius: calc(var(--border__radius) * 3)
+      calc(var(--border__radius) * 3) 0 0;
+    background: var(--modal__background);
   }
   &__close-btn {
     position: absolute;

@@ -12,7 +12,16 @@
     bottom: 0;
     left: 0;
     display: flex;
-    background: var(--modal__background);
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0.8;
+      background: var(--modal__dim);
+    }
   }
 
   &__container {

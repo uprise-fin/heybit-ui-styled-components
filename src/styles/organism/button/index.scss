@@ -4,17 +4,17 @@ $hb-button__size: (
   large: (
     font-size: 16px,
     height: 60px,
-    border-radius: calc(var(--box__border-radius) * 2),
+    border-radius: calc(var(--border__radius) * 2),
   ),
   medium: (
     font-size: 15px,
     height: 50px,
-    border-radius: calc(var(--box__border-radius) * 2),
+    border-radius: var(--border__radius),
   ),
   small: (
-    font-size: 14px,
-    height: 40px,
-    border-radius: var(--box__border-radius),
+    font-size: 13px,
+    height: 34px,
+    border-radius: var(--border__radius),
   ),
   // xsmall: (
   //   font-size: 14px,
@@ -25,7 +25,7 @@ $hb-button__size: (
 $hb-button__theme: (
   primary: (
     bg: var(--orange),
-    color: var(--fonts__void),
+    color: var(--font__color__void),
     active: var(--orange__600),
     hover: var(--orange__400),
     disabledBg: var(--black__100),
@@ -33,7 +33,7 @@ $hb-button__theme: (
   ),
   secondary: (
     bg: var(--black),
-    color: var(--fonts__void),
+    color: var(--font__color__void),
     active: var(--black__900),
     hover: var(--black__700),
     disabledBg: var(--black__100),
@@ -41,7 +41,7 @@ $hb-button__theme: (
   ),
   tertiary: (
     bg: var(--black__100),
-    color: var(--fonts__solid),
+    color: var(--font__color__solid),
     active: var(--black__200),
     hover: var(--black__50),
     disabledBg: var(--black__100),
@@ -49,7 +49,7 @@ $hb-button__theme: (
   ),
   quaternary: (
     bd: var(--black__800),
-    color: var(--fonts__solid),
+    color: var(--font__color__solid),
     active: var(--black__100),
     // hover: var(--black__50),
       // disabledBg: var(--black__100),

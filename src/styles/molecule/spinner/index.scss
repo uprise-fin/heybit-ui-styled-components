@@ -6,8 +6,8 @@
 //   small: 14px,
 // ) !default;
 $hb-spinner__theme: (
-  void: map-get($fonts, void),
-  solid: map-get($fonts, solid),
+  void: var(--font__color__void),
+  solid: var(--font__color__solid),
 ) !default;
 // $hb-input__height: $box__height !default;
 // $hb-input__padding: $box__padding !default;

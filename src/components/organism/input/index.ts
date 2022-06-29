@@ -1,7 +1,7 @@
-import {Base} from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
+import { Base } from "../../base";
 export enum type {
   text = 'text',
   number = 'number',
@@ -102,7 +102,7 @@ export class HbInput extends Base {
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `
   }
-  onInput(ev: InputEvent) {
+  onInput(ev: HbInputEvent) {
     const inputEl = this.inputEl
     let { value } = inputEl
     if (this.type === type.number) { //숫자만 입력받도록 값 변경
