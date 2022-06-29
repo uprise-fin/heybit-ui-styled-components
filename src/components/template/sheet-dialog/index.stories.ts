@@ -74,7 +74,7 @@ horizon.args = {
   open: true,
   persistent: true,
   loading: false,
-  baseLoadingDuration: 500,
+  baseLoadingDuration: 0,
   title: "팝업 예시입니다!",
   content:
     "팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.",

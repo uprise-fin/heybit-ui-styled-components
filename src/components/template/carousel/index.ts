@@ -30,6 +30,7 @@ export class HbCarousel extends Base {
   static override get styles() {
     return [require("../../../styles/template/carousel/index.scss").default];
   }
+  //옵션
   auto = false
   pause = false
   infinite = false
@@ -41,10 +42,12 @@ export class HbCarousel extends Base {
   speed = 300
   flexWidth = 0
   fakeLength = 1
-  _userIndex: number // 인피니트등에 쓰이기 위해 내부에서 실제로 사용하는 인덱스
   index: number // 현재 인덱스
-  itemLength: number
   visibleLength: number
+
+  holderFlag = false
+  _userIndex: number // 인피니트등에 쓰이기 위해 내부에서 실제로 사용하는 인덱스
+  itemLength: number
   itemElements: HTMLElement[]
   startPointer = {
     clientX: 0,
@@ -73,6 +76,7 @@ export class HbCarousel extends Base {
       pause: { type: Boolean, Reflect: true },
       infinite: { type: Boolean, Reflect: true },
       rolling: { type: Boolean, Reflect: true },
+      holderFlag: { type: Boolean, Reflect: true },
       draggable: { type: Boolean, Reflect: true },
       eventStatus: { type: Number, Reflect: true },
       dragDistance: { type: Number, Reflect: true },
@@ -80,7 +84,7 @@ export class HbCarousel extends Base {
       flexWidth: { type: Number, Reflect: true },
       fakeLength: { type: Number, Reflect: true },
       itemLength: { type: Number, Reflect: true },
-      transition: { type: Boolean, Reflect: true },
+      transitionFlag: { type: Boolean, Reflect: true },
       visibleLength: { type: Number, Reflect: true },
       duration: { type: Number, Reflect: true },
       speed: { type: Number, Reflect: true },
@@ -91,7 +95,7 @@ export class HbCarousel extends Base {
     return this.itemLength / this.visibleLength * 100
   }
 
-  get transition() {
+  get transitionFlag() {
     if (this.eventStatus === eventStatus.done) return true
     return false
   }
@@ -111,11 +115,13 @@ export class HbCarousel extends Base {
   }
 
   get transitionDuration() {
-    if (this.transition) return this.rolling ? this.duration : this.speed;
+    if (this.holderFlag) return 10000000;
+    if (this.transitionFlag) return this.rolling ? this.duration : this.speed;
     return 0
   }
 
   get itemPosition() {
+    if(this.holderFlag) return '';
     const currentPosition = this.index * this.clientWidth / this.visibleLength
     if ([eventStatus.doing,eventStatus.fake].includes(this.eventStatus)) {
       this.userIndex = this.closeIndex(currentPosition + this.dragDistance);
@@ -156,8 +162,14 @@ export class HbCarousel extends Base {
       const step = this.rolling ? 1 : undefined
       this.onAuto(step)
       if (this.pause) {
-        this.onmouseenter = () => clearTimeout(this.sto)
-        this.onmouseleave = () => this.onAuto()
+        this.onmouseenter = () => {
+          this.holderFlag = true
+          clearTimeout(this.sto)
+        }
+        this.onmouseleave = () => {
+          this.holderFlag = false;
+          this.onAuto();
+        }
       }
     }
     if (this.flexWidth) {

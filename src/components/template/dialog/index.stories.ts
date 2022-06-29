@@ -79,7 +79,7 @@ horizon.args = {
   open: true,
   persistent: true,
   loading: false,
-  baseLoadingDuration: 500,
+  baseLoadingDuration: 0,
   icon: thunderImg,
   title: "팝업 예시입니다!",
   content:

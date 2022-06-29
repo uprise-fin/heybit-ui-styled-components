@@ -16,24 +16,49 @@ $hb-button__size: (
     height: 40px,
     border-radius: var(--box__border-radius),
   ),
-  xsmall: (
-    font-size: 14px,
-    height: 30px,
-    border-radius: var(--box__border-radius),
-  ),
+  // xsmall: (
+  //   font-size: 14px,
+  //   height: 30px,
+  //   border-radius: var(--box__border-radius),
+  // ),
 );
 $hb-button__theme: (
   primary: (
     bg: var(--orange),
     color: var(--fonts__void),
-    active: var(--orange__800),
-    hover: var(--orange__600),
-    disabledBg: var(--orange__100),
-    disabledColor: var(--orange__200),
+    active: var(--orange__600),
+    hover: var(--orange__400),
+    disabledBg: var(--black__100),
+    disabledColor: var(--black__400),
+  ),
+  secondary: (
+    bg: var(--black),
+    color: var(--fonts__void),
+    active: var(--black__900),
+    hover: var(--black__700),
+    disabledBg: var(--black__100),
+    disabledColor: var(--black__400),
+  ),
+  tertiary: (
+    bg: var(--black__100),
+    color: var(--fonts__solid),
+    active: var(--black__200),
+    hover: var(--black__50),
+    disabledBg: var(--black__100),
+    disabledColor: var(--black__400),
+  ),
+  quaternary: (
+    bd: var(--black__800),
+    color: var(--fonts__solid),
+    active: var(--black__100),
+    // hover: var(--black__50),
+      // disabledBg: var(--black__100),
+      disabledBd: var(--black__300),
+    disabledColor: var(--black__400),
   ),
 );
 .hb-button {
-  // @include disabled();
+  @include disabled();
   @include loading();
   @include host-styled {
     display: flex;
@@ -65,8 +90,9 @@ $hb-button__theme: (
         opacity $transition__duration;
       background: $bg;
     }
-    @include host-styled("[theme='#{$class}'][disabled]") {
+    @include host-styled("[theme='#{$class}'][disabled]:not([loading])") {
       color: map-get($value, disabledColor);
+      border-color: map-get($value, disabledBd);
       background: map-get($value, disabledBg);
     }
     @include host-styled(":not([disabled])[theme='#{$class}']:hover") {

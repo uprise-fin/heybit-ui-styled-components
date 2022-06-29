@@ -54,7 +54,7 @@ export class HbButton extends Base {
   }
 
   get spinnerTheme(): hbSpinnerTheme {
-    if ([hbButtonTheme.tertiary, hbButtonTheme.primary].includes(this.theme)) return hbSpinnerTheme.solid
+    if ([hbButtonTheme.tertiary, hbButtonTheme.quaternary].includes(this.theme)) return hbSpinnerTheme.solid
     return hbSpinnerTheme.void
   }
 
