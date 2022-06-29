@@ -49,13 +49,13 @@
     @return 10000;
   }
 }
-@function toHSL($color, $level: "") {
-  $lightness: $level + "%";
-  @if $level == "" {
-    $lightness: lightness($color);
-  }
-  @return hue($color), saturation($color), #{$lightness};
-}
+// @function toHSL($color, $level: "") {
+//   $lightness: $level + "%";
+//   @if $level == "" {
+//     $lightness: lightness($color);
+//   }
+//   @return hue($color), saturation($color), #{$lightness};
+// }
 
 // @function getInteractiveColor($color, $amount) {
 //   @if (lightness($color) > 50) {
@@ -87,34 +87,34 @@
 // @function getActiveColor($color) {
 //   @return getInteractiveRevertColor($color, 5);
 // }
-@function getLevel($level, $amount: 1) {
-  $result: $level + (100 * $amount);
-  @if ($result > 900) {
-    @return 900;
-  }
-  @if ($result < 50) {
-    @return 50;
-  }
-  @return floor($result / 100) * 100;
-}
-@function getDefaultLevel($color) {
-  @if ($color == "primary") {
-    @return 700;
-  }
-  @if ($color == "secondary") {
-    @return 800;
-  }
-  @if ($color == "tertiary") {
-    @return 100;
-  }
-  @return 700;
-}
-@function getHoverColor($color, $level, $amount: -2) {
-  @return var(--#{$color}__#{getLevel($level, $amount)});
-}
-@function getActiveColor($color, $level, $amount: 1) {
-  @return var(--#{$color}__#{getLevel($level, $amount)});
-}
+// @function getLevel($level, $amount: 1) {
+//   $result: $level + (100 * $amount);
+//   @if ($result > 900) {
+//     @return 900;
+//   }
+//   @if ($result < 50) {
+//     @return 50;
+//   }
+//   @return floor($result / 100) * 100;
+// }
+// @function getDefaultLevel($color) {
+//   @if ($color == "primary") {
+//     @return 700;
+//   }
+//   @if ($color == "secondary") {
+//     @return 800;
+//   }
+//   @if ($color == "tertiary") {
+//     @return 100;
+//   }
+//   @return 700;
+// }
+// @function getHoverColor($color, $level, $amount: -2) {
+//   @return var(--#{$color}__#{getLevel($level, $amount)});
+// }
+// @function getActiveColor($color, $level, $amount: 1) {
+//   @return var(--#{$color}__#{getLevel($level, $amount)});
+// }
 
 // @mixin initial($selector) {
 //   #{$selector} {
@@ -130,12 +130,10 @@
 // }
 @mixin initial($selectors) {
   @each $selector in $selectors {
-    #{$selector} {
-      font-family: $font-family;
-    }
     $class: "." + #{$selector};
+    #{$selector},
     #{$class} {
-      font-family: $font-family;
+      font-family: var(--font__family);
     }
   }
 }

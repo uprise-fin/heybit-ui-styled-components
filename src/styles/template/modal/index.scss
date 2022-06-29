@@ -1,4 +1,4 @@
-// @import "../../utils/variables";
+//
 @import "../../utils/mixins";
 .hb-modal {
   @include host-styled {
@@ -20,7 +20,7 @@
       bottom: 0;
       left: 0;
       opacity: 0.8;
-      background: var(--modal__dim);
+      background: var(--dim__background__color);
     }
   }
 

@@ -1,24 +1,10 @@
-@import "../../utils/variables";
 @import "../../utils/mixins";
-// TODO css변수로 변경
-$hb-list__height: map-get($variables, box, height) !default;
-$hb-list__padding: map-get($variables, box, padding) !default;
-$hb-list__border-width: map-get($variables, box, border-width) !default;
-$hb-list__font-size: map-get($variables, box, font-size) !default;
-$hb-list__border-color: map-get($variables, box, border-color) !default;
-$hb-list__border-color--warning: map-get(
-  $variables,
-  box,
-  border-color--warning
-) !default;
-$hb-list__border-radius: map-get($variables, box, border-radius) !default;
-$hb-list__background: map-get($variables, box, background) !default;
-$hb-list__background--warning: map-get($variables, box, background) !default;
+
 %option {
   display: flex;
   width: 100%;
-  height: $hb-list__height;
-  padding: 0 $hb-list__padding;
+  height: var(--list__height);
+  padding: 0 var(--list__padding__right) 0 var(--list__padding__left);
   border: 0;
   align-items: center;
   font-size: inherit;
@@ -27,10 +13,10 @@ $hb-list__background--warning: map-get($variables, box, background) !default;
   background: none;
   &:focus,
   &:hover {
-    background: getHoverColor("tertiary", 50);
+    background: var(--black__50);
   }
   &[data-selected] {
-    background: getActiveColor("tertiary", 50, 2);
+    background: var(--black__100);
   }
   &[hidden] {
     display: none;
@@ -41,16 +27,16 @@ $hb-list__background--warning: map-get($variables, box, background) !default;
   @include host-styled {
     overflow: hidden;
     display: block;
-    font-size: $hb-list__font-size;
-    border-radius: $hb-list__border-radius;
-    border: 1px solid #000;
+    font-size: var(--list__font__size);
+    border-radius: var(--border__radius);
+    border: var(--list__border__width) solid var(--list__border__color);
     box-sizing: border-box;
   }
 
   &__wrap {
     overflow: auto;
     max-height: inherit;
-    background: $hb-list__background;
+    background: var(--background__color);
     &:empty {
       &::after {
         content: attr(data-empty-text);

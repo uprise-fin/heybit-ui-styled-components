@@ -1,51 +1,33 @@
-@import "../../utils/variables";
 @import "../../utils/mixins";
-// TODO css변수로 변경
-$hb-input__height: map-get($variables, box, height) !default;
-$hb-input__padding: map-get($variables, box, padding) !default;
-$hb-input__border-width: map-get($variables, box, border-width) !default;
-$hb-input__font-size: map-get($variables, box, font-size) !default;
-$hb-input__border-color: map-get($variables, box, border-color) !default;
-$hb-input__border-color--warning: map-get(
-  $variables,
-  box,
-  border-color--warning
-) !default;
-$hb-input__border-radius: map-get($variables, box, border-radius) !default;
-$hb-input__background: map-get($variables, box, background) !default;
-$hb-input__background--warning: map-get(
-  $variables,
-  box,
-  background--warning
-) !default;
+
 .hb-input {
   @include host-styled {
     display: flex;
     align-items: center;
-    padding: 0 $hb-input__padding;
+    padding: 0 var(--input__padding__right) 0 var(--input__padding__left);
     cursor: text;
-    border: #{$hb-input__border-width} solid #{$hb-input__border-color};
-    border-radius: $hb-input__border-radius;
-    background: $hb-input__background;
+    border: var(--input__border__width) solid var(--input__border__color);
+    border-radius: var(--border__radius);
+    background: var(--background__color);
   }
   @include host-styled([error]) {
-    border-color: $hb-input__border-color--warning;
-    background: $hb-input__background--warning;
+    border-color: var(--input__border__color--error);
+    // background: var(--background__color);
   }
   &__el {
     width: 0;
     flex: 1;
-    height: $hb-input__height;
+    height: var(--input__height);
     padding: 0;
-    font-size: $hb-input__font-size;
+    font-size: var(--input__font__size);
     box-sizing: border-box;
     border: 0;
     outline: none;
     cursor: inherit;
-    box-shadow: 0 0 0 999px #{$hb-input__background} inset;
-    @include child-styled([error]) {
-      box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
-    }
+    box-shadow: 0 0 0 999px var(--background__color) inset;
+    // @include child-styled([error]) {
+    //   box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
+    // }
   }
   &__slot {
     position: relative;

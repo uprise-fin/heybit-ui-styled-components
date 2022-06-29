@@ -1,4 +1,3 @@
-@import "../../utils/variables";
 @import "../../utils/mixins";
 .hb-toast {
   @include host-styled {
@@ -38,7 +37,7 @@
   }
   &__position {
     will-change: margin;
-    transition: margin $transition__duration;
+    transition: margin var(--transition__duration);
     &[show] {
       margin: 10px 0 !important;
     }

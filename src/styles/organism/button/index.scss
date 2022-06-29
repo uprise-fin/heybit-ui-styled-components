@@ -1,5 +1,5 @@
 @import "../../utils/mixins";
-@import "../../utils/variables";
+
 $hb-button__size: (
   large: (
     font-size: 16px,
@@ -86,8 +86,8 @@ $hb-button__theme: (
         border: none;
       }
       color: map-get($value, color);
-      transition: background $transition__duration,
-        opacity $transition__duration;
+      transition: background var(--transition__duration),
+        opacity var(--transition__duration);
       background: $bg;
     }
     @include host-styled("[theme='#{$class}'][disabled]:not([loading])") {
@@ -138,6 +138,5 @@ $hb-button__theme: (
     display: flex;
     align-items: center;
     margin: auto;
-    font-family: map-get($variables, fonts, family);
   }
 }
