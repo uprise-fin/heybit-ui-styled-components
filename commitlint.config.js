@@ -16,6 +16,7 @@ module.exports = {
         "ci",
         "chore",
         "revert",
+        "release",
       ],
     ],
     // 한글 커밋의 경우, 어순 때문에 대문자가 앞에 나올 수 있음.

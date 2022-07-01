@@ -11,64 +11,66 @@ export default {
     theme: {
       options: Object.keys(hbButtonTheme),
       control: { type: 'radio' },
-      defaultValue: hbButtonTheme.primary
     },
     size: {
       options: Object.keys(size),
       control: { type: 'radio' },
       defaultValue: size.large
     },
+    type: {
+      options: Object.keys(hbButtonType),
+      control: { type: 'radio' },
+      defaultValue: hbButtonType.rectagle
+    },
   },
 } as Meta;
 
-const BlockTem: Story<HbButton> = ({ loading, disabled, theme, size, title ,baseLoadingDuration }) =>
+const Template: Story<HbButton> = ({ type,loading, disabled, theme, size, title ,baseLoadingDuration }) =>
   html`<hb-button
     theme="${theme}"
     size=${size}
+    type=${type}
     baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
   >${title}</hb-button>`;
+const IconTemplate: Story<HbButton> = ({ type,loading, disabled, theme, size ,baseLoadingDuration }) =>
+  html`<hb-button
+    theme="${theme}"
+    size=${size}
+    type=${type}
+    baseLoadingDuration=${baseLoadingDuration}
+    ?loading=${loading}
+    ?disabled=${disabled}
+  ><hb-icon icon="notice" size=${size}></hb-icon></hb-button>`;
 
-export const block: Story<HbButton> = BlockTem.bind({});
-block.args = {
+const args = {
   title: '내용을 입력해보세요',
-  theme: hbButtonTheme.primary,
+  type: hbButtonType.rectagle,
   size: size.large,
   baseLoadingDuration: 500,
   loading: false,
   disabled: false,
 };
-const InlineTem: Story<HbButton> = ({ loading, disabled, theme, size, title,baseLoadingDuration }) =>
-  html`<hb-button
-    theme="${theme}"
-    size=${size}
-    type=${hbButtonType.inline}
-    baseLoadingDuration=${baseLoadingDuration}
-    ?loading=${loading}
-    ?disabled=${disabled}
-  >${title}</hb-button>`;
-export const inline: Story<HbButton> = InlineTem.bind({});
-inline.args = {
-  ...block.args,
+export const rectagle: Story<HbButton> = Template.bind({});
+rectagle.args = {
+  ...args,
+  theme: hbButtonTheme.primary,
 };
-// const FabTem: Story<HbButton> = ({ loading, disabled, theme, size, title,baseLoadingDuration }) =>
-// {
-//   function ddd () {
-//     console.log('djaklwdjaw')
-//   }
-//   return html`<hb-button
-//     @event=${ddd}
-//     theme="${theme}"
-//     size=${size}
-//     type=${hbButtonType.fab}
-//     baseLoadingDuration=${baseLoadingDuration}
-//     ?loading=${loading}
-//     ?disabled=${disabled}
-//   >${title}</hb-button>`;
-// }
-  
-// export const fab: Story<HbButton> = FabTem.bind({});
-// fab.args = {
-//   ...block.args,
-// };
+export const radius: Story<HbButton> = Template.bind({});
+radius.args = {
+  ...args,
+  theme: hbButtonTheme.primary,
+  type: hbButtonType.radius,
+};
+export const circle: Story<HbButton> = IconTemplate.bind({});
+circle.args = {
+  ...args,
+  theme: hbButtonTheme.primary,
+  type: hbButtonType.circle,
+};
+export const custom: Story<HbButton> = Template.bind({});
+custom.args = {
+  ...args,
+  type: hbButtonType.custom,
+};

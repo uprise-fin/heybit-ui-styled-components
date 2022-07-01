@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { transitionType } from "../../atom/transition";
-import {Base, theme} from "../../base";
+import { Base } from "../../base";
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -16,7 +16,7 @@ import {Base, theme} from "../../base";
  */
 export interface Message {
   text: string
-  theme?: theme
+  // theme?: Color
   icon?: string
   duration?: number
 }

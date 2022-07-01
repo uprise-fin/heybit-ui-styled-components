@@ -3,7 +3,7 @@
 .hb-event-dialog {
   &__container {
     position: relative;
-    overflow: hidden;
+    overflow: auto;
     max-width: calc(100vw - var(--modal__margin) - var(--modal__margin));
     max-height: calc(100vh - var(--modal__margin) - var(--modal__margin));
     border-radius: calc(var(--border__radius) * 3);

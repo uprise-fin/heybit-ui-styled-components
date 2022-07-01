@@ -10,19 +10,24 @@ export enum horizonAlign {
   left,
 }
 export enum size {
+  'xsmall'= 'xsmall',
   'small'= 'small',
   'medium'= 'medium',
   'large' = 'large',
 }
-export enum theme {
+export enum systemColor {
+  'white' ='white',
   'black' ='black',
   'orange' ='orange',
   'yellow' ='yellow',
-  'teal' ='teal',
   'green' ='green',
   'blue' ='blue',
-  'purple' ='purple',
 }
+export enum serviceColor {
+  'harvest' ='harvest',
+  'defi' ='defi',
+}
+export type Color = systemColor | serviceColor;
 export class Base extends LitElement {
   override async connectedCallback() {
     super.connectedCallback();
@@ -35,9 +40,6 @@ export class Base extends LitElement {
     e.stopPropagation();
   }
   
-  static get themes() {
-    return Object.keys(theme)
-  }
   static get size() {
     return Object.keys(size)
   }

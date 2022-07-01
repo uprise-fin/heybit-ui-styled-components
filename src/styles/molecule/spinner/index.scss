@@ -37,15 +37,16 @@ $hb-spinner__theme: (
     width: 20px;
     height: 20px;
     border: 2px solid transparent;
+    border-color: var(--spinner__color) transparent transparent transparent;
     box-sizing: border-box;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     will-change: transform;
-    @each $class, $color in $hb-spinner__theme {
-      @include child-styled("[theme='#{$class}']") {
-        border-color: $color transparent transparent transparent;
-      }
-    }
+    // @each $class, $color in $hb-spinner__theme {
+    //   @include child-styled("[theme='#{$class}']") {
+    //     border-color: $color transparent transparent transparent;
+    //   }
+    // }
     &--inner-1 {
       animation-delay: -0.45s;
     }

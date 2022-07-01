@@ -13,10 +13,10 @@
   background: none;
   &:focus,
   &:hover {
-    background: var(--black__50);
+    background: var(--black--50);
   }
   &[data-selected] {
-    background: var(--black__100);
+    background: var(--black--100);
   }
   &[hidden] {
     display: none;

@@ -13,7 +13,12 @@ $hb-button__size: (
   ),
   small: (
     font-size: 13px,
-    height: 34px,
+    height: 40px,
+    border-radius: var(--border__radius),
+  ),
+  xsmall: (
+    font-size: 13px,
+    height: 30px,
     border-radius: var(--border__radius),
   ),
   // xsmall: (
@@ -22,39 +27,52 @@ $hb-button__size: (
   //   border-radius: var(--box__border-radius),
   // ),
 );
+$hb-button__type: (
+  rectangle: (
+    padding: 0 var(--button__padding__right) 0 var(--button__padding__left),
+  ),
+  radius: (
+    border-radius: 1000px,
+    padding: 0 var(--button__padding__right) 0 var(--button__padding__left),
+  ),
+  circle: (
+    border-radius: 100%,
+    padding: 0,
+  ),
+);
 $hb-button__theme: (
   primary: (
     bg: var(--orange),
     color: var(--font__color__void),
-    active: var(--orange__600),
-    hover: var(--orange__400),
-    disabledBg: var(--black__100),
-    disabledColor: var(--black__400),
+    active: var(--orange--600),
+    hover: var(--orange--400),
+    disabledBg: var(--black--100),
+    disabledColor: var(--black--400),
   ),
   secondary: (
     bg: var(--black),
     color: var(--font__color__void),
-    active: var(--black__900),
-    hover: var(--black__700),
-    disabledBg: var(--black__100),
-    disabledColor: var(--black__400),
+    active: var(--black--900),
+    hover: var(--black--700),
+    disabledBg: var(--black--100),
+    disabledColor: var(--black--400),
   ),
   tertiary: (
-    bg: var(--black__100),
+    bg: var(--black--100),
     color: var(--font__color__solid),
-    active: var(--black__200),
-    hover: var(--black__50),
-    disabledBg: var(--black__100),
-    disabledColor: var(--black__400),
+    active: var(--black--200),
+    hover: var(--black--50),
+    disabledBg: var(--black--100),
+    disabledColor: var(--black--400),
   ),
   quaternary: (
-    bd: var(--black__800),
+    bd: var(--black--800),
     color: var(--font__color__solid),
-    active: var(--black__100),
-    // hover: var(--black__50),
-      // disabledBg: var(--black__100),
-      disabledBd: var(--black__300),
-    disabledColor: var(--black__400),
+    active: var(--black--100),
+    // hover: var(--black--50),
+      // disabledBg: var(--black--100),
+      disabledBd: var(--black--300),
+    disabledColor: var(--black--400),
   ),
 );
 .hb-button {
@@ -62,10 +80,8 @@ $hb-button__theme: (
   @include loading();
   @include host-styled {
     display: flex;
-    padding: 0 var(--box__padding);
     // border: #{$hb-button__border-width} solid #{$hb-button__border-color};
-    border-radius: var(--box__border-radius);
-    font-size: var(--box__font-size);
+    font-size: var(--button__font-size);
     font-weight: 700;
     box-sizing: border-box;
     cursor: pointer;
@@ -83,12 +99,21 @@ $hb-button__theme: (
       @if ($bd) {
         border: 1px solid $bd;
       } @else {
-        border: none;
+        border: 1px solid transparent;
       }
+      --spinner__color: #{map-get($value, color)};
       color: map-get($value, color);
       transition: background var(--transition__duration),
         opacity var(--transition__duration);
       background: $bg;
+    }
+    @include host-styled("[type='custom'][theme='#{$class}']") {
+      $customColor: $bg;
+      color: var(--white);
+      color: $customColor;
+      --spinner__color: #{$customColor};
+      border: none !important;
+      background: none !important;
     }
     @include host-styled("[theme='#{$class}'][disabled]:not([loading])") {
       color: map-get($value, disabledColor);
@@ -108,13 +133,31 @@ $hb-button__theme: (
       font-size: map-get($size, font-size);
       border-radius: map-get($size, border-radius);
     }
+    @include host-styled("[size='#{$class}'][type='circle']") {
+      width: map-get($size, height);
+      height: map-get($size, height);
+    }
   }
-  @include host-styled("[type='inline']") {
-    display: inline-flex;
+  @each $class, $type in $hb-button__type {
+    @include host-styled("[type='#{$class}']") {
+      display: inline-flex;
+      padding: map-get($type, padding);
+      border-radius: map-get($type, border-radius);
+    }
   }
   @include host-styled("[type='custom']") {
-    padding: 0;
+    display: inline-flex;
+    height: auto;
+    border-radius: none;
   }
+  // @include host-styled("[type='inline']") {
+  //   padding: 0 var(--button__padding__right) 0 var(--button__padding__left);
+  // }
+  // @include host-styled("[type='inline']") {
+  //   display: inline-flex;
+  // }
+  // @include host-styled("[type='custom']") {
+  // }
 
   // @include host-styled(":empty") {
   //   .hb-button__label::before {

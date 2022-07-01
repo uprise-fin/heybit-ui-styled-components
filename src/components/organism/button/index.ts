@@ -3,10 +3,10 @@ import { customElement } from "lit/decorators.js";
 import { wait } from "../../../utils";
 import { transitionType } from "../../atom/transition";
 import { Base, size } from "../../base";
-import { hbSpinnerTheme } from "../../molecule/spinner";
 export enum hbButtonType {
-  "block" = "block",
-  "inline" = "inline",
+  "rectagle" = "rectagle",
+  "radius" = "radius",
+  "circle" = "circle",
   "custom" = "custom",
 }
 export enum hbButtonTheme {
@@ -35,7 +35,7 @@ export class HbButton extends Base {
     return [require("../../../styles/organism/button/index.scss").default];
   }
   labelEl: HTMLElement
-  type: hbButtonType = hbButtonType.block;
+  type: hbButtonType = hbButtonType.rectagle;
   size: size = size.large;
   loading = false;
   baseLoadingDuration = 0
@@ -53,10 +53,6 @@ export class HbButton extends Base {
     };
   }
 
-  get spinnerTheme(): hbSpinnerTheme {
-    if ([hbButtonTheme.tertiary, hbButtonTheme.quaternary].includes(this.theme)) return hbSpinnerTheme.solid
-    return hbSpinnerTheme.void
-  }
 
   render() {
     return html`
@@ -65,7 +61,7 @@ export class HbButton extends Base {
         ${
           this.loading ? html`
           <hb-transition class="hb-button__label__transition" type=${transitionType.fade} ?show=${this.loading}>
-            <hb-spinner theme=${this.spinnerTheme} size=${this.size}></hb-spinner>
+            <hb-spinner size=${this.size}></hb-spinner>
           </hb-transition> 
           ` : html`
           <hb-transition class="hb-button__label__transition" type=${transitionType.fade} ?show=${!this.loading}>

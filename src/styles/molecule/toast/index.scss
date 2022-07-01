@@ -16,8 +16,9 @@
     $padding: 16px;
     display: flex;
     margin: auto;
-    min-height: calc(var(--box__height) - ($padding * 2));
-    padding: $padding 20px;
+    min-height: calc(var(--select__height) - ($padding * 2));
+    padding: $padding var(--select__padding__right) $padding
+      var(--select__padding__left);
     box-sizing: border-box;
     font-weight: 400;
     font-size: 14px;
