@@ -1,10 +1,11 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
+import { dev } from "../../../utils";
 import { skeletonType } from "../../molecule/skeleton";
 import "./index";
 import type { HbCarousel } from "./index";
 
-export default {
+export default dev() &&{
   title: "components/template/hb-carousel",
   component: "hb-carousel",
   argTypes: {

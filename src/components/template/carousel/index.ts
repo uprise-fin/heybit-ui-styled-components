@@ -157,6 +157,9 @@ export class HbCarousel extends Base {
       this.addEventListener('mousedown', this.onEventStartBound)
       window.addEventListener('mouseup', this.onEventEndBound)
       window.addEventListener('mousemove', this.onEventDoingBound)
+      window.addEventListener('touchstart', this.onEventStartBound)
+      window.addEventListener('touchend', this.onEventEndBound)
+      window.addEventListener('touchmove', this.onEventDoingBound)
     }
     if(this.auto) {
       const step = this.rolling ? 1 : undefined
@@ -182,6 +185,9 @@ export class HbCarousel extends Base {
       this.removeEventListener('mousedown', this.onEventStartBound)
       window.removeEventListener('mouseup', this.onEventEndBound)
       window.removeEventListener('mousemove', this.onEventDoingBound)
+      this.removeEventListener('touchstart', this.onEventStartBound)
+      window.removeEventListener('touchend', this.onEventEndBound)
+      window.removeEventListener('touchmove', this.onEventDoingBound)
     }
     if (this.flexWidth) window.removeEventListener('resize', this.onResizeBound)
   }
@@ -221,17 +227,31 @@ export class HbCarousel extends Base {
     // this.dispatchEvent
   }
 
-  onEventStart(event: MouseEvent) {
+  getClientPoint(event: MouseEvent | TouchEvent) {
+    let clientX = 0
+    let clientY = 0
+    if (event instanceof TouchEvent) {
+      clientX = event.touches[0].clientX
+      clientY = event.touches[0].clientY
+    } else {
+      clientX = event.clientX
+      clientY = event.clientY
+    }
+    return {clientX, clientY}
+  }
+
+  onEventStart(event: MouseEvent | TouchEvent) {
     if (this.eventStatus === eventStatus.done) {
       this.eventStatus = eventStatus.start
-      const {clientX , clientY} = event
+      const {clientX, clientY} = this.getClientPoint(event)
+      
       this.startPointer = {
         clientX,
         clientY
       }
     }
   }
-  onEventEnd(event: MouseEvent) {
+  onEventEnd(event: MouseEvent | TouchEvent) {
     if (this.eventStatus === eventStatus.doing) {
       event.stopImmediatePropagation() // drag 했을때 클릭 이벤트 발생시키지 않기
       this.index = this.userIndex
@@ -254,15 +274,14 @@ export class HbCarousel extends Base {
   diff(a: number,b:number) {
     return a > b  ? a - b : b - a
   }
-  onEventDoing(event: MouseEvent) {
+  onEventDoing(event: MouseEvent | TouchEvent) {
     if ([eventStatus.start,eventStatus.doing].includes(this.eventStatus)) {
-      const {clientX , clientY} = event
+      const {clientX, clientY} = this.getClientPoint(event)
       const starterClientX = this.startPointer.clientX
       const starterClientY = this.startPointer.clientY
       this.dragDistance = starterClientX - clientX 
       if (this.eventStatus === eventStatus.start)
         if ((this.diff(starterClientX, clientX) > 10 || this.diff(starterClientY, clientY) > 10)) this.eventStatus = eventStatus.doing // 드레그가 시작됐다고 판단하는 움직임 +- 10
-      // if ((this.diff(starterClientX, clientX) > 10 || this.diff(starterClientY, clientY) > 10) && this.eventStatus === eventStatus.start) this.eventStatus = eventStatus.doing // 드레그가 시작됐다고 판단하는 움직임 +- 10
     }
   }
 

@@ -1,10 +1,11 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
+import { dev } from "../../../utils";
 import "./index";
 import type { HbInput, HbInputEvent } from "./index";
 import { type } from "./index";
 
-export default {
+export default dev() && {
   title: "components/organism/hb-input",
   component: "hb-input",
 } as Meta;

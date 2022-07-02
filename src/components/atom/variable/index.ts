@@ -30,7 +30,7 @@ export const colorPalette = Object.entries(colors).reduce(
   }),
   {}
 ) as Obj<Matercolor, Color>;
-export const variables = {
+export const basicVariables = {
   font: {
     family: `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
   "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
@@ -53,7 +53,7 @@ export const variables = {
     duration: "300ms",
   },
 };
-export const components = {
+export const componentVariables = {
   dim: {
     background: {
       color: colorPalette[systemColor.black][900],
@@ -66,23 +66,23 @@ export const components = {
       left: 10,
     },
     font: {
-      size: variables.font.size,
+      size: basicVariables.font.size,
     },
     border: {
-      width: variables.border.width,
-      color: variables.border.color,
+      width: basicVariables.border.width,
+      color: basicVariables.border.color,
     },
   },
   select: {
     font: {
-      size: variables.font.size,
+      size: basicVariables.font.size,
     },
   },
   input: {
     height: 50,
     border: {
-      width: variables.border.width,
-      color: variables.border.color,
+      width: basicVariables.border.width,
+      color: basicVariables.border.color,
       "color--error": colorPalette.yellow[300],
     },
     padding: {
@@ -90,7 +90,7 @@ export const components = {
       left: 10,
     },
     font: {
-      size: variables.font.size,
+      size: basicVariables.font.size,
     },
   },
   button: {
@@ -99,7 +99,7 @@ export const components = {
       left: 10,
     },
     font: {
-      size: variables.font.size,
+      size: basicVariables.font.size,
     },
   },
   spinner: {
@@ -153,6 +153,6 @@ export default (function setRootStyleProperty() {
     );
 
     // another variables
-    setGroupProperty({ ...variables, ...components });
+    setGroupProperty({ ...basicVariables, ...componentVariables });
   }
 })();

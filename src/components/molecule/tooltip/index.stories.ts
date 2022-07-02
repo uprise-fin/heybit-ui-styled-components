@@ -1,10 +1,11 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
+import { dev } from "../../../utils";
 import { size } from "../../base";
 import "./index";
 import type { HbTooltip } from "./index";
 
-export default {
+export default dev() && {
   title: "components/molecule/hb-tooltip",
   component: "hb-tooltip",
   argTypes: {

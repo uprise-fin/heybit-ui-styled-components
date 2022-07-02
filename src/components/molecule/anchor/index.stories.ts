@@ -1,9 +1,10 @@
 import { Meta, Story } from "@storybook/web-components";
 import { html } from "lit";
+import { dev } from "../../../utils";
 import "./index";
 import type { HbAnchor } from "./index";
 
-export default {
+export default dev() && {
   title: "components/molecule/hb-anchor",
   component: "hb-anchor",
   

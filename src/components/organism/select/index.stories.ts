@@ -1,10 +1,11 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
+import { dev } from '../../../utils';
 import "./index";
 import type { HbSelect } from './index';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
-export default {
+export default dev() && {
   title: "components/organism/hb-select",
   component: "hb-select",
 } as Meta;

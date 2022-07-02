@@ -40,5 +40,6 @@ export function wait(time: number = 500): Promise<void> {
 }
 
 export function dev() {
+  if (location.hash === "#dev") return true;
   return process.env.ENVIRONMENT === "dev";
 }
