@@ -4,21 +4,23 @@
     z-index: zindex("토스트");
     position: fixed;
     bottom: 0;
-    left: 50%;
+    left: var(--toast__margin);
+    right: var(--toast__margin);
     display: flex;
-    width: 100%;
-    max-width: var(--box__width);
+    max-width: var(--toast__max-width);
+    // max-width: calc(var(--toast__max-width) + (var(--toast__margin) * 2));
     height: 0;
-    transform: translateX(-50%);
+    margin: auto;
     flex-direction: column-reverse;
   }
   &__content {
-    $padding: 16px;
     display: flex;
-    margin: auto;
-    min-height: calc(var(--select__height) - ($padding * 2));
-    padding: $padding var(--select__padding__right) $padding
-      var(--select__padding__left);
+    min-height: calc(
+      var(--toast__min-height) - var(--toast__padding__top) -
+        var(--toast__padding__bottom)
+    );
+    padding: var(--toast__padding__top) var(--toast__padding__right)
+      var(--toast__padding__bottom) var(--toast__padding__left);
     box-sizing: border-box;
     font-weight: 400;
     font-size: 14px;
