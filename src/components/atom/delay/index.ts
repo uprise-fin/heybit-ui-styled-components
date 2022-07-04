@@ -1,4 +1,4 @@
-import {Base} from "../../base";
+import { Base } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 
@@ -25,11 +25,11 @@ export class HbDelay extends Base {
           resolve(true);
         }, this.delay)
       );
-      if (['true','false'].includes(newVal)) {
-        if (newVal === 'true') this.children[0].setAttribute(this.name, '')
-        else this.children[0].removeAttribute(this.name)
+      if (["true", "false"].includes(newVal)) {
+        if (newVal === "true") this.children[0].setAttribute(this.name, "");
+        else this.children[0].removeAttribute(this.name);
       } else {
-        this.children[0].setAttribute(this.name, newVal)
+        this.children[0].setAttribute(this.name, newVal);
       }
     }
   }
@@ -40,9 +40,7 @@ export class HbDelay extends Base {
   // }
 
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 }
 

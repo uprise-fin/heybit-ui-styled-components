@@ -19,9 +19,7 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story<HbSkeleton> = ({ type }) =>
-  html`
-    <hb-skeleton type=${type} style="width: 200px;"></hb-skeleton>
-  `;
+  html` <hb-skeleton type=${type} style="width: 200px;"></hb-skeleton> `;
 
 export const card: Story<HbSkeleton> = Template.bind({});
 card.args = {

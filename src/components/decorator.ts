@@ -2,7 +2,7 @@
 // import { getChildren, getElement } from "../utils";
 
 function scss() {
-  return function(
+  return function (
     target: unknown,
     propertyKey: string,
     descriptor: PropertyDescriptor

@@ -4,22 +4,23 @@ import { dev } from "../../../utils";
 import { size } from "../../base";
 import "./index";
 import type { HbIcon } from "./index";
-import SVG from './svg';
+import SVG from "./svg";
 
-export default dev() && {
-  title: "components/molecule/hb-icon",
-  component: "hb-icon",
-  argTypes: {
-    icon: {
+export default dev() &&
+  ({
+    title: "components/molecule/hb-icon",
+    component: "hb-icon",
+    argTypes: {
+      icon: {
         options: Object.keys(SVG),
-        control: { type: 'radio' },
+        control: { type: "radio" },
       },
       size: {
         options: Object.keys(size),
-        control: { type: 'radio' },
+        control: { type: "radio" },
       },
-    }
-} as Meta;
+    },
+  } as Meta);
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story<HbIcon> = ({ icon, size }) =>

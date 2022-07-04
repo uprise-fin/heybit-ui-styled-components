@@ -1,9 +1,9 @@
-import { Base } from "../../base";
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
+import { Base } from "../../base";
 
 /**
- * 
+ *
  */
 export enum hbSpinnerTheme {
   "void" = "void",
@@ -19,7 +19,6 @@ export class HbSpinner extends Base {
   theme: hbSpinnerTheme = hbSpinnerTheme.solid;
   // size: size = size.large
 
-
   static get properties() {
     return {
       theme: { type: String, Reflect: true },
@@ -32,7 +31,7 @@ export class HbSpinner extends Base {
       <span class="hb-spinner__icon hb-spinner__icon--inner-1"></span>
       <span class="hb-spinner__icon hb-spinner__icon--inner-2"></span>
       <span class="hb-spinner__icon hb-spinner__icon--inner-3"></span>
-    `
+    `;
   }
 }
 

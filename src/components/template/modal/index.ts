@@ -2,15 +2,15 @@ import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
 import { transitionType } from "../../atom/transition";
-import {Base, horizonAlign, verticalAlign} from "../../base";
+import { Base, horizonAlign, verticalAlign } from "../../base";
 
-export enum open  {
-  'false' = 'false',
-  'true' = 'true',
+export enum open {
+  "false" = "false",
+  "true" = "true",
 }
-export enum buttonAlign  {
-  'vertical' = 'vertical',
-  'horizon' = 'horizon',
+export enum buttonAlign {
+  "vertical" = "vertical",
+  "horizon" = "horizon",
 }
 /**
  * @fires close 닫기
@@ -30,26 +30,32 @@ export class HbModal extends Base {
     return [require("../../../styles/template/modal/index.scss").default];
   }
   async customConnectedCallback() {
-    this.containerEl = await getElement<HTMLDivElement>(this.shadowRoot, "container");
-    this.containerEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
+    this.containerEl = await getElement<HTMLDivElement>(
+      this.shadowRoot,
+      "container"
+    );
+    this.containerEl!.onanimationend = (event: AnimationEvent) =>
+      this.onAnimationEnd(event);
   }
   disconnectedCallback() {
-    this.containerEl.onanimationend = () => null
+    this.containerEl.onanimationend = () => null;
   }
-  verticalAlign: verticalAlign = verticalAlign.middle
-  horizonAlign: horizonAlign = horizonAlign.center
-  transitionType: transitionType
-  containerEl?: HTMLDivElement
-  width = 0
-  open = false
+  verticalAlign: verticalAlign = verticalAlign.middle;
+  horizonAlign: horizonAlign = horizonAlign.center;
+  transitionType: transitionType;
+  containerEl?: HTMLDivElement;
+  width = 0;
+  open = false;
   persistent = false;
   get position() {
     const obj = {
-      0: ['auto', 'auto'],
-      1: ['0', 'auto'],
-      2: ['auto', '0'],
-    }
-    return `${obj[this.verticalAlign][0]} ${obj[this.horizonAlign][0]} ${obj[this.verticalAlign][1]} ${obj[this.horizonAlign][1]}`
+      0: ["auto", "auto"],
+      1: ["0", "auto"],
+      2: ["auto", "0"],
+    };
+    return `${obj[this.verticalAlign][0]} ${obj[this.horizonAlign][0]} ${
+      obj[this.verticalAlign][1]
+    } ${obj[this.horizonAlign][1]}`;
   }
   static get properties() {
     return {
@@ -64,29 +70,43 @@ export class HbModal extends Base {
 
   render() {
     return html`
-      <hb-transition ?show=${this.open} id="modal-transition" type=${transitionType.fade}>
+      <hb-transition
+        ?show=${this.open}
+        id="modal-transition"
+        type=${transitionType.fade}
+      >
         <div class="hb-modal__wrap" @click=${this.adapterOnClose}>
-          <hb-transition ?show=${this.open} type=${this.transitionType} style="margin: ${this.position};">
-            <div class="hb-modal__container" style=${this.width ? `max-width: ${this.width}px;` : ''} id="container" part="container" @click=${this.stopPropagation}>
+          <hb-transition
+            ?show=${this.open}
+            type=${this.transitionType}
+            style="margin: ${this.position};"
+          >
+            <div
+              class="hb-modal__container"
+              style=${this.width ? `max-width: ${this.width}px;` : ""}
+              id="container"
+              part="container"
+              @click=${this.stopPropagation}
+            >
               <slot></slot>
             </div>
           </hb-transition>
         </div>
       </hb-transition>
-    `
+    `;
   }
-  
+
   onAnimationEnd(event: AnimationEvent) {
     //TODO 오픈드 이벤트 및 클로즈드 이벤트 생성가능
     this.classList.remove(event.animationName);
   }
 
   adapterOnClose(e: Event) {
-    e.stopImmediatePropagation()
-    if (this.persistent) return this.classList.add("shake")
+    e.stopImmediatePropagation();
+    if (this.persistent) return this.classList.add("shake");
 
     this.dispatchEvent(new CustomEvent("close"));
-  } 
+  }
 }
 
 declare global {

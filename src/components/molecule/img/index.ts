@@ -1,12 +1,12 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import {Base} from "../../base";
+import { Base } from "../../base";
 
 /**
- * @property src 
- * @property multiSource 
- * @property breakPoint 
- * @property pcPrefix 
+ * @property src
+ * @property multiSource
+ * @property breakPoint
+ * @property pcPrefix
  * @csspart picture
  * @csspart skeleton
  * @csspart img
@@ -17,14 +17,14 @@ export class HbImg extends Base {
   static override get styles() {
     return [require("../../../styles/molecule/img/index.scss").default];
   }
-  src: string
-  loadingWidth: number
-  loadingHeight: number
-  breakPoint = 1020
-  multiSource = 0
-  pcPrefix = '-pc'
-  loaded = false
-  error = false
+  src: string;
+  loadingWidth: number;
+  loadingHeight: number;
+  breakPoint = 1020;
+  multiSource = 0;
+  pcPrefix = "-pc";
+  loaded = false;
+  error = false;
 
   static get properties() {
     return {
@@ -39,37 +39,37 @@ export class HbImg extends Base {
     };
   }
   get srcExt() {
-    const number = this.src.lastIndexOf('.')
-    return this.src.substring(number)
+    const number = this.src.lastIndexOf(".");
+    return this.src.substring(number);
   }
   get srcName() {
-    const number = this.src.lastIndexOf('.')
-    return this.src.substring(0, number)
+    const number = this.src.lastIndexOf(".");
+    return this.src.substring(0, number);
   }
 
   get set() {
-    return Array(this.multiSource).fill(null)
+    return Array(this.multiSource).fill(null);
   }
 
   get srcset() {
-    const arr = this.set.map((_,i) => {
+    const arr = this.set.map((_, i) => {
       const j = i + 1;
       if (j === 1) {
-        return `${this.srcName}${this.srcExt} 1x`
+        return `${this.srcName}${this.srcExt} 1x`;
       }
-      return `${this.srcName}@${j}x${this.srcExt} ${j}x`
-    })
-    return arr.join(',')
+      return `${this.srcName}@${j}x${this.srcExt} ${j}x`;
+    });
+    return arr.join(",");
   }
   get pcSrcset() {
-    const arr = this.set.map((_,i) => {
+    const arr = this.set.map((_, i) => {
       const j = i + 1;
       if (j === 1) {
-        return `${this.srcName}${this.pcPrefix}${this.srcExt} 1x`
+        return `${this.srcName}${this.pcPrefix}${this.srcExt} 1x`;
       }
-      return `${this.srcName}${this.pcPrefix}@${j}x${this.srcExt} ${j}x`
-    })
-    return arr.join(',')
+      return `${this.srcName}${this.pcPrefix}@${j}x${this.srcExt} ${j}x`;
+    });
+    return arr.join(",");
   }
 
   // set src(src: string) {
@@ -80,26 +80,47 @@ export class HbImg extends Base {
   // get src() {
   //   return this._src
   // }
-  
 
   render() {
     return html`
-    <hb-loading class="hb-img__loading" part="loading" ?loaded=${this.loaded || this.error} style="width:${this.loadingWidth}px; height:${this.loadingHeight}px;"></hb-loading>
-    <picture class="hb-img__picture" part="picture" style=${this.loaded ? '' : `width:${this.loadingWidth}px; height:${this.loadingHeight}px;`}>
-      ${this.multiSource > 0 ?
-        this.breakPoint > 0 ? 
-          html`
-            <source media=${`(max-width: ${this.breakPoint - 1}px)`} srcset=${this.srcset}>
-            <source media=${`(min-width: ${this.breakPoint}px)`} srcset=${this.pcSrcset}>
-          ` :
-          html`
-            <source srcset=${this.srcset}>
-          `
-        : ''
-      }
-      <img class="hb-img__picture__img" part="img" src=${this.src} @error=${this.onError} @load=${this.onLoad} ?loaded=${this.loaded} ?error=${this.error}>
-    </picture>
-    `
+      <hb-loading
+        class="hb-img__loading"
+        part="loading"
+        ?loaded=${this.loaded || this.error}
+        style="width:${this.loadingWidth}px; height:${this.loadingHeight}px;"
+      ></hb-loading>
+      <picture
+        class="hb-img__picture"
+        part="picture"
+        style=${this.loaded
+          ? ""
+          : `width:${this.loadingWidth}px; height:${this.loadingHeight}px;`}
+      >
+        ${this.multiSource > 0
+          ? this.breakPoint > 0
+            ? html`
+                <source
+                  media=${`(max-width: ${this.breakPoint - 1}px)`}
+                  srcset=${this.srcset}
+                />
+                <source
+                  media=${`(min-width: ${this.breakPoint}px)`}
+                  srcset=${this.pcSrcset}
+                />
+              `
+            : html` <source srcset=${this.srcset} /> `
+          : ""}
+        <img
+          class="hb-img__picture__img"
+          part="img"
+          src=${this.src}
+          @error=${this.onError}
+          @load=${this.onLoad}
+          ?loaded=${this.loaded}
+          ?error=${this.error}
+        />
+      </picture>
+    `;
   }
   // onLoad(evt: Event) {
   //   this.loaded = true
@@ -110,10 +131,10 @@ export class HbImg extends Base {
   //   this.dispatchEvent(new CustomEvent("error", evt));
   // }
   onLoad() {
-    this.loaded = true
+    this.loaded = true;
   }
   onError() {
-    this.error = true
+    this.error = true;
   }
 }
 

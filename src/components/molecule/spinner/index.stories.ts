@@ -26,10 +26,7 @@ export default {
 const Template: Story<HbSpinner> = ({
   theme,
   // size
-}) =>
-  html`
-    <hb-spinner theme=${theme}></hb-spinner>
-  `;
+}) => html` <hb-spinner theme=${theme}></hb-spinner> `;
 
 export const primary: Story<HbSpinner> = Template.bind({});
 primary.args = {

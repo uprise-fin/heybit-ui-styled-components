@@ -6,15 +6,14 @@ import type { HbLoading } from "./index";
 export default {
   title: "components/atom/hb-loading",
   component: "hb-loading",
-} as Meta
+} as Meta;
 
-const Template: Story<HbLoading> = () => html`
-<style>
-.loading {
-  width: 300px;
-  height: 300px;
-}
-</style>
-<hb-loading class="loading"></hb-loading>`;
+const Template: Story<HbLoading> = () => html` <style>
+    .loading {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+  <hb-loading class="loading"></hb-loading>`;
 
 export const float: Story<HbLoading> = Template.bind({});

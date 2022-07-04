@@ -3,12 +3,12 @@ import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
 import { Base } from "../../base";
 export enum type {
-  text = 'text',
-  number = 'number',
-  password = 'password',
+  text = "text",
+  number = "number",
+  password = "password",
 }
 export interface HbInputEvent extends InputEvent {
-  target: HbInput
+  target: HbInput;
 }
 /**
  * An example element.
@@ -16,7 +16,7 @@ export interface HbInputEvent extends InputEvent {
  * @fires event 값이 변경될때 발생
  * @property value 기본 값
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
- * @property placeholder 
+ * @property placeholder
  * @property decimal 소수점
  * @property comma 콤마
  * @property maxlength 최대글자수
@@ -34,14 +34,14 @@ export class HbInput extends Base {
   static override get styles() {
     return [require("../../../styles/organism/input/index.scss").default];
   }
-  _value = '';
+  _value = "";
   inputEl?: HTMLInputElement;
-  attributeSync = false
-  placeholder = ''
-  error = false
+  attributeSync = false;
+  placeholder = "";
+  error = false;
   decimal: number = 2;
   comma: number = 3;
-  readonly = false
+  readonly = false;
   maxlength?: number;
   type: type = type.text;
   static get properties() {
@@ -59,31 +59,30 @@ export class HbInput extends Base {
   }
 
   get pattern() {
-    if (this.type === 'number') return '[0-9]*'
-    return null
+    if (this.type === "number") return "[0-9]*";
+    return null;
   }
 
-  get isType () {
-    if (this.type === type.number) return type.text
-    return this.type
+  get isType() {
+    if (this.type === type.number) return type.text;
+    return this.type;
   }
 
-  set value (value: string) {
+  set value(value: string) {
     if (this.type === type.number) {
       this._value = this.toNumeric(value);
     } else {
       this._value = value;
     }
   }
-  get value () {
-    return this._value
+  get value() {
+    return this._value;
   }
 
   get originalValue() {
-    if (this.type === type.number) return this.toNumeric(this._value, true)
-    return this._value
+    if (this.type === type.number) return this.toNumeric(this._value, true);
+    return this._value;
   }
-  
 
   render() {
     return html`
@@ -100,70 +99,81 @@ export class HbInput extends Base {
       />
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
-    `
+    `;
   }
   onInput(ev: HbInputEvent) {
-    const inputEl = this.inputEl
-    let { value } = inputEl
-    if (this.type === type.number) { //숫자만 입력받도록 값 변경
-      const { data } = ev
-      const ableData = Array(10).fill('').map((_,i) =>i + '').concat('.')
-      if (data !== null && !ableData.includes(data)) inputEl.value = this.value
-      else inputEl.value = this.toNumeric(value)
-      value = inputEl.value
+    const inputEl = this.inputEl;
+    let { value } = inputEl;
+    if (this.type === type.number) {
+      //숫자만 입력받도록 값 변경
+      const { data } = ev;
+      const ableData = Array(10)
+        .fill("")
+        .map((_, i) => i + "")
+        .concat(".");
+      if (data !== null && !ableData.includes(data)) inputEl.value = this.value;
+      else inputEl.value = this.toNumeric(value);
+      value = inputEl.value;
     }
 
-    if (this.maxlength > 0) { // 최대글자수 이하로 입력 받도록 값 변경
-      let length = value.length
-      if (this.type === type.number) length = inputEl.value.length - (inputEl.value.length - this.toNumeric(inputEl.value, true).length)
-      if (length > this.maxlength) return inputEl.value = this.value
+    if (this.maxlength > 0) {
+      // 최대글자수 이하로 입력 받도록 값 변경
+      let length = value.length;
+      if (this.type === type.number)
+        length =
+          inputEl.value.length -
+          (inputEl.value.length - this.toNumeric(inputEl.value, true).length);
+      if (length > this.maxlength) return (inputEl.value = this.value);
     }
     // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
     // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
-    if (this.value !== value) this.onChange(ev)
+    if (this.value !== value) this.onChange(ev);
   }
 
   toNumeric(value: string, toNumber: boolean = false) {
-    if (!value || typeof value !== 'string') return ''
-    
-    const dotIndex = value.indexOf('.')
-    const hasDot = dotIndex > 0
-    let decimal = ''
+    if (!value || typeof value !== "string") return "";
+
+    const dotIndex = value.indexOf(".");
+    const hasDot = dotIndex > 0;
+    let decimal = "";
     if (hasDot) {
-      decimal = value.substring(dotIndex + 1, dotIndex + 1 + this.decimal)
-      value = value.substring(0, dotIndex)
+      decimal = value.substring(dotIndex + 1, dotIndex + 1 + this.decimal);
+      value = value.substring(0, dotIndex);
     }
-    value = value.replace(/[^0-9]/gi, '')
+    value = value.replace(/[^0-9]/gi, "");
 
     if (!toNumber) {
-      const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, 'g')
-      value = value.replace(req, ',')
+      const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, "g");
+      value = value.replace(req, ",");
     }
-    return value + `${hasDot?'.':''}${decimal.replace(/[^0-9]/gi, '')}`
+    return value + `${hasDot ? "." : ""}${decimal.replace(/[^0-9]/gi, "")}`;
   }
 
   onChange(ev: HbInputEvent) {
-    const { value } = this.inputEl
-    this.value = value
-    this.attributeSync && this.setAttribute('value', this.originalValue)
+    const { value } = this.inputEl;
+    this.value = value;
+    this.attributeSync && this.setAttribute("value", this.originalValue);
     this.dispatchEvent(new CustomEvent("event", ev));
   }
-  
+
   async customConnectedCallback() {
-    const inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'input')
-    this.inputEl = inputEl
-    this.value = this.getAttribute('value')
-    inputEl.value = this.value
-    this.onclick = () => inputEl.focus()
+    const inputEl = await getElement<HTMLInputElement>(
+      this.shadowRoot,
+      "input"
+    );
+    this.inputEl = inputEl;
+    this.value = this.getAttribute("value");
+    inputEl.value = this.value;
+    this.onclick = () => inputEl.focus();
   }
   disconnectedCallback() {
     this.onclick = () => null;
   }
   attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === 'value') {
-      const inputEl = this.inputEl
-      if (this.type === type.number) newVal = this.toNumeric(newVal)
-      inputEl && inputEl.value !== newVal && (inputEl.value = newVal)
+    if (name === "value") {
+      const inputEl = this.inputEl;
+      if (this.type === type.number) newVal = this.toNumeric(newVal);
+      inputEl && inputEl.value !== newVal && (inputEl.value = newVal);
     }
 
     super.attributeChangedCallback(name, _, newVal);

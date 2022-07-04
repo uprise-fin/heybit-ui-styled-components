@@ -3,29 +3,37 @@ import { html } from "lit";
 import { size } from "../../base";
 import "./index";
 import type { HbButton } from "./index";
-import { hbButtonTheme, hbButtonType } from './index';
+import { hbButtonTheme, hbButtonType } from "./index";
 
 export default {
   title: "components/organism/hb-button",
   argTypes: {
     theme: {
       options: Object.keys(hbButtonTheme),
-      control: { type: 'radio' },
+      control: { type: "radio" },
     },
     size: {
       options: Object.keys(size),
-      control: { type: 'radio' },
-      defaultValue: size.large
+      control: { type: "radio" },
+      defaultValue: size.large,
     },
     type: {
       options: Object.keys(hbButtonType),
-      control: { type: 'radio' },
-      defaultValue: hbButtonType.rectagle
+      control: { type: "radio" },
+      defaultValue: hbButtonType.rectagle,
     },
   },
 } as Meta;
 
-const Template: Story<HbButton> = ({ type,loading, disabled, theme, size, title ,baseLoadingDuration }) =>
+const Template: Story<HbButton> = ({
+  type,
+  loading,
+  disabled,
+  theme,
+  size,
+  title,
+  baseLoadingDuration,
+}) =>
   html`<hb-button
     theme="${theme}"
     size=${size}
@@ -33,8 +41,16 @@ const Template: Story<HbButton> = ({ type,loading, disabled, theme, size, title 
     baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
-  >${title}</hb-button>`;
-const IconTemplate: Story<HbButton> = ({ type,loading, disabled, theme, size ,baseLoadingDuration }) =>
+    >${title}</hb-button
+  >`;
+const IconTemplate: Story<HbButton> = ({
+  type,
+  loading,
+  disabled,
+  theme,
+  size,
+  baseLoadingDuration,
+}) =>
   html`<hb-button
     theme="${theme}"
     size=${size}
@@ -42,10 +58,11 @@ const IconTemplate: Story<HbButton> = ({ type,loading, disabled, theme, size ,ba
     baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
-  ><hb-icon icon="notice" size=${size}></hb-icon></hb-button>`;
+    ><hb-icon icon="notice" size=${size}></hb-icon
+  ></hb-button>`;
 
 const args = {
-  title: '내용을 입력해보세요',
+  title: "내용을 입력해보세요",
   type: hbButtonType.rectagle,
   size: size.large,
   baseLoadingDuration: 500,

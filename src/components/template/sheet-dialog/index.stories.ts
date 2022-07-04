@@ -82,21 +82,21 @@ horizon.args = {
     {
       name: "닫기",
       theme: hbButtonTheme.primary,
-      event: function() {
+      event: function () {
         console.log("1");
       },
     },
     {
       name: "열기",
       theme: hbButtonTheme.secondary,
-      event: function() {
+      event: function () {
         console.log("2");
       },
     },
     {
       name: "삼번",
       theme: hbButtonTheme.tertiary,
-      event: function() {
+      event: function () {
         console.log("3");
       },
     },

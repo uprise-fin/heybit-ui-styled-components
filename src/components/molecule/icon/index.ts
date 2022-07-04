@@ -1,8 +1,8 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
-import {Base, size } from "../../base";
-import SVG from './svg';
+import { unsafeSVG } from "lit/directives/unsafe-svg.js";
+import { Base, size } from "../../base";
+import SVG from "./svg";
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -12,8 +12,8 @@ import SVG from './svg';
  * @slot footer - optional, 푸터
  * @csspart container
  * @csspart header
- * @csspart content 
- * @csspart footer 
+ * @csspart content
+ * @csspart footer
  */
 
 @customElement("hb-icon")
@@ -31,12 +31,12 @@ export class HbIcon extends Base {
     };
   }
   convert(str: string) {
-    const start = str.indexOf('<', 1)
+    const start = str.indexOf("<", 1);
     return str.substring(start, str.length - 6);
   }
 
   render() {
-    return html`${unsafeSVG(SVG[this.icon])}`
+    return html`${unsafeSVG(SVG[this.icon])}`;
   }
 }
 

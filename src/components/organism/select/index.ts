@@ -2,11 +2,11 @@ import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getElement } from "../../../utils";
 import { transitionType } from "../../atom/transition";
-import  {Base, size } from "../../base";
+import { Base, size } from "../../base";
 import { HbList } from "../../molecule/list";
 import { HbInput } from "../input";
 export interface Option {
-  label: string; 
+  label: string;
   value: string;
 }
 /**
@@ -30,21 +30,21 @@ export class HbSelect extends Base {
   }
   inputEl?: HTMLInputElement;
   parentQuery?: string;
-  parentEl?: HTMLElement
-  attributeSync = false
-  fixed = false
-  search = false
+  parentEl?: HTMLElement;
+  attributeSync = false;
+  fixed = false;
+  search = false;
   open = false;
   top: number;
   left: number;
   width: number;
   maxHeight: number;
-  value = '';
-  options: Option[] = []
-  placeholder = '검색어를 입력해주세요.'
-  emptyText = "검색결과가 없습니다."
-  hasFocus = false
-  inputValue = ''
+  value = "";
+  options: Option[] = [];
+  placeholder = "검색어를 입력해주세요.";
+  emptyText = "검색결과가 없습니다.";
+  hasFocus = false;
+  inputValue = "";
 
   static get properties() {
     return {
@@ -66,41 +66,69 @@ export class HbSelect extends Base {
   }
 
   get list() {
-    return this.options.filter(x => x.label.includes(this.inputValue)) || []
+    return this.options.filter((x) => x.label.includes(this.inputValue)) || [];
   }
 
   get values() {
-    return this.options.map(x => x.value) || []
+    return this.options.map((x) => x.value) || [];
   }
 
   get label() {
-    if (this.hasFocus || !this.options) return this.inputValue
-    return this.options.find(x => x.value === this.value)?.label || ''
+    if (this.hasFocus || !this.options) return this.inputValue;
+    return this.options.find((x) => x.value === this.value)?.label || "";
   }
 
   get scrollEventListener() {
-    if (this.parentQuery) return this.parentEl
-    return window
+    if (this.parentQuery) return this.parentEl;
+    return window;
   }
 
-  sto = setTimeout(() =>{}, 0);
+  sto = setTimeout(() => {}, 0);
 
   render() {
     return html`
-      <hb-input class="hb-select__label" @click=${this.onClick} id="label" part="label" class="hb-select__input" ?readonly=${!this.search} value=${this.label} placeholder=${this.placeholder} @event=${this.onInput}>
+      <hb-input
+        class="hb-select__label"
+        @click=${this.onClick}
+        id="label"
+        part="label"
+        class="hb-select__input"
+        ?readonly=${!this.search}
+        value=${this.label}
+        placeholder=${this.placeholder}
+        @event=${this.onInput}
+      >
         <slot name="icon" class="hb-select__label--icon"></slot>
-        <hb-icon slot="slot--right" icon="ic-system-arrow-down-18-black" size=${size.small}></hb-icon>
+        <hb-icon
+          slot="slot--right"
+          icon="ic-system-arrow-down-18-black"
+          size=${size.small}
+        ></hb-icon>
       </hb-input>
-      <hb-transition id="select-transition" ?show=${this.open} type=${transitionType.fade}>
-        <hb-list emptyText=${this.emptyText} id="list" class="hb-select__list" style="width: ${this.width}px;transform: translate(${this.left}px,${this.top}px);max-height:${this.maxHeight}px;" @event=${this.onSelect} .options=${this.list} .value=${this.value}></hb-list>
+      <hb-transition
+        id="select-transition"
+        ?show=${this.open}
+        type=${transitionType.fade}
+      >
+        <hb-list
+          emptyText=${this.emptyText}
+          id="list"
+          class="hb-select__list"
+          style="width: ${this.width}px;transform: translate(${this
+            .left}px,${this.top}px);max-height:${this.maxHeight}px;"
+          @event=${this.onSelect}
+          .options=${this.list}
+          .value=${this.value}
+        ></hb-list>
       </hb-transition>
-    `
+    `;
   }
   async customConnectedCallback() {
     this.onfocus = () => this.adapterShow();
     this.onblur = () => this.adapterHide();
-    this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'label')
-    this.parentQuery && (this.parentEl = document.querySelector(this.parentQuery))
+    this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, "label");
+    this.parentQuery &&
+      (this.parentEl = document.querySelector(this.parentQuery));
   }
   disconnectedCallback() {
     this.onfocus = () => null;
@@ -109,38 +137,38 @@ export class HbSelect extends Base {
   onScroll() {
     const { bottom } = this.getBoundingClientRect();
     if (bottom > 100) this.maxHeight = window.innerHeight - bottom - 50;
-    this.top = -(this.parentEl ? this.parentEl?.scrollTop : window.scrollY)
-    this.left = -(this.parentEl ? this.parentEl?.scrollLeft : window.scrollX)
+    this.top = -(this.parentEl ? this.parentEl?.scrollTop : window.scrollY);
+    this.left = -(this.parentEl ? this.parentEl?.scrollLeft : window.scrollX);
   }
-  
-  onScrollBound = this.onScroll.bind(this)
+
+  onScrollBound = this.onScroll.bind(this);
 
   onInput(ev: InputEvent) {
-    const {target} = ev;
-    if(!(target instanceof HbInput)) return
-    this.inputValue = target.value
+    const { target } = ev;
+    if (!(target instanceof HbInput)) return;
+    this.inputValue = target.value;
   }
 
   onSelect(evt: Event) {
-    evt.stopImmediatePropagation()
+    evt.stopImmediatePropagation();
     this.adapterHide();
-    const {target} = evt;
-    if(!(target instanceof HbList)) return
-    const { value  } = target;
+    const { target } = evt;
+    if (!(target instanceof HbList)) return;
+    const { value } = target;
     this.attributeSync && this.setAttribute("value", value!);
     this.value = value!;
-    this.inputValue = ''
+    this.inputValue = "";
     this.dispatchEvent(new CustomEvent("event", evt));
   }
   onShow() {
     const { width, bottom } = this.getBoundingClientRect();
     this.open = true;
-    this.width = width
+    this.width = width;
     this.maxHeight = window.innerHeight - bottom - 50;
-    this.search && (this.hasFocus = true)
+    this.search && (this.hasFocus = true);
     if (this.fixed) {
-      this.onScroll()
-      this.scrollEventListener.addEventListener('scroll', this.onScrollBound)
+      this.onScroll();
+      this.scrollEventListener.addEventListener("scroll", this.onScrollBound);
     }
   }
 
@@ -154,10 +182,14 @@ export class HbSelect extends Base {
   }
 
   onHide() {
-    this.blur()
+    this.blur();
     this.open = false;
-    this.search && (this.hasFocus = false)
-    this.fixed && this.scrollEventListener.removeEventListener('scroll', this.onScrollBound)
+    this.search && (this.hasFocus = false);
+    this.fixed &&
+      this.scrollEventListener.removeEventListener(
+        "scroll",
+        this.onScrollBound
+      );
   }
 
   adapterHide() {

@@ -37,21 +37,23 @@ export interface Anchor {
 @customElement("hb-sheet-dialog")
 export class HbSheetDialog extends Base {
   static override get styles() {
-    return [require("../../../styles/template/sheet-dialog/index.scss").default];
+    return [
+      require("../../../styles/template/sheet-dialog/index.scss").default,
+    ];
   }
-  loading = false
-  baseLoadingDuration = 500
-  width = 0
-  open = false
-  title = ''
+  loading = false;
+  baseLoadingDuration = 500;
+  width = 0;
+  open = false;
+  title = "";
   persistent = false;
   hideCloseBtn = false;
-  buttonAlign = buttonAlign.horizon
-  anchor: Anchor = {}
-  buttons: Button[] = []
+  buttonAlign = buttonAlign.horizon;
+  anchor: Anchor = {};
+  buttons: Button[] = [];
 
   get eventDisabled() {
-    return this.buttons.map(x => x.loading).some(x => x) || this.loading
+    return this.buttons.map((x) => x.loading).some((x) => x) || this.loading;
   }
   // get open() {
   //   return this._open;
@@ -62,7 +64,6 @@ export class HbSheetDialog extends Base {
   //     this.onToggle(val)
   //   }
   // }
-   
 
   // @property()
   // value!: string;
@@ -83,63 +84,83 @@ export class HbSheetDialog extends Base {
 
   render() {
     return html`
-      <hb-modal 
+      <hb-modal
         @close=${this.onClose}
         verticalAlign=${verticalAlign.bottom}
         width=${this.width}
-        ?open=${this.open} 
-        ?persistent=${this.persistent || this.eventDisabled} 
+        ?open=${this.open}
+        ?persistent=${this.persistent || this.eventDisabled}
         transitionType=${transitionType.bottomUp}
       >
         <div class="hb-sheet-dialog__container">
-          ${
-            this.hideCloseBtn ? '' : html`
-            <hb-button
-              ?disabled=${this.eventDisabled}
-              @event=${this.onClose}
-              type=${hbButtonType.custom}
-              class="hb-sheet-dialog__close-btn"
-              part="close-btn"
-              id="close-btn"
-            ><hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon></hb-button>`
-          }
-          <div class="hb-sheet-dialog__head">${this.title ? html`<p part="title" class="hb-sheet-dialog__head__title">${this.title}</p>` : ''}</div>
+          ${this.hideCloseBtn
+            ? ""
+            : html` <hb-button
+                ?disabled=${this.eventDisabled}
+                @event=${this.onClose}
+                type=${hbButtonType.custom}
+                class="hb-sheet-dialog__close-btn"
+                part="close-btn"
+                id="close-btn"
+                ><hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon
+              ></hb-button>`}
+          <div class="hb-sheet-dialog__head">
+            ${this.title
+              ? html`<p part="title" class="hb-sheet-dialog__head__title">
+                  ${this.title}
+                </p>`
+              : ""}
+          </div>
           <div class="hb-sheet-dialog__body">
             <slot class="hb-sheet-dialog__body__content"></slot>
           </div>
           <div class="hb-sheet-dialog__foot">
             <div class="hb-sheet-dialog__foot__button-wrap ${this.buttonAlign}">
-              ${this.buttons.map((x, i) => html`<hb-button ?loading=${this.loading || x.loading} ?disabled=${this.eventDisabled} baseLoadingDuration=${this.baseLoadingDuration} @event=${this.onEvent.bind(this,x, i)} theme=${x.theme} size="medium">${x.name}</hb-button>`)}
+              ${this.buttons.map(
+                (x, i) =>
+                  html`<hb-button
+                    ?loading=${this.loading || x.loading}
+                    ?disabled=${this.eventDisabled}
+                    baseLoadingDuration=${this.baseLoadingDuration}
+                    @event=${this.onEvent.bind(this, x, i)}
+                    theme=${x.theme}
+                    size="medium"
+                    >${x.name}</hb-button
+                  >`
+              )}
             </div>
-            ${
-              this.anchor && this.anchor.name
-                ?
-                  html`<hb-anchor ?disabled=${this.eventDisabled} class="hb-sheet-dialog__foot__anc" href=${this.anchor.href} target=${this.anchor.target} @event=${this.anchor.event}>${this.anchor.name}</hb-anchor>`
-                :
-                  ''
-            }
+            ${this.anchor && this.anchor.name
+              ? html`<hb-anchor
+                  ?disabled=${this.eventDisabled}
+                  class="hb-sheet-dialog__foot__anc"
+                  href=${this.anchor.href}
+                  target=${this.anchor.target}
+                  @event=${this.anchor.event}
+                  >${this.anchor.name}</hb-anchor
+                >`
+              : ""}
           </div>
         </div>
       </hb-modal>
-    `
+    `;
   }
 
   async onEvent(button: Button, index: number) {
-    const {event}= button;
+    const { event } = button;
     if (this.baseLoadingDuration) {
-      const on = this.buttons.slice()
-      const off = this.buttons.slice()
-      on[index].loading = true
-      this.buttons = on
-      await Promise.all([event(), wait(this.baseLoadingDuration)])
-      off[index].loading = false
-      this.buttons = off
-    } else event()
+      const on = this.buttons.slice();
+      const off = this.buttons.slice();
+      on[index].loading = true;
+      this.buttons = on;
+      await Promise.all([event(), wait(this.baseLoadingDuration)]);
+      off[index].loading = false;
+      this.buttons = off;
+    } else event();
   }
 
   onClose() {
     this.open = false;
-    this.removeAttribute('open')
+    this.removeAttribute("open");
     this.dispatchEvent(new CustomEvent("close"));
   }
 }

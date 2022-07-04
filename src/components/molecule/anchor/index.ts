@@ -1,6 +1,6 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import {Base} from "../../base";
+import { Base } from "../../base";
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -20,10 +20,10 @@ export class HbAnchor extends Base {
   static override get styles() {
     return [require("../../../styles/molecule/anchor/index.scss").default];
   }
-  href = ''
-  target = ''
+  href = "";
+  target = "";
   text: string;
-  disabled = false
+  disabled = false;
 
   static get properties() {
     return {
@@ -36,22 +36,24 @@ export class HbAnchor extends Base {
   async customConnectedCallback() {
     this.tabIndex = 0;
     this.onclick = (ev: Event) => {
-      if (this.disabled) return
-      this.href ? this.route() : this.dispatchEvent(new CustomEvent("event", ev));
-    }
+      if (this.disabled) return;
+      this.href
+        ? this.route()
+        : this.dispatchEvent(new CustomEvent("event", ev));
+    };
   }
 
   route() {
-    const a = document.createElement('a')
-    a.href = this.href
-    a.target = this.target || '_blank'
-    a.rel = 'noreferer noopener'
-    a.click()
-    a.remove()
+    const a = document.createElement("a");
+    a.href = this.href;
+    a.target = this.target || "_blank";
+    a.rel = "noreferer noopener";
+    a.click();
+    a.remove();
   }
 
   render() {
-    return html`<slot></slot>`
+    return html`<slot></slot>`;
   }
 }
 

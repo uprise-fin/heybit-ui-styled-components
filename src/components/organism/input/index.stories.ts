@@ -5,10 +5,11 @@ import "./index";
 import type { HbInput, HbInputEvent } from "./index";
 import { type } from "./index";
 
-export default dev() && {
-  title: "components/organism/hb-input",
-  component: "hb-input",
-} as Meta;
+export default dev() &&
+  ({
+    title: "components/organism/hb-input",
+    component: "hb-input",
+  } as Meta);
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story<HbInput> = ({

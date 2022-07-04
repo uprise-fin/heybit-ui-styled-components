@@ -15,16 +15,18 @@ import { Base } from "../../base";
 @customElement("hb-event-dialog")
 export class HbEventDialog extends Base {
   static override get styles() {
-    return [require("../../../styles/template/event-dialog/index.scss").default];
+    return [
+      require("../../../styles/template/event-dialog/index.scss").default,
+    ];
   }
-  width = 400
-  loadingWidth = 400
-  loadingHeight = 490
-  open = false
+  width = 400;
+  loadingWidth = 400;
+  loadingHeight = 490;
+  open = false;
   persistent = false;
   hideCloseBtn = false;
-  image = '';
-  href = '';
+  image = "";
+  href = "";
 
   static get properties() {
     return {
@@ -41,24 +43,25 @@ export class HbEventDialog extends Base {
 
   render() {
     return html`
-      <hb-modal 
+      <hb-modal
         @close=${this.onClose}
         width=${this.width}
-        ?open=${this.open} 
-        ?persistent=${this.persistent} 
+        ?open=${this.open}
+        ?persistent=${this.persistent}
         transitionType=${transitionType.zoom}
       >
         <div class="hb-event-dialog__container">
-          ${
-            this.hideCloseBtn ? '' : html`
-            <button
-              @click=${this.onClose}
-              type="button"
-              class="hb-event-dialog__close-btn"
-              part="close-btn"
-              id="close-btn"
-            ><hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon></button>`
-          }
+          ${this.hideCloseBtn
+            ? ""
+            : html` <button
+                @click=${this.onClose}
+                type="button"
+                class="hb-event-dialog__close-btn"
+                part="close-btn"
+                id="close-btn"
+              >
+                <hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon>
+              </button>`}
           <hb-anchor href=${this.href}>
             <hb-img
               class="hb-event-dialog__container__img"
@@ -69,12 +72,12 @@ export class HbEventDialog extends Base {
           </hb-anchor>
         </div>
       </hb-modal>
-    `
+    `;
   }
 
   onClose() {
     this.open = false;
-    this.removeAttribute('open')
+    this.removeAttribute("open");
     this.dispatchEvent(new CustomEvent("close"));
   }
 }

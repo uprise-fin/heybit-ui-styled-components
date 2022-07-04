@@ -65,10 +65,7 @@ const LevelTemplate: Story<unknown> = () =>
         시스템컬러
       </div>
       ${levels.map(
-        (x) =>
-          html`
-            <div class="box__item box__item--reversal">${x}</div>
-          `
+        (x) => html` <div class="box__item box__item--reversal">${x}</div> `
       )}
     </div>
     ${Object.keys(systemColor).map(
@@ -99,10 +96,7 @@ const LevelTemplate: Story<unknown> = () =>
         서비스컬러
       </div>
       ${levels.map(
-        (x) =>
-          html`
-            <div class="box__item box__item--reversal">${x}</div>
-          `
+        (x) => html` <div class="box__item box__item--reversal">${x}</div> `
       )}
     </div>
     ${Object.keys(serviceColor).map(

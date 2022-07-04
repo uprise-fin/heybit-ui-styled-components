@@ -1,9 +1,9 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
+// import style from '../../../styles/molecule/toast/index.scss';
 import { transitionType } from "../../atom/transition";
 import { Base } from "../../base";
 
-// import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
  * @property open 온 오프
  * @slot header - optional, 헤더
@@ -11,29 +11,35 @@ import { Base } from "../../base";
  * @slot footer - optional, 푸터
  * @csspart container
  * @csspart header
- * @csspart content 
- * @csspart footer 
+ * @csspart content
+ * @csspart footer
  */
 export interface Message {
-  text: string
+  text: string;
   // theme?: Color
-  icon?: string
-  duration?: number
+  icon?: string;
+  duration?: number;
 }
 interface Timer {
-  time: number
-  index: number
+  time: number;
+  index: number;
 }
 @customElement("hb-toast")
 export class HbToast extends Base {
   static override get styles() {
     return [require("../../../styles/molecule/toast/index.scss").default];
   }
-  now: number = 0
-  messages: Message[] = []
-  timer: Timer[] = []
-  duration: number = 3000
-  hide = false
+
+  now: number = 0;
+
+  messages: Message[] = [];
+
+  timer: Timer[] = [];
+
+  duration: number = 3000;
+
+  hide = false;
+
   static get properties() {
     return {
       messages: { type: Array, Reflect: true },
@@ -43,30 +49,32 @@ export class HbToast extends Base {
       timer: { type: Array, Reflect: true },
     };
   }
-  get _messages() {
+
+  get messagesTrigger() {
     if (!this.messages.length) {
-      this.timer = []
-      return []
+      this.timer = [];
+      return [];
     }
-    
-    while(this.messages.length > this.timer.length) {
-      const index = this.timer.length
-      const duration = (this.messages[index].duration || this.duration) - 1
-      this.timer.push({time:(new Date()).getTime() + duration, index })
-      setTimeout(()=>{
-        this.now = (new Date()).getTime()
-      }, duration)
+
+    while (this.messages.length > this.timer.length) {
+      const index = this.timer.length;
+      const duration = (this.messages[index].duration || this.duration) - 1;
+      this.timer.push({ time: new Date().getTime() + duration, index });
+      setTimeout(() => {
+        this.now = new Date().getTime();
+      }, duration);
     }
-    return this.messages
+    return this.messages;
   }
 
   getHeight(index: number) {
-    if (this.getShow(index)) return 0
-    return this.shadowRoot.querySelectorAll('.hb-toast__position')[index]?.clientHeight
+    if (this.getShow(index)) return 0;
+    return this.shadowRoot.querySelectorAll(".hb-toast__position")[index]
+      ?.clientHeight;
   }
 
   getShow(index: number) {
-    return this.timer[index].time > this.now
+    return this.timer[index].time > this.now;
   }
 
   // getIndex(index: number) {
@@ -81,9 +89,31 @@ export class HbToast extends Base {
   //   msg = msg.replace(/\\n/g, '\n')
   //   return msg.replace(/\[!]/g, '')
   // }
-  
+
   render() {
-    return this._messages.map((x, i) => (html`<hb-transition style="margin-top: -${this.getHeight(i)}px;" class="hb-toast__position" type=${transitionType.fade} ?show=${this.getShow(i)}><hb-transition type=${transitionType.bottomUpHeight} ?show=${this.getShow(i)}><div class="hb-toast__content">${x.icon ? html`<hb-icon class="hb-toast__content__icon" icon=${x.icon} size="small"></hb-icon>` : ''}<div class="hb-toast__content__text">${x.text}</div></div></hb-transition></hb-transition>`))
+    return this.messagesTrigger.map(
+      (x, i) =>
+        html`<hb-transition
+          style="margin-top: -${this.getHeight(i)}px;"
+          class="hb-toast__position"
+          type=${transitionType.fade}
+          ?show=${this.getShow(i)}
+          ><hb-transition
+            type=${transitionType.bottomUpHeight}
+            ?show=${this.getShow(i)}
+            ><div class="hb-toast__content">
+              ${x.icon
+                ? html`<hb-icon
+                    class="hb-toast__content__icon"
+                    icon=${x.icon}
+                    size="small"
+                  ></hb-icon>`
+                : ""}
+              <div class="hb-toast__content__text">${x.text}</div>
+            </div></hb-transition
+          ></hb-transition
+        >`
+    );
   }
 }
 

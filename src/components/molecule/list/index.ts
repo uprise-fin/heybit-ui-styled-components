@@ -1,36 +1,36 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import {Base} from "../../base";
+import { Base } from "../../base";
 
 /**
  * @fires event
- * @property src 
- * @property multiSource 
- * @property breakPoint 
- * @property pcPrefix 
+ * @property src
+ * @property multiSource
+ * @property breakPoint
+ * @property pcPrefix
  * @csspart picture
  * @csspart skeleton
  * @csspart img
  */
 export interface Option {
-  label: string; 
+  label: string;
   value: string;
 }
 export interface HbListEvent extends Event {
-  target: HbList
+  target: HbList;
 }
 @customElement("hb-list")
 export class HbList extends Base {
   static override get styles() {
     return [require("../../../styles/molecule/list/index.scss").default];
   }
-  options: Option[] = []
-  attributeSync = false
-  open = false
-  value = ''
-  emptyText = ''
-  width = 0
-  maxHeight = 0
+  options: Option[] = [];
+  attributeSync = false;
+  open = false;
+  value = "";
+  emptyText = "";
+  width = 0;
+  maxHeight = 0;
   static get properties() {
     return {
       options: { type: Array, Reflect: true },
@@ -44,14 +44,14 @@ export class HbList extends Base {
   }
 
   get values() {
-    return this.options.map(x => x.value) || []
+    return this.options.map((x) => x.value) || [];
   }
-  sto = setTimeout(() =>{}, 0);
+  sto = setTimeout(() => {}, 0);
   onSelect(evt: HbListEvent) {
     this.adapterHide();
-    if (!(evt.target instanceof HTMLButtonElement)) return
+    if (!(evt.target instanceof HTMLButtonElement)) return;
     const { target } = evt;
-    const { value  } = target.dataset;
+    const { value } = target.dataset;
     if (this.value === value || !this.values.includes(value)) return;
     this.attributeSync && this.setAttribute("value", value!);
     this.value = value!;
@@ -59,7 +59,7 @@ export class HbList extends Base {
   }
 
   onHide() {
-    this.blur()
+    this.blur();
     this.open = false;
   }
 
@@ -71,15 +71,27 @@ export class HbList extends Base {
       <div
         class="hb-list__wrap"
         @click=${this.onSelect}
-        @keyup=${(evt:KeyboardEvent) => evt.key === "Enter" && this.onSelect.call(this)}
+        @keyup=${(evt: KeyboardEvent) =>
+          evt.key === "Enter" && this.onSelect.call(this)}
         data-empty-text=${this.emptyText}
         part="list"
         id="list"
-      >${this.options.map(x => (
-        html`
-          <button type="button" class="hb-list__btn" ?data-selected=${x.value === this.value} data-value=${x.value}>${x.label}</button>
-        `))}</div>
-    `
+      >
+        ${this.options.map(
+          (x) =>
+            html`
+              <button
+                type="button"
+                class="hb-list__btn"
+                ?data-selected=${x.value === this.value}
+                data-value=${x.value}
+              >
+                ${x.label}
+              </button>
+            `
+        )}
+      </div>
+    `;
   }
 }
 
