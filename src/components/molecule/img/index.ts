@@ -1,6 +1,6 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { Base } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {Base} from '../../base';
 
 /**
  * @property src
@@ -12,38 +12,38 @@ import { Base } from "../../base";
  * @csspart img
  */
 
-@customElement("hb-img")
+@customElement('hb-img')
 export class HbImg extends Base {
   static override get styles() {
-    return [require("../../../styles/molecule/img/index.scss").default];
+    return [require('../../../styles/molecule/img/index.scss').default];
   }
   src: string;
   loadingWidth: number;
   loadingHeight: number;
   breakPoint = 1020;
   multiSource = 0;
-  pcPrefix = "-pc";
+  pcPrefix = '-pc';
   loaded = false;
   error = false;
 
   static get properties() {
     return {
-      src: { type: String, Reflect: true },
-      loadingWidth: { type: Number, Reflect: true },
-      loadingHeight: { type: Number, Reflect: true },
-      multiSource: { type: Number, Reflect: true },
-      breakPoint: { type: Number, Reflect: true },
-      pcPrefix: { type: String, Reflect: true },
-      loaded: { type: Boolean, Reflect: true },
-      error: { type: Boolean, Reflect: true },
+      src: {type: String, Reflect: true},
+      loadingWidth: {type: Number, Reflect: true},
+      loadingHeight: {type: Number, Reflect: true},
+      multiSource: {type: Number, Reflect: true},
+      breakPoint: {type: Number, Reflect: true},
+      pcPrefix: {type: String, Reflect: true},
+      loaded: {type: Boolean, Reflect: true},
+      error: {type: Boolean, Reflect: true},
     };
   }
   get srcExt() {
-    const number = this.src.lastIndexOf(".");
+    const number = this.src.lastIndexOf('.');
     return this.src.substring(number);
   }
   get srcName() {
-    const number = this.src.lastIndexOf(".");
+    const number = this.src.lastIndexOf('.');
     return this.src.substring(0, number);
   }
 
@@ -59,7 +59,7 @@ export class HbImg extends Base {
       }
       return `${this.srcName}@${j}x${this.srcExt} ${j}x`;
     });
-    return arr.join(",");
+    return arr.join(',');
   }
   get pcSrcset() {
     const arr = this.set.map((_, i) => {
@@ -69,7 +69,7 @@ export class HbImg extends Base {
       }
       return `${this.srcName}${this.pcPrefix}@${j}x${this.srcExt} ${j}x`;
     });
-    return arr.join(",");
+    return arr.join(',');
   }
 
   // set src(src: string) {
@@ -93,7 +93,7 @@ export class HbImg extends Base {
         class="hb-img__picture"
         part="picture"
         style=${this.loaded
-          ? ""
+          ? ''
           : `width:${this.loadingWidth}px; height:${this.loadingHeight}px;`}
       >
         ${this.multiSource > 0
@@ -109,7 +109,7 @@ export class HbImg extends Base {
                 />
               `
             : html` <source srcset=${this.srcset} /> `
-          : ""}
+          : ''}
         <img
           class="hb-img__picture__img"
           part="img"
@@ -140,7 +140,7 @@ export class HbImg extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-img": HbImg;
+    'hb-img': HbImg;
   }
 }
 // import CustomElement from "../custom-elements";

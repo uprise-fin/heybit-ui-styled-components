@@ -1,8 +1,8 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { unsafeSVG } from "lit/directives/unsafe-svg.js";
-import { Base, size } from "../../base";
-import SVG from "./svg";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
+import {Base, size} from '../../base';
+import SVG from './svg';
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -16,22 +16,22 @@ import SVG from "./svg";
  * @csspart footer
  */
 
-@customElement("hb-icon")
+@customElement('hb-icon')
 export class HbIcon extends Base {
   static override get styles() {
-    return [require("../../../styles/molecule/icon/index.scss").default];
+    return [require('../../../styles/molecule/icon/index.scss').default];
   }
 
   icon: string;
   size: size;
   static get properties() {
     return {
-      icon: { type: String, Reflect: true },
-      size: { type: String, Reflect: true },
+      icon: {type: String, Reflect: true},
+      size: {type: String, Reflect: true},
     };
   }
   convert(str: string) {
-    const start = str.indexOf("<", 1);
+    const start = str.indexOf('<', 1);
     return str.substring(start, str.length - 6);
   }
 
@@ -42,7 +42,7 @@ export class HbIcon extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-icon": HbIcon;
+    'hb-icon': HbIcon;
   }
 }
 // import CustomElement from "../custom-elements";

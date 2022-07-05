@@ -1,7 +1,7 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { transitionType } from "../../atom/transition";
-import { Base } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {transitionType} from '../../atom/transition';
+import {Base} from '../../base';
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -15,10 +15,10 @@ import { Base } from "../../base";
  * @csspart footer
  */
 
-@customElement("hb-tooltip")
+@customElement('hb-tooltip')
 export class HbTooltip extends Base {
   static override get styles() {
-    return [require("../../../styles/molecule/tooltip/index.scss").default];
+    return [require('../../../styles/molecule/tooltip/index.scss').default];
   }
 
   open: boolean = false;
@@ -27,10 +27,10 @@ export class HbTooltip extends Base {
 
   static get properties() {
     return {
-      open: { type: Boolean, Reflect: true },
-      width: { type: Number, Reflect: true },
-      height: { type: Number, Reflect: true },
-      position: { type: Array, Reflect: true },
+      open: {type: Boolean, Reflect: true},
+      width: {type: Number, Reflect: true},
+      height: {type: Number, Reflect: true},
+      position: {type: Array, Reflect: true},
     };
   }
 
@@ -52,8 +52,8 @@ export class HbTooltip extends Base {
   }
 
   onOpen() {
-    const { x, y, width, height } = this.getBoundingClientRect();
-    const { innerWidth, innerHeight } = window;
+    const {x, y, width, height} = this.getBoundingClientRect();
+    const {innerWidth, innerHeight} = window;
     this.position = [
       x + width / 2 > innerWidth / 2,
       y + height / 2 > innerHeight / 2,
@@ -79,7 +79,7 @@ export class HbTooltip extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-tooltip": HbTooltip;
+    'hb-tooltip': HbTooltip;
   }
 }
 // import CustomElement from "../custom-elements";

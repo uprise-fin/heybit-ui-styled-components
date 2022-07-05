@@ -1,19 +1,19 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { Base } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {Base} from '../../base';
 
 /**
  *
  */
 export enum hbSpinnerTheme {
-  "void" = "void",
-  "solid" = "solid",
+  'void' = 'void',
+  'solid' = 'solid',
 }
 
-@customElement("hb-spinner")
+@customElement('hb-spinner')
 export class HbSpinner extends Base {
   static override get styles() {
-    return [require("../../../styles/molecule/spinner/index.scss").default];
+    return [require('../../../styles/molecule/spinner/index.scss').default];
   }
 
   theme: hbSpinnerTheme = hbSpinnerTheme.solid;
@@ -21,7 +21,7 @@ export class HbSpinner extends Base {
 
   static get properties() {
     return {
-      theme: { type: String, Reflect: true },
+      theme: {type: String, Reflect: true},
       // size: { type: String, Reflect: true },
     };
   }
@@ -37,6 +37,6 @@ export class HbSpinner extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-spinner": HbSpinner;
+    'hb-spinner': HbSpinner;
   }
 }

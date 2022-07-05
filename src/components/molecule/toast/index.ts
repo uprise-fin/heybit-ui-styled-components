@@ -1,8 +1,8 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
 // import style from '../../../styles/molecule/toast/index.scss';
-import { transitionType } from "../../atom/transition";
-import { Base } from "../../base";
+import {transitionType} from '../../atom/transition';
+import {Base} from '../../base';
 
 /**
  * @property open 온 오프
@@ -24,10 +24,10 @@ interface Timer {
   time: number;
   index: number;
 }
-@customElement("hb-toast")
+@customElement('hb-toast')
 export class HbToast extends Base {
   static override get styles() {
-    return [require("../../../styles/molecule/toast/index.scss").default];
+    return [require('../../../styles/molecule/toast/index.scss').default];
   }
 
   now: number = 0;
@@ -42,11 +42,11 @@ export class HbToast extends Base {
 
   static get properties() {
     return {
-      messages: { type: Array, Reflect: true },
-      duration: { type: Number, Reflect: true },
-      now: { type: Number, Reflect: true },
-      hide: { type: Boolean, Reflect: true },
-      timer: { type: Array, Reflect: true },
+      messages: {type: Array, Reflect: true},
+      duration: {type: Number, Reflect: true},
+      now: {type: Number, Reflect: true},
+      hide: {type: Boolean, Reflect: true},
+      timer: {type: Array, Reflect: true},
     };
   }
 
@@ -59,7 +59,7 @@ export class HbToast extends Base {
     while (this.messages.length > this.timer.length) {
       const index = this.timer.length;
       const duration = (this.messages[index].duration || this.duration) - 1;
-      this.timer.push({ time: new Date().getTime() + duration, index });
+      this.timer.push({time: new Date().getTime() + duration, index});
       setTimeout(() => {
         this.now = new Date().getTime();
       }, duration);
@@ -69,7 +69,7 @@ export class HbToast extends Base {
 
   getHeight(index: number) {
     if (this.getShow(index)) return 0;
-    return this.shadowRoot.querySelectorAll(".hb-toast__position")[index]
+    return this.shadowRoot.querySelectorAll('.hb-toast__position')[index]
       ?.clientHeight;
   }
 
@@ -108,18 +108,18 @@ export class HbToast extends Base {
                     icon=${x.icon}
                     size="small"
                   ></hb-icon>`
-                : ""}
+                : ''}
               <div class="hb-toast__content__text">${x.text}</div>
             </div></hb-transition
           ></hb-transition
-        >`
+        >`,
     );
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-toast": HbToast;
+    'hb-toast': HbToast;
   }
 }
 // import CustomElement from "../custom-elements";

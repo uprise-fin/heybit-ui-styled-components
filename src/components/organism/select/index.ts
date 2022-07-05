@@ -1,10 +1,10 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { getElement } from "../../../utils";
-import { transitionType } from "../../atom/transition";
-import { Base, size } from "../../base";
-import { HbList } from "../../molecule/list";
-import { HbInput } from "../input";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {getElement} from '../../../utils';
+import {transitionType} from '../../atom/transition';
+import {Base, size} from '../../base';
+import {HbList} from '../../molecule/list';
+import {HbInput} from '../input';
 export interface Option {
   label: string;
   value: string;
@@ -23,10 +23,10 @@ export interface Option {
  * @csspart list
  */
 
-@customElement("hb-select")
+@customElement('hb-select')
 export class HbSelect extends Base {
   static override get styles() {
-    return [require("../../../styles/organism/select/index.scss").default];
+    return [require('../../../styles/organism/select/index.scss').default];
   }
   inputEl?: HTMLInputElement;
   parentQuery?: string;
@@ -39,43 +39,43 @@ export class HbSelect extends Base {
   left: number;
   width: number;
   maxHeight: number;
-  value = "";
+  value = '';
   options: Option[] = [];
-  placeholder = "검색어를 입력해주세요.";
-  emptyText = "검색결과가 없습니다.";
+  placeholder = '검색어를 입력해주세요.';
+  emptyText = '검색결과가 없습니다.';
   hasFocus = false;
-  inputValue = "";
+  inputValue = '';
 
   static get properties() {
     return {
-      open: { type: Boolean, Reflect: true },
-      search: { type: Boolean, Reflect: true },
-      attributeSync: { type: Boolean, Reflect: true },
-      fixed: { type: Boolean, Reflect: true },
-      top: { type: Number, Reflect: true },
-      left: { type: Number, Reflect: true },
-      width: { type: Number, Reflect: true },
-      maxHeight: { type: Number, Reflect: true },
-      value: { type: String, Reflect: true },
-      options: { type: Array, Reflect: true },
-      emptyText: { type: String, Reflect: true },
-      inputValue: { type: String, Reflect: true },
-      parentQuery: { type: String, Reflect: true },
-      hasFocus: { type: Boolean, Reflect: true },
+      open: {type: Boolean, Reflect: true},
+      search: {type: Boolean, Reflect: true},
+      attributeSync: {type: Boolean, Reflect: true},
+      fixed: {type: Boolean, Reflect: true},
+      top: {type: Number, Reflect: true},
+      left: {type: Number, Reflect: true},
+      width: {type: Number, Reflect: true},
+      maxHeight: {type: Number, Reflect: true},
+      value: {type: String, Reflect: true},
+      options: {type: Array, Reflect: true},
+      emptyText: {type: String, Reflect: true},
+      inputValue: {type: String, Reflect: true},
+      parentQuery: {type: String, Reflect: true},
+      hasFocus: {type: Boolean, Reflect: true},
     };
   }
 
   get list() {
-    return this.options.filter((x) => x.label.includes(this.inputValue)) || [];
+    return this.options.filter(x => x.label.includes(this.inputValue)) || [];
   }
 
   get values() {
-    return this.options.map((x) => x.value) || [];
+    return this.options.map(x => x.value) || [];
   }
 
   get label() {
     if (this.hasFocus || !this.options) return this.inputValue;
-    return this.options.find((x) => x.value === this.value)?.label || "";
+    return this.options.find(x => x.value === this.value)?.label || '';
   }
 
   get scrollEventListener() {
@@ -126,7 +126,7 @@ export class HbSelect extends Base {
   async customConnectedCallback() {
     this.onfocus = () => this.adapterShow();
     this.onblur = () => this.adapterHide();
-    this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, "label");
+    this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'label');
     this.parentQuery &&
       (this.parentEl = document.querySelector(this.parentQuery));
   }
@@ -135,7 +135,7 @@ export class HbSelect extends Base {
     this.onblur = () => null;
   }
   onScroll() {
-    const { bottom } = this.getBoundingClientRect();
+    const {bottom} = this.getBoundingClientRect();
     if (bottom > 100) this.maxHeight = window.innerHeight - bottom - 50;
     this.top = -(this.parentEl ? this.parentEl?.scrollTop : window.scrollY);
     this.left = -(this.parentEl ? this.parentEl?.scrollLeft : window.scrollX);
@@ -144,7 +144,7 @@ export class HbSelect extends Base {
   onScrollBound = this.onScroll.bind(this);
 
   onInput(ev: InputEvent) {
-    const { target } = ev;
+    const {target} = ev;
     if (!(target instanceof HbInput)) return;
     this.inputValue = target.value;
   }
@@ -152,23 +152,23 @@ export class HbSelect extends Base {
   onSelect(evt: Event) {
     evt.stopImmediatePropagation();
     this.adapterHide();
-    const { target } = evt;
+    const {target} = evt;
     if (!(target instanceof HbList)) return;
-    const { value } = target;
-    this.attributeSync && this.setAttribute("value", value!);
+    const {value} = target;
+    this.attributeSync && this.setAttribute('value', value!);
     this.value = value!;
-    this.inputValue = "";
-    this.dispatchEvent(new CustomEvent("event", evt));
+    this.inputValue = '';
+    this.dispatchEvent(new CustomEvent('event', evt));
   }
   onShow() {
-    const { width, bottom } = this.getBoundingClientRect();
+    const {width, bottom} = this.getBoundingClientRect();
     this.open = true;
     this.width = width;
     this.maxHeight = window.innerHeight - bottom - 50;
     this.search && (this.hasFocus = true);
     if (this.fixed) {
       this.onScroll();
-      this.scrollEventListener.addEventListener("scroll", this.onScrollBound);
+      this.scrollEventListener.addEventListener('scroll', this.onScrollBound);
     }
   }
 
@@ -187,8 +187,8 @@ export class HbSelect extends Base {
     this.search && (this.hasFocus = false);
     this.fixed &&
       this.scrollEventListener.removeEventListener(
-        "scroll",
-        this.onScrollBound
+        'scroll',
+        this.onScrollBound,
       );
   }
 
@@ -199,6 +199,6 @@ export class HbSelect extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-select": HbSelect;
+    'hb-select': HbSelect;
   }
 }

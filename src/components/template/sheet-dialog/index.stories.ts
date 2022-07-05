@@ -1,32 +1,32 @@
-import { Meta, Story } from "@storybook/web-components";
-import { html } from "lit";
-import { hbButtonTheme } from "../../organism/button";
-import { buttonAlign } from "../modal";
-import "./index";
-import { HbSheetDialog } from "./index";
-import desktopImg from "/static/sample-desktop.png";
+import {Meta, Story} from '@storybook/web-components';
+import {html} from 'lit';
+import {hbButtonTheme} from '../../organism/button';
+import {buttonAlign} from '../modal';
+import './index';
+import {HbSheetDialog} from './index';
+import desktopImg from '../../../../static/sample-desktop.png';
 interface HbSheetDialogExpns extends HbSheetDialog {
   content: string;
 }
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: "components/template/hb-sheet-dialog✓",
-  component: "hb-sheet-dialog",
+  title: 'components/template/hb-sheet-dialog✓',
+  component: 'hb-sheet-dialog',
   argTypes: {
     open: {
       options: [true, false],
-      control: { type: "radio" },
+      control: {type: 'radio'},
       defaultValue: true,
     },
     persistent: {
       options: [true, false],
-      control: { type: "radio" },
+      control: {type: 'radio'},
       defaultValue: true,
     },
     hideCloseBtn: {
       options: [true, false],
-      control: { type: "radio" },
+      control: {type: 'radio'},
       defaultValue: false,
     },
     // buttonAlign: {
@@ -61,11 +61,11 @@ const Template = (props: HbSheetDialogExpns) => html`
   </hb-sheet-dialog>
 `;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const HorizonTemplate: Story<HbSheetDialogExpns> = (props) => {
+const HorizonTemplate: Story<HbSheetDialogExpns> = props => {
   props.buttonAlign = buttonAlign.horizon;
   return Template(props);
 };
-const VerticalTemplate: Story<HbSheetDialogExpns> = (props) => {
+const VerticalTemplate: Story<HbSheetDialogExpns> = props => {
   props.buttonAlign = buttonAlign.vertical;
   return Template(props);
 };
@@ -75,29 +75,29 @@ horizon.args = {
   persistent: true,
   loading: false,
   baseLoadingDuration: 0,
-  title: "팝업 예시입니다!",
+  title: '팝업 예시입니다!',
   content:
-    "팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.",
+    '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',
   buttons: [
     {
-      name: "닫기",
+      name: '닫기',
       theme: hbButtonTheme.primary,
       event: function () {
-        console.log("1");
+        console.log('1');
       },
     },
     {
-      name: "열기",
+      name: '열기',
       theme: hbButtonTheme.secondary,
       event: function () {
-        console.log("2");
+        console.log('2');
       },
     },
     {
-      name: "삼번",
+      name: '삼번',
       theme: hbButtonTheme.tertiary,
       event: function () {
-        console.log("3");
+        console.log('3');
       },
     },
   ],
@@ -106,8 +106,8 @@ export const vertical: Story<HbSheetDialogExpns> = VerticalTemplate.bind({});
 vertical.args = {
   ...horizon.args,
   anchor: {
-    name: "탈퇴하기",
-    href: "https://www.heybit.io",
+    name: '탈퇴하기',
+    href: 'https://www.heybit.io',
   },
 };
 // const EventPopupTemplate: Story<HbSheetDialogExpns> = ({

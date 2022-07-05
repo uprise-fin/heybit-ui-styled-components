@@ -1,10 +1,10 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { wait } from "../../../utils";
-import { transitionType } from "../../atom/transition";
-import { Base, verticalAlign } from "../../base";
-import { hbButtonTheme, hbButtonType } from "../../organism/button";
-import { buttonAlign } from "../modal";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {wait} from '../../../utils';
+import {transitionType} from '../../atom/transition';
+import {Base, verticalAlign} from '../../base';
+import {hbButtonTheme, hbButtonType} from '../../organism/button';
+import {buttonAlign} from '../modal';
 
 /**
  * @fires close 닫기
@@ -34,18 +34,18 @@ export interface Anchor {
   target?: string;
   name?: string;
 }
-@customElement("hb-sheet-dialog")
+@customElement('hb-sheet-dialog')
 export class HbSheetDialog extends Base {
   static override get styles() {
     return [
-      require("../../../styles/template/sheet-dialog/index.scss").default,
+      require('../../../styles/template/sheet-dialog/index.scss').default,
     ];
   }
   loading = false;
   baseLoadingDuration = 500;
   width = 0;
   open = false;
-  title = "";
+  title = '';
   persistent = false;
   hideCloseBtn = false;
   buttonAlign = buttonAlign.horizon;
@@ -53,7 +53,7 @@ export class HbSheetDialog extends Base {
   buttons: Button[] = [];
 
   get eventDisabled() {
-    return this.buttons.map((x) => x.loading).some((x) => x) || this.loading;
+    return this.buttons.map(x => x.loading).some(x => x) || this.loading;
   }
   // get open() {
   //   return this._open;
@@ -69,16 +69,16 @@ export class HbSheetDialog extends Base {
   // value!: string;
   static get properties() {
     return {
-      open: { type: Boolean, Reflect: true },
-      buttons: { type: Array, Reflect: true },
-      eventDisabled: { type: Boolean, Reflect: true },
-      persistent: { type: Boolean, Reflect: true },
-      hideCloseBtn: { type: Boolean, Reflect: true },
-      width: { type: Number, Reflect: true },
-      loading: { type: Boolean, Reflect: true },
-      baseLoadingDuration: { type: Number, Reflect: true },
-      buttonAlign: { type: String, Reflect: true },
-      title: { type: String, Reflect: true },
+      open: {type: Boolean, Reflect: true},
+      buttons: {type: Array, Reflect: true},
+      eventDisabled: {type: Boolean, Reflect: true},
+      persistent: {type: Boolean, Reflect: true},
+      hideCloseBtn: {type: Boolean, Reflect: true},
+      width: {type: Number, Reflect: true},
+      loading: {type: Boolean, Reflect: true},
+      baseLoadingDuration: {type: Number, Reflect: true},
+      buttonAlign: {type: String, Reflect: true},
+      title: {type: String, Reflect: true},
     };
   }
 
@@ -94,7 +94,7 @@ export class HbSheetDialog extends Base {
       >
         <div class="hb-sheet-dialog__container">
           ${this.hideCloseBtn
-            ? ""
+            ? ''
             : html` <hb-button
                 ?disabled=${this.eventDisabled}
                 @event=${this.onClose}
@@ -109,7 +109,7 @@ export class HbSheetDialog extends Base {
               ? html`<p part="title" class="hb-sheet-dialog__head__title">
                   ${this.title}
                 </p>`
-              : ""}
+              : ''}
           </div>
           <div class="hb-sheet-dialog__body">
             <slot class="hb-sheet-dialog__body__content"></slot>
@@ -126,7 +126,7 @@ export class HbSheetDialog extends Base {
                     theme=${x.theme}
                     size="medium"
                     >${x.name}</hb-button
-                  >`
+                  >`,
               )}
             </div>
             ${this.anchor && this.anchor.name
@@ -138,7 +138,7 @@ export class HbSheetDialog extends Base {
                   @event=${this.anchor.event}
                   >${this.anchor.name}</hb-anchor
                 >`
-              : ""}
+              : ''}
           </div>
         </div>
       </hb-modal>
@@ -146,7 +146,7 @@ export class HbSheetDialog extends Base {
   }
 
   async onEvent(button: Button, index: number) {
-    const { event } = button;
+    const {event} = button;
     if (this.baseLoadingDuration) {
       const on = this.buttons.slice();
       const off = this.buttons.slice();
@@ -160,13 +160,13 @@ export class HbSheetDialog extends Base {
 
   onClose() {
     this.open = false;
-    this.removeAttribute("open");
-    this.dispatchEvent(new CustomEvent("close"));
+    this.removeAttribute('open');
+    this.dispatchEvent(new CustomEvent('close'));
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-sheet-dialog": HbSheetDialog;
+    'hb-sheet-dialog': HbSheetDialog;
   }
 }

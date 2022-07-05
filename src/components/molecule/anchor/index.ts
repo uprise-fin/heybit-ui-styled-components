@@ -1,6 +1,6 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { Base } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {Base} from '../../base';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -15,21 +15,21 @@ import { Base } from "../../base";
  * @csspart list
  */
 
-@customElement("hb-anchor")
+@customElement('hb-anchor')
 export class HbAnchor extends Base {
   static override get styles() {
-    return [require("../../../styles/molecule/anchor/index.scss").default];
+    return [require('../../../styles/molecule/anchor/index.scss').default];
   }
-  href = "";
-  target = "";
+  href = '';
+  target = '';
   text: string;
   disabled = false;
 
   static get properties() {
     return {
-      href: { type: String, Reflect: true },
-      target: { type: String, Reflect: true },
-      disabled: { type: Boolean, Reflect: true },
+      href: {type: String, Reflect: true},
+      target: {type: String, Reflect: true},
+      disabled: {type: Boolean, Reflect: true},
     };
   }
 
@@ -39,15 +39,15 @@ export class HbAnchor extends Base {
       if (this.disabled) return;
       this.href
         ? this.route()
-        : this.dispatchEvent(new CustomEvent("event", ev));
+        : this.dispatchEvent(new CustomEvent('event', ev));
     };
   }
 
   route() {
-    const a = document.createElement("a");
+    const a = document.createElement('a');
     a.href = this.href;
-    a.target = this.target || "_blank";
-    a.rel = "noreferer noopener";
+    a.target = this.target || '_blank';
+    a.rel = 'noreferer noopener';
     a.click();
     a.remove();
   }
@@ -59,6 +59,6 @@ export class HbAnchor extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-anchor": HbAnchor;
+    'hb-anchor': HbAnchor;
   }
 }

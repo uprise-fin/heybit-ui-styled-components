@@ -1,7 +1,7 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { getChildren } from "../../../utils";
-import { Base } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {getChildren} from '../../../utils';
+import {Base} from '../../base';
 /**
  * @property open 온 오프
  * @property width
@@ -25,10 +25,10 @@ enum eventStatus {
   done,
   fake,
 }
-@customElement("hb-carousel")
+@customElement('hb-carousel')
 export class HbCarousel extends Base {
   static override get styles() {
-    return [require("../../../styles/template/carousel/index.scss").default];
+    return [require('../../../styles/template/carousel/index.scss').default];
   }
   //옵션
   auto = false;
@@ -71,22 +71,22 @@ export class HbCarousel extends Base {
   // value!: string;
   static get properties() {
     return {
-      auto: { type: Boolean, Reflect: true },
-      pause: { type: Boolean, Reflect: true },
-      infinite: { type: Boolean, Reflect: true },
-      rolling: { type: Boolean, Reflect: true },
-      holderFlag: { type: Boolean, Reflect: true },
-      draggable: { type: Boolean, Reflect: true },
-      eventStatus: { type: Number, Reflect: true },
-      dragDistance: { type: Number, Reflect: true },
-      index: { type: Number, Reflect: true },
-      flexWidth: { type: Number, Reflect: true },
-      fakeLength: { type: Number, Reflect: true },
-      itemLength: { type: Number, Reflect: true },
-      transitionFlag: { type: Boolean, Reflect: true },
-      visibleLength: { type: Number, Reflect: true },
-      duration: { type: Number, Reflect: true },
-      speed: { type: Number, Reflect: true },
+      auto: {type: Boolean, Reflect: true},
+      pause: {type: Boolean, Reflect: true},
+      infinite: {type: Boolean, Reflect: true},
+      rolling: {type: Boolean, Reflect: true},
+      holderFlag: {type: Boolean, Reflect: true},
+      draggable: {type: Boolean, Reflect: true},
+      eventStatus: {type: Number, Reflect: true},
+      dragDistance: {type: Number, Reflect: true},
+      index: {type: Number, Reflect: true},
+      flexWidth: {type: Number, Reflect: true},
+      fakeLength: {type: Number, Reflect: true},
+      itemLength: {type: Number, Reflect: true},
+      transitionFlag: {type: Boolean, Reflect: true},
+      visibleLength: {type: Number, Reflect: true},
+      duration: {type: Number, Reflect: true},
+      speed: {type: Number, Reflect: true},
     };
   }
 
@@ -106,7 +106,7 @@ export class HbCarousel extends Base {
     return Array(arrayLength)
       .fill(null)
       .map((_, i) => i + index)
-      .map((x) => (x * this.clientWidth) / this.visibleLength);
+      .map(x => (x * this.clientWidth) / this.visibleLength);
   }
 
   set userIndex(index: number) {
@@ -118,13 +118,13 @@ export class HbCarousel extends Base {
   }
 
   get transitionDuration() {
-    if (this.holderFlag) return 10000000;
+    if (this.holderFlag) return 1000000000;
     if (this.transitionFlag) return this.rolling ? this.duration : this.speed;
     return 0;
   }
 
   get itemPosition() {
-    if (this.holderFlag) return "";
+    if (this.holderFlag) return '';
     const currentPosition =
       (this.index * this.clientWidth) / this.visibleLength;
     if ([eventStatus.doing, eventStatus.fake].includes(this.eventStatus)) {
@@ -146,24 +146,24 @@ export class HbCarousel extends Base {
     if (this.infinite) {
       const cloneAppend = (element: HTMLElement, slot: string) => {
         const cloneBefore = element.cloneNode(true) as HTMLElement;
-        cloneBefore.setAttribute("slot", `fake-${slot}`);
+        cloneBefore.setAttribute('slot', `fake-${slot}`);
         this.appendChild(cloneBefore);
       };
-      this.itemElements.forEach((element) => {
-        cloneAppend(element, "before");
+      this.itemElements.forEach(element => {
+        cloneAppend(element, 'before');
         let i = 0;
         while (i++ < this.fakeLength) {
-          cloneAppend(element, "after");
+          cloneAppend(element, 'after');
         }
       });
     }
     if (this.draggable) {
-      this.addEventListener("mousedown", this.onEventStartBound);
-      window.addEventListener("mouseup", this.onEventEndBound);
-      window.addEventListener("mousemove", this.onEventDoingBound);
-      window.addEventListener("touchstart", this.onEventStartBound);
-      window.addEventListener("touchend", this.onEventEndBound);
-      window.addEventListener("touchmove", this.onEventDoingBound);
+      this.addEventListener('mousedown', this.onEventStartBound);
+      window.addEventListener('mouseup', this.onEventEndBound);
+      window.addEventListener('mousemove', this.onEventDoingBound);
+      window.addEventListener('touchstart', this.onEventStartBound);
+      window.addEventListener('touchend', this.onEventEndBound);
+      window.addEventListener('touchmove', this.onEventDoingBound);
     }
     if (this.auto) {
       const step = this.rolling ? 1 : undefined;
@@ -177,24 +177,32 @@ export class HbCarousel extends Base {
           this.holderFlag = false;
           this.onAuto();
         };
+        this.ontouchstart = () => {
+          this.holderFlag = true;
+          clearTimeout(this.sto);
+        };
+        this.ontouchend = () => {
+          this.holderFlag = false;
+          this.onAuto();
+        };
       }
     }
     if (this.flexWidth) {
       this.onResize();
-      window.addEventListener("resize", this.onResizeBound);
+      window.addEventListener('resize', this.onResizeBound);
     }
   }
   disconnectedCallback() {
     if (this.draggable) {
-      this.removeEventListener("mousedown", this.onEventStartBound);
-      window.removeEventListener("mouseup", this.onEventEndBound);
-      window.removeEventListener("mousemove", this.onEventDoingBound);
-      this.removeEventListener("touchstart", this.onEventStartBound);
-      window.removeEventListener("touchend", this.onEventEndBound);
-      window.removeEventListener("touchmove", this.onEventDoingBound);
+      this.removeEventListener('mousedown', this.onEventStartBound);
+      window.removeEventListener('mouseup', this.onEventEndBound);
+      window.removeEventListener('mousemove', this.onEventDoingBound);
+      this.removeEventListener('touchstart', this.onEventStartBound);
+      window.removeEventListener('touchend', this.onEventEndBound);
+      window.removeEventListener('touchmove', this.onEventDoingBound);
     }
     if (this.flexWidth)
-      window.removeEventListener("resize", this.onResizeBound);
+      window.removeEventListener('resize', this.onResizeBound);
   }
 
   onResize() {
@@ -226,10 +234,10 @@ export class HbCarousel extends Base {
   onClick(event: MouseEvent) {
     if (!this.clickable) return;
     if (this.moveable) {
-      const { target } = event;
+      const {target} = event;
       if (target instanceof HTMLElement)
         this.index = this.itemElements.findIndex((x: ChildNode) =>
-          target.isEqualNode(x)
+          target.isEqualNode(x),
         );
     }
     // this.dispatchEvent
@@ -245,13 +253,13 @@ export class HbCarousel extends Base {
       clientX = event.clientX;
       clientY = event.clientY;
     }
-    return { clientX, clientY };
+    return {clientX, clientY};
   }
 
   onEventStart(event: MouseEvent | TouchEvent) {
     if (this.eventStatus === eventStatus.done) {
       this.eventStatus = eventStatus.start;
-      const { clientX, clientY } = this.getClientPoint(event);
+      const {clientX, clientY} = this.getClientPoint(event);
 
       this.startPointer = {
         clientX,
@@ -268,10 +276,10 @@ export class HbCarousel extends Base {
     this.eventStatus = eventStatus.done;
   }
   closeIndex(position: number) {
-    const { length } = this.itemElements;
-    const diff = this.positions.map((x) => this.diff(x, position));
+    const {length} = this.itemElements;
+    const diff = this.positions.map(x => this.diff(x, position));
     const closePosition = Math.min(...diff);
-    let index = diff.findIndex((x) => closePosition === x);
+    let index = diff.findIndex(x => closePosition === x);
     const margin = this.infinite ? length : 0;
     const max = margin + length - 1; // 안전장치. 기본 인덱스 이상으로 안보이기
     const min = margin; // 기본 인덱스 이하로 안보이기
@@ -284,7 +292,7 @@ export class HbCarousel extends Base {
   }
   onEventDoing(event: MouseEvent | TouchEvent) {
     if ([eventStatus.start, eventStatus.doing].includes(this.eventStatus)) {
-      const { clientX, clientY } = this.getClientPoint(event);
+      const {clientX, clientY} = this.getClientPoint(event);
       const starterClientX = this.startPointer.clientX;
       const starterClientY = this.startPointer.clientY;
       this.dragDistance = starterClientX - clientX;
@@ -302,7 +310,7 @@ export class HbCarousel extends Base {
       <div
         class="hb-carousel__wrap"
         style="transform: translateX(${this.itemPosition});--duration: ${this
-          .transitionDuration}ms;--type: ${this.rolling ? "linear" : "ease"};"
+          .transitionDuration}ms;--type: ${this.rolling ? 'linear' : 'ease'};"
       >
         ${this.infinite
           ? html`<slot
@@ -311,7 +319,7 @@ export class HbCarousel extends Base {
               style="width: ${this.totalWidth}%; margin-left: ${-this
                 .totalWidth}%;"
             ></slot>`
-          : ""}
+          : ''}
         <slot
           class="hb-carousel__items"
           @click="${this.onClick}"
@@ -323,7 +331,7 @@ export class HbCarousel extends Base {
               name="fake-after"
               style="width: ${this.totalWidth * this.fakeLength}%;"
             ></slot>`
-          : ""}
+          : ''}
       </div>
     `;
   }
@@ -331,6 +339,6 @@ export class HbCarousel extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-carousel": HbCarousel;
+    'hb-carousel': HbCarousel;
   }
 }

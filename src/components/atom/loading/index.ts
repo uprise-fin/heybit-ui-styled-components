@@ -1,25 +1,25 @@
-import { Base } from "../../base";
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+import {Base} from '../../base';
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
-@customElement("hb-loading")
+@customElement('hb-loading')
 export class HbLoading extends Base {
   static override get styles() {
-    return [require("../../../styles/atom/loading/index.scss").default];
+    return [require('../../../styles/atom/loading/index.scss').default];
   }
   loaded = false;
   delete = false;
   static get properties() {
     return {
-      loaded: { type: Boolean, Reflect: true },
-      width: { type: String, Reflect: true },
-      height: { type: String, Reflect: true },
+      loaded: {type: Boolean, Reflect: true},
+      width: {type: String, Reflect: true},
+      height: {type: String, Reflect: true},
     };
   }
 
   async customConnectedCallback() {
     this.ontransitionend = () =>
-      this.delete ? this.remove() : this.setAttribute("done", "");
+      this.delete ? this.remove() : this.setAttribute('done', '');
   }
 
   // render() {
@@ -36,6 +36,6 @@ export class HbLoading extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-loading": HbLoading;
+    'hb-loading': HbLoading;
   }
 }

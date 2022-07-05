@@ -1,16 +1,16 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { getElement } from "../../../utils";
-import { transitionType } from "../../atom/transition";
-import { Base, horizonAlign, verticalAlign } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {getElement} from '../../../utils';
+import {transitionType} from '../../atom/transition';
+import {Base, horizonAlign, verticalAlign} from '../../base';
 
 export enum open {
-  "false" = "false",
-  "true" = "true",
+  'false' = 'false',
+  'true' = 'true',
 }
 export enum buttonAlign {
-  "vertical" = "vertical",
-  "horizon" = "horizon",
+  'vertical' = 'vertical',
+  'horizon' = 'horizon',
 }
 /**
  * @fires close 닫기
@@ -24,15 +24,15 @@ export enum buttonAlign {
  * @csspart container
  */
 
-@customElement("hb-modal")
+@customElement('hb-modal')
 export class HbModal extends Base {
   static override get styles() {
-    return [require("../../../styles/template/modal/index.scss").default];
+    return [require('../../../styles/template/modal/index.scss').default];
   }
   async customConnectedCallback() {
     this.containerEl = await getElement<HTMLDivElement>(
       this.shadowRoot,
-      "container"
+      'container',
     );
     this.containerEl!.onanimationend = (event: AnimationEvent) =>
       this.onAnimationEnd(event);
@@ -49,9 +49,9 @@ export class HbModal extends Base {
   persistent = false;
   get position() {
     const obj = {
-      0: ["auto", "auto"],
-      1: ["0", "auto"],
-      2: ["auto", "0"],
+      0: ['auto', 'auto'],
+      1: ['0', 'auto'],
+      2: ['auto', '0'],
     };
     return `${obj[this.verticalAlign][0]} ${obj[this.horizonAlign][0]} ${
       obj[this.verticalAlign][1]
@@ -59,12 +59,12 @@ export class HbModal extends Base {
   }
   static get properties() {
     return {
-      open: { type: Boolean, Reflect: true },
-      persistent: { type: Boolean, Reflect: true },
-      width: { type: Number, Reflect: true },
-      transitionType: { type: String, Reflect: true },
-      verticalAlign: { type: Number, Reflect: true },
-      horizonAlign: { type: Number, Reflect: true },
+      open: {type: Boolean, Reflect: true},
+      persistent: {type: Boolean, Reflect: true},
+      width: {type: Number, Reflect: true},
+      transitionType: {type: String, Reflect: true},
+      verticalAlign: {type: Number, Reflect: true},
+      horizonAlign: {type: Number, Reflect: true},
     };
   }
 
@@ -83,7 +83,7 @@ export class HbModal extends Base {
           >
             <div
               class="hb-modal__container"
-              style=${this.width ? `max-width: ${this.width}px;` : ""}
+              style=${this.width ? `max-width: ${this.width}px;` : ''}
               id="container"
               part="container"
               @click=${this.stopPropagation}
@@ -103,14 +103,14 @@ export class HbModal extends Base {
 
   adapterOnClose(e: Event) {
     e.stopImmediatePropagation();
-    if (this.persistent) return this.classList.add("shake");
+    if (this.persistent) return this.classList.add('shake');
 
-    this.dispatchEvent(new CustomEvent("close"));
+    this.dispatchEvent(new CustomEvent('close'));
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-modal": HbModal;
+    'hb-modal': HbModal;
   }
 }

@@ -1,11 +1,11 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { getElement } from "../../../utils";
-import { Base } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {getElement} from '../../../utils';
+import {Base} from '../../base';
 export enum type {
-  text = "text",
-  number = "number",
-  password = "password",
+  text = 'text',
+  number = 'number',
+  password = 'password',
 }
 export interface HbInputEvent extends InputEvent {
   target: HbInput;
@@ -29,15 +29,15 @@ export interface HbInputEvent extends InputEvent {
  * @csspart slot--right
  */
 
-@customElement("hb-input")
+@customElement('hb-input')
 export class HbInput extends Base {
   static override get styles() {
-    return [require("../../../styles/organism/input/index.scss").default];
+    return [require('../../../styles/organism/input/index.scss').default];
   }
-  _value = "";
+  _value = '';
   inputEl?: HTMLInputElement;
   attributeSync = false;
-  placeholder = "";
+  placeholder = '';
   error = false;
   decimal: number = 2;
   comma: number = 3;
@@ -46,20 +46,20 @@ export class HbInput extends Base {
   type: type = type.text;
   static get properties() {
     return {
-      value: { type: String, Reflect: true },
-      attributeSync: { type: Boolean, Reflect: true },
-      type: { type: String, Reflect: true },
-      placeholder: { type: String, Reflect: true },
-      maxlength: { type: Number, Reflect: true },
-      comma: { type: Number, Reflect: true },
-      decimal: { type: Number, Reflect: true },
-      error: { type: Boolean, Reflect: true },
-      readonly: { type: Boolean, Reflect: true },
+      value: {type: String, Reflect: true},
+      attributeSync: {type: Boolean, Reflect: true},
+      type: {type: String, Reflect: true},
+      placeholder: {type: String, Reflect: true},
+      maxlength: {type: Number, Reflect: true},
+      comma: {type: Number, Reflect: true},
+      decimal: {type: Number, Reflect: true},
+      error: {type: Boolean, Reflect: true},
+      readonly: {type: Boolean, Reflect: true},
     };
   }
 
   get pattern() {
-    if (this.type === "number") return "[0-9]*";
+    if (this.type === 'number') return '[0-9]*';
     return null;
   }
 
@@ -103,14 +103,14 @@ export class HbInput extends Base {
   }
   onInput(ev: HbInputEvent) {
     const inputEl = this.inputEl;
-    let { value } = inputEl;
+    let {value} = inputEl;
     if (this.type === type.number) {
       //숫자만 입력받도록 값 변경
-      const { data } = ev;
+      const {data} = ev;
       const ableData = Array(10)
-        .fill("")
-        .map((_, i) => i + "")
-        .concat(".");
+        .fill('')
+        .map((_, i) => i + '')
+        .concat('.');
       if (data !== null && !ableData.includes(data)) inputEl.value = this.value;
       else inputEl.value = this.toNumeric(value);
       value = inputEl.value;
@@ -131,38 +131,38 @@ export class HbInput extends Base {
   }
 
   toNumeric(value: string, toNumber: boolean = false) {
-    if (!value || typeof value !== "string") return "";
+    if (!value || typeof value !== 'string') return '';
 
-    const dotIndex = value.indexOf(".");
+    const dotIndex = value.indexOf('.');
     const hasDot = dotIndex > 0;
-    let decimal = "";
+    let decimal = '';
     if (hasDot) {
       decimal = value.substring(dotIndex + 1, dotIndex + 1 + this.decimal);
       value = value.substring(0, dotIndex);
     }
-    value = value.replace(/[^0-9]/gi, "");
+    value = value.replace(/[^0-9]/gi, '');
 
     if (!toNumber) {
-      const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, "g");
-      value = value.replace(req, ",");
+      const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, 'g');
+      value = value.replace(req, ',');
     }
-    return value + `${hasDot ? "." : ""}${decimal.replace(/[^0-9]/gi, "")}`;
+    return value + `${hasDot ? '.' : ''}${decimal.replace(/[^0-9]/gi, '')}`;
   }
 
   onChange(ev: HbInputEvent) {
-    const { value } = this.inputEl;
+    const {value} = this.inputEl;
     this.value = value;
-    this.attributeSync && this.setAttribute("value", this.originalValue);
-    this.dispatchEvent(new CustomEvent("event", ev));
+    this.attributeSync && this.setAttribute('value', this.originalValue);
+    this.dispatchEvent(new CustomEvent('event', ev));
   }
 
   async customConnectedCallback() {
     const inputEl = await getElement<HTMLInputElement>(
       this.shadowRoot,
-      "input"
+      'input',
     );
     this.inputEl = inputEl;
-    this.value = this.getAttribute("value");
+    this.value = this.getAttribute('value');
     inputEl.value = this.value;
     this.onclick = () => inputEl.focus();
   }
@@ -170,7 +170,7 @@ export class HbInput extends Base {
     this.onclick = () => null;
   }
   attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === "value") {
+    if (name === 'value') {
       const inputEl = this.inputEl;
       if (this.type === type.number) newVal = this.toNumeric(newVal);
       inputEl && inputEl.value !== newVal && (inputEl.value = newVal);
@@ -189,7 +189,7 @@ export class HbInput extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-input": HbInput;
+    'hb-input': HbInput;
   }
 }
 

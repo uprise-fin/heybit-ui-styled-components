@@ -1,22 +1,22 @@
-import { Meta, Story } from "@storybook/web-components";
-import { html } from "lit";
-import "./index";
-import { HbEventDialog } from "./index";
-import desktopImg from "/static/sample-desktop.png";
+import {Meta, Story} from '@storybook/web-components';
+import {html} from 'lit';
+import './index';
+import {HbEventDialog} from './index';
+import desktopImg from '../../../../static/sample-desktop.png';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: "components/template/hb-event-dialog",
-  component: "hb-event-dialog",
+  title: 'components/template/hb-event-dialog',
+  component: 'hb-event-dialog',
   argTypes: {
     open: {
       options: [true, false],
-      control: { type: "radio" },
+      control: {type: 'radio'},
       defaultValue: true,
     },
     persistent: {
       options: [true, false],
-      control: { type: "radio" },
+      control: {type: 'radio'},
       defaultValue: true,
     },
   },
@@ -39,7 +39,7 @@ export const event: Story<HbEventDialog> = Template.bind({});
 event.args = {
   open: true,
   persistent: true,
-  href: "https://www.heybit.io/harvest/",
+  href: 'https://www.heybit.io/harvest/',
   image:
-    "https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png",
+    'https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png',
 };

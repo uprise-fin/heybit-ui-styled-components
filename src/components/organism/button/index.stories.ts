@@ -1,25 +1,25 @@
-import { Meta, Story } from "@storybook/web-components";
-import { html } from "lit";
-import { size } from "../../base";
-import "./index";
-import type { HbButton } from "./index";
-import { hbButtonTheme, hbButtonType } from "./index";
+import {Meta, Story} from '@storybook/web-components';
+import {html} from 'lit';
+import {size} from '../../base';
+import './index';
+import type {HbButton} from './index';
+import {hbButtonTheme, hbButtonType} from './index';
 
 export default {
-  title: "components/organism/hb-button",
+  title: 'components/organism/hb-button',
   argTypes: {
     theme: {
       options: Object.keys(hbButtonTheme),
-      control: { type: "radio" },
+      control: {type: 'radio'},
     },
     size: {
       options: Object.keys(size),
-      control: { type: "radio" },
+      control: {type: 'radio'},
       defaultValue: size.large,
     },
     type: {
       options: Object.keys(hbButtonType),
-      control: { type: "radio" },
+      control: {type: 'radio'},
       defaultValue: hbButtonType.rectagle,
     },
   },
@@ -62,7 +62,7 @@ const IconTemplate: Story<HbButton> = ({
   ></hb-button>`;
 
 const args = {
-  title: "내용을 입력해보세요",
+  title: '내용을 입력해보세요',
   type: hbButtonType.rectagle,
   size: size.large,
   baseLoadingDuration: 500,

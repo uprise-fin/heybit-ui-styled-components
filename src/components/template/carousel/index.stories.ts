@@ -1,18 +1,18 @@
-import { Meta, Story } from "@storybook/web-components";
-import { html } from "lit";
-import { dev } from "../../../utils";
-import { skeletonType } from "../../molecule/skeleton";
-import "./index";
-import type { HbCarousel } from "./index";
+import {Meta, Story} from '@storybook/web-components';
+import {html} from 'lit';
+import {dev} from '../../../utils';
+import {skeletonType} from '../../molecule/skeleton';
+import './index';
+import type {HbCarousel} from './index';
 
 export default dev() &&
   ({
-    title: "components/template/hb-carousel",
-    component: "hb-carousel",
+    title: 'components/template/hb-carousel',
+    component: 'hb-carousel',
     argTypes: {
       index: {
         options: [0, 1, 2],
-        control: { type: "radio" },
+        control: {type: 'radio'},
         defaultValue: 0,
       },
     },
@@ -65,23 +65,23 @@ const SkeletonTemplate = (props: HbCarousel) => html`
     ></hb-skeleton>
   </hb-carousel>
 `;
-const StopTemplate: Story<HbCarousel> = (props) => {
+const StopTemplate: Story<HbCarousel> = props => {
   props.visibleLength = 1;
   return ColorTemplate(props);
 };
-const AutoTemplate: Story<HbCarousel> = (props) => {
+const AutoTemplate: Story<HbCarousel> = props => {
   props.visibleLength = 1;
   props.auto = true;
   return ColorTemplate(props);
 };
-const AutoInfiniteTemplate: Story<HbCarousel> = (props) => {
+const AutoInfiniteTemplate: Story<HbCarousel> = props => {
   props.fakeLength = 1;
   props.visibleLength = 3;
   props.auto = true;
   props.infinite = true;
   return SkeletonTemplate(props);
 };
-const RollingInfiniteTemplate: Story<HbCarousel> = (props) => {
+const RollingInfiniteTemplate: Story<HbCarousel> = props => {
   props.fakeLength = 1;
   props.visibleLength = 3;
   props.auto = true;
@@ -110,10 +110,11 @@ autoInfinite.args = {
   duration: 3000,
 };
 export const autoInfiniteFlex: Story<HbCarousel> = AutoInfiniteTemplate.bind(
-  {}
+  {},
 );
 autoInfiniteFlex.args = {
   speed: 300,
+  fakeLength: 3,
   pause: true,
   flexWidth: 300,
   draggable: true,
@@ -121,10 +122,11 @@ autoInfiniteFlex.args = {
   duration: 3000,
 };
 export const rollingInfinite: Story<HbCarousel> = RollingInfiniteTemplate.bind(
-  {}
+  {},
 );
 rollingInfinite.args = {
   infinite: true,
+  fakeLength: 3,
   pause: true,
   duration: 3000,
 };

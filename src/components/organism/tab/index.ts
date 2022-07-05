@@ -1,7 +1,7 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { getChildren } from "../../../utils";
-import { Base } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {getChildren} from '../../../utils';
+import {Base} from '../../base';
 /**
  * @property index
  * @slot content 기본 컨텐츠 영역
@@ -10,10 +10,10 @@ import { Base } from "../../base";
  * @csspart content
  */
 
-@customElement("hb-tab")
+@customElement('hb-tab')
 export class HbTab extends Base {
   static override get styles() {
-    return [require("../../../styles/organism/tab/index.scss").default];
+    return [require('../../../styles/organism/tab/index.scss').default];
   }
   btns: HTMLElement[] = [];
   contents: HTMLElement[] = [];
@@ -24,19 +24,19 @@ export class HbTab extends Base {
 
   static get properties() {
     return {
-      left: { type: Number, Reflect: true },
-      width: { type: Number, Reflect: true },
-      index: { type: String, Reflect: true },
+      left: {type: Number, Reflect: true},
+      width: {type: Number, Reflect: true},
+      index: {type: String, Reflect: true},
     };
   }
   async customConnectedCallback() {
     const wrap = await getChildren(this.children);
-    this.btns = wrap.filter((x) => x.slot === "header");
-    this.contents = wrap.filter((x) => x.slot !== "header");
+    this.btns = wrap.filter(x => x.slot === 'header');
+    this.contents = wrap.filter(x => x.slot !== 'header');
     this.setIndicator(this.index);
   }
   attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === "index") {
+    if (name === 'index') {
       this.setIndicator(newVal);
     }
     super.attributeChangedCallback(name, _, newVal);
@@ -44,19 +44,19 @@ export class HbTab extends Base {
   onClick(ev: PointerEvent) {
     const target = ev.target as HTMLElement;
     const index = this.btns.indexOf(target);
-    this.setAttribute("index", index.toString());
+    this.setAttribute('index', index.toString());
   }
 
   async setIndicator(index: string) {
     if (!this.btns.length || this._index === index) return;
     const number = +index;
     const target = this.btns[number];
-    const { offsetWidth, offsetLeft } = await target;
+    const {offsetWidth, offsetLeft} = await target;
     this._index = index;
     this.left = offsetLeft - this.offsetLeft;
     this.width = offsetWidth;
-    this.contents.map((x) => x.removeAttribute("active"));
-    this.contents[number].setAttribute("active", "");
+    this.contents.map(x => x.removeAttribute('active'));
+    this.contents[number].setAttribute('active', '');
   }
 
   render() {
@@ -81,6 +81,6 @@ export class HbTab extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-tab": HbTab;
+    'hb-tab': HbTab;
   }
 }

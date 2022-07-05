@@ -4,6 +4,12 @@ const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 module.exports = {
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    alias: {
+      "@src": "./src", // 사용할 경로
+    },
+  },
   entry: {
     initial: [path.resolve(__dirname, "./src/initial.scss")],
     onlyStyled: [path.resolve(__dirname, "./src/styles/index.scss")],

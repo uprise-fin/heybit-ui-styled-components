@@ -1,19 +1,19 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { wait } from "../../../utils";
-import { transitionType } from "../../atom/transition";
-import { Base, size } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {wait} from '../../../utils';
+import {transitionType} from '../../atom/transition';
+import {Base, size} from '../../base';
 export enum hbButtonType {
-  "rectagle" = "rectagle",
-  "radius" = "radius",
-  "circle" = "circle",
-  "custom" = "custom",
+  'rectagle' = 'rectagle',
+  'radius' = 'radius',
+  'circle' = 'circle',
+  'custom' = 'custom',
 }
 export enum hbButtonTheme {
-  "primary" = "primary",
-  "secondary" = "secondary",
-  "tertiary" = "tertiary",
-  "quaternary" = "quaternary",
+  'primary' = 'primary',
+  'secondary' = 'secondary',
+  'tertiary' = 'tertiary',
+  'quaternary' = 'quaternary',
 }
 /**
  * @fires event 클릭할때
@@ -29,10 +29,10 @@ export enum hbButtonTheme {
  * @csspart list
  */
 
-@customElement("hb-button")
+@customElement('hb-button')
 export class HbButton extends Base {
   static override get styles() {
-    return [require("../../../styles/organism/button/index.scss").default];
+    return [require('../../../styles/organism/button/index.scss').default];
   }
   labelEl: HTMLElement;
   type: hbButtonType = hbButtonType.rectagle;
@@ -44,12 +44,12 @@ export class HbButton extends Base {
 
   static get properties() {
     return {
-      theme: { type: String, Reflect: true },
-      size: { type: String, Reflect: true },
-      type: { type: String, Reflect: true },
-      loading: { type: Boolean, Reflect: true },
-      baseLoadingDuration: { type: Number, Reflect: true },
-      disabled: { type: Boolean, Reflect: true },
+      theme: {type: String, Reflect: true},
+      size: {type: String, Reflect: true},
+      type: {type: String, Reflect: true},
+      loading: {type: Boolean, Reflect: true},
+      baseLoadingDuration: {type: Number, Reflect: true},
+      disabled: {type: Boolean, Reflect: true},
     };
   }
 
@@ -90,33 +90,33 @@ export class HbButton extends Base {
   }
   async customConnectedCallback() {
     this.tabIndex = 0;
-    this.setAttribute("theme", this.theme);
-    this.setAttribute("size", this.size);
-    this.onclick = (ev) => this.onEvent(ev);
-    this.onkeyup = (ev) => ev.key === "Enter" && this.onEvent(ev);
+    this.setAttribute('theme', this.theme);
+    this.setAttribute('size', this.size);
+    this.onclick = ev => this.onEvent(ev);
+    this.onkeyup = ev => ev.key === 'Enter' && this.onEvent(ev);
   }
 
   async onEvent(ev: Event) {
     if (this.loading || this.disabled) return;
-    this.dispatchEvent(new CustomEvent("event", ev));
+    this.dispatchEvent(new CustomEvent('event', ev));
     if (this.baseLoadingDuration) {
-      this.setAttribute("loading", "");
+      this.setAttribute('loading', '');
       await wait(this.baseLoadingDuration);
-      this.removeAttribute("loading");
+      this.removeAttribute('loading');
     }
   }
   async attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === "loading" && this.baseLoadingDuration) {
+    if (name === 'loading' && this.baseLoadingDuration) {
       if (newVal !== null) {
         const width = this.style.width.substring(
           0,
-          this.style.width.length - 2
+          this.style.width.length - 2,
         );
         this.dataset.width = width;
-        this.style.width = this.offsetWidth ? this.offsetWidth + "px" : "";
+        this.style.width = this.offsetWidth ? this.offsetWidth + 'px' : '';
       } else {
         const width = this.dataset.width;
-        this.style.width = width ? width + "px" : "";
+        this.style.width = width ? width + 'px' : '';
       }
     }
 
@@ -126,6 +126,6 @@ export class HbButton extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-button": HbButton;
+    'hb-button': HbButton;
   }
 }

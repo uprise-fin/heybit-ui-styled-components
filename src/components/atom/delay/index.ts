@@ -1,32 +1,32 @@
-import { Base } from "../../base";
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+import {Base} from '../../base';
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
-@customElement("hb-delay")
+@customElement('hb-delay')
 export class HbDelay extends Base {
   static override get styles() {
-    return [require("../../../styles/atom/loading/index.scss").default];
+    return [require('../../../styles/atom/loading/index.scss').default];
   }
   delay: number;
   name: string;
   value: string;
   static get properties() {
     return {
-      delay: { type: Number, Reflect: true },
-      name: { type: String, Reflect: true },
-      value: { type: String, Reflect: true },
+      delay: {type: Number, Reflect: true},
+      name: {type: String, Reflect: true},
+      value: {type: String, Reflect: true},
     };
   }
   async attributeChangedCallback(name: string, _: string, newVal: string) {
     super.attributeChangedCallback(name, _, newVal);
-    if (name === "value") {
-      await new Promise((resolve) =>
+    if (name === 'value') {
+      await new Promise(resolve =>
         setTimeout(() => {
           resolve(true);
-        }, this.delay)
+        }, this.delay),
       );
-      if (["true", "false"].includes(newVal)) {
-        if (newVal === "true") this.children[0].setAttribute(this.name, "");
+      if (['true', 'false'].includes(newVal)) {
+        if (newVal === 'true') this.children[0].setAttribute(this.name, '');
         else this.children[0].removeAttribute(this.name);
       } else {
         this.children[0].setAttribute(this.name, newVal);
@@ -46,6 +46,6 @@ export class HbDelay extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-delay": HbDelay;
+    'hb-delay': HbDelay;
   }
 }

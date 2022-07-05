@@ -1,18 +1,18 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { Base } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {Base} from '../../base';
 export enum skeletonType {
-  card = "card",
+  card = 'card',
 }
-@customElement("hb-skeleton")
+@customElement('hb-skeleton')
 export class HbSkeleton extends Base {
   static override get styles() {
-    return [require("../../../styles/molecule/skeleton/index.scss").default];
+    return [require('../../../styles/molecule/skeleton/index.scss').default];
   }
   type: skeletonType;
   static get properties() {
     return {
-      type: { type: String, Reflect: true },
+      type: {type: String, Reflect: true},
     };
   }
 
@@ -35,6 +35,6 @@ export class HbSkeleton extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-skeleton": HbSkeleton;
+    'hb-skeleton': HbSkeleton;
   }
 }

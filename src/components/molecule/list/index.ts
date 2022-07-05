@@ -1,6 +1,6 @@
-import { html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { Base } from "../../base";
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import {Base} from '../../base';
 
 /**
  * @fires event
@@ -19,43 +19,43 @@ export interface Option {
 export interface HbListEvent extends Event {
   target: HbList;
 }
-@customElement("hb-list")
+@customElement('hb-list')
 export class HbList extends Base {
   static override get styles() {
-    return [require("../../../styles/molecule/list/index.scss").default];
+    return [require('../../../styles/molecule/list/index.scss').default];
   }
   options: Option[] = [];
   attributeSync = false;
   open = false;
-  value = "";
-  emptyText = "";
+  value = '';
+  emptyText = '';
   width = 0;
   maxHeight = 0;
   static get properties() {
     return {
-      options: { type: Array, Reflect: true },
-      value: { type: String, Reflect: true },
-      emptyText: { type: String, Reflect: true },
-      width: { type: Number, Reflect: true },
-      maxHeight: { type: Number, Reflect: true },
-      attributeSync: { type: Boolean, Reflect: true },
-      open: { type: Boolean, Reflect: true },
+      options: {type: Array, Reflect: true},
+      value: {type: String, Reflect: true},
+      emptyText: {type: String, Reflect: true},
+      width: {type: Number, Reflect: true},
+      maxHeight: {type: Number, Reflect: true},
+      attributeSync: {type: Boolean, Reflect: true},
+      open: {type: Boolean, Reflect: true},
     };
   }
 
   get values() {
-    return this.options.map((x) => x.value) || [];
+    return this.options.map(x => x.value) || [];
   }
   sto = setTimeout(() => {}, 0);
   onSelect(evt: HbListEvent) {
     this.adapterHide();
     if (!(evt.target instanceof HTMLButtonElement)) return;
-    const { target } = evt;
-    const { value } = target.dataset;
+    const {target} = evt;
+    const {value} = target.dataset;
     if (this.value === value || !this.values.includes(value)) return;
-    this.attributeSync && this.setAttribute("value", value!);
+    this.attributeSync && this.setAttribute('value', value!);
     this.value = value!;
-    this.dispatchEvent(new CustomEvent("event", evt));
+    this.dispatchEvent(new CustomEvent('event', evt));
   }
 
   onHide() {
@@ -72,13 +72,13 @@ export class HbList extends Base {
         class="hb-list__wrap"
         @click=${this.onSelect}
         @keyup=${(evt: KeyboardEvent) =>
-          evt.key === "Enter" && this.onSelect.call(this)}
+          evt.key === 'Enter' && this.onSelect.call(this)}
         data-empty-text=${this.emptyText}
         part="list"
         id="list"
       >
         ${this.options.map(
-          (x) =>
+          x =>
             html`
               <button
                 type="button"
@@ -88,7 +88,7 @@ export class HbList extends Base {
               >
                 ${x.label}
               </button>
-            `
+            `,
         )}
       </div>
     `;
@@ -97,7 +97,7 @@ export class HbList extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "hb-list": HbList;
+    'hb-list': HbList;
   }
 }
 // import CustomElement from "../custom-elements";
