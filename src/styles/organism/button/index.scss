@@ -1,4 +1,4 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 $hb-button__size: (
   large: (
@@ -25,7 +25,7 @@ $hb-button__size: (
   //   font-size: 14px,
   //   height: 30px,
   //   border-radius: var(--box__border-radius),
-  // ),
+  // ),,,
 );
 $hb-button__type: (
   rectangle: (
@@ -70,8 +70,8 @@ $hb-button__theme: (
     color: var(--font__color__solid),
     active: var(--black--100),
     // hover: var(--black--50),
-      // disabledBg: var(--black--100),
-      disabledBd: var(--black--300),
+    // disabledBg: var(--black--100),
+    disabledBd: var(--black--300),
     disabledColor: var(--black--400),
   ),
 );
@@ -145,7 +145,7 @@ $hb-button__theme: (
       border-radius: map-get($type, border-radius);
     }
   }
-  @include host-styled("[type='custom']") {
+  @include host-styled(':not([type])') {
     display: inline-flex;
     height: auto;
     border-radius: none;

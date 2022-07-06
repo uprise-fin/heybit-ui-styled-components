@@ -98,7 +98,6 @@ export class HbSheetDialog extends Base {
             : html` <hb-button
                 ?disabled=${this.eventDisabled}
                 @event=${this.onClose}
-                type=${hbButtonType.custom}
                 class="hb-sheet-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
@@ -121,6 +120,7 @@ export class HbSheetDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled}
+                    type=${hbButtonType.rectagle}
                     baseLoadingDuration=${this.baseLoadingDuration}
                     @event=${this.onEvent.bind(this, x, i)}
                     theme=${x.theme}

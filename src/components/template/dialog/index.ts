@@ -97,7 +97,6 @@ export class HbDialog extends Base {
             : html` <hb-button
                 ?disabled=${this.eventDisabled}
                 @event=${this.onClose}
-                type=${hbButtonType.custom}
                 class="hb-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
@@ -128,6 +127,7 @@ export class HbDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled}
+                    type=${hbButtonType.rectagle}
                     baseLoadingDuration=${this.baseLoadingDuration}
                     @event=${this.onEvent.bind(this, x, i)}
                     theme=${x.theme}

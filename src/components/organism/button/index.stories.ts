@@ -17,13 +17,25 @@ export default {
       control: {type: 'radio'},
       defaultValue: size.large,
     },
-    type: {
-      options: Object.keys(hbButtonType),
-      control: {type: 'radio'},
-      defaultValue: hbButtonType.rectagle,
-    },
   },
 } as Meta;
+
+const NoTypeTemplate: Story<HbButton> = ({
+  loading,
+  disabled,
+  theme,
+  size,
+  title,
+  baseLoadingDuration,
+}) =>
+  html`<hb-button
+    theme="${theme}"
+    size=${size}
+    baseLoadingDuration=${baseLoadingDuration}
+    ?loading=${loading}
+    ?disabled=${disabled}
+    >${title}</hb-button
+  >`;
 
 const Template: Story<HbButton> = ({
   type,
@@ -63,7 +75,6 @@ const IconTemplate: Story<HbButton> = ({
 
 const args = {
   title: '내용을 입력해보세요',
-  type: hbButtonType.rectagle,
   size: size.large,
   baseLoadingDuration: 500,
   loading: false,
@@ -72,6 +83,7 @@ const args = {
 export const rectagle: Story<HbButton> = Template.bind({});
 rectagle.args = {
   ...args,
+  type: hbButtonType.rectagle,
   theme: hbButtonTheme.primary,
 };
 export const radius: Story<HbButton> = Template.bind({});
@@ -86,8 +98,7 @@ circle.args = {
   theme: hbButtonTheme.primary,
   type: hbButtonType.circle,
 };
-export const custom: Story<HbButton> = Template.bind({});
-custom.args = {
+export const noType: Story<HbButton> = NoTypeTemplate.bind({});
+noType.args = {
   ...args,
-  type: hbButtonType.custom,
 };

@@ -7,7 +7,6 @@ export enum hbButtonType {
   'rectagle' = 'rectagle',
   'radius' = 'radius',
   'circle' = 'circle',
-  'custom' = 'custom',
 }
 export enum hbButtonTheme {
   'primary' = 'primary',
