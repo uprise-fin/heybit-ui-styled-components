@@ -4,7 +4,7 @@ export const levels: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
 ];
 
-const colors: Obj<string, Color> = {
+const colors = {
   [systemColor.white]: '#ffffff',
   [systemColor.black]: '#404244',
   [systemColor.orange]: '#ff602f',
@@ -20,7 +20,7 @@ export const colorPalette = Object.entries(colors).reduce(
     [name]: new Matercolor(color),
   }),
   {},
-) as Obj<Matercolor, Color>;
+) as {[key in Color]: Matercolor};
 export const basicVariables = {
   font: {
     family: `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
@@ -128,7 +128,7 @@ export const componentVariables = {
 function setProperty(key: string, value: string) {
   document.documentElement.style.setProperty(key, value);
 }
-function setGroupProperty(obj: Obj<string, unknown>, group?: string) {
+function setGroupProperty(obj: Object, group?: string) {
   Object.entries(obj).map(([key, val]) => {
     const _group = group || '';
     if (typeof val === 'string') setProperty(`--${_group}${key}`, val);
