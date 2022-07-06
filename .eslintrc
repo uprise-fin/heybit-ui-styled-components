@@ -13,12 +13,5 @@
     // turn on errors for missing imports
     "import/no-unresolved": "error"
   },
-  "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx", ".js"]
-    },
-    "import/resolver": {
-      "typescript": "./tsconfig.json"
-    }
-  }
+  "settings": {}
 }
