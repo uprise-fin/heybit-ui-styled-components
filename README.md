@@ -1,5 +1,7 @@
 # heybit-ui-styled-components
 
+## pnpm add heybit-ui-styled-components
+
 ### [데모 페이지 확인하기](https://uprise-fin.github.io/heybit-ui-styled-components/)
 
 ## 목적
@@ -9,8 +11,8 @@
 ## 사용법
 
 ```javascript
-import "heybit-ui-styled-components";
-import "heybit-ui-styled-components/dist/initial.css";
+import 'heybit-ui-styled-components';
+import 'heybit-ui-styled-components/dist/initial.css';
 ```
 
 or
