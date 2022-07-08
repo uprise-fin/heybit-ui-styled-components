@@ -25,10 +25,11 @@ $hb-button__size: (
   //   font-size: 14px,
   //   height: 30px,
   //   border-radius: var(--box__border-radius),
-  // ),,,
+  // ),,,,,,,,,,,,
 );
 $hb-button__type: (
-  rectangle: (
+  rectagle: (
+    flex: flex,
     padding: 0 var(--button__padding__right) 0 var(--button__padding__left),
   ),
   radius: (
@@ -79,8 +80,7 @@ $hb-button__theme: (
   @include disabled();
   @include loading();
   @include host-styled {
-    display: flex;
-    // border: #{$hb-button__border-width} solid #{$hb-button__border-color};
+    display: inline-flex;
     font-size: var(--button__font-size);
     font-weight: 700;
     box-sizing: border-box;
@@ -140,13 +140,12 @@ $hb-button__theme: (
   }
   @each $class, $type in $hb-button__type {
     @include host-styled("[type='#{$class}']") {
-      display: inline-flex;
+      display: map-get($type, flex);
       padding: map-get($type, padding);
       border-radius: map-get($type, border-radius);
     }
   }
   @include host-styled(':not([type])') {
-    display: inline-flex;
     height: auto;
     border-radius: none;
   }
