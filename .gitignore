@@ -106,3 +106,4 @@ dist
 custom-elements.json
 
 src/components/molecule/icon/svg.ts
+storybook-static/
