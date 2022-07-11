@@ -4,7 +4,7 @@ import {buttonAlign} from '../modal';
 import './index';
 import {HbSheetDialog} from './index';
 import desktopImg from '../../../../static/sample-desktop.png';
-import {hbButtonTheme} from '../../../type';
+import {hbButtonTheme} from '../../../models/organism/button';
 interface HbSheetDialogExpns extends HbSheetDialog {
   content: string;
 }

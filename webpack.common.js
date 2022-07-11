@@ -14,7 +14,7 @@ module.exports = {
   entry: {
     style: [path.resolve(__dirname, './src/styles/index.scss')],
     index: [path.resolve(__dirname, './src/index.ts')],
-    type: [path.resolve(__dirname, './src/type.ts')],
+    module: [path.resolve(__dirname, './src/module.ts')],
   },
   module: {
     rules: [

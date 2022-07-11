@@ -13,7 +13,7 @@
 ```html
 <script
   type="module"
-  src="/node_modules/heybit-ui-styled-components/dist/index.js"
+  src="/node_modules/heybit-ui-styled-components/dist/module.js"
 ></script>
 ```
 

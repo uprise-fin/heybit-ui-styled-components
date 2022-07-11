@@ -1,7 +1,6 @@
-//button.spec.ts
-import { HbModal } from "../../src";
-import { getShadowElement, getShadowRoot } from "../utils";
-const SHADOW_TAG = "hb-modal";
+import {HbModal} from '../../src/module';
+import {getShadowElement, getShadowRoot} from '../utils';
+const SHADOW_TAG = 'hb-modal';
 describe(SHADOW_TAG, () => {
   let SHADOW_ELEMENT: HbModal;
   let SHADOW_ROOT: ShadowRoot | null;
@@ -17,11 +16,11 @@ describe(SHADOW_TAG, () => {
   });
 
   it(`${SHADOW_TAG}는 화면에 보이지 않아야 한다.`, async () => {
-    const list = SHADOW_ROOT?.getElementById("modal-transition") as HTMLElement;
-    expect(getComputedStyle(list!).display).toEqual("none");
+    const list = SHADOW_ROOT?.getElementById('modal-transition') as HTMLElement;
+    expect(getComputedStyle(list!).display).toEqual('none');
   });
   it(`${SHADOW_TAG}에 'open' 프로퍼티가 있으면 화면에 보여야 한다.`, async () => {
-    SHADOW_ELEMENT.setAttribute("open", "");
-    expect(getComputedStyle(SHADOW_ELEMENT).display).not.toEqual("none");
+    SHADOW_ELEMENT.setAttribute('open', '');
+    expect(getComputedStyle(SHADOW_ELEMENT).display).not.toEqual('none');
   });
 });
