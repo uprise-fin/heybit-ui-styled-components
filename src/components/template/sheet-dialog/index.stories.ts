@@ -1,10 +1,10 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {hbButtonTheme} from '../../organism/button';
 import {buttonAlign} from '../modal';
 import './index';
 import {HbSheetDialog} from './index';
 import desktopImg from '../../../../static/sample-desktop.png';
+import {hbButtonTheme} from '../../../type';
 interface HbSheetDialogExpns extends HbSheetDialog {
   content: string;
 }
