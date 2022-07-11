@@ -18,7 +18,6 @@ import {HbDialog} from './components/template/dialog';
 import {HbEventDialog} from './components/template/event-dialog';
 import {HbModal} from './components/template/modal';
 import {HbSheetDialog} from './components/template/sheet-dialog';
-
 export {
   // HbDelay,
   HbLoading,

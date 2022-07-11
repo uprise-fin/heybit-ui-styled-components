@@ -1,19 +1,10 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {hbButtonTheme, hbButtonType} from '../../../models/organism/button';
 import {wait} from '../../../utils';
 import {transitionType} from '../../atom/transition';
 import {Base, size} from '../../base';
-export enum hbButtonType {
-  'rectangle' = 'rectangle',
-  'radius' = 'radius',
-  'circle' = 'circle',
-}
-export enum hbButtonTheme {
-  'primary' = 'primary',
-  'secondary' = 'secondary',
-  'tertiary' = 'tertiary',
-  'quaternary' = 'quaternary',
-}
+
 /**
  * @fires event 클릭할때
  * @property theme

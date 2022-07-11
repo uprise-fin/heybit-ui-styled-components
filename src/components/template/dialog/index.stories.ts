@@ -1,11 +1,11 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {hbButtonTheme} from '../../organism/button';
 import {buttonAlign} from '../modal';
 import './index';
 import {HbDialog} from './index';
 import desktopImg from '../../../../static/sample-desktop.png';
 import thunderImg from '../../../../static/sample-thunder.svg';
+import {hbButtonTheme} from '../../../type';
 interface HbDialogExpns extends HbDialog {
   content: string;
 }

@@ -1,9 +1,9 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {HbDialogAnchor, HbDialogButton} from '../../../models/template/modal';
 import {wait} from '../../../utils';
 import {transitionType} from '../../atom/transition';
 import {Base} from '../../base';
-import {hbButtonTheme, hbButtonType} from '../../organism/button';
 import {buttonAlign} from '../modal';
 
 /**
@@ -22,18 +22,7 @@ import {buttonAlign} from '../modal';
  * @csspart buttons
  * @csspart anchor
  */
-export interface HbDialogButton {
-  event: Function;
-  theme: hbButtonTheme;
-  name: string;
-  loading?: boolean;
-}
-export interface HbDialogAnchor {
-  event?: Function;
-  href?: string;
-  target?: string;
-  name?: string;
-}
+
 @customElement('hb-dialog')
 export class HbDialog extends Base {
   static override get styles() {

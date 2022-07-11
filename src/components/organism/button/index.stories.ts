@@ -1,9 +1,9 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
+import {hbButtonTheme, hbButtonType} from '../../../type';
 import {size} from '../../base';
 import './index';
 import type {HbButton} from './index';
-import {hbButtonTheme, hbButtonType} from './index';
 
 export default {
   title: 'components/organism/hb-button',
