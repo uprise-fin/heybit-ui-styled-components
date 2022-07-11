@@ -15,15 +15,12 @@
   type="module"
   src="/node_modules/heybit-ui-styled-components/dist/index.js"
 ></script>
-<link
-  rel="stylesheet"
-  href="/node_modules/heybit-ui-styled-components/dist/initial.css"
-/>
 ```
 
 ### 글로벌 css에 스타일을 넣어서 컴포넌트가 정상적인 디자인으로 노출되지 않는다면?
 
-글로벌 css에 스타일을 특정 스타일을 제거하기 어렵다면 not 셀렉터로 우회하는 방법을 사용하길 권장합니다.
+1. 글로벌 css에 스타일을 특정 스타일을 제거하기 어렵다면 not 셀렉터로 우회하는 방법
+2. 클래스와 함께 사용하여 css ordering을 올리는 방법
 
 ```scss
 // before
@@ -34,4 +31,12 @@
 *:not(hb-button, hb-등등등) {
   color: #292929;
 }
+```
+
+```html
+<!-- before -->
+<hb-button ...></hb-button>
+
+<!-- after -->
+<hb-button class="hb-button" ...></hb-button>
 ```

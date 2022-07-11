@@ -1,6 +1,7 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 .hb-sheet-dialog {
+  @include initial(hb-sheet-dialog);
   &__container {
     position: relative;
     display: flex;

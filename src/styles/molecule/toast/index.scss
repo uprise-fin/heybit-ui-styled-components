@@ -1,7 +1,8 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 .hb-toast {
+  @include initial(hb-toast);
   @include host-styled {
-    z-index: zindex("토스트");
+    z-index: zindex('토스트');
     position: fixed;
     bottom: 0;
     left: var(--toast__margin);

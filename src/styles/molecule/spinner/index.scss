@@ -1,4 +1,4 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 // $hb-spinner__size: (
 //   large: 18px,
 //   medium: 16px,
@@ -19,6 +19,7 @@ $hb-spinner__theme: (
 // $hb-input__background--warning: $box__background !default;
 
 .hb-spinner {
+  @include initial(hb-spinner);
   @include host-styled {
     display: block;
     width: 20px;

@@ -1,4 +1,4 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 // $hb-dialog__border-radius: 16px !default;
 // $hb-input__height: $box__height !default;
@@ -12,6 +12,7 @@
 // $hb-input__background--warning: $box__background !default;
 
 .hb-dialog {
+  @include initial(hb-dialog);
   &__container {
     position: relative;
     overflow: auto;

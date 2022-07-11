@@ -1,6 +1,7 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 .hb-anchor {
+  @include initial(hb-anchor);
   @include disabled();
   @include host-styled {
     font-weight: 700;

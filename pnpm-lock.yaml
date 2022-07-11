@@ -42,7 +42,6 @@ specifiers:
   matercolors: ^2.3.0
   mini-css-extract-plugin: ^2.5.2
   mrm: ^4.0.0
-  pretendard: ^1.2.1
   prettier: ^2.7.1
   react: ^16.8.0
   react-dom: ^16.8.0
@@ -108,7 +107,6 @@ devDependencies:
   lit-scss-loader: 1.1.0_webpack@5.72.0
   mini-css-extract-plugin: 2.6.0_webpack@5.72.0
   mrm: 4.0.0
-  pretendard: 1.2.2
   prettier: 2.7.1
   sass: 1.50.1
   sass-loader: 12.6.0_sass@1.50.1+webpack@5.72.0
@@ -3736,10 +3734,6 @@ packages:
     dependencies:
       '@types/node': 17.0.25
 
-  /@types/css-tree/1.0.7:
-    resolution: {integrity: sha512-Pz+DfVODpQTAV6PwPBK6kzyy7+f6EyPbr1+mYkc1YolJfl2NAJ4wbg0TC/AJPBsqn9jWfyiO19A/sgpvFLfqnw==}
-    dev: true
-
   /@types/eslint-scope/3.7.3:
     resolution: {integrity: sha512-PB3ldyrcnAicT35TWPs5IcwKD8S333HMaa2VVv4+wdvebJkjWuW/xESoB8IwRcog8HYVYamb1g/R31Qv5Bx03g==}
     dependencies:
@@ -7080,14 +7074,6 @@ packages:
       nth-check: 2.0.1
     dev: true
 
-  /css-tree/1.1.3:
-    resolution: {integrity: sha512-tRpdppF7TRazZrjJ6v3stzv93qxRcSsFmW6cX0Zm2NVKpxE1WV1HblnghVv9TreireHkqI/VDEsfolRF1p6y7Q==}
-    engines: {node: '>=8.0.0'}
-    dependencies:
-      mdn-data: 2.0.14
-      source-map: 0.6.1
-    dev: true
-
   /css-what/6.1.0:
     resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
     engines: {node: '>= 6'}
@@ -8604,19 +8590,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-
-  /font-range/0.2.0:
-    resolution: {integrity: sha512-0D3CgB8q0csNRn5jjKEHD0pe4mZdPumTQcm+gXWcZAUYSny9QOj2Ez+DrHSRIWHb6cBlZNRFwoDqrQE03VxmvA==}
-    engines: {node: '>= 12.13'}
-    dependencies:
-      '@types/css-tree': 1.0.7
-      '@types/node-fetch': 2.6.1
-      css-tree: 1.1.3
-      node-fetch: 2.6.7
-      tslib: 2.4.0
-    transitivePeerDependencies:
-      - encoding
-    dev: true
 
   /for-in/1.0.2:
     resolution: {integrity: sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=}
@@ -12004,10 +11977,6 @@ packages:
     resolution: {integrity: sha512-jVU0Nr2B9X3MU4tSK7JP1CMkSvOj7X5l/GboG1tKRw52lLF1x2Ju92Ms9tNetCcbfX3hzlM73zYo2NKkWSfF/A==}
     dev: true
 
-  /mdn-data/2.0.14:
-    resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
-    dev: true
-
   /mdurl/1.0.1:
     resolution: {integrity: sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==}
     dev: true
@@ -13411,14 +13380,6 @@ packages:
   /prepend-http/2.0.0:
     resolution: {integrity: sha512-ravE6m9Atw9Z/jjttRUZ+clIXogdghyZAuWJ3qEzjT+jI/dL1ifAqhZeC5VHzQp1MSt1+jxKkFNemj/iO7tVUA==}
     engines: {node: '>=4'}
-    dev: true
-
-  /pretendard/1.2.2:
-    resolution: {integrity: sha512-t9zh/sUgiRayL7DEf0pm+a6S4VZkfSuUAom4UfScMYPR/JY9S73wX08Z5rXplV3EvbNDKaOdwhPYzL/tr7lsqA==}
-    dependencies:
-      font-range: 0.2.0
-    transitivePeerDependencies:
-      - encoding
     dev: true
 
   /prettier/1.19.1:

@@ -1,9 +1,10 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 .hb-transition {
+  @include initial(hb-transition);
   @include host-styled {
     display: none;
   }
-  @include host-styled("[show]") {
+  @include host-styled('[show]') {
     display: block;
   }
 }
@@ -145,7 +146,7 @@
 }
 
 .hb-transition {
-  @include host-styled(".visible") {
+  @include host-styled('.visible') {
     display: block;
   }
 }

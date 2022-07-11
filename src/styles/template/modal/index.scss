@@ -1,6 +1,7 @@
 //
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 .hb-modal {
+  @include initial(hb-modal);
   @include host-styled {
     display: flex;
   }
@@ -13,7 +14,7 @@
     left: 0;
     display: flex;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
@@ -27,7 +28,7 @@
   &__container {
     max-width: var(--modal__width);
 
-    @include child-styled(".shake") {
+    @include child-styled('.shake') {
       animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
       @keyframes shake {
         10%,

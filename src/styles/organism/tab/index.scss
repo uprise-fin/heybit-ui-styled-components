@@ -1,6 +1,7 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 .hb-tab {
+  @include initial(hb-tab);
   @include host-styled {
     display: block;
   }
@@ -9,7 +10,7 @@
     &__btns {
       display: flex;
       border: 1px solid #000;
-      @include slot-styled("*") {
+      @include slot-styled('*') {
         padding: 20px;
         border: 0;
         font-size: inherit;
@@ -28,10 +29,10 @@
     }
   }
   &__content {
-    @include slot-styled("*") {
+    @include slot-styled('*') {
       display: none;
     }
-    @include slot-styled("[active]") {
+    @include slot-styled('[active]') {
       display: block;
     }
   }

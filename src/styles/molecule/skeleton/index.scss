@@ -1,6 +1,7 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 .hb-skeleton {
+  @include initial(hb-skeleton);
   @include host-styled('[type="card"]') {
     display: grid;
     // grid-template-columns: 100px 100px;

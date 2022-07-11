@@ -1,6 +1,7 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 .hb-event-dialog {
+  @include initial(hb-event-dialog);
   &__container {
     position: relative;
     overflow: auto;
@@ -64,7 +65,7 @@
         display: flex;
         margin-left: -10px;
         flex-direction: row;
-        @include slot-styled("*") {
+        @include slot-styled('*') {
           flex: 1;
           margin: 24px 0 0 10px;
           border: 0;
@@ -78,10 +79,10 @@
       // }
       &.vertical {
         display: block;
-        @include slot-styled("*:first-of-type") {
+        @include slot-styled('*:first-of-type') {
           margin-top: 24px;
         }
-        @include slot-styled("*") {
+        @include slot-styled('*') {
           margin-top: 10px;
         }
       }
@@ -90,7 +91,7 @@
       display: block;
       font-size: 0;
       text-align: center;
-      @include slot-styled("*") {
+      @include slot-styled('*') {
         display: inline-block;
         margin-top: 16px;
       }

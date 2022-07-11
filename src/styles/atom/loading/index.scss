@@ -1,5 +1,6 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 .hb-loading {
+  @include initial(hb-loading);
   @include host-styled {
     display: block;
     transition: opacity var(--transition__duration);

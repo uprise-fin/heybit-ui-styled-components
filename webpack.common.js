@@ -12,8 +12,7 @@ module.exports = {
     },
   },
   entry: {
-    initial: [path.resolve(__dirname, './src/initial.scss')],
-    onlyStyled: [path.resolve(__dirname, './src/styles/index.scss')],
+    style: [path.resolve(__dirname, './src/styles/index.scss')],
     index: [path.resolve(__dirname, './src/index.ts')],
   },
   module: {
@@ -25,10 +24,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: [
-          path.resolve(__dirname, './src/initial.scss'),
-          path.resolve(__dirname, './src/styles/index.scss'),
-        ],
+        exclude: [path.resolve(__dirname, './src/styles/index.scss')],
         use: [
           {
             loader: 'lit-scss-loader',
@@ -43,10 +39,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: [
-          path.resolve(__dirname, './src/initial.scss'),
-          path.resolve(__dirname, './src/styles/index.scss'),
-        ],
+        include: [path.resolve(__dirname, './src/styles/index.scss')],
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {

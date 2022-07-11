@@ -1,6 +1,7 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 .hb-input {
+  @include initial(hb-input);
   @include host-styled {
     display: flex;
     align-items: center;

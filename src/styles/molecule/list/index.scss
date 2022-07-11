@@ -1,4 +1,4 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 %option {
   display: flex;
@@ -24,6 +24,7 @@
 }
 
 .hb-list {
+  @include initial(hb-list);
   @include host-styled {
     overflow: hidden;
     display: block;

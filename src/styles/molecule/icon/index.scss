@@ -1,4 +1,4 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 $hb-icon__size: (
   large: 32px,
   medium: 24px,
@@ -7,6 +7,7 @@ $hb-icon__size: (
 );
 
 .hb-icon {
+  @include initial(hb-icon);
   @include host-styled {
     display: inline-flex;
     vertical-align: middle;

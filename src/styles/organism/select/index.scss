@@ -1,6 +1,7 @@
-@import "../../utils/mixins";
+@import '../../utils/mixins';
 
 .hb-select {
+  @include initial(hb-select);
   @include host-styled {
     // z-index: zIndex("레이어");
     // position: relative;
@@ -11,7 +12,7 @@
 
   &__list {
     position: absolute;
-    @include child-styled("[fixed]") {
+    @include child-styled('[fixed]') {
       position: fixed;
       will-change: transform;
     }
@@ -29,7 +30,7 @@
     // @extend %option;
     cursor: pointer;
 
-    @include child-styled(".open") {
+    @include child-styled('.open') {
       &:not(:read-only) {
         cursor: auto;
       }
