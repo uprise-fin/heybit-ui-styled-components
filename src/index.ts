@@ -1,3 +1,2 @@
-import {hbButtonTheme, hbButtonType} from './models/organism/button';
-import {HbDialogAnchor, HbDialogButton} from './models/template/modal';
-export {hbButtonTheme, hbButtonType, HbDialogAnchor, HbDialogButton};
+import {HbButton, HbModal} from './models/index';
+export {HbButton, HbModal};

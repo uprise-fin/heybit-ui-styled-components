@@ -1,7 +1,7 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {hbButtonTheme, hbButtonType} from '../../..';
-import {size} from '../../base';
+import {size} from '../../../models/atom/variable';
+import {hbButtonTheme, hbButtonType} from '../../../models/organism/button';
 import './index';
 import type {HbButton} from './index';
 

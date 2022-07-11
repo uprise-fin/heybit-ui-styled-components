@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*", "node_modules/lit-scss-loader/types.d.ts", "index.d.ts"],
+  "include": ["src/**/*", "node_modules/lit-scss-loader/types.d.ts"],
   "paths": {
     "@/*": ["src/*"],
     "~/*": ["/*"]

@@ -1,8 +1,9 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {horizonAlign, verticalAlign} from '../../../models/atom/variable';
 import {getElement} from '../../../utils';
 import {transitionType} from '../../atom/transition';
-import {Base, horizonAlign, verticalAlign} from '../../base';
+import {Base} from '../../base';
 
 export enum open {
   'false' = 'false',

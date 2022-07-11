@@ -1,7 +1,7 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
+import {size} from '../../../models/atom/variable';
 import {dev} from '../../../utils';
-import {size} from '../../base';
 import './index';
 import type {HbIcon} from './index';
 import SVG from './svg';

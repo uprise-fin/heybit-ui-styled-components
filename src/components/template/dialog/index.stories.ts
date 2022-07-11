@@ -5,7 +5,7 @@ import './index';
 import {HbDialog} from './index';
 import desktopImg from '../../../../static/sample-desktop.png';
 import thunderImg from '../../../../static/sample-thunder.svg';
-import {hbButtonTheme} from '../../..';
+import {hbButtonTheme} from '../../../models/organism/button';
 interface HbDialogExpns extends HbDialog {
   content: string;
 }

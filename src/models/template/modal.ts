@@ -1,4 +1,4 @@
-import {hbButtonTheme} from '../../organism/button';
+import {hbButtonTheme} from '../organism/button';
 
 export interface HbDialogButton {
   event: Function;

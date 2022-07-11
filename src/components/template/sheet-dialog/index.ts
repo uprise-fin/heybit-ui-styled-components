@@ -1,10 +1,11 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {verticalAlign} from '../../../models/atom/variable';
 import {hbButtonType} from '../../../models/organism/button';
 import {HbDialogAnchor, HbDialogButton} from '../../../models/template/modal';
 import {wait} from '../../../utils';
 import {transitionType} from '../../atom/transition';
-import {Base, verticalAlign} from '../../base';
+import {Base} from '../../base';
 import {buttonAlign} from '../modal';
 
 /**

@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {systemColor, serviceColor, Color} from '../../base';
+import {systemColor, serviceColor, Color} from '../../../models/atom/variable';
 import {colorPalette, levels} from './index';
 // import { hbButtonTheme } from "../../organism/button";
 // const variables = Object.values(

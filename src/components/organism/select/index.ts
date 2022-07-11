@@ -1,8 +1,9 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {size} from '../../../models/atom/variable';
 import {getElement} from '../../../utils';
 import {transitionType} from '../../atom/transition';
-import {Base, size} from '../../base';
+import {Base} from '../../base';
 import {HbList} from '../../molecule/list';
 import {HbInput} from '../input';
 export interface Option {
