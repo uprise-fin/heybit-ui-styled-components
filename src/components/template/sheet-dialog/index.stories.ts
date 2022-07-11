@@ -1,10 +1,10 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {buttonAlign} from '../modal';
 import './index';
 import {HbSheetDialog} from './index';
 import desktopImg from '../../../../static/sample-desktop.png';
 import {hbButtonTheme} from '../../../models/organism/button';
+import {hbModalButtonAlign} from '../../../models/template/modal';
 interface HbSheetDialogExpns extends HbSheetDialog {
   content: string;
 }
@@ -62,11 +62,11 @@ const Template = (props: HbSheetDialogExpns) => html`
 `;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const HorizonTemplate: Story<HbSheetDialogExpns> = props => {
-  props.buttonAlign = buttonAlign.horizon;
+  props.buttonAlign = hbModalButtonAlign.horizon;
   return Template(props);
 };
 const VerticalTemplate: Story<HbSheetDialogExpns> = props => {
-  props.buttonAlign = buttonAlign.vertical;
+  props.buttonAlign = hbModalButtonAlign.vertical;
   return Template(props);
 };
 export const horizon: Story<HbSheetDialogExpns> = HorizonTemplate.bind({});

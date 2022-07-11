@@ -1,7 +1,9 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {hbTransitionType} from '../../../models/atom/transition';
+import {hbToastMessage} from '../../../models/molecule/toast';
 // import style from '../../../styles/molecule/toast/index.scss';
-import {transitionType} from '../../atom/transition';
+
 import {Base} from '../../base';
 
 /**
@@ -14,12 +16,6 @@ import {Base} from '../../base';
  * @csspart content
  * @csspart footer
  */
-export interface Message {
-  text: string;
-  // theme?: Color
-  icon?: string;
-  duration?: number;
-}
 interface Timer {
   time: number;
   index: number;
@@ -32,7 +28,7 @@ export class HbToast extends Base {
 
   now: number = 0;
 
-  messages: Message[] = [];
+  messages: hbToastMessage[] = [];
 
   timer: Timer[] = [];
 
@@ -96,10 +92,10 @@ export class HbToast extends Base {
         html`<hb-transition
           style="margin-top: -${this.getHeight(i)}px;"
           class="hb-toast__position"
-          type=${transitionType.fade}
+          type=${hbTransitionType.fade}
           ?show=${this.getShow(i)}
           ><hb-transition
-            type=${transitionType.bottomUpHeight}
+            type=${hbTransitionType.bottomUpHeight}
             ?show=${this.getShow(i)}
             ><div class="hb-toast__content">
               ${x.icon

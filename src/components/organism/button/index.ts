@@ -1,9 +1,10 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {hbTransitionType} from '../../../models/atom/transition';
 import {size} from '../../../models/atom/variable';
 import {hbButtonTheme, hbButtonType} from '../../../models/organism/button';
 import {wait} from '../../../utils';
-import {transitionType} from '../../atom/transition';
+
 import {Base} from '../../base';
 
 /**
@@ -56,7 +57,7 @@ export class HbButton extends Base {
           ? html`
               <hb-transition
                 class="hb-button__label__transition"
-                type=${transitionType.fade}
+                type=${hbTransitionType.fade}
                 ?show=${this.loading}
               >
                 <hb-spinner size=${this.size}></hb-spinner>
@@ -65,7 +66,7 @@ export class HbButton extends Base {
           : html`
               <hb-transition
                 class="hb-button__label__transition"
-                type=${transitionType.fade}
+                type=${hbTransitionType.fade}
                 ?show=${!this.loading}
               >
                 <slot part="label"></slot>

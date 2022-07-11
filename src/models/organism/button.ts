@@ -1,3 +1,5 @@
+import {size} from '../atom/variable';
+
 export enum hbButtonType {
   'rectangle' = 'rectangle',
   'radius' = 'radius',
@@ -8,4 +10,10 @@ export enum hbButtonTheme {
   'secondary' = 'secondary',
   'tertiary' = 'tertiary',
   'quaternary' = 'quaternary',
+}
+export enum hbButtonSize {
+  'xsmall' = size.xsmall,
+  'small' = size.small,
+  'medium' = size.medium,
+  'large' = size.large,
 }

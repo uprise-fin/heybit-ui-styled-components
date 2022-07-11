@@ -1,12 +1,16 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {hbTransitionType} from '../../../models/atom/transition';
 import {verticalAlign} from '../../../models/atom/variable';
 import {hbButtonType} from '../../../models/organism/button';
-import {HbDialogAnchor, HbDialogButton} from '../../../models/template/modal';
+import {
+  HbDialogAnchor,
+  HbDialogButton,
+  hbModalButtonAlign,
+} from '../../../models/template/modal';
 import {wait} from '../../../utils';
-import {transitionType} from '../../atom/transition';
+
 import {Base} from '../../base';
-import {buttonAlign} from '../modal';
 
 /**
  * @fires close 닫기
@@ -38,7 +42,7 @@ export class HbSheetDialog extends Base {
   title = '';
   persistent = false;
   hideCloseBtn = false;
-  buttonAlign = buttonAlign.horizon;
+  buttonAlign = hbModalButtonAlign.horizon;
   anchor: HbDialogAnchor = {};
   buttons: HbDialogButton[] = [];
 
@@ -80,7 +84,7 @@ export class HbSheetDialog extends Base {
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
-        transitionType=${transitionType.bottomUp}
+        transitionType=${hbTransitionType.bottomUp}
       >
         <div class="hb-sheet-dialog__container">
           ${this.hideCloseBtn

@@ -1,12 +1,8 @@
 import {Base} from '../../base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-export enum transitionType {
-  fade = 'fade',
-  zoom = 'zoom',
-  bottomUpHeight = 'bottom-up-height',
-  bottomUp = 'bottom-up',
-}
+import {hbTransitionType} from '../../../models/atom/transition';
+
 @customElement('hb-transition')
 export class HbTransition extends Base {
   static override get styles() {
@@ -14,7 +10,7 @@ export class HbTransition extends Base {
   }
   show = false;
   delete = false;
-  type: transitionType;
+  type: hbTransitionType;
   static get properties() {
     return {
       show: {type: Boolean, Reflect: true},

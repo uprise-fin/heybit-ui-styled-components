@@ -12,3 +12,8 @@ export interface HbDialogAnchor {
   target?: string;
   name?: string;
 }
+
+export enum hbModalButtonAlign {
+  'vertical' = 'vertical',
+  'horizon' = 'horizon',
+}

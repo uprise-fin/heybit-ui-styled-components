@@ -1,2 +1,2 @@
-import {HbButton, HbModal} from './models/index';
-export {HbButton, HbModal};
+import * as Model from './models';
+export default Model;

@@ -1,8 +1,8 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
+import {hbTransitionType} from '../../../models/atom/transition';
 import './index';
 import type {HbTransition} from './index';
-import {transitionType} from './index';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
@@ -15,9 +15,9 @@ export default {
       defaultValue: false,
     },
     type: {
-      options: Object.values(transitionType),
+      options: Object.values(hbTransitionType),
       control: {type: 'radio'},
-      defaultValue: transitionType.fade,
+      defaultValue: hbTransitionType.fade,
     },
   },
 } as Meta;
@@ -33,5 +33,5 @@ const Template: Story<HbTransition> = ({show, type}) =>
 export const visible: Story<HbTransition> = Template.bind({});
 visible.args = {
   show: false,
-  type: transitionType.fade,
+  type: hbTransitionType.fade,
 };

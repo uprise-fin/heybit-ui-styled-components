@@ -1,18 +1,11 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {hbTransitionType} from '../../../models/atom/transition';
 import {horizonAlign, verticalAlign} from '../../../models/atom/variable';
 import {getElement} from '../../../utils';
-import {transitionType} from '../../atom/transition';
+
 import {Base} from '../../base';
 
-export enum open {
-  'false' = 'false',
-  'true' = 'true',
-}
-export enum buttonAlign {
-  'vertical' = 'vertical',
-  'horizon' = 'horizon',
-}
 /**
  * @fires close 닫기
  * @property open 온 오프
@@ -43,7 +36,7 @@ export class HbModal extends Base {
   }
   verticalAlign: verticalAlign = verticalAlign.middle;
   horizonAlign: horizonAlign = horizonAlign.center;
-  transitionType: transitionType;
+  transitionType: hbTransitionType;
   containerEl?: HTMLDivElement;
   width = 0;
   open = false;
@@ -74,7 +67,7 @@ export class HbModal extends Base {
       <hb-transition
         ?show=${this.open}
         id="modal-transition"
-        type=${transitionType.fade}
+        type=${hbTransitionType.fade}
       >
         <div class="hb-modal__wrap" @click=${this.adapterOnClose}>
           <hb-transition

@@ -1,6 +1,6 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {transitionType} from '../../atom/transition';
+import {hbTransitionType} from '../../../models/atom/transition';
 import {Base} from '../../base';
 
 /**
@@ -48,7 +48,7 @@ export class HbEventDialog extends Base {
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent}
-        transitionType=${transitionType.zoom}
+        transitionType=${hbTransitionType.zoom}
       >
         <div class="hb-event-dialog__container">
           ${this.hideCloseBtn

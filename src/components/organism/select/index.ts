@@ -1,8 +1,9 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {hbTransitionType} from '../../../models/atom/transition';
 import {size} from '../../../models/atom/variable';
 import {getElement} from '../../../utils';
-import {transitionType} from '../../atom/transition';
+
 import {Base} from '../../base';
 import {HbList} from '../../molecule/list';
 import {HbInput} from '../input';
@@ -109,7 +110,7 @@ export class HbSelect extends Base {
       <hb-transition
         id="select-transition"
         ?show=${this.open}
-        type=${transitionType.fade}
+        type=${hbTransitionType.fade}
       >
         <hb-list
           emptyText=${this.emptyText}
