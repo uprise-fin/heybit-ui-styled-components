@@ -22,13 +22,13 @@ import {buttonAlign} from '../modal';
  * @csspart buttons
  * @csspart anchor
  */
-export interface Button {
+export interface HbDialogButton {
   event: Function;
   theme: hbButtonTheme;
   name: string;
   loading?: boolean;
 }
-export interface Anchor {
+export interface HbDialogAnchor {
   event?: Function;
   href?: string;
   target?: string;
@@ -48,8 +48,8 @@ export class HbDialog extends Base {
   persistent = false;
   hideCloseBtn = false;
   buttonAlign = buttonAlign.horizon;
-  anchor: Anchor = {};
-  buttons: Button[] = [];
+  anchor: HbDialogAnchor = {};
+  buttons: HbDialogButton[] = [];
 
   get eventDisabled() {
     return this.buttons.map(x => x.loading).some(x => x) || this.loading;
@@ -127,7 +127,7 @@ export class HbDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled}
-                    type=${hbButtonType.rectagle}
+                    type=${hbButtonType.rectangle}
                     baseLoadingDuration=${this.baseLoadingDuration}
                     @event=${this.onEvent.bind(this, x, i)}
                     theme=${x.theme}
@@ -152,7 +152,7 @@ export class HbDialog extends Base {
     `;
   }
 
-  async onEvent(button: Button, index: number) {
+  async onEvent(button: HbDialogButton, index: number) {
     const {event} = button;
     if (this.baseLoadingDuration) {
       const on = this.buttons.slice();

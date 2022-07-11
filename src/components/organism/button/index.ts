@@ -4,7 +4,7 @@ import {wait} from '../../../utils';
 import {transitionType} from '../../atom/transition';
 import {Base, size} from '../../base';
 export enum hbButtonType {
-  'rectagle' = 'rectagle',
+  'rectangle' = 'rectangle',
   'radius' = 'radius',
   'circle' = 'circle',
 }
@@ -34,7 +34,7 @@ export class HbButton extends Base {
     return [require('../../../styles/organism/button/index.scss').default];
   }
   labelEl: HTMLElement;
-  type: hbButtonType = hbButtonType.rectagle;
+  type: hbButtonType = hbButtonType.rectangle;
   size: size = size.large;
   loading = false;
   baseLoadingDuration = 0;

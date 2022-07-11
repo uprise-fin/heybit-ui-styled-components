@@ -3,7 +3,8 @@ import {customElement} from 'lit/decorators.js';
 import {wait} from '../../../utils';
 import {transitionType} from '../../atom/transition';
 import {Base, verticalAlign} from '../../base';
-import {hbButtonTheme, hbButtonType} from '../../organism/button';
+import {hbButtonType} from '../../organism/button';
+import {HbDialogAnchor, HbDialogButton} from '../dialog';
 import {buttonAlign} from '../modal';
 
 /**
@@ -22,18 +23,6 @@ import {buttonAlign} from '../modal';
  * @csspart buttons
  * @csspart anchor
  */
-export interface Button {
-  event: Function;
-  theme: hbButtonTheme;
-  name: string;
-  loading?: boolean;
-}
-export interface Anchor {
-  event?: Function;
-  href?: string;
-  target?: string;
-  name?: string;
-}
 @customElement('hb-sheet-dialog')
 export class HbSheetDialog extends Base {
   static override get styles() {
@@ -49,8 +38,8 @@ export class HbSheetDialog extends Base {
   persistent = false;
   hideCloseBtn = false;
   buttonAlign = buttonAlign.horizon;
-  anchor: Anchor = {};
-  buttons: Button[] = [];
+  anchor: HbDialogAnchor = {};
+  buttons: HbDialogButton[] = [];
 
   get eventDisabled() {
     return this.buttons.map(x => x.loading).some(x => x) || this.loading;
@@ -120,7 +109,7 @@ export class HbSheetDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled}
-                    type=${hbButtonType.rectagle}
+                    type=${hbButtonType.rectangle}
                     baseLoadingDuration=${this.baseLoadingDuration}
                     @event=${this.onEvent.bind(this, x, i)}
                     theme=${x.theme}
@@ -145,7 +134,7 @@ export class HbSheetDialog extends Base {
     `;
   }
 
-  async onEvent(button: Button, index: number) {
+  async onEvent(button: HbDialogButton, index: number) {
     const {event} = button;
     if (this.baseLoadingDuration) {
       const on = this.buttons.slice();

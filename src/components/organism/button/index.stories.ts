@@ -80,10 +80,10 @@ const args = {
   loading: false,
   disabled: false,
 };
-export const rectagle: Story<HbButton> = Template.bind({});
-rectagle.args = {
+export const rectangle: Story<HbButton> = Template.bind({});
+rectangle.args = {
   ...args,
-  type: hbButtonType.rectagle,
+  type: hbButtonType.rectangle,
   theme: hbButtonTheme.primary,
 };
 export const radius: Story<HbButton> = Template.bind({});
