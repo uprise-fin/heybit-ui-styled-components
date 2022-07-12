@@ -2,8 +2,8 @@
   "include": ["src/**/*", "node_modules/lit-scss-loader/types.d.ts"],
   "compilerOptions": {
     "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["/*"]
+      "@/*": ["./src/*"],
+      "~/*": ["./*"]
     },
     "baseUrl": "./",
     "esModuleInterop": true,

@@ -5,13 +5,6 @@ const common = require('./webpack.common.js');
 module.exports = _ => {
   return merge(common, {
     mode: 'production',
-    resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      alias: {
-        '@': path.resolve(__dirname, './src'),
-        '~': path.resolve(__dirname, './'),
-      },
-    },
     entry: {
       'components/atom/variable': [
         path.resolve(__dirname, './src/components/atom/variable/index.ts'),

@@ -1,4 +1,5 @@
 const path = require('path');
+const pathsTransformer = require('ts-transform-paths').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
@@ -13,8 +14,15 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
         exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              getCustomTransformers: program => pathsTransformer(),
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
@@ -50,6 +58,10 @@ module.exports = {
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.svg', '.css', '.scss'],
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '~': path.resolve(__dirname, './'),
+    },
   },
   optimization: {
     minimize: true,
