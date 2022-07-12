@@ -1,10 +1,10 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../atom/transition/type';
-import {hbToastMessage} from '../toast/type';
-// import style from '../../../styles/molecule/toast/index.scss';
+import {HbTransitionType} from '@/components/atom/transition/type';
+import {HbToastMessage} from './type';
+// import style from '@/styles/molecule/toast/index.scss';
 
-import {Base} from '../../base';
+import {Base} from '@/components/base';
 
 /**
  * @property open 온 오프
@@ -23,12 +23,12 @@ interface Timer {
 @customElement('hb-toast')
 export class HbToast extends Base {
   static override get styles() {
-    return [require('../../../styles/molecule/toast/index.scss').default];
+    return [require('@/styles/molecule/toast/index.scss').default];
   }
 
   now: number = 0;
 
-  messages: hbToastMessage[] = [];
+  messages: HbToastMessage[] = [];
 
   timer: Timer[] = [];
 
@@ -92,10 +92,10 @@ export class HbToast extends Base {
         html`<hb-transition
           style="margin-top: -${this.getHeight(i)}px;"
           class="hb-toast__position"
-          type=${hbTransitionType.fade}
+          type=${HbTransitionType.fade}
           ?show=${this.getShow(i)}
           ><hb-transition
-            type=${hbTransitionType.bottomUpHeight}
+            type=${HbTransitionType.bottomUpHeight}
             ?show=${this.getShow(i)}
             ><div class="hb-toast__content">
               ${x.icon

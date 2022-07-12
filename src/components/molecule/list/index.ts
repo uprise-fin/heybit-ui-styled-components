@@ -1,6 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {Base} from '../../base';
+import {Base} from '@/components/base';
+import {HbListEvent, HbSelectOption} from './type';
 
 /**
  * @fires event
@@ -12,25 +13,27 @@ import {Base} from '../../base';
  * @csspart skeleton
  * @csspart img
  */
-export interface Option {
-  label: string;
-  value: string;
-}
-export interface HbListEvent extends Event {
-  target: HbList;
-}
+
 @customElement('hb-list')
 export class HbList extends Base {
   static override get styles() {
-    return [require('../../../styles/molecule/list/index.scss').default];
+    return [require('@/styles/molecule/list/index.scss').default];
   }
-  options: Option[] = [];
+
+  options: HbSelectOption[] = [];
+
   attributeSync = false;
+
   open = false;
+
   value = '';
+
   emptyText = '';
+
   width = 0;
+
   maxHeight = 0;
+
   static get properties() {
     return {
       options: {type: Array, Reflect: true},
@@ -46,14 +49,16 @@ export class HbList extends Base {
   get values() {
     return this.options.map(x => x.value) || [];
   }
+
   sto = setTimeout(() => {}, 0);
+
   onSelect(evt: HbListEvent) {
     this.adapterHide();
     if (!(evt.target instanceof HTMLButtonElement)) return;
     const {target} = evt;
     const {value} = target.dataset;
     if (this.value === value || !this.values.includes(value)) return;
-    this.attributeSync && this.setAttribute('value', value!);
+    if (this.attributeSync) this.setAttribute('value', value!);
     this.value = value!;
     this.dispatchEvent(new CustomEvent('event', evt));
   }
@@ -66,6 +71,7 @@ export class HbList extends Base {
   adapterHide() {
     this.sto = setTimeout(() => this.onHide(), 0);
   }
+
   render() {
     return html`
       <div

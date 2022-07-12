@@ -1,7 +1,7 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {HbButton} from '../../organism/button';
-import {hbButtonType} from '../../organism/button/type';
+import type {HbButton} from '@/components/organism/button';
+import {HbButtonType} from '@/components/organism/button/type';
 export default {
   title: 'how-to-use/shadow-dom',
 } as Meta;
@@ -10,7 +10,7 @@ const Template: Story<HbButton> = () =>
     <hb-button
       theme="primary"
       size="large"
-      type=${hbButtonType.rectangle}
+      type=${HbButtonType.rectangle}
       tabindex="0"
       >primary large block</hb-button
     >

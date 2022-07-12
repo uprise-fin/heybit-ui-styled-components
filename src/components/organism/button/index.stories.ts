@@ -1,7 +1,7 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {size} from '../../atom/variable/type';
-import {hbButtonTheme, hbButtonType} from '../../organism/button/type';
+import {Size} from '@/components/atom/variable/type';
+import {HbButtonTheme, HbButtonType} from '@/components/organism/button/type';
 import './index';
 import type {HbButton} from './index';
 
@@ -9,13 +9,13 @@ export default {
   title: 'components/organism/hb-button',
   argTypes: {
     theme: {
-      options: Object.keys(hbButtonTheme),
+      options: Object.keys(HbButtonTheme),
       control: {type: 'radio'},
     },
     size: {
-      options: Object.keys(size),
+      options: Object.keys(Size),
       control: {type: 'radio'},
-      defaultValue: size.large,
+      defaultValue: Size.large,
     },
   },
 } as Meta;
@@ -75,7 +75,7 @@ const IconTemplate: Story<HbButton> = ({
 
 const args = {
   title: '내용을 입력해보세요',
-  size: size.large,
+  size: Size.large,
   baseLoadingDuration: 500,
   loading: false,
   disabled: false,
@@ -83,20 +83,20 @@ const args = {
 export const rectangle: Story<HbButton> = Template.bind({});
 rectangle.args = {
   ...args,
-  type: hbButtonType.rectangle,
-  theme: hbButtonTheme.primary,
+  type: HbButtonType.rectangle,
+  theme: HbButtonTheme.primary,
 };
 export const radius: Story<HbButton> = Template.bind({});
 radius.args = {
   ...args,
-  theme: hbButtonTheme.primary,
-  type: hbButtonType.radius,
+  theme: HbButtonTheme.primary,
+  type: HbButtonType.radius,
 };
 export const circle: Story<HbButton> = IconTemplate.bind({});
 circle.args = {
   ...args,
-  theme: hbButtonTheme.primary,
-  type: hbButtonType.circle,
+  theme: HbButtonTheme.primary,
+  type: HbButtonType.circle,
 };
 export const noType: Story<HbButton> = NoTypeTemplate.bind({});
 noType.args = {

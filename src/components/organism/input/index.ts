@@ -1,15 +1,9 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {getElement} from '../../../utils';
-import {Base} from '../../base';
-export enum type {
-  text = 'text',
-  number = 'number',
-  password = 'password',
-}
-export interface HbInputEvent extends InputEvent {
-  target: HbInput;
-}
+import {getElement} from '@/utils';
+import {Base} from '@/components/base';
+import {HbInputEvent, HbInputType} from './type';
+
 /**
  * An example element.
  *
@@ -32,18 +26,29 @@ export interface HbInputEvent extends InputEvent {
 @customElement('hb-input')
 export class HbInput extends Base {
   static override get styles() {
-    return [require('../../../styles/organism/input/index.scss').default];
+    return [require('@/styles/organism/input/index.scss').default];
   }
+
   _value = '';
+
   inputEl?: HTMLInputElement;
+
   attributeSync = false;
+
   placeholder = '';
+
   error = false;
+
   decimal: number = 2;
+
   comma: number = 3;
+
   readonly = false;
+
   maxlength?: number;
-  type: type = type.text;
+
+  type: HbInputType = HbInputType.text;
+
   static get properties() {
     return {
       value: {type: String, Reflect: true},
@@ -64,23 +69,25 @@ export class HbInput extends Base {
   }
 
   get isType() {
-    if (this.type === type.number) return type.text;
+    if (this.type === HbInputType.number) return HbInputType.text;
     return this.type;
   }
 
   set value(value: string) {
-    if (this.type === type.number) {
+    if (this.type === HbInputType.number) {
       this._value = this.toNumeric(value);
     } else {
       this._value = value;
     }
   }
+
   get value() {
     return this._value;
   }
 
   get originalValue() {
-    if (this.type === type.number) return this.toNumeric(this._value, true);
+    if (this.type === HbInputType.number)
+      return this.toNumeric(this._value, true);
     return this._value;
   }
 
@@ -101,10 +108,11 @@ export class HbInput extends Base {
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `;
   }
+
   onInput(ev: HbInputEvent) {
     const inputEl = this.inputEl;
     let {value} = inputEl;
-    if (this.type === type.number) {
+    if (this.type === HbInputType.number) {
       //숫자만 입력받도록 값 변경
       const {data} = ev;
       const ableData = Array(10)
@@ -119,7 +127,7 @@ export class HbInput extends Base {
     if (this.maxlength > 0) {
       // 최대글자수 이하로 입력 받도록 값 변경
       let length = value.length;
-      if (this.type === type.number)
+      if (this.type === HbInputType.number)
         length =
           inputEl.value.length -
           (inputEl.value.length - this.toNumeric(inputEl.value, true).length);
@@ -152,7 +160,7 @@ export class HbInput extends Base {
   onChange(ev: HbInputEvent) {
     const {value} = this.inputEl;
     this.value = value;
-    this.attributeSync && this.setAttribute('value', this.originalValue);
+    if (this.attributeSync) this.setAttribute('value', this.originalValue);
     this.dispatchEvent(new CustomEvent('event', ev));
   }
 
@@ -166,14 +174,16 @@ export class HbInput extends Base {
     inputEl.value = this.value;
     this.onclick = () => inputEl.focus();
   }
+
   disconnectedCallback() {
     this.onclick = () => null;
   }
+
   attributeChangedCallback(name: string, _: string, newVal: string) {
     if (name === 'value') {
       const inputEl = this.inputEl;
-      if (this.type === type.number) newVal = this.toNumeric(newVal);
-      inputEl && inputEl.value !== newVal && (inputEl.value = newVal);
+      if (this.type === HbInputType.number) newVal = this.toNumeric(newVal);
+      if (inputEl && inputEl.value !== newVal) inputEl.value = newVal;
     }
 
     super.attributeChangedCallback(name, _, newVal);

@@ -1,9 +1,9 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {dev} from '../../../utils';
+import {dev} from '@/utils';
 import './index';
-import type {HbInput, HbInputEvent} from './index';
-import {type} from './index';
+import type {HbInput} from './index';
+import {HbInputEvent, HbInputType} from './type';
 
 export default dev() &&
   ({
@@ -33,14 +33,14 @@ const Template: Story<HbInput> = ({
 
 export const text: Story<HbInput> = Template.bind({});
 text.args = {
-  type: type.text,
+  type: HbInputType.text,
   maxlength: 10,
   placeholder: '글자입력해주세요',
   error: false,
 };
 export const number: Story<HbInput> = Template.bind({});
 number.args = {
-  type: type.number,
+  type: HbInputType.number,
   maxlength: 10,
   placeholder: '숫자를써볼까요?',
   decimal: 2,

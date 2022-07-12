@@ -1,7 +1,7 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {size} from '../../atom/variable/type';
-import {dev} from '../../../utils';
+import {Size} from '@/components/atom/variable/type';
+import {dev} from '@/utils';
 import './index';
 import type {HbTooltip} from './index';
 
@@ -24,7 +24,7 @@ const Template: Story<HbTooltip> = ({open}) =>
       ><hb-icon
         icon="ic-my-setting-renewal"
         slot="front"
-        size=${size.small}
+        size=${Size.small}
       ></hb-icon>
       <div>헤이비트</div></hb-tooltip
     >입니다.`;

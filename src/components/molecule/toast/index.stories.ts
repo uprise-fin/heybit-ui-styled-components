@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {hbButtonTheme, hbButtonType} from '../../organism/button/type';
+import {HbButtonTheme, HbButtonType} from '../../organism/button/type';
 import './index';
 import type {HbToast} from './index';
 
@@ -38,11 +38,11 @@ const Template: Story<HbToastExns> = ({visibleIcon, contents, icons}) => {
     element.messages = [...element.messages, message];
   }
   return html`<hb-button
-      type=${hbButtonType.rectangle}
-      theme=${hbButtonTheme.primary}
+      type=${HbButtonType.rectangle}
+      theme=${HbButtonTheme.primary}
       @event=${reset}
       >토스트리셋</hb-button
-    ><br /><hb-button type=${hbButtonType.rectangle} @event=${event}
+    ><br /><hb-button type=${HbButtonType.rectangle} @event=${event}
       >토스트 추가하기</hb-button
     ><hb-toast id="toast"></hb-toast>`;
 };

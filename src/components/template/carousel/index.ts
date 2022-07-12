@@ -1,7 +1,8 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {getChildren} from '../../../utils';
-import {Base} from '../../base';
+import {getChildren} from '@/utils';
+import {Base} from '@/components/base';
+import {HbCarouselEventStatus} from './type';
 /**
  * @property open 온 오프
  * @property width
@@ -19,42 +20,57 @@ import {Base} from '../../base';
  * @csspart buttons
  * @csspart anchor
  */
-enum eventStatus {
-  start,
-  doing,
-  done,
-  fake,
-}
+
 @customElement('hb-carousel')
 export class HbCarousel extends Base {
   static override get styles() {
-    return [require('../../../styles/template/carousel/index.scss').default];
+    return [require('@/styles/template/carousel/index.scss').default];
   }
+
   //옵션
   auto = false;
+
   pause = false;
+
   infinite = false;
+
   rolling = false;
+
   draggable = false;
+
   clickable = false;
+
   moveable = false;
+
   duration = 3000;
+
   speed = 300;
+
   flexWidth = 0;
+
   fakeLength = 1;
+
   index: number; // 현재 인덱스
+
   visibleLength: number;
 
   holderFlag = false;
+
   _userIndex: number; // 인피니트등에 쓰이기 위해 내부에서 실제로 사용하는 인덱스
+
   itemLength: number;
+
   itemElements: HTMLElement[];
+
   startPointer = {
     clientX: 0,
     clientY: 0,
   };
+
   dragDistance = 0;
-  eventStatus: eventStatus = eventStatus.done;
+
+  eventStatus: HbCarouselEventStatus = HbCarouselEventStatus.done;
+
   sto: ReturnType<typeof setTimeout>;
 
   // get open() {
@@ -95,7 +111,7 @@ export class HbCarousel extends Base {
   }
 
   get transitionFlag() {
-    if (this.eventStatus === eventStatus.done) return true;
+    if (this.eventStatus === HbCarouselEventStatus.done) return true;
     return false;
   }
 
@@ -113,6 +129,7 @@ export class HbCarousel extends Base {
     if (this.infinite) index -= this.itemLength;
     this._userIndex = index;
   }
+
   get userIndex() {
     return this._userIndex;
   }
@@ -127,7 +144,11 @@ export class HbCarousel extends Base {
     if (this.holderFlag) return '';
     const currentPosition =
       (this.index * this.clientWidth) / this.visibleLength;
-    if ([eventStatus.doing, eventStatus.fake].includes(this.eventStatus)) {
+    if (
+      [HbCarouselEventStatus.doing, HbCarouselEventStatus.fake].includes(
+        this.eventStatus,
+      )
+    ) {
       this.userIndex = this.closeIndex(currentPosition + this.dragDistance);
       return `${-currentPosition - this.dragDistance}px`;
     }
@@ -136,8 +157,11 @@ export class HbCarousel extends Base {
   }
 
   onResizeBound = this.onResize.bind(this);
+
   onEventStartBound = this.onEventStart.bind(this);
+
   onEventEndBound = this.onEventEnd.bind(this);
+
   onEventDoingBound = this.onEventDoing.bind(this);
 
   async customConnectedCallback() {
@@ -192,6 +216,7 @@ export class HbCarousel extends Base {
       window.addEventListener('resize', this.onResizeBound);
     }
   }
+
   disconnectedCallback() {
     if (this.draggable) {
       this.removeEventListener('mousedown', this.onEventStartBound);
@@ -213,8 +238,8 @@ export class HbCarousel extends Base {
     let duration = this.duration;
     clearTimeout(this.sto);
     if (this.index + step < this.itemLength) {
-      this.eventStatus !== eventStatus.done &&
-        (this.eventStatus = eventStatus.done);
+      if (this.eventStatus !== HbCarouselEventStatus.done)
+        this.eventStatus = HbCarouselEventStatus.done;
       this.index += step;
       step = 1;
     } else {
@@ -222,7 +247,7 @@ export class HbCarousel extends Base {
       duration = 0;
       step = 0;
       if (this.infinite) {
-        this.eventStatus = eventStatus.fake;
+        this.eventStatus = HbCarouselEventStatus.fake;
         this.dragDistance = -this.clientWidth / this.visibleLength;
         this.userIndex = this.itemLength - 1;
       }
@@ -257,8 +282,8 @@ export class HbCarousel extends Base {
   }
 
   onEventStart(event: MouseEvent | TouchEvent) {
-    if (this.eventStatus === eventStatus.done) {
-      this.eventStatus = eventStatus.start;
+    if (this.eventStatus === HbCarouselEventStatus.done) {
+      this.eventStatus = HbCarouselEventStatus.start;
       const {clientX, clientY} = this.getClientPoint(event);
 
       this.startPointer = {
@@ -267,14 +292,16 @@ export class HbCarousel extends Base {
       };
     }
   }
+
   onEventEnd(event: MouseEvent | TouchEvent) {
-    if (this.eventStatus === eventStatus.doing) {
+    if (this.eventStatus === HbCarouselEventStatus.doing) {
       event.stopImmediatePropagation(); // drag 했을때 클릭 이벤트 발생시키지 않기
       this.index = this.userIndex;
       this.dragDistance = 0;
     }
-    this.eventStatus = eventStatus.done;
+    this.eventStatus = HbCarouselEventStatus.done;
   }
+
   closeIndex(position: number) {
     const {length} = this.itemElements;
     const diff = this.positions.map(x => this.diff(x, position));
@@ -287,21 +314,27 @@ export class HbCarousel extends Base {
     else if (index < min) index = min;
     return index;
   }
+
   diff(a: number, b: number) {
     return a > b ? a - b : b - a;
   }
+
   onEventDoing(event: MouseEvent | TouchEvent) {
-    if ([eventStatus.start, eventStatus.doing].includes(this.eventStatus)) {
+    if (
+      [HbCarouselEventStatus.start, HbCarouselEventStatus.doing].includes(
+        this.eventStatus,
+      )
+    ) {
       const {clientX, clientY} = this.getClientPoint(event);
       const starterClientX = this.startPointer.clientX;
       const starterClientY = this.startPointer.clientY;
       this.dragDistance = starterClientX - clientX;
-      if (this.eventStatus === eventStatus.start)
+      if (this.eventStatus === HbCarouselEventStatus.start)
         if (
           this.diff(starterClientX, clientX) > 10 ||
           this.diff(starterClientY, clientY) > 10
         )
-          this.eventStatus = eventStatus.doing; // 드레그가 시작됐다고 판단하는 움직임 +- 10
+          this.eventStatus = HbCarouselEventStatus.doing; // 드레그가 시작됐다고 판단하는 움직임 +- 10
     }
   }
 

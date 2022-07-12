@@ -1,6 +1,6 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../atom/transition/type';
+import {HbTransitionType} from '../../atom/transition/type';
 
 import {Base} from '../../base';
 
@@ -19,7 +19,7 @@ import {Base} from '../../base';
 @customElement('hb-tooltip')
 export class HbTooltip extends Base {
   static override get styles() {
-    return [require('../../../styles/molecule/tooltip/index.scss').default];
+    return [require('@/styles/molecule/tooltip/index.scss').default];
   }
 
   open: boolean = false;
@@ -70,7 +70,7 @@ export class HbTooltip extends Base {
       <hb-transition
         class="hb-tooltip__transition"
         id="tooltip-transition"
-        type=${hbTransitionType.fade}
+        type=${HbTransitionType.fade}
         ?show=${this.open}
         ><slot part="content" class="hb-tooltip__content"></slot
       ></hb-transition>

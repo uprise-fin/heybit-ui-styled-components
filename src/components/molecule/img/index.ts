@@ -1,6 +1,6 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {Base} from '../../base';
+import {Base} from '@/components/base';
 
 /**
  * @property src
@@ -15,15 +15,23 @@ import {Base} from '../../base';
 @customElement('hb-img')
 export class HbImg extends Base {
   static override get styles() {
-    return [require('../../../styles/molecule/img/index.scss').default];
+    return [require('@/styles/molecule/img/index.scss').default];
   }
+
   src: string;
+
   loadingWidth: number;
+
   loadingHeight: number;
+
   breakPoint = 1020;
+
   multiSource = 0;
+
   pcPrefix = '-pc';
+
   loaded = false;
+
   error = false;
 
   static get properties() {
@@ -38,10 +46,12 @@ export class HbImg extends Base {
       error: {type: Boolean, Reflect: true},
     };
   }
+
   get srcExt() {
     const number = this.src.lastIndexOf('.');
     return this.src.substring(number);
   }
+
   get srcName() {
     const number = this.src.lastIndexOf('.');
     return this.src.substring(0, number);
@@ -61,6 +71,7 @@ export class HbImg extends Base {
     });
     return arr.join(',');
   }
+
   get pcSrcset() {
     const arr = this.set.map((_, i) => {
       const j = i + 1;
@@ -122,6 +133,7 @@ export class HbImg extends Base {
       </picture>
     `;
   }
+
   // onLoad(evt: Event) {
   //   this.loaded = true
   //   this.dispatchEvent(new CustomEvent("load", evt));
@@ -133,6 +145,7 @@ export class HbImg extends Base {
   onLoad() {
     this.loaded = true;
   }
+
   onError() {
     this.error = true;
   }

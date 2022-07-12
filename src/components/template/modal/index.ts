@@ -1,10 +1,10 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../atom/transition/type';
-import {horizonAlign, verticalAlign} from '../../atom/variable/type';
-import {getElement} from '../../../utils';
+import {HbTransitionType} from '@/components/atom/transition/type';
+import {HorizonAlign, VerticalAlign} from '@/components/atom/variable/type';
+import {getElement} from '@/utils';
 
-import {Base} from '../../base';
+import {Base} from '@/components/base';
 
 /**
  * @fires close 닫기
@@ -21,8 +21,9 @@ import {Base} from '../../base';
 @customElement('hb-modal')
 export class HbModal extends Base {
   static override get styles() {
-    return [require('../../../styles/template/modal/index.scss').default];
+    return [require('@/styles/template/modal/index.scss').default];
   }
+
   async customConnectedCallback() {
     this.containerEl = await getElement<HTMLDivElement>(
       this.shadowRoot,
@@ -31,16 +32,25 @@ export class HbModal extends Base {
     this.containerEl!.onanimationend = (event: AnimationEvent) =>
       this.onAnimationEnd(event);
   }
+
   disconnectedCallback() {
     this.containerEl.onanimationend = () => null;
   }
-  verticalAlign: verticalAlign = verticalAlign.middle;
-  horizonAlign: horizonAlign = horizonAlign.center;
-  transitionType: hbTransitionType;
+
+  verticalAlign: VerticalAlign = VerticalAlign.middle;
+
+  horizonAlign: HorizonAlign = HorizonAlign.center;
+
+  transitionType: HbTransitionType;
+
   containerEl?: HTMLDivElement;
+
   width = 0;
+
   open = false;
+
   persistent = false;
+
   get position() {
     const obj = {
       0: ['auto', 'auto'],
@@ -51,6 +61,7 @@ export class HbModal extends Base {
       obj[this.verticalAlign][1]
     } ${obj[this.horizonAlign][1]}`;
   }
+
   static get properties() {
     return {
       open: {type: Boolean, Reflect: true},
@@ -67,7 +78,7 @@ export class HbModal extends Base {
       <hb-transition
         ?show=${this.open}
         id="modal-transition"
-        type=${hbTransitionType.fade}
+        type=${HbTransitionType.fade}
       >
         <div class="hb-modal__wrap" @click=${this.adapterOnClose}>
           <hb-transition

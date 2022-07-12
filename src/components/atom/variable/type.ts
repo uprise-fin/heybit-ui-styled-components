@@ -1,20 +1,20 @@
-export enum verticalAlign {
+export enum VerticalAlign {
   middle,
   top,
   bottom,
 }
-export enum horizonAlign {
+export enum HorizonAlign {
   center,
   right,
   left,
 }
-export enum size {
+export enum Size {
   'xsmall' = 'xsmall',
   'small' = 'small',
   'medium' = 'medium',
   'large' = 'large',
 }
-export enum systemColor {
+export enum SystemColor {
   'white' = 'white',
   'black' = 'black',
   'orange' = 'orange',
@@ -22,8 +22,8 @@ export enum systemColor {
   'green' = 'green',
   'blue' = 'blue',
 }
-export enum serviceColor {
+export enum ServiceColor {
   'harvest' = 'harvest',
   'defi' = 'defi',
 }
-export type Color = systemColor | serviceColor;
+export type Color = SystemColor | ServiceColor;

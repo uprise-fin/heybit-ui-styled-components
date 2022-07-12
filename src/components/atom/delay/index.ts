@@ -1,15 +1,19 @@
-import {Base} from '../../base';
+import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 
 @customElement('hb-delay')
 export class HbDelay extends Base {
   static override get styles() {
-    return [require('../../../styles/atom/loading/index.scss').default];
+    return [require('@/styles/atom/loading/index.scss').default];
   }
+
   delay: number;
+
   name: string;
+
   value: string;
+
   static get properties() {
     return {
       delay: {type: Number, Reflect: true},
@@ -17,6 +21,7 @@ export class HbDelay extends Base {
       value: {type: String, Reflect: true},
     };
   }
+
   async attributeChangedCallback(name: string, _: string, newVal: string) {
     super.attributeChangedCallback(name, _, newVal);
     if (name === 'value') {

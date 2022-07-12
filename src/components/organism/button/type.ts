@@ -1,19 +1,19 @@
-import {size} from '../../atom/variable/type';
+import {Size} from '@/components/atom/variable/type';
 
-export enum hbButtonType {
+export enum HbButtonType {
   'rectangle' = 'rectangle',
   'radius' = 'radius',
   'circle' = 'circle',
 }
-export enum hbButtonTheme {
+export enum HbButtonTheme {
   'primary' = 'primary',
   'secondary' = 'secondary',
   'tertiary' = 'tertiary',
   'quaternary' = 'quaternary',
 }
-export enum hbButtonSize {
-  'xsmall' = size.xsmall,
-  'small' = size.small,
-  'medium' = size.medium,
-  'large' = size.large,
+export enum HbButtonSize {
+  'xsmall' = Size.xsmall,
+  'small' = Size.small,
+  'medium' = Size.medium,
+  'large' = Size.large,
 }

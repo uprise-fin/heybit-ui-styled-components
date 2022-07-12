@@ -12,8 +12,8 @@ module.exports = {
   },
   webpackFinal: async config => {
     config.plugins.push(new Dotenv());
-    config.resolve.alias['@'] = path.resolve(__dirname, '../src/');
-    config.resolve.alias['~'] = path.resolve(__dirname, '../');
+    config.resolve.alias['@'] = Path.resolve(__dirname, '../src/');
+    config.resolve.alias['~'] = Path.resolve(__dirname, '../');
     config.module.rules.push(
       {
         test: /\.scss$/,

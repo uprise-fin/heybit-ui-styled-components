@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import type {HbButton} from '../../organism/button';
+import type {HbButton} from '@/components/organism/button';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;

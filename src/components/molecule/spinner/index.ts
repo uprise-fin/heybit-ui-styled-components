@@ -1,22 +1,19 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '../../base';
+import {HbSpinnerTheme} from './type';
 
 /**
  *
  */
-export enum hbSpinnerTheme {
-  'void' = 'void',
-  'solid' = 'solid',
-}
 
 @customElement('hb-spinner')
 export class HbSpinner extends Base {
   static override get styles() {
-    return [require('../../../styles/molecule/spinner/index.scss').default];
+    return [require('@/styles/molecule/spinner/index.scss').default];
   }
 
-  theme: hbSpinnerTheme = hbSpinnerTheme.solid;
+  theme: HbSpinnerTheme = HbSpinnerTheme.solid;
   // size: size = size.large
 
   static get properties() {

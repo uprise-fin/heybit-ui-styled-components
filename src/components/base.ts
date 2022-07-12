@@ -1,5 +1,5 @@
 import {LitElement} from 'lit';
-import {size} from './atom/variable/type';
+import {Size} from './atom/variable/type';
 
 // export interface MouseCustomEvent extends Event {
 //   clientX: number;
@@ -11,14 +11,17 @@ export class Base extends LitElement {
     // this.dataset.hbStyled = "true";
     await this.customConnectedCallback();
   }
-  async customConnectedCallback() {}
+
+  customConnectedCallback() {}
+
+  // async customConnectedCallback() {}
 
   stopPropagation(e: Event) {
     e.stopPropagation();
   }
 
   static get size() {
-    return Object.keys(size);
+    return Object.keys(Size);
   }
 
   // touchStart(fn: EventListener) {

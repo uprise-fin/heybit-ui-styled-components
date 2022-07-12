@@ -1,8 +1,8 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import './index';
-import {HbEventDialog} from './index';
-import desktopImg from '../../../../static/sample-desktop.png';
+import type {HbEventDialog} from './index';
+import desktopImg from '~/static/sample-desktop.png';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
@@ -35,8 +35,8 @@ const Template = (props: HbEventDialog) => html`
   >
   </hb-event-dialog>
 `;
-export const event: Story<HbEventDialog> = Template.bind({});
-event.args = {
+export const primary: Story<HbEventDialog> = Template.bind({});
+primary.args = {
   open: true,
   persistent: true,
   href: 'https://www.heybit.io/harvest/',

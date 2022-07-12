@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {hbTransitionType} from './type';
+import {HbTransitionType} from './type';
 import './index';
 import type {HbTransition} from './index';
 
@@ -15,9 +15,9 @@ export default {
       defaultValue: false,
     },
     type: {
-      options: Object.values(hbTransitionType),
+      options: Object.values(HbTransitionType),
       control: {type: 'radio'},
-      defaultValue: hbTransitionType.fade,
+      defaultValue: HbTransitionType.fade,
     },
   },
 } as Meta;
@@ -33,5 +33,5 @@ const Template: Story<HbTransition> = ({show, type}) =>
 export const visible: Story<HbTransition> = Template.bind({});
 visible.args = {
   show: false,
-  type: hbTransitionType.fade,
+  type: HbTransitionType.fade,
 };

@@ -1,12 +1,12 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../atom/transition/type';
-import {verticalAlign} from '../../atom/variable/type';
-import {hbButtonType} from '../../organism/button/type';
+import {HbTransitionType} from '../../atom/transition/type';
+import {VerticalAlign} from '../../atom/variable/type';
+import {HbButtonType} from '../../organism/button/type';
 import {
   HbDialogAnchor,
   HbDialogButton,
-  hbModalButtonAlign,
+  HbModalButtonAlign,
 } from '../../template/modal/type';
 import {wait} from '../../../utils';
 
@@ -31,19 +31,27 @@ import {Base} from '../../base';
 @customElement('hb-sheet-dialog')
 export class HbSheetDialog extends Base {
   static override get styles() {
-    return [
-      require('../../../styles/template/sheet-dialog/index.scss').default,
-    ];
+    return [require('@/styles/template/sheet-dialog/index.scss').default];
   }
+
   loading = false;
+
   baseLoadingDuration = 500;
+
   width = 0;
+
   open = false;
+
   title = '';
+
   persistent = false;
+
   hideCloseBtn = false;
-  buttonAlign = hbModalButtonAlign.horizon;
+
+  buttonAlign = HbModalButtonAlign.horizon;
+
   anchor: HbDialogAnchor = {};
+
   buttons: HbDialogButton[] = [];
 
   get eventDisabled() {
@@ -80,11 +88,11 @@ export class HbSheetDialog extends Base {
     return html`
       <hb-modal
         @close=${this.onClose}
-        verticalAlign=${verticalAlign.bottom}
+        verticalAlign=${VerticalAlign.bottom}
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
-        transitionType=${hbTransitionType.bottomUp}
+        transitionType=${HbTransitionType.bottomUp}
       >
         <div class="hb-sheet-dialog__container">
           ${this.hideCloseBtn
@@ -114,7 +122,7 @@ export class HbSheetDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled}
-                    type=${hbButtonType.rectangle}
+                    type=${HbButtonType.rectangle}
                     baseLoadingDuration=${this.baseLoadingDuration}
                     @event=${this.onEvent.bind(this, x, i)}
                     theme=${x.theme}

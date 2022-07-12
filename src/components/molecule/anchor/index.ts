@@ -18,11 +18,15 @@ import {Base} from '../../base';
 @customElement('hb-anchor')
 export class HbAnchor extends Base {
   static override get styles() {
-    return [require('../../../styles/molecule/anchor/index.scss').default];
+    return [require('@/styles/molecule/anchor/index.scss').default];
   }
+
   href = '';
+
   target = '';
+
   text: string;
+
   disabled = false;
 
   static get properties() {
@@ -37,9 +41,8 @@ export class HbAnchor extends Base {
     this.tabIndex = 0;
     this.onclick = (ev: Event) => {
       if (this.disabled) return;
-      this.href
-        ? this.route()
-        : this.dispatchEvent(new CustomEvent('event', ev));
+      if (this.href) return this.route();
+      this.dispatchEvent(new CustomEvent('event', ev));
     };
   }
 

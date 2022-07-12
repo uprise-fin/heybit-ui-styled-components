@@ -1,4 +1,4 @@
-export interface hbToastMessage {
+export interface HbToastMessage {
   text: string;
   // theme?: Color
   icon?: string;

@@ -1,8 +1,8 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
-import {size} from '../../atom/variable/type';
-import {Base} from '../../base';
+import {Size} from '@/components/atom/variable/type';
+import {Base} from '@/components/base';
 import SVG from './svg';
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
@@ -20,17 +20,20 @@ import SVG from './svg';
 @customElement('hb-icon')
 export class HbIcon extends Base {
   static override get styles() {
-    return [require('../../../styles/molecule/icon/index.scss').default];
+    return [require('@/styles/molecule/icon/index.scss').default];
   }
 
   icon: string;
-  size: size;
+
+  size: Size;
+
   static get properties() {
     return {
       icon: {type: String, Reflect: true},
       size: {type: String, Reflect: true},
     };
   }
+
   convert(str: string) {
     const start = str.indexOf('<', 1);
     return str.substring(start, str.length - 6);

@@ -1,11 +1,10 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../atom/transition/type';
-import {size} from '../../atom/variable/type';
-import {hbButtonTheme, hbButtonType} from '../../organism/button/type';
-import {wait} from '../../../utils';
-
-import {Base} from '../../base';
+import {HbTransitionType} from '@/components/atom/transition/type';
+import {Size} from '@/components/atom/variable/type';
+import {HbButtonTheme, HbButtonType} from '@/components/organism/button/type';
+import {wait} from '@/utils';
+import {Base} from '@/components/base';
 
 /**
  * @fires event 클릭할때
@@ -24,15 +23,22 @@ import {Base} from '../../base';
 @customElement('hb-button')
 export class HbButton extends Base {
   static override get styles() {
-    return [require('../../../styles/organism/button/index.scss').default];
+    return [require('@/styles/organism/button/index.scss').default];
   }
+
   labelEl: HTMLElement;
-  type: hbButtonType = hbButtonType.rectangle;
-  size: size = size.large;
+
+  type: HbButtonType = HbButtonType.rectangle;
+
+  size: Size = Size.large;
+
   loading = false;
+
   baseLoadingDuration = 0;
+
   disabled = false;
-  theme: hbButtonTheme = hbButtonTheme.primary;
+
+  theme: HbButtonTheme = HbButtonTheme.primary;
 
   static get properties() {
     return {
@@ -57,7 +63,7 @@ export class HbButton extends Base {
           ? html`
               <hb-transition
                 class="hb-button__label__transition"
-                type=${hbTransitionType.fade}
+                type=${HbTransitionType.fade}
                 ?show=${this.loading}
               >
                 <hb-spinner size=${this.size}></hb-spinner>
@@ -66,7 +72,7 @@ export class HbButton extends Base {
           : html`
               <hb-transition
                 class="hb-button__label__transition"
-                type=${hbTransitionType.fade}
+                type=${HbTransitionType.fade}
                 ?show=${!this.loading}
               >
                 <slot part="label"></slot>
@@ -80,6 +86,7 @@ export class HbButton extends Base {
       ></slot>
     `;
   }
+
   async customConnectedCallback() {
     this.tabIndex = 0;
     this.setAttribute('theme', this.theme);
@@ -97,6 +104,7 @@ export class HbButton extends Base {
       this.removeAttribute('loading');
     }
   }
+
   async attributeChangedCallback(name: string, _: string, newVal: string) {
     if (name === 'loading' && this.baseLoadingDuration) {
       if (newVal !== null) {

@@ -1,10 +1,10 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import './index';
-import {HbSheetDialog} from './index';
-import desktopImg from '../../../../static/sample-desktop.png';
-import {hbButtonTheme} from '../../organism/button/type';
-import {hbModalButtonAlign} from '../../template/modal/type';
+import type {HbSheetDialog} from './index';
+import desktopImg from '~/static/sample-desktop.png';
+import {HbButtonTheme} from '@/components/organism/button/type';
+import {HbModalButtonAlign} from '@/components/template/modal/type';
 interface HbSheetDialogExpns extends HbSheetDialog {
   content: string;
 }
@@ -62,11 +62,11 @@ const Template = (props: HbSheetDialogExpns) => html`
 `;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const HorizonTemplate: Story<HbSheetDialogExpns> = props => {
-  props.buttonAlign = hbModalButtonAlign.horizon;
+  props.buttonAlign = HbModalButtonAlign.horizon;
   return Template(props);
 };
 const VerticalTemplate: Story<HbSheetDialogExpns> = props => {
-  props.buttonAlign = hbModalButtonAlign.vertical;
+  props.buttonAlign = HbModalButtonAlign.vertical;
   return Template(props);
 };
 export const horizon: Story<HbSheetDialogExpns> = HorizonTemplate.bind({});
@@ -81,21 +81,21 @@ horizon.args = {
   buttons: [
     {
       name: '닫기',
-      theme: hbButtonTheme.primary,
+      theme: HbButtonTheme.primary,
       event: function () {
         console.log('1');
       },
     },
     {
       name: '열기',
-      theme: hbButtonTheme.secondary,
+      theme: HbButtonTheme.secondary,
       event: function () {
         console.log('2');
       },
     },
     {
       name: '삼번',
-      theme: hbButtonTheme.tertiary,
+      theme: HbButtonTheme.tertiary,
       event: function () {
         console.log('3');
       },

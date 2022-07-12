@@ -4,15 +4,20 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["prettier", "plugin:import/typescript"],
+  "extends": ["airbnb-typescript/base", "prettier", "plugin:import/typescript"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
     "tsconfigRootDir": "./"
   },
   "rules": {
-    // turn on errors for missing imports
-    "import/no-unresolved": "error"
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*"],
+        "peerDependencies": true
+      }
+    ]
   },
   "settings": {
     "import/parsers": {

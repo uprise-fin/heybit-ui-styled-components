@@ -1,8 +1,8 @@
-import {hbButtonTheme} from '../../organism/button/type';
+import {HbButtonTheme} from '@/components/organism/button/type';
 
 export interface HbDialogButton {
   event: Function;
-  theme: hbButtonTheme;
+  theme: HbButtonTheme;
   name: string;
   loading?: boolean;
 }
@@ -13,7 +13,7 @@ export interface HbDialogAnchor {
   name?: string;
 }
 
-export enum hbModalButtonAlign {
+export enum HbModalButtonAlign {
   'vertical' = 'vertical',
   'horizon' = 'horizon',
 }

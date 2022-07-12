@@ -1,11 +1,11 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import './index';
-import {HbDialog} from './index';
-import desktopImg from '../../../../static/sample-desktop.png';
-import thunderImg from '../../../../static/sample-thunder.svg';
-import {hbButtonTheme} from '../../organism/button/type';
-import {hbModalButtonAlign} from '../../template/modal/type';
+import type {HbDialog} from './index';
+import desktopImg from '~/static/sample-desktop.png';
+import thunderImg from '~/static/sample-thunder.svg';
+import {HbButtonTheme} from '@/components/organism/button/type';
+import {HbModalButtonAlign} from '@/components/template/modal/type';
 interface HbDialogExpns extends HbDialog {
   content: string;
 }
@@ -67,11 +67,11 @@ const Template = (props: HbDialogExpns) => html`
 `;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const HorizonTemplate: Story<HbDialogExpns> = props => {
-  props.buttonAlign = hbModalButtonAlign.horizon;
+  props.buttonAlign = HbModalButtonAlign.horizon;
   return Template(props);
 };
 const VerticalTemplate: Story<HbDialogExpns> = props => {
-  props.buttonAlign = hbModalButtonAlign.vertical;
+  props.buttonAlign = HbModalButtonAlign.vertical;
   return Template(props);
 };
 export const horizon: Story<HbDialogExpns> = HorizonTemplate.bind({});
@@ -87,21 +87,21 @@ horizon.args = {
   buttons: [
     {
       name: '닫기',
-      theme: hbButtonTheme.primary,
+      theme: HbButtonTheme.primary,
       event: function () {
         console.log('1');
       },
     },
     {
       name: '열기',
-      theme: hbButtonTheme.secondary,
+      theme: HbButtonTheme.secondary,
       event: function () {
         console.log('2');
       },
     },
     {
       name: '삼번',
-      theme: hbButtonTheme.tertiary,
+      theme: HbButtonTheme.tertiary,
       event: function () {
         console.log('3');
       },

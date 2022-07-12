@@ -1,14 +1,14 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../atom/transition/type';
-import {hbButtonType} from '../../organism/button/type';
+import {HbTransitionType} from '@/components/atom/transition/type';
+import {HbButtonType} from '@/components/organism/button/type';
 import {
   HbDialogAnchor,
   HbDialogButton,
-  hbModalButtonAlign,
-} from '../../template/modal/type';
-import {wait} from '../../../utils';
-import {Base} from '../../base';
+  HbModalButtonAlign,
+} from '@/components/template/modal/type';
+import {wait} from '@/utils';
+import {Base} from '@/components/base';
 
 /**
  * @fires close 닫기
@@ -30,18 +30,29 @@ import {Base} from '../../base';
 @customElement('hb-dialog')
 export class HbDialog extends Base {
   static override get styles() {
-    return [require('../../../styles/template/dialog/index.scss').default];
+    return [require('@/styles/template/dialog/index.scss').default];
   }
+
   loading = false;
+
   baseLoadingDuration = 500;
+
   width = 0;
+
   open = false;
+
   icon = '';
+
   title = '';
+
   persistent = false;
+
   hideCloseBtn = false;
-  buttonAlign = hbModalButtonAlign.horizon;
+
+  buttonAlign = HbModalButtonAlign.horizon;
+
   anchor: HbDialogAnchor = {};
+
   buttons: HbDialogButton[] = [];
 
   get eventDisabled() {
@@ -82,7 +93,7 @@ export class HbDialog extends Base {
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
-        transitionType=${hbTransitionType.zoom}
+        transitionType=${HbTransitionType.zoom}
       >
         <div class="hb-dialog__container">
           ${this.hideCloseBtn
@@ -120,7 +131,7 @@ export class HbDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled}
-                    type=${hbButtonType.rectangle}
+                    type=${HbButtonType.rectangle}
                     baseLoadingDuration=${this.baseLoadingDuration}
                     @event=${this.onEvent.bind(this, x, i)}
                     theme=${x.theme}

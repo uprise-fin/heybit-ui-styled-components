@@ -1,7 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {getChildren} from '../../../utils';
-import {Base} from '../../base';
+import {getChildren} from '@/utils';
+import {Base} from '@/components/base';
 /**
  * @property index
  * @slot content 기본 컨텐츠 영역
@@ -13,13 +13,19 @@ import {Base} from '../../base';
 @customElement('hb-tab')
 export class HbTab extends Base {
   static override get styles() {
-    return [require('../../../styles/organism/tab/index.scss').default];
+    return [require('@/styles/organism/tab/index.scss').default];
   }
+
   btns: HTMLElement[] = [];
+
   contents: HTMLElement[] = [];
+
   index: string;
+
   _index: string;
+
   left = 0;
+
   width = 0;
 
   static get properties() {
@@ -29,18 +35,21 @@ export class HbTab extends Base {
       index: {type: String, Reflect: true},
     };
   }
+
   async customConnectedCallback() {
     const wrap = await getChildren(this.children);
     this.btns = wrap.filter(x => x.slot === 'header');
     this.contents = wrap.filter(x => x.slot !== 'header');
     this.setIndicator(this.index);
   }
+
   attributeChangedCallback(name: string, _: string, newVal: string) {
     if (name === 'index') {
       this.setIndicator(newVal);
     }
     super.attributeChangedCallback(name, _, newVal);
   }
+
   onClick(ev: PointerEvent) {
     const target = ev.target as HTMLElement;
     const index = this.btns.indexOf(target);

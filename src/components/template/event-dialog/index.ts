@@ -1,7 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../atom/transition/type';
-import {Base} from '../../base';
+import {HbTransitionType} from '@/components/atom/transition/type';
+import {Base} from '@/components/base';
 
 /**
  * @fires close 닫기
@@ -15,17 +15,23 @@ import {Base} from '../../base';
 @customElement('hb-event-dialog')
 export class HbEventDialog extends Base {
   static override get styles() {
-    return [
-      require('../../../styles/template/event-dialog/index.scss').default,
-    ];
+    return [require('@/styles/template/event-dialog/index.scss').default];
   }
+
   width = 400;
+
   loadingWidth = 400;
+
   loadingHeight = 490;
+
   open = false;
+
   persistent = false;
+
   hideCloseBtn = false;
+
   image = '';
+
   href = '';
 
   static get properties() {
@@ -48,7 +54,7 @@ export class HbEventDialog extends Base {
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent}
-        transitionType=${hbTransitionType.zoom}
+        transitionType=${HbTransitionType.zoom}
       >
         <div class="hb-event-dialog__container">
           ${this.hideCloseBtn

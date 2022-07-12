@@ -1,16 +1,20 @@
-import {Base} from '../../base';
+import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from './type';
+import {HbTransitionType} from './type';
 
 @customElement('hb-transition')
 export class HbTransition extends Base {
   static override get styles() {
-    return [require('../../../styles/atom/transition/index.scss').default];
+    return [require('@/styles/atom/transition/index.scss').default];
   }
+
   show = false;
+
   delete = false;
-  type: hbTransitionType;
+
+  type: HbTransitionType;
+
   static get properties() {
     return {
       show: {type: Boolean, Reflect: true},
@@ -18,9 +22,11 @@ export class HbTransition extends Base {
       type: {type: String, Reflect: true},
     };
   }
+
   async customConnectedCallback() {
     this.onanimationend = evnt => this.onAnimationEnd(evnt);
   }
+
   onAnimationEnd(evnt: AnimationEvent) {
     this.stopPropagation(evnt);
     if (evnt.animationName.includes('show'))

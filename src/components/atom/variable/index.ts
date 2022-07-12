@@ -1,18 +1,18 @@
 import Matercolor from 'matercolors';
-import {Color, serviceColor, systemColor} from './type';
+import {Color, ServiceColor, SystemColor} from './type';
 export const levels: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
 ];
 
 const colors = {
-  [systemColor.white]: '#ffffff',
-  [systemColor.black]: '#404244',
-  [systemColor.orange]: '#ff602f',
-  [systemColor.yellow]: '#ffbe02',
-  [systemColor.green]: '#27ae60',
-  [systemColor.blue]: '#2f80ed',
-  [serviceColor.harvest]: '#039985',
-  [serviceColor.defi]: '#6f63f8',
+  [SystemColor.white]: '#ffffff',
+  [SystemColor.black]: '#404244',
+  [SystemColor.orange]: '#ff602f',
+  [SystemColor.yellow]: '#ffbe02',
+  [SystemColor.green]: '#27ae60',
+  [SystemColor.blue]: '#2f80ed',
+  [ServiceColor.harvest]: '#039985',
+  [ServiceColor.defi]: '#6f63f8',
 };
 export const colorPalette = Object.entries(colors).reduce(
   (a, [name, color]) => ({
@@ -27,18 +27,18 @@ export const basicVariables = {
   "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
   "Malgun Gothic", sans-serif`,
     color: {
-      void: colorPalette[systemColor.white][50],
-      solid: colorPalette[systemColor.black][900],
+      void: colorPalette[SystemColor.white][50],
+      solid: colorPalette[SystemColor.black][900],
     },
     size: 16,
   },
   border: {
     width: 1,
-    color: colorPalette[systemColor.black][200],
+    color: colorPalette[SystemColor.black][200],
     radius: 4,
   },
   background: {
-    color: colorPalette[systemColor.white][50],
+    color: colorPalette[SystemColor.white][50],
   },
   transition: {
     duration: '300ms',
@@ -47,7 +47,7 @@ export const basicVariables = {
 export const componentVariables = {
   dim: {
     background: {
-      color: colorPalette[systemColor.black][900],
+      color: colorPalette[SystemColor.black][900],
     },
   },
   list: {
@@ -105,12 +105,12 @@ export const componentVariables = {
     },
   },
   spinner: {
-    color: colorPalette[systemColor.black][900],
+    color: colorPalette[SystemColor.black][900],
   },
   modal: {
     width: 380,
     margin: 20,
-    background: colorPalette[systemColor.white][50],
+    background: colorPalette[SystemColor.white][50],
     dialog: {
       'padding-top': 52,
       'padding-right': 20,
@@ -130,11 +130,11 @@ function setProperty(key: string, value: string) {
 }
 function setGroupProperty(obj: Object, group?: string) {
   Object.entries(obj).map(([key, val]) => {
-    const _group = group || '';
-    if (typeof val === 'string') setProperty(`--${_group}${key}`, val);
+    group = group || '';
+    if (typeof val === 'string') setProperty(`--${group}${key}`, val);
     else if (typeof val === 'number')
-      setProperty(`--${_group}${key}`, val + 'px');
-    else setGroupProperty(val, `${_group}${key}__`);
+      setProperty(`--${group}${key}`, val + 'px');
+    else setGroupProperty(val, `${group}${key}__`);
   });
 }
 export default (function setRootStyleProperty() {

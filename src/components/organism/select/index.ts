@@ -1,16 +1,14 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../atom/transition/type';
-import {size} from '../../atom/variable/type';
-import {getElement} from '../../../utils';
+import {HbTransitionType} from '@/components/atom/transition/type';
+import {Size} from '@/components/atom/variable/type';
+import {getElement} from '@/utils';
 
-import {Base} from '../../base';
-import {HbList} from '../../molecule/list';
-import {HbInput} from '../input';
-export interface Option {
-  label: string;
-  value: string;
-}
+import {Base} from '@/components/base';
+import {HbList} from '@/components/molecule/list';
+import {HbInput} from '@/components/organism/input';
+import {HbSelectOption} from './type';
+
 /**
  * @fires event 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -28,24 +26,41 @@ export interface Option {
 @customElement('hb-select')
 export class HbSelect extends Base {
   static override get styles() {
-    return [require('../../../styles/organism/select/index.scss').default];
+    return [require('@/styles/organism/select/index.scss').default];
   }
+
   inputEl?: HTMLInputElement;
+
   parentQuery?: string;
+
   parentEl?: HTMLElement;
+
   attributeSync = false;
+
   fixed = false;
+
   search = false;
+
   open = false;
+
   top: number;
+
   left: number;
+
   width: number;
+
   maxHeight: number;
+
   value = '';
-  options: Option[] = [];
+
+  options: HbSelectOption[] = [];
+
   placeholder = '검색어를 입력해주세요.';
+
   emptyText = '검색결과가 없습니다.';
+
   hasFocus = false;
+
   inputValue = '';
 
   static get properties() {
@@ -104,13 +119,13 @@ export class HbSelect extends Base {
         <hb-icon
           slot="slot--right"
           icon="ic-system-arrow-down-18-black"
-          size=${size.small}
+          size=${Size.small}
         ></hb-icon>
       </hb-input>
       <hb-transition
         id="select-transition"
         ?show=${this.open}
-        type=${hbTransitionType.fade}
+        type=${HbTransitionType.fade}
       >
         <hb-list
           emptyText=${this.emptyText}
@@ -125,17 +140,20 @@ export class HbSelect extends Base {
       </hb-transition>
     `;
   }
+
   async customConnectedCallback() {
     this.onfocus = () => this.adapterShow();
     this.onblur = () => this.adapterHide();
     this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'label');
-    this.parentQuery &&
-      (this.parentEl = document.querySelector(this.parentQuery));
+    if (this.parentQuery)
+      this.parentEl = document.querySelector(this.parentQuery);
   }
+
   disconnectedCallback() {
     this.onfocus = () => null;
     this.onblur = () => null;
   }
+
   onScroll() {
     const {bottom} = this.getBoundingClientRect();
     if (bottom > 100) this.maxHeight = window.innerHeight - bottom - 50;
@@ -157,17 +175,18 @@ export class HbSelect extends Base {
     const {target} = evt;
     if (!(target instanceof HbList)) return;
     const {value} = target;
-    this.attributeSync && this.setAttribute('value', value!);
+    if (this.attributeSync) this.setAttribute('value', value!);
     this.value = value!;
     this.inputValue = '';
     this.dispatchEvent(new CustomEvent('event', evt));
   }
+
   onShow() {
     const {width, bottom} = this.getBoundingClientRect();
     this.open = true;
     this.width = width;
     this.maxHeight = window.innerHeight - bottom - 50;
-    this.search && (this.hasFocus = true);
+    if (this.search) this.hasFocus = true;
     if (this.fixed) {
       this.onScroll();
       this.scrollEventListener.addEventListener('scroll', this.onScrollBound);
@@ -186,8 +205,8 @@ export class HbSelect extends Base {
   onHide() {
     this.blur();
     this.open = false;
-    this.search && (this.hasFocus = false);
-    this.fixed &&
+    if (this.search) this.hasFocus = false;
+    if (this.fixed)
       this.scrollEventListener.removeEventListener(
         'scroll',
         this.onScrollBound,

@@ -1,8 +1,8 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {systemColor, serviceColor, Color} from './type';
+import {SystemColor, ServiceColor, Color} from './type';
 import {colorPalette, levels} from './index';
-// import { hbButtonTheme } from "../../organism/button";
+// import { HbButtonTheme } from "../../organism/button";
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
@@ -15,7 +15,7 @@ export default {
 // // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 // const Template: Story<unknown> = () =>
 //   html`
-//     ${Object.keys(hbButtonTheme).map(
+//     ${Object.keys(HbButtonTheme).map(
 //       (theme) =>
 //         html`
 //           <hb-button theme=${theme}>${theme}</hb-button>
@@ -68,7 +68,7 @@ const LevelTemplate: Story<unknown> = () =>
         x => html` <div class="box__item box__item--reversal">${x}</div> `,
       )}
     </div>
-    ${Object.keys(systemColor).map(
+    ${Object.keys(SystemColor).map(
       (name: Color) =>
         html`
           <div class="box">
@@ -99,7 +99,7 @@ const LevelTemplate: Story<unknown> = () =>
         x => html` <div class="box__item box__item--reversal">${x}</div> `,
       )}
     </div>
-    ${Object.keys(serviceColor).map(
+    ${Object.keys(ServiceColor).map(
       (name: Color) =>
         html`
           <div class="box">
