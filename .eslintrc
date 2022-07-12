@@ -26,5 +26,6 @@
     "import/resolver": {
       "typescript": "./tsconfig.json"
     }
-  }
+  },
+  "ignorePatterns": ["webpack.*.js", "dist/"]
 }

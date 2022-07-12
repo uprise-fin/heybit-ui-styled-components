@@ -1,4 +1,4 @@
-import {HbModal} from '../../src/module';
+import {HbModal} from '@/module';
 import {getShadowElement, getShadowRoot} from '../utils';
 const SHADOW_TAG = 'hb-modal';
 describe(SHADOW_TAG, () => {

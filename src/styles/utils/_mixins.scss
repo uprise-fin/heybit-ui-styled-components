@@ -128,12 +128,8 @@
 //     font-family: $font-family;
 //   }
 // }
-@mixin initial($selectors) {
-  @each $selector in $selectors {
-    $class: '.' + #{$selector};
-    #{$selector},
-    #{$class} {
-      font-family: var(--font__family);
-    }
+@mixin initial($selector) {
+  @include host-styled() {
+    font-family: var(--font__family);
   }
 }
