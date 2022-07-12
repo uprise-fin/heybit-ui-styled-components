@@ -1,6 +1,6 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../../models/atom/transition';
+import {hbTransitionType} from '../../atom/transition/type';
 import {Base} from '../../base';
 
 /**

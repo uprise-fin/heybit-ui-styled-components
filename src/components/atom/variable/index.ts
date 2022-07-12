@@ -1,5 +1,5 @@
 import Matercolor from 'matercolors';
-import {Color, serviceColor, systemColor} from '../../../models/atom/variable';
+import {Color, serviceColor, systemColor} from './type';
 export const levels: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
 ];

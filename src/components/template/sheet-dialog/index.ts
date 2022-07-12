@@ -1,13 +1,13 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../../models/atom/transition';
-import {verticalAlign} from '../../../models/atom/variable';
-import {hbButtonType} from '../../../models/organism/button';
+import {hbTransitionType} from '../../atom/transition/type';
+import {verticalAlign} from '../../atom/variable/type';
+import {hbButtonType} from '../../organism/button/type';
 import {
   HbDialogAnchor,
   HbDialogButton,
   hbModalButtonAlign,
-} from '../../../models/template/modal';
+} from '../../template/modal/type';
 import {wait} from '../../../utils';
 
 import {Base} from '../../base';

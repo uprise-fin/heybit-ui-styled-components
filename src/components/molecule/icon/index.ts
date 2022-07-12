@@ -1,7 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
-import {size} from '../../../models/atom/variable';
+import {size} from '../../atom/variable/type';
 import {Base} from '../../base';
 import SVG from './svg';
 

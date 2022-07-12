@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {hbTransitionType} from '../../../models/atom/transition';
+import {hbTransitionType} from './type';
 import './index';
 import type {HbTransition} from './index';
 

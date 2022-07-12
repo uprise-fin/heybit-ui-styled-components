@@ -1,8 +1,8 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../../models/atom/transition';
-import {size} from '../../../models/atom/variable';
-import {hbButtonTheme, hbButtonType} from '../../../models/organism/button';
+import {hbTransitionType} from '../../atom/transition/type';
+import {size} from '../../atom/variable/type';
+import {hbButtonTheme, hbButtonType} from '../../organism/button/type';
 import {wait} from '../../../utils';
 
 import {Base} from '../../base';

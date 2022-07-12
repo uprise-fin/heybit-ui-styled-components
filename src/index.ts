@@ -1,2 +1,2 @@
-import * as Model from './models';
-export default Model;
+import * as Types from './components/type';
+export default Types;

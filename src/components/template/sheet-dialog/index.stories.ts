@@ -3,8 +3,8 @@ import {html} from 'lit';
 import './index';
 import {HbSheetDialog} from './index';
 import desktopImg from '../../../../static/sample-desktop.png';
-import {hbButtonTheme} from '../../../models/organism/button';
-import {hbModalButtonAlign} from '../../../models/template/modal';
+import {hbButtonTheme} from '../../organism/button/type';
+import {hbModalButtonAlign} from '../../template/modal/type';
 interface HbSheetDialogExpns extends HbSheetDialog {
   content: string;
 }

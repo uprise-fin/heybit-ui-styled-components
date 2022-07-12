@@ -1,7 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../../models/atom/transition';
-import {hbToastMessage} from '../../../models/molecule/toast';
+import {hbTransitionType} from '../../atom/transition/type';
+import {hbToastMessage} from '../toast/type';
 // import style from '../../../styles/molecule/toast/index.scss';
 
 import {Base} from '../../base';

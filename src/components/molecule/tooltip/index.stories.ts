@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {size} from '../../../models/atom/variable';
+import {size} from '../../atom/variable/type';
 import {dev} from '../../../utils';
 import './index';
 import type {HbTooltip} from './index';

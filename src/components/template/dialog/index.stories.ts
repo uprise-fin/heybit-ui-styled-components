@@ -4,8 +4,8 @@ import './index';
 import {HbDialog} from './index';
 import desktopImg from '../../../../static/sample-desktop.png';
 import thunderImg from '../../../../static/sample-thunder.svg';
-import {hbButtonTheme} from '../../../models/organism/button';
-import {hbModalButtonAlign} from '../../../models/template/modal';
+import {hbButtonTheme} from '../../organism/button/type';
+import {hbModalButtonAlign} from '../../template/modal/type';
 interface HbDialogExpns extends HbDialog {
   content: string;
 }

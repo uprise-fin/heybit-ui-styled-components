@@ -1,4 +1,4 @@
-import {size} from '../atom/variable';
+import {size} from '../../atom/variable/type';
 
 export enum hbButtonType {
   'rectangle' = 'rectangle',

@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {hbButtonTheme, hbButtonType} from '../../../models/organism/button';
+import {hbButtonTheme, hbButtonType} from '../../organism/button/type';
 import './index';
 import type {HbToast} from './index';
 

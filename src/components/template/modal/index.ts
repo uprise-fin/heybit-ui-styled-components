@@ -1,7 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {hbTransitionType} from '../../../models/atom/transition';
-import {horizonAlign, verticalAlign} from '../../../models/atom/variable';
+import {hbTransitionType} from '../../atom/transition/type';
+import {horizonAlign, verticalAlign} from '../../atom/variable/type';
 import {getElement} from '../../../utils';
 
 import {Base} from '../../base';

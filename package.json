@@ -29,6 +29,10 @@
     "setupFiles": [
       "./dist/module.js"
     ],
+    "moduleNameMapper": {
+      "@/(.*)$": "<rootDir>/src/$1",
+      "~/(.*)$": "<rootDir>/$1"
+    },
     "collectCoverage": false,
     "testRegex": ".*\\.spec\\.ts$",
     "collectCoverageFrom": [
