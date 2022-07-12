@@ -7,11 +7,19 @@
   "extends": ["prettier", "plugin:import/typescript"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "tsconfig.json"
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./"
   },
   "rules": {
     // turn on errors for missing imports
     "import/no-unresolved": "error"
   },
-  "settings": {}
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": "./tsconfig.json"
+    }
+  }
 }

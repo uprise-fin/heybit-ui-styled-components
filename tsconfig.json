@@ -1,11 +1,11 @@
 {
   "include": ["src/**/*", "node_modules/lit-scss-loader/types.d.ts"],
-  "baseUrl": ".",
-  "paths": {
-    "@/*": ["src/*"],
-    "~/*": ["/*"]
-  },
   "compilerOptions": {
+    "paths": {
+      "@/*": ["src/*"],
+      "~/*": ["/*"]
+    },
+    "baseUrl": "./",
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
