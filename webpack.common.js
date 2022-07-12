@@ -4,13 +4,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 module.exports = {
-  resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '~': path.resolve(__dirname, '/'),
-    },
-  },
   entry: {
     style: [path.resolve(__dirname, './src/styles/index.scss')],
     index: [path.resolve(__dirname, './src/index.ts')],

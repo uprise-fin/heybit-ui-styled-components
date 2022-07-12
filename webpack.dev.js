@@ -6,6 +6,13 @@ const common = require('./webpack.common.js');
 module.exports = () => {
   return merge(common, {
     mode: 'development',
+    resolve: {
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+        '~': path.resolve(__dirname, './'),
+      },
+    },
     devtool: 'source-map',
     devServer: {
       watchFiles: ['src/**/*'],
