@@ -1,6 +1,10 @@
 # heybit-ui-styled-components
 
-## pnpm add heybit-ui-styled-components
+## 설치 방법
+
+```terminal
+pnpm add heybit-ui-styled-components
+```
 
 ### [데모 페이지 확인하기](https://uprise-fin.github.io/heybit-ui-styled-components/)
 
