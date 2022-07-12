@@ -77,11 +77,9 @@
     "dotenv-webpack": "^7.1.0",
     "electron": "^17.2.0",
     "eslint": "^7.32.0 || ^8.2.0",
-    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-config-recommended": "^4.1.0",
-    "eslint-import-resolver-typescript": "^3.2.1",
+    "eslint-import-resolver-typescript": "^3.2.5",
     "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-import": "^2.26.0",
     "extract-loader": "^5.1.0",
@@ -112,8 +110,6 @@
   },
   "optionalDependencies": {
     "lit-html": "^2.2.3",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
     "style-loader": "^3.3.1"
   }
 }
