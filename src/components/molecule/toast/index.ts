@@ -33,7 +33,7 @@ export class HbToast extends Base {
 
   timer: Timer[] = [];
 
-  duration: number = 309999000;
+  duration: number = 3000;
 
   hide = false;
 
