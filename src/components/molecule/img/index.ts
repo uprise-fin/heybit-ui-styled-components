@@ -14,8 +14,8 @@ import {Base} from '@/components/base';
 
 @customElement('hb-img')
 export class HbImg extends Base {
-  static override get styles() {
-    return [require('@/styles/molecule/img/index.scss').default];
+  static get styles() {
+    return [require('@/styles/molecule/img.scss').default];
   }
 
   src: string;

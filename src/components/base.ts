@@ -6,7 +6,7 @@ import {Size} from './atom/variable/type';
 //   clientY: number;
 // }
 export class Base extends LitElement {
-  override async connectedCallback() {
+  async connectedCallback() {
     super.connectedCallback();
     // this.dataset.hbStyled = "true";
     await this.customConnectedCallback();

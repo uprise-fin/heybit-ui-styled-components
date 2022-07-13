@@ -25,8 +25,8 @@ import {HbInputEvent, HbInputType} from './type';
 
 @customElement('hb-input')
 export class HbInput extends Base {
-  static override get styles() {
-    return [require('@/styles/organism/input/index.scss').default];
+  static get styles() {
+    return [require('@/styles/organism/input.scss').default];
   }
 
   _value = '';

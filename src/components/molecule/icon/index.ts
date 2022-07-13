@@ -19,8 +19,8 @@ import SVG from './svg';
 
 @customElement('hb-icon')
 export class HbIcon extends Base {
-  static override get styles() {
-    return [require('@/styles/molecule/icon/index.scss').default];
+  static get styles() {
+    return [require('@/styles/molecule/icon.scss').default];
   }
 
   icon: string;

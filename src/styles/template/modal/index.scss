@@ -1,5 +1,5 @@
 //
-@import '../../utils/mixins';
+@import '@/styles/utils/mixins';
 .hb-modal {
   @include initial(hb-modal);
   @include host-styled {

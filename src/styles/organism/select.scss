@@ -1,0 +1,89 @@
+@import '@/styles/utils/mixins';
+
+.hb-select {
+  @include initial(hb-select);
+  @include host-styled {
+    // z-index: zIndex("레이어");
+    // position: relative;
+    display: block;
+    font-size: var(--select__font__size);
+    background: var(--background__color);
+  }
+
+  &__list {
+    position: absolute;
+    @include child-styled('[fixed]') {
+      position: fixed;
+      will-change: transform;
+    }
+  }
+  // &__input {
+  //   height: 100%;
+  //   padding: 0;
+  //   font-size: inherit;
+  //   flex: 1;
+  //   border: 0;
+  //   outline: none;
+  //   cursor: inherit;
+  // }
+  &__label {
+    // @extend %option;
+    cursor: pointer;
+
+    @include child-styled('.open') {
+      &:not(:read-only) {
+        cursor: auto;
+      }
+    }
+  }
+  // &__modal {
+  //   :host(.open) & {
+  //     z-index: -1;
+  //     position: fixed;
+  //     top: 0;
+  //     right: 0;
+  //     bottom: 0;
+  //     left: 0;
+  //   }
+  // }
+}
+// .hb-dialog {
+//   &__summary {
+//     &::marker {
+//       font-size: 0;
+//     }
+//   }
+//   &__body {
+//     position: relative;
+//     margin: auto;
+//     border-radius: $hb-dialog__border-radius;
+//     background: $hb-dialog__background;
+//   }
+//   &__container {
+//     position: fixed;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     display: flex;
+//     align-items: center;
+//     background: $hb-dialog__modal__background;
+//     animation: dialog-open 1s;
+//     @keyframes dialog-open {
+//       0% {
+//         opacity: 0;
+//       }
+//       100% {
+//         opacity: 1;
+//       }
+//     }
+//   }
+//   &__close-btn {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     width: 50px;
+//     height: 50px;
+//     transform: translate(50%, -50%);
+//   }
+// }

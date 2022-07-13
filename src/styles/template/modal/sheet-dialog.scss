@@ -1,0 +1,98 @@
+@import '@/styles/utils/mixins';
+
+.hb-sheet-dialog {
+  @include initial(hb-sheet-dialog);
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: calc(
+      100vw - var(--modal__sheet-dialog__padding-right) -
+        var(--modal__sheet-dialog__padding-left)
+    );
+    max-height: calc(
+      100vh - var(--modal__margin) - var(--modal__margin) -
+        var(--modal__sheet-dialog__padding-bottom)
+    );
+    padding: var(--modal__sheet-dialog__padding-top)
+      var(--modal__sheet-dialog__padding-right)
+      var(--modal__sheet-dialog__padding-bottom)
+      var(--modal__sheet-dialog__padding-left);
+    border-radius: calc(var(--border__radius) * 3)
+      calc(var(--border__radius) * 3) 0 0;
+    background: var(--modal__background);
+  }
+  &__close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: none;
+  }
+  &__head {
+    margin: 0 10px 12px;
+    &:empty {
+      margin-bottom: 0;
+    }
+    &__title {
+      display: block;
+      margin: 0;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 26px;
+      text-align: left;
+    }
+  }
+  &__body {
+    overflow: auto;
+    margin: 0 10px;
+    &__content {
+      display: block;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      text-align: center;
+      color: #727476;
+    }
+  } //pnpm add -g pnpm
+
+  &__foot {
+    text-align: center;
+    &__button-wrap {
+      &.horizon {
+        display: flex;
+        margin-left: -10px;
+        flex-direction: row;
+        > * {
+          flex: 1;
+          margin: 30px 0 0 10px;
+          border: 0;
+          text-align: center;
+        }
+      }
+      // &::slotted(*) {
+      //   flex: 1;
+      //   border: 0;
+      //   text-align: center;
+      // }
+      &.vertical {
+        display: block;
+        > * {
+          margin-top: 10px;
+          &:first-child {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+    &__anc {
+      display: inline-block;
+      margin-top: 16px;
+      text-align: center;
+    }
+  }
+}

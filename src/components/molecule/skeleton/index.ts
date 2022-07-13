@@ -6,8 +6,8 @@ export enum HbSkeletonType {
 }
 @customElement('hb-skeleton')
 export class HbSkeleton extends Base {
-  static override get styles() {
-    return [require('@/styles/molecule/skeleton/index.scss').default];
+  static get styles() {
+    return [require('@/styles/molecule/skeleton.scss').default];
   }
 
   type: HbSkeletonType;

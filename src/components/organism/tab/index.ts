@@ -12,8 +12,8 @@ import {Base} from '@/components/base';
 
 @customElement('hb-tab')
 export class HbTab extends Base {
-  static override get styles() {
-    return [require('@/styles/organism/tab/index.scss').default];
+  static get styles() {
+    return [require('@/styles/organism/tab.scss').default];
   }
 
   btns: HTMLElement[] = [];

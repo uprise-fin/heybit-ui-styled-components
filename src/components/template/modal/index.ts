@@ -20,7 +20,7 @@ import {Base} from '@/components/base';
 
 @customElement('hb-modal')
 export class HbModal extends Base {
-  static override get styles() {
+  static get styles() {
     return [require('@/styles/template/modal/index.scss').default];
   }
 

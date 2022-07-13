@@ -5,8 +5,8 @@ import {HbTransitionType} from './type';
 
 @customElement('hb-transition')
 export class HbTransition extends Base {
-  static override get styles() {
-    return [require('@/styles/atom/transition/index.scss').default];
+  static get styles() {
+    return [require('@/styles/atom/transition.scss').default];
   }
 
   show = false;

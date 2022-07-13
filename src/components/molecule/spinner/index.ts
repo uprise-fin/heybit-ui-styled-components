@@ -9,8 +9,8 @@ import {HbSpinnerTheme} from './type';
 
 @customElement('hb-spinner')
 export class HbSpinner extends Base {
-  static override get styles() {
-    return [require('@/styles/molecule/spinner/index.scss').default];
+  static get styles() {
+    return [require('@/styles/molecule/spinner.scss').default];
   }
 
   theme: HbSpinnerTheme = HbSpinnerTheme.solid;

@@ -4,8 +4,8 @@ import {customElement} from 'lit/decorators.js';
 
 @customElement('hb-loading')
 export class HbLoading extends Base {
-  static override get styles() {
-    return [require('@/styles/atom/loading/index.scss').default];
+  static get styles() {
+    return [require('@/styles/atom/loading.scss').default];
   }
 
   loaded = false;

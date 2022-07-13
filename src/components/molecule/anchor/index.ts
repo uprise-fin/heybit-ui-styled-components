@@ -17,8 +17,8 @@ import {Base} from '../../base';
 
 @customElement('hb-anchor')
 export class HbAnchor extends Base {
-  static override get styles() {
-    return [require('@/styles/molecule/anchor/index.scss').default];
+  static get styles() {
+    return [require('@/styles/molecule/anchor.scss').default];
   }
 
   href = '';

@@ -23,8 +23,8 @@ import {HbCarouselEventStatus} from './type';
 
 @customElement('hb-carousel')
 export class HbCarousel extends Base {
-  static override get styles() {
-    return [require('@/styles/template/carousel/index.scss').default];
+  static get styles() {
+    return [require('@/styles/template/carousel.scss').default];
   }
 
   //옵션
@@ -135,8 +135,8 @@ export class HbCarousel extends Base {
   }
 
   get transitionDuration() {
-    if (this.holderFlag) return 1000000000;
     if (this.transitionFlag) return this.rolling ? this.duration : this.speed;
+    if (this.holderFlag) return 1000000000;
     return 0;
   }
 
@@ -271,18 +271,19 @@ export class HbCarousel extends Base {
   getClientPoint(event: MouseEvent | TouchEvent) {
     let clientX = 0;
     let clientY = 0;
-    if (event instanceof TouchEvent) {
-      clientX = event.touches[0].clientX;
-      clientY = event.touches[0].clientY;
-    } else {
+    if (event instanceof MouseEvent) {
       clientX = event.clientX;
       clientY = event.clientY;
+    } else {
+      clientX = event.touches[0].clientX;
+      clientY = event.touches[0].clientY;
     }
     return {clientX, clientY};
   }
 
   onEventStart(event: MouseEvent | TouchEvent) {
     if (this.eventStatus === HbCarouselEventStatus.done) {
+      this.holderFlag = false;
       this.eventStatus = HbCarouselEventStatus.start;
       const {clientX, clientY} = this.getClientPoint(event);
 
@@ -345,28 +346,33 @@ export class HbCarousel extends Base {
         style="transform: translateX(${this.itemPosition});--duration: ${this
           .transitionDuration}ms;--type: ${this.rolling ? 'linear' : 'ease'};"
       >
-        ${this.infinite
-          ? html`<slot
-              class="hb-carousel__items hb-carousel__items--fake-before"
-              name="fake-before"
-              style="width: ${this.totalWidth}%; margin-left: ${-this
-                .totalWidth}%;"
-            ></slot>`
-          : ''}
+        ${this.infiniteSlotBefore}
         <slot
           class="hb-carousel__items"
           @click="${this.onClick}"
           style="width: ${this.totalWidth}%;"
         ></slot>
-        ${this.infinite
-          ? html`<slot
-              class="hb-carousel__items"
-              name="fake-after"
-              style="width: ${this.totalWidth * this.fakeLength}%;"
-            ></slot>`
-          : ''}
+        ${this.infiniteSlotAfter}
       </div>
     `;
+  }
+
+  get infiniteSlotBefore() {
+    if (this.infinite)
+      return html`<slot
+        class="hb-carousel__items hb-carousel__items--fake-before"
+        name="fake-before"
+        style="width: ${this.totalWidth}%; margin-left: ${-this.totalWidth}%;"
+      ></slot>`;
+  }
+
+  get infiniteSlotAfter() {
+    if (this.infinite)
+      return html`<slot
+        class="hb-carousel__items"
+        name="fake-after"
+        style="width: ${this.totalWidth * this.fakeLength}%;"
+      ></slot>`;
   }
 }
 

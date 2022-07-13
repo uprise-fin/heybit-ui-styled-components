@@ -16,8 +16,8 @@ import {HbListEvent, HbSelectOption} from './type';
 
 @customElement('hb-list')
 export class HbList extends Base {
-  static override get styles() {
-    return [require('@/styles/molecule/list/index.scss').default];
+  static get styles() {
+    return [require('@/styles/molecule/list.scss').default];
   }
 
   options: HbSelectOption[] = [];

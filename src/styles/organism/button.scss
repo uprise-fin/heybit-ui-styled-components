@@ -1,0 +1,185 @@
+@import '@/styles/utils/mixins';
+
+$hb-button__size: (
+  large: (
+    font-size: 16px,
+    height: 60px,
+    border-radius: calc(var(--border__radius) * 2),
+  ),
+  medium: (
+    font-size: 15px,
+    height: 50px,
+    border-radius: var(--border__radius),
+  ),
+  small: (
+    font-size: 13px,
+    height: 40px,
+    border-radius: var(--border__radius),
+  ),
+  xsmall: (
+    font-size: 13px,
+    height: 30px,
+    border-radius: var(--border__radius),
+  ),
+  // xsmall: (
+  //   font-size: 14px,
+  //   height: 30px,
+  //   border-radius: var(--box__border-radius),
+  // ),,,,,,,,,,,,,,,,,
+);
+$hb-button__type: (
+  rectangle: (
+    flex: flex,
+    padding: 0 var(--button__padding__right) 0 var(--button__padding__left),
+  ),
+  radius: (
+    border-radius: 1000px,
+    padding: 0 var(--button__padding__right) 0 var(--button__padding__left),
+  ),
+  circle: (
+    border-radius: 100%,
+    padding: 0,
+  ),
+);
+$hb-button__theme: (
+  primary: (
+    bg: var(--orange),
+    color: var(--font__color__void),
+    active: var(--orange--600),
+    hover: var(--orange--400),
+    disabledBg: var(--black--100),
+    disabledColor: var(--black--400),
+  ),
+  secondary: (
+    bg: var(--black),
+    color: var(--font__color__void),
+    active: var(--black--900),
+    hover: var(--black--700),
+    disabledBg: var(--black--100),
+    disabledColor: var(--black--400),
+  ),
+  tertiary: (
+    bg: var(--black--100),
+    color: var(--font__color__solid),
+    active: var(--black--200),
+    hover: var(--black--50),
+    disabledBg: var(--black--100),
+    disabledColor: var(--black--400),
+  ),
+  quaternary: (
+    bd: var(--black--800),
+    color: var(--font__color__solid),
+    active: var(--black--100),
+    // hover: var(--black--50),
+    // disabledBg: var(--black--100),
+    disabledBd: var(--black--300),
+    disabledColor: var(--black--400),
+  ),
+);
+.hb-button {
+  @include initial(hb-button);
+  @include disabled();
+  @include loading();
+  @include host-styled {
+    display: inline-flex;
+    font-size: var(--button__font-size);
+    font-weight: 700;
+    box-sizing: border-box;
+    cursor: pointer;
+    opacity: 1;
+    // &::before,
+    // &::after {
+    //   flex: auto;
+    //   content: "";
+    // }
+  }
+  @each $class, $value in $hb-button__theme {
+    $bd: map-get($value, bd);
+    $bg: map-get($value, bg);
+    @include host-styled("[theme='#{$class}']") {
+      @if ($bd) {
+        border: 1px solid $bd;
+      } @else {
+        border: 1px solid transparent;
+      }
+      --spinner__color: #{map-get($value, color)};
+      color: map-get($value, color);
+      transition: background var(--transition__duration),
+        opacity var(--transition__duration);
+      background: $bg;
+    }
+    @include host-styled("[type='custom'][theme='#{$class}']") {
+      $customColor: $bg;
+      color: var(--white);
+      color: $customColor;
+      --spinner__color: #{$customColor};
+      border: none !important;
+      background: none !important;
+    }
+    @include host-styled("[theme='#{$class}'][disabled]:not([loading])") {
+      color: map-get($value, disabledColor);
+      border-color: map-get($value, disabledBd);
+      background: map-get($value, disabledBg);
+    }
+    @include host-styled(":not([disabled])[theme='#{$class}']:hover") {
+      background: map-get($value, hover);
+    }
+    @include host-styled(":not([disabled])[theme='#{$class}']:active") {
+      background: map-get($value, active);
+    }
+  }
+  @each $class, $size in $hb-button__size {
+    @include host-styled("[size='#{$class}']") {
+      height: map-get($size, height);
+      font-size: map-get($size, font-size);
+      border-radius: map-get($size, border-radius);
+    }
+    @include host-styled("[size='#{$class}'][type='circle']") {
+      width: map-get($size, height);
+      height: map-get($size, height);
+    }
+  }
+  @each $class, $type in $hb-button__type {
+    @include host-styled("[type='#{$class}']") {
+      display: map-get($type, flex);
+      padding: map-get($type, padding);
+      border-radius: map-get($type, border-radius);
+    }
+  }
+  @include host-styled(':not([type])') {
+    height: auto;
+    border-radius: none;
+  }
+  // @include host-styled("[type='inline']") {
+  //   padding: 0 var(--button__padding__right) 0 var(--button__padding__left);
+  // }
+  // @include host-styled("[type='inline']") {
+  //   display: inline-flex;
+  // }
+  // @include host-styled("[type='custom']") {
+  // }
+
+  // @include host-styled(":empty") {
+  //   .hb-button__label::before {
+  //     content: attr(placeholder);
+  //     opacity: 0.5;
+  //   }
+  // }
+
+  &__slot {
+    // position: absolute;
+    display: flex;
+    align-self: center;
+    // &--left {
+    //   left: 0;
+    // }
+    // &--right {
+    //   right: 0;
+    // }
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+    margin: auto;
+  }
+}

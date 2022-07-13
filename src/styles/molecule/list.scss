@@ -1,0 +1,52 @@
+@import '@/styles/utils/mixins';
+
+%option {
+  display: flex;
+  width: 100%;
+  height: var(--list__height);
+  padding: 0 var(--list__padding__right) 0 var(--list__padding__left);
+  border: 0;
+  align-items: center;
+  font-size: inherit;
+  box-sizing: border-box;
+  outline: none;
+  background: none;
+  &:focus,
+  &:hover {
+    background: var(--black--50);
+  }
+  &[data-selected] {
+    background: var(--black--100);
+  }
+  &[hidden] {
+    display: none;
+  }
+}
+
+.hb-list {
+  @include initial(hb-list);
+  @include host-styled {
+    overflow: hidden;
+    display: block;
+    font-size: var(--list__font__size);
+    border-radius: var(--border__radius);
+    border: var(--list__border__width) solid var(--list__border__color);
+    box-sizing: border-box;
+  }
+
+  &__wrap {
+    overflow: auto;
+    max-height: inherit;
+    background: var(--background__color);
+    &:empty {
+      &::after {
+        content: attr(data-empty-text);
+        @extend %option;
+      }
+    }
+  }
+  &__btn {
+    @extend %option;
+    cursor: pointer;
+  }
+}

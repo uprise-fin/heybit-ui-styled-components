@@ -22,8 +22,8 @@ import {Base} from '@/components/base';
 
 @customElement('hb-button')
 export class HbButton extends Base {
-  static override get styles() {
-    return [require('@/styles/organism/button/index.scss').default];
+  static get styles() {
+    return [require('@/styles/organism/button.scss').default];
   }
 
   labelEl: HTMLElement;

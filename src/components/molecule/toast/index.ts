@@ -22,8 +22,8 @@ interface Timer {
 }
 @customElement('hb-toast')
 export class HbToast extends Base {
-  static override get styles() {
-    return [require('@/styles/molecule/toast/index.scss').default];
+  static get styles() {
+    return [require('@/styles/molecule/toast.scss').default];
   }
 
   now: number = 0;

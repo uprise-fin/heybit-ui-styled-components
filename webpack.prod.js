@@ -6,70 +6,70 @@ module.exports = _ => {
   return merge(common, {
     mode: 'production',
     entry: {
-      'components/atom/variable': [
-        path.resolve(__dirname, './src/components/atom/variable/index.ts'),
+      'src/components/atom/variable/index': [
+        path.resolve(__dirname, './src/components/atom/variable/index'),
       ],
       // "components/atom/delay": [
-      //   path.resolve(__dirname, "./src/components/atom/delay/index.ts"),
+      //   path.resolve(__dirname, "./src/components/atom/delay/index"),
       // ],
-      'components/atom/loading': [
-        path.resolve(__dirname, './src/components/atom/loading/index.ts'),
+      'src/components/atom/loading/index': [
+        path.resolve(__dirname, './src/components/atom/loading/index'),
       ],
-      'components/atom/transition': [
-        path.resolve(__dirname, './src/components/atom/transition/index.ts'),
+      'src/components/atom/transition/index': [
+        path.resolve(__dirname, './src/components/atom/transition/index'),
       ],
 
-      'components/molecule/icon': [
-        path.resolve(__dirname, './src/components/molecule/icon/index.ts'),
+      'src/components/molecule/icon/index': [
+        path.resolve(__dirname, './src/components/molecule/icon/index'),
       ],
-      'components/molecule/img': [
-        path.resolve(__dirname, './src/components/molecule/img/index.ts'),
+      'src/components/molecule/img/index': [
+        path.resolve(__dirname, './src/components/molecule/img/index'),
       ],
       // "components/molecule/list": [
-      //   path.resolve(__dirname, "./src/components/molecule/list/index.ts"),
+      //   path.resolve(__dirname, "./src/components/molecule/list/index"),
       // ],
-      'components/molecule/skeleton': [
-        path.resolve(__dirname, './src/components/molecule/skeleton/index.ts'),
+      'src/components/molecule/skeleton/index': [
+        path.resolve(__dirname, './src/components/molecule/skeleton/index'),
       ],
-      'components/molecule/spinner': [
-        path.resolve(__dirname, './src/components/molecule/spinner/index.ts'),
+      'src/components/molecule/spinner/index': [
+        path.resolve(__dirname, './src/components/molecule/spinner/index'),
       ],
-      'components/molecule/toast': [
-        path.resolve(__dirname, './src/components/molecule/toast/index.ts'),
+      'src/components/molecule/toast/index': [
+        path.resolve(__dirname, './src/components/molecule/toast/index'),
       ],
       // "components/molecule/tooltip": [
-      //   path.resolve(__dirname, "./src/components/molecule/tooltip/index.ts"),
+      //   path.resolve(__dirname, "./src/components/molecule/tooltip/index"),
       // ],
 
-      'components/organism/button': [
-        path.resolve(__dirname, './src/components/organism/button/index.ts'),
+      'src/components/organism/button/index': [
+        path.resolve(__dirname, './src/components/organism/button/index'),
       ],
       // "components/organism/input": [
-      //   path.resolve(__dirname, "./src/components/organism/input/index.ts"),
+      //   path.resolve(__dirname, "./src/components/organism/input/index"),
       // ],
       // "components/organism/select": [
-      //   path.resolve(__dirname, "./src/components/organism/select/index.ts"),
+      //   path.resolve(__dirname, "./src/components/organism/select/index"),
       // ],
       // "components/organism/tab": [
-      //   path.resolve(__dirname, "./src/components/organism/tab/index.ts"),
+      //   path.resolve(__dirname, "./src/components/organism/tab/index"),
       // ],
 
-      'components/template/modal': [
-        path.resolve(__dirname, './src/components/template/modal/index.ts'),
+      'src/components/template/modal/index': [
+        path.resolve(__dirname, './src/components/template/modal/index'),
       ],
-      'components/template/dialog': [
-        path.resolve(__dirname, './src/components/template/dialog/index.ts'),
+      'src/components/template/modal/dialog/index': [
+        path.resolve(__dirname, './src/components/template/modal/dialog/index'),
       ],
-      'components/template/sheet-dialog': [
+      'src/components/template/modal/sheet-dialog/index': [
         path.resolve(
           __dirname,
-          './src/components/template/sheet-dialog/index.ts',
+          './src/components/template/modal/sheet-dialog/index',
         ),
       ],
-      'components/template/event-dialog': [
+      'src/components/template/modal/event-dialog/index': [
         path.resolve(
           __dirname,
-          './src/components/template/event-dialog/index.ts',
+          './src/components/template/modal/event-dialog/index',
         ),
       ],
     },

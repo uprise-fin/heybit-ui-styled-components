@@ -12,7 +12,7 @@
 @import './organism/input';
 @import './organism/select';
 @import './organism/tab';
-@import './template/dialog';
-@import './template/event-dialog';
 @import './template/modal';
-@import './template/sheet-dialog';
+@import './template/modal/dialog';
+@import './template/modal/event-dialog';
+@import './template/modal/sheet-dialog';

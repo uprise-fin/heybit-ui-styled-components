@@ -107,7 +107,6 @@ autoInfiniteCarousel.args = {
   speed: 300,
   pause: true,
   draggable: true,
-  infinite: true,
   duration: 3000,
 };
 export const autoInfiniteFlexCarousel: Story<HbCarousel> =
@@ -118,13 +117,11 @@ autoInfiniteFlexCarousel.args = {
   pause: true,
   flexWidth: 300,
   draggable: true,
-  infinite: true,
   duration: 3000,
 };
 export const rollingInfiniteCarousel: Story<HbCarousel> =
   RollingInfiniteTemplate.bind({});
 rollingInfiniteCarousel.args = {
-  infinite: true,
   fakeLength: 3,
   pause: true,
   duration: 3000,

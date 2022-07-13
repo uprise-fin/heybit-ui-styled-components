@@ -18,8 +18,8 @@ import {Base} from '../../base';
 
 @customElement('hb-tooltip')
 export class HbTooltip extends Base {
-  static override get styles() {
-    return [require('@/styles/molecule/tooltip/index.scss').default];
+  static get styles() {
+    return [require('@/styles/molecule/tooltip.scss').default];
   }
 
   open: boolean = false;

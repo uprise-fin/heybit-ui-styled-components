@@ -4,8 +4,8 @@ import {customElement} from 'lit/decorators.js';
 
 @customElement('hb-delay')
 export class HbDelay extends Base {
-  static override get styles() {
-    return [require('@/styles/atom/loading/index.scss').default];
+  static get styles() {
+    return [require('@/styles/atom/loading.scss').default];
   }
 
   delay: number;
