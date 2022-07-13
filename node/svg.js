@@ -1,6 +1,7 @@
 const fs = require('fs');
 const svgs = {};
-const iconFolderAdd = 'node/assets/icons/';
+const baseUrl = 'node/assets/icons';
+const iconFolders = ['system'];
 // const svgs = (() =>
 //   fs
 //     .readFile("node/assets/icons")
@@ -19,20 +20,24 @@ const iconFolderAdd = 'node/assets/icons/';
 //     console.log(a, b);
 //   }
 // );
-const folders = fs.readdirSync(iconFolderAdd);
-folders.forEach(folder => {
-  if (folder === '.DS_Store') return;
-  const address = `${iconFolderAdd}${folder}/`;
-  const files = fs.readdirSync(address);
-  files.forEach(v => {
-    if (!v.includes('.svg')) return;
-    const svg = fs.readFileSync(`${address}${v}`, 'utf8');
-    const name = v.replace(/.svg$/, '');
-    svgs[`${folder}/${name}`] =
-      svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
-  });
+iconFolders.forEach(categoryFolder => {
+  if (categoryFolder.startsWith('.')) return;
+  try {
+    fs.readdirSync(`${baseUrl}/${categoryFolder}`).forEach(groupFolder => {
+      if (groupFolder.startsWith('.')) return;
+      const dir = `${baseUrl}/${categoryFolder}/${groupFolder}`;
+      const files = fs.readdirSync(dir);
+      files.forEach(file => {
+        if (!file.includes('.svg')) return;
+        const svg = fs.readFileSync(`${dir}/${file}`, 'utf8');
+        const name = file.replace(/.svg$/, '');
+        svgs[`${categoryFolder}/${groupFolder}/${name}`] =
+          svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
+      });
+    });
+  } catch (_) {}
 });
-// console.log("dddd", svgs);
+// cons
 fs.writeFile(
   'src/components/molecule/icon/svg.ts',
   'const svgs = ' +
