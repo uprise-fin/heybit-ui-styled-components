@@ -54,5 +54,5 @@ primary.args = {
     '기한이 지나 취소가 불가합니다.',
     '23년 1월 1일 전에 일부라도 중도 해지하면25%의 추가 보상 혜택을 받을 수 없어요.',
   ],
-  icons: ['positive', 'negative', 'notice'],
+  icons: ['system/filled/info', 'system/filled/danger'],
 };

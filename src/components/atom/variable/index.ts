@@ -71,13 +71,13 @@ export const componentVariables = {
   },
   toast: {
     'max-width': 340,
-    'min-height': 54,
+    'min-height': 52,
     margin: 20,
     padding: {
       top: 16,
       bottom: 16,
-      right: 20,
-      left: 20,
+      right: 18,
+      left: 19,
     },
   },
   input: {

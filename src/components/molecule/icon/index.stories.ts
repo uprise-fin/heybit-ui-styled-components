@@ -14,7 +14,7 @@ export default dev() &&
     component: 'hb-icon',
     argTypes: {
       icon: {
-        defaultValue: 'system/filled/ic-system-add',
+        defaultValue: 'system/filled/add',
         options: Object.keys(SVG),
         control: {type: 'radio'},
       },

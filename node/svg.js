@@ -30,7 +30,7 @@ iconFolders.forEach(categoryFolder => {
       files.forEach(file => {
         if (!file.includes('.svg')) return;
         const svg = fs.readFileSync(`${dir}/${file}`, 'utf8');
-        const name = file.replace(/.svg$/, '');
+        const name = file.replace(/.svg$/, '').replace('ic-system-', '');
         svgs[`${categoryFolder}/${groupFolder}/${name}`] =
           svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
       });
