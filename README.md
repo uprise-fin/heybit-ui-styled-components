@@ -1,12 +1,15 @@
-# heybit-ui-styled-components
+[![NPM version](https://img.shields.io/npm/v/heybit-ui-styled-components.svg?style=flat)](https://npmjs.org/package/heybit-ui-styled-components)
+[![NPM downloads](https://img.shields.io/npm/dm/heybit-ui-styled-components.svg?style=flat)](https://npmjs.org/package/heybit-ui-styled-components)
+
+# [heybit-ui-styled-components](http://github.com/uprise-fin/heybit-ui-styled-components)
+
+## [preview](https://uprise-fin.github.io/heybit-ui-styled-components/)
 
 ## 설치 방법
 
 ```terminal
 pnpm add heybit-ui-styled-components
 ```
-
-### [데모 페이지 확인하기](https://uprise-fin.github.io/heybit-ui-styled-components/)
 
 ## 목적
 
