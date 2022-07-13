@@ -194,20 +194,28 @@ export class HbCarousel extends Base {
       this.onAuto(step);
       if (this.pause) {
         this.onmouseenter = () => {
-          this.holderFlag = true;
-          clearTimeout(this.sto);
+          if (this.eventStatus === HbCarouselEventStatus.done) {
+            this.holderFlag = true;
+            clearTimeout(this.sto);
+          }
         };
         this.onmouseleave = () => {
-          this.holderFlag = false;
-          this.onAuto();
+          if (this.eventStatus === HbCarouselEventStatus.done) {
+            this.holderFlag = false;
+            this.onAuto();
+          }
         };
         this.ontouchstart = () => {
-          this.holderFlag = true;
-          clearTimeout(this.sto);
+          if (this.eventStatus === HbCarouselEventStatus.done) {
+            this.holderFlag = true;
+            clearTimeout(this.sto);
+          }
         };
         this.ontouchend = () => {
-          this.holderFlag = false;
-          this.onAuto();
+          if (this.eventStatus === HbCarouselEventStatus.done) {
+            this.holderFlag = false;
+            this.onAuto();
+          }
         };
       }
     }

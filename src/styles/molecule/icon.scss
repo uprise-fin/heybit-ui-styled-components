@@ -11,6 +11,12 @@ $hb-icon__size: (
   @include host-styled {
     display: inline-flex;
     vertical-align: middle;
+    svg {
+      fill: inherit;
+      > *:first-child {
+        fill: inherit;
+      }
+    }
   }
   @each $class, $size in $hb-icon__size {
     @include host-styled("[size='#{$class}']") {
@@ -22,14 +28,14 @@ $hb-icon__size: (
   //     fill: $color;
   //   }
   // }
-  @include host-styled("[theme]:not([theme=''])") {
-    svg {
-      fill: inherit;
-      > *:first-child {
-        fill: inherit;
-      }
-    }
-  }
+  // @include host-styled("[icon^='outline']") {
+  //   svg {
+  //     fill: inherit;
+  //     > *:first-child {
+  //       fill: inherit;
+  //     }
+  //   }
+  // }
 
   // @each $class, $value in $hb-button__theme {
   //   @include host-styled("[theme='#{$class}']") {
