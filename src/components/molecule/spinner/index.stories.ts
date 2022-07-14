@@ -25,11 +25,10 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbSpinner> = ({theme, size}) =>
-  html` <hb-spinner theme=${theme} size=${size}></hb-spinner> `;
+const Template: Story<HbSpinner> = ({size}) =>
+  html` <hb-spinner size=${size}></hb-spinner> `;
 
 export const primary: Story<HbSpinner> = Template.bind({});
 primary.args = {
-  theme: HbSpinnerTheme.solid,
   size: Size.large,
 };
