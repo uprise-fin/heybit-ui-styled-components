@@ -61,21 +61,9 @@ export const componentVariables = {
       color: basicVariables.border.color,
     },
   },
-  select: {
-    font: {
-      size: basicVariables.font.size,
-    },
-  },
-  toast: {
-    'max-width': 340,
-    'min-height': 52,
-    margin: 20,
-    padding: {
-      top: 16,
-      bottom: 16,
-      right: 18,
-      left: 19,
-    },
+
+  icon: {
+    color: colorPalette[SystemColor.black][900],
   },
   input: {
     height: 50,
@@ -101,9 +89,6 @@ export const componentVariables = {
       size: basicVariables.font.size,
     },
   },
-  spinner: {
-    color: colorPalette[SystemColor.black][900],
-  },
   modal: {
     width: 380,
     margin: 20,
@@ -119,6 +104,33 @@ export const componentVariables = {
       'padding-right': 20,
       'padding-bottom': 30,
       'padding-left': 20,
+    },
+  },
+  spinner: {
+    color: colorPalette[SystemColor.black][900],
+  },
+  select: {
+    font: {
+      size: basicVariables.font.size,
+    },
+  },
+  toast: {
+    'max-width': 340,
+    'min-height': 52,
+    margin: 20,
+    padding: {
+      top: 16,
+      bottom: 16,
+      right: 18,
+      left: 19,
+    },
+    positive: {
+      icon: 'system/filled/info',
+      color: colorPalette[SystemColor.green][400],
+    },
+    negative: {
+      icon: 'system/filled/danger',
+      color: colorPalette[SystemColor.orange][600],
     },
   },
 };

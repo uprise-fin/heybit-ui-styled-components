@@ -2,7 +2,6 @@ import {Size} from '@/components/atom/variable/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '../../base';
-import {HbSpinnerTheme} from './type';
 
 /**
  *
@@ -16,13 +15,9 @@ export class HbSpinner extends Base {
 
   size: Size;
 
-  theme: HbSpinnerTheme = HbSpinnerTheme.solid;
-  // size: size = size.large
-
   static get properties() {
     return {
       size: {type: String, Reflect: true},
-      theme: {type: String, Reflect: true},
       // size: { type: String, Reflect: true },
     };
   }

@@ -1,5 +1,6 @@
 import type Matercolor from 'matercolors';
-export const levels: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] = [
+export type Level = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+export const levels: Level[] = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
 ];
 export enum VerticalAlign {

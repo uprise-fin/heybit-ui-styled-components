@@ -1,9 +1,8 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '../../base';
-export enum HbSkeletonType {
-  card = 'card',
-}
+import {HbSkeletonType} from './type';
+
 @customElement('hb-skeleton')
 export class HbSkeleton extends Base {
   static get styles() {

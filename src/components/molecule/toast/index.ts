@@ -1,11 +1,11 @@
+import {HbTransitionType} from '@/components/atom/transition/type';
+import {componentVariables} from '@/components/atom/variable';
+import {Size} from '@/components/atom/variable/type';
+// import style from '@/styles/molecule/toast/index.scss';
+import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {HbToastMessage} from './type';
-// import style from '@/styles/molecule/toast/index.scss';
-
-import {Base} from '@/components/base';
-import {Size} from '@/components/atom/variable/type';
+import {HbToastMessage, HbToastTheme} from './type';
 
 /**
  * @property open 온 오프
@@ -86,14 +86,17 @@ export class HbToast extends Base {
   //   msg = msg.replace(/\\n/g, '\n')
   //   return msg.replace(/\[!]/g, '')
   // }
-  getIconTemplate(icon?: string, color?: string) {
-    if (icon && color)
+  getIconTemplate(theme?: HbToastTheme) {
+    if (Object.keys(HbToastTheme).includes(theme)) {
+      const icon = componentVariables.toast[theme].icon;
+      const color = componentVariables.toast[theme].color;
       return html`<hb-icon
         class="hb-toast__content__icon"
-        color=${color}
-        icon=${icon}
-        size=${Size.medium}
+        style="--icon__color: ${color};"
+        icon="${icon}"
+        color=${Size.medium}
       ></hb-icon>`;
+    }
   }
 
   render() {
@@ -108,7 +111,7 @@ export class HbToast extends Base {
             type=${HbTransitionType.bottomUpHeight}
             ?show=${this.getShow(i)}
             ><div class="hb-toast__content">
-              ${this.getIconTemplate(x.icon, x.color)}
+              ${this.getIconTemplate(x.theme)}
               <div class="hb-toast__content__text">${x.text}</div>
             </div></hb-transition
           ></hb-transition

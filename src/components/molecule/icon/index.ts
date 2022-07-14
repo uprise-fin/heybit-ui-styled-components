@@ -27,21 +27,18 @@ export class HbIcon extends Base {
 
   size: Size;
 
-  color: string;
-
   static get properties() {
     return {
-      color: {type: String, Reflect: true},
       icon: {type: String, Reflect: true},
       size: {type: String, Reflect: true},
     };
   }
 
-  attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === 'color') this.style.fill = newVal;
+  // attributeChangedCallback(name: string, _: string, newVal: string) {
+  //   if (name === 'color') this.style.fill = newVal;
 
-    super.attributeChangedCallback(name, _, newVal);
-  }
+  //   super.attributeChangedCallback(name, _, newVal);
+  // }
 
   convert(str: string) {
     const start = str.indexOf('<', 1);
@@ -58,43 +55,3 @@ declare global {
     'hb-icon': HbIcon;
   }
 }
-// import CustomElement from "../custom-elements";
-// const NAME = "hb-icon";
-// customElements.get(NAME) ||
-//   customElements.define(
-//     NAME,
-//     class extends CustomElement {
-//       template = require(`./${NAME}.hbs`);
-//       css = require(`./${NAME}.scss`).default;
-//       properties = {
-//         id: {
-//           closeBtn: "close-btn",
-//           wrap: "wrap",
-//         },
-//       };
-//       constructor() {
-//         super();
-//       }
-//       connectedCallback(): void {
-//         super.connectedCallback();
-//         this.isWrapEl.onanimationstart = () => this.onAnimationStart();
-//         this.isWrapEl.onanimationend = () => this.onAnimationEnd();
-//         this.isCloseBtnEl.onclick = () => this.onHide();
-//       }
-//       get isCloseBtnEl() {
-//         return this.shadowRoot.getElementById(
-//           this.isProperties.id.closeBtn
-//         ) as HTMLButtonElement;
-//       }
-//       get isWrapEl() {
-//         return this.shadowRoot.getElementById(
-//           this.isProperties.id.wrap
-//         ) as HTMLButtonElement;
-//       }
-
-//       onHide() {
-//         this.classList.add(this.isProperties.classList.animation);
-//         super.onHide();
-//       }
-//     }
-//   );

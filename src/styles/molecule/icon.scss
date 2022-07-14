@@ -12,9 +12,9 @@ $hb-icon__size: (
     display: inline-flex;
     vertical-align: middle;
     svg {
-      fill: inherit;
+      fill: var(--icon__color);
       > *:first-child {
-        fill: inherit;
+        fill: var(--icon__color);
       }
     }
   }

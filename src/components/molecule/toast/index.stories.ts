@@ -3,6 +3,7 @@ import {html} from 'lit';
 import {HbButtonTheme, HbButtonType} from '../../organism/button/type';
 import './index';
 import type {HbToast} from './index';
+import {HbToastTheme} from './type';
 
 export default {
   title: 'components/molecule/hb-toast✓',
@@ -13,21 +14,20 @@ export default {
       control: {type: 'radio'},
       defaultValue: true,
     },
+    theme: {
+      options: Object.keys(HbToastTheme),
+      control: {type: 'radio'},
+      defaultValue: HbToastTheme.positive,
+    },
   },
 } as Meta;
 interface HbToastExns extends HbToast {
   visibleIcon: boolean;
-  icons: string[];
-  colors: string[];
   contents: string[];
+  theme: HbToastTheme;
 }
 
-const Template: Story<HbToastExns> = ({
-  visibleIcon,
-  contents,
-  icons,
-  colors,
-}) => {
+const Template: Story<HbToastExns> = ({visibleIcon, contents, theme}) => {
   let element: HbToast;
   function reset() {
     if (!element) element = document.getElementById('toast') as HbToast;
@@ -36,11 +36,9 @@ const Template: Story<HbToastExns> = ({
   function event() {
     if (!element) element = document.getElementById('toast') as HbToast;
     const msgRandom = Math.floor(Math.random() * contents.length);
-    const iconRandom = Math.floor(Math.random() * icons.length);
     const message = {
       text: contents.slice()[msgRandom],
-      icon: visibleIcon ? icons.slice()[iconRandom] : null,
-      color: visibleIcon ? colors.slice()[iconRandom] : null,
+      theme: visibleIcon ? theme : null,
     };
     element.messages = [...element.messages, message];
   }
@@ -61,6 +59,5 @@ primary.args = {
     '기한이 지나 취소가 불가합니다.',
     '23년 1월 1일 전에 일부라도 중도 해지하면25%의 추가 보상 혜택을 받을 수 없어요.',
   ],
-  icons: ['system/filled/info', 'system/filled/danger'],
-  colors: ['var(--green--400)', 'var(--orange--600)'],
+  theme: HbToastTheme.positive,
 };
