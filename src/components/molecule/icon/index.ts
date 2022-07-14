@@ -27,11 +27,20 @@ export class HbIcon extends Base {
 
   size: Size;
 
+  color: string;
+
   static get properties() {
     return {
+      color: {type: String, Reflect: true},
       icon: {type: String, Reflect: true},
       size: {type: String, Reflect: true},
     };
+  }
+
+  attributeChangedCallback(name: string, _: string, newVal: string) {
+    if (name === 'color') this.style.fill = newVal;
+
+    super.attributeChangedCallback(name, _, newVal);
   }
 
   convert(str: string) {

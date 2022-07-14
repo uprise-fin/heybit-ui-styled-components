@@ -1,3 +1,4 @@
+import {Size} from '@/components/atom/variable/type';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 
@@ -15,22 +16,20 @@ export default {
       control: {type: 'radio'},
       defaultValue: HbSpinnerTheme.solid,
     },
-    // size: {
-    //   options: Object.keys(size),
-    //   control: { type: 'radio' },
-    //   defaultValue: size.large
-    // },
+    size: {
+      options: Object.keys(Size),
+      control: {type: 'radio'},
+      defaultValue: Size.large,
+    },
   },
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbSpinner> = ({
-  theme,
-  // size
-}) => html` <hb-spinner theme=${theme}></hb-spinner> `;
+const Template: Story<HbSpinner> = ({theme, size}) =>
+  html` <hb-spinner theme=${theme} size=${size}></hb-spinner> `;
 
 export const primary: Story<HbSpinner> = Template.bind({});
 primary.args = {
   theme: HbSpinnerTheme.solid,
-  // size: size.large
+  size: Size.large,
 };

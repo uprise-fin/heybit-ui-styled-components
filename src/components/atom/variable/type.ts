@@ -1,3 +1,7 @@
+import type Matercolor from 'matercolors';
+// export const levels: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] = [
+//   50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
+// ];
 export enum VerticalAlign {
   middle,
   top,
@@ -27,3 +31,4 @@ export enum ServiceColor {
   'defi' = 'defi',
 }
 export type Color = SystemColor | ServiceColor;
+export type AllColor = Record<Color, Matercolor>;

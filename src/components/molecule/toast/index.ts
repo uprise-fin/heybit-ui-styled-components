@@ -86,15 +86,14 @@ export class HbToast extends Base {
   //   msg = msg.replace(/\\n/g, '\n')
   //   return msg.replace(/\[!]/g, '')
   // }
-  getIconTemplate(icon: string) {
-    let color = '--orange--600';
-    if (icon.endsWith('info')) color = '--green--400';
-    return html`<hb-icon
-      class="hb-toast__content__icon"
-      style="fill:var(${color})"
-      icon=${icon}
-      size=${Size.medium}
-    ></hb-icon>`;
+  getIconTemplate(icon?: string, color?: string) {
+    if (icon && color)
+      return html`<hb-icon
+        class="hb-toast__content__icon"
+        color=${color}
+        icon=${icon}
+        size=${Size.medium}
+      ></hb-icon>`;
   }
 
   render() {
@@ -109,7 +108,7 @@ export class HbToast extends Base {
             type=${HbTransitionType.bottomUpHeight}
             ?show=${this.getShow(i)}
             ><div class="hb-toast__content">
-              ${this.getIconTemplate(x.icon)}
+              ${this.getIconTemplate(x.icon, x.color)}
               <div class="hb-toast__content__text">${x.text}</div>
             </div></hb-transition
           ></hb-transition

@@ -18,10 +18,16 @@ export default {
 interface HbToastExns extends HbToast {
   visibleIcon: boolean;
   icons: string[];
+  colors: string[];
   contents: string[];
 }
 
-const Template: Story<HbToastExns> = ({visibleIcon, contents, icons}) => {
+const Template: Story<HbToastExns> = ({
+  visibleIcon,
+  contents,
+  icons,
+  colors,
+}) => {
   let element: HbToast;
   function reset() {
     if (!element) element = document.getElementById('toast') as HbToast;
@@ -34,6 +40,7 @@ const Template: Story<HbToastExns> = ({visibleIcon, contents, icons}) => {
     const message = {
       text: contents.slice()[msgRandom],
       icon: visibleIcon ? icons.slice()[iconRandom] : null,
+      color: visibleIcon ? colors.slice()[iconRandom] : null,
     };
     element.messages = [...element.messages, message];
   }
@@ -55,4 +62,5 @@ primary.args = {
     '23년 1월 1일 전에 일부라도 중도 해지하면25%의 추가 보상 혜택을 받을 수 없어요.',
   ],
   icons: ['system/filled/info', 'system/filled/danger'],
+  colors: ['var(--green--400)', 'var(--orange--600)'],
 };
