@@ -1,7 +1,7 @@
 import type Matercolor from 'matercolors';
-// export const levels: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] = [
-//   50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
-// ];
+export const levels: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] = [
+  50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
+];
 export enum VerticalAlign {
   middle,
   top,

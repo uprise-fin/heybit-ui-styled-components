@@ -1,7 +1,7 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {SystemColor, ServiceColor, Color} from './type';
-import {colorPalette, levels} from './index';
+import {SystemColor, ServiceColor, Color, levels} from './type';
+import {colorPalette} from './index';
 // import { HbButtonTheme } from "../../organism/button";
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
@@ -25,23 +25,28 @@ export default {
 const LevelTemplate: Story<unknown> = () =>
   html`
     <style>
+      .table {
+        display: table;
+        width: 100%;
+        overflow: auto;
+      }
       .box {
-        display: flex;
+        display: table-row;
       }
       .box__item {
-        display: flex;
-        flex-basis: 100px;
-        height: 100px;
-        align-items: center;
-        justify-content: center;
+        display: table-cell;
+        overflow: hidden;
+        padding: 30px;
+        white-space: nowrap;
+        text-align: center;
+        vertical-align: middle;
+        background: var(--backrgound);
       }
       .box__item:before {
         content: attr(data-color);
       }
       .box__item:first-child {
-        flex-basis: 170px;
-        padding-left: 30px;
-        justify-content: left;
+        text-align: left;
       }
       .box__item:nth-child(9),
       .box__item:nth-child(10),
@@ -57,71 +62,74 @@ const LevelTemplate: Story<unknown> = () =>
         background: #000;
       }
       .box__item--title {
-        flex-basis: 100px;
+        width: 100px;
       }
     </style>
-    <div class="box">
-      <div class="box__item box__item--title box__item--reversal">
-        시스템컬러
+    <div class="table">
+      <div class="box">
+        <div class="box__item box__item--title box__item--reversal">
+          시스템컬러
+        </div>
+        ${levels.map(
+          x => html` <div class="box__item box__item--reversal">${x}</div> `,
+        )}
       </div>
-      ${levels.map(
-        x => html` <div class="box__item box__item--reversal">${x}</div> `,
-      )}
-    </div>
-    ${Object.keys(SystemColor).map(
-      (name: Color) =>
-        html`
-          <div class="box">
-            <div class="box__item box__item--title box__item--reversal">
-              ${name}: ${colorPalette[name].color}
+      ${Object.keys(SystemColor).map(
+        (name: Color) =>
+          html`
+            <div class="box">
+              <div class="box__item box__item--title box__item--reversal">
+                ${name}: ${colorPalette[name].color}
+              </div>
+              ${levels.map(
+                x =>
+                  html`
+                    <div
+                      style="--backrgound: var(--${name}--${x})"
+                      data-color="${colorPalette[name][x]}"
+                      class="box__item ${colorPalette[name].color ===
+                      colorPalette[name][x]
+                        ? 'box__item--primary'
+                        : ''}"
+                    ></div>
+                  `,
+              )}
             </div>
-            ${levels.map(
-              x =>
-                html`
-                  <div
-                    data-color="${colorPalette[name][x]}"
-                    class="box__item ${colorPalette[name].color ===
-                    colorPalette[name][x]
-                      ? 'box__item--primary'
-                      : ''}"
-                    style="background: var(${`--${name}--${x}`})"
-                  ></div>
-                `,
-            )}
-          </div>
-        `,
-    )}
-    <div class="box">
-      <div class="box__item box__item--title box__item--reversal">
-        서비스컬러
+          `,
+      )}
+      <div class="box">
+        <div class="box__item box__item--title box__item--reversal">
+          서비스컬러
+        </div>
+        ${levels.map(
+          x => html` <div class="box__item box__item--reversal">${x}</div> `,
+        )}
       </div>
-      ${levels.map(
-        x => html` <div class="box__item box__item--reversal">${x}</div> `,
-      )}
-    </div>
-    ${Object.keys(ServiceColor).map(
-      (name: Color) =>
-        html`
-          <div class="box">
-            <div class="box__item box__item--title box__item--reversal">
-              ${name}: ${colorPalette[name].color}
+      ${Object.keys(ServiceColor).map(
+        (name: Color) =>
+          html`
+            <div class="box">
+              <div class="box__item box__item--title box__item--reversal">
+                ${name}: ${colorPalette[name].color}
+              </div>
+              ${levels.map(
+                x =>
+                  html`
+                    <div
+                      style="--backrgound: var(--${name}--${x})"
+                      data-color="${colorPalette[name][x]}"
+                      class="box__item ${colorPalette[name].color ===
+                      colorPalette[name][x]
+                        ? 'box__item--primary'
+                        : ''}"
+                    ></div>
+                  `,
+              )}
             </div>
-            ${levels.map(
-              x =>
-                html`
-                  <div
-                    data-color="${colorPalette[name][x]}"
-                    class="box__item ${colorPalette[name].color ===
-                    colorPalette[name][x]
-                      ? 'box__item--primary'
-                      : ''}"
-                    style="background: var(${`--${name}--${x}`})"
-                  ></div>
-                `,
-            )}
-          </div>
-        `,
-    )}
+          `,
+      )}
+      </div>
+    </div>
   `;
 
 // export const base: Story<unknown> = Template.bind({});
