@@ -1,5 +1,5 @@
 import Matercolor from 'matercolors';
-import {Color, ServiceColor, SystemColor} from './type';
+import {Color, ServiceColor, Size, SystemColor} from './type';
 
 const colors = {
   [SystemColor.white]: '#ffffff',
@@ -19,6 +19,7 @@ export const colorPalette = Object.entries(colors).reduce(
   {},
 ) as Record<Color, Matercolor>;
 export const basicVariables = {
+  //기본 변수. 그냥도 사용하지만 컴포넌트로 확장됨
   font: {
     family: `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
   "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
@@ -28,6 +29,20 @@ export const basicVariables = {
       solid: colorPalette[SystemColor.black][900],
     },
     size: 16,
+  },
+  size: {
+    [Size.large]: 32,
+    [Size.medium]: 24,
+    [Size.small]: 18,
+    [Size.xsmall]: 16,
+  },
+  layout: {
+    header: {
+      height: 70,
+    },
+    media: {
+      desktop: 780,
+    },
   },
   border: {
     width: 1,
@@ -42,6 +57,7 @@ export const basicVariables = {
   },
 };
 export const componentVariables = {
+  //컴포넌트 변수
   dim: {
     background: {
       color: colorPalette[SystemColor.black][900],
@@ -64,6 +80,7 @@ export const componentVariables = {
 
   icon: {
     color: colorPalette[SystemColor.black][900],
+    size: basicVariables.size,
   },
   input: {
     height: 50,
@@ -108,6 +125,7 @@ export const componentVariables = {
   },
   spinner: {
     color: colorPalette[SystemColor.black][900],
+    size: basicVariables.size,
   },
   select: {
     font: {

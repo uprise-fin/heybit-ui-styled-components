@@ -1,10 +1,11 @@
 @import '@/styles/utils/mixins';
-$hb-icon__size: (
-  large: 32px,
-  medium: 24px,
-  small: 18px,
-  xsmall: 16px,
-);
+@import '@/styles/utils/variables';
+// $hb-icon__size: (
+//   large: 32px,
+//   medium: 24px,
+//   small: 18px,
+//   xsmall: 16px,
+// );
 
 .hb-icon {
   @include initial(hb-icon);
@@ -18,9 +19,9 @@ $hb-icon__size: (
       }
     }
   }
-  @each $class, $size in $hb-icon__size {
+  @each $class in $sizes {
     @include host-styled("[size='#{$class}']") {
-      width: #{$size};
+      width: var(--icon__size__#{$class});
     }
   }
   // @each $class, $color in $hb-icon__theme {

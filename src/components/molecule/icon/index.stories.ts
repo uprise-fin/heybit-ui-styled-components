@@ -5,6 +5,7 @@ import {html} from 'lit';
 import './index';
 import type {HbIcon} from './index';
 import SVG from './svg';
+import {IconName} from './type';
 interface HbIconExpns extends HbIcon {
   color: string;
 }
@@ -14,7 +15,7 @@ export default {
   argTypes: {
     icon: {
       defaultValue: 'system/filled/add',
-      options: Object.keys(SVG),
+      options: Object.keys(SVG) as IconName[],
       control: {type: 'radio'},
     },
     size: {

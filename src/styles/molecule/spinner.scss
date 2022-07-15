@@ -1,10 +1,11 @@
 @import '@/styles/utils/mixins';
-$hb-spinner__size: (
-  large: 32px,
-  medium: 24px,
-  small: 18px,
-  xsmall: 16px,
-);
+@import '@/styles/utils/variables';
+// $hb-spinner__size: (
+//   large: 32px,
+//   medium: 24px,
+//   small: 18px,
+//   xsmall: 16px,
+// );
 // $hb-input__height: $box__height !default;
 // $hb-input__padding: $box__padding !default;
 // $hb-input__border-width: $box__border-width !default;
@@ -20,10 +21,11 @@ $hb-spinner__size: (
   @include host-styled {
     display: inline-block;
   }
-  @each $class, $size in $hb-spinner__size {
+
+  @each $class in $sizes {
     @include host-styled("[size='#{$class}']") {
-      width: $size;
-      height: $size;
+      width: var(--spinner__size__#{$class});
+      height: var(--spinner__size__#{$class});
     }
   }
   &__svg {

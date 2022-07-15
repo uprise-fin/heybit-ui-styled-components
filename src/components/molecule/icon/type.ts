@@ -1,6 +1,5 @@
-export type IconCategory = 'system';
-export type IconStyle = 'filled' | 'outline';
 export enum IconName {
+  'graphic/heybit' = 'graphic/heybit',
   'system/filled/add' = 'system/filled/add',
   'system/filled/clear' = 'system/filled/clear',
   'system/filled/danger' = 'system/filled/danger',
