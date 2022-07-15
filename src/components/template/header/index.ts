@@ -1,6 +1,9 @@
+import {Size} from '@/components/atom/variable/type';
+import {HbIconName} from '@/components/molecule/icon/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '../../base';
+import {HbHeaderNavi} from './type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -21,8 +24,39 @@ export class HbHeader extends Base {
     return [require('@/styles/template/header.scss').default];
   }
 
+  navigations: HbHeaderNavi[] = [];
+
+  static get properties() {
+    return {
+      navigations: {type: Array, Reflect: true},
+    };
+  }
+
+  get menus() {
+    return html`${this.navigations.map(
+      x =>
+        html`<hb-anchor href=${x.url} target=${x.target}>${x.name}</hb-anchor>`,
+    )}`;
+  }
+
   render() {
-    return html`<div></div>`;
+    return html`<hb-responsive>
+      <div slot="mobile" class="hb-header--mobile">
+        <hb-icon
+          icon=${HbIconName['graphic/heybit']}
+          size=${Size.large}
+          style="--icon__size__large: 77px;"
+        ></hb-icon>
+      </div>
+      <div slot="desktop" class="hb-header--desktop">
+        <hb-icon
+          icon=${HbIconName['graphic/heybit']}
+          size=${Size.large}
+          style="--icon__size__large: 77px;"
+        ></hb-icon>
+        ${this.menus}
+      </div>
+    </hb-responsive>`;
   }
 }
 

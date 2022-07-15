@@ -1,6 +1,6 @@
 const fs = require('fs');
 const svgs = {};
-const iconName = [];
+const hbIconName = [];
 const baseUrl = 'node/assets/icons';
 
 function write(...folder) {
@@ -10,7 +10,7 @@ function write(...folder) {
     if (!file.endsWith('.svg')) return write(...folder, file);
     const svg = fs.readFileSync(`${baseUrl}/${folders}/${file}`, 'utf8');
     const name = file.replace(/.svg$/, '').replace('ic-system-', '');
-    iconName.push(`${folders}/${name}`);
+    hbIconName.push(`${folders}/${name}`);
     svgs[`${folders}/${name}`] =
       svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
   });
@@ -28,7 +28,7 @@ fs.writeFile(
 );
 fs.writeFile(
   'src/components/molecule/icon/type.ts',
-  `export enum IconName {${iconName
+  `export enum HbIconName {${hbIconName
     .map((x, i) => `${i === 0 ? '\n' : ''}  '${x}' = '${x}'`)
     .join(',\n')},\n}\n`,
   () => {

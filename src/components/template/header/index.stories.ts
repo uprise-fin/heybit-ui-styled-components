@@ -6,11 +6,33 @@ import type {HbHeader} from './index';
 
 export default dev() &&
   ({
-    title: 'components/molecule/hb-anchor',
-    component: 'hb-anchor',
+    title: 'components/template/hb-header',
+    component: 'hb-header',
   } as Meta);
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbHeader> = () => html`<hb-header></hb-header>`;
-export const primary: Story<HbHeader> = Template.bind({});
-// primary.args = {text: '탈퇴하기'};
+const Template: Story<HbHeader> = ({navigations}) =>
+  html` <hb-header .navigations=${navigations}></hb-header>`;
+export const korea: Story<HbHeader> = Template.bind({});
+korea.args = {
+  navigations: [
+    {
+      name: '예치상품',
+      url: 'harvest',
+      target: '_self',
+    },
+    {
+      name: '회사소개',
+      url: 'about-us',
+      target: '_self',
+    },
+    {
+      name: '인사이트',
+      url: 'blog',
+    },
+    {
+      name: '고객지원',
+      url: 'blog',
+    },
+  ],
+};

@@ -4,7 +4,7 @@ import {Size} from '@/components/atom/variable/type';
 import {HbButtonTheme, HbButtonType} from '@/components/organism/button/type';
 import './index';
 import type {HbButton} from './index';
-import {IconName} from '@/components/molecule/icon/type';
+import {HbIconName} from '@/components/molecule/icon/type';
 
 export default {
   title: 'components/organism/hb-button✓',
@@ -83,7 +83,7 @@ const IconTemplate: Story<HbButtonIconExps> = ({
     ?loading=${loading}
     ?disabled=${disabled}
     ><hb-icon
-      icon=${IconName['system/filled/add']}
+      icon=${HbIconName['system/filled/add']}
       size=${size}
       style="--icon__color: ${color};"
     ></hb-icon

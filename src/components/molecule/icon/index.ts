@@ -4,7 +4,7 @@ import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
 import {Size} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
 import SVG from './svg';
-import {IconName} from './type';
+import {HbIconName} from './type';
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -24,7 +24,7 @@ export class HbIcon extends Base {
     return [require('@/styles/molecule/icon.scss').default];
   }
 
-  icon: IconName;
+  icon: HbIconName;
 
   size: Size;
 
@@ -40,11 +40,6 @@ export class HbIcon extends Base {
 
   //   super.attributeChangedCallback(name, _, newVal);
   // }
-
-  convert(str: string) {
-    const start = str.indexOf('<', 1);
-    return str.substring(start, str.length - 6);
-  }
 
   render() {
     return html`${unsafeSVG(SVG[this.icon])}`;

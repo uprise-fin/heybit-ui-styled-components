@@ -1,4 +1,4 @@
-export enum IconName {
+export enum HbIconName {
   'graphic/heybit' = 'graphic/heybit',
   'system/filled/add' = 'system/filled/add',
   'system/filled/clear' = 'system/filled/clear',
