@@ -17,7 +17,7 @@ export const colorPalette = Object.entries(colors).reduce(
     [name]: new Matercolor(color),
   }),
   {},
-) as {[key in Color]: Matercolor};
+) as Record<Color, Matercolor>;
 export const basicVariables = {
   font: {
     family: `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,

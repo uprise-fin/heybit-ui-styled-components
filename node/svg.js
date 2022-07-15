@@ -1,7 +1,11 @@
 const fs = require('fs');
 const svgs = {};
+const iconType = {
+  iconCategory: ['system'],
+  iconStyle: ['filled', 'outline'],
+};
+const iconName = [];
 const baseUrl = 'node/assets/icons';
-const iconFolders = ['system'];
 // const svgs = (() =>
 //   fs
 //     .readFile("node/assets/icons")
@@ -20,29 +24,45 @@ const iconFolders = ['system'];
 //     console.log(a, b);
 //   }
 // );
-iconFolders.forEach(categoryFolder => {
+
+iconType.iconCategory.forEach(categoryFolder => {
   if (categoryFolder.startsWith('.')) return;
-  try {
-    fs.readdirSync(`${baseUrl}/${categoryFolder}`).forEach(groupFolder => {
-      if (groupFolder.startsWith('.')) return;
-      const dir = `${baseUrl}/${categoryFolder}/${groupFolder}`;
-      const files = fs.readdirSync(dir);
-      files.forEach(file => {
-        if (!file.includes('.svg')) return;
-        const svg = fs.readFileSync(`${dir}/${file}`, 'utf8');
-        const name = file.replace(/.svg$/, '').replace('ic-system-', '');
-        svgs[`${categoryFolder}/${groupFolder}/${name}`] =
-          svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
-      });
+  iconType.iconStyle.forEach(groupFolder => {
+    if (groupFolder.startsWith('.')) return;
+    const dir = `${baseUrl}/${categoryFolder}/${groupFolder}`;
+    const files = fs.readdirSync(dir);
+    files.forEach(file => {
+      if (!file.includes('.svg')) return;
+      const svg = fs.readFileSync(`${dir}/${file}`, 'utf8');
+      const name = file.replace(/.svg$/, '').replace('ic-system-', '');
+      iconName.push(`${categoryFolder}/${groupFolder}/${name}`);
+      svgs[`${categoryFolder}/${groupFolder}/${name}`] =
+        svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
     });
-  } catch (_) {}
+  });
 });
-// cons
 fs.writeFile(
   'src/components/molecule/icon/svg.ts',
   'const svgs = ' +
     JSON.stringify(svgs) +
-    ';export default svgs as { [src: string]: string };',
+    ';export default svgs as Record<string, string>;',
+  () => {
+    console.log('Complete conversion of svg file to text');
+  },
+);
+fs.writeFile(
+  'src/components/molecule/icon/type.ts',
+  Object.entries(iconType)
+    .map(([key, value]) => {
+      return `export type ${key[0].toUpperCase()}${key.substring(1)} = ${value
+        .map(x => "'" + x + "'")
+        .join(' | ')}`;
+    })
+    .join(';\n') +
+    `;\nexport enum IconName {${iconName
+      .map(x => `'${x}' = '${x}'`)
+      .join(',\n')}}` +
+    ';',
   () => {
     console.log('Complete conversion of svg file to text');
   },

@@ -1,23 +1,15 @@
+import {colorPalette} from '@/components/atom/variable';
+import {Size, SystemColor} from '@/components/atom/variable/type';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {
-  Color,
-  levels,
-  Level,
-  ServiceColor,
-  Size,
-  SystemColor,
-} from '@/components/atom/variable/type';
 import './index';
 import type {HbIcon} from './index';
 import SVG from './svg';
-import {colorPalette} from '@/components/atom/variable';
 interface HbIconExpns extends HbIcon {
-  theme: string;
-  level: Level;
+  color: string;
 }
 export default {
-  title: 'components/molecule/hb-icon',
+  title: 'components/molecule/hb-icon✓',
   component: 'hb-icon',
   argTypes: {
     icon: {
@@ -30,25 +22,29 @@ export default {
       options: Object.keys(Size),
       control: {type: 'radio'},
     },
-    theme: {
-      defaultValue: SystemColor.black,
-      options: Object.keys(SystemColor).concat(Object.keys(ServiceColor)),
-      control: {type: 'radio'},
+    color: {
+      control: {type: 'text'},
+      defaultValue: colorPalette[SystemColor.black][900],
     },
-    level: {
-      defaultValue: 900,
-      options: levels,
-      control: {type: 'radio'},
+  },
+  parameters: {
+    colorPicker: {
+      applyColorTo: ['color'], // Must match argType key
     },
   },
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbIconExpns> = ({icon, size, theme, level}) =>
+const Template: Story<HbIconExpns> = ({icon, size, color}) =>
   html`<hb-icon
     icon=${icon}
     size=${size}
-    style="--icon__color: ${colorPalette[theme as Color][level]};"
+    style="--icon__color: ${color};"
   ></hb-icon>`;
 export const primary: Story<HbIconExpns> = Template.bind({});
-primary.args = {size: Size.small, theme: SystemColor.black, level: 900};
+primary.args = {size: Size.small};
+primary.parameters = {
+  colorPicker: {
+    applyColorTo: ['color'], // Pass empty array to clear extra controls
+  },
+};

@@ -4,7 +4,7 @@ import './index';
 import type {HbImg} from './index';
 
 export default {
-  title: 'components/molecule/hb-img',
+  title: 'components/molecule/hb-img✓',
   component: 'hb-img',
 } as Meta;
 

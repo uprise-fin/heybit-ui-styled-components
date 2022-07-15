@@ -4,9 +4,10 @@ import {Size} from '@/components/atom/variable/type';
 import {HbButtonTheme, HbButtonType} from '@/components/organism/button/type';
 import './index';
 import type {HbButton} from './index';
+import {IconName} from '@/components/molecule/icon/type';
 
 export default {
-  title: 'components/organism/hb-button',
+  title: 'components/organism/hb-button✓',
   argTypes: {
     theme: {
       options: Object.keys(HbButtonTheme),
@@ -17,9 +18,19 @@ export default {
       control: {type: 'radio'},
       defaultValue: Size.large,
     },
+    color: {
+      control: {type: 'text'},
+    },
+  },
+  parameters: {
+    colorPicker: {
+      applyColorTo: ['color'], // Must match argType key
+    },
   },
 } as Meta;
-
+interface HbButtonIconExps extends HbButton {
+  color: string;
+}
 const NoTypeTemplate: Story<HbButton> = ({
   loading,
   disabled,
@@ -55,11 +66,12 @@ const Template: Story<HbButton> = ({
     ?disabled=${disabled}
     >${title}</hb-button
   >`;
-const IconTemplate: Story<HbButton> = ({
+const IconTemplate: Story<HbButtonIconExps> = ({
   type,
   loading,
   disabled,
   theme,
+  color,
   size,
   baseLoadingDuration,
 }) =>
@@ -70,7 +82,11 @@ const IconTemplate: Story<HbButton> = ({
     baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
-    ><hb-icon icon="notice" size=${size}></hb-icon
+    ><hb-icon
+      icon=${IconName['system/filled/add']}
+      size=${size}
+      style="--icon__color: ${color};"
+    ></hb-icon
   ></hb-button>`;
 
 const args = {
@@ -92,12 +108,18 @@ radius.args = {
   theme: HbButtonTheme.primary,
   type: HbButtonType.radius,
 };
-export const circle: Story<HbButton> = IconTemplate.bind({});
+export const circle: Story<HbButtonIconExps> = IconTemplate.bind({});
 circle.args = {
   ...args,
   theme: HbButtonTheme.primary,
   type: HbButtonType.circle,
 };
+circle.parameters = {
+  colorPicker: {
+    applyColorTo: ['color'], // Pass empty array to clear extra controls
+  },
+};
+
 export const noType: Story<HbButton> = NoTypeTemplate.bind({});
 noType.args = {
   ...args,
