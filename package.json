@@ -5,7 +5,7 @@
   "files": [
     "dist/**"
   ],
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "keywords": [
     "front-end",
     "uprise-fin",
@@ -27,7 +27,7 @@
     "testEnvironment": "@jest-runner/electron/environment",
     "preset": "ts-jest",
     "setupFiles": [
-      "./dist/module.js"
+      "./dist/src/module.js"
     ],
     "moduleNameMapper": {
       "@/(.*)$": "<rootDir>/src/$1",
