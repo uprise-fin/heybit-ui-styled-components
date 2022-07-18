@@ -20,7 +20,7 @@ pnpm add heybit-ui-styled-components
 ```html
 <script
   type="module"
-  src="/node_modules/heybit-ui-styled-components/dist/module.js"
+  src="/node_modules/heybit-ui-styled-components/dist/src/module.js"
 ></script>
 ```
 
