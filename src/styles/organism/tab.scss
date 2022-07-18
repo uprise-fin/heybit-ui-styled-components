@@ -1,9 +1,9 @@
 @import '@/styles/utils/mixins';
 
 .hb-tab {
-  @include initial(hb-tab);
   @include host-styled {
     display: block;
+    font-family: var(--font__family);
   }
   &__header {
     display: inline-block;

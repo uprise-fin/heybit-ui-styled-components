@@ -2,6 +2,7 @@ import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '@/components/atom/transition/type';
 import {Base} from '@/components/base';
+import {HbIconName} from '@/components/molecule/icon/type';
 
 /**
  * @fires close 닫기
@@ -66,7 +67,10 @@ export class HbEventDialog extends Base {
                 part="close-btn"
                 id="close-btn"
               >
-                <hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon>
+                <hb-icon
+                  icon=${HbIconName['system/outline/close']}
+                  size="small"
+                ></hb-icon>
               </button>`}
           <hb-anchor href=${this.href}>
             <hb-img

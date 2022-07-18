@@ -1,7 +1,6 @@
 @import '@/styles/utils/mixins';
 
 .hb-img {
-  @include initial(hb-img);
   @include host-styled {
     display: inline-block;
     font-size: 0;

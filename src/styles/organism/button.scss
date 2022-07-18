@@ -25,7 +25,7 @@ $hb-button__size: (
   //   font-size: 14px,
   //   height: 30px,
   //   border-radius: var(--box__border-radius),
-  // ),,,,,,,,,,,,,,,,,
+  // ),,,,,,,,,,,,,,,,,,
 );
 $hb-button__type: (
   rectangle: (
@@ -77,12 +77,12 @@ $hb-button__theme: (
   ),
 );
 .hb-button {
-  @include initial(hb-button);
   @include disabled();
   @include loading();
   @include host-styled {
     display: inline-flex;
     font-size: var(--button__font-size);
+    font-family: var(--font__family);
     font-weight: 700;
     box-sizing: border-box;
     cursor: pointer;

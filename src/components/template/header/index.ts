@@ -32,29 +32,49 @@ export class HbHeader extends Base {
     };
   }
 
-  get menus() {
-    return html`${this.navigations.map(
-      x =>
-        html`<hb-anchor href=${x.url} target=${x.target}>${x.name}</hb-anchor>`,
-    )}`;
+  get desktopGnb() {
+    return html`
+      ${this.navigations.map(
+        x =>
+          html`<hb-anchor href=${x.url} target=${x.target}
+            >${x.name}</hb-anchor
+          >`,
+      )}
+    `;
+  }
+
+  get mobileSnb() {
+    return html`
+      ${this.navigations.map(
+        x =>
+          html`<hb-anchor href=${x.url} target=${x.target}
+            >${x.name}</hb-anchor
+          >`,
+      )}
+    `;
   }
 
   render() {
     return html`<hb-responsive>
       <div slot="mobile" class="hb-header--mobile">
-        <hb-icon
-          icon=${HbIconName['graphic/heybit']}
-          size=${Size.large}
-          style="--icon__size__large: 77px;"
-        ></hb-icon>
+        <div class="hb-header--mobile__navibar">
+          <hb-icon
+            icon=${HbIconName['graphic/heybit']}
+            size=${Size.large}
+            style="--icon__size__large: 77px;"
+          ></hb-icon>
+          ${this.mobileSnb}
+        </div>
       </div>
       <div slot="desktop" class="hb-header--desktop">
-        <hb-icon
-          icon=${HbIconName['graphic/heybit']}
-          size=${Size.large}
-          style="--icon__size__large: 77px;"
-        ></hb-icon>
-        ${this.menus}
+        <div class="hb-header--desktop__navibar">
+          <hb-icon
+            icon=${HbIconName['graphic/heybit']}
+            size=${Size.large}
+            style="--icon__size__large: 77px;"
+          ></hb-icon>
+          ${this.desktopGnb}
+        </div>
       </div>
     </hb-responsive>`;
   }

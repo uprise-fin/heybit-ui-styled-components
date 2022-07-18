@@ -1,9 +1,9 @@
 @import '@/styles/utils/mixins';
 
 .hb-skeleton {
-  @include initial(hb-skeleton);
   @include host-styled('[type="card"]') {
     display: grid;
+    font-family: var(--font__family);
     // grid-template-columns: 100px 100px;
     grid-template-columns: calc(50% - 5px) calc(50% - 5px);
     grid-template-rows: 100px 100px 50px;

@@ -1,7 +1,6 @@
 @import '@/styles/utils/mixins';
 
 .hb-event-dialog {
-  @include initial(hb-event-dialog);
   &__container {
     position: relative;
     overflow: auto;

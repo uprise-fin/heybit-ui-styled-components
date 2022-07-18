@@ -1,6 +1,5 @@
 @import '@/styles/utils/mixins';
 .hb-toast {
-  @include initial(hb-toast);
   @include host-styled {
     z-index: zindex('토스트');
     position: fixed;
@@ -12,6 +11,7 @@
     // max-width: calc(var(--toast__max-width) + (var(--toast__margin) * 2));
     height: 0;
     margin: auto;
+    font-family: var(--font__family);
     flex-direction: column-reverse;
   }
   &__content {

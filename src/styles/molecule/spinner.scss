@@ -17,7 +17,6 @@
 // $hb-input__background--warning: $box__background !default;
 
 .hb-spinner {
-  @include initial(hb-spinner);
   @include host-styled {
     display: inline-block;
   }

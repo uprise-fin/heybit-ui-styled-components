@@ -1,13 +1,13 @@
 @import '@/styles/utils/mixins';
 
 .hb-tooltip {
-  @include initial(hb-tooltip);
   @include host-styled {
     position: relative;
     display: inline-block;
     width: 18px;
     height: 0.2em;
     vertical-align: middle;
+    font-family: var(--font__family);
     outline: none;
   }
   &__front {

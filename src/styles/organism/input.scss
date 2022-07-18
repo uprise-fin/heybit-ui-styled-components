@@ -1,12 +1,12 @@
 @import '@/styles/utils/mixins';
 
 .hb-input {
-  @include initial(hb-input);
   @include host-styled {
     display: flex;
     align-items: center;
     padding: 0 var(--input__padding__right) 0 var(--input__padding__left);
     cursor: text;
+    font-family: var(--font__family);
     border: var(--input__border__width) solid var(--input__border__color);
     border-radius: var(--border__radius);
     background: var(--background__color);

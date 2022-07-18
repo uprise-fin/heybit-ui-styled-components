@@ -1,7 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '@/components/base';
-import {HbListEvent, HbSelectOption} from './type';
+import {HbListEvent, HbListOption} from './type';
 
 /**
  * @fires event
@@ -20,7 +20,7 @@ export class HbList extends Base {
     return [require('@/styles/molecule/list.scss').default];
   }
 
-  options: HbSelectOption[] = [];
+  options: HbListOption[] = [];
 
   attributeSync = false;
 

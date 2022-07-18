@@ -24,11 +24,11 @@
 }
 
 .hb-list {
-  @include initial(hb-list);
   @include host-styled {
     overflow: hidden;
     display: block;
     font-size: var(--list__font__size);
+    font-family: var(--font__family);
     border-radius: var(--border__radius);
     border: var(--list__border__width) solid var(--list__border__color);
     box-sizing: border-box;

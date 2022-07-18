@@ -7,7 +7,8 @@ import {getElement} from '@/utils';
 import {Base} from '@/components/base';
 import {HbList} from '@/components/molecule/list';
 import {HbInput} from '@/components/organism/input';
-import {HbSelectOption} from './type';
+import {HbListOption} from '@/components/molecule/list/type';
+import {HbIconName} from '@/components/molecule/icon/type';
 
 /**
  * @fires event 값이 변경될때 발생
@@ -53,7 +54,7 @@ export class HbSelect extends Base {
 
   value = '';
 
-  options: HbSelectOption[] = [];
+  options: HbListOption[] = [];
 
   placeholder = '검색어를 입력해주세요.';
 
@@ -118,7 +119,7 @@ export class HbSelect extends Base {
         <slot name="icon" class="hb-select__label--icon"></slot>
         <hb-icon
           slot="slot--right"
-          icon="ic-system-arrow-down-18-black"
+          icon=${HbIconName['system/outline/arrow-down']}
           size=${Size.small}
         ></hb-icon>
       </hb-input>

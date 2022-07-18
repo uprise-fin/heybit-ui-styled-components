@@ -1,0 +1,29 @@
+@import '@/styles/utils/mixins';
+.hb-header {
+  @include host-styled {
+  }
+  &--desktop {
+    &__navibar {
+      display: flex;
+      height: 72px;
+      align-items: center;
+      hb-icon {
+      }
+      hb-anchor {
+        margin-left: 40px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--black--800);
+        &:first-of-type {
+          margin-left: 65px;
+        }
+        &.active {
+          color: var(--orange--500);
+        }
+      }
+    }
+  }
+  &--mobile {
+  }
+}

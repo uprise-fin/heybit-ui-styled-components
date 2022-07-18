@@ -12,7 +12,6 @@
 // $hb-input__background--warning: $box__background !default;
 
 .hb-dialog {
-  @include initial(hb-dialog);
   &__container {
     position: relative;
     overflow: auto;

@@ -1,8 +1,8 @@
 @import '@/styles/utils/mixins';
 .hb-loading {
-  @include initial(hb-loading);
   @include host-styled {
     display: block;
+    font-family: var(--font__family);
     transition: opacity var(--transition__duration);
   }
   @include host-styled([loaded]) {

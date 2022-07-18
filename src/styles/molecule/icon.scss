@@ -8,7 +8,6 @@
 // );
 
 .hb-icon {
-  @include initial(hb-icon);
   @include host-styled {
     display: inline-flex;
     vertical-align: middle;

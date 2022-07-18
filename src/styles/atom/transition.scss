@@ -1,6 +1,5 @@
 @import '@/styles/utils/mixins';
 .hb-transition {
-  @include initial(hb-transition);
   @include host-styled {
     display: none;
   }

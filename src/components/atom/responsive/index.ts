@@ -15,7 +15,6 @@ export class HbResponsive extends Base {
 
   get mediaMobile() {
     const mobile = this.point - 1;
-    console.log(mobile);
     return `@media (max-width: ${mobile}px) {.hb-responsive__slot--desktop{display: none;};`;
   }
 

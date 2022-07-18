@@ -1,5 +1,11 @@
 import type {HbList} from '.';
-export interface HbSelectOption {
+export interface HbListProps {
+  options: HbListOption[];
+  value: string;
+  emptyText?: string;
+  attributeSync?: boolean;
+}
+export interface HbListOption {
   label: string;
   value: string;
 }

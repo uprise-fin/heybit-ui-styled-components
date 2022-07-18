@@ -1,3 +1,9 @@
+export interface HbTransitionProps {
+  show: boolean;
+  delete?: boolean;
+  type: HbTransitionType;
+}
+
 export enum HbTransitionType {
   fade = 'fade',
   zoom = 'zoom',

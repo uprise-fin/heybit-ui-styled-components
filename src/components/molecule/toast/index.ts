@@ -5,6 +5,7 @@ import {Size} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {HbIconName} from '../icon/type';
 import {HbToastMessage, HbToastTheme} from './type';
 
 /**
@@ -88,7 +89,7 @@ export class HbToast extends Base {
   // }
   getIconTemplate(theme?: HbToastTheme) {
     if (Object.keys(HbToastTheme).includes(theme)) {
-      const icon = componentVariables.toast[theme].icon;
+      const icon = componentVariables.toast[theme].icon as HbIconName;
       const color = componentVariables.toast[theme].color;
       return html`<hb-icon
         class="hb-toast__content__icon"

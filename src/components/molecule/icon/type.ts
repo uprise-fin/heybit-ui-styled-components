@@ -1,3 +1,8 @@
+import {Size} from '@/components/atom/variable/type';
+export interface HbIconProps {
+  icon: HbIconName;
+  size: Size;
+}
 export enum HbIconName {
   'graphic/heybit' = 'graphic/heybit',
   'system/filled/add' = 'system/filled/add',

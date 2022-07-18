@@ -1,10 +1,10 @@
 @import '@/styles/utils/mixins';
 
 .hb-carousel {
-  @include initial(hb-carousel);
   @include host-styled {
     display: block;
     overflow: hidden;
+    font-family: var(--font__family);
     white-space: nowrap;
   }
   &__wrap {

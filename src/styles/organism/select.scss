@@ -1,11 +1,11 @@
 @import '@/styles/utils/mixins';
 
 .hb-select {
-  @include initial(hb-select);
   @include host-styled {
     // z-index: zIndex("레이어");
     // position: relative;
     display: block;
+    font-family: var(--font__family);
     font-size: var(--select__font__size);
     background: var(--background__color);
   }
