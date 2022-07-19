@@ -3,7 +3,7 @@
   "customElements": "custom-elements.json",
   "version": "0.24.1",
   "files": [
-    "dist/**"
+    "dist/src/**"
   ],
   "main": "dist/src/index.js",
   "keywords": [

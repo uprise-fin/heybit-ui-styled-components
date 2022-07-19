@@ -1,6 +1,5 @@
 import {LitElement} from 'lit';
 import {Size} from './atom/variable/type';
-
 // export interface MouseCustomEvent extends Event {
 //   clientX: number;
 //   clientY: number;
