@@ -20,7 +20,7 @@ import {HbTooltipProps} from './type';
 @customElement('hb-tooltip')
 export class HbTooltip extends Base<HbTooltipProps> {
   static get styles() {
-    return [require('@/styles/molecule/tooltip.scss').default];
+    return [require('./style.scss').default];
   }
 
   open: boolean = false;

@@ -6,7 +6,7 @@ import {HbTransitionProps, HbTransitionType} from './type';
 @customElement('hb-transition')
 export class HbTransition extends Base<HbTransitionProps> {
   static get styles() {
-    return [require('@/styles/atom/transition.scss').default];
+    return [require('./style.scss').default];
   }
 
   show = false;

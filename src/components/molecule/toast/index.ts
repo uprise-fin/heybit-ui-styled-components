@@ -25,7 +25,7 @@ interface Timer {
 @customElement('hb-toast')
 export class HbToast extends Base<HbToastProps> {
   static get styles() {
-    return [require('@/styles/molecule/toast.scss').default];
+    return [require('./style.scss').default];
   }
 
   now: number = 0;

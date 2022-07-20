@@ -6,7 +6,7 @@ import {HbSkeletonProps, HbSkeletonType} from './type';
 @customElement('hb-skeleton')
 export class HbSkeleton extends Base<HbSkeletonProps> {
   static get styles() {
-    return [require('@/styles/molecule/skeleton.scss').default];
+    return [require('./style.scss').default];
   }
 
   type: HbSkeletonType;

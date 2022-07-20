@@ -21,7 +21,7 @@ import {HbIconName, HbIconProps} from './type';
 @customElement('hb-icon')
 export class HbIcon extends Base<HbIconProps> {
   static get styles() {
-    return [require('@/styles/molecule/icon.scss').default];
+    return [require('./style.scss').default];
   }
 
   icon: HbIconName;

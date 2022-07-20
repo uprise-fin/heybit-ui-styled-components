@@ -19,7 +19,7 @@ import {HbAnchorProps} from './type';
 @customElement('hb-anchor')
 export class HbAnchor extends Base<HbAnchorProps> {
   static get styles() {
-    return [require('@/styles/atom/anchor.scss').default];
+    return [require('./style.scss').default];
   }
 
   href = '';
