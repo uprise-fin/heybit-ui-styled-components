@@ -1,6 +1,7 @@
 import '@/components/atom/variable';
 // import { HbDelay } from "@/components/atom/delay";
 import {HbLoading} from '@/components/atom/loading';
+import {HbResponsive} from '@/components/atom/responsive';
 import {HbTransition} from '@/components/atom/transition';
 import {HbAnchor} from '@/components/atom/anchor';
 import {HbIcon} from '@/components/molecule/icon';
@@ -24,6 +25,7 @@ export {
   HbLoading,
   HbTransition,
   HbAnchor,
+  HbResponsive,
   HbIcon,
   HbImg,
   // HbList,
