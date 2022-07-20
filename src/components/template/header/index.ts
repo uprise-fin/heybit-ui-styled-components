@@ -24,7 +24,7 @@ export class HbHeader extends Base<HbHerderProps> {
     return [require('./style.scss').default];
   }
 
-  navigations: HbHeaderNavi[] = [];
+  navigations: HbHeaderNavi[];
 
   static get properties() {
     return {
@@ -34,7 +34,7 @@ export class HbHeader extends Base<HbHerderProps> {
 
   get gnb() {
     return html`
-      ${this.navigations.map(
+      ${this.navigations?.map(
         x =>
           html`<hb-anchor href=${x.url} target=${x.target}
             >${x.name}</hb-anchor

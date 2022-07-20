@@ -50,8 +50,8 @@ export class HbAnchor extends Base<HbAnchorProps> {
 
   route() {
     const a = document.createElement('a');
+    if (this.target) a.target = this.target;
     a.href = this.href;
-    a.target = this.target || '_blank';
     a.rel = 'noreferer noopener';
     a.click();
     a.remove();

@@ -46,9 +46,11 @@
       document.getElementById('btn').theme = 'primary';
       document.getElementById('btn').type = 'rectangle';
       document.getElementById('btn').size = 'large';
-      document.getElementById('header').navigations = [
-        {url: 'finance', name: '통장', target: '_self'},
-      ];
+      setTimeout(() => {
+        document.getElementById('header').navigations = [
+          {url: 'finance', name: '통장', target: '_self'},
+        ];
+      }, 1000);
       console.log(document.getElementById('btn').props, 'props');
       // // document.getElementById("btn").addEventListener('event', clickEvnt)
       // document.getElementById('btn2').onclick = clickEvnt2;
