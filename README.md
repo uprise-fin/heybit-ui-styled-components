@@ -27,14 +27,35 @@ pnpm add heybit-ui-styled-components
 2. 인터페이스를 통해 컴포넌트의 props 와 slots을 확인
 
 ```typescript
-import {HbButton} from 'heybit-ui-styled-components';
+import {HbButtonProps} from 'heybit-ui-styled-components';
 ```
 
 3. 적절한 사용
 
+```typescript
+const loginButtonProps: HbButtonProps = {
+  theme: HbButtonTheme.primary,
+  size: Size.large,
+  type: HbButtonType.rectangle,
+};
+```
+
 ```svelte
-<hb-button type=${HbButton.HbButtonType.rectangle} theme=${HbButton.HbButtonTheme.primary} size=${HbButton.HbButtonSize.large}>버튼텍스트를 입력해보아요~~</hb-button>
-<hb-button type="rectangle" theme="primary" size="large">버튼텍스트를 입력해보아요~~</hb-button>
+<hb-button {...loginButtonProps}>버튼텍스트를 입력해보아요~~</hb-button>
+
+또는
+
+<hb-button
+  type={HbButtonType.rectangle}
+  theme={HbButtonTheme.primary}
+  size={HbButtonSize.large}
+  >버튼텍스트를 입력해보아요~~</hb-button
+>
+
+또는
+<hb-button type="rectangle" theme="primary" size="large"
+  >버튼텍스트를 입력해보아요~~</hb-button
+>
 ```
 
 ### 글로벌 css에 스타일을 넣어서 컴포넌트가 정상적인 디자인으로 노출되지 않는다면?
@@ -53,7 +74,7 @@ import {HbButton} from 'heybit-ui-styled-components';
 }
 ```
 
-```html
+```svelte
 <!-- before -->
 <hb-button ...></hb-button>
 
