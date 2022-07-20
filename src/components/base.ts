@@ -12,7 +12,7 @@ export class Base<T> extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    Object.keys(this.props).forEach(key => {
+    this.props.forEach(key => {
       const value = (this as unknown)[key as keyof T];
       if (value) this.setAttribute(key as string, value as string);
     });

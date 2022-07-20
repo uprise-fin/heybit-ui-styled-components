@@ -44,7 +44,7 @@ export class HbButton extends Base<HbButtonProps> {
 
   theme: HbButtonTheme;
 
-  props: (keyof HbButtonProps)[] = ['size', 'theme', 'loading', 'type'];
+  props: (keyof HbButtonProps)[] = ['size', 'theme', 'type'];
 
   static get properties(): Record<keyof HbButtonProps, Object> {
     return {
