@@ -13,7 +13,7 @@
     vertical-align: middle;
     svg {
       fill: var(--icon__color);
-      > *:first-child {
+      > * {
         fill: var(--icon__color);
       }
     }

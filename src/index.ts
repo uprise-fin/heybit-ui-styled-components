@@ -60,6 +60,7 @@ import {
   HbDialogAnchor,
   HbModalButtonAlign,
 } from '@/components/template/modal/type';
+import {HbHeaderNavi, HbHerderProps} from '@/components/template/header/type';
 
 export {
   HbAnchorProps,
@@ -104,4 +105,6 @@ export {
   HbDialogButton,
   HbDialogAnchor,
   HbModalButtonAlign,
+  HbHeaderNavi,
+  HbHerderProps,
 };
