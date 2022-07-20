@@ -36,7 +36,8 @@ export class HbTooltip extends Base<HbTooltipProps> {
     };
   }
 
-  async customConnectedCallback() {
+  connectedCallback() {
+    super.connectedCallback();
     this.tabIndex = 0;
     this.onfocus = this.onOpen;
     this.onblur = () => {

@@ -164,7 +164,8 @@ export class HbInput extends Base<HbInputProps> {
     this.dispatchEvent(new CustomEvent('event', ev));
   }
 
-  async customConnectedCallback() {
+  async connectedCallback() {
+    super.connectedCallback();
     const inputEl = await getElement<HTMLInputElement>(
       this.shadowRoot,
       'input',

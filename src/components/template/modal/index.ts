@@ -25,7 +25,8 @@ export class HbModal extends Base<HbModalProps> {
     return [require('./style.scss').default];
   }
 
-  async customConnectedCallback() {
+  async connectedCallback() {
+    super.connectedCallback();
     this.containerEl = await getElement<HTMLDivElement>(
       this.shadowRoot,
       'container',

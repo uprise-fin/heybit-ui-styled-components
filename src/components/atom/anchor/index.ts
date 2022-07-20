@@ -38,7 +38,8 @@ export class HbAnchor extends Base<HbAnchorProps> {
     };
   }
 
-  async customConnectedCallback() {
+  connectedCallback() {
+    super.connectedCallback();
     this.tabIndex = 0;
     this.onclick = (ev: Event) => {
       if (this.disabled) return;

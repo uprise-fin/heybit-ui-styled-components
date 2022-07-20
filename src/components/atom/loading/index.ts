@@ -21,7 +21,8 @@ export class HbLoading extends Base<HbLoadingProps> {
     };
   }
 
-  async customConnectedCallback() {
+  connectedCallback() {
+    super.connectedCallback();
     this.ontransitionend = () =>
       this.delete ? this.remove() : this.setAttribute('done', '');
   }

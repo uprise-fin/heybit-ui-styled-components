@@ -143,7 +143,8 @@ export class HbSelect extends Base<HbSelectProps> {
     `;
   }
 
-  async customConnectedCallback() {
+  async connectedCallback() {
+    super.connectedCallback();
     this.onfocus = () => this.adapterShow();
     this.onblur = () => this.adapterHide();
     this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'label');

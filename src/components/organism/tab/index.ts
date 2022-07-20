@@ -37,7 +37,8 @@ export class HbTab extends Base<HbInputProps> {
     };
   }
 
-  async customConnectedCallback() {
+  async connectedCallback() {
+    super.connectedCallback();
     const wrap = await getChildren(this.children);
     this.btns = wrap.filter(x => x.slot === 'header');
     this.contents = wrap.filter(x => x.slot !== 'header');

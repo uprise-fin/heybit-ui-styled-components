@@ -93,7 +93,8 @@ export class HbButton extends Base<HbButtonProps> {
     `;
   }
 
-  async customConnectedCallback() {
+  connectedCallback() {
+    super.connectedCallback();
     this.tabIndex = 0;
     this.onclick = ev => this.onEvent(ev);
     this.onkeyup = ev => ev.key === 'Enter' && this.onEvent(ev);

@@ -164,7 +164,8 @@ export class HbCarousel extends Base<HbCarouselProps> {
 
   onEventDoingBound = this.onEventDoing.bind(this);
 
-  async customConnectedCallback() {
+  async connectedCallback() {
+    super.connectedCallback();
     this.itemElements = await getChildren(this.children);
     this.itemLength = this.itemElements.length;
     if (this.infinite) {
