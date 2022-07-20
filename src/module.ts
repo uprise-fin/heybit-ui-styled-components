@@ -2,7 +2,7 @@ import '@/components/atom/variable';
 // import { HbDelay } from "@/components/atom/delay";
 import {HbLoading} from '@/components/atom/loading';
 import {HbTransition} from '@/components/atom/transition';
-// import { HbAnchor } from "@/components/molecule/anchor";
+import {HbAnchor} from '@/components/atom/anchor';
 import {HbIcon} from '@/components/molecule/icon';
 import {HbImg} from '@/components/molecule/img';
 // import { HbList } from "@/components/molecule/list";
@@ -15,6 +15,7 @@ import {HbButton} from '@/components/organism/button';
 // import { HbSelect } from "@/components/organism/select";
 // import { HbTab } from "@/components/organism/tab";
 import {HbModal} from '@/components/template/modal';
+import {HbHeader} from '@/components/template/header';
 import {HbDialog} from '@/components/template/modal/dialog';
 import {HbEventDialog} from '@/components/template/modal/event-dialog';
 import {HbSheetDialog} from '@/components/template/modal/sheet-dialog';
@@ -22,7 +23,7 @@ export {
   // HbDelay,
   HbLoading,
   HbTransition,
-  // HbAnchor,
+  HbAnchor,
   HbIcon,
   HbImg,
   // HbList,
@@ -34,6 +35,7 @@ export {
   // HbInput,
   // HbSelect,
   // HbTab,
+  HbHeader,
   HbDialog,
   HbEventDialog,
   HbModal,
