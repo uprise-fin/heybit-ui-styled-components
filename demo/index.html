@@ -24,7 +24,7 @@
   </head>
   <body>
     <hb-button id="btn">ddd</hb-button>
-
+    <hb-header id="header"></hb-header>
     <script>
       // var clickEvnt = (function () {
       //   var dialog = document.getElementById('dialog');
@@ -46,6 +46,9 @@
       document.getElementById('btn').theme = 'primary';
       document.getElementById('btn').type = 'rectangle';
       document.getElementById('btn').size = 'large';
+      document.getElementById('header').navigations = [
+        {url: 'finance', name: '통장', target: '_self'},
+      ];
       console.log(document.getElementById('btn').props, 'props');
       // // document.getElementById("btn").addEventListener('event', clickEvnt)
       // document.getElementById('btn2').onclick = clickEvnt2;

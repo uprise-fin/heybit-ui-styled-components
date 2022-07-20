@@ -32,18 +32,7 @@ export class HbHeader extends Base<HbHerderProps> {
     };
   }
 
-  get desktopGnb() {
-    return html`
-      ${this.navigations.map(
-        x =>
-          html`<hb-anchor href=${x.url} target=${x.target}
-            >${x.name}</hb-anchor
-          >`,
-      )}
-    `;
-  }
-
-  get mobileSnb() {
+  get gnb() {
     return html`
       ${this.navigations.map(
         x =>
@@ -63,7 +52,7 @@ export class HbHeader extends Base<HbHerderProps> {
             size=${Size.large}
             style="--icon__size__large: 77px;"
           ></hb-icon>
-          ${this.mobileSnb}
+          ${this.gnb}
         </div>
       </div>
       <div slot="desktop" class="hb-header--desktop">
@@ -73,7 +62,7 @@ export class HbHeader extends Base<HbHerderProps> {
             size=${Size.large}
             style="--icon__size__large: 77px;"
           ></hb-icon>
-          ${this.desktopGnb}
+          ${this.gnb}
         </div>
       </div>
     </hb-responsive>`;
