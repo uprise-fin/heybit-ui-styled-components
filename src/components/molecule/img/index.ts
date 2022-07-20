@@ -16,7 +16,7 @@ import {HbImgProps} from './type';
 @customElement('hb-img')
 export class HbImg extends Base<HbImgProps> {
   static get styles() {
-    return [require('@/styles/molecule/img.scss').default];
+    return [require('./style.scss').default];
   }
 
   src: string;

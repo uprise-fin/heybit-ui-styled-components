@@ -24,7 +24,7 @@ import {HbCarouselEventStatus, HbCarouselProps} from './type';
 @customElement('hb-carousel')
 export class HbCarousel extends Base<HbCarouselProps> {
   static get styles() {
-    return [require('@/styles/template/carousel.scss').default];
+    return [require('./style.scss').default];
   }
 
   //옵션

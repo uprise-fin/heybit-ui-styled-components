@@ -6,7 +6,7 @@ import {HbLoadingProps} from './type';
 @customElement('hb-loading')
 export class HbLoading extends Base<HbLoadingProps> {
   static get styles() {
-    return [require('@/styles/atom/loading.scss').default];
+    return [require('./style.scss').default];
   }
 
   loaded = false;

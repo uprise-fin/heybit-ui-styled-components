@@ -21,7 +21,7 @@ import {HbHeaderNavi, HbHerderProps} from './type';
 @customElement('hb-header')
 export class HbHeader extends Base<HbHerderProps> {
   static get styles() {
-    return [require('@/styles/template/header.scss').default];
+    return [require('./style.scss').default];
   }
 
   navigations: HbHeaderNavi[] = [];

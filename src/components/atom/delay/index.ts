@@ -5,9 +5,9 @@ import {HbDelayProps} from './type';
 
 @customElement('hb-delay')
 export class HbDelay extends Base<HbDelayProps> {
-  static get styles() {
-    return [require('@/styles/atom/loading.scss').default];
-  }
+  // static get styles() {
+  //   return [require('./style.scss').default];
+  // }
 
   delay: number;
 

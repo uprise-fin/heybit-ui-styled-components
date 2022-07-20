@@ -14,7 +14,7 @@ import {HbInputProps} from './type';
 @customElement('hb-tab')
 export class HbTab extends Base<HbInputProps> {
   static get styles() {
-    return [require('@/styles/organism/tab.scss').default];
+    return [require('./style.scss').default];
   }
 
   btns: HTMLElement[] = [];

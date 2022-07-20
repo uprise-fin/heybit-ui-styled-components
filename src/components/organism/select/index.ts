@@ -28,7 +28,7 @@ import {HbSelectProps} from './type';
 @customElement('hb-select')
 export class HbSelect extends Base<HbSelectProps> {
   static get styles() {
-    return [require('@/styles/organism/select.scss').default];
+    return [require('./style.scss').default];
   }
 
   inputEl?: HTMLInputElement;

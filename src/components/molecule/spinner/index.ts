@@ -11,7 +11,7 @@ import {HbSkeletonProps} from '../skeleton/type';
 @customElement('hb-spinner')
 export class HbSpinner extends Base<HbSkeletonProps> {
   static get styles() {
-    return [require('@/styles/molecule/spinner.scss').default];
+    return [require('./style.scss').default];
   }
 
   size: Size;

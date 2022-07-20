@@ -32,7 +32,7 @@ import {HbIconName} from '@/components/molecule/icon/type';
 @customElement('hb-dialog')
 export class HbDialog extends Base<HbModalProps> {
   static get styles() {
-    return [require('@/styles/template/modal/dialog.scss').default];
+    return [require('./style.scss').default];
   }
 
   loading = false;

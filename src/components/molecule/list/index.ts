@@ -17,7 +17,7 @@ import {HbListEvent, HbListOption, HbListProps} from './type';
 @customElement('hb-list')
 export class HbList extends Base<HbListProps> {
   static get styles() {
-    return [require('@/styles/molecule/list.scss').default];
+    return [require('./style.scss').default];
   }
 
   options: HbListOption[] = [];

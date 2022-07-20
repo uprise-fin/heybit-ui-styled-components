@@ -22,7 +22,7 @@ import {HbModalProps} from './type';
 @customElement('hb-modal')
 export class HbModal extends Base<HbModalProps> {
   static get styles() {
-    return [require('@/styles/template/modal/index.scss').default];
+    return [require('./style.scss').default];
   }
 
   async customConnectedCallback() {

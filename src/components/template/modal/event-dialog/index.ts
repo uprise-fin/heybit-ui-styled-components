@@ -17,7 +17,7 @@ import {HbModalProps} from '../type';
 @customElement('hb-event-dialog')
 export class HbEventDialog extends Base<HbModalProps> {
   static get styles() {
-    return [require('@/styles/template/modal/event-dialog.scss').default];
+    return [require('./style.scss').default];
   }
 
   width = 400;
