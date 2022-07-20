@@ -2,7 +2,11 @@ import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '@/components/atom/transition/type';
 import {Size} from '@/components/atom/variable/type';
-import {HbButtonTheme, HbButtonType} from '@/components/organism/button/type';
+import {
+  HbButtonProps,
+  HbButtonTheme,
+  HbButtonType,
+} from '@/components/organism/button/type';
 import {wait} from '@/utils';
 import {Base} from '@/components/base';
 
@@ -21,16 +25,16 @@ import {Base} from '@/components/base';
  */
 
 @customElement('hb-button')
-export class HbButton extends Base {
+export class HbButton extends Base<HbButtonProps> {
   static get styles() {
     return [require('@/styles/organism/button.scss').default];
   }
 
   labelEl: HTMLElement;
 
-  type: HbButtonType = HbButtonType.rectangle;
+  type: HbButtonType;
 
-  size: Size = Size.large;
+  size: Size;
 
   loading = false;
 
@@ -38,9 +42,11 @@ export class HbButton extends Base {
 
   disabled = false;
 
-  theme: HbButtonTheme = HbButtonTheme.primary;
+  theme: HbButtonTheme;
 
-  static get properties() {
+  props: (keyof HbButtonProps)[] = ['size', 'theme', 'loading', 'type'];
+
+  static get properties(): Record<keyof HbButtonProps, Object> {
     return {
       theme: {type: String, Reflect: true},
       size: {type: String, Reflect: true},
@@ -89,6 +95,7 @@ export class HbButton extends Base {
 
   async customConnectedCallback() {
     this.tabIndex = 0;
+    this.setAttribute('type', this.type);
     this.setAttribute('theme', this.theme);
     this.setAttribute('size', this.size);
     this.onclick = ev => this.onEvent(ev);

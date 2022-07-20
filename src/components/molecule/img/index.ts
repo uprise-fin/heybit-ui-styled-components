@@ -1,6 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '@/components/base';
+import {HbImgProps} from './type';
 
 /**
  * @property src
@@ -13,7 +14,7 @@ import {Base} from '@/components/base';
  */
 
 @customElement('hb-img')
-export class HbImg extends Base {
+export class HbImg extends Base<HbImgProps> {
   static get styles() {
     return [require('@/styles/molecule/img.scss').default];
   }

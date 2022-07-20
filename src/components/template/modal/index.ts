@@ -5,6 +5,7 @@ import {HorizonAlign, VerticalAlign} from '@/components/atom/variable/type';
 import {getElement} from '@/utils';
 
 import {Base} from '@/components/base';
+import {HbModalProps} from './type';
 
 /**
  * @fires close 닫기
@@ -19,7 +20,7 @@ import {Base} from '@/components/base';
  */
 
 @customElement('hb-modal')
-export class HbModal extends Base {
+export class HbModal extends Base<HbModalProps> {
   static get styles() {
     return [require('@/styles/template/modal/index.scss').default];
   }

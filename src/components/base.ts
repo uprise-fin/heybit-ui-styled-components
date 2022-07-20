@@ -4,10 +4,18 @@ import {Size} from './atom/variable/type';
 //   clientX: number;
 //   clientY: number;
 // }
-export class Base extends LitElement {
+// type Props<T> = {
+//   [key in keyof T]: unknown;
+// };
+export class Base<T> extends LitElement {
+  props: (keyof T)[] = [];
+
   async connectedCallback() {
     super.connectedCallback();
-    // this.dataset.hbStyled = "true";
+    Object.keys(this.props).forEach(key => {
+      const value = (this as unknown)[key as keyof T];
+      if (value) this.setAttribute(key as string, value as string);
+    });
     await this.customConnectedCallback();
   }
 

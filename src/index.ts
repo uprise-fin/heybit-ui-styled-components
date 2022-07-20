@@ -9,7 +9,17 @@ import {
   HbTransitionProps,
   HbTransitionType,
 } from '@/components/atom/transition/type';
-import * as HbVariable from '@/components/atom/variable/type';
+import {
+  Level,
+  levels,
+  VerticalAlign,
+  HorizonAlign,
+  Size,
+  SystemColor,
+  ServiceColor,
+  Color,
+  AllColor,
+} from '@/components/atom/variable/type';
 
 import {HbIconProps, HbIconName} from '@/components/molecule/icon/type';
 import {HbImgProps} from '@/components/molecule/img/type';
@@ -59,7 +69,15 @@ export {
   HbResponsiveSlot,
   HbTransitionProps,
   HbTransitionType,
-  HbVariable,
+  Level,
+  levels,
+  VerticalAlign,
+  HorizonAlign,
+  Size,
+  SystemColor,
+  ServiceColor,
+  Color,
+  AllColor,
   HbIconProps,
   HbIconName,
   HbImgProps,

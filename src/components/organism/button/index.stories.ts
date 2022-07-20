@@ -31,6 +31,7 @@ export default {
 interface HbButtonIconExps extends HbButton {
   color: string;
 }
+
 const NoTypeTemplate: Story<HbButton> = ({
   loading,
   disabled,
@@ -58,9 +59,9 @@ const Template: Story<HbButton> = ({
   baseLoadingDuration,
 }) =>
   html`<hb-button
-    theme="${theme}"
-    size=${size}
-    type=${type}
+    .theme="${theme}"
+    .size=${size}
+    .type=${type}
     baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}

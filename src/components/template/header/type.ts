@@ -3,3 +3,7 @@ export interface HbHeaderNavi {
   name: string;
   target?: '_self';
 }
+
+export interface HbHerderProps {
+  navigations: HbHeaderNavi[];
+}

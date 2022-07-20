@@ -4,3 +4,4 @@ export enum HbCarouselEventStatus {
   done,
   fake,
 }
+export interface HbCarouselProps {}

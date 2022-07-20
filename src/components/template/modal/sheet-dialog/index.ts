@@ -7,10 +7,12 @@ import {
   HbDialogAnchor,
   HbDialogButton,
   HbModalButtonAlign,
+  HbModalProps,
 } from '@/components/template/modal/type';
 import {wait} from '@/utils';
 
 import {Base} from '@/components/base';
+import {HbIconName} from '@/components/molecule/icon/type';
 
 /**
  * @fires close 닫기
@@ -29,7 +31,7 @@ import {Base} from '@/components/base';
  * @csspart anchor
  */
 @customElement('hb-sheet-dialog')
-export class HbSheetDialog extends Base {
+export class HbSheetDialog extends Base<HbModalProps> {
   static get styles() {
     return [require('@/styles/template/modal/sheet-dialog.scss').default];
   }
@@ -103,7 +105,10 @@ export class HbSheetDialog extends Base {
                 class="hb-sheet-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon
+                ><hb-icon
+                  icon=${HbIconName['system/outline/close']}
+                  size="small"
+                ></hb-icon
               ></hb-button>`}
           <div class="hb-sheet-dialog__head">
             ${this.title

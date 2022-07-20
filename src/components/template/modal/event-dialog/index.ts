@@ -3,6 +3,7 @@ import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '@/components/atom/transition/type';
 import {Base} from '@/components/base';
 import {HbIconName} from '@/components/molecule/icon/type';
+import {HbModalProps} from '../type';
 
 /**
  * @fires close 닫기
@@ -14,7 +15,7 @@ import {HbIconName} from '@/components/molecule/icon/type';
  */
 
 @customElement('hb-event-dialog')
-export class HbEventDialog extends Base {
+export class HbEventDialog extends Base<HbModalProps> {
   static get styles() {
     return [require('@/styles/template/modal/event-dialog.scss').default];
   }

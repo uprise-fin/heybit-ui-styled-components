@@ -3,7 +3,7 @@ import {HbIconName} from '@/components/molecule/icon/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '../../base';
-import {HbHeaderNavi} from './type';
+import {HbHeaderNavi, HbHerderProps} from './type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -19,7 +19,7 @@ import {HbHeaderNavi} from './type';
  */
 
 @customElement('hb-header')
-export class HbHeader extends Base {
+export class HbHeader extends Base<HbHerderProps> {
   static get styles() {
     return [require('@/styles/template/header.scss').default];
   }

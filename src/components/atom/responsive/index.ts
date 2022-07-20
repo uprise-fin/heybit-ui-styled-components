@@ -2,9 +2,10 @@ import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {basicVariables} from '../variable';
+import {HbResponsiveProps} from './type';
 
 @customElement('hb-responsive')
-export class HbResponsive extends Base {
+export class HbResponsive extends Base<HbResponsiveProps> {
   point: number = basicVariables.layout.media.desktop;
 
   static get properties() {

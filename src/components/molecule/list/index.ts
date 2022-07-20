@@ -1,7 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '@/components/base';
-import {HbListEvent, HbListOption} from './type';
+import {HbListEvent, HbListOption, HbListProps} from './type';
 
 /**
  * @fires event
@@ -15,7 +15,7 @@ import {HbListEvent, HbListOption} from './type';
  */
 
 @customElement('hb-list')
-export class HbList extends Base {
+export class HbList extends Base<HbListProps> {
   static get styles() {
     return [require('@/styles/molecule/list.scss').default];
   }

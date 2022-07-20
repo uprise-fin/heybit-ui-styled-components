@@ -9,6 +9,7 @@ import {HbList} from '@/components/molecule/list';
 import {HbInput} from '@/components/organism/input';
 import {HbListOption} from '@/components/molecule/list/type';
 import {HbIconName} from '@/components/molecule/icon/type';
+import {HbSelectProps} from './type';
 
 /**
  * @fires event 값이 변경될때 발생
@@ -25,7 +26,7 @@ import {HbIconName} from '@/components/molecule/icon/type';
  */
 
 @customElement('hb-select')
-export class HbSelect extends Base {
+export class HbSelect extends Base<HbSelectProps> {
   static get styles() {
     return [require('@/styles/organism/select.scss').default];
   }
