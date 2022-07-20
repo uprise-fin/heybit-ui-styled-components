@@ -1,12 +1,11 @@
 import {Size} from '@/components/atom/variable/type';
 export interface HbButtonProps {
-  type?: HbButtonType;
   size: Size;
+  theme: HbButtonTheme;
   loading?: boolean;
+  type?: HbButtonType;
   baseLoadingDuration?: number;
   disabled?: boolean;
-  theme?: HbButtonTheme;
-  slot: HbButtonSlots;
 }
 export enum HbButtonSlots {
   'slot--left' = 'slot--left',

@@ -2,7 +2,7 @@ import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {getChildren} from '@/utils';
 import {Base} from '@/components/base';
-import {HbCarouselEventStatus} from './type';
+import {HbCarouselEventStatus, HbCarouselProps} from './type';
 /**
  * @property open 온 오프
  * @property width
@@ -22,7 +22,7 @@ import {HbCarouselEventStatus} from './type';
  */
 
 @customElement('hb-carousel')
-export class HbCarousel extends Base {
+export class HbCarousel extends Base<HbCarouselProps> {
   static get styles() {
     return [require('@/styles/template/carousel.scss').default];
   }

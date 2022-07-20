@@ -2,7 +2,7 @@ import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {getElement} from '@/utils';
 import {Base} from '@/components/base';
-import {HbInputEvent, HbInputType} from './type';
+import {HbInputEvent, HbInputProps, HbInputType} from './type';
 
 /**
  * An example element.
@@ -24,7 +24,7 @@ import {HbInputEvent, HbInputType} from './type';
  */
 
 @customElement('hb-input')
-export class HbInput extends Base {
+export class HbInput extends Base<HbInputProps> {
   static get styles() {
     return [require('@/styles/organism/input.scss').default];
   }

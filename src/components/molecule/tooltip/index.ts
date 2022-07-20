@@ -3,6 +3,7 @@ import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '../../atom/transition/type';
 
 import {Base} from '../../base';
+import {HbTooltipProps} from './type';
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -17,7 +18,7 @@ import {Base} from '../../base';
  */
 
 @customElement('hb-tooltip')
-export class HbTooltip extends Base {
+export class HbTooltip extends Base<HbTooltipProps> {
   static get styles() {
     return [require('@/styles/molecule/tooltip.scss').default];
   }

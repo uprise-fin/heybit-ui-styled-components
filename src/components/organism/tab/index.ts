@@ -2,6 +2,7 @@ import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {getChildren} from '@/utils';
 import {Base} from '@/components/base';
+import {HbInputProps} from './type';
 /**
  * @property index
  * @slot content 기본 컨텐츠 영역
@@ -11,7 +12,7 @@ import {Base} from '@/components/base';
  */
 
 @customElement('hb-tab')
-export class HbTab extends Base {
+export class HbTab extends Base<HbInputProps> {
   static get styles() {
     return [require('@/styles/organism/tab.scss').default];
   }

@@ -2,13 +2,14 @@ import {Size} from '@/components/atom/variable/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '../../base';
+import {HbSkeletonProps} from '../skeleton/type';
 
 /**
  *
  */
 
 @customElement('hb-spinner')
-export class HbSpinner extends Base {
+export class HbSpinner extends Base<HbSkeletonProps> {
   static get styles() {
     return [require('@/styles/molecule/spinner.scss').default];
   }

@@ -18,10 +18,7 @@ pnpm add heybit-ui-styled-components
 ## 세팅방법
 
 ```html
-<script
-  type="module"
-  src="/node_modules/heybit-ui-styled-components/dist/src/module.js"
-></script>
+<script src="/node_modules/heybit-ui-styled-components/dist/src/module.js"></script>
 ```
 
 ## 사용법

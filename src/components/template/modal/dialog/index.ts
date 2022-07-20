@@ -6,9 +6,11 @@ import {
   HbDialogAnchor,
   HbDialogButton,
   HbModalButtonAlign,
+  HbModalProps,
 } from '@/components/template/modal/type';
 import {wait} from '@/utils';
 import {Base} from '@/components/base';
+import {HbIconName} from '@/components/molecule/icon/type';
 
 /**
  * @fires close 닫기
@@ -28,7 +30,7 @@ import {Base} from '@/components/base';
  */
 
 @customElement('hb-dialog')
-export class HbDialog extends Base {
+export class HbDialog extends Base<HbModalProps> {
   static get styles() {
     return [require('@/styles/template/modal/dialog.scss').default];
   }
@@ -104,7 +106,10 @@ export class HbDialog extends Base {
                 class="hb-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon icon="ic-system-close-24-gray" size="small"></hb-icon
+                ><hb-icon
+                  icon=${HbIconName['system/outline/close']}
+                  size="small"
+                ></hb-icon
               ></hb-button>`}
           <div class="hb-dialog__head">
             ${this.icon

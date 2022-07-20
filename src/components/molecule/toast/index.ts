@@ -6,7 +6,7 @@ import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbIconName} from '../icon/type';
-import {HbToastMessage, HbToastTheme} from './type';
+import {HbToastMessage, HbToastProps, HbToastTheme} from './type';
 
 /**
  * @property open 온 오프
@@ -23,7 +23,7 @@ interface Timer {
   index: number;
 }
 @customElement('hb-toast')
-export class HbToast extends Base {
+export class HbToast extends Base<HbToastProps> {
   static get styles() {
     return [require('@/styles/molecule/toast.scss').default];
   }

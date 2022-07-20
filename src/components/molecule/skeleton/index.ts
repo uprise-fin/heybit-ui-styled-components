@@ -1,10 +1,10 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '../../base';
-import {HbSkeletonType} from './type';
+import {HbSkeletonProps, HbSkeletonType} from './type';
 
 @customElement('hb-skeleton')
-export class HbSkeleton extends Base {
+export class HbSkeleton extends Base<HbSkeletonProps> {
   static get styles() {
     return [require('@/styles/molecule/skeleton.scss').default];
   }
