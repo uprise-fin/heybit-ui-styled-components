@@ -23,130 +23,32 @@
     </style> -->
   </head>
   <body>
-    <hb-tab index="1">
-      <button class="tab-btn" slot="header">1</button>
-      <button class="tab-btn" slot="header">2</button>
-      <button class="tab-btn" slot="header">3</button>
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-    </hb-tab>
-    <hb-transition type="fade">
-      <div>dawjkdlawjdlakw</div>
-    </hb-transition>
-    <!-- <hb-img src="banner-kr.png" multiSource="3" breakPoint="0"></hb-img>
-    <hb-img src="wall.jpg" multiSource="3" breakPoint="0"></hb-img> -->
-    <hb-select
-      search
-      value="3"
-      options='[{"value":"3","label":"3번"},{"value":"2","label":"2번"},{"value":"1","label":"1번"}]'
-      onchange="console.log(arguments)"
-    >
-    </hb-select>
-    <div style="background: white; position: relative;z-index: 10">
-      <hb-img
-        style="width: 400px; height:490px;"
-        src="https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png"
-      ></hb-img>
-      <img
-        style="display: block;width: 400px; height:490px;"
-        src="https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png"
-      ></img>
-    </div>
-    <hb-input
-      value="123124124"
-      type="number"
-      attributeSync="true"
-    ></hb-input>
-    <hb-button id="btn" customEvent="clickEvnt" theme="primary" type="block" size="large"
-      >ddd</hb-button
-    >
-    <div class="hb-button" theme="primary" type="block" size="large">
-      <div class="hb-button__label" placeholder="dsd">dawdwa</div>
-    </div>
-    <hb-dialog
-      id="dialog"
-      persistent="true"
-      title="가나다"
-      style="position: relative;z-index: 11;"
-    >
-      <div slot="content">가나다</div>
-      <hb-button slot="button" size="medium" theme="primary" id="btn2"
-        >가나다</hb-button
-      >
-      <hb-button slot="button" size="medium" theme="secondary"
-        >가나다</hb-button
-      >
-    </hb-dialog>
-    <hb-dialog id="dialog2" title="하하호호">
-      <div slot="content">우하하하하</div>
-      <a href="#" slot="anchor">닫기</a>
-    </hb-dialog>
-    <div class="hb-dialog" persistent="true" data-hb-styled="true" open="false">
-      <hb-transition type="fade">
-        <div class="hb-dialog__wrap">
-          <div class="hb-dialog__container" part="container">
-            <button
-              class="hb-dialog__close-btn"
-              part="close-btn"
-              id="close-btn"
-            >
-              <hb-icon
-                icon="ic-account-clear-24-black.svg"
-                size="medium"
-                data-hb-styled="true"
-              ></hb-icon>
-            </button>
-            <div name="header" part="header" class="hb-dialog__header">
-              <div slot="header">가나다</div>
-            </div>
-            <div name="content" part="content" class="hb-dialog__content">
-              <div slot="content">가나다</div>
-            </div>
-            <div name="footer" part="footer" class="hb-dialog__footer">
-              <button slot="footer">가나다</button>
-              <button slot="footer" id="btn2">가나다</button>
-            </div>
-          </div>
-        </div>
-      </hb-transition>
-    </div>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
-    <hb-icon icon="ic-account-clear-24-red.svg"></hb-icon>
+    <hb-button id="btn">ddd</hb-button>
+
     <script>
-      var clickEvnt = (function() {
-        var dialog = document.getElementById("dialog");
-        return function() {
-          var isOpen = dialog.getAttribute("open");
-          if (isOpen === "true") return dialog.setAttribute("open", "false");
-          dialog.setAttribute("open", "true");
-        };
-      })();
-      var clickEvnt2 = (function() {
-        var dialog = document.getElementById("dialog2");
-        return function() {
-          var isOpen = dialog.getAttribute("open");
-          if (isOpen === "true") return dialog.setAttribute("open", "false");
-          dialog.setAttribute("open", "true");
-        };
-      })();
-      // document.getElementById("btn").addEventListener('event', clickEvnt)
-      document.getElementById("btn2").onclick = clickEvnt2;
+      // var clickEvnt = (function () {
+      //   var dialog = document.getElementById('dialog');
+      //   return function () {
+      //     var isOpen = dialog.getAttribute('open');
+      //     if (isOpen === 'true') return dialog.setAttribute('open', 'false');
+      //     dialog.setAttribute('open', 'true');
+      //   };
+      // })();
+      // var clickEvnt2 = (function () {
+      //   var dialog = document.getElementById('dialog2');
+      //   return function () {
+      //     var isOpen = dialog.getAttribute('open');
+      //     if (isOpen === 'true') return dialog.setAttribute('open', 'false');
+      //     dialog.setAttribute('open', 'true');
+      //   };
+      // })();
+      console.log(document.getElementById('btn').theme, 'theme');
+      document.getElementById('btn').theme = 'primary';
+      document.getElementById('btn').type = 'rectangle';
+      document.getElementById('btn').size = 'large';
+      console.log(document.getElementById('btn').props, 'props');
+      // // document.getElementById("btn").addEventListener('event', clickEvnt)
+      // document.getElementById('btn2').onclick = clickEvnt2;
     </script>
   </body>
 </html>
