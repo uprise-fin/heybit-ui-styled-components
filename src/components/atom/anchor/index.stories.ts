@@ -12,6 +12,6 @@ export default dev() &&
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story<HbAnchor> = ({href, text}) =>
-  html`<hb-anchor href=${href}>${text}</hb-anchor>`;
+  html`<hb-anchor sveltekit:prefetch href=${href}>${text}</hb-anchor>`;
 export const primary: Story<HbAnchor> = Template.bind({});
-primary.args = {text: '탈퇴하기'};
+primary.args = {text: '탈퇴하기', href: '#'};

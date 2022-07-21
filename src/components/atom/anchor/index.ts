@@ -50,6 +50,10 @@ export class HbAnchor extends Base<HbAnchorProps> {
 
   route() {
     const a = document.createElement('a');
+    [...this.attributes].map(x => {
+      a.setAttribute(x.name, x.value);
+    });
+
     if (this.target) a.target = this.target;
     a.href = this.href;
     a.rel = 'noreferer noopener';

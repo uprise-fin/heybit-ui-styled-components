@@ -19,7 +19,6 @@ korea.args = {
     {
       name: '예치상품',
       url: 'harvest',
-      target: '_self',
     },
     {
       name: '회사소개',

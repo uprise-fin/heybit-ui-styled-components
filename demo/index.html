@@ -25,6 +25,8 @@
   <body>
     <hb-button id="btn">ddd</hb-button>
     <hb-header id="header"></hb-header>
+    <hb-anchor sveltekit:prefetch href="?anchor">dddd</hb-anchor>
+    <a href="?ddddd">ddd</a>
     <script>
       // var clickEvnt = (function () {
       //   var dialog = document.getElementById('dialog');
@@ -48,7 +50,7 @@
       document.getElementById('btn').size = 'large';
       setTimeout(() => {
         document.getElementById('header').navigations = [
-          {url: 'finance', name: '통장', target: '_self'},
+          {url: '?finance', name: '통장', target: ''},
         ];
       }, 1000);
       console.log(document.getElementById('btn').props, 'props');
