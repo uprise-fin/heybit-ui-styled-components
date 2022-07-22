@@ -41,7 +41,7 @@ export class HbHeader extends Base<HbHerderProps> {
           //   : html`<hb-anchor href=${x.href} target=${x.target}
           //       >${x.name}</hb-anchor
           //     >`,
-          html`<hb-anchor href=${x.href} target=${x.target} path=${x.path}
+          html`<hb-anchor href=${x.href} target=${x.target}
             >${x.name}</hb-anchor
           >`,
       )}
