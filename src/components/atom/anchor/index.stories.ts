@@ -11,10 +11,10 @@ export default dev() &&
   } as Meta);
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbAnchor> = ({path, text}) =>
-  html`<hb-anchor path=${path}>${text}</hb-anchor>`;
+const Template: Story<HbAnchor> = ({href, text}) =>
+  html`<hb-anchor href=${href}>${text}</hb-anchor>`;
 export const primary: Story<HbAnchor> = Template.bind({});
 primary.args = {
   text: '탈퇴하기',
-  path: '?viewMode=story&id=components-atom-hb-anchor--primary&args=',
+  href: '?viewMode=story&id=components-atom-hb-anchor--primary&args=',
 };
