@@ -46,7 +46,7 @@ export class HbButton extends Base<HbButtonProps> {
 
   initialAttributes: (keyof HbButtonProps)[] = ['size', 'theme', 'type'];
 
-  static get properties(): Record<keyof HbButtonProps, Object> {
+  static get properties() {
     return {
       theme: {type: String, Reflect: true},
       size: {type: String, Reflect: true},

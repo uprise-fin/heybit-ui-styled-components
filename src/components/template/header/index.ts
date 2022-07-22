@@ -36,7 +36,12 @@ export class HbHeader extends Base<HbHerderProps> {
     return html`
       ${this.navigations?.map(
         x =>
-          html`<hb-anchor href=${x.url} target=${x.target}
+          // x.path
+          //   ? html`<hb-anchor path=${x.path}>${x.name}</hb-anchor>`
+          //   : html`<hb-anchor href=${x.href} target=${x.target}
+          //       >${x.name}</hb-anchor
+          //     >`,
+          html`<hb-anchor href=${x.href} target=${x.target} path=${x.path}
             >${x.name}</hb-anchor
           >`,
       )}

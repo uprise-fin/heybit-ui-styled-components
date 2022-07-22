@@ -1,5 +1,7 @@
 export interface HbAnchorProps {
-  href: string;
+  href?: string;
+  path?: string;
   target?: string;
   disabled?: boolean;
+  event?: () => void;
 }

@@ -1,7 +1,7 @@
-export interface HbHeaderNavi {
-  url: string;
+import {HbAnchorProps} from '@/components/atom/anchor/type';
+
+export interface HbHeaderNavi extends HbAnchorProps {
   name: string;
-  target?: string;
 }
 
 export interface HbHerderProps {

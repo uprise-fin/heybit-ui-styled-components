@@ -24,6 +24,8 @@ export class HbAnchor extends Base<HbAnchorProps> {
 
   href = '';
 
+  path = '';
+
   target = '';
 
   text: string;
@@ -32,6 +34,7 @@ export class HbAnchor extends Base<HbAnchorProps> {
 
   static get properties() {
     return {
+      path: {type: String, Reflect: true},
       href: {type: String, Reflect: true},
       target: {type: String, Reflect: true},
       disabled: {type: Boolean, Reflect: true},
@@ -43,22 +46,30 @@ export class HbAnchor extends Base<HbAnchorProps> {
     this.tabIndex = 0;
     this.onclick = (ev: Event) => {
       if (this.disabled) return;
-      if (this.href) return this.route();
+      if (this.href || this.path) return this.onClick();
       this.dispatchEvent(new CustomEvent('event', ev));
     };
   }
 
-  route() {
+  clickAnchor() {
     const a = document.createElement('a');
-    [...this.attributes].map(x => {
-      a.setAttribute(x.name, x.value);
-    });
-
     if (this.target) a.target = this.target;
     a.href = this.href;
     a.rel = 'noreferer noopener';
     a.click();
     a.remove();
+  }
+
+  routerPush() {
+    location.pathname = this.path;
+  }
+
+  onClick() {
+    if (this.path) {
+      this.routerPush();
+    } else {
+      this.clickAnchor();
+    }
   }
 
   render() {

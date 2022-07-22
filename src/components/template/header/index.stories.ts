@@ -18,20 +18,20 @@ korea.args = {
   navigations: [
     {
       name: '예치상품',
-      url: 'harvest',
+      path: 'harvest',
     },
     {
       name: '회사소개',
-      url: 'about-us',
+      path: 'about-us',
       target: '_self',
     },
     {
       name: '인사이트',
-      url: 'blog',
+      path: 'blog',
     },
     {
       name: '고객지원',
-      url: 'blog',
+      path: 'blog',
     },
   ],
 };

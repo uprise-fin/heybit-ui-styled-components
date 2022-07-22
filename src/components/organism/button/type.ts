@@ -6,6 +6,7 @@ export interface HbButtonProps {
   type?: HbButtonType;
   baseLoadingDuration?: number;
   disabled?: boolean;
+  event: () => void;
 }
 export enum HbButtonSlots {
   'slot--left' = 'slot--left',
