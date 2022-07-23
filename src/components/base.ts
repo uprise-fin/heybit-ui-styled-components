@@ -9,6 +9,8 @@ import {LitElement} from 'lit';
 export class Base<T> extends LitElement {
   initialAttributes: (keyof T)[];
 
+  event: (ev: unknown) => void;
+
   requestUpdate() {
     if (this.initialAttributes) this.initAttribute();
     super.requestUpdate();
@@ -25,6 +27,11 @@ export class Base<T> extends LitElement {
 
   stopPropagation(e: Event) {
     e.stopPropagation();
+  }
+
+  onEvent<E extends Event>(ev: E) {
+    if (this.event) return this.event(ev);
+    this.dispatchEvent(new CustomEvent('event', ev));
   }
 
   // touchStart(fn: EventListener) {

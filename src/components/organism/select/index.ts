@@ -172,16 +172,17 @@ export class HbSelect extends Base<HbSelectProps> {
     this.inputValue = target.value;
   }
 
-  onSelect(evt: Event) {
-    evt.stopImmediatePropagation();
+  onSelect(ev: Event) {
+    ev.stopImmediatePropagation();
     this.adapterHide();
-    const {target} = evt;
+    const {target} = ev;
     if (!(target instanceof HbList)) return;
     const {value} = target;
     if (this.attributeSync) this.setAttribute('value', value!);
     this.value = value!;
     this.inputValue = '';
-    this.dispatchEvent(new CustomEvent('event', evt));
+    // this.dispatchEvent(new CustomEvent('event', evt));
+    this.onEvent(ev);
   }
 
   onShow() {

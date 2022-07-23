@@ -52,15 +52,16 @@ export class HbList extends Base<HbListProps> {
 
   sto = setTimeout(() => {}, 0);
 
-  onSelect(evt: HbListEvent) {
+  onSelect(ev: HbListEvent) {
     this.adapterHide();
-    if (!(evt.target instanceof HTMLButtonElement)) return;
-    const {target} = evt;
+    if (!(ev.target instanceof HTMLButtonElement)) return;
+    const {target} = ev;
     const {value} = target.dataset;
     if (this.value === value || !this.values.includes(value)) return;
     if (this.attributeSync) this.setAttribute('value', value!);
     this.value = value!;
-    this.dispatchEvent(new CustomEvent('event', evt));
+    this.onEvent(ev);
+    // this.dispatchEvent(new CustomEvent('event', ev));
   }
 
   onHide() {

@@ -52,7 +52,7 @@ export class HbSheetDialog extends Base<HbModalProps> {
 
   buttonAlign = HbModalButtonAlign.horizon;
 
-  anchor: HbDialogAnchor = {};
+  anchor: HbDialogAnchor;
 
   buttons: HbDialogButton[] = [];
 
@@ -129,7 +129,7 @@ export class HbSheetDialog extends Base<HbModalProps> {
                     ?disabled=${this.eventDisabled}
                     type=${HbButtonType.rectangle}
                     baseLoadingDuration=${this.baseLoadingDuration}
-                    @event=${this.onEvent.bind(this, x, i)}
+                    @event=${this.adapterEvent.bind(this, x, i)}
                     theme=${x.theme}
                     size="medium"
                     >${x.name}</hb-button
@@ -152,7 +152,7 @@ export class HbSheetDialog extends Base<HbModalProps> {
     `;
   }
 
-  async onEvent(button: HbDialogButton, index: number) {
+  async adapterEvent(button: HbDialogButton, index: number) {
     const {event} = button;
     if (this.baseLoadingDuration) {
       const on = this.buttons.slice();

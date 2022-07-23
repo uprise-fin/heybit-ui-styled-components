@@ -44,7 +44,8 @@ export class HbAnchor extends Base<HbAnchorProps> {
     this.onclick = (ev: Event) => {
       if (this.disabled) return;
       if (this.href) return this.onClick();
-      this.dispatchEvent(new CustomEvent('event', ev));
+      // this.dispatchEvent(new CustomEvent('event', ev));
+      this.onEvent(ev);
     };
   }
 

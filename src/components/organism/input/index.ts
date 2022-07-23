@@ -161,7 +161,8 @@ export class HbInput extends Base<HbInputProps> {
     const {value} = this.inputEl;
     this.value = value;
     if (this.attributeSync) this.setAttribute('value', this.originalValue);
-    this.dispatchEvent(new CustomEvent('event', ev));
+    // this.dispatchEvent(new CustomEvent('event', ev));
+    this.onEvent(ev);
   }
 
   async connectedCallback() {
