@@ -135,7 +135,12 @@ export const componentVariables = {
   toast: {
     'max-width': 340,
     'min-height': 52,
-    margin: 20,
+    margin: {
+      left: 20,
+      right: 20,
+      top: 10,
+      bottom: 10,
+    },
     padding: {
       top: 16,
       bottom: 16,

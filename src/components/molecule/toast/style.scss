@@ -4,15 +4,16 @@
     z-index: zindex('토스트');
     position: fixed;
     bottom: 0;
-    left: var(--toast__margin);
-    right: var(--toast__margin);
+    left: var(--toast__margin__left);
+    right: var(--toast__margin__right);
     display: flex;
     max-width: var(--toast__max-width);
     // max-width: calc(var(--toast__max-width) + (var(--toast__margin) * 2));
-    height: 0;
+    // height: 0;
     margin: auto;
     font-family: var(--font__family);
-    flex-direction: column-reverse;
+    // flex-direction: column-reverse;
+    flex-direction: column;
   }
   &__content {
     display: flex;
@@ -20,6 +21,7 @@
       var(--toast__min-height) - var(--toast__padding__top) -
         var(--toast__padding__bottom)
     );
+    margin: var(--toast__margin__top) 0 var(--toast__margin__bottom);
     padding: var(--toast__padding__top) var(--toast__padding__right)
       var(--toast__padding__bottom) var(--toast__padding__left);
     box-sizing: border-box;
@@ -41,11 +43,13 @@
     }
   }
   &__position {
-    will-change: margin;
-    transition: margin var(--transition__duration);
-    &[show] {
-      margin: 10px 0 !important;
-    }
+    will-change: height, margin;
+    transition: height var(--transition__duration),
+      margin var(--transition__duration);
+
+    // &:not(.visible) {
+    //   margin: 10px 0 !important;
+    // }
     // @for $i from 1 through 10 {
     //   &:nth-last-child(#{$i}) {
     //     transform: translate(

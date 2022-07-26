@@ -3,6 +3,7 @@ import {componentVariables} from '@/components/atom/variable';
 import {Size} from '@/components/atom/variable/type';
 // import style from '@/styles/molecule/toast/index.scss';
 import {Base} from '@/components/base';
+import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbIconName} from '../icon/type';
@@ -58,6 +59,7 @@ export class HbToast extends Base<HbToastProps> {
       const index = this.timer.length;
       const duration = (this.messages[index].duration || this.duration) - 1;
       this.timer.push({time: new Date().getTime() + duration, index});
+      this.getHeight(index);
       setTimeout(() => {
         this.now = new Date().getTime();
       }, duration);
@@ -65,10 +67,17 @@ export class HbToast extends Base<HbToastProps> {
     return this.messages;
   }
 
-  getHeight(index: number) {
-    if (this.getShow(index)) return 0;
-    return this.shadowRoot.querySelectorAll('.hb-toast__position')[index]
-      ?.clientHeight;
+  async getHeight(index: number) {
+    if (index === this.messages.length - 1) {
+      const element = await getElement(this.shadowRoot, `toast-${index}`);
+      const height = element.clientHeight;
+      if (height) {
+        element.style.height = '0';
+        setTimeout(() => {
+          element.style.height = height + 'px';
+        }, 100);
+      }
+    }
   }
 
   getShow(index: number) {
@@ -104,7 +113,7 @@ export class HbToast extends Base<HbToastProps> {
     return this.messagesTrigger.map(
       (x, i) =>
         html`<hb-transition
-          style="margin-top: -${this.getHeight(i)}px;"
+          id="toast-${i}"
           class="hb-toast__position"
           type=${HbTransitionType.fade}
           ?show=${this.getShow(i)}
