@@ -5,7 +5,7 @@ import {basicVariables} from '../variable';
 
 @customElement('hb-responsive')
 export class HbResponsive extends Base {
-  point: number = basicVariables.layout.media.desktop;
+  point: number = basicVariables.layout.media;
 
   static get properties() {
     return {

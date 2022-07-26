@@ -142,6 +142,73 @@
       }
     }
   }
+  @include host-styled("[type='top-down']") {
+    animation: hide-top-down var(--transition__duration);
+    transform-origin: top;
+    @keyframes hide-top-down {
+      0% {
+        display: block;
+        transform: translateY(0);
+        transform-origin: top;
+        will-change: transform;
+      }
+      100% {
+        display: block;
+        transform: translateY(-100%);
+        transform-origin: top;
+        will-change: unset;
+      }
+    }
+  }
+
+  @include host-styled("[show][type='top-down']") {
+    animation: show-top-down var(--transition__duration);
+    @keyframes show-top-down {
+      0% {
+        display: block;
+        transform: translateY(-100%);
+        transform-origin: top;
+        will-change: transform;
+      }
+      100% {
+        display: block;
+        transform: translateY(0);
+        transform-origin: top;
+        will-change: unset;
+      }
+    }
+  }
+  @include host-styled("[type='right-left']") {
+    animation: hide-right-left var(--transition__duration);
+    @keyframes hide-right-left {
+      0% {
+        display: block;
+        transform: translateX(0);
+        will-change: transform;
+      }
+      100% {
+        display: block;
+        transform: translateX(100%);
+        will-change: unset;
+      }
+    }
+  }
+
+  @include host-styled("[show][type='right-left']") {
+    animation: show-right-left var(--transition__duration);
+    @keyframes show-right-left {
+      0% {
+        display: block;
+        transform: translateX(100%);
+        will-change: transform;
+      }
+      100% {
+        display: block;
+        transform: translateX(0);
+        will-change: unset;
+      }
+    }
+  }
 }
 
 .hb-transition {

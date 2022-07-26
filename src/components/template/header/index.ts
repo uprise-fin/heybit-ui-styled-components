@@ -1,3 +1,4 @@
+import {HbTransitionType} from '@/components/atom/transition/type';
 import {Size} from '@/components/atom/variable/type';
 import {HbIconName} from '@/components/molecule/icon/type';
 import {html} from 'lit';
@@ -24,10 +25,13 @@ export class HbHeader extends Base {
     return [require('./style.scss').default];
   }
 
+  sidemenu = false;
+
   navigations: HbHeaderNavi[];
 
   static get properties() {
     return {
+      sidemenu: {type: Boolean, Reflect: true},
       navigations: {type: Array, Reflect: true},
     };
   }
@@ -48,6 +52,10 @@ export class HbHeader extends Base {
     `;
   }
 
+  onSideMenu() {
+    this.sidemenu = !this.sidemenu;
+  }
+
   render() {
     return html`<hb-responsive>
       <div slot="mobile" class="hb-header--mobile">
@@ -57,14 +65,25 @@ export class HbHeader extends Base {
             size=${Size.large}
             style="--icon__size__large: var(--header__logo__width);"
           ></hb-icon>
-          <hb-button
+          <hb-button @event=${this.onSideMenu}
             ><hb-icon
               icon=${HbIconName['system/outline/menu-side']}
               size=${Size.medium}
             ></hb-icon
           ></hb-button>
-          <!-- ${this.gnb} -->
         </div>
+        <hb-transition
+          class="hb-header--mobile__side-menu"
+          ?show=${this.sidemenu}
+          type=${HbTransitionType.fade}
+        >
+          <hb-transition
+            ?show=${this.sidemenu}
+            type=${HbTransitionType.rightLeft}
+          >
+            <div class="hb-header--mobile__side-menu__content">${this.gnb}</div>
+          </hb-transition>
+        </hb-transition>
       </div>
       <div slot="desktop" class="hb-header--desktop">
         <div class="hb-header--desktop__navibar">
@@ -76,13 +95,27 @@ export class HbHeader extends Base {
             ></hb-icon
           ></hb-anchor>
           ${this.gnb}
-          <hb-button
+          <hb-button @event=${this.onSideMenu}
             ><hb-icon
               icon=${HbIconName['system/outline/menu-side']}
               size=${Size.medium}
             ></hb-icon
           ></hb-button>
         </div>
+        <hb-transition
+          class="hb-header--desktop__side-menu"
+          ?show=${this.sidemenu}
+          type=${HbTransitionType.fade}
+        >
+          <hb-transition
+            ?show=${this.sidemenu}
+            type=${HbTransitionType.topDown}
+          >
+            <div class="hb-header--desktop__side-menu__content">
+              ${this.gnb}
+            </div>
+          </hb-transition>
+        </hb-transition>
       </div>
     </hb-responsive>`;
   }

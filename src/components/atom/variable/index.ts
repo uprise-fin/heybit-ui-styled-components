@@ -37,12 +37,7 @@ export const basicVariables = {
     [Size.xsmall]: 16,
   },
   layout: {
-    header: {
-      height: 70,
-    },
-    media: {
-      desktop: 780,
-    },
+    media: 780,
   },
   border: {
     width: 1,
@@ -157,6 +152,10 @@ export const componentVariables = {
     },
   },
   header: {
+    height: {
+      '--mobile': 77,
+      '--desktop': 77,
+    },
     logo: {
       width: 77,
     },
@@ -165,13 +164,24 @@ export const componentVariables = {
 function setProperty(key: string, value: string) {
   document.documentElement.style.setProperty(key, value);
 }
+// function setGroupProperty(obj: Object, group?: string) {
+//   Object.entries(obj).map(([key, val]) => {
+//     group = group || '';
+//     if (typeof val === 'string') setProperty(`--${group}${key}`, val);
+//     else if (typeof val === 'number')
+//       setProperty(`--${group}${key}`, val + 'px');
+//     else setGroupProperty(val, `${group}${key}__`);
+//   });
+// }
 function setGroupProperty(obj: Object, group?: string) {
   Object.entries(obj).map(([key, val]) => {
     group = group || '';
-    if (typeof val === 'string') setProperty(`--${group}${key}`, val);
+    // const divider = group ? (key.indexOf('--') === 0 ? '' : '__') : '';
+    const divider = group && key.indexOf('--') !== 0 ? '__' : '';
+    if (typeof val === 'string') setProperty(`--${group}${divider}${key}`, val);
     else if (typeof val === 'number')
-      setProperty(`--${group}${key}`, val + 'px');
-    else setGroupProperty(val, `${group}${key}__`);
+      setProperty(`--${group}${divider}${key}`, val + 'px');
+    else setGroupProperty(val, `${group}${divider}${key}`);
   });
 }
 export default (function setRootStyleProperty() {
