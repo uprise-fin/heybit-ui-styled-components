@@ -10,7 +10,7 @@ export default {
   argTypes: {
     point: {
       control: {type: 'number'},
-      defaultValue: basicVariables.layout.media.desktop,
+      defaultValue: basicVariables.layout.media,
     },
   },
 } as Meta;
@@ -32,5 +32,5 @@ const Template: Story<HbResponsive> = ({point}) =>
 
 export const primary: Story<HbResponsive> = Template.bind({});
 primary.args = {
-  point: basicVariables.layout.media.desktop,
+  point: basicVariables.layout.media,
 };
