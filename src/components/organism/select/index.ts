@@ -1,15 +1,13 @@
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '@/components/atom/transition/type';
 import {Size} from '@/components/atom/variable/type';
-import {getElement} from '@/utils';
-
 import {Base} from '@/components/base';
-import {HbList} from '@/components/molecule/list';
-import {HbInput} from '@/components/organism/input';
-import {HbListOption} from '@/components/molecule/list/type';
 import {HbIconName} from '@/components/molecule/icon/type';
-import {HbSelectProps} from './type';
+import {HbList} from '@/components/molecule/list';
+import {HbListOption} from '@/components/molecule/list/type';
+import {HbInput} from '@/components/organism/input';
+import {getElement} from '@/utils';
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
 /**
  * @fires event 값이 변경될때 발생
@@ -26,7 +24,7 @@ import {HbSelectProps} from './type';
  */
 
 @customElement('hb-select')
-export class HbSelect extends Base<HbSelectProps> {
+export class HbSelect extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }

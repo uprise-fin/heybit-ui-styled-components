@@ -1,10 +1,9 @@
 import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbDelayProps} from './type';
 
 @customElement('hb-delay')
-export class HbDelay extends Base<HbDelayProps> {
+export class HbDelay extends Base {
   // static get styles() {
   //   return [require('./style.scss').default];
   // }

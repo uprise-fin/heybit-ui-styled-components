@@ -41,9 +41,9 @@ const NoTypeTemplate: Story<HbButton> = ({
   baseLoadingDuration,
 }) =>
   html`<hb-button
-    theme="${theme}"
-    size=${size}
-    baseLoadingDuration=${baseLoadingDuration}
+    .theme="${theme}"
+    .size=${size}
+    .baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
     >${title}</hb-button
@@ -62,7 +62,7 @@ const Template: Story<HbButton> = ({
     .theme="${theme}"
     .size=${size}
     .type=${type}
-    baseLoadingDuration=${baseLoadingDuration}
+    .baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
     >${title}</hb-button
@@ -77,10 +77,10 @@ const IconTemplate: Story<HbButtonIconExps> = ({
   baseLoadingDuration,
 }) =>
   html`<hb-button
-    theme="${theme}"
-    size=${size}
-    type=${type}
-    baseLoadingDuration=${baseLoadingDuration}
+    .theme="${theme}"
+    .size=${size}
+    .type=${type}
+    .baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
     ><hb-icon

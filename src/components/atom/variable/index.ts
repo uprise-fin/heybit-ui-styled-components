@@ -156,6 +156,11 @@ export const componentVariables = {
       color: colorPalette[SystemColor.orange][600],
     },
   },
+  header: {
+    logo: {
+      width: 77,
+    },
+  },
 };
 function setProperty(key: string, value: string) {
   document.documentElement.style.setProperty(key, value);

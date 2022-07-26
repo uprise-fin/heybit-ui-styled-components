@@ -1,9 +1,8 @@
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '@/components/atom/transition/type';
 import {Base} from '@/components/base';
 import {HbIconName} from '@/components/molecule/icon/type';
-import {HbModalProps} from '../type';
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
 /**
  * @fires close 닫기
@@ -15,7 +14,7 @@ import {HbModalProps} from '../type';
  */
 
 @customElement('hb-event-dialog')
-export class HbEventDialog extends Base<HbModalProps> {
+export class HbEventDialog extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -86,10 +85,10 @@ export class HbEventDialog extends Base<HbModalProps> {
     `;
   }
 
-  onClose() {
+  onClose(ev: Event) {
     this.open = false;
     this.removeAttribute('open');
-    this.dispatchEvent(new CustomEvent('close'));
+    this.onEvent(ev);
   }
 }
 

@@ -1,10 +1,9 @@
 import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbLoadingProps} from './type';
 
 @customElement('hb-loading')
-export class HbLoading extends Base<HbLoadingProps> {
+export class HbLoading extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }

@@ -1,9 +1,7 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '../../atom/transition/type';
-
 import {Base} from '../../base';
-import {HbTooltipProps} from './type';
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -18,7 +16,7 @@ import {HbTooltipProps} from './type';
  */
 
 @customElement('hb-tooltip')
-export class HbTooltip extends Base<HbTooltipProps> {
+export class HbTooltip extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }

@@ -1,16 +1,15 @@
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '@/components/atom/transition/type';
+import {Base} from '@/components/base';
+import {HbIconName} from '@/components/molecule/icon/type';
 import {HbButtonType} from '@/components/organism/button/type';
 import {
   HbDialogAnchor,
   HbDialogButton,
   HbModalButtonAlign,
-  HbModalProps,
 } from '@/components/template/modal/type';
 import {wait} from '@/utils';
-import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
 /**
  * @fires close 닫기
@@ -30,7 +29,7 @@ import {HbIconName} from '@/components/molecule/icon/type';
  */
 
 @customElement('hb-dialog')
-export class HbDialog extends Base<HbModalProps> {
+export class HbDialog extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -55,10 +54,10 @@ export class HbDialog extends Base<HbModalProps> {
 
   anchor: HbDialogAnchor;
 
-  buttons: HbDialogButton[] = [];
+  buttons: HbDialogButton[];
 
   get eventDisabled() {
-    return this.buttons.map(x => x.loading).some(x => x) || this.loading;
+    return this.buttons?.map(x => x.loading).some(x => x) || this.loading;
   }
   // get open() {
   //   return this._open;
@@ -72,6 +71,7 @@ export class HbDialog extends Base<HbModalProps> {
 
   // @property()
   // value!: string;
+
   static get properties() {
     return {
       open: {type: Boolean, Reflect: true},
@@ -174,10 +174,11 @@ export class HbDialog extends Base<HbModalProps> {
     } else event();
   }
 
-  onClose() {
+  onClose(ev: Event) {
     this.open = false;
     this.removeAttribute('open');
-    this.dispatchEvent(new CustomEvent('close'));
+    // this.dispatchEvent(new CustomEvent('close'));
+    this.onEvent(ev);
   }
 }
 

@@ -1,7 +1,6 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '../../base';
-import {HbAnchorProps} from './type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -17,7 +16,7 @@ import {HbAnchorProps} from './type';
  */
 
 @customElement('hb-anchor')
-export class HbAnchor extends Base<HbAnchorProps> {
+export class HbAnchor extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }

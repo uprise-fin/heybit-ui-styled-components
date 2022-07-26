@@ -1,14 +1,14 @@
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '@/components/atom/transition/type';
 import {Size} from '@/components/atom/variable/type';
+import {InitAttribute} from '@/components/base';
 import {
   HbButtonProps,
   HbButtonTheme,
   HbButtonType,
 } from '@/components/organism/button/type';
 import {wait} from '@/utils';
-import {Base} from '@/components/base';
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
 /**
  * @fires event 클릭할때
@@ -25,7 +25,7 @@ import {Base} from '@/components/base';
  */
 
 @customElement('hb-button')
-export class HbButton extends Base<HbButtonProps> {
+export class HbButton extends InitAttribute<HbButtonProps> {
   static get styles() {
     return [require('./style.scss').default];
   }

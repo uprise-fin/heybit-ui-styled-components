@@ -1,10 +1,10 @@
 import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbTransitionProps, HbTransitionType} from './type';
+import {HbTransitionType} from './type';
 
 @customElement('hb-transition')
-export class HbTransition extends Base<HbTransitionProps> {
+export class HbTransition extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }

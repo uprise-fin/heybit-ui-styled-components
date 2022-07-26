@@ -1,10 +1,10 @@
+import {Size} from '@/components/atom/variable/type';
+import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
-import {Size} from '@/components/atom/variable/type';
-import {Base} from '@/components/base';
 import SVG from './svg';
-import {HbIconName, HbIconProps} from './type';
+import {HbIconName} from './type';
 
 // import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
@@ -19,7 +19,7 @@ import {HbIconName, HbIconProps} from './type';
  */
 
 @customElement('hb-icon')
-export class HbIcon extends Base<HbIconProps> {
+export class HbIcon extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }

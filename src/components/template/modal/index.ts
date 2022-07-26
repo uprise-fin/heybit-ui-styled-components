@@ -1,11 +1,9 @@
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '@/components/atom/transition/type';
 import {HorizonAlign, VerticalAlign} from '@/components/atom/variable/type';
-import {getElement} from '@/utils';
-
 import {Base} from '@/components/base';
-import {HbModalProps} from './type';
+import {getElement} from '@/utils';
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
 /**
  * @fires close 닫기
@@ -20,7 +18,7 @@ import {HbModalProps} from './type';
  */
 
 @customElement('hb-modal')
-export class HbModal extends Base<HbModalProps> {
+export class HbModal extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -112,7 +110,8 @@ export class HbModal extends Base<HbModalProps> {
     ev.stopImmediatePropagation();
     if (this.persistent) return this.classList.add('shake');
 
-    this.dispatchEvent(new CustomEvent('close'));
+    // this.dispatchEvent(new CustomEvent('close'));
+    this.onEvent(ev);
   }
 }
 

@@ -48,11 +48,11 @@ const Template = (props: HbDialogExpns) => html`
       console.log('djakldjawlkjadwlk');
     }}
     ?open=${props.open}
-    icon=${props.icon}
-    title=${props.title}
-    buttonAlign=${props.buttonAlign}
+    .icon=${props.icon}
+    .title=${props.title}
+    .buttonAlign=${props.buttonAlign}
     ?loading=${props.loading}
-    baseLoadingDuration=${props.baseLoadingDuration}
+    .baseLoadingDuration=${props.baseLoadingDuration}
     ?persistent=${props.persistent}
     ?hideCloseBtn=${props.hideCloseBtn}
     .buttons=${props.buttons}

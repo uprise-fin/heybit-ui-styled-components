@@ -1,18 +1,16 @@
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
 import {HbTransitionType} from '@/components/atom/transition/type';
 import {VerticalAlign} from '@/components/atom/variable/type';
+import {Base} from '@/components/base';
+import {HbIconName} from '@/components/molecule/icon/type';
 import {HbButtonType} from '@/components/organism/button/type';
 import {
   HbDialogAnchor,
   HbDialogButton,
   HbModalButtonAlign,
-  HbModalProps,
 } from '@/components/template/modal/type';
 import {wait} from '@/utils';
-
-import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
+import {html} from 'lit';
+import {customElement} from 'lit/decorators.js';
 
 /**
  * @fires close 닫기
@@ -31,7 +29,7 @@ import {HbIconName} from '@/components/molecule/icon/type';
  * @csspart anchor
  */
 @customElement('hb-sheet-dialog')
-export class HbSheetDialog extends Base<HbModalProps> {
+export class HbSheetDialog extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -165,10 +163,10 @@ export class HbSheetDialog extends Base<HbModalProps> {
     } else event();
   }
 
-  onClose() {
+  onClose(ev: Event) {
     this.open = false;
     this.removeAttribute('open');
-    this.dispatchEvent(new CustomEvent('close'));
+    this.onEvent(ev);
   }
 }
 

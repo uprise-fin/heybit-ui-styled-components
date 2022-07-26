@@ -1,8 +1,8 @@
+import {Base} from '@/components/base';
+import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {getElement} from '@/utils';
-import {Base} from '@/components/base';
-import {HbInputEvent, HbInputProps, HbInputType} from './type';
+import {HbInputEvent, HbInputType} from './type';
 
 /**
  * An example element.
@@ -24,7 +24,7 @@ import {HbInputEvent, HbInputProps, HbInputType} from './type';
  */
 
 @customElement('hb-input')
-export class HbInput extends Base<HbInputProps> {
+export class HbInput extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
