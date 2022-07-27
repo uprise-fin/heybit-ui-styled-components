@@ -9,6 +9,7 @@ import {colorPalette} from './index';
 
 // console.log(variables.cssText);
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
+const reverseLevels = levels.reverse();
 export default {
   title: 'components/atom/variable',
 } as Meta;
@@ -48,9 +49,9 @@ const LevelTemplate: Story<unknown> = () =>
       .box__item:first-child {
         text-align: left;
       }
-      .box__item:nth-child(9),
-      .box__item:nth-child(10),
-      .box__item:nth-child(11) {
+      .box__item:nth-child(1),
+      .box__item:nth-child(2),
+      .box__item:nth-child(3) {
         color: #fff;
       }
       .box__item--primary::before {
@@ -70,7 +71,7 @@ const LevelTemplate: Story<unknown> = () =>
         <div class="box__item box__item--title box__item--reversal">
           시스템컬러
         </div>
-        ${levels.map(
+        ${reverseLevels.map(
           x => html` <div class="box__item box__item--reversal">${x}</div> `,
         )}
       </div>
@@ -81,7 +82,7 @@ const LevelTemplate: Story<unknown> = () =>
               <div class="box__item box__item--title box__item--reversal">
                 ${name}: ${colorPalette[name].color}
               </div>
-              ${levels.map(
+              ${reverseLevels.map(
                 x =>
                   html`
                     <div
@@ -101,7 +102,7 @@ const LevelTemplate: Story<unknown> = () =>
         <div class="box__item box__item--title box__item--reversal">
           서비스컬러
         </div>
-        ${levels.map(
+        ${reverseLevels.map(
           x => html` <div class="box__item box__item--reversal">${x}</div> `,
         )}
       </div>
@@ -112,7 +113,7 @@ const LevelTemplate: Story<unknown> = () =>
               <div class="box__item box__item--title box__item--reversal">
                 ${name}: ${colorPalette[name].color}
               </div>
-              ${levels.map(
+              ${reverseLevels.map(
                 x =>
                   html`
                     <div

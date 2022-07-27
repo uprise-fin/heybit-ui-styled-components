@@ -9,7 +9,7 @@ const colors = {
   [SystemColor.green]: '#27ae60',
   [SystemColor.blue]: '#2f80ed',
   [ServiceColor.harvest]: '#039985',
-  [ServiceColor.defi]: '#6f63f8',
+  [ServiceColor.defi]: '#6d40c6',
 };
 export const colorPalette = Object.entries(colors).reduce(
   (a, [name, color]) => ({
