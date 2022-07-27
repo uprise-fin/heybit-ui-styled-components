@@ -35,7 +35,7 @@ export class HbToast extends Base {
 
   timer: Timer[] = [];
 
-  duration: number = 3000;
+  duration: number = 399000;
 
   hide = false;
 
@@ -71,12 +71,11 @@ export class HbToast extends Base {
     if (index === this.messages.length - 1) {
       const element = await getElement(this.shadowRoot, `toast-${index}`);
       const height = element.scrollHeight;
-      if (height) {
+      if (height)
         element.setAttribute(
           'style',
           `--transition__height--bottom-up-height: ${height}px`,
         );
-      }
     }
   }
 
@@ -112,7 +111,7 @@ export class HbToast extends Base {
         class="hb-toast__content__icon"
         style="--icon__color: ${color};"
         icon="${icon}"
-        color=${Size.medium}
+        size=${Size.medium}
       ></hb-icon>`;
     }
   }
