@@ -59,10 +59,10 @@ export class HbToast extends Base {
       const index = this.timer.length;
       const duration = (this.messages[index].duration || this.duration) - 1;
       this.timer.push({time: new Date().getTime() + duration, index});
-      this.getHeight(index);
       setTimeout(() => {
         this.now = new Date().getTime();
       }, duration);
+      this.getHeight(index);
     }
     return this.messages;
   }
@@ -70,18 +70,26 @@ export class HbToast extends Base {
   async getHeight(index: number) {
     if (index === this.messages.length - 1) {
       const element = await getElement(this.shadowRoot, `toast-${index}`);
-      const height = element.clientHeight;
+      const height = element.scrollHeight;
       if (height) {
-        element.style.height = '0';
-        setTimeout(() => {
-          element.style.height = height + 'px';
-        }, 100);
+        element.setAttribute(
+          'style',
+          `--transition__height--bottom-up-height: ${height}px`,
+        );
       }
     }
   }
 
+  clean() {
+    setTimeout(() => {
+      this.timer = [];
+      this.messages = [];
+    }, 0);
+  }
+
   getShow(index: number) {
-    return this.timer[index].time > this.now;
+    if (this.timer.every(x => x.time <= this.now)) this.clean();
+    return this.timer[index]?.time > this.now;
   }
 
   // getIndex(index: number) {

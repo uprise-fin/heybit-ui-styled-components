@@ -3,7 +3,7 @@
   @include host-styled {
     display: block;
     font-family: var(--font__family);
-    transition: opacity var(--transition__duration);
+    transition: opacity var(--transition__duration--ms);
   }
   @include host-styled([loaded]) {
     opacity: 0;

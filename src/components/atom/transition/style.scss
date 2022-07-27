@@ -9,7 +9,7 @@
 }
 .hb-transition {
   @include host-styled("[type='fade']") {
-    animation: hide-fade var(--transition__duration);
+    animation: hide-fade var(--transition__duration--ms);
     @keyframes hide-fade {
       0% {
         display: block;
@@ -25,7 +25,7 @@
   }
 
   @include host-styled("[show][type='fade']") {
-    animation: show-fade var(--transition__duration);
+    animation: show-fade var(--transition__duration--ms);
     @keyframes show-fade {
       0% {
         display: block;
@@ -40,7 +40,7 @@
     }
   }
   @include host-styled("[type='zoom']") {
-    animation: hide-zoom var(--transition__duration);
+    animation: hide-zoom var(--transition__duration--ms);
     @keyframes hide-zoom {
       0% {
         display: block;
@@ -56,7 +56,7 @@
   }
 
   @include host-styled("[show][type='zoom']") {
-    animation: show-zoom var(--transition__duration);
+    animation: show-zoom var(--transition__duration--ms);
     @keyframes show-zoom {
       0% {
         display: block;
@@ -71,18 +71,20 @@
     }
   }
   @include host-styled("[type='bottom-up-height']") {
-    animation: hide-bottom-up-height var(--transition__duration);
+    animation: hide-bottom-up-height var(--transition__duration--ms);
     transform-origin: bottom;
     @keyframes hide-bottom-up-height {
       0% {
         display: block;
-        transform: scaleY(1);
+        height: var(--transition__height--bottom-up-height);
+        transform: translateY(0);
         transform-origin: bottom;
         will-change: transform;
       }
       100% {
         display: block;
-        transform: scaleY(0);
+        height: 0;
+        transform: translateY(100%);
         transform-origin: bottom;
         will-change: unset;
       }
@@ -90,24 +92,26 @@
   }
 
   @include host-styled("[show][type='bottom-up-height']") {
-    animation: show-bottom-up-height var(--transition__duration);
+    animation: show-bottom-up-height var(--transition__duration--ms);
     @keyframes show-bottom-up-height {
       0% {
         display: block;
-        transform: scaleY(0);
+        height: 0;
+        transform: translateY(100%);
         transform-origin: bottom;
         will-change: transform;
       }
       100% {
         display: block;
-        transform: scaleY(1);
+        height: var(--transition__height--bottom-up-height);
+        transform: translateY(0);
         transform-origin: bottom;
         will-change: unset;
       }
     }
   }
   @include host-styled("[type='bottom-up']") {
-    animation: hide-bottom-up var(--transition__duration);
+    animation: hide-bottom-up var(--transition__duration--ms);
     transform-origin: bottom;
     @keyframes hide-bottom-up {
       0% {
@@ -126,7 +130,7 @@
   }
 
   @include host-styled("[show][type='bottom-up']") {
-    animation: show-bottom-up var(--transition__duration);
+    animation: show-bottom-up var(--transition__duration--ms);
     @keyframes show-bottom-up {
       0% {
         display: block;
@@ -143,7 +147,7 @@
     }
   }
   @include host-styled("[type='top-down']") {
-    animation: hide-top-down var(--transition__duration);
+    animation: hide-top-down var(--transition__duration--ms);
     transform-origin: top;
     @keyframes hide-top-down {
       0% {
@@ -162,7 +166,7 @@
   }
 
   @include host-styled("[show][type='top-down']") {
-    animation: show-top-down var(--transition__duration);
+    animation: show-top-down var(--transition__duration--ms);
     @keyframes show-top-down {
       0% {
         display: block;
@@ -179,7 +183,7 @@
     }
   }
   @include host-styled("[type='right-left']") {
-    animation: hide-right-left var(--transition__duration);
+    animation: hide-right-left var(--transition__duration--ms);
     @keyframes hide-right-left {
       0% {
         display: block;
@@ -195,7 +199,7 @@
   }
 
   @include host-styled("[show][type='right-left']") {
-    animation: show-right-left var(--transition__duration);
+    animation: show-right-left var(--transition__duration--ms);
     @keyframes show-right-left {
       0% {
         display: block;

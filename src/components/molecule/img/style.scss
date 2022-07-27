@@ -12,7 +12,7 @@
       max-width: 100%;
       max-height: 100%;
       opacity: 0;
-      transition: opacity var(--transition__duration);
+      transition: opacity var(--transition__duration--ms);
       &[loaded] {
         opacity: 1;
       }

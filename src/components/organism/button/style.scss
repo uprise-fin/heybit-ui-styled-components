@@ -25,7 +25,7 @@ $hb-button__size: (
   //   font-size: 14px,
   //   height: 30px,
   //   border-radius: var(--box__border-radius),
-  // ),,,,,,,,,,,,,,,,,,
+  // ),,,,,,,,,,,,,,,,,,,
 );
 $hb-button__type: (
   rectangle: (
@@ -104,8 +104,8 @@ $hb-button__theme: (
       }
       --spinner__color: #{map-get($value, color)};
       color: map-get($value, color);
-      transition: background var(--transition__duration),
-        opacity var(--transition__duration);
+      transition: background var(--transition__duration--ms),
+        opacity var(--transition__duration--ms);
       background: $bg;
     }
     @include host-styled("[type='custom'][theme='#{$class}']") {

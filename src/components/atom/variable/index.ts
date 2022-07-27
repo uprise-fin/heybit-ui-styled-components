@@ -48,7 +48,10 @@ export const basicVariables = {
     color: colorPalette[SystemColor.white][50],
   },
   transition: {
-    duration: '300ms',
+    duration: {
+      '--ms': '300ms',
+      number: 300,
+    },
   },
 };
 export const componentVariables = {

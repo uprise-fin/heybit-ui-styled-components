@@ -42,21 +42,4 @@
       margin-right: 6px;
     }
   }
-  &__position {
-    will-change: height, margin;
-    transition: height var(--transition__duration),
-      margin var(--transition__duration);
-
-    // &:not(.visible) {
-    //   margin: 10px 0 !important;
-    // }
-    // @for $i from 1 through 10 {
-    //   &:nth-last-child(#{$i}) {
-    //     transform: translate(
-    //       -50%,
-    //       calc((30px + ($i - 1) * (var(--box__height) + 10px)) * -1)
-    //     );
-    //   }
-    // }
-  }
 }

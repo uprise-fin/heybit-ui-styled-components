@@ -24,8 +24,8 @@
       height: 2px;
       margin-top: -2px;
       background: #000;
-      transition: width var(--transition__duration),
-        transform var(--transition__duration);
+      transition: width var(--transition__duration--ms),
+        transform var(--transition__duration--ms);
     }
   }
   &__content {
