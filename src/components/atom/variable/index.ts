@@ -105,7 +105,7 @@ export const componentVariables = {
     },
   },
   modal: {
-    width: 380,
+    width: 1080,
     margin: 20,
     background: colorPalette[SystemColor.white][50],
     dialog: {

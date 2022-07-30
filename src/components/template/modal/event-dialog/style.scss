@@ -4,7 +4,6 @@
   &__container {
     position: relative;
     overflow: auto;
-    max-width: calc(100vw - var(--modal__margin) - var(--modal__margin));
     max-height: calc(100vh - var(--modal__margin) - var(--modal__margin));
     border-radius: calc(var(--border__radius) * 3);
     background: var(--modal__background);

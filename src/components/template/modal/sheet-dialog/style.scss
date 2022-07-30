@@ -5,14 +5,11 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    max-width: calc(
-      100vw - var(--modal__sheet-dialog__padding-right) -
-        var(--modal__sheet-dialog__padding-left)
-    );
     max-height: calc(
       100vh - var(--modal__margin) - var(--modal__margin) -
         var(--modal__sheet-dialog__padding-bottom)
     );
+    margin: var(--modal__margin);
     padding: var(--modal__sheet-dialog__padding-top)
       var(--modal__sheet-dialog__padding-right)
       var(--modal__sheet-dialog__padding-bottom)
