@@ -12,7 +12,8 @@ export interface HbHeaderProps {
   authMenu: HbHeaderNavi[];
   defaultMenu: HbHeaderNavi[];
   user: HbHeaderUser;
-  logoEvent?: () => void;
+  logoHref?: string;
+  event?: () => void;
 }
 export interface HbHeaderMyMenu extends HbButtonProps {
   name: string;
