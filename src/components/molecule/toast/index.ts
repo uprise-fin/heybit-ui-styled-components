@@ -35,7 +35,7 @@ export class HbToast extends Base {
 
   timer: Timer[] = [];
 
-  duration: number = 399000;
+  duration: number = 3000;
 
   hide = false;
 
@@ -71,11 +71,14 @@ export class HbToast extends Base {
     if (index === this.messages.length - 1) {
       const element = await getElement(this.shadowRoot, `toast-${index}`);
       const height = element.scrollHeight;
-      if (height)
-        element.setAttribute(
-          'style',
-          `--transition__height--bottom-up-height: ${height}px`,
-        );
+      this.setAttribute(
+        'style',
+        `--transition__height--bottom-up-height: ${height}px`,
+      );
+      element.setAttribute(
+        'style',
+        `--transition__height--bottom-up-height: ${height}px`,
+      );
     }
   }
 

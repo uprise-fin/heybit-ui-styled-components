@@ -1,4 +1,5 @@
 import {HbAnchorProps} from '@/components/atom/anchor/type';
+import {HbIfProps} from '@/components/atom/if/type';
 import {HbDelayProps} from '@/components/atom/delay/type';
 import {HbLoadingProps} from '@/components/atom/loading/type';
 import {
@@ -46,7 +47,6 @@ import {
   HbButtonSlots,
   HbButtonType,
   HbButtonTheme,
-  HbButtonSize,
 } from '@/components/organism/button/type';
 import {
   HbInputProps,
@@ -60,10 +60,11 @@ import {
   HbDialogAnchor,
   HbModalButtonAlign,
 } from '@/components/template/modal/type';
-import {HbHeaderNavi, HbHerderProps} from '@/components/template/header/type';
+import {HbHeaderNavi, HbHeaderProps} from '@/components/template/header/type';
 
 export {
   HbAnchorProps,
+  HbIfProps,
   HbDelayProps,
   HbLoadingProps,
   HbResponsiveProps,
@@ -96,7 +97,6 @@ export {
   HbButtonSlots,
   HbButtonType,
   HbButtonTheme,
-  HbButtonSize,
   HbInputProps,
   HbInputType,
   HbInputSlots,
@@ -106,5 +106,5 @@ export {
   HbDialogAnchor,
   HbModalButtonAlign,
   HbHeaderNavi,
-  HbHerderProps,
+  HbHeaderProps,
 };

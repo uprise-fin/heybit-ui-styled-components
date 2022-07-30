@@ -23,9 +23,3 @@ export enum HbButtonTheme {
   'tertiary' = 'tertiary',
   'quaternary' = 'quaternary',
 }
-export enum HbButtonSize {
-  'xsmall' = Size.xsmall,
-  'small' = Size.small,
-  'medium' = Size.medium,
-  'large' = Size.large,
-}

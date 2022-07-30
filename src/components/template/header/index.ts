@@ -4,7 +4,7 @@ import {HbIconName} from '@/components/molecule/icon/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '../../base';
-import {HbHeaderNavi} from './type';
+import {HbHeaderMyMenu, HbHeaderNavi, HbHeaderUser} from './type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -25,26 +25,66 @@ export class HbHeader extends Base {
     return [require('./style.scss').default];
   }
 
+  user: HbHeaderUser;
+
   sidemenu = false;
 
-  navigations: HbHeaderNavi[];
+  gnb: HbHeaderNavi[];
+
+  myMenu: HbHeaderMyMenu[];
+
+  authMenu: HbHeaderNavi[];
+
+  get isGnb() {
+    if (this.gnb) return this.gnb;
+  }
+
+  get isMyMenu() {
+    if (this.myMenu)
+      return this.myMenu.filter(x => x.loggedIn === this.user?.loggedIn);
+  }
+
+  get isAuthMenu() {
+    if (this.authMenu) return this.authMenu;
+  }
 
   static get properties() {
     return {
       sidemenu: {type: Boolean, Reflect: true},
       navigations: {type: Array, Reflect: true},
+      gnb: {type: Array, Reflect: true},
+      myMenu: {type: Array, Reflect: true},
+      authMenu: {type: Array, Reflect: true},
+      user: {type: Object, Reflect: true},
     };
   }
 
-  get gnb() {
+  get gnbTemplate() {
     return html`
-      ${this.navigations?.map(
+      ${this.isGnb?.map(
         x =>
-          // x.path
-          //   ? html`<hb-anchor path=${x.path}>${x.name}</hb-anchor>`
-          //   : html`<hb-anchor href=${x.href} target=${x.target}
-          //       >${x.name}</hb-anchor
-          //     >`,
+          html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
+            >${x.name}</hb-anchor
+          >`,
+      )}
+    `;
+  }
+
+  get myMenuTemplate() {
+    return html`
+      ${this.isMyMenu?.map(
+        x =>
+          html`<hb-button @event=${x.event} theme=${x.theme} size=${x.size}
+            >${x.name}</hb-button
+          >`,
+      )}
+    `;
+  }
+
+  get authMenuTemplate() {
+    return html`
+      ${this.isAuthMenu?.map(
+        x =>
           html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
             >${x.name}</hb-anchor
           >`,
@@ -81,7 +121,23 @@ export class HbHeader extends Base {
             ?show=${this.sidemenu}
             type=${HbTransitionType.rightLeft}
           >
-            <div class="hb-header--mobile__side-menu__content">${this.gnb}</div>
+            <div class="hb-header--mobile__side-menu__content">
+              <div class="hb-header--mobile__side-menu__content__my">
+                <strong>${this.user?.title}</strong>
+                <hb-if ?value=${this.user?.loggedIn}>
+                  <p>${this.user?.email}</p>
+                </hb-if>
+                <div>${this.myMenuTemplate}</div>
+              </div>
+              <div class="hb-header--mobile__side-menu__content__menu">
+                ${this.gnbTemplate}
+              </div>
+              <hb-if ?value=${this.user?.loggedIn}>
+                <div class="hb-header--mobile__side-menu__content__auth">
+                  ${this.authMenuTemplate}
+                </div>
+              </hb-if>
+            </div>
           </hb-transition>
         </hb-transition>
       </div>
@@ -94,7 +150,7 @@ export class HbHeader extends Base {
               style="--icon__size__large: var(--header__logo__width);"
             ></hb-icon
           ></hb-anchor>
-          ${this.gnb}
+          ${this.gnbTemplate}
           <hb-button @event=${this.onSideMenu}
             ><hb-icon
               icon=${HbIconName['system/outline/menu-side']}
@@ -112,7 +168,7 @@ export class HbHeader extends Base {
             type=${HbTransitionType.topDown}
           >
             <div class="hb-header--desktop__side-menu__content">
-              ${this.gnb}
+              ${this.gnbTemplate}
             </div>
           </hb-transition>
         </hb-transition>

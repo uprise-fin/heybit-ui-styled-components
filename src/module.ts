@@ -4,6 +4,7 @@ import {HbLoading} from '@/components/atom/loading';
 import {HbResponsive} from '@/components/atom/responsive';
 import {HbTransition} from '@/components/atom/transition';
 import {HbAnchor} from '@/components/atom/anchor';
+import {HbIf} from '@/components/atom/if';
 import {HbIcon} from '@/components/molecule/icon';
 import {HbImg} from '@/components/molecule/img';
 // import { HbList } from "@/components/molecule/list";
@@ -25,6 +26,7 @@ export {
   HbLoading,
   HbTransition,
   HbAnchor,
+  HbIf,
   HbResponsive,
   HbIcon,
   HbImg,
