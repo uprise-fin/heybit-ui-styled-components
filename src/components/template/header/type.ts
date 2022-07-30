@@ -10,6 +10,7 @@ export interface HbHeaderProps {
   gnb: HbHeaderNavi[];
   myMenu: HbHeaderMyMenu[];
   authMenu: HbHeaderNavi[];
+  defaultMenu: HbHeaderNavi[];
   user: HbHeaderUser;
   logoEvent?: () => void;
 }
