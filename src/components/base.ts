@@ -14,6 +14,7 @@ export class Base extends LitElement {
   }
 
   onEvent<E extends Event>(ev: E) {
+    this.stopPropagation(ev);
     if (this.event) return this.event(ev);
     this.dispatchEvent(new CustomEvent('event', ev));
   }
