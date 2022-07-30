@@ -1,9 +1,8 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbTransitionType} from '../../atom/transition/type';
-import {Base} from '../../base';
+import {HbTransitionType} from '@/components/atom/transition/type';
+import {Base} from '@/components/base';
 
-// import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
  * @property open 온 오프
  * @slot header - optional, 헤더
@@ -83,7 +82,6 @@ declare global {
     'hb-tooltip': HbTooltip;
   }
 }
-// import CustomElement from "../custom-elements";
 // const NAME = "hb-tooltip";
 // customElements.get(NAME) ||
 //   customElements.define(

@@ -107,7 +107,6 @@ declare global {
     'hb-list': HbList;
   }
 }
-// import CustomElement from "../custom-elements";
 // const NAME = "hb-list";
 // customElements.get(NAME) ||
 //   customElements.define(

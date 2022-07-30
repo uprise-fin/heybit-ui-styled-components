@@ -2,7 +2,6 @@ import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import {SystemColor, ServiceColor, Color, levels} from './type';
 import {colorPalette} from './index';
-// import { HbButtonTheme } from "../../organism/button";
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;

@@ -1,6 +1,6 @@
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {Base} from '../../base';
+import {Base} from '@/components/base';
 import {HbSkeletonType} from './type';
 
 @customElement('hb-skeleton')

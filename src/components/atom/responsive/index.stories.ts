@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {basicVariables} from '../variable';
+import {basicVariables} from '@/components/atom/variable';
 import './index';
 import type {HbResponsive} from './index';
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export

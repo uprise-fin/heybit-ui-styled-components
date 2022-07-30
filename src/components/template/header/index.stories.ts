@@ -1,9 +1,14 @@
-import {HbButtonTheme} from '@/components/organism/button/type';
+import {dev} from '@/utils';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {dev} from '../../../utils';
 import './index';
 import type {HbHeader} from './index';
+import {
+  initialHeaderAuthMenu,
+  initialHeaderDefaultMenu,
+  initialHeaderGnb,
+  initialHeaderMyMenu,
+} from './type';
 
 export default dev() &&
   ({
@@ -17,54 +22,26 @@ const Template: Story<HbHeader> = ({
   gnb,
   myMenu,
   authMenu,
+  defaultMenu,
+  logoEvent,
 }) => html` <hb-header
+  .logoEvent=${logoEvent}
   .user=${user}
   .gnb=${gnb}
   .myMenu=${myMenu}
   .authMenu=${authMenu}
+  .defaultMenu=${defaultMenu}
 ></hb-header>`;
 export const korea: Story<HbHeader> = Template.bind({});
 korea.args = {
+  logoEvent: () => console.log('djwakld'),
   user: {
     title: '윤창원님 환영합니다.',
     email: 'matthew@heybit.io',
     loggedIn: false,
   },
-  gnb: [
-    {
-      name: '예치상품',
-      href: 'harvest',
-    },
-    {
-      name: '회사소개',
-      href: 'about-us',
-      target: '_self',
-    },
-    {
-      name: '인사이트',
-      href: 'blog',
-    },
-    {
-      name: '고객지원',
-      event: () => console.log('dawjldkajwkld'),
-    },
-  ],
-  myMenu: [
-    {
-      name: '우하',
-      loggedIn: true,
-      theme: HbButtonTheme.primary,
-      event: () => console.log('djkwaldjaw'),
-    },
-  ],
-  authMenu: [
-    {
-      name: '로그인',
-      event: () => console.log('로그인'),
-    },
-    {
-      name: '로그아웃',
-      event: () => console.log('로그아웃'),
-    },
-  ],
+  gnb: initialHeaderGnb,
+  myMenu: initialHeaderMyMenu,
+  authMenu: initialHeaderAuthMenu,
+  defaultMenu: initialHeaderDefaultMenu,
 };

@@ -1,7 +1,7 @@
 import {Size} from '@/components/atom/variable/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {Base} from '../../base';
+import {Base} from '@/components/base';
 
 /**
  *

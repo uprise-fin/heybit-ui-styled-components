@@ -11,6 +11,7 @@ export interface HbHeaderProps {
   myMenu: HbHeaderMyMenu[];
   authMenu: HbHeaderNavi[];
   user: HbHeaderUser;
+  logoEvent?: () => void;
 }
 export interface HbHeaderMyMenu extends HbButtonProps {
   name: string;
@@ -23,7 +24,7 @@ export interface HbHeaderUser {
   loggedIn: boolean;
   email?: string;
 }
-export const gnb: HbHeaderNavi[] = [
+export const initialHeaderGnb: HbHeaderNavi[] = [
   {
     name: '예치상품',
   },
@@ -37,7 +38,7 @@ export const gnb: HbHeaderNavi[] = [
     name: '고객지원',
   },
 ];
-export const myMenu: HbHeaderMyMenu[] = [
+export const initialHeaderMyMenu: HbHeaderMyMenu[] = [
   {
     name: '예치상품',
     loggedIn: false,
@@ -67,11 +68,19 @@ export const myMenu: HbHeaderMyMenu[] = [
     event: () => false,
   },
 ];
-export const authMenu: HbHeaderNavi[] = [
+export const initialHeaderAuthMenu: HbHeaderNavi[] = [
   {
     name: '인증 • 계정정보',
   },
   {
     name: '로그아웃',
+  },
+];
+export const initialHeaderDefaultMenu: HbHeaderNavi[] = [
+  {
+    name: '로그인',
+  },
+  {
+    name: '가입',
   },
 ];

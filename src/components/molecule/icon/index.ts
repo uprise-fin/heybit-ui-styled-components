@@ -6,7 +6,6 @@ import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
 import SVG from './svg';
 import {HbIconName} from './type';
 
-// import White from '../../assets/icons/ic-system-menu-24-white.svg'
 /**
  * @property open 온 오프
  * @slot header - optional, 헤더

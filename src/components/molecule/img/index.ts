@@ -156,7 +156,6 @@ declare global {
     'hb-img': HbImg;
   }
 }
-// import CustomElement from "../custom-elements";
 // const NAME = "hb-img";
 // customElements.get(NAME) ||
 //   customElements.define(

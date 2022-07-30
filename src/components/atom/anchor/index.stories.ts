@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {dev} from '../../../utils';
+import {dev} from '@/utils';
 import './index';
 import type {HbAnchor} from './index';
 

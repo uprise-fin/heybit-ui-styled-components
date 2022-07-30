@@ -6,7 +6,7 @@ import {Base} from '@/components/base';
 import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbIconName} from '../icon/type';
+import {HbIconName} from '@/components/molecule/icon/type';
 import {HbToastMessage, HbToastTheme} from './type';
 
 /**
@@ -145,7 +145,6 @@ declare global {
     'hb-toast': HbToast;
   }
 }
-// import CustomElement from "../custom-elements";
 // const NAME = "hb-toast";
 // customElements.get(NAME) ||
 //   customElements.define(

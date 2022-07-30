@@ -1,6 +1,3 @@
-// import { LitElement } from "lit";
-// import { getChildren, getElement } from "../utils";
-
 function scss() {
   return function (
     target: unknown,

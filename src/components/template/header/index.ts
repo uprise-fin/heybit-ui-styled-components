@@ -3,7 +3,7 @@ import {Size} from '@/components/atom/variable/type';
 import {HbIconName} from '@/components/molecule/icon/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {Base} from '../../base';
+import {Base} from '@/components/base';
 import {HbHeaderMyMenu, HbHeaderNavi, HbHeaderUser} from './type';
 /**
  * @fires change 값이 변경될때 발생
@@ -25,6 +25,8 @@ export class HbHeader extends Base {
     return [require('./style.scss').default];
   }
 
+  logoEvent?: () => void;
+
   user: HbHeaderUser;
 
   sidemenu = false;
@@ -34,6 +36,8 @@ export class HbHeader extends Base {
   myMenu: HbHeaderMyMenu[];
 
   authMenu: HbHeaderNavi[];
+
+  defaultMenu: HbHeaderNavi[];
 
   get isGnb() {
     if (this.gnb) return this.gnb;
@@ -48,11 +52,16 @@ export class HbHeader extends Base {
     if (this.authMenu) return this.authMenu;
   }
 
+  get isDefaultMenu() {
+    if (this.defaultMenu) return this.defaultMenu;
+  }
+
   static get properties() {
     return {
       sidemenu: {type: Boolean, Reflect: true},
       navigations: {type: Array, Reflect: true},
       gnb: {type: Array, Reflect: true},
+      defaultMenu: {type: Array, Reflect: true},
       myMenu: {type: Array, Reflect: true},
       authMenu: {type: Array, Reflect: true},
       user: {type: Object, Reflect: true},
@@ -92,6 +101,17 @@ export class HbHeader extends Base {
     `;
   }
 
+  get defaultMenuTemplate() {
+    return html`
+      ${this.isDefaultMenu?.map(
+        x =>
+          html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
+            >${x.name}</hb-anchor
+          >`,
+      )}
+    `;
+  }
+
   onSideMenu() {
     this.sidemenu = !this.sidemenu;
   }
@@ -100,11 +120,13 @@ export class HbHeader extends Base {
     return html`<hb-responsive>
       <div slot="mobile" class="hb-header--mobile">
         <div class="hb-header--mobile__navibar">
-          <hb-icon
-            icon=${HbIconName['graphic/heybit']}
-            size=${Size.large}
-            style="--icon__size__large: var(--header__logo__width);"
-          ></hb-icon>
+          <hb-anchor @event=${this.logoEvent} href=${this.logoEvent ? '' : '/'}
+            ><hb-icon
+              icon=${HbIconName['graphic/heybit']}
+              size=${Size.large}
+              style="--icon__size__large: var(--header__logo__width);"
+            ></hb-icon
+          ></hb-anchor>
           <hb-button @event=${this.onSideMenu}
             ><hb-icon
               icon=${HbIconName['system/outline/menu-side']}
@@ -126,13 +148,16 @@ export class HbHeader extends Base {
                 <strong>${this.user?.title}</strong>
                 <hb-if ?value=${this.user?.loggedIn}>
                   <p>${this.user?.email}</p>
+                  <div>${this.myMenuTemplate}</div>
                 </hb-if>
-                <div>${this.myMenuTemplate}</div>
+                <hb-if ?value=${!this.user?.loggedIn}>
+                  <div>${this.defaultMenuTemplate}</div>
+                </hb-if>
               </div>
               <div class="hb-header--mobile__side-menu__content__menu">
                 ${this.gnbTemplate}
               </div>
-              <hb-if ?value=${!this.user?.loggedIn}>
+              <hb-if ?value=${this.user?.loggedIn}>
                 <div class="hb-header--mobile__side-menu__content__auth">
                   ${this.authMenuTemplate}
                 </div>
@@ -143,7 +168,7 @@ export class HbHeader extends Base {
       </div>
       <div slot="desktop" class="hb-header--desktop">
         <div class="hb-header--desktop__navibar">
-          <hb-anchor href="/"
+          <hb-anchor @event=${this.logoEvent} href=${this.logoEvent ? '' : '/'}
             ><hb-icon
               icon=${HbIconName['graphic/heybit']}
               size=${Size.large}
@@ -161,7 +186,7 @@ export class HbHeader extends Base {
               ></hb-button>
             </hb-if>
             <hb-if ?value=${!this.user?.loggedIn}>
-              ${this.authMenuTemplate}
+              ${this.defaultMenuTemplate}
             </hb-if>
           </div>
         </div>
@@ -175,7 +200,7 @@ export class HbHeader extends Base {
             type=${HbTransitionType.topDown}
           >
             <div class="hb-header--desktop__side-menu__content">
-              ${this.gnbTemplate}
+              ${this.myMenuTemplate} ${this.authMenuTemplate}
             </div>
           </hb-transition>
         </hb-transition>
