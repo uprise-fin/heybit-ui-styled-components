@@ -72,7 +72,7 @@ export const initialHeaderMyMenu: HbHeaderMyMenu[] = [
 export const initialHeaderAuthMenu: HbHeaderNavi[] = [
   {
     name: '인증 • 계정정보',
-    event: () => console.log('인증'),
+    event: () => console.log('인증 • 계정정보'),
   },
   {
     name: '로그아웃',
