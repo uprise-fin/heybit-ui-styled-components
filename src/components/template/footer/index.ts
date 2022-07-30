@@ -1,3 +1,4 @@
+import {Size} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
@@ -49,7 +50,7 @@ export class HbFooter extends Base {
       ${this.socialMenu?.map(
         x =>
           html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
-            ><hb-icon icon=${x.icon}></hb-icon
+            ><hb-icon size=${Size.medium} icon=${x.icon}></hb-icon
           ></hb-anchor>`,
       )}
     `;

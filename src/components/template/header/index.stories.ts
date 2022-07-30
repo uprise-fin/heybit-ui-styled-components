@@ -23,9 +23,9 @@ const Template: Story<HbHeader> = ({
   myMenu,
   authMenu,
   defaultMenu,
-  logoEvent,
+  event,
 }) => html` <hb-header
-  .logoEvent=${logoEvent}
+  @event=${event}
   .user=${user}
   .gnb=${gnb}
   .myMenu=${myMenu}
@@ -34,7 +34,7 @@ const Template: Story<HbHeader> = ({
 ></hb-header>`;
 export const korea: Story<HbHeader> = Template.bind({});
 korea.args = {
-  logoEvent: () => console.log('djwakld'),
+  event: () => console.log('djwakld'),
   user: {
     title: '윤창원님 환영합니다.',
     email: 'matthew@heybit.io',

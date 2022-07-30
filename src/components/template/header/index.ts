@@ -37,8 +37,6 @@ export class HbHeader extends Base {
 
   defaultMenu: HbHeaderNavi[];
 
-  logoHref?: string;
-
   get isGnb() {
     if (this.gnb) return this.gnb;
   }
@@ -65,7 +63,6 @@ export class HbHeader extends Base {
       myMenu: {type: Array, Reflect: true},
       authMenu: {type: Array, Reflect: true},
       user: {type: Object, Reflect: true},
-      logoHref: {type: String, Reflect: true},
     };
   }
 
@@ -121,7 +118,7 @@ export class HbHeader extends Base {
     return html`<hb-responsive>
       <div slot="mobile" class="hb-header--mobile">
         <div class="hb-header--mobile__navibar">
-          <hb-anchor @event=${this.onEvent} href=${this.logoHref}
+          <hb-anchor @event=${this.onEvent}
             ><hb-icon
               icon=${HbIconName['graphic/heybit']}
               size=${Size.large}
@@ -169,7 +166,7 @@ export class HbHeader extends Base {
       </div>
       <div slot="desktop" class="hb-header--desktop">
         <div class="hb-header--desktop__navibar">
-          <hb-anchor @event=${this.onEvent} href=${this.logoHref}
+          <hb-anchor @event=${this.onEvent}
             ><hb-icon
               icon=${HbIconName['graphic/heybit']}
               size=${Size.large}
