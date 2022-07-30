@@ -28,60 +28,54 @@ export interface HbHeaderUser {
 export const initialHeaderGnb: HbHeaderNavi[] = [
   {
     name: '예치상품',
+    event: () => console.log('예치상품'),
   },
   {
     name: '회사소개',
+    event: () => console.log('회사소개'),
   },
   {
     name: '인사이트',
+    event: () => console.log('인사이트'),
   },
   {
     name: '고객지원',
+    event: () => console.log('고객지원'),
   },
 ];
 export const initialHeaderMyMenu: HbHeaderMyMenu[] = [
   {
-    name: '예치상품',
+    name: '하베스트',
     loggedIn: false,
     theme: HbButtonTheme.primary,
     size: Size.large,
-    event: () => false,
+    event: () => console.log('하베스트'),
   },
   {
-    name: '회사소개',
+    name: '디파이',
     loggedIn: false,
     theme: HbButtonTheme.primary,
     size: Size.large,
-    event: () => false,
-  },
-  {
-    name: '인사이트',
-    loggedIn: true,
-    theme: HbButtonTheme.primary,
-    size: Size.large,
-    event: () => false,
-  },
-  {
-    name: '고객지원',
-    loggedIn: true,
-    theme: HbButtonTheme.primary,
-    size: Size.large,
-    event: () => false,
+    event: () => console.log('디파이'),
   },
 ];
 export const initialHeaderAuthMenu: HbHeaderNavi[] = [
   {
     name: '인증 • 계정정보',
+    event: () => console.log('인증'),
   },
   {
     name: '로그아웃',
+    event: () => console.log('로그아웃'),
   },
 ];
 export const initialHeaderDefaultMenu: HbHeaderNavi[] = [
   {
     name: '로그인',
+    event: () => console.log('로그인'),
   },
   {
     name: '가입',
+    event: () => console.log('가입'),
   },
 ];

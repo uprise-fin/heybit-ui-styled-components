@@ -96,13 +96,13 @@ export class HbButton extends InitAttribute<HbButtonProps> {
   connectedCallback() {
     super.connectedCallback();
     this.tabIndex = 0;
-    this.onclick = ev => this.adapterEvent(ev);
-    this.onkeyup = ev => ev.key === 'Enter' && this.adapterEvent(ev);
+    this.onclick = this.adapterEvent;
+    this.onkeyup = ev => ev.key === 'Enter' && this.adapterEvent();
   }
 
-  async adapterEvent(ev: Event) {
+  async adapterEvent() {
     if (this.loading || this.disabled) return;
-    this.onEvent(ev);
+    this.onEvent(new CustomEvent('event'));
     // this.dispatchEvent(new CustomEvent('event', ev));
     if (this.baseLoadingDuration) {
       this.setAttribute('loading', '');

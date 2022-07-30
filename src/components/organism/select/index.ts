@@ -180,7 +180,7 @@ export class HbSelect extends Base {
     this.value = value!;
     this.inputValue = '';
     // this.dispatchEvent(new CustomEvent('event', evt));
-    this.onEvent(ev);
+    this.onEvent(new CustomEvent('event'));
   }
 
   onShow() {

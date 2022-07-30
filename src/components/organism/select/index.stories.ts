@@ -47,7 +47,7 @@ const OpionSlotTmpl: Story<HbSelect> = ({value, search, options, fixed}) =>
     </div>
     <script>
       window.onscroll = function () {
-        console.log('event');
+        console.log('event22222');
       };
     </script>
   `;

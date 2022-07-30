@@ -52,6 +52,14 @@ export const basicVariables = {
       '--ms': '300ms',
       number: 300,
     },
+    'delay-start': {
+      '--ms': '0ms',
+      number: 0,
+    },
+    'delay-end': {
+      '--ms': '0ms',
+      number: 0,
+    },
   },
 };
 export const componentVariables = {

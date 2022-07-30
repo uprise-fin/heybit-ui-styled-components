@@ -60,7 +60,7 @@ export class HbList extends Base {
     if (this.value === value || !this.values.includes(value)) return;
     if (this.attributeSync) this.setAttribute('value', value!);
     this.value = value!;
-    this.onEvent(ev);
+    this.onEvent(new CustomEvent('event'));
     // this.dispatchEvent(new CustomEvent('event', ev));
   }
 

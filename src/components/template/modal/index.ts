@@ -106,12 +106,11 @@ export class HbModal extends Base {
     this.classList.remove(event.animationName);
   }
 
-  adapterOnClose(ev: Event) {
-    ev.stopImmediatePropagation();
+  adapterOnClose() {
     if (this.persistent) return this.classList.add('shake');
 
     // this.dispatchEvent(new CustomEvent('close'));
-    this.onEvent(ev);
+    this.onEvent(new CustomEvent('event'));
   }
 }
 

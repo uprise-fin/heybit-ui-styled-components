@@ -174,11 +174,11 @@ export class HbDialog extends Base {
     } else event();
   }
 
-  onClose(ev: Event) {
+  onClose() {
     this.open = false;
     this.removeAttribute('open');
     // this.dispatchEvent(new CustomEvent('close'));
-    this.onEvent(ev);
+    this.onEvent(new CustomEvent('event'));
   }
 }
 

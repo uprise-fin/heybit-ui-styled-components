@@ -30,21 +30,22 @@ export class HbAnchor extends Base {
   connectedCallback() {
     super.connectedCallback();
     this.tabIndex = 0;
-    this.onclick = (ev: Event) => {
-      if (this.disabled) return;
-      if (this.href) return this.onClick();
-      // this.dispatchEvent(new CustomEvent('event', ev));
-      this.onEvent(ev);
-    };
+    this.onclick = this.adapterEvent;
   }
 
-  onClick() {
-    const a = document.createElement('a');
-    if (this.target) a.target = this.target;
-    a.href = this.href;
-    a.rel = 'noreferer noopener';
-    a.click();
-    a.remove();
+  adapterEvent() {
+    if (this.disabled) return;
+    if (this.href) {
+      const a = document.createElement('a');
+      if (this.target) a.target = this.target;
+      a.href = this.href;
+      a.rel = 'noreferer noopener';
+      a.click();
+      a.remove();
+      return;
+    }
+    // this.dispatchEvent(new CustomEvent('event', ev));
+    this.onEvent(new CustomEvent('event'));
   }
 
   render() {

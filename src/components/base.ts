@@ -13,10 +13,11 @@ export class Base extends LitElement {
     ev.stopPropagation();
   }
 
-  onEvent<E extends Event>(ev: E) {
-    this.stopPropagation(ev);
-    if (this.event) return this.event(ev);
-    this.dispatchEvent(new CustomEvent('event', ev));
+  onEvent(ev: CustomEvent) {
+    if (ev instanceof CustomEvent) {
+      if (this.event) return this.event(ev);
+      return this.dispatchEvent(new CustomEvent('event', ev));
+    }
   }
 }
 export class InitAttribute<T> extends Base {

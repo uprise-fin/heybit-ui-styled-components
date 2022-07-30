@@ -1,12 +1,12 @@
 import {HbTransitionType} from '@/components/atom/transition/type';
-import {componentVariables} from '@/components/atom/variable';
 import {Size} from '@/components/atom/variable/type';
 // import style from '@/styles/molecule/toast/index.scss';
 import {Base} from '@/components/base';
+import {HbIconName} from '@/components/molecule/icon/type';
+import {componentVariables} from '@/module';
 import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbIconName} from '@/components/molecule/icon/type';
 import {HbToastMessage, HbToastTheme} from './type';
 
 /**
@@ -54,15 +54,13 @@ export class HbToast extends Base {
       this.timer = [];
       return [];
     }
-
     while (this.messages.length > this.timer.length) {
       const index = this.timer.length;
       const duration = (this.messages[index].duration || this.duration) - 1;
-      this.timer.push({time: new Date().getTime() + duration, index});
-      setTimeout(() => {
-        this.now = new Date().getTime();
-      }, duration);
-      this.getHeight(index);
+      const date = new Date().getTime() + duration;
+      this.timer.push({time: date, index});
+      setTimeout(() => (this.now = date), duration);
+      // this.getHeight(index);
     }
     return this.messages;
   }
@@ -71,26 +69,27 @@ export class HbToast extends Base {
     if (index === this.messages.length - 1) {
       const element = await getElement(this.shadowRoot, `toast-${index}`);
       const height = element.scrollHeight;
-      this.setAttribute(
-        'style',
-        `--transition__height--bottom-up-height: ${height}px`,
+
+      [element].map(x =>
+        x.style.setProperty(
+          '--transition__height--bottom-up-height',
+          `${height}px`,
+        ),
       );
-      element.setAttribute(
-        'style',
-        `--transition__height--bottom-up-height: ${height}px`,
-      );
+
+      // element.setAttribute(
+      //   'style',
+      //   `--transition__height--bottom-up-height: ${height}px`,
+      // );
     }
   }
 
-  clean() {
-    setTimeout(() => {
-      this.timer = [];
-      this.messages = [];
-    }, 0);
-  }
+  // clean() {
+  //   this.timer = [];
+  //   this.messages = [];
+  // }
 
   getShow(index: number) {
-    if (this.timer.every(x => x.time <= this.now)) this.clean();
     return this.timer[index]?.time > this.now;
   }
 
@@ -119,6 +118,11 @@ export class HbToast extends Base {
     }
   }
 
+  // connectedCallback() {
+  //   super.connectedCallback();
+  //   this.style.setProperty('--transition__delay-start--ms', '30ms');
+  // }
+
   render() {
     return this.messagesTrigger.map(
       (x, i) =>
@@ -128,7 +132,7 @@ export class HbToast extends Base {
           type=${HbTransitionType.fade}
           ?show=${this.getShow(i)}
           ><hb-transition
-            type=${HbTransitionType.bottomUpHeight}
+            type=${HbTransitionType.bottomUp}
             ?show=${this.getShow(i)}
             ><div class="hb-toast__content">
               ${this.getIconTemplate(x.theme)}

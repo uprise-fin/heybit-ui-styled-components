@@ -85,10 +85,10 @@ export class HbEventDialog extends Base {
     `;
   }
 
-  onClose(ev: Event) {
+  onClose() {
     this.open = false;
     this.removeAttribute('open');
-    this.onEvent(ev);
+    this.onEvent(new CustomEvent('event'));
   }
 }
 

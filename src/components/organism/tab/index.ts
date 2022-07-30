@@ -51,7 +51,7 @@ export class HbTab extends Base {
     super.attributeChangedCallback(name, _, newVal);
   }
 
-  onClick(ev: PointerEvent) {
+  onClick(ev: Event) {
     const target = ev.target as HTMLElement;
     const index = this.btns.indexOf(target);
     this.setAttribute('index', index.toString());

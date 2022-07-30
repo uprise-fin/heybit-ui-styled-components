@@ -34,7 +34,7 @@ const Template: Story<HbHeader> = ({
 ></hb-header>`;
 export const korea: Story<HbHeader> = Template.bind({});
 korea.args = {
-  event: () => console.log('djwakld'),
+  event: () => console.log('로고클릭'),
   user: {
     title: '윤창원님 환영합니다.',
     email: 'matthew@heybit.io',
