@@ -59,21 +59,12 @@ korea.args = {
   ],
   authMenu: [
     {
-      name: '예치상품',
-      href: 'harvest',
+      name: '로그인',
+      event: () => console.log('로그인'),
     },
     {
-      name: '회사소개',
-      href: 'about-us',
-      target: '_self',
-    },
-    {
-      name: '인사이트',
-      href: 'blog',
-    },
-    {
-      name: '고객지원',
-      event: () => console.log('dawjldkajwkld'),
+      name: '로그아웃',
+      event: () => console.log('로그아웃'),
     },
   ],
 };

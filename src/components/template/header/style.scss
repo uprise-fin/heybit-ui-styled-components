@@ -1,6 +1,7 @@
 @import '@/styles/utils/mixins';
 .hb-header {
   @include host-styled {
+    font-family: var(--font__family);
   }
   &--desktop {
     &__navibar {
@@ -25,7 +26,7 @@
           color: var(--orange--500);
         }
       }
-      hb-button {
+      > *:last-child {
         z-index: 2;
         position: absolute;
         right: 0;

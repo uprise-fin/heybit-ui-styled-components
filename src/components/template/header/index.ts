@@ -132,7 +132,7 @@ export class HbHeader extends Base {
               <div class="hb-header--mobile__side-menu__content__menu">
                 ${this.gnbTemplate}
               </div>
-              <hb-if ?value=${this.user?.loggedIn}>
+              <hb-if ?value=${!this.user?.loggedIn}>
                 <div class="hb-header--mobile__side-menu__content__auth">
                   ${this.authMenuTemplate}
                 </div>
@@ -151,12 +151,19 @@ export class HbHeader extends Base {
             ></hb-icon
           ></hb-anchor>
           ${this.gnbTemplate}
-          <hb-button @event=${this.onSideMenu}
-            ><hb-icon
-              icon=${HbIconName['system/outline/menu-side']}
-              size=${Size.medium}
-            ></hb-icon
-          ></hb-button>
+          <div>
+            <hb-if ?value=${this.user?.loggedIn}>
+              <hb-button @event=${this.onSideMenu}
+                ><hb-icon
+                  icon=${HbIconName['system/outline/menu-side']}
+                  size=${Size.medium}
+                ></hb-icon
+              ></hb-button>
+            </hb-if>
+            <hb-if ?value=${!this.user?.loggedIn}>
+              ${this.authMenuTemplate}
+            </hb-if>
+          </div>
         </div>
         <hb-transition
           class="hb-header--desktop__side-menu"
