@@ -10,7 +10,7 @@ interface HbIconExpns extends HbIcon {
   color: string;
 }
 export default {
-  title: 'components/molecule/hb-icon✓',
+  title: 'components/molecule/hb-icon',
   component: 'hb-icon',
   argTypes: {
     icon: {

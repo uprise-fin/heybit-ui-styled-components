@@ -10,7 +10,7 @@ interface HbSpinnerExps extends HbSpinner {
 }
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'components/molecule/hb-spinner✓',
+  title: 'components/molecule/hb-spinner',
   component: 'hb-spinner',
   argTypes: {
     size: {

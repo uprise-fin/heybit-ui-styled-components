@@ -6,7 +6,7 @@ import desktopImg from '~/static/sample-desktop.png';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'components/template/hb-event-dialog✓',
+  title: 'components/template/hb-event-dialog',
   component: 'hb-event-dialog',
   argTypes: {
     open: {

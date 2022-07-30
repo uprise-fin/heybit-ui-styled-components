@@ -7,7 +7,7 @@ import type {HbToast} from './index';
 import {HbToastTheme} from './type';
 
 export default {
-  title: 'components/molecule/hb-toast✓',
+  title: 'components/molecule/hb-toast',
   component: 'hb-toast',
   argTypes: {
     visibleIcon: {

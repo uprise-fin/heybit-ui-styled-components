@@ -7,7 +7,7 @@ import type {HbButton} from './index';
 import {HbIconName} from '@/components/molecule/icon/type';
 
 export default {
-  title: 'components/organism/hb-button✓',
+  title: 'components/organism/hb-button',
   argTypes: {
     theme: {
       options: Object.keys(HbButtonTheme),

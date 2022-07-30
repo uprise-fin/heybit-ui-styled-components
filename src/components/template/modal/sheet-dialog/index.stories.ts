@@ -11,7 +11,7 @@ interface HbSheetDialogExpns extends HbSheetDialog {
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'components/template/hb-sheet-dialog✓',
+  title: 'components/template/hb-sheet-dialog',
   component: 'hb-sheet-dialog',
   argTypes: {
     open: {
