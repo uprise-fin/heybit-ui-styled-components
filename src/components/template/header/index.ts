@@ -5,6 +5,7 @@ import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '@/components/base';
 import {HbHeaderMyMenu, HbHeaderNavi, HbHeaderUser} from './type';
+import {HbButtonSlots} from '@/components/organism/button/type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -42,8 +43,7 @@ export class HbHeader extends Base {
   }
 
   get isMyMenu() {
-    if (this.myMenu)
-      return this.myMenu.filter(x => x.loggedIn === this.user?.loggedIn);
+    if (this.myMenu) return this.myMenu;
   }
 
   get isAuthMenu() {
@@ -71,7 +71,9 @@ export class HbHeader extends Base {
       ${this.isGnb?.map(
         x =>
           html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
-            >${x.name}</hb-anchor
+            >${x.name}${x.img
+              ? html`<hb-img src=${x.img} alt=${x.name}></hb-img>`
+              : ''}</hb-anchor
           >`,
       )}
     `;
@@ -81,8 +83,18 @@ export class HbHeader extends Base {
     return html`
       ${this.isMyMenu?.map(
         x =>
-          html`<hb-button @event=${x.event} theme=${x.theme} size=${x.size}
-            >${x.name}</hb-button
+          html`<hb-button
+            @event=${x.event}
+            type=${x.type}
+            theme=${x.theme}
+            size=${x.size}
+            >${x.name}${x.img
+              ? html`<hb-img
+                  slot=${HbButtonSlots['slot--right']}
+                  src=${x.img}
+                  alt=${x.name}
+                ></hb-img>`
+              : ''}</hb-button
           >`,
       )}
     `;

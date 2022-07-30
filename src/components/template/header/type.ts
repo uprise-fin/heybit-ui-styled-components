@@ -1,9 +1,13 @@
 import {HbAnchorProps} from '@/components/atom/anchor/type';
 import {Size} from '@/components/atom/variable/type';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {HbButtonProps, HbButtonTheme} from '@/components/organism/button/type';
+import {
+  HbButtonProps,
+  HbButtonTheme,
+  HbButtonType,
+} from '@/components/organism/button/type';
 export interface HbHeaderNavi extends HbAnchorProps {
   name: string;
+  img?: string;
 }
 
 export interface HbHeaderProps {
@@ -16,8 +20,7 @@ export interface HbHeaderProps {
 }
 export interface HbHeaderMyMenu extends HbButtonProps {
   name: string;
-  loggedIn: boolean;
-  icon?: HbIconName;
+  img?: string;
   event: () => void;
 }
 export interface HbHeaderUser {
@@ -45,15 +48,22 @@ export const initialHeaderGnb: HbHeaderNavi[] = [
 ];
 export const initialHeaderMyMenu: HbHeaderMyMenu[] = [
   {
-    name: '하베스트',
-    loggedIn: false,
+    name: '나의 현황',
+    type: HbButtonType.rectangle,
     theme: HbButtonTheme.primary,
+    size: Size.large,
+    event: () => console.log('나의 현황'),
+  },
+  {
+    name: '하베스트',
+    type: HbButtonType.rectangle,
+    theme: HbButtonTheme.quaternary,
     size: Size.large,
     event: () => console.log('하베스트'),
   },
   {
     name: '디파이',
-    loggedIn: false,
+    type: HbButtonType.rectangle,
     theme: HbButtonTheme.primary,
     size: Size.large,
     event: () => console.log('디파이'),

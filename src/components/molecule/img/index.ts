@@ -20,6 +20,8 @@ export class HbImg extends Base {
 
   src: string;
 
+  alt: string;
+
   loadingWidth: number;
 
   loadingHeight: number;
@@ -37,6 +39,7 @@ export class HbImg extends Base {
   static get properties() {
     return {
       src: {type: String, Reflect: true},
+      alt: {type: String, Reflect: true},
       loadingWidth: {type: Number, Reflect: true},
       loadingHeight: {type: Number, Reflect: true},
       multiSource: {type: Number, Reflect: true},
@@ -125,6 +128,7 @@ export class HbImg extends Base {
           class="hb-img__picture__img"
           part="img"
           src=${this.src}
+          alt=${this.alt}
           @error=${this.onError}
           @load=${this.onLoad}
           ?loaded=${this.loaded}
