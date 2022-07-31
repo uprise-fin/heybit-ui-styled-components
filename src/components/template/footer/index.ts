@@ -57,14 +57,24 @@ export class HbFooter extends Base {
   }
 
   render() {
-    return html`<hb-responsive>
-      <div slot="mobile" class="hb-footer--mobile">
-        ${this.menuTemplate} ${this.socialMenuTemplate}
-      </div>
-      <div slot="desktop" class="hb-footer--desktop">
-        ${this.menuTemplate} ${this.socialMenuTemplate}
-      </div>
-    </hb-responsive>`;
+    return html`
+      <hb-responsive>
+        <div slot="mobile" class="hb-footer--mobile">
+          <div class="hb-footer--mobile__anchor">${this.menuTemplate}</div>
+          <div class="hb-footer--mobile__social">
+            ${this.socialMenuTemplate}
+          </div>
+          <div class="hb-footer--mobile__text"></div>
+        </div>
+        <div slot="desktop" class="hb-footer--desktop">
+          <div class="hb-footer--desktop__anchor">${this.menuTemplate}</div>
+          <div class="hb-footer--desktop__social">
+            ${this.socialMenuTemplate}
+          </div>
+          <div class="hb-footer--desktop__text"></div>
+        </div>
+      </hb-responsive>
+    `;
   }
 }
 
