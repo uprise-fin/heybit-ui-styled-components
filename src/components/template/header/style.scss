@@ -38,9 +38,13 @@
           color: var(--orange--500);
         }
       }
-      &__hamburber {
+      &__actions {
         position: absolute;
         right: $padding;
+      }
+      &__hamburber {
+        margin-right: -20px;
+        padding: 20px;
         font-weight: 500;
         font-size: 16px;
         line-height: 19px;

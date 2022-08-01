@@ -183,7 +183,7 @@ export class HbHeader extends Base {
             ></hb-icon
           ></hb-anchor>
           ${this.gnbTemplate}
-          <div>
+          <div class="hb-header--desktop__navibar__actions">
             <hb-if ?value=${this.user?.pending}>
               <hb-skeleton type=${HbSkeletonType.hamburger}></hb-skeleton
             ></hb-if>
