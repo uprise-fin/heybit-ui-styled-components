@@ -6,29 +6,77 @@
     background: var(--black--900);
     --icon__color: var(--white--50);
   }
+  &__accent {
+    font-weight: 700 !important;
+  }
   &--mobile {
-    padding: 40px 20px;
-    &__anchor {
+    padding: 30px var(--layout__gutter);
+    &__menu {
+      margin: 0 0 20px;
       > * {
         display: block;
         text-decoration: none;
         color: var(--white--50);
         font-size: 16px;
+        font-weight: 400;
         line-height: 37px;
       }
     }
+    &__social {
+      > * {
+        & + * {
+          margin-left: 32px;
+        }
+      }
+    }
+    &__text {
+      margin-top: 40px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 27px;
+      opacity: 0.4;
+    }
   }
   &--desktop {
-    padding: 40px 20px;
-    &__anchor {
+    padding: 40px var(--layout__gutter);
+    &__routes {
+      display: flex;
+    }
+    &__menu {
       > * {
         color: var(--white--400);
         font-size: 15px;
-        margin-right: 5px;
+        font-weight: 400;
         text-decoration: none;
         & + * {
-          content: '·';
-          margin-left: 5px;
+          margin-left: 21px;
+          &::before {
+            content: '·';
+            position: absolute;
+            pointer-events: none;
+            margin-left: -11px;
+          }
+        }
+      }
+    }
+    &__social {
+      margin-left: auto;
+      > * {
+        & + * {
+          margin-left: 20px;
+        }
+      }
+    }
+    &__text {
+      margin-top: 24px;
+      > * {
+        margin: 0;
+        color: #fff;
+        font-size: 14px;
+        line-height: 27px;
+        opacity: 0.4;
+        & + {
+          margin-top: 20px;
         }
       }
     }

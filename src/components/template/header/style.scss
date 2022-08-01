@@ -15,11 +15,10 @@
   }
   &--desktop {
     &__navibar {
-      $padding: 22px;
       position: relative;
       display: flex;
       height: var(--header__height--desktop);
-      padding: 0 #{$padding};
+      padding: 0 var(--layout__gutter);
       align-items: center;
       hb-anchor {
         position: relative;
@@ -40,7 +39,7 @@
       }
       &__actions {
         position: absolute;
-        right: $padding;
+        right: var(--layout__gutter);
       }
       &__hamburber {
         margin-right: -20px;
@@ -109,15 +108,14 @@
   }
   &--mobile {
     &__navibar {
-      $padding: 22px;
       position: relative;
       display: flex;
       height: var(--header__height--mobile);
-      padding: 0 #{$padding};
+      padding: 0 var(--layout__gutter);
       align-items: center;
       hb-button {
         position: absolute;
-        right: $padding;
+        right: var(--layout__gutter);
       }
     }
     &__side-menu {

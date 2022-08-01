@@ -27,10 +27,16 @@ export class HbFooter extends Base {
 
   socialMenu: HbFooterSocialMenu[];
 
+  upriseInfo: string[];
+
+  copy: string;
+
   static get properties() {
     return {
       menu: {type: Array, Reflect: true},
       socialMenu: {type: Array, Reflect: true},
+      upriseInfo: {type: Array, Reflect: true},
+      copy: {type: String, Reflect: true},
     };
   }
 
@@ -38,7 +44,11 @@ export class HbFooter extends Base {
     return html`
       ${this.menu?.map(
         x =>
-          html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
+          html`<hb-anchor
+            class=${x.accent ? 'hb-footer__accent' : ''}
+            href=${x.href}
+            target=${x.target}
+            @event=${x.event}
             >${x.name}</hb-anchor
           >`,
       )}
@@ -56,22 +66,28 @@ export class HbFooter extends Base {
     `;
   }
 
+  get upriseInfoTemplate() {
+    return html` ${this.upriseInfo.map(x => html`<p>${x}</p>`)} `;
+  }
+
   render() {
     return html`
       <hb-responsive>
         <div slot="mobile" class="hb-footer--mobile">
-          <div class="hb-footer--mobile__anchor">${this.menuTemplate}</div>
+          <div class="hb-footer--mobile__menu">${this.menuTemplate}</div>
           <div class="hb-footer--mobile__social">
             ${this.socialMenuTemplate}
           </div>
-          <div class="hb-footer--mobile__text"></div>
+          <div class="hb-footer--mobile__text">${this.copy}</div>
         </div>
         <div slot="desktop" class="hb-footer--desktop">
-          <div class="hb-footer--desktop__anchor">${this.menuTemplate}</div>
-          <div class="hb-footer--desktop__social">
-            ${this.socialMenuTemplate}
+          <div class="hb-footer--desktop__routes">
+            <div class="hb-footer--desktop__menu">${this.menuTemplate}</div>
+            <div class="hb-footer--desktop__social">
+              ${this.socialMenuTemplate}
+            </div>
           </div>
-          <div class="hb-footer--desktop__text"></div>
+          <div class="hb-footer--desktop__text">${this.upriseInfoTemplate}</div>
         </div>
       </hb-responsive>
     `;

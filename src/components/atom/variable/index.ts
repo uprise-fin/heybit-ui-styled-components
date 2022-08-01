@@ -37,6 +37,7 @@ export const basicVariables = {
     [Size.xsmall]: 16,
   },
   layout: {
+    gutter: 22,
     media: 780,
   },
   border: {
