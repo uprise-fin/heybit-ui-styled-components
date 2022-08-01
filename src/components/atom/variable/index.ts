@@ -164,7 +164,7 @@ export const componentVariables = {
   },
   header: {
     height: {
-      '--mobile': 77,
+      '--mobile': 60,
       '--desktop': 77,
     },
     logo: {

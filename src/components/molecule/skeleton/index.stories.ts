@@ -25,3 +25,7 @@ export const card: Story<HbSkeleton> = Template.bind({});
 card.args = {
   type: HbSkeletonType.card,
 };
+export const hamburger: Story<HbSkeleton> = Template.bind({});
+hamburger.args = {
+  type: HbSkeletonType.hamburger,
+};

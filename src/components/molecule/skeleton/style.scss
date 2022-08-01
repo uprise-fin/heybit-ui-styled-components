@@ -13,4 +13,11 @@
       grid-row: 1 / 3;
     }
   }
+  @include host-styled('[type="hamburger"]') {
+    display: grid;
+    font-family: var(--font__family);
+    // grid-template-columns: 100px 100px;
+    grid-template-columns: 50px;
+    grid-template-rows: 30px;
+  }
 }

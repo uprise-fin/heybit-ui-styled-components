@@ -2,6 +2,7 @@ import {HbTransitionType} from '@/components/atom/transition/type';
 import {Size} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
 import {HbIconName} from '@/components/molecule/icon/type';
+import {HbSkeletonType} from '@/components/molecule/skeleton/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbHeaderMyMenu, HbHeaderNavi, HbHeaderUser} from './type';
@@ -66,19 +67,6 @@ export class HbHeader extends Base {
   }
 
   get gnbTemplate() {
-    return html`
-      ${this.isGnb?.map(
-        x =>
-          html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
-            >${x.name}${x.img
-              ? html`<hb-img src=${x.img} alt=${x.name}></hb-img>`
-              : ''}</hb-anchor
-          >`,
-      )}
-    `;
-  }
-
-  get gnbTemplateForDesktop() {
     return html`
       ${this.isGnb?.map(
         x =>
@@ -153,6 +141,7 @@ export class HbHeader extends Base {
           ></hb-button>
         </div>
         <hb-transition
+          @click=${this.onSideMenu}
           class="hb-header--mobile__side-menu"
           ?show=${this.sidemenu}
           type=${HbTransitionType.fade}
@@ -163,7 +152,7 @@ export class HbHeader extends Base {
           >
             <div class="hb-header--mobile__side-menu__content">
               <div class="hb-header--mobile__side-menu__content__my">
-                <strong>${this.user?.title}</strong>
+                <strong>${this.user?.name}님 환영합니다.</strong>
                 <hb-if ?value=${this.user?.loggedIn}>
                   <p>${this.user?.email}</p>
                   <div>${this.myMenuTemplate}</div>
@@ -193,18 +182,25 @@ export class HbHeader extends Base {
               style="--icon__size__large: var(--header__logo__width);"
             ></hb-icon
           ></hb-anchor>
-          ${this.gnbTemplateForDesktop}
+          ${this.gnbTemplate}
           <div>
-            <hb-if ?value=${this.user?.loggedIn}>
-              <hb-button @event=${this.onSideMenu}
-                ><hb-icon
-                  icon=${HbIconName['system/outline/menu-side']}
-                  size=${Size.medium}
-                ></hb-icon
-              ></hb-button>
-            </hb-if>
-            <hb-if ?value=${!this.user?.loggedIn}>
-              ${this.defaultMenuTemplate}
+            <hb-if ?value=${this.user?.pending}>
+              <hb-skeleton type=${HbSkeletonType.hamburger}></hb-skeleton
+            ></hb-if>
+            <hb-if ?value=${!this.user?.pending}>
+              <hb-if ?value=${this.user?.loggedIn}>
+                <hb-button
+                  class="hb-header--desktop__navibar__hamburber"
+                  @event=${this.onSideMenu}
+                  >${this.user?.name}님<hb-icon
+                    icon=${HbIconName['system/outline/arrow-dropdown']}
+                    size=${Size.small}
+                  ></hb-icon
+                ></hb-button>
+              </hb-if>
+              <hb-if ?value=${!this.user?.loggedIn}>
+                ${this.defaultMenuTemplate}
+              </hb-if>
             </hb-if>
           </div>
         </div>
@@ -213,14 +209,23 @@ export class HbHeader extends Base {
           ?show=${this.sidemenu && this.user?.loggedIn}
           type=${HbTransitionType.fade}
         >
-          <hb-transition
+          <!-- <hb-transition
             ?show=${this.sidemenu}
             type=${HbTransitionType.topDown}
-          >
-            <div class="hb-header--desktop__side-menu__content">
-              ${this.myMenuTemplate} ${this.authMenuTemplate}
+          > -->
+          <div class="hb-header--desktop__side-menu__content">
+            <div class="hb-header--desktop__side-menu__content__my">
+              <strong>${this.user?.name}님 환영합니다.</strong>
+              <p>${this.user?.email}</p>
             </div>
-          </hb-transition>
+            <div class="hb-header--desktop__side-menu__content__menu">
+              ${this.myMenuTemplate}
+            </div>
+            <div class="hb-header--desktop__side-menu__content__auth">
+              ${this.authMenuTemplate}
+            </div>
+          </div>
+          <!-- </hb-transition> -->
         </hb-transition>
       </div>
     </hb-responsive>`;

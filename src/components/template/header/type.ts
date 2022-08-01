@@ -26,7 +26,8 @@ export interface HbHeaderMyMenu extends HbButtonProps {
   event: () => void;
 }
 export interface HbHeaderUser {
-  title: string;
+  name: string;
+  pending?: true;
   loggedIn: boolean;
   email?: string;
 }
@@ -67,14 +68,6 @@ export const initialHeaderMyMenu: HbHeaderMyMenu[] = [
     theme: HbButtonTheme.quaternary,
     size: Size.medium,
     event: () => console.log('하베스트'),
-  },
-  {
-    name: '디파이',
-    type: HbButtonType.rectangle,
-    theme: HbButtonTheme.quaternary,
-    size: Size.medium,
-    event: () => console.log('디파이'),
-    chip: 'Beta',
   },
 ];
 export const initialHeaderAuthMenu: HbHeaderNavi[] = [
