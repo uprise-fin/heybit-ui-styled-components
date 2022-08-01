@@ -8,6 +8,7 @@ import {
 export interface HbHeaderNavi extends HbAnchorProps {
   name: string;
   img?: string;
+  chip?: string;
 }
 
 export interface HbHeaderProps {
@@ -21,6 +22,7 @@ export interface HbHeaderProps {
 export interface HbHeaderMyMenu extends HbButtonProps {
   name: string;
   img?: string;
+  chip?: string;
   event: () => void;
 }
 export interface HbHeaderUser {
@@ -32,6 +34,11 @@ export const initialHeaderGnb: HbHeaderNavi[] = [
   {
     name: '예치상품',
     event: () => console.log('예치상품'),
+  },
+  {
+    name: '디파이',
+    chip: 'Beta',
+    event: () => console.log('디파이'),
   },
   {
     name: '회사소개',
@@ -51,22 +58,23 @@ export const initialHeaderMyMenu: HbHeaderMyMenu[] = [
     name: '나의 현황',
     type: HbButtonType.rectangle,
     theme: HbButtonTheme.primary,
-    size: Size.large,
+    size: Size.medium,
     event: () => console.log('나의 현황'),
   },
   {
     name: '하베스트',
     type: HbButtonType.rectangle,
     theme: HbButtonTheme.quaternary,
-    size: Size.large,
+    size: Size.medium,
     event: () => console.log('하베스트'),
   },
   {
     name: '디파이',
     type: HbButtonType.rectangle,
-    theme: HbButtonTheme.primary,
-    size: Size.large,
+    theme: HbButtonTheme.quaternary,
+    size: Size.medium,
     event: () => console.log('디파이'),
+    chip: 'Beta',
   },
 ];
 export const initialHeaderAuthMenu: HbHeaderNavi[] = [

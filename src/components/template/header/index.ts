@@ -1,11 +1,10 @@
 import {HbTransitionType} from '@/components/atom/transition/type';
 import {Size} from '@/components/atom/variable/type';
+import {Base} from '@/components/base';
 import {HbIconName} from '@/components/molecule/icon/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {Base} from '@/components/base';
 import {HbHeaderMyMenu, HbHeaderNavi, HbHeaderUser} from './type';
-import {HbButtonSlots} from '@/components/organism/button/type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -79,6 +78,19 @@ export class HbHeader extends Base {
     `;
   }
 
+  get gnbTemplateForDesktop() {
+    return html`
+      ${this.isGnb?.map(
+        x =>
+          html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
+            >${x.name}${x.chip
+              ? html`<span class="hb-header__chip">${x.chip}</span>`
+              : ''}</hb-anchor
+          >`,
+      )}
+    `;
+  }
+
   get myMenuTemplate() {
     return html`
       ${this.isMyMenu?.map(
@@ -88,12 +100,8 @@ export class HbHeader extends Base {
             type=${x.type}
             theme=${x.theme}
             size=${x.size}
-            >${x.name}${x.img
-              ? html`<hb-img
-                  slot=${HbButtonSlots['slot--right']}
-                  src=${x.img}
-                  alt=${x.name}
-                ></hb-img>`
+            >${x.name}${x.chip
+              ? html`<span class="hb-header__chip">${x.chip}</span>`
               : ''}</hb-button
           >`,
       )}
@@ -185,7 +193,7 @@ export class HbHeader extends Base {
               style="--icon__size__large: var(--header__logo__width);"
             ></hb-icon
           ></hb-anchor>
-          ${this.gnbTemplate}
+          ${this.gnbTemplateForDesktop}
           <div>
             <hb-if ?value=${this.user?.loggedIn}>
               <hb-button @event=${this.onSideMenu}
@@ -202,7 +210,7 @@ export class HbHeader extends Base {
         </div>
         <hb-transition
           class="hb-header--desktop__side-menu"
-          ?show=${this.sidemenu}
+          ?show=${this.sidemenu && this.user?.loggedIn}
           type=${HbTransitionType.fade}
         >
           <hb-transition
