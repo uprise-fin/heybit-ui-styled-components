@@ -1,4 +1,3 @@
-import {dev} from '@/utils';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import './index';
@@ -10,11 +9,10 @@ import {
   initialHeaderMyMenu,
 } from './type';
 
-export default dev() &&
-  ({
-    title: 'components/template/hb-header',
-    component: 'hb-header',
-  } as Meta);
+export default {
+  title: 'components/template/hb-header',
+  component: 'hb-header',
+} as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story<HbHeader> = ({
