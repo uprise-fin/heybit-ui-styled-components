@@ -17,6 +17,11 @@ export class HbSkeleton extends Base {
     };
   }
 
+  get skeletonLength() {
+    if ([HbSkeletonType.card].includes(this.type)) return 3;
+    return 1;
+  }
+
   // render() {
   //   return Array(this.length).fill(null).map((_,i) => html`
   //     <div class="hb-skeleton__wall" part=${`cell-${i+1}`}></div>
@@ -25,12 +30,9 @@ export class HbSkeleton extends Base {
   // }
 
   render() {
-    if (this.type === HbSkeletonType.card)
-      return html`
-        <hb-loading></hb-loading>
-        <hb-loading></hb-loading>
-        <hb-loading></hb-loading>
-      `;
+    return Array(this.skeletonLength)
+      .fill(null)
+      .map(() => html`<hb-loading></hb-loading> `);
   }
 }
 

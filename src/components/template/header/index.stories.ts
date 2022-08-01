@@ -36,9 +36,10 @@ export const korea: Story<HbHeader> = Template.bind({});
 korea.args = {
   event: () => console.log('로고클릭'),
   user: {
-    title: '윤창원님 환영합니다.',
+    name: '윤창원',
     email: 'matthew@heybit.io',
     loggedIn: false,
+    pending: true,
   },
   gnb: initialHeaderGnb,
   myMenu: initialHeaderMyMenu,

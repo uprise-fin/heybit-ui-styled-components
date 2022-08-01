@@ -3,4 +3,5 @@ export interface HbSkeletonProps {
 }
 export enum HbSkeletonType {
   card = 'card',
+  hamburger = 'hamburger',
 }

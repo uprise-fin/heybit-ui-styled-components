@@ -28,6 +28,7 @@ export enum HbIconName {
   'system/outline/add' = 'system/outline/add',
   'system/outline/arrow-back' = 'system/outline/arrow-back',
   'system/outline/arrow-down' = 'system/outline/arrow-down',
+  'system/outline/arrow-dropdown' = 'system/outline/arrow-dropdown',
   'system/outline/arrow-forward' = 'system/outline/arrow-forward',
   'system/outline/clear' = 'system/outline/clear',
   'system/outline/close' = 'system/outline/close',

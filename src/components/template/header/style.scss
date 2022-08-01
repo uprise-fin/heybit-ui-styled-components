@@ -3,14 +3,25 @@
   @include host-styled {
     font-family: var(--font__family);
   }
+  &__chip {
+    position: absolute;
+    top: 50%;
+    margin: -14px 0 0 2px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--orange--500);
+  }
   &--desktop {
     &__navibar {
       position: relative;
       display: flex;
-      width: 100%;
-      height: var(--header__height--mobile);
+      height: var(--header__height--desktop);
+      padding: 0 var(--layout__gutter);
       align-items: center;
       hb-anchor {
+        position: relative;
         margin-right: 40px;
         text-decoration: none;
         font-size: 16px;
@@ -26,30 +37,85 @@
           color: var(--orange--500);
         }
       }
-      > *:last-child {
-        z-index: 2;
+      &__actions {
         position: absolute;
-        right: 0;
+        right: var(--layout__gutter);
+      }
+      &__hamburber {
+        margin-right: -20px;
+        padding: 20px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        margin-right: 3px;
       }
     }
     &__side-menu {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 300px;
+      position: absolute;
+      top: 77px;
+      right: 38px;
+      width: 270px;
       &__content {
-        border: 1px solid #000;
+        padding: 30px 24px 24px;
+        border: 1px solid var(--black--300);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.06);
+        border-radius: calc(var(--border__radius) * 3);
         background: var(--white--50);
+        &__my {
+          strong {
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 22px;
+          }
+          p {
+            margin: 5px 0 30px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            color: var(--black--300);
+          }
+        }
+        &__menu {
+          hb-button {
+            & + hb-button {
+              margin-top: 10px;
+            }
+          }
+        }
+        &__auth {
+          display: flex;
+          width: fit-content;
+          margin: 20px auto 0;
+          hb-anchor {
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: var(--black--400);
+            & + hb-anchor {
+              margin-left: 40px;
+              &::before {
+                position: absolute;
+                pointer-events: none;
+                margin-left: -20px;
+                content: '|';
+              }
+            }
+          }
+        }
       }
     }
   }
   &--mobile {
     &__navibar {
       position: relative;
+      display: flex;
+      height: var(--header__height--mobile);
+      padding: 0 var(--layout__gutter);
+      align-items: center;
       hb-button {
-        z-index: 2;
         position: absolute;
-        right: 0;
+        right: var(--layout__gutter);
       }
     }
     &__side-menu {
@@ -74,17 +140,54 @@
         width: 270px;
         height: 100vh;
         margin-left: auto;
-        padding: 20px;
         background: var(--white--50);
         &__my {
+          padding: 20px;
+
           strong {
             font-size: 18px;
             font-weight: bold;
             color: var(--black--800);
           }
           p {
+            margin: 5px 0 30px;
             font-size: 14px;
             color: var(--black--300);
+          }
+          hb-button {
+            & + hb-button {
+              margin-top: 10px;
+            }
+          }
+        }
+        &__menu {
+          margin-top: 30px;
+          padding: 16px 20px;
+          border-top: 1px solid var(--black--300);
+          hb-anchor {
+            position: relative;
+            display: block;
+            height: 54px;
+            text-decoration: none;
+            line-height: 54px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--black--800);
+          }
+        }
+        &__auth {
+          padding: 16px 20px;
+          border-top: 1px solid var(--black--300);
+          hb-anchor {
+            display: block;
+            height: 40px;
+            text-decoration: none;
+            line-height: 40px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: var(--black--400);
           }
         }
       }

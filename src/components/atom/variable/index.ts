@@ -37,6 +37,7 @@ export const basicVariables = {
     [Size.xsmall]: 16,
   },
   layout: {
+    gutter: 22,
     media: 780,
   },
   border: {
@@ -164,7 +165,7 @@ export const componentVariables = {
   },
   header: {
     height: {
-      '--mobile': 77,
+      '--mobile': 60,
       '--desktop': 77,
     },
     logo: {
