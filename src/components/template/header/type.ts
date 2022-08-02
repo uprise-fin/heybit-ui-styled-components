@@ -15,8 +15,12 @@ export interface HbHeaderProps {
   gnb: HbHeaderNavi[];
   myMenu: HbHeaderMyMenu[];
   authMenu: HbHeaderNavi[];
-  defaultMenu: HbHeaderMyMenu[];
+  defaultMenu: HbHeaderDefaultMenu[];
   user: HbHeaderUser;
+  event?: () => void;
+}
+export interface HbHeaderDefaultMenu {
+  name: string;
   event?: () => void;
 }
 export interface HbHeaderMyMenu extends HbButtonProps {
@@ -80,7 +84,7 @@ export const initialHeaderAuthMenu: HbHeaderNavi[] = [
     event: () => console.log('로그아웃'),
   },
 ];
-export const initialHeaderDefaultMenu: HbHeaderNavi[] = [
+export const initialHeaderDefaultMenu: HbHeaderDefaultMenu[] = [
   {
     name: '로그인',
     event: () => console.log('로그인'),
