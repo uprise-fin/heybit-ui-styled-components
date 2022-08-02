@@ -29,3 +29,11 @@ export const hamburger: Story<HbSkeleton> = Template.bind({});
 hamburger.args = {
   type: HbSkeletonType.hamburger,
 };
+export const dropMenuTop: Story<HbSkeleton> = Template.bind({});
+dropMenuTop.args = {
+  type: HbSkeletonType.dropMenuTop,
+};
+export const dropMenuBottom: Story<HbSkeleton> = Template.bind({});
+dropMenuBottom.args = {
+  type: HbSkeletonType.dropMenuBottom,
+};

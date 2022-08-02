@@ -18,7 +18,9 @@ export class HbSkeleton extends Base {
   }
 
   get skeletonLength() {
-    if ([HbSkeletonType.card].includes(this.type)) return 3;
+    if ([HbSkeletonType.card, HbSkeletonType.dropMenuTop].includes(this.type))
+      return 3;
+    if ([HbSkeletonType.dropMenuBottom].includes(this.type)) return 2;
     return 1;
   }
 
