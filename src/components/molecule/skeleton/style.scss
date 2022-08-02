@@ -20,4 +20,23 @@
     grid-template-columns: 50px;
     grid-template-rows: 30px;
   }
+  @include host-styled('[type="drop-menu-top"]') {
+    display: grid;
+    font-family: var(--font__family);
+    grid-template-columns: 100%;
+    grid-template-rows: 23px 84px 64px;
+    > :nth-child(2) {
+      margin-top: 30px;
+    }
+    > :nth-child(3) {
+      margin-top: 10px;
+    }
+  }
+  @include host-styled('[type="drop-menu-bottom"]') {
+    display: grid;
+    font-family: var(--font__family);
+    grid-template-columns: 100%;
+    grid-template-rows: 40px 40px;
+    gap: 10px;
+  }
 }

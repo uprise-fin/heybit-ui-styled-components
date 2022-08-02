@@ -40,14 +40,20 @@
       &__actions {
         position: absolute;
         right: var(--layout__gutter);
-      }
-      &__hamburber {
-        margin-right: -20px;
-        padding: 20px;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        margin-right: 3px;
+        &__btns {
+          display: flex;
+          hb-button {
+            min-width: 70px;
+          }
+        }
+        &__hamburber {
+          margin-right: -20px;
+          padding: 20px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 19px;
+          margin-right: 3px;
+        }
       }
     }
     &__side-menu {
@@ -107,6 +113,9 @@
     }
   }
   &--mobile {
+    &__skeleton {
+      padding: 20px;
+    }
     &__navibar {
       position: relative;
       display: flex;
@@ -159,6 +168,9 @@
               margin-top: 10px;
             }
           }
+          &__btns {
+            margin-top: 20px;
+          }
         }
         &__menu {
           margin-top: 30px;
@@ -186,7 +198,6 @@
             line-height: 40px;
             font-weight: 400;
             font-size: 14px;
-            line-height: 17px;
             color: var(--black--400);
           }
         }

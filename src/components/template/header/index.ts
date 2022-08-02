@@ -3,6 +3,7 @@ import {Size} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
 import {HbIconName} from '@/components/molecule/icon/type';
 import {HbSkeletonType} from '@/components/molecule/skeleton/type';
+import {HbButtonType, HbButtonTheme} from '@/components/organism/button/type';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbHeaderMyMenu, HbHeaderNavi, HbHeaderUser} from './type';
@@ -37,6 +38,12 @@ export class HbHeader extends Base {
   authMenu: HbHeaderNavi[];
 
   defaultMenu: HbHeaderNavi[];
+
+  get userName() {
+    const {name, loggedIn} = this.user;
+    if (loggedIn) return `${name}님 `;
+    return '';
+  }
 
   get isGnb() {
     if (this.gnb) return this.gnb;
@@ -85,12 +92,10 @@ export class HbHeader extends Base {
         x =>
           html`<hb-button
             @event=${x.event}
-            type=${x.type}
+            type=${HbButtonType.rectangle}
             theme=${x.theme}
-            size=${x.size}
-            >${x.name}${x.chip
-              ? html`<span class="hb-header__chip">${x.chip}</span>`
-              : ''}</hb-button
+            size=${Size.medium}
+            >${x.name}</hb-button
           >`,
       )}
     `;
@@ -107,13 +112,33 @@ export class HbHeader extends Base {
     `;
   }
 
-  get defaultMenuTemplate() {
+  get defaultMenuForDesktopTemplate() {
+    const themes = ['', HbButtonTheme.quaternary];
     return html`
       ${this.isDefaultMenu?.map(
-        x =>
-          html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
-            >${x.name}</hb-anchor
+        (x, i) =>
+          html`<hb-button
+            theme=${themes[i]}
+            type=${HbButtonType.rectangle}
+            size=${Size.medium}
+            @event=${x.event}
+            >${x.name}</hb-button
           >`,
+      )}
+    `;
+  }
+
+  get defaultMenuTemplate() {
+    const themes = [HbButtonTheme.quaternary, HbButtonTheme.primary];
+    return html`
+      ${this.isDefaultMenu?.map(
+        (x, i) => html`<hb-button
+          theme=${themes[i]}
+          size=${Size.large}
+          type=${HbButtonType.rectangle}
+          @event=${x.event}
+          >${x.name}</hb-button
+        >`,
       )}
     `;
   }
@@ -151,20 +176,38 @@ export class HbHeader extends Base {
             type=${HbTransitionType.rightLeft}
           >
             <div class="hb-header--mobile__side-menu__content">
-              <div class="hb-header--mobile__side-menu__content__my">
-                <strong>${this.user?.name}님 환영합니다.</strong>
-                <hb-if ?value=${this.user?.loggedIn}>
-                  <p>${this.user?.email}</p>
-                  <div>${this.myMenuTemplate}</div>
-                </hb-if>
-                <hb-if ?value=${!this.user?.loggedIn}>
-                  <div>${this.defaultMenuTemplate}</div>
-                </hb-if>
-              </div>
+              <hb-if ?value=${this.user?.pending}>
+                <hb-skeleton
+                  class="hb-header--mobile__skeleton"
+                  type=${HbSkeletonType.dropMenuTop}
+                ></hb-skeleton>
+              </hb-if>
+              <hb-if ?value=${!this.user?.pending}>
+                <div class="hb-header--mobile__side-menu__content__my">
+                  <strong>${this.userName}환영합니다.</strong>
+                  <hb-if ?value=${this.user?.loggedIn}>
+                    <p>${this.user?.email}</p>
+                    <div>${this.myMenuTemplate}</div>
+                  </hb-if>
+                  <hb-if ?value=${!this.user?.loggedIn}>
+                    <div
+                      class="hb-header--mobile__side-menu__content__my__btns"
+                    >
+                      ${this.defaultMenuTemplate}
+                    </div>
+                  </hb-if>
+                </div>
+              </hb-if>
               <div class="hb-header--mobile__side-menu__content__menu">
                 ${this.gnbTemplate}
               </div>
-              <hb-if ?value=${this.user?.loggedIn}>
+              <hb-if ?value=${this.user?.pending}>
+                <hb-skeleton
+                  class="hb-header--mobile__skeleton"
+                  type=${HbSkeletonType.dropMenuBottom}
+                ></hb-skeleton>
+              </hb-if>
+              <hb-if ?value=${!this.user?.pending && this.user?.loggedIn}>
                 <div class="hb-header--mobile__side-menu__content__auth">
                   ${this.authMenuTemplate}
                 </div>
@@ -190,23 +233,26 @@ export class HbHeader extends Base {
             <hb-if ?value=${!this.user?.pending}>
               <hb-if ?value=${this.user?.loggedIn}>
                 <hb-button
-                  class="hb-header--desktop__navibar__hamburber"
+                  class="hb-header--desktop__navibar__actions__hamburber"
                   @event=${this.onSideMenu}
-                  >${this.user?.name}님<hb-icon
+                  >${this.userName}<hb-icon
                     icon=${HbIconName['system/outline/arrow-dropdown']}
                     size=${Size.small}
                   ></hb-icon
                 ></hb-button>
               </hb-if>
-              <hb-if ?value=${!this.user?.loggedIn}>
-                ${this.defaultMenuTemplate}
+              <hb-if
+                ?value=${!this.user?.loggedIn}
+                class="hb-header--desktop__navibar__actions__btns"
+              >
+                ${this.defaultMenuForDesktopTemplate}
               </hb-if>
             </hb-if>
           </div>
         </div>
         <hb-transition
           class="hb-header--desktop__side-menu"
-          ?show=${this.sidemenu && this.user?.loggedIn}
+          ?show=${this.sidemenu && this.user?.loggedIn && !this.user?.pending}
           type=${HbTransitionType.fade}
         >
           <!-- <hb-transition
@@ -215,7 +261,7 @@ export class HbHeader extends Base {
           > -->
           <div class="hb-header--desktop__side-menu__content">
             <div class="hb-header--desktop__side-menu__content__my">
-              <strong>${this.user?.name}님 환영합니다.</strong>
+              <strong>${this.userName}환영합니다.</strong>
               <p>${this.user?.email}</p>
             </div>
             <div class="hb-header--desktop__side-menu__content__menu">

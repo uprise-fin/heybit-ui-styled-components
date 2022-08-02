@@ -3,6 +3,7 @@ import {html} from 'lit';
 import './index';
 import type {HbHeader} from './index';
 import {
+  HbHeaderUser,
   initialHeaderAuthMenu,
   initialHeaderDefaultMenu,
   initialHeaderGnb,
@@ -12,32 +13,57 @@ import {
 export default {
   title: 'components/template/hb-header',
   component: 'hb-header',
+  argTypes: {
+    pending: {
+      options: [false, true],
+      control: {type: 'radio'},
+      defaultValue: false,
+    },
+    loggedIn: {
+      options: [false, true],
+      control: {type: 'radio'},
+      defaultValue: false,
+    },
+  },
 } as Meta;
-
+interface HbHeaderExps extends HbHeader {
+  _user: {name: string; email: string};
+  pending: boolean;
+  loggedIn: boolean;
+}
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbHeader> = ({
-  user,
+const Template: Story<HbHeaderExps> = ({
+  _user,
   gnb,
   myMenu,
   authMenu,
   defaultMenu,
   event,
-}) => html` <hb-header
-  @event=${event}
-  .user=${user}
-  .gnb=${gnb}
-  .myMenu=${myMenu}
-  .authMenu=${authMenu}
-  .defaultMenu=${defaultMenu}
-></hb-header>`;
-export const korea: Story<HbHeader> = Template.bind({});
+  pending,
+  loggedIn,
+}) => {
+  const user: HbHeaderUser = {
+    ..._user,
+    pending,
+    loggedIn,
+  };
+  return html` <hb-header
+    @event=${event}
+    .user=${user}
+    .gnb=${gnb}
+    .myMenu=${myMenu}
+    .authMenu=${authMenu}
+    .defaultMenu=${defaultMenu}
+  ></hb-header>`;
+};
+export const korea: Story<HbHeaderExps> = Template.bind({});
 korea.args = {
   event: () => console.log('로고클릭'),
-  user: {
+  loggedIn: false,
+  pending: false,
+  _user: {
     name: '윤창원',
     email: 'matthew@heybit.io',
-    loggedIn: false,
-    pending: true,
   },
   gnb: initialHeaderGnb,
   myMenu: initialHeaderMyMenu,
