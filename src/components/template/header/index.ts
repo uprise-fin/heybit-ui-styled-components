@@ -176,14 +176,11 @@ export class HbHeader extends Base {
             type=${HbTransitionType.rightLeft}
           >
             <div class="hb-header--mobile__side-menu__content">
-              <hb-if ?value=${this.user?.pending}>
-                <hb-skeleton
-                  class="hb-header--mobile__skeleton"
-                  type=${HbSkeletonType.dropMenuTop}
-                ></hb-skeleton>
-              </hb-if>
-              <hb-if ?value=${!this.user?.pending}>
-                <div class="hb-header--mobile__side-menu__content__my">
+              <div class="hb-header--mobile__side-menu__content__my">
+                <hb-if ?value=${this.user?.pending}>
+                  <hb-skeleton type=${HbSkeletonType.dropMenuTop}></hb-skeleton>
+                </hb-if>
+                <hb-if ?value=${!this.user?.pending}>
                   <strong>${this.userName}환영합니다.</strong>
                   <hb-if ?value=${this.user?.loggedIn}>
                     <p>${this.user?.email}</p>
@@ -196,8 +193,8 @@ export class HbHeader extends Base {
                       ${this.defaultMenuTemplate}
                     </div>
                   </hb-if>
-                </div>
-              </hb-if>
+                </hb-if>
+              </div>
               <div class="hb-header--mobile__side-menu__content__menu">
                 ${this.gnbTemplate}
               </div>

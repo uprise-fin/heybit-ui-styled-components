@@ -151,6 +151,7 @@
         margin-left: auto;
         background: var(--white--50);
         &__my {
+          min-height: 190px;
           padding: 20px;
 
           strong {
