@@ -1,6 +1,6 @@
 import {Size} from '@/components/atom/variable/type';
 export interface HbButtonProps {
-  size: Size;
+  size?: Size;
   theme?: HbButtonTheme;
   loading?: boolean;
   type?: HbButtonType;
