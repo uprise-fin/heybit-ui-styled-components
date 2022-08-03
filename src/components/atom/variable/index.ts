@@ -39,6 +39,10 @@ export const basicVariables = {
   layout: {
     gutter: 22,
     media: 780,
+    'content-width': {
+      '--mobile': 460,
+      '--desktop': 1160,
+    },
   },
   border: {
     width: 1,

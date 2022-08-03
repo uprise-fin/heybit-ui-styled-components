@@ -1,6 +1,7 @@
 @import '@/styles/utils/mixins';
 .hb-header {
   @include host-styled {
+    display: block;
     font-family: var(--font__family);
   }
   &__chip {
@@ -14,11 +15,13 @@
     color: var(--orange--500);
   }
   &--desktop {
+    max-width: var(--layout__content-width--desktop);
+    margin: auto;
+    padding: 0 var(--layout__gutter);
     &__navibar {
       position: relative;
       display: flex;
       height: var(--header__height--desktop);
-      padding: 0 var(--layout__gutter);
       align-items: center;
       hb-anchor {
         position: relative;
@@ -39,7 +42,7 @@
       }
       &__actions {
         position: absolute;
-        right: var(--layout__gutter);
+        right: 0;
         &__btns {
           display: flex;
           hb-button {
@@ -52,14 +55,13 @@
           font-weight: 500;
           font-size: 16px;
           line-height: 19px;
-          margin-right: 3px;
         }
       }
     }
     &__side-menu {
       position: absolute;
       top: 77px;
-      right: 38px;
+      right: 60px;
       width: 270px;
       &__content {
         padding: 30px 24px 24px;
@@ -113,18 +115,17 @@
     }
   }
   &--mobile {
-    &__skeleton {
-      padding: 20px;
-    }
+    max-width: var(--layout__content-width--mobile);
+    margin: auto;
+    padding: 0 var(--layout__gutter);
     &__navibar {
       position: relative;
       display: flex;
       height: var(--header__height--mobile);
-      padding: 0 var(--layout__gutter);
       align-items: center;
       hb-button {
         position: absolute;
-        right: var(--layout__gutter);
+        right: 0;
       }
     }
     &__side-menu {

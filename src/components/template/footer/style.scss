@@ -10,6 +10,8 @@
     font-weight: 700 !important;
   }
   &--mobile {
+    max-width: var(--layout__content-width--mobile);
+    margin: auto;
     padding: 30px var(--layout__gutter);
     &__menu {
       margin: 0 0 20px;
@@ -38,6 +40,8 @@
     }
   }
   &--desktop {
+    max-width: var(--layout__content-width--desktop);
+    margin: auto;
     padding: 40px var(--layout__gutter);
     &__routes {
       display: flex;

@@ -1,7 +1,7 @@
 import {Size} from '@/components/atom/variable/type';
 export interface HbButtonProps {
-  theme: HbButtonTheme;
-  size?: Size;
+  size: Size;
+  theme?: HbButtonTheme;
   loading?: boolean;
   type?: HbButtonType;
   baseLoadingDuration?: number;
