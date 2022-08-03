@@ -27,7 +27,7 @@ export class HbHeader extends Base {
     return [require('./style.scss').default];
   }
 
-  user?: HbHeaderUser;
+  user: HbHeaderUser;
 
   sidemenu = false;
 
@@ -40,7 +40,8 @@ export class HbHeader extends Base {
   defaultMenu: HbHeaderNavi[];
 
   get userName() {
-    const {name, loggedIn} = this.user;
+    const name = this.user?.name;
+    const loggedIn = this.user?.loggedIn;
     if (loggedIn) return `${name}님 `;
     return '';
   }
