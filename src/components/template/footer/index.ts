@@ -67,7 +67,7 @@ export class HbFooter extends Base {
   }
 
   get upriseInfoTemplate() {
-    return html` ${this.upriseInfo.map(x => html`<p>${x}</p>`)} `;
+    return html` ${this.upriseInfo?.map(x => html`<p>${x}</p>`)} `;
   }
 
   render() {

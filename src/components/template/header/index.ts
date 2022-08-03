@@ -27,7 +27,7 @@ export class HbHeader extends Base {
     return [require('./style.scss').default];
   }
 
-  user: HbHeaderUser;
+  user?: HbHeaderUser;
 
   sidemenu = false;
 
