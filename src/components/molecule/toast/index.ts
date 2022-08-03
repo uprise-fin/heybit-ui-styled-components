@@ -31,7 +31,7 @@ export class HbToast extends Base {
 
   now: number = 0;
 
-  messages: HbToastMessage[] = [];
+  messages?: HbToastMessage[];
 
   timer: Timer[] = [];
 
@@ -50,7 +50,7 @@ export class HbToast extends Base {
   }
 
   get messagesTrigger() {
-    if (!this.messages.length) {
+    if (!this.messages?.length) {
       this.timer = [];
       return [];
     }
