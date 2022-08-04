@@ -150,7 +150,7 @@ export class HbHeader extends Base {
 
   render() {
     return html`<hb-responsive>
-      <div slot="mobile" class="hb-header--mobile">
+      <div slot="mobile" part="mobile" class="hb-header--mobile">
         <div class="hb-header--mobile__navibar">
           <hb-anchor @event=${this.onEvent}
             ><hb-icon
@@ -214,7 +214,7 @@ export class HbHeader extends Base {
           </hb-transition>
         </hb-transition>
       </div>
-      <div slot="desktop" class="hb-header--desktop">
+      <div slot="desktop" part="desktop" class="hb-header--desktop">
         <div class="hb-header--desktop__navibar">
           <hb-anchor @event=${this.onEvent}
             ><hb-icon
