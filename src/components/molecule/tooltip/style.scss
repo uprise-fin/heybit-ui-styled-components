@@ -20,8 +20,13 @@
   &__content {
     position: absolute;
     display: block;
-    white-space: nowrap;
-    border: 1px solid red;
-    background: var(--box__background);
+    min-width: 250px;
+    padding: 18px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1;
+    box-shadow: 0 4px 10px 0 rgba(#000, 0.2);
+    border: 1px solid #000;
+    background-color: #fff;
   }
 }
