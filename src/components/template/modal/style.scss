@@ -7,6 +7,7 @@
   }
 
   &__wrap {
+    z-index: var(--modal__zIndex);
     position: fixed;
     top: 0;
     right: 0;
