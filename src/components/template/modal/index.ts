@@ -109,8 +109,8 @@ export class HbModal extends Base {
   adapterOnClose() {
     if (this.persistent) return this.classList.add('shake');
 
-    // this.dispatchEvent(new CustomEvent('close'));
-    this.onEvent(new CustomEvent('event'));
+    this.dispatchEvent(new CustomEvent('close'));
+    // this.onEvent(new CustomEvent('event'));
   }
 }
 

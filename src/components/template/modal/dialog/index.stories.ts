@@ -44,7 +44,7 @@ const Template = (props: HbDialogExpns) => html`
     }
   </style>
   <hb-dialog
-    @close=${function () {
+    @event=${function () {
       console.log('djakldjawlkjadwlk');
     }}
     width=${props.width}
