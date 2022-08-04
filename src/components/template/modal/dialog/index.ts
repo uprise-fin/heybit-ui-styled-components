@@ -131,7 +131,7 @@ export class HbDialog extends Base {
           </div>
           <div class="hb-dialog__foot">
             <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
-              ${this.buttons.map(
+              ${this.buttons?.map(
                 (x, i) =>
                   html`<hb-button
                     ?loading=${this.loading || x.loading}

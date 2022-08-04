@@ -47,7 +47,7 @@ const Template: Story<HbHeaderExps> = ({
     pending,
     loggedIn,
   };
-  return html` <hb-header
+  return html`<hb-header
     @event=${event}
     .user=${user}
     .gnb=${gnb}

@@ -5,7 +5,7 @@ import {HbIconName} from '@/components/molecule/icon/type';
 import {HbButtonProps} from '@/components/organism/button/type';
 export interface HbModalProps {
   open: boolean;
-  transitionType: HbTransitionType;
+  transitionType?: HbTransitionType;
   verticalAlign?: VerticalAlign;
   horizonAlign?: HorizonAlign;
   width?: number;
