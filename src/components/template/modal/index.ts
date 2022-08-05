@@ -1,4 +1,4 @@
-import {HbTransitionType} from '@/';
+import {HbTransitionType} from '@/index';
 import {HorizonAlign, VerticalAlign} from '@/const';
 import {Base} from '@/components/base';
 import {getElement} from '@/utils';

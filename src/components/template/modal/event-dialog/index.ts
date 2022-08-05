@@ -1,4 +1,4 @@
-import {HbTransitionType} from '@/';
+import {HbTransitionType} from '@/index';
 import {Base} from '@/components/base';
 import {HbIconName} from '@/const';
 import {html} from 'lit';

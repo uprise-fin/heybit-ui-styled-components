@@ -8,7 +8,7 @@ import {
   initialHeaderGnb,
   initialHeaderMyMenu,
 } from '@/const';
-import type {HbHeaderUser} from '@/';
+import type {HbHeaderUser} from '@/index';
 export default {
   title: 'components/template/hb-header',
   component: 'hb-header',

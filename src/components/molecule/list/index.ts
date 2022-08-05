@@ -1,7 +1,7 @@
 import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import type {HbListEvent, HbListOption} from '@/';
+import type {HbListEvent, HbListOption} from '@/index';
 
 /**
  * @fires event

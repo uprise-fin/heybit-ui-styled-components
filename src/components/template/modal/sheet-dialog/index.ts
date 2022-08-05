@@ -6,7 +6,7 @@ import {
   HbTransitionType,
   VerticalAlign,
 } from '@/const';
-import type {HbDialogAnchor, HbDialogButton} from '@/';
+import type {HbDialogAnchor, HbDialogButton} from '@/index';
 import {wait} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';

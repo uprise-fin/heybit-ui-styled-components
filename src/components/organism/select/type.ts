@@ -1,4 +1,4 @@
-import {HbListOption} from '@/';
+import {HbListOption} from '@/index';
 
 export interface HbSelectProps {
   open: boolean;

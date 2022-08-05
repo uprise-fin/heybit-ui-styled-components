@@ -1,4 +1,4 @@
-import type {HbAnchorProps} from '@/';
+import type {HbAnchorProps} from '@/index';
 import {HbIconName} from '@/const';
 export interface HbFooterMenu extends HbAnchorProps {
   name: string;
