@@ -4,28 +4,30 @@
   @include host-styled {
     display: flex;
     align-items: center;
-    padding: 0 var(--input__padding__right) 0 var(--input__padding__left);
+    padding: 0 var(--husc__input__padding__right) 0
+      var(--husc__input__padding__left);
     cursor: text;
-    font-family: var(--font__family);
-    border: var(--input__border__width) solid var(--input__border__color);
-    border-radius: var(--border__radius);
-    background: var(--background__color);
+    font-family: var(--husc__font__family);
+    border: var(--husc__input__border__width) solid
+      var(--husc__input__border__color);
+    border-radius: var(--husc__border__radius);
+    background: var(--husc__background__color);
   }
   @include host-styled([error]) {
-    border-color: var(--input__border__color--error);
-    // background: var(--background__color);
+    border-color: var(--husc__input__border__color--error);
+    // background: var(--husc__background__color);
   }
   &__el {
     width: 0;
     flex: 1;
-    height: var(--input__height);
+    height: var(--husc__input__height);
     padding: 0;
-    font-size: var(--input__font__size);
+    font-size: var(--husc__input__font__size);
     box-sizing: border-box;
     border: 0;
     outline: none;
     cursor: inherit;
-    box-shadow: 0 0 0 999px var(--background__color) inset;
+    box-shadow: 0 0 0 999px var(--husc__background__color) inset;
     // @include child-styled([error]) {
     //   box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
     // }

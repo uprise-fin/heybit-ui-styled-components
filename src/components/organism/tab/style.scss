@@ -3,7 +3,7 @@
 .hb-tab {
   @include host-styled {
     display: block;
-    font-family: var(--font__family);
+    font-family: var(--husc__font__family);
   }
   &__header {
     display: inline-block;
@@ -24,8 +24,8 @@
       height: 2px;
       margin-top: -2px;
       background: #000;
-      transition: width var(--transition__duration--ms),
-        transform var(--transition__duration--ms);
+      transition: width var(--husc__transition__duration--ms),
+        transform var(--husc__transition__duration--ms);
     }
   }
   &__content {

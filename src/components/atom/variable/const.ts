@@ -1,4 +1,4 @@
-import {Level} from '@/';
+import {Level} from './type';
 import Matercolor from 'matercolors';
 
 export const levels: Level[] = [
@@ -45,6 +45,8 @@ export const colors = {
   [ServiceColor.harvest]: '#039985',
   [ServiceColor.defi]: '#6d40c6',
 };
+export const prefix = 'husc';
+
 export const colorPalette = Object.entries(colors).reduce(
   (a, [name, color]) => ({
     ...a,
@@ -211,38 +213,3 @@ export const componentVariables = {
     },
   },
 };
-function setProperty(key: string, value: string) {
-  document.documentElement.style.setProperty(key, value);
-}
-function setGroupProperty(obj: Object, group?: string) {
-  Object.entries(obj).map(([key, val]) => {
-    group = group || '';
-    // const divider = group ? (key.indexOf('--') === 0 ? '' : '__') : '';
-    const divider = group && key.indexOf('--') !== 0 ? '__' : '';
-    if (typeof val === 'string') setProperty(`--${group}${divider}${key}`, val);
-    else if (typeof val === 'number')
-      setProperty(`--${group}${divider}${key}`, val + 'px');
-    else setGroupProperty(val, `${group}${divider}${key}`);
-  });
-}
-export function setRootStyleProperty() {
-  if (
-    !document.documentElement.style.getPropertyValue(`--${colorPalette.black}`)
-  ) {
-    // pallete
-    Object.entries(colorPalette).forEach(
-      ([origin, obj]: [Color, Matercolor]) => {
-        setProperty(`--${origin}`, colors[origin]);
-        Object.entries(obj).forEach(([level, color]) => {
-          if (!(+level > 0)) return;
-          if (colors[origin] === color)
-            setProperty(`--${origin}--primary`, level);
-          setProperty(`--${origin}--${level}`, color);
-        });
-      },
-    );
-
-    // another variables
-    setGroupProperty({...basicVariables, ...componentVariables});
-  }
-}

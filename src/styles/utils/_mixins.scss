@@ -110,10 +110,10 @@
 //   @return 700;
 // }
 // @function getHoverColor($color, $level, $amount: -2) {
-//   @return var(--#{$color}__#{getLevel($level, $amount)});
+//   @return var(--husc__#{$color}__#{getLevel($level, $amount)});
 // }
 // @function getActiveColor($color, $level, $amount: 1) {
-//   @return var(--#{$color}__#{getLevel($level, $amount)});
+//   @return var(--husc__#{$color}__#{getLevel($level, $amount)});
 // }
 
 // @mixin initial($selector) {

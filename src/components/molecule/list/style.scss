@@ -3,8 +3,9 @@
 %option {
   display: flex;
   width: 100%;
-  height: var(--list__height);
-  padding: 0 var(--list__padding__right) 0 var(--list__padding__left);
+  height: var(--husc__list__height);
+  padding: 0 var(--husc__list__padding__right) 0
+    var(--husc__list__padding__left);
   border: 0;
   align-items: center;
   font-size: inherit;
@@ -13,10 +14,10 @@
   background: none;
   &:focus,
   &:hover {
-    background: var(--black--50);
+    background: var(--husc__black--50);
   }
   &[data-selected] {
-    background: var(--black--100);
+    background: var(--husc__black--100);
   }
   &[hidden] {
     display: none;
@@ -27,17 +28,18 @@
   @include host-styled {
     overflow: hidden;
     display: block;
-    font-size: var(--list__font__size);
-    font-family: var(--font__family);
-    border-radius: var(--border__radius);
-    border: var(--list__border__width) solid var(--list__border__color);
+    font-size: var(--husc__list__font__size);
+    font-family: var(--husc__font__family);
+    border-radius: var(--husc__border__radius);
+    border: var(--husc__list__border__width) solid
+      var(--husc__list__border__color);
     box-sizing: border-box;
   }
 
   &__wrap {
     overflow: auto;
     max-height: inherit;
-    background: var(--background__color);
+    background: var(--husc__background__color);
     &:empty {
       &::after {
         content: attr(data-empty-text);

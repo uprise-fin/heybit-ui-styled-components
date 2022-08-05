@@ -4,12 +4,12 @@
   @include host-styled {
     display: block;
     overflow: hidden;
-    font-family: var(--font__family);
+    font-family: var(--husc__font__family);
     white-space: nowrap;
   }
   &__wrap {
     font-size: 0;
-    transition: transform var(--type) var(--duration);
+    transition: transform var(--husc__type) var(--husc__duration);
     will-change: transform;
   }
 
