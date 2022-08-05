@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: {
     'src/style': [path.resolve(__dirname, './src/styles/index.scss')],
-    'src/index': [path.resolve(__dirname, './src/type.ts')],
+    'src/type': [path.resolve(__dirname, './src/type.ts')],
     'src/const': [path.resolve(__dirname, './src/const.ts')],
     'src/module': [path.resolve(__dirname, './src/module.ts')],
   },

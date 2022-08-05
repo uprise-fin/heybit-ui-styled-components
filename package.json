@@ -5,7 +5,7 @@
   "files": [
     "dist/src/**"
   ],
-  "main": "dist/src/index.js",
+  "main": "dist/src/type.js",
   "keywords": [
     "front-end",
     "uprise-fin",
