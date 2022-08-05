@@ -4,7 +4,7 @@ import {
   HorizonAlign,
   VerticalAlign,
 } from '@/const';
-import {HbAnchorProps, HbButtonProps} from '@/type';
+import {HbAnchorProps, HbButtonProps} from '@/';
 export interface HbModalProps {
   open: boolean;
   transitionType?: HbTransitionType;

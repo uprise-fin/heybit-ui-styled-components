@@ -1,7 +1,7 @@
 import {HbTransitionType} from '@/components/atom/transition/const';
 import {Base} from '@/components/base';
 import {HbButtonType, HbIconName, HbModalButtonAlign} from '@/const';
-import type {HbDialogAnchor, HbDialogButton} from '@/type';
+import type {HbDialogAnchor, HbDialogButton} from '@/';
 import {wait} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';

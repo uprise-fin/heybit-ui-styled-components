@@ -1,6 +1,6 @@
 import {Base} from '@/components/base';
 import {HbIconName, Size, HbTransitionType} from '@/const';
-import type {HbListOption} from '@/type';
+import type {HbListOption} from '@/';
 import {HbList} from '@/components/molecule/list';
 import {HbInput} from '@/components/organism/input';
 import {getElement} from '@/utils';

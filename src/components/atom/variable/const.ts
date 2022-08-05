@@ -1,4 +1,4 @@
-import {Level} from '@/type';
+import {Level} from '@/';
 import Matercolor from 'matercolors';
 
 export const levels: Level[] = [

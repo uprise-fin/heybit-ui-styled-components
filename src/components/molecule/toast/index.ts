@@ -6,7 +6,7 @@ import {componentVariables} from '@/const';
 import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import type {HbToastMessage} from '@/type';
+import type {HbToastMessage} from '@/';
 
 /**
  * @property open 온 오프

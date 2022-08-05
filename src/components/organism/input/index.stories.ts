@@ -4,7 +4,7 @@ import {dev} from '@/utils';
 import './index';
 import type {HbInput} from './index';
 import {HbInputType} from '@/const';
-import type {HbInputEvent} from '@/type';
+import type {HbInputEvent} from '@/';
 
 export default dev() &&
   ({

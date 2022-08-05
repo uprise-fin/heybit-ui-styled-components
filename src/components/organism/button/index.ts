@@ -4,7 +4,7 @@ import {wait} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbButtonTheme, HbButtonType, Size} from '@/const';
-import type {HbButtonProps} from '@/type';
+import type {HbButtonProps} from '@/';
 
 /**
  * @fires event 클릭할때

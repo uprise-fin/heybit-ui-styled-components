@@ -2,7 +2,7 @@ import {Base} from '@/components/base';
 import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import type {HbInputEvent} from '@/type';
+import type {HbInputEvent} from '@/';
 import {HbInputType} from '@/const';
 
 /**
