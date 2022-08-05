@@ -1,4 +1,4 @@
-import {HbListOption} from '@/components/molecule/list/type';
+import {HbListOption} from '@/type';
 
 export interface HbSelectProps {
   open: boolean;

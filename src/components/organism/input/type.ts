@@ -1,4 +1,5 @@
 import type {HbInput} from '.';
+import {HbInputType} from './const';
 export interface HbInputProps {
   value: string;
   attributeSync?: boolean;
@@ -9,15 +10,6 @@ export interface HbInputProps {
   decimal?: number;
   error?: boolean;
   readonly?: boolean;
-}
-export enum HbInputType {
-  text = 'text',
-  number = 'number',
-  password = 'password',
-}
-export enum HbInputSlots {
-  'slot--left' = 'slot--left',
-  'slot--right' = 'slot--right',
 }
 export interface HbInputEvent extends InputEvent {
   target: HbInput;

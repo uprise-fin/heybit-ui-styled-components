@@ -1,4 +1,4 @@
-import {HbSkeletonType} from '@/components/molecule/skeleton/type';
+import {HbSkeletonType} from '@/const';
 import {dev} from '@/utils';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';

@@ -7,7 +7,7 @@ import {
   initialFooterMenu,
   initialFooterSocialMenu,
   initialFooterUpriseInfo,
-} from './type';
+} from '@/const';
 
 export default {
   title: 'components/template/hb-footer',

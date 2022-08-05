@@ -7,7 +7,8 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: {
     'src/style': [path.resolve(__dirname, './src/styles/index.scss')],
-    'src/index': [path.resolve(__dirname, './src/index.ts')],
+    'src/index': [path.resolve(__dirname, './src/type.ts')],
+    'src/const': [path.resolve(__dirname, './src/const.ts')],
     'src/module': [path.resolve(__dirname, './src/module.ts')],
   },
   module: {
@@ -72,9 +73,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].js',
-    library: 'heybit-ui-styled-components',
-    libraryExport: 'default',
-    libraryTarget: 'umd',
+    library: {
+      name: 'heybit-ui-styled-components',
+      type: 'umd',
+    },
     globalObject: 'this',
     umdNamedDefine: true,
   },

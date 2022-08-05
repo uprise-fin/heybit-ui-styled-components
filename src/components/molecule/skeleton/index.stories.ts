@@ -2,7 +2,7 @@ import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import './index';
 import type {HbSkeleton} from './index';
-import {HbSkeletonType} from './type';
+import {HbSkeletonType} from '@/const';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {

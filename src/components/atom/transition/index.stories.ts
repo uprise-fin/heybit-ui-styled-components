@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {HbTransitionType} from './type';
+import {HbTransitionType} from '@/const';
 import './index';
 import type {HbTransition} from './index';
 

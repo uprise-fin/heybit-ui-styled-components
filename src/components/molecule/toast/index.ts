@@ -1,13 +1,12 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {Size} from '@/components/atom/variable/type';
+import {HbTransitionType} from '@/components/atom/transition/const';
 // import style from '@/styles/molecule/toast/index.scss';
 import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {componentVariables} from '@/module';
+import {HbIconName, HbToastTheme, Size} from '@/const';
+import {componentVariables} from '@/const';
 import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbToastMessage, HbToastTheme} from './type';
+import type {HbToastMessage} from '@/type';
 
 /**
  * @property open 온 오프

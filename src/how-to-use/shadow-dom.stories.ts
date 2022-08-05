@@ -1,7 +1,7 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import type {HbButton} from '@/components/organism/button';
-import {HbButtonType} from '@/components/organism/button/type';
+import {HbButtonType} from '@/const';
 export default {
   title: 'how-to-use/shadow-dom',
 } as Meta;

@@ -1,10 +1,9 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {Size} from '@/components/atom/variable/type';
-import {HbButtonTheme, HbButtonType} from '@/components/organism/button/type';
+import {HbButtonTheme, HbButtonType, Size} from '@/const';
 import './index';
 import type {HbButton} from './index';
-import {HbIconName} from '@/components/molecule/icon/type';
+import {HbIconName} from '@/const';
 
 export default {
   title: 'components/organism/hb-button',

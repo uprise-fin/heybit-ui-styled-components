@@ -1,10 +1,9 @@
-import {Size} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
 import SVG from './svg';
-import {HbIconName} from './type';
+import {HbIconName, Size} from '@/const';
 
 /**
  * @property open 온 오프

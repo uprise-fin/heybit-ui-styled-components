@@ -1,8 +1,10 @@
-import {HbAnchorProps} from '@/components/atom/anchor/type';
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {HorizonAlign, VerticalAlign} from '@/components/atom/variable/type';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {HbButtonProps} from '@/components/organism/button/type';
+import {
+  HbIconName,
+  HbTransitionType,
+  HorizonAlign,
+  VerticalAlign,
+} from '@/const';
+import {HbAnchorProps, HbButtonProps} from '@/type';
 export interface HbModalProps {
   open: boolean;
   transitionType?: HbTransitionType;
@@ -28,9 +30,4 @@ export interface HbDialogButton extends HbButtonProps {
 }
 export interface HbDialogAnchor extends HbAnchorProps {
   name: string;
-}
-
-export enum HbModalButtonAlign {
-  'vertical' = 'vertical',
-  'horizon' = 'horizon',
 }

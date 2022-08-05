@@ -1,5 +1,5 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {HorizonAlign, VerticalAlign} from '@/components/atom/variable/type';
+import {HbTransitionType} from '@/type';
+import {HorizonAlign, VerticalAlign} from '@/const';
 import {Base} from '@/components/base';
 import {getElement} from '@/utils';
 import {html} from 'lit';

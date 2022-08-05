@@ -3,7 +3,8 @@ import {html} from 'lit';
 import {dev} from '@/utils';
 import './index';
 import type {HbInput} from './index';
-import {HbInputEvent, HbInputType} from './type';
+import {HbInputType} from '@/const';
+import type {HbInputEvent} from '@/type';
 
 export default dev() &&
   ({

@@ -1,12 +1,7 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
+import {HbTransitionType} from '@/components/atom/transition/const';
 import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {HbButtonType} from '@/components/organism/button/type';
-import {
-  HbDialogAnchor,
-  HbDialogButton,
-  HbModalButtonAlign,
-} from '@/components/template/modal/type';
+import {HbButtonType, HbIconName, HbModalButtonAlign} from '@/const';
+import type {HbDialogAnchor, HbDialogButton} from '@/type';
 import {wait} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';

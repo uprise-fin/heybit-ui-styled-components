@@ -1,14 +1,10 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {Size} from '@/components/atom/variable/type';
+import {HbTransitionType} from '@/components/atom/transition/const';
 import {InitAttribute} from '@/components/base';
-import {
-  HbButtonProps,
-  HbButtonTheme,
-  HbButtonType,
-} from '@/components/organism/button/type';
 import {wait} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {HbButtonTheme, HbButtonType, Size} from '@/const';
+import type {HbButtonProps} from '@/type';
 
 /**
  * @fires event 클릭할때

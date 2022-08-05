@@ -3,13 +3,12 @@ import {html} from 'lit';
 import './index';
 import type {HbHeader} from './index';
 import {
-  HbHeaderUser,
   initialHeaderAuthMenu,
   initialHeaderDefaultMenu,
   initialHeaderGnb,
   initialHeaderMyMenu,
-} from './type';
-
+} from '@/const';
+import type {HbHeaderUser} from '@/type';
 export default {
   title: 'components/template/hb-header',
   component: 'hb-header',

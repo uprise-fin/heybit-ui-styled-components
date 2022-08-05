@@ -1,7 +1,7 @@
 import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbTransitionType} from './type';
+import {HbTransitionType} from '@/const';
 
 @customElement('hb-transition')
 export class HbTransition extends Base {

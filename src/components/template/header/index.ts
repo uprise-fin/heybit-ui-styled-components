@@ -1,9 +1,12 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {Size} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {HbSkeletonType} from '@/components/molecule/skeleton/type';
-import {HbButtonType, HbButtonTheme} from '@/components/organism/button/type';
+import {
+  HbTransitionType,
+  Size,
+  HbButtonType,
+  HbButtonTheme,
+  HbSkeletonType,
+  HbIconName,
+} from '@/const';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbHeaderMyMenu, HbHeaderNavi, HbHeaderUser} from './type';

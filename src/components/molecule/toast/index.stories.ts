@@ -1,10 +1,8 @@
-import {Size} from '@/components/atom/variable/type';
+import {Size, HbButtonTheme, HbButtonType, HbToastTheme} from '@/const';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {HbButtonTheme, HbButtonType} from '@/components/organism/button/type';
 import './index';
 import type {HbToast} from './index';
-import {HbToastTheme} from './type';
 
 export default {
   title: 'components/molecule/hb-toast',

@@ -4,8 +4,7 @@ import './index';
 import type {HbDialog} from './index';
 import desktopImg from '~/static/sample-desktop.png';
 import thunderImg from '~/static/sample-thunder.svg';
-import {HbButtonTheme} from '@/components/organism/button/type';
-import {HbModalButtonAlign} from '@/components/template/modal/type';
+import {HbModalButtonAlign, HbButtonTheme} from '@/const';
 interface HbDialogExpns extends HbDialog {
   content: string;
 }

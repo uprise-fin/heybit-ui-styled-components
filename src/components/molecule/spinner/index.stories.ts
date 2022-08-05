@@ -1,5 +1,4 @@
-import {colorPalette} from '@/components/atom/variable';
-import {Size, SystemColor} from '@/components/atom/variable/type';
+import {colorPalette, SystemColor, Size} from '@/const';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 

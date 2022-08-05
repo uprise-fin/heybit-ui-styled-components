@@ -1,11 +1,9 @@
-import {colorPalette} from '@/components/atom/variable';
-import {Size, SystemColor} from '@/components/atom/variable/type';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import './index';
 import type {HbIcon} from './index';
 import SVG from './svg';
-import {HbIconName} from './type';
+import {HbIconName, colorPalette, Size, SystemColor} from '@/const';
 interface HbIconExpns extends HbIcon {
   color: string;
 }

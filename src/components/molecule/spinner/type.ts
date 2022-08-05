@@ -1,9 +1,5 @@
-import {Size} from '@/components/atom/variable/type';
+import {Size} from '@/const';
 
 export interface HbSpinnerProps {
   size: Size;
-}
-export enum HbSpinnerTheme {
-  'void' = 'void',
-  'solid' = 'solid',
 }

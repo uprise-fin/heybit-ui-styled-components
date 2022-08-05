@@ -1,7 +1,7 @@
 import {Base} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {basicVariables} from '@/components/atom/variable';
+import {basicVariables} from '@/const';
 
 @customElement('hb-responsive')
 export class HbResponsive extends Base {

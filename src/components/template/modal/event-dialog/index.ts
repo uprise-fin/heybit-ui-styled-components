@@ -1,6 +1,6 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
+import {HbTransitionType} from '@/type';
 import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
+import {HbIconName} from '@/const';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 

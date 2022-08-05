@@ -1,9 +1,7 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {Size} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
+import {HbIconName, Size, HbTransitionType} from '@/const';
+import type {HbListOption} from '@/type';
 import {HbList} from '@/components/molecule/list';
-import {HbListOption} from '@/components/molecule/list/type';
 import {HbInput} from '@/components/organism/input';
 import {getElement} from '@/utils';
 import {html} from 'lit';

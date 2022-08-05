@@ -3,7 +3,7 @@ export * from '@/components/atom/delay/type';
 export * from '@/components/atom/if/type';
 export * from '@/components/atom/loading/type';
 export * from '@/components/atom/responsive/type';
-export * from '@/components/atom/transition/type';
+export * from '@/components/atom/transition/const';
 export * from '@/components/atom/variable/type';
 export * from '@/components/molecule/icon/type';
 export * from '@/components/molecule/img/type';

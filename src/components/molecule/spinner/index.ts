@@ -1,4 +1,4 @@
-import {Size} from '@/components/atom/variable/type';
+import {Size} from '@/const';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {Base} from '@/components/base';
