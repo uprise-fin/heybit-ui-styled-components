@@ -1,11 +1,11 @@
 {
   "name": "heybit-ui-styled-components",
   "customElements": "custom-elements.json",
-  "version": "0.26.20",
+  "version": "0.26.21",
   "files": [
     "dist/src/**"
   ],
-  "main": "dist/src/type.js",
+  "main": "dist/src/index.js",
   "keywords": [
     "front-end",
     "uprise-fin",
