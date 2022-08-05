@@ -73,6 +73,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].js',
     library: 'heybit-ui-styled-components',
+    libraryExport: 'default',
     libraryTarget: 'umd',
     globalObject: 'this',
     umdNamedDefine: true,
