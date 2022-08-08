@@ -1,4 +1,4 @@
-import {Size} from '@/components/atom/variable/type';
+import type {Size} from '@/components/atom/variable/type';
 export interface HbIconProps {
   icon: HbIconName;
   size: Size;

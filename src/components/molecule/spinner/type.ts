@@ -1,4 +1,4 @@
-import {Size} from '@/components/atom/variable/type';
+import type {Size} from '@/index';
 
 export interface HbSpinnerProps {
   size: Size;

@@ -31,6 +31,7 @@ function setGroupProperty(obj: Object, group?: string) {
     else setGroupProperty(val, `${group}${divider}${key}`);
   });
 }
+
 export default (function setRootStyleProperty() {
   if (
     !document.documentElement.style.getPropertyValue(

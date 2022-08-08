@@ -1,16 +1,14 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
 import {
+  HbTransitionType,
   componentVariables,
   VerticalAlign,
-} from '@/components/atom/variable/type';
-import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {HbButtonType} from '@/components/organism/button/type';
-import {
-  HbDialogAnchor,
-  HbDialogButton,
+  HbIconName,
+  HbButtonType,
   HbModalButtonAlign,
-} from '@/components/template/modal/type';
+  type HbDialogAnchor,
+  type HbDialogButton,
+} from '@/index';
+import {Base} from '@/components/base';
 import {wait} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';

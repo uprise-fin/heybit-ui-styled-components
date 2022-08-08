@@ -1,5 +1,4 @@
-import {HbAnchorProps} from '@/components/atom/anchor/type';
-import {HbIconName} from '@/components/molecule/icon/type';
+import {HbIconName, type HbAnchorProps} from '@/index';
 export interface HbFooterMenu extends HbAnchorProps {
   name: string;
   accent?: true;

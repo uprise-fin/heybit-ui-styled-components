@@ -1,8 +1,11 @@
-import {HbAnchorProps} from '@/components/atom/anchor/type';
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {HorizonAlign, VerticalAlign} from '@/components/atom/variable/type';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {HbButtonProps} from '@/components/organism/button/type';
+import type {
+  HbButtonProps,
+  HbAnchorProps,
+  HbTransitionType,
+  HorizonAlign,
+  VerticalAlign,
+  HbIconName,
+} from '@/index';
 export interface HbModalProps {
   open: boolean;
   transitionType?: HbTransitionType;

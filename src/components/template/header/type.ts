@@ -1,5 +1,4 @@
-import {HbAnchorProps} from '@/components/atom/anchor/type';
-import {Size} from '@/components/atom/variable/type';
+import {Size, type HbAnchorProps} from '@/index';
 import {
   HbButtonProps,
   HbButtonTheme,
