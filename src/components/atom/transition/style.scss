@@ -9,8 +9,8 @@
 }
 .hb-transition {
   @include host-styled("[type='fade']") {
-    animation: hide-fade var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-end--ms);
+    animation: hide-fade var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-end--ms);
     @keyframes hide-fade {
       0% {
         display: block;
@@ -26,8 +26,8 @@
   }
 
   @include host-styled("[show][type='fade']") {
-    animation: show-fade var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-start--ms);
+    animation: show-fade var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-start--ms);
     @keyframes show-fade {
       0% {
         display: block;
@@ -42,8 +42,8 @@
     }
   }
   @include host-styled("[type='zoom']") {
-    animation: hide-zoom var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-end--ms);
+    animation: hide-zoom var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-end--ms);
     @keyframes hide-zoom {
       0% {
         display: block;
@@ -59,8 +59,8 @@
   }
 
   @include host-styled("[show][type='zoom']") {
-    animation: show-zoom var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-start--ms);
+    animation: show-zoom var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-start--ms);
     @keyframes show-zoom {
       0% {
         display: block;
@@ -75,13 +75,13 @@
     }
   }
   @include host-styled("[type='bottom-up-height']") {
-    animation: hide-bottom-up-height var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-end--ms);
+    animation: hide-bottom-up-height var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-end--ms);
     transform-origin: bottom;
     @keyframes hide-bottom-up-height {
       0% {
         display: block;
-        height: var(--transition__height--bottom-up-height);
+        height: var(--husc__transition__height--bottom-up-height);
         transform: translateY(0);
         transform-origin: bottom;
         will-change: transform;
@@ -97,8 +97,8 @@
   }
 
   @include host-styled("[show][type='bottom-up-height']") {
-    animation: show-bottom-up-height var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-start--ms);
+    animation: show-bottom-up-height var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-start--ms);
     @keyframes show-bottom-up-height {
       0% {
         display: block;
@@ -109,7 +109,7 @@
       }
       100% {
         display: block;
-        height: var(--transition__height--bottom-up-height);
+        height: var(--husc__transition__height--bottom-up-height);
         transform: translateY(0);
         transform-origin: bottom;
         will-change: unset;
@@ -117,8 +117,8 @@
     }
   }
   @include host-styled("[type='bottom-up']") {
-    animation: hide-bottom-up var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-end--ms);
+    animation: hide-bottom-up var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-end--ms);
     transform-origin: bottom;
     @keyframes hide-bottom-up {
       0% {
@@ -137,8 +137,8 @@
   }
 
   @include host-styled("[show][type='bottom-up']") {
-    animation: show-bottom-up var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-start--ms);
+    animation: show-bottom-up var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-start--ms);
     @keyframes show-bottom-up {
       0% {
         display: block;
@@ -155,8 +155,8 @@
     }
   }
   @include host-styled("[type='top-down']") {
-    animation: hide-top-down var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-end--ms);
+    animation: hide-top-down var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-end--ms);
     transform-origin: top;
     @keyframes hide-top-down {
       0% {
@@ -175,8 +175,8 @@
   }
 
   @include host-styled("[show][type='top-down']") {
-    animation: show-top-down var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-start--ms);
+    animation: show-top-down var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-start--ms);
     @keyframes show-top-down {
       0% {
         display: block;
@@ -193,8 +193,8 @@
     }
   }
   @include host-styled("[type='right-left']") {
-    animation: hide-right-left var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-end--ms);
+    animation: hide-right-left var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-end--ms);
     @keyframes hide-right-left {
       0% {
         display: block;
@@ -210,8 +210,8 @@
   }
 
   @include host-styled("[show][type='right-left']") {
-    animation: show-right-left var(--transition__duration--ms);
-    animation-delay: var(--transition__delay-start--ms);
+    animation: show-right-left var(--husc__transition__duration--ms);
+    animation-delay: var(--husc__transition__delay-start--ms);
     @keyframes show-right-left {
       0% {
         display: block;

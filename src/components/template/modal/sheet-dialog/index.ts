@@ -1,5 +1,8 @@
 import {HbTransitionType} from '@/components/atom/transition/type';
-import {VerticalAlign} from '@/components/atom/variable/type';
+import {
+  componentVariables,
+  VerticalAlign,
+} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
 import {HbIconName} from '@/components/molecule/icon/type';
 import {HbButtonType} from '@/components/organism/button/type';
@@ -38,7 +41,7 @@ export class HbSheetDialog extends Base {
 
   baseLoadingDuration = 500;
 
-  width = 0;
+  width = componentVariables.modal.width;
 
   open = false;
 

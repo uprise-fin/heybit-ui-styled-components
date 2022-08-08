@@ -4,9 +4,11 @@
   &__container {
     position: relative;
     overflow: auto;
-    max-height: calc(100vh - var(--modal__margin) - var(--modal__margin));
-    border-radius: calc(var(--border__radius) * 3);
-    background: var(--modal__background);
+    max-height: calc(
+      100vh - var(--husc__modal__margin) - var(--husc__modal__margin)
+    );
+    border-radius: calc(var(--husc__border__radius) * 3);
+    background: var(--husc__modal__background);
     &__img {
       display: block;
     }

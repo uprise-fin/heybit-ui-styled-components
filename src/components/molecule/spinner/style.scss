@@ -23,8 +23,8 @@
 
   @each $class in $sizes {
     @include host-styled("[size='#{$class}']") {
-      width: var(--spinner__size__#{$class});
-      height: var(--spinner__size__#{$class});
+      width: var(--husc__spinner__size__#{$class});
+      height: var(--husc__spinner__size__#{$class});
     }
   }
   &__svg {
@@ -34,7 +34,7 @@
     animation: rotate 2s linear infinite;
 
     &__circle {
-      stroke: var(--spinner__color);
+      stroke: var(--husc__spinner__color);
       stroke-linecap: round;
       animation: dash 1.5s ease-in-out infinite;
     }

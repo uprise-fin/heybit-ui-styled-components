@@ -2,8 +2,8 @@
 .hb-loading {
   @include host-styled {
     display: block;
-    font-family: var(--font__family);
-    transition: opacity var(--transition__duration--ms);
+    font-family: var(--husc__font__family);
+    transition: opacity var(--husc__transition__duration--ms);
   }
   @include host-styled([loaded]) {
     opacity: 0;
@@ -14,7 +14,7 @@
   &__wall {
     width: 100%;
     height: 100%;
-    border-radius: var(--border__radius);
+    border-radius: var(--husc__border__radius);
     animation: skeleton-gradient 1.8s infinite ease-in-out;
   }
 }

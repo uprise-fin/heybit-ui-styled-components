@@ -1,7 +1,7 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {SystemColor, ServiceColor, Color, levels} from './type';
-import {colorPalette} from './index';
+import {SystemColor, ServiceColor, Color, levels, prefix} from './type';
+import {colorPalette} from './type';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
@@ -85,7 +85,7 @@ const LevelTemplate: Story<unknown> = () =>
                 x =>
                   html`
                     <div
-                      style="--backrgound: var(--${name}--${x})"
+                      style="--backrgound: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
                       class="box__item ${colorPalette[name].color ===
                       colorPalette[name][x]
@@ -116,7 +116,7 @@ const LevelTemplate: Story<unknown> = () =>
                 x =>
                   html`
                     <div
-                      style="--backrgound: var(--${name}--${x})"
+                      style="--backrgound: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
                       class="box__item ${colorPalette[name].color ===
                       colorPalette[name][x]

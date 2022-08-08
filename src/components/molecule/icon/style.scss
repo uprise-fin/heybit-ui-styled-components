@@ -12,15 +12,15 @@
     display: inline-flex;
     vertical-align: middle;
     svg {
-      fill: var(--icon__color);
+      fill: var(--husc__icon__color);
       > * {
-        fill: var(--icon__color);
+        fill: var(--husc__icon__color);
       }
     }
   }
   @each $class in $sizes {
     @include host-styled("[size='#{$class}']") {
-      width: var(--icon__size__#{$class});
+      width: var(--husc__icon__size__#{$class});
     }
   }
   // @each $class, $color in $hb-icon__theme {

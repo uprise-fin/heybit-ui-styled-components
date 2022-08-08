@@ -32,9 +32,9 @@ const ColorTemplate = (props: HbCarousel) => html`
     flexWidth=${props.flexWidth}
     visibleLength=${props.visibleLength}
   >
-    <div style="height: 300px; background: var(--orange);">1</div>
-    <div style="height: 300px; background: var(--yellow);">2</div>
-    <div style="height: 300px; background: var(--black);">3</div>
+    <div style="height: 300px; background: var(--husc__orange);">1</div>
+    <div style="height: 300px; background: var(--husc__yellow);">2</div>
+    <div style="height: 300px; background: var(--husc__black);">3</div>
   </hb-carousel>
 `;
 const SkeletonTemplate = (props: HbCarousel) => html`

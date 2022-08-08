@@ -4,37 +4,39 @@ $hb-button__size: (
   large: (
     font-size: 16px,
     height: 60px,
-    border-radius: calc(var(--border__radius) * 2),
+    border-radius: calc(var(--husc__border__radius) * 2),
   ),
   medium: (
     font-size: 15px,
     height: 50px,
-    border-radius: var(--border__radius),
+    border-radius: var(--husc__border__radius),
   ),
   small: (
     font-size: 13px,
     height: 40px,
-    border-radius: var(--border__radius),
+    border-radius: var(--husc__border__radius),
   ),
   xsmall: (
     font-size: 13px,
     height: 30px,
-    border-radius: var(--border__radius),
+    border-radius: var(--husc__border__radius),
   ),
   // xsmall: (
   //   font-size: 14px,
   //   height: 30px,
-  //   border-radius: var(--box__border-radius),
-  // ),,,,,,,,,,,,,,,,,,,
+  //   border-radius: var(--husc__box__border-radius),
+  // ),,,,,,,,,,,,,,,,,,,,,
 );
 $hb-button__type: (
   rectangle: (
     flex: flex,
-    padding: 0 var(--button__padding__right) 0 var(--button__padding__left),
+    padding: 0 var(--husc__button__padding__right) 0
+      var(--husc__button__padding__left),
   ),
   radius: (
     border-radius: 1000px,
-    padding: 0 var(--button__padding__right) 0 var(--button__padding__left),
+    padding: 0 var(--husc__button__padding__right) 0
+      var(--husc__button__padding__left),
   ),
   circle: (
     border-radius: 100%,
@@ -43,37 +45,37 @@ $hb-button__type: (
 );
 $hb-button__theme: (
   primary: (
-    bg: var(--orange),
-    color: var(--font__color__void),
-    active: var(--orange--600),
-    hover: var(--orange--400),
-    disabledBg: var(--black--100),
-    disabledColor: var(--black--400),
+    bg: var(--husc__orange),
+    color: var(--husc__font__color__void),
+    active: var(--husc__orange--600),
+    hover: var(--husc__orange--400),
+    disabledBg: var(--husc__black--100),
+    disabledColor: var(--husc__black--400),
   ),
   secondary: (
-    bg: var(--black),
-    color: var(--font__color__void),
-    active: var(--black--900),
-    hover: var(--black--700),
-    disabledBg: var(--black--100),
-    disabledColor: var(--black--400),
+    bg: var(--husc__black),
+    color: var(--husc__font__color__void),
+    active: var(--husc__black--900),
+    hover: var(--husc__black--700),
+    disabledBg: var(--husc__black--100),
+    disabledColor: var(--husc__black--400),
   ),
   tertiary: (
-    bg: var(--black--100),
-    color: var(--font__color__solid),
-    active: var(--black--200),
-    hover: var(--black--50),
-    disabledBg: var(--black--100),
-    disabledColor: var(--black--400),
+    bg: var(--husc__black--100),
+    color: var(--husc__font__color__solid),
+    active: var(--husc__black--200),
+    hover: var(--husc__black--50),
+    disabledBg: var(--husc__black--100),
+    disabledColor: var(--husc__black--400),
   ),
   quaternary: (
-    bd: var(--black--800),
-    color: var(--font__color__solid),
-    active: var(--black--100),
-    // hover: var(--black--50),
-    // disabledBg: var(--black--100),
-    disabledBd: var(--black--300),
-    disabledColor: var(--black--400),
+    bd: var(--husc__black--800),
+    color: var(--husc__font__color__solid),
+    active: var(--husc__black--100),
+    // hover: var(--husc__black--50),
+    // disabledBg: var(--husc__black--100),
+    disabledBd: var(--husc__black--300),
+    disabledColor: var(--husc__black--400),
   ),
 );
 .hb-button {
@@ -81,8 +83,8 @@ $hb-button__theme: (
   @include loading();
   @include host-styled {
     display: inline-flex;
-    font-size: var(--button__font-size);
-    font-family: var(--font__family);
+    font-size: var(--husc__button__font-size);
+    font-family: var(--husc__font__family);
     font-weight: 700;
     box-sizing: border-box;
     cursor: pointer;
@@ -102,17 +104,17 @@ $hb-button__theme: (
       } @else {
         border: 1px solid transparent;
       }
-      --spinner__color: #{map-get($value, color)};
+      --husc__spinner__color: #{map-get($value, color)};
       color: map-get($value, color);
-      transition: background var(--transition__duration--ms),
-        opacity var(--transition__duration--ms);
+      transition: background var(--husc__transition__duration--ms),
+        opacity var(--husc__transition__duration--ms);
       background: $bg;
     }
     @include host-styled("[type='custom'][theme='#{$class}']") {
       $customColor: $bg;
-      color: var(--white);
+      color: var(--husc__white);
       color: $customColor;
-      --spinner__color: #{$customColor};
+      --husc__spinner__color: #{$customColor};
       border: none !important;
       background: none !important;
     }
@@ -151,7 +153,7 @@ $hb-button__theme: (
     border-radius: none;
   }
   // @include host-styled("[type='inline']") {
-  //   padding: 0 var(--button__padding__right) 0 var(--button__padding__left);
+  //   padding: 0 var(--husc__button__padding__right) 0 var(--husc__button__padding__left);
   // }
   // @include host-styled("[type='inline']") {
   //   display: inline-flex;

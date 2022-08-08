@@ -4,26 +4,26 @@
     z-index: zindex('토스트');
     position: fixed;
     bottom: 0;
-    left: var(--toast__margin__left);
-    right: var(--toast__margin__right);
+    left: var(--husc__toast__margin__left);
+    right: var(--husc__toast__margin__right);
     display: flex;
-    max-width: var(--toast__max-width);
-    // max-width: calc(var(--toast__max-width) + (var(--toast__margin) * 2));
+    max-width: var(--husc__toast__max-width);
+    // max-width: calc(var(--husc__toast__max-width) + (var(--husc__toast__margin) * 2));
     // height: 0;
     margin: auto;
-    font-family: var(--font__family);
+    font-family: var(--husc__font__family);
     // flex-direction: column-reverse;
     flex-direction: column;
   }
   &__content {
     display: flex;
     min-height: calc(
-      var(--toast__min-height) - var(--toast__padding__top) -
-        var(--toast__padding__bottom)
+      var(--husc__toast__min-height) - var(--husc__toast__padding__top) -
+        var(--husc__toast__padding__bottom)
     );
-    margin: var(--toast__margin__top) 0 var(--toast__margin__bottom);
-    padding: var(--toast__padding__top) var(--toast__padding__right)
-      var(--toast__padding__bottom) var(--toast__padding__left);
+    margin: var(--husc__toast__margin__top) 0 var(--husc__toast__margin__bottom);
+    padding: var(--husc__toast__padding__top) var(--husc__toast__padding__right)
+      var(--husc__toast__padding__bottom) var(--husc__toast__padding__left);
     box-sizing: border-box;
     font-weight: 400;
     font-size: 15px;
