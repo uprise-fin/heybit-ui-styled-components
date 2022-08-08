@@ -88,7 +88,9 @@ export class HbModal extends Base {
           >
             <div
               class="hb-modal__container"
-              style=${this.width ? `--modal__width: ${this.width}px;` : ''}
+              style=${this.width
+                ? `--husc__modal__width: ${this.width}px;`
+                : ''}
               id="container"
               part="container"
               @click=${this.stopPropagation}
