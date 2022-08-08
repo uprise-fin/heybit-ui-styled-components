@@ -1,5 +1,4 @@
-import {HbAnchorProps} from '@/components/atom/anchor/type';
-import {HbButtonProps} from '@/components/organism/button/type';
+import type {HbAnchorProps, HbButtonProps} from '@/index';
 export interface HbHeaderNavi extends HbAnchorProps {
   name: string;
   img?: string;

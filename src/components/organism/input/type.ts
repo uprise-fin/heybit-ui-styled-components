@@ -1,5 +1,5 @@
 import type {HbInput} from '.';
-import {HbInputType} from './const';
+import type {HbInputType} from '@/const';
 export interface HbInputProps {
   value: string;
   attributeSync?: boolean;

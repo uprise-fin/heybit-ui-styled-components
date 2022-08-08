@@ -1,5 +1,5 @@
 import type {HbAnchorProps} from '@/index';
-import {HbIconName} from '@/const';
+import type {HbIconName} from '@/const';
 export interface HbFooterMenu extends HbAnchorProps {
   name: string;
   accent?: true;

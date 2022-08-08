@@ -1,4 +1,4 @@
-import {HbTransitionType} from '@/const';
+import type {HbTransitionType} from '@/const';
 
 export interface HbTransitionProps {
   show: boolean;

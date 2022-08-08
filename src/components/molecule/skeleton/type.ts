@@ -1,4 +1,4 @@
-import {HbSkeletonType} from '@/const';
+import type {HbSkeletonType} from '@/const';
 export interface HbSkeletonProps {
   type: HbSkeletonType;
 }

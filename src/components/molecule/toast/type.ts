@@ -1,4 +1,4 @@
-import {HbToastTheme} from '@/const';
+import type {HbToastTheme} from '@/const';
 
 export interface HbToastProps {
   messages: HbToastMessage[];

@@ -1,4 +1,4 @@
-import {Size} from '@/const';
+import type {Size} from '@/const';
 
 export interface HbSpinnerProps {
   size: Size;

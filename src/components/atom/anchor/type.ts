@@ -1,4 +1,4 @@
-import {HTMLAttributeAnchorTarget} from 'react';
+import type {HTMLAttributeAnchorTarget} from 'react';
 export interface HbAnchorProps {
   href?: string;
   target?: HTMLAttributeAnchorTarget;

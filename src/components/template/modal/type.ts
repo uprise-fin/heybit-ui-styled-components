@@ -1,10 +1,10 @@
-import {
+import type {
   HbIconName,
   HbTransitionType,
   HorizonAlign,
   VerticalAlign,
 } from '@/const';
-import {HbAnchorProps, HbButtonProps} from '@/index';
+import type {HbAnchorProps, HbButtonProps} from '@/index';
 export interface HbModalProps {
   open: boolean;
   transitionType?: HbTransitionType;
