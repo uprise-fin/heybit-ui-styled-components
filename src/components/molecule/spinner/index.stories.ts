@@ -32,7 +32,10 @@ export default {
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story<HbSpinnerExps> = ({size, color}) =>
   html`
-    <hb-spinner size=${size} style="--spinner__color: ${color}"></hb-spinner>
+    <hb-spinner
+      size=${size}
+      style="--husc__spinner__color: ${color}"
+    ></hb-spinner>
   `;
 
 export const primary: Story<HbSpinnerExps> = Template.bind({});

@@ -25,7 +25,7 @@ $hb-button__size: (
   //   font-size: 14px,
   //   height: 30px,
   //   border-radius: var(--husc__box__border-radius),
-  // ),,,,,,,,,,,,,,,,,,,,
+  // ),,,,,,,,,,,,,,,,,,,,,
 );
 $hb-button__type: (
   rectangle: (
@@ -104,7 +104,7 @@ $hb-button__theme: (
       } @else {
         border: 1px solid transparent;
       }
-      --spinner__color: #{map-get($value, color)};
+      --husc__spinner__color: #{map-get($value, color)};
       color: map-get($value, color);
       transition: background var(--husc__transition__duration--ms),
         opacity var(--husc__transition__duration--ms);
@@ -114,7 +114,7 @@ $hb-button__theme: (
       $customColor: $bg;
       color: var(--husc__white);
       color: $customColor;
-      --spinner__color: #{$customColor};
+      --husc__spinner__color: #{$customColor};
       border: none !important;
       background: none !important;
     }
