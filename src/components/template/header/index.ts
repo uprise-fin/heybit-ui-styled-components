@@ -199,17 +199,17 @@ export class HbHeader extends Base {
               <div class="hb-header--mobile__side-menu__content__menu">
                 ${this.gnbTemplate}
               </div>
-              <hb-if ?value=${this.user?.pending}>
-                <hb-skeleton
-                  class="hb-header--mobile__skeleton"
-                  type=${HbSkeletonType.dropMenuBottom}
-                ></hb-skeleton>
-              </hb-if>
-              <hb-if ?value=${!this.user?.pending && this.user?.loggedIn}>
-                <div class="hb-header--mobile__side-menu__content__auth">
+              <div class="hb-header--mobile__side-menu__content__auth">
+                <hb-if ?value=${!this.user?.pending && this.user?.loggedIn}>
                   ${this.authMenuTemplate}
-                </div>
-              </hb-if>
+                </hb-if>
+                <hb-if ?value=${this.user?.pending}>
+                  <hb-skeleton
+                    class="hb-header--mobile__skeleton"
+                    type=${HbSkeletonType.dropMenuBottom}
+                  ></hb-skeleton>
+                </hb-if>
+              </div>
             </div>
           </hb-transition>
         </hb-transition>
