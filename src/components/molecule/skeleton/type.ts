@@ -1,4 +1,6 @@
-export interface HbSkeletonProps {
+import {HbLoadingProps} from '@/index';
+
+export interface HbSkeletonProps extends HbLoadingProps {
   type: HbSkeletonType;
 }
 export enum HbSkeletonType {

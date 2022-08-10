@@ -11,8 +11,14 @@ export class HbSkeleton extends Base {
 
   type: HbSkeletonType;
 
+  background: string;
+
+  backgroundAccent: string;
+
   static get properties() {
     return {
+      background: {type: String, Reflect: true},
+      backgroundAccent: {type: String, Reflect: true},
       type: {type: String, Reflect: true},
     };
   }
