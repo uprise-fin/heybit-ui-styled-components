@@ -1,6 +1,7 @@
-import {Base} from '@/components/base';
+import {InitAttribute} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {HbImgProps} from './type';
 
 /**
  * @property src
@@ -13,7 +14,7 @@ import {customElement} from 'lit/decorators.js';
  */
 
 @customElement('hb-img')
-export class HbImg extends Base {
+export class HbImg extends InitAttribute<HbImgProps> {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -35,6 +36,8 @@ export class HbImg extends Base {
   loaded = false;
 
   error = false;
+
+  initialAttributes: (keyof HbImgProps)[] = ['src'];
 
   static get properties() {
     return {
