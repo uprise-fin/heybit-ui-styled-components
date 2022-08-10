@@ -9,7 +9,7 @@
   }
   &__wrap {
     font-size: 0;
-    transition: transform var(--husc__type) var(--husc__duration);
+    transition: transform var(--type) var(--duration);
     will-change: transform;
   }
 
