@@ -12,9 +12,15 @@ export class HbLoading extends Base {
 
   delete = false;
 
+  background = 'var(--husc__black--300)';
+
+  backgroundAccent = 'var(--husc__white--300)';
+
   static get properties() {
     return {
       loaded: {type: Boolean, Reflect: true},
+      background: {type: String, Reflect: true},
+      backgroundAccent: {type: String, Reflect: true},
       width: {type: String, Reflect: true},
       height: {type: String, Reflect: true},
     };
@@ -34,7 +40,13 @@ export class HbLoading extends Base {
   // }
 
   render() {
-    return html` <div class="hb-loading__wall" part="wall"></div> `;
+    return html`
+      <div
+        style=${`--background:${this.background}; --background--accent:${this.backgroundAccent}`}
+        class="hb-loading__wall"
+        part="wall"
+      ></div>
+    `;
   }
 }
 

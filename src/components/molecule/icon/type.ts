@@ -25,6 +25,8 @@ export enum HbIconName {
   'system/filled/logo-usdc' = 'system/filled/logo-usdc',
   'system/filled/naver' = 'system/filled/naver',
   'system/filled/refresh' = 'system/filled/refresh',
+  'system/filled/ic-sysyem-checkbox-able' = 'system/filled/ic-sysyem-checkbox-able',
+  'system/filled/ic-sysyem-danger' = 'system/filled/ic-sysyem-danger',
   'system/outline/add' = 'system/outline/add',
   'system/outline/arrow-back' = 'system/outline/arrow-back',
   'system/outline/arrow-down' = 'system/outline/arrow-down',
@@ -51,4 +53,6 @@ export enum HbIconName {
   'system/outline/naver' = 'system/outline/naver',
   'system/outline/qr' = 'system/outline/qr',
   'system/outline/refresh' = 'system/outline/refresh',
+  'system/outline/ic-sysyem-checkbox-able' = 'system/outline/ic-sysyem-checkbox-able',
+  'system/outline/ic-sysyem-danger' = 'system/outline/ic-sysyem-danger',
 }
