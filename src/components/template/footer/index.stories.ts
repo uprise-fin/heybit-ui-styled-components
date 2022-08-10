@@ -6,6 +6,7 @@ import {
   initialFooterCopy,
   initialFooterMenu,
   initialFooterSocialMenu,
+  initialFooterTell,
   initialFooterUpriseInfo,
 } from './type';
 
@@ -20,11 +21,13 @@ const Template: Story<HbFooter> = ({
   socialMenu,
   upriseInfo,
   copy,
+  tell,
 }) => html` <hb-footer
   .menu=${menu}
   .socialMenu=${socialMenu}
   .upriseInfo=${upriseInfo}
   copy=${copy}
+  tell=${tell}
 ></hb-footer>`;
 export const korea: Story<HbFooter> = Template.bind({});
 korea.args = {
@@ -32,4 +35,5 @@ korea.args = {
   socialMenu: initialFooterSocialMenu,
   upriseInfo: initialFooterUpriseInfo,
   copy: initialFooterCopy,
+  tell: initialFooterTell,
 };

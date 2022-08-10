@@ -8,10 +8,11 @@ export interface HbFooterSocialMenu extends HbAnchorProps {
 }
 
 export interface HbFooterProps {
-  menu: HbFooterMenu[];
-  socialMenu: HbFooterSocialMenu[];
-  upriseInfo: string[];
-  copy: string;
+  menu?: HbFooterMenu[];
+  socialMenu?: HbFooterSocialMenu[];
+  upriseInfo?: string[];
+  copy?: string;
+  tell?: string;
 }
 
 export const initialFooterMenu: HbFooterMenu[] = [
@@ -58,3 +59,4 @@ export const initialFooterSocialMenu: HbFooterSocialMenu[] = [
     href: 'https://t.me/joinchat/BAm18UqMJPcwYTI1/',
   },
 ];
+export const initialFooterTell = '대표전화 1577-9069';

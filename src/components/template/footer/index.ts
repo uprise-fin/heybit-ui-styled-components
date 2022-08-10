@@ -31,12 +31,15 @@ export class HbFooter extends Base {
 
   copy: string;
 
+  tell: string;
+
   static get properties() {
     return {
       menu: {type: Array, Reflect: true},
       socialMenu: {type: Array, Reflect: true},
       upriseInfo: {type: Array, Reflect: true},
       copy: {type: String, Reflect: true},
+      tell: {type: String, Reflect: true},
     };
   }
 
@@ -67,7 +70,9 @@ export class HbFooter extends Base {
   }
 
   get upriseInfoTemplate() {
-    return html` ${this.upriseInfo?.map(x => html`<p>${x}</p>`)} `;
+    return html`
+      ${this.upriseInfo?.concat(this.tell).map(x => html`<p>${x}</p>`)}
+    `;
   }
 
   render() {
@@ -78,7 +83,9 @@ export class HbFooter extends Base {
           <div class="hb-footer--mobile__social">
             ${this.socialMenuTemplate}
           </div>
-          <div class="hb-footer--mobile__text">${this.copy}</div>
+          <div class="hb-footer--mobile__text">
+            ${this.tell}<br />${this.copy}
+          </div>
         </div>
         <div slot="desktop" class="hb-footer--desktop">
           <div class="hb-footer--desktop__routes">
