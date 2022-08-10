@@ -51,22 +51,7 @@ const SkeletonTemplate = (props: HbCarousel) => html`
     flexWidth=${props.flexWidth}
     visibleLength=${props.visibleLength}
   >
-    <div>
-      <hb-img
-        src="https://storage.googleapis.com/heybit-9041c.appspot.com/banners/banner/1652170729_banner-kr@2x.png?ver=1.3.46"
-      ></hb-img>
-    </div>
-    <div>
-      <hb-img
-        src="https://storage.googleapis.com/heybit-9041c.appspot.com/banners/banner/1652170729_banner-kr@2x.png?ver=1.3.46"
-      ></hb-img>
-    </div>
-    <div>
-      <hb-img
-        src="https://storage.googleapis.com/heybit-9041c.appspot.com/banners/banner/1652170729_banner-kr@2x.png?ver=1.3.46"
-      ></hb-img>
-    </div>
-    <!-- <hb-skeleton
+    <hb-skeleton
       type=${HbSkeletonType.card}
       style="margin: 0 10px;"
     ></hb-skeleton>
@@ -77,7 +62,7 @@ const SkeletonTemplate = (props: HbCarousel) => html`
     <hb-skeleton
       type=${HbSkeletonType.card}
       style="margin: 0 10px;"
-    ></hb-skeleton> -->
+    ></hb-skeleton>
   </hb-carousel>
 `;
 const StopTemplate: Story<HbCarousel> = props => {
@@ -91,7 +76,7 @@ const AutoTemplate: Story<HbCarousel> = props => {
 };
 const AutoInfiniteTemplate: Story<HbCarousel> = props => {
   props.fakeLength = 1;
-  props.visibleLength = 1;
+  props.visibleLength = 3;
   props.auto = true;
   props.infinite = true;
   return SkeletonTemplate(props);
