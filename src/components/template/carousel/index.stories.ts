@@ -1,22 +1,20 @@
 import {HbSkeletonType} from '@/components/molecule/skeleton/type';
-import {dev} from '@/utils';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import './index';
 import type {HbCarousel} from './index';
 
-export default dev() &&
-  ({
-    title: 'components/template/hb-carousel',
-    component: 'hb-carousel',
-    argTypes: {
-      index: {
-        options: [0, 1, 2],
-        control: {type: 'radio'},
-        defaultValue: 0,
-      },
+export default {
+  title: 'components/template/hb-carousel',
+  component: 'hb-carousel',
+  argTypes: {
+    index: {
+      options: [0, 1, 2],
+      control: {type: 'radio'},
+      defaultValue: 0,
     },
-  } as Meta);
+  },
+} as Meta;
 
 const ColorTemplate = (props: HbCarousel) => html`
   <hb-carousel
@@ -25,6 +23,7 @@ const ColorTemplate = (props: HbCarousel) => html`
     ?infinite=${props.infinite}
     ?pause=${props.pause}
     ?rolling=${props.rolling}
+    ?indicate=${props.indicate}
     speed=${props.speed}
     duration=${props.duration}
     fakeLength=${props.fakeLength}
@@ -44,6 +43,7 @@ const SkeletonTemplate = (props: HbCarousel) => html`
     ?infinite=${props.infinite}
     ?pause=${props.pause}
     ?rolling=${props.rolling}
+    ?indicate=${props.indicate}
     speed=${props.speed}
     duration=${props.duration}
     fakeLength=${props.fakeLength}
@@ -67,11 +67,13 @@ const SkeletonTemplate = (props: HbCarousel) => html`
 `;
 const StopTemplate: Story<HbCarousel> = props => {
   props.visibleLength = 1;
+  props.indicate = true;
   return ColorTemplate(props);
 };
 const AutoTemplate: Story<HbCarousel> = props => {
   props.visibleLength = 1;
   props.auto = true;
+  props.indicate = true;
   return ColorTemplate(props);
 };
 const AutoInfiniteTemplate: Story<HbCarousel> = props => {
@@ -79,6 +81,7 @@ const AutoInfiniteTemplate: Story<HbCarousel> = props => {
   props.visibleLength = 3;
   props.auto = true;
   props.infinite = true;
+  props.indicate = true;
   return SkeletonTemplate(props);
 };
 const RollingInfiniteTemplate: Story<HbCarousel> = props => {
@@ -87,6 +90,7 @@ const RollingInfiniteTemplate: Story<HbCarousel> = props => {
   props.auto = true;
   props.infinite = true;
   props.rolling = true;
+  props.indicate = true;
   return SkeletonTemplate(props);
 };
 export const stopCarousel: Story<HbCarousel> = StopTemplate.bind({});

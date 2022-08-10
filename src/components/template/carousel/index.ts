@@ -36,6 +36,8 @@ export class HbCarousel extends Base {
 
   rolling = false;
 
+  indicate = false;
+
   draggable = false;
 
   clickable = false;
@@ -90,6 +92,7 @@ export class HbCarousel extends Base {
       auto: {type: Boolean, Reflect: true},
       pause: {type: Boolean, Reflect: true},
       infinite: {type: Boolean, Reflect: true},
+      indicate: {type: Boolean, Reflect: true},
       rolling: {type: Boolean, Reflect: true},
       holderFlag: {type: Boolean, Reflect: true},
       draggable: {type: Boolean, Reflect: true},
@@ -182,6 +185,7 @@ export class HbCarousel extends Base {
         }
       });
     }
+
     if (this.draggable) {
       this.addEventListener('mousedown', this.onEventStartBound);
       window.addEventListener('mouseup', this.onEventEndBound);
@@ -355,18 +359,35 @@ export class HbCarousel extends Base {
         style="transform: translateX(${this.itemPosition});--duration: ${this
           .transitionDuration}ms;--type: ${this.rolling ? 'linear' : 'ease'};"
       >
-        ${this.infiniteSlotBefore}
+        ${this.infiniteSlotBeforeTemplate}
         <slot
           class="hb-carousel__items"
           @click="${this.onClick}"
           style="width: ${this.totalWidth}%;"
         ></slot>
-        ${this.infiniteSlotAfter}
+        ${this.infiniteSlotAfterTemplate}
       </div>
+      ${this.indicateTemplate}
     `;
   }
 
-  get infiniteSlotBefore() {
+  get indicateTemplate() {
+    if (this.indicate)
+      return html`<div class="hb-carousel__indicate">
+        ${Array(this.itemLength)
+          .fill(null)
+          .map(
+            (_, i) =>
+              html`<button
+                class="hb-carousel__indicate__btn${i === this.index
+                  ? ' hb-carousel__indicate__btn--accent'
+                  : ''}"
+              ></button>`,
+          )}
+      </div>`;
+  }
+
+  get infiniteSlotBeforeTemplate() {
     if (this.infinite)
       return html`<slot
         class="hb-carousel__items hb-carousel__items--fake-before"
@@ -375,7 +396,7 @@ export class HbCarousel extends Base {
       ></slot>`;
   }
 
-  get infiniteSlotAfter() {
+  get infiniteSlotAfterTemplate() {
     if (this.infinite)
       return html`<slot
         class="hb-carousel__items"

@@ -12,6 +12,34 @@
     transition: transform var(--type) var(--duration);
     will-change: transform;
   }
+  &__indicate {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    &__btn {
+      width: 6px;
+      height: 6px;
+      padding: 3px;
+      box-sizing: content-box;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background: none;
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background: var(--husc__black--200);
+      }
+      &--accent {
+        &::before {
+          background: var(--husc__black--800);
+        }
+      }
+    }
+  }
 
   &__items {
     display: inline-flex;

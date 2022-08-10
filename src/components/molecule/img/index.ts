@@ -27,7 +27,7 @@ export class HbImg extends InitAttribute<HbImgProps> {
 
   loadingHeight: number;
 
-  breakPoint = 1020;
+  breakPoint = 0;
 
   multiSource = 0;
 
