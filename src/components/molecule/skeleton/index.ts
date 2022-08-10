@@ -11,12 +11,15 @@ export class HbSkeleton extends Base {
 
   type: HbSkeletonType;
 
+  duration: number;
+
   background: string;
 
   backgroundAccent: string;
 
   static get properties() {
     return {
+      duration: {type: Number, Reflect: true},
       background: {type: String, Reflect: true},
       backgroundAccent: {type: String, Reflect: true},
       type: {type: String, Reflect: true},
@@ -40,7 +43,14 @@ export class HbSkeleton extends Base {
   render() {
     return Array(this.skeletonLength)
       .fill(null)
-      .map(() => html`<hb-loading></hb-loading> `);
+      .map(
+        () =>
+          html`<hb-loading
+            duration=${this.duration}
+            background=${this.background}
+            backgroundAccent=${this.backgroundAccent}
+          ></hb-loading> `,
+      );
   }
 }
 

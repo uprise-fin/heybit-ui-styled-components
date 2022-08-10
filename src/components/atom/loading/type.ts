@@ -1,6 +1,7 @@
 export interface HbLoadingProps {
-  loaded: boolean;
+  loaded?: boolean;
   delete?: boolean;
   background?: string;
   backgroundAccent?: string;
+  duration?: number;
 }
