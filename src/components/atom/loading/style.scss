@@ -20,12 +20,14 @@
     background: var(--background);
     &::before {
       content: '';
+      $size: 47%;
       position: absolute;
-      left: -100%;
-      width: 100%;
+      left: -$size;
+      width: $size;
       height: 100%;
+      transform: rotate(-4deg) scale(1.2);
       background: linear-gradient(
-        85.63deg,
+        to right,
         transparent 35.09%,
         var(--background--accent) 61.3%,
         transparent 88.67%
@@ -37,7 +39,7 @@
 }
 @keyframes skeleton-gradient {
   100% {
-    transform: translateX(200%);
+    left: 100%;
   }
 }
 // @keyframes skeleton-gradient {
