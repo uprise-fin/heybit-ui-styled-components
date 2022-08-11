@@ -41,6 +41,7 @@ const Template: Story<HbToastExns> = ({visibleIcon, contents, theme}) => {
       text: contents.slice()[msgRandom],
       theme: visibleIcon ? theme : null,
     };
+    if (!element.messages) element.messages = [];
     element.messages = [...element.messages, message];
   }
   return html`<hb-button

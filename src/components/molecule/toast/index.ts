@@ -110,7 +110,7 @@ export class HbToast extends Base {
       const color = componentVariables.toast[theme].color;
       return html`<hb-icon
         class="hb-toast__content__icon"
-        style="--icon__color: ${color};"
+        style="--husc__icon__color: ${color};"
         icon="${icon}"
         size=${Size.medium}
       ></hb-icon>`;
