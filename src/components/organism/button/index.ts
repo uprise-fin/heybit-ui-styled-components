@@ -95,7 +95,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.tabIndex = 0;
+    this.setTabIndex();
     this.onclick = this.adapterEvent;
     this.onkeyup = ev => ev.key === 'Enter' && this.adapterEvent();
   }

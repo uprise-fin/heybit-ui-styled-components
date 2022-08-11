@@ -13,6 +13,10 @@ export class Base extends LitElement {
     ev.stopPropagation();
   }
 
+  setTabIndex() {
+    addEventListener('load', () => (this.tabIndex = 0));
+  }
+
   onEvent(ev: CustomEvent) {
     if (ev instanceof CustomEvent) {
       if (this.event) return this.event(ev);

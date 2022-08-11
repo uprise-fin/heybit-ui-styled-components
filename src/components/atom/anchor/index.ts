@@ -29,7 +29,7 @@ export class HbAnchor extends Base {
 
   connectedCallback() {
     super.connectedCallback();
-    this.tabIndex = 0;
+    this.setTabIndex();
     this.onclick = this.adapterEvent;
   }
 
