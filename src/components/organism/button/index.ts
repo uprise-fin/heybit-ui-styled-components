@@ -121,7 +121,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     }
   }
 
-  async attributeChangedCallback(name: string, _: string, newVal: string) {
+  attributeChangedCallback(name: string, _: string, newVal: string) {
     if (name === 'loading' && this.baseLoadingDuration) {
       if (newVal !== null) {
         const width = this.style.width.substring(
