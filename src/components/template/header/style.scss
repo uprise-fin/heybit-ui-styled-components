@@ -7,18 +7,23 @@
   &__chip {
     position: absolute;
     top: 50%;
-    margin: -14px 0 0 2px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 12px;
-    color: var(--husc__orange--500);
+    height: 15px;
+    margin-left: 4px;
+    padding: 4px 5px;
+    border-radius: 6px;
+    transform: translateY(-50%);
+    background: var(--background);
   }
   &--desktop {
     position: relative;
     max-width: var(--husc__layout__content-width--desktop);
     margin: auto;
     padding: 0 var(--husc__layout__gutter);
+    .hb-header__chip {
+      position: static;
+      height: 13px;
+      transform: none;
+    }
     &__navibar {
       position: relative;
       display: flex;
@@ -26,10 +31,12 @@
       align-items: center;
       hb-anchor {
         position: relative;
+        display: flex;
         margin-right: 40px;
         text-decoration: none;
         font-size: 16px;
         font-weight: 600;
+        align-items: center;
         color: var(--husc__black--800);
         &:first-of-type {
           margin-right: 65px;

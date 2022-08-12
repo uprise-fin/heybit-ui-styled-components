@@ -4,10 +4,14 @@ import {
   HbButtonTheme,
   HbButtonType,
 } from '@/components/organism/button/type';
+export interface HbHeaderChip {
+  src: string;
+  alt: string;
+  background: string;
+}
 export interface HbHeaderNavi extends HbAnchorProps {
   name: string;
-  img?: string;
-  chip?: string;
+  chip?: HbHeaderChip;
 }
 
 export interface HbHeaderProps {
@@ -24,8 +28,7 @@ export interface HbHeaderDefaultMenu {
 }
 export interface HbHeaderMyMenu extends HbButtonProps {
   name: string;
-  img?: string;
-  chip?: string;
+  chip?: HbHeaderChip;
   event: () => void;
 }
 export interface HbHeaderUser {
@@ -41,7 +44,6 @@ export const initialHeaderGnb: HbHeaderNavi[] = [
   },
   {
     name: '디파이',
-    chip: 'Beta',
     event: () => console.log('디파이'),
   },
   {

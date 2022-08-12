@@ -7,6 +7,8 @@
   }
   &__picture {
     display: flex;
+    width: inherit;
+    height: inherit;
     &__img {
       flex: 1;
       max-width: 100%;

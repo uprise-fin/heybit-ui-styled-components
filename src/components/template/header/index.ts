@@ -80,7 +80,13 @@ export class HbHeader extends Base {
         x =>
           html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
             >${x.name}${x.chip
-              ? html`<span class="hb-header__chip">${x.chip}</span>`
+              ? html`<hb-img
+                  class="hb-header__chip"
+                  alt=${x.chip.alt}
+                  style="--background: ${x.chip.background}"
+                  src=${x.chip.src}
+                  loadingWidth=${26}
+                />`
               : ''}</hb-anchor
           >`,
       )}

@@ -149,12 +149,15 @@ export class HbImg extends InitAttribute<HbImgProps> {
   //   this.error = true
   //   this.dispatchEvent(new CustomEvent("error", evt));
   // }
-  onLoad() {
+  onLoad(event: Event) {
+    // this.onChipLoaded;
     this.loaded = true;
+    this.dispatchEvent(new Event('load', event));
   }
 
-  onError() {
+  onError(event: Event) {
     this.error = true;
+    this.dispatchEvent(new Event('error', event));
   }
 }
 

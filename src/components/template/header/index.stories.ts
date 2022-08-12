@@ -1,3 +1,4 @@
+import BetaBadge from '~/static/img_beta.svg';
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
 import './index';
@@ -65,7 +66,19 @@ korea.args = {
     name: '윤창원',
     email: 'matthew@heybit.io',
   },
-  gnb: initialHeaderGnb,
+  gnb: initialHeaderGnb.map(x => {
+    if (x.name === '디파이') {
+      return {
+        ...x,
+        chip: {
+          src: BetaBadge,
+          alt: 'beta',
+          background: '#EEE8F8',
+        },
+      };
+    }
+    return x;
+  }),
   myMenu: initialHeaderMyMenu,
   authMenu: initialHeaderAuthMenu,
   defaultMenu: initialHeaderDefaultMenu,
