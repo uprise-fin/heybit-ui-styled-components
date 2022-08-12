@@ -45,6 +45,7 @@
     }
   }
   &__body {
+    @include scroll();
     overflow: auto;
     margin: 0 10px;
     &__content {
