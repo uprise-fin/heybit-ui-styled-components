@@ -40,11 +40,21 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   baseLoadingDuration = 0;
 
-  disabled = false;
-
   theme: HbButtonTheme;
 
   initialAttributes: (keyof HbButtonProps)[] = ['size', 'theme', 'type'];
+
+  #disabled = false;
+
+  get disabled() {
+    return this.#disabled;
+  }
+
+  set disabled(value: boolean) {
+    this.#disabled = value;
+    if (value) this.setAttribute('disabled', '');
+    else this.removeAttribute('disabled');
+  }
 
   static get properties() {
     return {

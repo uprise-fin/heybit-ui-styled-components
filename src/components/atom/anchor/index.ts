@@ -17,7 +17,17 @@ export class HbAnchor extends Base {
 
   text: string;
 
-  disabled = false;
+  #disabled = false;
+
+  get disabled() {
+    return this.#disabled;
+  }
+
+  set disabled(value: boolean) {
+    this.#disabled = value;
+    if (value) this.setAttribute('disabled', '');
+    else this.removeAttribute('disabled');
+  }
 
   static get properties() {
     return {
