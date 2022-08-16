@@ -1,4 +1,4 @@
 export interface HbTooltipProps {
-  open: boolean;
-  position: [boolean, boolean];
+  open?: boolean;
+  position?: [boolean, boolean];
 }

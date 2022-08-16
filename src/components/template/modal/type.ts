@@ -7,7 +7,7 @@ import type {
   HbIconName,
 } from '@/index';
 export interface HbModalProps {
-  open: boolean;
+  open?: boolean;
   transitionType?: HbTransitionType;
   verticalAlign?: VerticalAlign;
   horizonAlign?: HorizonAlign;

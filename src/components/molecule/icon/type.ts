@@ -1,7 +1,7 @@
 import type {Size} from '@/components/atom/variable/type';
 export interface HbIconProps {
-  icon: HbIconName;
-  size: Size;
+  icon?: HbIconName;
+  size?: Size;
 }
 export enum HbIconName {
   'graphic/heybit' = 'graphic/heybit',
