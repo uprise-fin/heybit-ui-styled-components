@@ -269,16 +269,18 @@ export class HbCarousel extends Base {
     this.sto = setTimeout(() => this.onAuto(step), duration);
   }
 
-  onClick(event: MouseEvent) {
+  onIndicateClick(index: number) {
+    this.index = index;
+  }
+
+  onItemClick(event: MouseEvent) {
     if (!this.clickable) return;
-    if (this.moveable) {
-      const {target} = event;
-      if (target instanceof HTMLElement)
-        this.index = this.itemElements.findIndex((x: ChildNode) =>
-          target.isEqualNode(x),
-        );
-    }
-    // this.dispatchEvent
+    if (!this.moveable) return;
+    const {target} = event;
+    if (target instanceof HTMLElement)
+      this.index = this.itemElements.findIndex((x: ChildNode) =>
+        target.isEqualNode(x),
+      );
   }
 
   getClientPoint(event: MouseEvent | TouchEvent) {
@@ -362,7 +364,7 @@ export class HbCarousel extends Base {
         ${this.infiniteSlotBeforeTemplate}
         <slot
           class="hb-carousel__items"
-          @click="${this.onClick}"
+          @click="${this.onItemClick}"
           style="width: ${this.totalWidth}%;"
         ></slot>
         ${this.infiniteSlotAfterTemplate}
@@ -379,6 +381,7 @@ export class HbCarousel extends Base {
           .map(
             (_, i) =>
               html`<button
+                @click=${() => this.onIndicateClick(i)}
                 class="hb-carousel__indicate__btn${i === this.index
                   ? ' hb-carousel__indicate__btn--accent'
                   : ''}"
