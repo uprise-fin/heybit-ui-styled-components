@@ -7,7 +7,8 @@
     flex-direction: column;
     max-height: calc(
       100vh - var(--husc__modal__margin) - var(--husc__modal__margin) -
-        var(--husc__modal__sheet-dialog__padding-bottom)
+        var(--husc__modal__sheet-dialog__padding-bottom) -
+        var(--husc__modal__sheet-dialog__padding-top)
     );
     margin: var(--husc__modal__margin);
     margin-bottom: 0;
