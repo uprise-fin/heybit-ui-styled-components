@@ -55,6 +55,8 @@ export class HbSheetDialog extends Base {
 
   buttons: HbDialogButton[] = [];
 
+  transitionType = HbTransitionType.bottomUp;
+
   get eventDisabled() {
     return this.buttons.map(x => x.loading).some(x => x) || this.loading;
   }
@@ -82,6 +84,7 @@ export class HbSheetDialog extends Base {
       baseLoadingDuration: {type: Number, Reflect: true},
       buttonAlign: {type: String, Reflect: true},
       title: {type: String, Reflect: true},
+      transitionType: {type: String, Reflect: true},
     };
   }
 
@@ -93,7 +96,7 @@ export class HbSheetDialog extends Base {
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
-        transitionType=${HbTransitionType.bottomUp}
+        transitionType=${this.transitionType}
       >
         <div class="hb-sheet-dialog__container">
           ${this.hideCloseBtn

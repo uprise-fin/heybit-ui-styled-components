@@ -57,6 +57,8 @@ export class HbDialog extends Base {
 
   buttons: HbDialogButton[];
 
+  transitionType = HbTransitionType.zoom;
+
   get eventDisabled() {
     return this.buttons?.map(x => x.loading).some(x => x) || this.loading;
   }
@@ -86,6 +88,7 @@ export class HbDialog extends Base {
       buttonAlign: {type: String, Reflect: true},
       title: {type: String, Reflect: true},
       icon: {type: String, Reflect: true},
+      transitionType: {type: String, Reflect: true},
     };
   }
 
@@ -96,7 +99,7 @@ export class HbDialog extends Base {
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
-        transitionType=${HbTransitionType.zoom}
+        transitionType=${this.transitionType}
       >
         <div class="hb-dialog__container">
           ${this.hideCloseBtn
