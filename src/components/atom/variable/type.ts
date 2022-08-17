@@ -132,8 +132,9 @@ export const componentVariables = {
     height: 50,
     border: {
       width: basicVariables.border.width,
+      'width--error': basicVariables.border.width * 2,
       color: basicVariables.border.color,
-      'color--error': colorPalette.yellow[300],
+      'color--error': colorPalette.orange[300],
     },
     padding: {
       right: 10,

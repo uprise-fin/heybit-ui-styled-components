@@ -14,6 +14,7 @@
     background: var(--husc__background__color);
   }
   @include host-styled([error]) {
+    border-width: var(--husc__input__border__width--error);
     border-color: var(--husc__input__border__color--error);
     // background: var(--husc__background__color);
   }
