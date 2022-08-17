@@ -1,6 +1,6 @@
 import type {HbInput} from '.';
 export interface HbInputProps {
-  value: string;
+  value?: string;
   attributeSync?: boolean;
   type?: HbInputType;
   placeholder?: string;

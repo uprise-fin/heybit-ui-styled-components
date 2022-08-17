@@ -1,8 +1,8 @@
-import {Base} from '@/components/base';
+import {InitAttribute} from '@/components/base';
 import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbInputEvent, HbInputType} from './type';
+import {HbInputEvent, HbInputProps, HbInputType} from './type';
 
 /**
  * An example element.
@@ -24,7 +24,7 @@ import {HbInputEvent, HbInputType} from './type';
  */
 
 @customElement('hb-input')
-export class HbInput extends Base {
+export class HbInput extends InitAttribute<HbInputProps> {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -48,6 +48,8 @@ export class HbInput extends Base {
   maxlength?: number;
 
   type: HbInputType = HbInputType.text;
+
+  initialAttributes: (keyof HbInputProps)[] = ['error'];
 
   static get properties() {
     return {

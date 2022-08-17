@@ -25,8 +25,10 @@
     font-size: var(--husc__input__font__size);
     box-sizing: border-box;
     border: 0;
+    text-align: inherit;
     outline: none;
     cursor: inherit;
+    font-family: var(--husc__font__family);
     box-shadow: 0 0 0 999px var(--husc__background__color) inset;
     // @include child-styled([error]) {
     //   box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
