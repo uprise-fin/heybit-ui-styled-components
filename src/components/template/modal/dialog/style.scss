@@ -30,6 +30,9 @@
       var(--husc__modal__dialog__padding-left);
     border-radius: calc(var(--husc__border__radius) * 3);
     background: var(--husc__modal__background);
+    &.bottom-up {
+      margin-bottom: 0;
+    }
   }
   &__close-btn {
     position: absolute;

@@ -98,7 +98,7 @@ export class HbSheetDialog extends Base {
         ?persistent=${this.persistent || this.eventDisabled}
         transitionType=${this.transitionType}
       >
-        <div class="hb-sheet-dialog__container">
+        <div class="hb-sheet-dialog__container ${this.transitionType}">
           ${this.hideCloseBtn
             ? ''
             : html` <hb-button

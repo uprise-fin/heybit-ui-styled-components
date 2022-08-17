@@ -7,11 +7,10 @@
     flex-direction: column;
     max-height: calc(
       100vh - var(--husc__modal__margin) - var(--husc__modal__margin) -
-        var(--husc__modal__sheet-dialog__padding-bottom) -
-        var(--husc__modal__sheet-dialog__padding-top)
+        var(--husc__modal__sheet-dialog__padding-top) -
+        var(--husc__modal__sheet-dialog__padding-bottom)
     );
     margin: var(--husc__modal__margin);
-    margin-bottom: 0;
     padding: var(--husc__modal__sheet-dialog__padding-top)
       var(--husc__modal__sheet-dialog__padding-right)
       var(--husc__modal__sheet-dialog__padding-bottom)
@@ -19,6 +18,9 @@
     border-radius: calc(var(--husc__border__radius) * 3)
       calc(var(--husc__border__radius) * 3) 0 0;
     background: var(--husc__modal__background);
+    &.bottom-up {
+      margin-bottom: 0;
+    }
   }
   &__close-btn {
     position: absolute;
