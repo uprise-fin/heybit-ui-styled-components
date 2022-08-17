@@ -1,8 +1,8 @@
-import {InitAttribute} from '@/components/base';
+import {Base} from '@/components/base';
 import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbInputEvent, HbInputProps, HbInputType} from './type';
+import {HbInputEvent, HbInputType} from './type';
 
 /**
  * An example element.
@@ -24,7 +24,7 @@ import {HbInputEvent, HbInputProps, HbInputType} from './type';
  */
 
 @customElement('hb-input')
-export class HbInput extends InitAttribute<HbInputProps> {
+export class HbInput extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -37,7 +37,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   placeholder = '';
 
-  error = false;
+  #error = false;
 
   decimal: number = 2;
 
@@ -49,7 +49,15 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   type: HbInputType = HbInputType.text;
 
-  initialAttributes: (keyof HbInputProps)[] = ['error'];
+  get error() {
+    return this.#error;
+  }
+
+  set error(value: boolean) {
+    this.#error = value;
+    if (value) this.setAttribute('error', '');
+    else this.removeAttribute('error');
+  }
 
   static get properties() {
     return {
