@@ -14,7 +14,10 @@ export class Base extends LitElement {
   }
 
   setTabIndex() {
-    addEventListener('load', () => (this.tabIndex = 0));
+    addEventListener('load', () => {
+      this.tabIndex = 0;
+      this.setAttribute('tabindex', '0');
+    });
   }
 
   onEvent(ev: CustomEvent) {
