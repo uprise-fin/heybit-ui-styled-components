@@ -138,8 +138,8 @@ export class HbCarousel extends Base {
   }
 
   get transitionDuration() {
-    if (this.transitionFlag) return this.rolling ? this.duration : this.speed;
     if (this.holderFlag) return 1000000000;
+    if (this.transitionFlag) return this.rolling ? this.duration : this.speed;
     return 0;
   }
 
@@ -248,6 +248,7 @@ export class HbCarousel extends Base {
   }
 
   async onAuto(step: number = 0): Promise<void> {
+    if (!this.auto) return;
     let duration = this.duration;
     clearTimeout(this.sto);
     if (this.index + step < this.itemLength) {
@@ -270,6 +271,7 @@ export class HbCarousel extends Base {
   }
 
   onIndicateClick(index: number) {
+    this.onAuto(index);
     this.index = index;
   }
 
