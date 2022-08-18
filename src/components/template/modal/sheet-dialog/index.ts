@@ -112,7 +112,7 @@ export class HbSheetDialog extends Base {
                   size="small"
                 ></hb-icon
               ></hb-button>`}
-          <div class="hb-sheet-dialog__head">
+          <div class="hb-sheet-dialog__head${!this.title ? ' empty' : ''}">
             ${this.title
               ? html`<p part="title" class="hb-sheet-dialog__head__title">
                   ${this.title}

@@ -47,7 +47,7 @@
   }
   &__head {
     margin: 0 10px 12px;
-    &:empty {
+    &.empty {
       margin-bottom: 0;
     }
     &__icon {
