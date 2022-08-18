@@ -3,6 +3,7 @@
 .hb-input {
   @include host-styled {
     display: flex;
+    height: var(--husc__input__height);
     align-items: center;
     padding: 0 var(--husc__input__padding__right) 0
       var(--husc__input__padding__left);
@@ -10,18 +11,52 @@
     font-family: var(--husc__font__family);
     border: var(--husc__input__border__width) solid
       var(--husc__input__border__color);
+    box-sizing: border-box;
     border-radius: var(--husc__border__radius);
     background: var(--husc__background__color);
   }
   @include host-styled([error]) {
+    padding-left: calc(
+      var(--husc__input__padding__left) -
+        (
+          var(--husc__input__border__width--error) -
+            var(--husc__input__border__width)
+        )
+    );
+    padding-right: calc(
+      var(--husc__input__padding__right) -
+        (
+          var(--husc__input__border__width--error) -
+            var(--husc__input__border__width)
+        )
+    );
     border-width: var(--husc__input__border__width--error);
     border-color: var(--husc__input__border__color--error);
+    // background: var(--husc__background__color);
+  }
+  @include host-styled([focus]) {
+    padding-left: calc(
+      var(--husc__input__padding__left) -
+        (
+          var(--husc__input__border__width--focus) -
+            var(--husc__input__border__width)
+        )
+    );
+    padding-right: calc(
+      var(--husc__input__padding__right) -
+        (
+          var(--husc__input__border__width--focus) -
+            var(--husc__input__border__width)
+        )
+    );
+    border-width: var(--husc__input__border__width--focus);
+    border-color: var(--husc__input__border__color--focus);
     // background: var(--husc__background__color);
   }
   &__el {
     width: 0;
     flex: 1;
-    height: var(--husc__input__height);
+    height: 100%;
     padding: 0;
     font-size: var(--husc__input__font__size);
     box-sizing: border-box;
@@ -31,7 +66,6 @@
     cursor: inherit;
     font-family: var(--husc__font__family);
     box-shadow: 0 0 0 999px var(--husc__background__color) inset;
-    // @include child-styled([error]) {
     //   box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
     // }
   }

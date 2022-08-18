@@ -185,6 +185,11 @@ export class HbInput extends Base {
     this.value = this.getAttribute('value');
     inputEl.value = this.value;
     this.onclick = () => inputEl.focus();
+    console.log(this, this.onfocus);
+    this.inputEl.addEventListener('focus', () =>
+      this.setAttribute('focus', ''),
+    );
+    this.inputEl.addEventListener('blur', () => this.removeAttribute('focus'));
   }
 
   disconnectedCallback() {

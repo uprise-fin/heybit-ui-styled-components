@@ -20,6 +20,7 @@ export enum Size {
   'small' = 'small',
   'medium' = 'medium',
   'large' = 'large',
+  'xlarge' = 'xlarge',
 }
 export enum SystemColor {
   'white' = 'white',
@@ -133,8 +134,10 @@ export const componentVariables = {
     border: {
       width: basicVariables.border.width,
       'width--error': basicVariables.border.width * 2,
+      'width--focus': basicVariables.border.width * 2,
       color: basicVariables.border.color,
       'color--error': colorPalette.orange[300],
+      'color--focus': colorPalette.black[800],
     },
     padding: {
       right: 10,
