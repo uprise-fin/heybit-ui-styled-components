@@ -1,7 +1,7 @@
 import type {Size} from '@/index';
 
 export interface HbSpinnerProps {
-  size: Size;
+  size?: Size;
 }
 export enum HbSpinnerTheme {
   'void' = 'void',

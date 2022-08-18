@@ -1,17 +1,20 @@
 import {Size} from '@/components/atom/variable/type';
+import {InitAttribute} from '@/components/base';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {Base} from '@/components/base';
+import {HbSpinnerProps} from './type';
 
 /**
  *
  */
 
 @customElement('hb-spinner')
-export class HbSpinner extends Base {
+export class HbSpinner extends InitAttribute<HbSpinnerProps> {
   static get styles() {
     return [require('./style.scss').default];
   }
+
+  initialAttributes: (keyof HbSpinnerProps)[] = ['size'];
 
   size: Size;
 
