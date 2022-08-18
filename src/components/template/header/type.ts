@@ -19,7 +19,9 @@ export interface HbHeaderProps {
   myMenu: HbHeaderMyMenu[];
   authMenu: HbHeaderNavi[];
   defaultMenu: HbHeaderDefaultMenu[];
-  user: HbHeaderUser;
+  user?: HbHeaderUser;
+  loggedIn?: boolean;
+  pending?: boolean;
   event?: () => void;
 }
 export interface HbHeaderDefaultMenu {
@@ -32,9 +34,7 @@ export interface HbHeaderMyMenu extends HbButtonProps {
   event: () => void;
 }
 export interface HbHeaderUser {
-  name: string;
-  loggedIn: boolean;
-  pending?: boolean;
+  name?: string;
   email?: string;
 }
 export const initialHeaderGnb: HbHeaderNavi[] = [

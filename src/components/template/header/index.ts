@@ -29,6 +29,10 @@ export class HbHeader extends Base {
 
   user: HbHeaderUser;
 
+  loggedIn = false;
+
+  pending = true;
+
   sidemenu = false;
 
   gnb: HbHeaderNavi[];
@@ -41,8 +45,7 @@ export class HbHeader extends Base {
 
   get userName() {
     const name = this.user?.name;
-    const loggedIn = this.user?.loggedIn;
-    if (loggedIn) return `${name}님 `;
+    if (this.loggedIn) return `${name}님 `;
     return '';
   }
 
@@ -65,6 +68,8 @@ export class HbHeader extends Base {
   static get properties() {
     return {
       sidemenu: {type: Boolean, Reflect: true},
+      loggedIn: {type: Boolean, Reflect: true},
+      pending: {type: Boolean, Reflect: true},
       navigations: {type: Array, Reflect: true},
       gnb: {type: Array, Reflect: true},
       defaultMenu: {type: Array, Reflect: true},
@@ -184,16 +189,16 @@ export class HbHeader extends Base {
           >
             <div class="hb-header--mobile__side-menu__content">
               <div class="hb-header--mobile__side-menu__content__my">
-                <hb-if ?value=${this.user?.pending}>
+                <hb-if ?value=${this.pending}>
                   <hb-skeleton type=${HbSkeletonType.dropMenuTop}></hb-skeleton>
                 </hb-if>
-                <hb-if ?value=${!this.user?.pending}>
+                <hb-if ?value=${!this.pending}>
                   <strong>${this.userName}환영합니다.</strong>
-                  <hb-if ?value=${this.user?.loggedIn}>
+                  <hb-if ?value=${this.loggedIn}>
                     <p>${this.user?.email}</p>
                     <div>${this.myMenuTemplate}</div>
                   </hb-if>
-                  <hb-if ?value=${!this.user?.loggedIn}>
+                  <hb-if ?value=${!this.loggedIn}>
                     <div
                       class="hb-header--mobile__side-menu__content__my__btns"
                     >
@@ -206,10 +211,10 @@ export class HbHeader extends Base {
                 ${this.gnbTemplate}
               </div>
               <div class="hb-header--mobile__side-menu__content__auth">
-                <hb-if ?value=${!this.user?.pending && this.user?.loggedIn}>
+                <hb-if ?value=${!this.pending && this.loggedIn}>
                   ${this.authMenuTemplate}
                 </hb-if>
-                <hb-if ?value=${this.user?.pending}>
+                <hb-if ?value=${this.pending}>
                   <hb-skeleton
                     class="hb-header--mobile__skeleton"
                     type=${HbSkeletonType.dropMenuBottom}
@@ -231,11 +236,11 @@ export class HbHeader extends Base {
           ></hb-anchor>
           ${this.gnbTemplate}
           <div class="hb-header--desktop__navibar__actions">
-            <hb-if ?value=${this.user?.pending}>
+            <hb-if ?value=${this.pending}>
               <hb-skeleton type=${HbSkeletonType.hamburger}></hb-skeleton
             ></hb-if>
-            <hb-if ?value=${!this.user?.pending}>
-              <hb-if ?value=${this.user?.loggedIn}>
+            <hb-if ?value=${!this.pending}>
+              <hb-if ?value=${this.loggedIn}>
                 <hb-button
                   class="hb-header--desktop__navibar__actions__hamburber"
                   @event=${this.onSideMenu}
@@ -246,7 +251,7 @@ export class HbHeader extends Base {
                 ></hb-button>
               </hb-if>
               <hb-if
-                ?value=${!this.user?.loggedIn}
+                ?value=${!this.loggedIn}
                 class="hb-header--desktop__navibar__actions__btns"
               >
                 ${this.defaultMenuForDesktopTemplate}
@@ -256,7 +261,7 @@ export class HbHeader extends Base {
         </div>
         <hb-transition
           class="hb-header--desktop__side-menu"
-          ?show=${this.sidemenu && this.user?.loggedIn && !this.user?.pending}
+          ?show=${this.sidemenu && this.loggedIn && !this.pending}
           type=${HbTransitionType.fade}
         >
           <!-- <hb-transition

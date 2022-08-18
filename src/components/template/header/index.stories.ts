@@ -45,11 +45,11 @@ const Template: Story<HbHeaderExps> = ({
 }) => {
   const user: HbHeaderUser = {
     ..._user,
-    pending,
-    loggedIn,
   };
   return html`<hb-header
     @event=${event}
+    ?pending=${pending}
+    ?loggedIn=${loggedIn}
     .user=${user}
     .gnb=${gnb}
     .myMenu=${myMenu}
