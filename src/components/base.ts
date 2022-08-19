@@ -9,15 +9,32 @@ import {LitElement} from 'lit';
 export class Base extends LitElement {
   event: (ev: unknown) => void;
 
-  stopPropagation(ev: Event) {
-    ev.stopPropagation();
+  #tabindex: string;
+
+  get tabindex() {
+    return this.#tabindex;
   }
 
-  setTabIndex() {
-    addEventListener('load', () => {
-      this.tabIndex = 0;
-      this.setAttribute('tabindex', '0');
-    });
+  set tabindex(value: string) {
+    this.tabIndex = +value;
+    this.#tabindex = value;
+    this.setAttribute('tabindex', value);
+  }
+
+  #disabled: boolean;
+
+  get disabled() {
+    return this.#disabled;
+  }
+
+  set disabled(value: boolean) {
+    this.#disabled = value;
+    if (value) this.setAttribute('disabled', '');
+    else this.removeAttribute('disabled');
+  }
+
+  stopPropagation(ev: Event) {
+    ev.stopPropagation();
   }
 
   onEvent(ev: CustomEvent) {

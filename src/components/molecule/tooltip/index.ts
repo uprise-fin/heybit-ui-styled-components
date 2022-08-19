@@ -35,7 +35,7 @@ export class HbTooltip extends Base {
 
   connectedCallback() {
     super.connectedCallback();
-    this.setTabIndex();
+    this.tabindex = '0';
     this.onfocus = this.onOpen;
     this.onblur = () => {
       this.open = false;
