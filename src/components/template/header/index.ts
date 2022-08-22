@@ -266,6 +266,7 @@ export class HbHeader extends Base {
           </div>
         </div>
         <hb-transition
+          @click=${this.onSideMenu}
           class="hb-header--desktop__side-menu"
           ?show=${this.sidemenu && this.loggedin && !this.pending}
           type=${HbTransitionType.fade}
