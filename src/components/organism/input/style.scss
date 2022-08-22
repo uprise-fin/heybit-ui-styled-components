@@ -12,6 +12,7 @@
     border: var(--husc__input__border__width) solid
       var(--husc__input__border__color);
     box-sizing: border-box;
+    transition: border-color var(--husc__transition__duration--ms);
     border-radius: var(--husc__border__radius);
     background: var(--husc__background__color);
   }

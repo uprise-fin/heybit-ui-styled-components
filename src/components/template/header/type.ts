@@ -20,7 +20,7 @@ export interface HbHeaderProps {
   authMenu: HbHeaderNavi[];
   defaultMenu: HbHeaderDefaultMenu[];
   user?: HbHeaderUser;
-  loggedIn?: boolean;
+  loggedin?: boolean;
   pending?: boolean;
   event?: () => void;
 }

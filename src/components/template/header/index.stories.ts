@@ -41,7 +41,7 @@ const Template: Story<HbHeaderExps> = ({
   defaultMenu,
   event,
   pending,
-  loggedIn,
+  loggedin,
 }) => {
   const user: HbHeaderUser = {
     ..._user,
@@ -49,7 +49,7 @@ const Template: Story<HbHeaderExps> = ({
   return html`<hb-header
     @event=${event}
     ?pending=${pending}
-    ?loggedIn=${loggedIn}
+    ?loggedin=${loggedin}
     .user=${user}
     .gnb=${gnb}
     .myMenu=${myMenu}
@@ -60,7 +60,7 @@ const Template: Story<HbHeaderExps> = ({
 export const korea: Story<HbHeaderExps> = Template.bind({});
 korea.args = {
   event: () => console.log('로고클릭'),
-  loggedIn: false,
+  loggedin: false,
   pending: false,
   _user: {
     name: '윤창원',
