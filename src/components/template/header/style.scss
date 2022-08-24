@@ -53,6 +53,7 @@
         right: 0;
         &__btns {
           display: flex;
+          gap: 30px;
           hb-button {
             min-width: 70px;
           }

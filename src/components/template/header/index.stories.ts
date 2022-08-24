@@ -17,12 +17,10 @@ export default {
   argTypes: {
     pending: {
       options: [false, true],
-      control: {type: 'radio'},
       defaultValue: false,
     },
-    loggedIn: {
+    loggedin: {
       options: [false, true],
-      control: {type: 'radio'},
       defaultValue: false,
     },
   },
@@ -61,7 +59,7 @@ export const korea: Story<HbHeaderExps> = Template.bind({});
 korea.args = {
   event: () => console.log('로고클릭'),
   loggedin: false,
-  pending: false,
+  pending: true,
   _user: {
     name: '윤창원',
     email: 'matthew@heybit.io',
