@@ -72,12 +72,12 @@
       top: 77px;
       right: 20px;
       width: 270px;
-      // &::before {
-      //   content: '';
-      //   z-index: -1;
-      //   position: fixed;
-      //   inset: 0;
-      // }
+      &::before {
+        content: '';
+        z-index: -1;
+        position: fixed;
+        inset: 0;
+      }
       &__content {
         padding: 30px 24px 24px;
         border: 1px solid var(--husc__black--300);

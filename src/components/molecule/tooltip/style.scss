@@ -12,6 +12,8 @@
   }
   &__front {
     display: block;
+    cursor: pointer;
+
     @include slot-styled('*') {
       position: absolute;
       transform: translateY(-50%);
