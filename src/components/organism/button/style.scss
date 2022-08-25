@@ -30,7 +30,7 @@ $hb-button__size: (
   //   font-size: 14px,
   //   height: 30px,
   //   border-radius: var(--husc__box__border-radius),
-  // ),,,,,,,,,,,,,,,,,,,,,,,,
+  // ),,,,,,,,,,,,,,,,,,,,,,,,,
 );
 $hb-button__type: (
   rectangle: (
@@ -123,15 +123,15 @@ $hb-button__theme: (
       border: none !important;
       background: none !important;
     }
-    @include host-styled("[theme='#{$class}'][disabled]:not([loading])") {
+    @include host-styled("[theme='#{$class}'][data-disabled]:not([loading])") {
       color: map-get($value, disabledColor);
       border-color: map-get($value, disabledBd);
       background: map-get($value, disabledBg);
     }
-    @include host-styled(":not([disabled])[theme='#{$class}']:hover") {
+    @include host-styled(":not([data-disabled])[theme='#{$class}']:hover") {
       background: map-get($value, hover);
     }
-    @include host-styled(":not([disabled])[theme='#{$class}']:active") {
+    @include host-styled(":not([data-disabled])[theme='#{$class}']:active") {
       background: map-get($value, active);
     }
   }

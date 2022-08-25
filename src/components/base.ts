@@ -21,18 +21,6 @@ export class Base extends LitElement {
     this.setAttribute('tabindex', value);
   }
 
-  #disabled: boolean;
-
-  get disabled() {
-    return this.#disabled;
-  }
-
-  set disabled(value: boolean) {
-    this.#disabled = value;
-    if (value) this.setAttribute('disabled', '');
-    else this.removeAttribute('disabled');
-  }
-
   stopPropagation(ev: Event) {
     ev.stopPropagation();
   }

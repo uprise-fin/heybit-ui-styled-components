@@ -44,6 +44,18 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   initialAttributes: (keyof HbButtonProps)[] = ['size', 'theme', 'type'];
 
+  #disabled: boolean = false;
+
+  get disabled() {
+    return this.#disabled;
+  }
+
+  set disabled(value: boolean) {
+    this.#disabled = value;
+    if (value) this.setAttribute('data-disabled', '');
+    else this.removeAttribute('data-disabled');
+  }
+
   static get properties() {
     return {
       theme: {type: String, Reflect: true},
@@ -94,7 +106,6 @@ export class HbButton extends InitAttribute<HbButtonProps> {
   connectedCallback() {
     super.connectedCallback();
     this.tabindex = '0';
-    this.disabled = false;
     this.onclick = this.adapterEvent;
     this.onkeyup = ev => ev.key === 'Enter' && this.adapterEvent();
   }
