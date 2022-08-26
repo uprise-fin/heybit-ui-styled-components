@@ -57,6 +57,8 @@ export class HbSheetDialog extends Base {
 
   transitionType = HbTransitionType.bottomUp;
 
+  disabled: boolean;
+
   get eventDisabled() {
     return this.buttons.map(x => x.loading).some(x => x) || this.loading;
   }
@@ -77,6 +79,7 @@ export class HbSheetDialog extends Base {
       open: {type: Boolean, Reflect: true},
       buttons: {type: Array, Reflect: true},
       eventDisabled: {type: Boolean, Reflect: true},
+      disabled: {type: Boolean, Reflect: true},
       persistent: {type: Boolean, Reflect: true},
       hideCloseBtn: {type: Boolean, Reflect: true},
       width: {type: Number, Reflect: true},
@@ -128,7 +131,7 @@ export class HbSheetDialog extends Base {
                 (x, i) =>
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
-                    ?disabled=${this.eventDisabled}
+                    ?disabled=${this.eventDisabled || this.disabled}
                     type=${HbButtonType.rectangle}
                     baseLoadingDuration=${this.baseLoadingDuration}
                     @event=${this.adapterEvent.bind(this, x, i)}
@@ -140,7 +143,7 @@ export class HbSheetDialog extends Base {
             </div>
             ${this.anchor && this.anchor.name
               ? html`<hb-anchor
-                  ?disabled=${this.eventDisabled}
+                  ?disabled=${this.eventDisabled || this.disabled}
                   class="hb-sheet-dialog__foot__anc"
                   href=${this.anchor.href}
                   target=${this.anchor.target}

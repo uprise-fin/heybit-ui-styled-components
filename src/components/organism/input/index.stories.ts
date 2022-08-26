@@ -19,11 +19,13 @@ const Template: Story<HbInput> = ({
   decimal,
   comma,
   error,
+  readonly,
 }) => html`
   <hb-input
     type=${type}
     placeholder=${placeholder}
     ?error=${error}
+    ?readonly=${readonly}
     .maxlength=${maxlength}
     .decimal=${decimal}
     .comma=${comma}
@@ -37,6 +39,7 @@ text.args = {
   maxlength: 10,
   placeholder: '글자입력해주세요',
   error: false,
+  readonly: false,
 };
 export const number: Story<HbInput> = Template.bind({});
 number.args = {
@@ -46,4 +49,5 @@ number.args = {
   decimal: 2,
   comma: 3,
   error: false,
+  readonly: false,
 };

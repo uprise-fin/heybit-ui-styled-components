@@ -9,9 +9,15 @@ export interface HbHeaderChip {
   alt: string;
   background: string;
 }
+export interface HbHeaderGroup extends HbAnchorProps {
+  name: string;
+  desc: string;
+}
 export interface HbHeaderNavi extends HbAnchorProps {
   name: string;
   chip?: HbHeaderChip;
+  group?: HbHeaderGroup[];
+  groupOpen?: boolean;
 }
 
 export interface HbHeaderProps {
@@ -39,8 +45,19 @@ export interface HbHeaderUser {
 }
 export const initialHeaderGnb: HbHeaderNavi[] = [
   {
-    name: '예치상품',
-    event: () => console.log('예치상품'),
+    name: '예치상품2',
+    group: [
+      {
+        name: '하베스트1',
+        desc: '블라블라',
+        event: () => console.log('예치상품1'),
+      },
+      {
+        name: '하베스트2',
+        desc: '블라블라',
+        event: () => console.log('예치상품2'),
+      },
+    ],
   },
   {
     name: '디파이',
