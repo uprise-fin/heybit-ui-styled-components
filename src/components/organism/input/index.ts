@@ -43,11 +43,21 @@ export class HbInput extends Base {
 
   comma: number = 3;
 
-  readonly = false;
+  _readonly: boolean = false;
 
   maxlength?: number;
 
   type: HbInputType = HbInputType.text;
+
+  get readonly() {
+    return this._readonly;
+  }
+
+  set readonly(value: boolean) {
+    this._readonly = value;
+    if (value) this.setAttribute('data-readonly', '');
+    else this.removeAttribute('data-readonly');
+  }
 
   get error() {
     return this.#error;
@@ -55,8 +65,8 @@ export class HbInput extends Base {
 
   set error(value: boolean) {
     this.#error = value;
-    if (value) this.setAttribute('error', '');
-    else this.removeAttribute('error');
+    if (value) this.setAttribute('data-error', '');
+    else this.removeAttribute('data-error');
   }
 
   static get properties() {
@@ -70,6 +80,7 @@ export class HbInput extends Base {
       decimal: {type: Number, Reflect: true},
       error: {type: Boolean, Reflect: true},
       readonly: {type: Boolean, Reflect: true},
+      _readonly: {type: Boolean, Reflect: true},
     };
   }
 
@@ -106,13 +117,14 @@ export class HbInput extends Base {
       <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
       <input
         id="input"
+        data-readonly=${this.readonly}
         class="hb-input__el"
         part="input"
         pattern=${this.pattern}
         @input=${this.onInput}
         type=${this.isType}
         placeholder=${this.placeholder}
-        ?readonly=${this.readonly}
+        ?readonly=${this._readonly}
       />
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>

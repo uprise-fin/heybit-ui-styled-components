@@ -59,6 +59,8 @@ export class HbDialog extends Base {
 
   transitionType = HbTransitionType.zoom;
 
+  disabled: boolean;
+
   get eventDisabled() {
     return this.buttons?.map(x => x.loading).some(x => x) || this.loading;
   }
@@ -79,6 +81,7 @@ export class HbDialog extends Base {
     return {
       open: {type: Boolean, Reflect: true},
       buttons: {type: Array, Reflect: true},
+      disabled: {type: Boolean, Reflect: true},
       eventDisabled: {type: Boolean, Reflect: true},
       persistent: {type: Boolean, Reflect: true},
       hideCloseBtn: {type: Boolean, Reflect: true},
@@ -141,7 +144,7 @@ export class HbDialog extends Base {
                 (x, i) =>
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
-                    ?disabled=${this.eventDisabled}
+                    ?disabled=${this.eventDisabled || this.disabled}
                     type=${HbButtonType.rectangle}
                     baseLoadingDuration=${this.baseLoadingDuration}
                     @event=${this.adapterEvent.bind(this, x, i)}
@@ -153,7 +156,7 @@ export class HbDialog extends Base {
             </div>
             ${this.anchor && this.anchor.name
               ? html`<hb-anchor
-                  ?disabled=${this.eventDisabled}
+                  ?disabled=${this.eventDisabled || this.disabled}
                   class="hb-dialog__foot__anc"
                   href=${this.anchor.href}
                   target=${this.anchor.target}

@@ -246,7 +246,7 @@ export class HbHeader extends Base {
   }
 
   onClickGroup(event: Event) {
-    const path = event.path;
+    const path = event.composedPath && event.composedPath();
     const anchor = path[0];
     if (anchor instanceof HbAnchor) {
       event.stopPropagation();
@@ -256,18 +256,18 @@ export class HbHeader extends Base {
   }
 
   onEnterGroup(event: Event) {
-    const path = event.path || (event.composedPath && event.composedPath());
+    const path = event.composedPath && event.composedPath();
     let index = -1;
     while (path[++index] instanceof HbAnchor) {
-      path[index].classList.add('open');
+      (path[index] as HTMLElement).classList.add('open');
     }
   }
 
   onLeaveGroup(event: Event) {
-    const path = event.path || (event.composedPath && event.composedPath());
+    const path = event.composedPath && event.composedPath();
     let index = -1;
     while (path[++index] instanceof HbAnchor) {
-      path[index].classList.remove('open');
+      (path[index] as HTMLElement).classList.remove('open');
     }
   }
 
