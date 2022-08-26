@@ -4,6 +4,7 @@ import {Base} from '@/components/base';
 import {HbIconName} from '@/components/molecule/icon/type';
 import {HbSkeletonType} from '@/components/molecule/skeleton/type';
 import {HbButtonType, HbButtonTheme} from '@/components/organism/button/type';
+import {HbAnchor} from '@/module';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
 import {HbHeaderMyMenu, HbHeaderNavi, HbHeaderUser} from './type';
@@ -29,11 +30,11 @@ export class HbHeader extends Base {
 
   user: HbHeaderUser;
 
-  loggedin = false;
+  loggedin: boolean;
 
-  pending = true;
+  pending: boolean;
 
-  sidemenu = false;
+  sidemenu: boolean;
 
   gnb: HbHeaderNavi[];
 
@@ -85,11 +86,16 @@ export class HbHeader extends Base {
     };
   }
 
-  get gnbTemplate() {
+  get gnbTemplateForDesktop() {
     return html`
       ${this.isGnb?.map(
         x =>
-          html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
+          html`<hb-anchor
+            href=${x.href}
+            target=${x.target}
+            @event=${x.event}
+            @mouseenter=${this.onEnterGroup}
+            @mouseleave=${this.onLeaveGroup}
             >${x.name}${x.chip
               ? html`<hb-img
                   class="hb-header__chip"
@@ -98,6 +104,75 @@ export class HbHeader extends Base {
                   src=${x.chip.src}
                   loadingWidth=${26}
                 />`
+              : ''}${x.group
+              ? html`<hb-icon
+                    icon=${HbIconName['system/outline/arrow-dropdown']}
+                    size=${Size.small}
+                  ></hb-icon>
+                  <div
+                    class="hb-header__group-menu"
+                    @mouseenter=${this.onEnterGroup}
+                    @mouseleave=${this.onLeaveGroup}
+                  >
+                    ${x.group.map(
+                      y => html`
+                        <hb-anchor
+                          class="hb-header__group-menu__item"
+                          href=${y.href}
+                          target=${y.target}
+                          @event=${y.event}
+                          ><strong>${y.name}</strong>
+                          <p>${y.desc}</p></hb-anchor
+                        >
+                      `,
+                    )}
+                    <i class="hb-header__group-menu__layer"></i>
+                    <i class="hb-header__group-menu__tip"></i>
+                  </div>`
+              : ''}</hb-anchor
+          >`,
+      )}
+    `;
+  }
+
+  get gnbTemplate() {
+    return html`
+      ${this.isGnb?.map(
+        x =>
+          html`<hb-anchor
+            href=${x.href}
+            target=${x.target}
+            @event=${x.event}
+            @click=${x.group ? this.onClickGroup : null}
+            >${x.name}${x.chip
+              ? html`<hb-img
+                  class="hb-header__chip"
+                  alt=${x.chip.alt}
+                  style="--background: ${x.chip.background}"
+                  src=${x.chip.src}
+                  loadingWidth=${26}
+                />`
+              : ''}${x.group
+              ? html`<hb-icon
+                    icon=${HbIconName['system/outline/arrow-dropdown']}
+                    size=${Size.small}
+                  ></hb-icon>
+                  <div class="hb-header__group-menu">
+                    ${x.group.map(
+                      y => html`
+                        <hb-anchor
+                          class="hb-header__group-menu__item"
+                          href=${y.href}
+                          target=${y.target}
+                          @event=${y.event}
+                          ><strong>${y.name}</strong>
+                          <p>${y.desc}</p></hb-anchor
+                        >
+                      `,
+                    )}
+                    <i class="hb-header__group-menu__layer"></i>
+                    <i class="hb-header__group-menu__tip"></i>
+                  </div>`
               : ''}</hb-anchor
           >`,
       )}
@@ -161,8 +236,42 @@ export class HbHeader extends Base {
     `;
   }
 
+  onClickGroup(event: Event) {
+    const path = event.path;
+    const anchor = path[0];
+    if (anchor instanceof HbAnchor) {
+      event.stopPropagation();
+      if (anchor.classList.contains('open')) anchor.classList.remove('open');
+      else anchor.classList.add('open');
+    }
+  }
+
+  onEnterGroup(event: Event) {
+    const path = event.path;
+    let index = -1;
+    while (path[++index] instanceof HbAnchor) {
+      path[index].classList.add('open');
+    }
+  }
+
+  onLeaveGroup(event: Event) {
+    const path = event.path;
+    let index = -1;
+    while (path[++index] instanceof HbAnchor) {
+      path[index].classList.remove('open');
+    }
+  }
+
   onSideMenu() {
     this.sidemenu = !this.sidemenu;
+  }
+
+  onEnterSide() {
+    this.sidemenu = true;
+  }
+
+  onLeaveSide() {
+    this.sidemenu = false;
   }
 
   render() {
@@ -233,14 +342,16 @@ export class HbHeader extends Base {
       </div>
       <div slot="desktop" part="desktop" class="hb-header--desktop">
         <div class="hb-header--desktop__navibar">
-          <hb-anchor @event=${this.onEvent}
-            ><hb-icon
-              icon=${HbIconName['graphic/heybit']}
-              size=${Size.large}
-              style="--husc__icon__size__large: var(--husc__header__logo__width);"
-            ></hb-icon
-          ></hb-anchor>
-          ${this.gnbTemplate}
+          <div class="hb-header--desktop__navibar__routes">
+            <hb-anchor @event=${this.onEvent}
+              ><hb-icon
+                icon=${HbIconName['graphic/heybit']}
+                size=${Size.large}
+                style="--husc__icon__size__large: var(--husc__header__logo__width);"
+              ></hb-icon
+            ></hb-anchor>
+            ${this.gnbTemplateForDesktop}
+          </div>
           <div class="hb-header--desktop__navibar__actions">
             <hb-if ?value=${this.pending}>
               <hb-skeleton type=${HbSkeletonType.hamburger}></hb-skeleton
@@ -249,7 +360,8 @@ export class HbHeader extends Base {
               <hb-if ?value=${this.loggedin}>
                 <hb-button
                   class="hb-header--desktop__navibar__actions__hamburber"
-                  @event=${this.onSideMenu}
+                  @mouseenter=${this.onEnterSide}
+                  @mouseleave=${this.onLeaveSide}
                   >${this.userName}<hb-icon
                     icon=${HbIconName['system/outline/arrow-dropdown']}
                     size=${Size.small}
@@ -266,7 +378,8 @@ export class HbHeader extends Base {
           </div>
         </div>
         <hb-transition
-          @click=${this.onSideMenu}
+          @mouseenter=${this.onEnterSide}
+          @mouseleave=${this.onLeaveSide}
           class="hb-header--desktop__side-menu"
           ?show=${this.sidemenu && this.loggedin && !this.pending}
           type=${HbTransitionType.fade}

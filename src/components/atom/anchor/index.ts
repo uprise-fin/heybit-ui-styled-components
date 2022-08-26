@@ -59,7 +59,7 @@ export class HbAnchor extends Base {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return html`<slot part="slot" class="hb-anchor__slot"></slot>`;
   }
 }
 
