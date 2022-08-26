@@ -39,7 +39,6 @@
       top: 30px;
       min-width: 200px;
       padding: 12px 10px;
-      border-radius: 10px;
       &::before {
         content: '';
         position: absolute;
@@ -77,6 +76,8 @@
         inset: 0;
         border: 1px solid #e2e4e6;
         box-shadow: 0 4px 10px #0000000f;
+        border-radius: 20px;
+
         background: #fff;
         &::before {
           content: '';

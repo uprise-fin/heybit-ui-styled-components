@@ -247,7 +247,7 @@ export class HbHeader extends Base {
   }
 
   onEnterGroup(event: Event) {
-    const path = event.path;
+    const path = event.path || (event.composedPath && event.composedPath());
     let index = -1;
     while (path[++index] instanceof HbAnchor) {
       path[index].classList.add('open');
@@ -255,7 +255,7 @@ export class HbHeader extends Base {
   }
 
   onLeaveGroup(event: Event) {
-    const path = event.path;
+    const path = event.path || (event.composedPath && event.composedPath());
     let index = -1;
     while (path[++index] instanceof HbAnchor) {
       path[index].classList.remove('open');
