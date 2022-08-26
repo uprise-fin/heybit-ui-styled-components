@@ -76,8 +76,7 @@
         inset: 0;
         border: 1px solid #e2e4e6;
         box-shadow: 0 4px 10px #0000000f;
-        border-radius: 20px;
-
+        border-radius: 10px;
         background: #fff;
         &::before {
           content: '';
@@ -115,7 +114,7 @@
 
       &__routes {
         display: flex;
-        > hb-anchor {
+        > .hb-anchor {
           position: relative;
           display: flex;
           margin-right: 40px;
@@ -200,13 +199,13 @@
           display: flex;
           width: fit-content;
           margin: 20px auto 0;
-          hb-anchor {
+          .hb-anchor {
             text-decoration: none;
             font-weight: 400;
             font-size: 14px;
             line-height: 17px;
             color: var(--husc__black--400);
-            & + hb-anchor {
+            & + .hb-anchor {
               margin-left: 40px;
               &::before {
                 position: absolute;
@@ -229,7 +228,7 @@
       display: flex;
       height: var(--husc__header__height--mobile);
       align-items: center;
-      hb-button {
+      .hb-button {
         position: absolute;
         right: 0;
       }
@@ -271,8 +270,8 @@
             font-size: 14px;
             color: var(--husc__black--300);
           }
-          hb-button {
-            & + hb-button {
+          .hb-button {
+            & + .hb-button {
               margin-top: 10px;
             }
           }
@@ -284,7 +283,7 @@
           margin-top: 10px;
           padding: 16px 20px;
           border-top: 1px solid var(--husc__black--300);
-          > hb-anchor {
+          > .hb-anchor {
             position: relative;
             display: block;
             min-height: 54px;
@@ -335,7 +334,7 @@
         &__auth {
           padding: 16px 20px;
           border-top: 1px solid var(--husc__black--300);
-          hb-anchor {
+          .hb-anchor {
             display: block;
             height: 40px;
             text-decoration: none;

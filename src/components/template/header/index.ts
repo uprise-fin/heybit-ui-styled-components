@@ -91,6 +91,7 @@ export class HbHeader extends Base {
       ${this.isGnb?.map(
         x =>
           html`<hb-anchor
+            class="hb-anchor"
             href=${x.href}
             target=${x.target}
             @event=${x.event}
@@ -140,6 +141,7 @@ export class HbHeader extends Base {
       ${this.isGnb?.map(
         x =>
           html`<hb-anchor
+            class="hb-anchor"
             href=${x.href}
             target=${x.target}
             @event=${x.event}
@@ -184,6 +186,7 @@ export class HbHeader extends Base {
       ${this.isMyMenu?.map(
         x =>
           html`<hb-button
+            class="hb-button"
             @event=${x.event}
             type=${HbButtonType.rectangle}
             theme=${x.theme}
@@ -198,7 +201,11 @@ export class HbHeader extends Base {
     return html`
       ${this.isAuthMenu?.map(
         x =>
-          html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
+          html`<hb-anchor
+            class="hb-anchor"
+            href=${x.href}
+            target=${x.target}
+            @event=${x.event}
             >${x.name}</hb-anchor
           >`,
       )}
@@ -211,6 +218,7 @@ export class HbHeader extends Base {
       ${this.isDefaultMenu?.map(
         (x, i) =>
           html`<hb-button
+            class="hb-button"
             theme=${themes[i]}
             type=${HbButtonType.rectangle}
             size=${Size.medium}
@@ -226,6 +234,7 @@ export class HbHeader extends Base {
     return html`
       ${this.isDefaultMenu?.map(
         (x, i) => html`<hb-button
+          class="hb-button"
           theme=${themes[i]}
           size=${Size.large}
           type=${HbButtonType.rectangle}
@@ -262,10 +271,6 @@ export class HbHeader extends Base {
     }
   }
 
-  onSideMenu() {
-    this.sidemenu = !this.sidemenu;
-  }
-
   onEnterSide() {
     this.sidemenu = true;
   }
@@ -278,14 +283,14 @@ export class HbHeader extends Base {
     return html`<hb-responsive>
       <div slot="mobile" part="mobile" class="hb-header--mobile">
         <div class="hb-header--mobile__navibar">
-          <hb-anchor @event=${this.onEvent}
+          <hb-anchor @event=${this.onEvent} class="hb-anchor"
             ><hb-icon
               icon=${HbIconName['graphic/heybit']}
               size=${Size.large}
               style="--husc__icon__size__large: var(--husc__header__logo__width);"
             ></hb-icon
           ></hb-anchor>
-          <hb-button @event=${this.onSideMenu}
+          <hb-button @event=${this.onEnterSide} class="hb-button"
             ><hb-icon
               icon=${HbIconName['system/outline/menu-side']}
               size=${Size.medium}
@@ -293,7 +298,7 @@ export class HbHeader extends Base {
           ></hb-button>
         </div>
         <hb-transition
-          @click=${this.onSideMenu}
+          @click=${this.onLeaveSide}
           class="hb-header--mobile__side-menu"
           ?show=${this.sidemenu}
           type=${HbTransitionType.fade}
@@ -343,7 +348,7 @@ export class HbHeader extends Base {
       <div slot="desktop" part="desktop" class="hb-header--desktop">
         <div class="hb-header--desktop__navibar">
           <div class="hb-header--desktop__navibar__routes">
-            <hb-anchor @event=${this.onEvent}
+            <hb-anchor @event=${this.onEvent} class="hb-anchor"
               ><hb-icon
                 icon=${HbIconName['graphic/heybit']}
                 size=${Size.large}
