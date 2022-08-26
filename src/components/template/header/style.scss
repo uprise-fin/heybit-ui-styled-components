@@ -160,6 +160,7 @@
       width: 270px;
       &::after {
         content: '';
+        z-index: 1;
         position: absolute;
         inset: -10px;
       }
@@ -170,6 +171,8 @@
       //   inset: 0;
       // }
       &__content {
+        z-index: 2;
+        position: relative;
         padding: 30px 24px 24px;
         border: 1px solid var(--husc__black--300);
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.06);
