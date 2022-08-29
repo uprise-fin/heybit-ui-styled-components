@@ -25,7 +25,7 @@ export class HbEventDialog extends Base {
 
   loadingHeight = 490;
 
-  open = false;
+  open: boolean;
 
   persistent = false;
 

@@ -41,7 +41,7 @@ export class HbDialog extends Base {
 
   width = componentVariables.modal.width;
 
-  open = false;
+  open: boolean;
 
   icon = '';
 

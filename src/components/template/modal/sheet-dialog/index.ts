@@ -41,7 +41,7 @@ export class HbSheetDialog extends Base {
 
   width = componentVariables.modal.width;
 
-  open = false;
+  open: boolean;
 
   title = '';
 

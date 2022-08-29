@@ -47,7 +47,7 @@ export class HbModal extends Base {
 
   width = 0;
 
-  open = false;
+  open: boolean;
 
   persistent = false;
 
