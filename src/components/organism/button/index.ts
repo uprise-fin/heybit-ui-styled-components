@@ -36,8 +36,6 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   size: Size;
 
-  loading = false;
-
   baseLoadingDuration = 0;
 
   theme: HbButtonTheme;
@@ -56,12 +54,33 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     else this.removeAttribute('data-disabled');
   }
 
+  _loading: boolean = false;
+
+  get loading() {
+    return this._loading;
+  }
+
+  set loading(value: boolean) {
+    this._loading = value;
+    if (value) {
+      this.setAttribute('data-loading', '');
+      const width = this.style.width.substring(0, this.style.width.length - 2);
+      this.dataset.width = width;
+      this.style.width = this.offsetWidth ? this.offsetWidth + 'px' : '';
+    } else {
+      this.removeAttribute('data-loading');
+      const width = this.dataset.width;
+      this.style.width = width ? width + 'px' : '';
+    }
+  }
+
   static get properties() {
     return {
       theme: {type: String, Reflect: true},
       size: {type: String, Reflect: true},
       type: {type: String, Reflect: true},
       loading: {type: Boolean, Reflect: true},
+      _loading: {type: Boolean, Reflect: true},
       baseLoadingDuration: {type: Number, Reflect: true},
       disabled: {type: Boolean, Reflect: true},
     };
@@ -75,12 +94,12 @@ export class HbButton extends InitAttribute<HbButtonProps> {
         class="hb-button__slot hb-button__slot--left"
       ></slot>
       <div class="hb-button__label">
-        ${this.loading
+        ${this._loading
           ? html`
               <hb-transition
                 class="hb-button__label__transition"
                 type=${HbTransitionType.fade}
-                ?show=${this.loading}
+                ?show=${this._loading}
               >
                 <hb-spinner size=${this.size}></hb-spinner>
               </hb-transition>
@@ -89,7 +108,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
               <hb-transition
                 class="hb-button__label__transition"
                 type=${HbTransitionType.fade}
-                ?show=${!this.loading}
+                ?show=${!this._loading}
               >
                 <slot part="label"></slot>
               </hb-transition>
@@ -115,28 +134,10 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     this.onEvent(new CustomEvent('event'));
     // this.dispatchEvent(new CustomEvent('event', ev));
     if (this.baseLoadingDuration) {
-      this.setAttribute('loading', '');
+      this.loading = true;
       await wait(this.baseLoadingDuration);
-      this.removeAttribute('loading');
+      this.loading = false;
     }
-  }
-
-  attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === 'loading') {
-      if (newVal !== null) {
-        const width = this.style.width.substring(
-          0,
-          this.style.width.length - 2,
-        );
-        this.dataset.width = width;
-        this.style.width = this.offsetWidth ? this.offsetWidth + 'px' : '';
-      } else {
-        const width = this.dataset.width;
-        this.style.width = width ? width + 'px' : '';
-      }
-    }
-
-    super.attributeChangedCallback(name, _, newVal);
   }
 }
 

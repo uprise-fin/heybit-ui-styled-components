@@ -72,12 +72,12 @@
 //   }
 // }
 @mixin disabled() {
-  @include host-styled('[data-disabled]:not([loading])') {
+  @include host-styled('[data-disabled]:not([data-loading])') {
     cursor: not-allowed;
   }
 }
 @mixin loading() {
-  @include host-styled('[loading]') {
+  @include host-styled('[data-loading]') {
     cursor: progress;
   }
 }
