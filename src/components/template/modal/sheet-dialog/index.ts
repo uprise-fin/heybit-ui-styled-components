@@ -60,7 +60,9 @@ export class HbSheetDialog extends Base {
   disabled: boolean;
 
   get eventDisabled() {
-    return this.buttons.map(x => x.loading).some(x => x) || this.loading;
+    if (this.buttons && this.buttons?.length)
+      return this.buttons.map(x => x.loading).some(x => x);
+    return this.loading;
   }
   // get open() {
   //   return this._open;
