@@ -23,3 +23,4 @@ export * from '@/components/template/modal';
 export * from '@/components/template/modal/dialog';
 export * from '@/components/template/modal/event-dialog';
 export * from '@/components/template/modal/sheet-dialog';
+export * from '@/components/template/modal/page-dialog';

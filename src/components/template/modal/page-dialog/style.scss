@@ -1,0 +1,37 @@
+@import '@/styles/utils/mixins';
+
+// $hb-dialog__border-radius: 16px !default;
+// $hb-input__height: $box__height !default;
+// $hb-input__padding: $box__padding !default;
+// $hb-input__border-width: $box__border-width !default;
+// $hb-input__font-size: $box__font-size !default;
+// $hb-input__border-color: $box__border-color !default;
+// $hb-input__border-color--warning: $box__border-color--warning !default;
+// $hb-input__border-radius: $box__border-radius !default;
+// $hb-input__background: $box__background !default;
+// $hb-input__background--warning: $box__background !default;
+
+.hb-page-dialog {
+  &__container {
+    position: relative;
+    display: flex;
+
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    padding: var(--husc__modal__margin);
+    box-sizing: border-box;
+    background: var(--husc__modal__background);
+  }
+  &__close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: none;
+  }
+}
