@@ -135,7 +135,6 @@ export class HbSheetDialog extends Base {
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || this.disabled}
                     type=${HbButtonType.rectangle}
-                    baseLoadingDuration=${this.baseLoadingDuration}
                     @event=${this.adapterEvent.bind(this, x, i)}
                     theme=${x.theme}
                     size="medium"

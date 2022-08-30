@@ -81,6 +81,7 @@ horizon.args = {
   open: true,
   persistent: true,
   loading: false,
+  disabled: false,
   baseLoadingDuration: 0,
   icon: thunderImg,
   title: '팝업 예시입니다!',
@@ -90,8 +91,8 @@ horizon.args = {
     {
       name: '닫기',
       theme: HbButtonTheme.primary,
-      event: function () {
-        console.log('1');
+      event: async function () {
+        await new Promise(resolve => setTimeout(() => resolve(true), 5000));
       },
     },
     {
