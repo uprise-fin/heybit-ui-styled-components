@@ -98,7 +98,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   set value(value: string) {
-    if (value === 'null') value = '';
+    if (!value || value === 'null') value = '';
     this._value = value || '';
     this.setAttribute('value', value);
   }
