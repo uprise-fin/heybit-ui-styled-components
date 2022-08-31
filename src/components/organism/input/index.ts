@@ -1,8 +1,8 @@
-import {Base} from '@/components/base';
+import {InitAttribute} from '@/components/base';
 import {getElement} from '@/utils';
 import {html} from 'lit';
 import {customElement} from 'lit/decorators.js';
-import {HbInputEvent, HbInputType} from './type';
+import {HbInputEvent, HbInputProps, HbInputType} from './type';
 
 /**
  * An example element.
@@ -24,7 +24,7 @@ import {HbInputEvent, HbInputType} from './type';
  */
 
 @customElement('hb-input')
-export class HbInput extends Base {
+export class HbInput extends InitAttribute<HbInputProps> {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -49,6 +49,8 @@ export class HbInput extends Base {
 
   type: HbInputType = HbInputType.text;
 
+  initialAttributes: (keyof HbInputProps)[] = ['value'];
+
   get readonly() {
     return this._readonly;
   }
@@ -71,6 +73,7 @@ export class HbInput extends Base {
 
   static get properties() {
     return {
+      _value: {type: String, Reflect: true},
       value: {type: String, Reflect: true},
       attributeSync: {type: Boolean, Reflect: true},
       type: {type: String, Reflect: true},
@@ -95,6 +98,7 @@ export class HbInput extends Base {
   }
 
   set value(value: string) {
+    // 직접 입력할때
     if (this.type === HbInputType.number) {
       this._value = this.toNumeric(value);
     } else {
@@ -210,6 +214,7 @@ export class HbInput extends Base {
 
   attributeChangedCallback(name: string, _: string, newVal: string) {
     if (name === 'value') {
+      // value값을 넘겨받을때(input이벤트없이 입력받을때)
       const inputEl = this.inputEl;
       if (this.type === HbInputType.number) newVal = this.toNumeric(newVal);
       if (inputEl && inputEl.value !== newVal) inputEl.value = newVal;
