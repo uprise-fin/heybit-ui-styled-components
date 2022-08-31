@@ -98,12 +98,9 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   set value(value: string) {
-    // 직접 입력할때
-    if (this.type === HbInputType.number) {
-      this._value = this.toNumeric(value);
-    } else {
-      this._value = value;
-    }
+    if (value === 'null') value = '';
+    this._value = value || '';
+    this.setAttribute('value', value);
   }
 
   get value() {
