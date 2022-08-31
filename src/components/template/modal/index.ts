@@ -45,7 +45,7 @@ export class HbModal extends Base {
 
   containerEl?: HTMLDivElement;
 
-  width = 0;
+  width = '0';
 
   open: boolean;
 
@@ -66,7 +66,7 @@ export class HbModal extends Base {
     return {
       open: {type: Boolean, Reflect: true},
       persistent: {type: Boolean, Reflect: true},
-      width: {type: Number, Reflect: true},
+      width: {type: String, Reflect: true},
       transitionType: {type: String, Reflect: true},
       verticalAlign: {type: Number, Reflect: true},
       horizonAlign: {type: Number, Reflect: true},
@@ -88,7 +88,7 @@ export class HbModal extends Base {
           >
             <div
               class="hb-modal__container"
-              style=${`--husc__modal__width: ${this.width}px;`}
+              style=${`--husc__modal__width: ${this.width};`}
               id="container"
               part="container"
               @click=${this.stopPropagation}

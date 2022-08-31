@@ -1,5 +1,4 @@
 import {HbTransitionType} from '@/components/atom/transition/type';
-import {componentVariables} from '@/components/atom/variable/type';
 import {Base} from '@/components/base';
 import {HbIconName} from '@/components/molecule/icon/type';
 import {
@@ -38,7 +37,7 @@ export class HbPageDialog extends Base {
 
   baseLoadingDuration = 500;
 
-  width = componentVariables.modal.width;
+  width = '100%';
 
   open: boolean;
 

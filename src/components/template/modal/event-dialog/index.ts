@@ -19,7 +19,7 @@ export class HbEventDialog extends Base {
     return [require('./style.scss').default];
   }
 
-  width = 400;
+  width = '400px';
 
   loadingWidth = 400;
 

@@ -77,7 +77,7 @@ const VerticalTemplate: Story<HbPageDialogExpns> = props => {
 };
 export const horizon: Story<HbPageDialogExpns> = HorizonTemplate.bind({});
 horizon.args = {
-  width: 1000,
+  width: '1000px',
   open: true,
   persistent: true,
   loading: false,
