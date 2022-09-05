@@ -30,7 +30,7 @@ $hb-button__size: (
   //   font-size: 14px,
   //   height: 30px,
   //   border-radius: var(--husc__box__border-radius),
-  // ),,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  // ),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 );
 $hb-button__type: (
   rectangle: (
@@ -74,7 +74,7 @@ $hb-button__theme: (
     disabledColor: var(--husc__black--400),
   ),
   quaternary: (
-    bd: var(--husc__black--800),
+    bd: #dee0e3,
     color: var(--husc__font__color__solid),
     active: var(--husc__black--100),
     // hover: var(--husc__black--50),

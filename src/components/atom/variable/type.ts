@@ -130,7 +130,7 @@ export const componentVariables = {
     size: basicVariables.size,
   },
   input: {
-    height: 50,
+    height: 56,
     border: {
       width: basicVariables.border.width,
       'width--error': basicVariables.border.width * 2,
