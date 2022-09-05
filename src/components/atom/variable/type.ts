@@ -141,8 +141,8 @@ export const componentVariables = {
       'color--focus': colorPalette.black[800],
     },
     padding: {
-      right: 10,
-      left: 10,
+      right: 18,
+      left: 18,
     },
     font: {
       size: basicVariables.font.size,
