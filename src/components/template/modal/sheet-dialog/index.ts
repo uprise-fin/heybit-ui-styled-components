@@ -41,7 +41,7 @@ export class HbSheetDialog extends Base {
 
   width = componentVariables.modal.width + 'px';
 
-  open: boolean;
+  _open: boolean;
 
   title = '';
 
@@ -64,6 +64,17 @@ export class HbSheetDialog extends Base {
       return this.buttons.map(x => x.loading).some(x => x);
     return this.loading;
   }
+
+  get open() {
+    return this._open;
+  }
+
+  set open(value: boolean) {
+    this._open = value;
+    if (value) this.setAttribute('open', '');
+    else this.removeAttribute('open');
+  }
+
   // get open() {
   //   return this._open;
   // }
@@ -78,6 +89,7 @@ export class HbSheetDialog extends Base {
   // value!: string;
   static get properties() {
     return {
+      _open: {type: Boolean, Reflect: true},
       open: {type: Boolean, Reflect: true},
       buttons: {type: Array, Reflect: true},
       eventDisabled: {type: Boolean, Reflect: true},

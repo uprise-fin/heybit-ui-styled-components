@@ -25,7 +25,7 @@ export class HbEventDialog extends Base {
 
   loadingHeight = 490;
 
-  open: boolean;
+  _open: boolean;
 
   persistent = false;
 
@@ -35,12 +35,23 @@ export class HbEventDialog extends Base {
 
   href = '';
 
+  get open() {
+    return this._open;
+  }
+
+  set open(value: boolean) {
+    this._open = value;
+    if (value) this.setAttribute('open', '');
+    else this.removeAttribute('open');
+  }
+
   static get properties() {
     return {
+      _open: {type: Boolean, Reflect: true},
       open: {type: Boolean, Reflect: true},
       persistent: {type: Boolean, Reflect: true},
       hideCloseBtn: {type: Boolean, Reflect: true},
-      width: {type: Number, Reflect: true},
+      width: {type: String, Reflect: true},
       loadingWidth: {type: Number, Reflect: true},
       loadingHeight: {type: Number, Reflect: true},
       image: {type: String, Reflect: true},
