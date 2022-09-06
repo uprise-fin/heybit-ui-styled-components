@@ -1,9 +1,5 @@
 @import '@/styles/utils/mixins';
-hb-event-dialog {
-  > * {
-    display: none;
-  }
-}
+
 .hb-event-dialog {
   &__container {
     position: relative;

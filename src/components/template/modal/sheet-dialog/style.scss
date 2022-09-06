@@ -1,9 +1,5 @@
 @import '@/styles/utils/mixins';
-hb-sheet-dialog {
-  > * {
-    display: none;
-  }
-}
+
 .hb-sheet-dialog {
   &__container {
     position: relative;
