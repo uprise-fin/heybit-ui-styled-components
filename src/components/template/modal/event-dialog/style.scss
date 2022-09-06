@@ -1,9 +1,14 @@
 @import '@/styles/utils/mixins';
-
+hb-event-dialog {
+  > * {
+    display: none;
+  }
+}
 .hb-event-dialog {
   &__container {
     position: relative;
     overflow: auto;
+    width: calc(100% - (var(--husc__modal__margin) * 2));
     max-height: calc(
       100vh - var(--husc__modal__margin) - var(--husc__modal__margin)
     );

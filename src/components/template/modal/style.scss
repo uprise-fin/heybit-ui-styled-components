@@ -1,5 +1,10 @@
 //
 @import '@/styles/utils/mixins';
+hb-modal {
+  > * {
+    display: none;
+  }
+}
 .hb-modal {
   @include host-styled {
     display: flex;
