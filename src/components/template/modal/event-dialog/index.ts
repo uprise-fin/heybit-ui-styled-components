@@ -40,7 +40,7 @@ export class HbEventDialog extends Base {
       open: {type: Boolean, Reflect: true},
       persistent: {type: Boolean, Reflect: true},
       hideCloseBtn: {type: Boolean, Reflect: true},
-      width: {type: Number, Reflect: true},
+      width: {type: String, Reflect: true},
       loadingWidth: {type: Number, Reflect: true},
       loadingHeight: {type: Number, Reflect: true},
       image: {type: String, Reflect: true},

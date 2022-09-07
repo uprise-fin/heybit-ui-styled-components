@@ -85,7 +85,7 @@ export class HbPageDialog extends Base {
       eventDisabled: {type: Boolean, Reflect: true},
       persistent: {type: Boolean, Reflect: true},
       hideCloseBtn: {type: Boolean, Reflect: true},
-      width: {type: Number, Reflect: true},
+      width: {type: String, Reflect: true},
       loading: {type: Boolean, Reflect: true},
       baseLoadingDuration: {type: Number, Reflect: true},
       buttonAlign: {type: String, Reflect: true},
