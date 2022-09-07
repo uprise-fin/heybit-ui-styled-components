@@ -92,6 +92,11 @@ export class HbInput extends InitAttribute<HbInputProps> {
     return null;
   }
 
+  get inputmode() {
+    if (this.type === 'number') return 'decimal';
+    return null;
+  }
+
   get isType() {
     if (this.type === HbInputType.number) return HbInputType.text;
     return this.type;
@@ -122,6 +127,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
         class="hb-input__el"
         part="input"
         pattern=${this.pattern}
+        inputmode=${this.inputmode}
         @input=${this.onInput}
         type=${this.isType}
         placeholder=${this.placeholder}
