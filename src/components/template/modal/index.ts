@@ -47,19 +47,9 @@ export class HbModal extends Base {
 
   width = '0';
 
-  _open: boolean;
+  open: boolean;
 
   persistent = false;
-
-  get open() {
-    return this._open;
-  }
-
-  set open(value: boolean) {
-    this._open = value;
-    if (value) this.setAttribute('open', '');
-    else this.removeAttribute('open');
-  }
 
   get position() {
     const obj = {
@@ -74,7 +64,6 @@ export class HbModal extends Base {
 
   static get properties() {
     return {
-      _open: {type: Boolean, Reflect: true},
       open: {type: Boolean, Reflect: true},
       persistent: {type: Boolean, Reflect: true},
       width: {type: String, Reflect: true},

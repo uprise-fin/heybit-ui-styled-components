@@ -41,7 +41,7 @@ export class HbDialog extends Base {
 
   width = componentVariables.modal.width + 'px';
 
-  _open: boolean;
+  open: boolean;
 
   icon = '';
 
@@ -78,19 +78,9 @@ export class HbDialog extends Base {
 
   // @property()
   // value!: string;
-  get open() {
-    return this._open;
-  }
-
-  set open(value: boolean) {
-    this._open = value;
-    if (value) this.setAttribute('open', '');
-    else this.removeAttribute('open');
-  }
 
   static get properties() {
     return {
-      _open: {type: Boolean, Reflect: true},
       open: {type: Boolean, Reflect: true},
       buttons: {type: Array, Reflect: true},
       disabled: {type: Boolean, Reflect: true},

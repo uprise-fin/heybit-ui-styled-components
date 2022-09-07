@@ -39,7 +39,7 @@ export class HbPageDialog extends Base {
 
   width = '100%';
 
-  _open: boolean;
+  open: boolean;
 
   icon = '';
 
@@ -58,16 +58,6 @@ export class HbPageDialog extends Base {
   transitionType = HbTransitionType.zoom;
 
   disabled: boolean;
-
-  get open() {
-    return this._open;
-  }
-
-  set open(value: boolean) {
-    this._open = value;
-    if (value) this.setAttribute('open', '');
-    else this.removeAttribute('open');
-  }
 
   get eventDisabled() {
     if (this.buttons && this.buttons?.length)
@@ -89,14 +79,13 @@ export class HbPageDialog extends Base {
 
   static get properties() {
     return {
-      _open: {type: Boolean, Reflect: true},
       open: {type: Boolean, Reflect: true},
       buttons: {type: Array, Reflect: true},
       disabled: {type: Boolean, Reflect: true},
       eventDisabled: {type: Boolean, Reflect: true},
       persistent: {type: Boolean, Reflect: true},
       hideCloseBtn: {type: Boolean, Reflect: true},
-      width: {type: String, Reflect: true},
+      width: {type: Number, Reflect: true},
       loading: {type: Boolean, Reflect: true},
       baseLoadingDuration: {type: Number, Reflect: true},
       buttonAlign: {type: String, Reflect: true},
