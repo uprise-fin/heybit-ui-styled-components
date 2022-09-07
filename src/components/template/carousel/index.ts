@@ -194,7 +194,7 @@ export class HbCarousel extends Base {
       window.addEventListener('touchend', this.onEventEndBound);
       window.addEventListener('touchmove', this.onEventDoingBound);
     }
-    if (this.auto) {
+    if (this.auto && this.itemLength > 1) {
       const step = this.rolling ? 1 : undefined;
       this.onAuto(step);
       if (this.pause) {
@@ -231,7 +231,7 @@ export class HbCarousel extends Base {
   }
 
   disconnectedCallback() {
-    if (this.draggable) {
+    if (this.draggable && this.itemLength > 1) {
       this.removeEventListener('mousedown', this.onEventStartBound);
       window.removeEventListener('mouseup', this.onEventEndBound);
       window.removeEventListener('mousemove', this.onEventDoingBound);
@@ -376,8 +376,8 @@ export class HbCarousel extends Base {
   }
 
   get indicateTemplate() {
-    if (this.indicate)
-      return html`<div class="hb-carousel__indicate">
+    if (this.indicate && this.itemLength > 1)
+      return html`<div class="hb-carousel__indicate" part="indicate">
         ${Array(this.itemLength)
           .fill(null)
           .map(
