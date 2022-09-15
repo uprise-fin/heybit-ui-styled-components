@@ -287,7 +287,7 @@ export class HbHeader extends Base {
             ><hb-icon
               icon=${HbIconName['graphic/heybit']}
               size=${Size.large}
-              style="--husc__icon__size__large: var(--husc__header__logo__width);"
+              style="--husc__icon__size__large: var(--husc__header__logo__width--mobile);"
             ></hb-icon
           ></hb-anchor>
           <hb-button @event=${this.onEnterSide} class="hb-button"
@@ -352,7 +352,7 @@ export class HbHeader extends Base {
               ><hb-icon
                 icon=${HbIconName['graphic/heybit']}
                 size=${Size.large}
-                style="--husc__icon__size__large: var(--husc__header__logo__width);"
+                style="--husc__icon__size__large: var(--husc__header__logo__width--desktop);"
               ></hb-icon
             ></hb-anchor>
             ${this.gnbTemplateForDesktop}

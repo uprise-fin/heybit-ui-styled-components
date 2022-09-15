@@ -74,7 +74,7 @@ export const basicVariables = {
   },
   layout: {
     gutter: 22,
-    media: 780,
+    media: 1020,
     'content-width': {
       '--mobile': 460,
       '--desktop': 1060,
@@ -213,7 +213,10 @@ export const componentVariables = {
       '--desktop': 77,
     },
     logo: {
-      width: 77,
+      width: {
+        '--mobile': 77,
+        '--desktop': 80,
+      },
     },
   },
 };
