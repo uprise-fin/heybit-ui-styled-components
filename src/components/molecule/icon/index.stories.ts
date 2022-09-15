@@ -8,13 +8,14 @@ import {HbIconName} from './type';
 interface HbIconExpns extends HbIcon {
   color: string;
 }
+const iconList = Object.keys(SVG) as HbIconName[];
 export default {
   title: 'components/molecule/hb-icon',
   component: 'hb-icon',
   argTypes: {
     icon: {
       defaultValue: 'system/filled/add',
-      options: Object.keys(SVG) as HbIconName[],
+      options: iconList,
       control: {type: 'radio'},
     },
     size: {
@@ -35,15 +36,48 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbIconExpns> = ({icon, size, color}) =>
+const OneTemplate: Story<HbIconExpns> = ({icon, size, color}) =>
   html`<hb-icon
     icon=${icon}
     size=${size}
     style="--icon__color: ${color};"
   ></hb-icon>`;
-export const primary: Story<HbIconExpns> = Template.bind({});
-primary.args = {size: Size.small};
-primary.parameters = {
+export const icon: Story<HbIconExpns> = OneTemplate.bind({});
+icon.args = {size: Size.large};
+icon.parameters = {
+  colorPicker: {
+    applyColorTo: ['color'], // Pass empty array to clear extra controls
+  },
+};
+const SeveralTemplate: Story<HbIconExpns> = ({size, color}) =>
+  html` <style>
+      .table {
+        display: flex;
+        align-items: center;
+        border: 1px solid;
+      }
+      .table > * {
+        flex: auto;
+        padding: 10px;
+      }
+      hb-icon {
+        flex: none !important;
+      }
+    </style>
+    ${iconList.map(
+      x =>
+        html`<div class="table">
+          <hb-icon
+            icon=${x}
+            size=${size}
+            style="--icon__color: ${color};"
+          ></hb-icon>
+          <span>${x}</span>
+        </div>`,
+    )}`;
+export const icons: Story<HbIconExpns> = SeveralTemplate.bind({});
+icons.args = {size: Size.large};
+icons.parameters = {
   colorPicker: {
     applyColorTo: ['color'], // Pass empty array to clear extra controls
   },
