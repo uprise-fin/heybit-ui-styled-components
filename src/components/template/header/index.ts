@@ -108,7 +108,7 @@ export class HbHeader extends Base {
               : ''}${x.group
               ? html`<hb-icon
                     icon=${HbIconName['system/outline/arrow-dropdown']}
-                    size=${Size.small}
+                    size=${Size.xsmall}
                   ></hb-icon>
                   <div
                     class="hb-header__group-menu"
@@ -157,7 +157,7 @@ export class HbHeader extends Base {
               : ''}${x.group
               ? html`<hb-icon
                     icon=${HbIconName['system/outline/arrow-dropdown']}
-                    size=${Size.small}
+                    size=${Size.xsmall}
                   ></hb-icon>
                   <div class="hb-header__group-menu">
                     ${x.group.map(
@@ -369,7 +369,7 @@ export class HbHeader extends Base {
                   @mouseleave=${this.onLeaveSide}
                   >${this.userName}<hb-icon
                     icon=${HbIconName['system/outline/arrow-dropdown']}
-                    size=${Size.small}
+                    size=${Size.xsmall}
                   ></hb-icon
                 ></hb-button>
               </hb-if>

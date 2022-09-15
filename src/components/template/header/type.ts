@@ -45,7 +45,7 @@ export interface HbHeaderUser {
 }
 export const initialHeaderGnb: HbHeaderNavi[] = [
   {
-    name: '예치상품2',
+    name: '예치상품',
     group: [
       {
         name: '하베스트1',
