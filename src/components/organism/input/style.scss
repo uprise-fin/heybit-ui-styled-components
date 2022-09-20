@@ -5,8 +5,8 @@
     display: flex;
     height: var(--husc__input__height);
     align-items: center;
-    padding: 0 var(--husc__input__padding__right) 0
-      var(--husc__input__padding__left);
+    padding: var(--husc__input__padding__top) var(--husc__input__padding__right)
+      var(--husc__input__padding__bottom) var(--husc__input__padding__left);
     cursor: text;
     font-family: var(--husc__font__family);
     border: var(--husc__input__border__width) solid
