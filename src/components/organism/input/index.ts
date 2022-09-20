@@ -139,10 +139,22 @@ export class HbInput extends InitAttribute<HbInputProps> {
     `;
   }
 
-  onInput(ev: HbInputEvent) {
+  get isMaxLength() {
+    if (!this.maxlength) return 0;
     const inputEl = this.inputEl;
     let commaLength = 0;
     let {value} = inputEl;
+    let length = value.length;
+    if (this.type === HbInputType.number)
+      commaLength = length - this.toNumeric(inputEl.value, true).length;
+
+    return this.maxlength + commaLength;
+  }
+
+  onInput(ev: HbInputEvent) {
+    const inputEl = this.inputEl;
+    let {value} = inputEl;
+    let {length} = value;
     if (this.type === HbInputType.number) {
       //숫자만 입력받도록 값 변경
       const {data} = ev;
@@ -154,19 +166,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
       else inputEl.value = this.toNumeric(value);
       value = inputEl.value;
     }
-
-    if (this.maxlength > 0) {
-      // 최대글자수 이하로 입력 받도록 값 변경
-      let length = value.length;
-      if (this.type === HbInputType.number)
-        commaLength = length - this.toNumeric(inputEl.value, true).length;
-
-      if (length >= this.maxlength) {
-        this.value = value.substring(0, this.maxlength + commaLength);
-        inputEl.value = this.value;
-        this.onSubmit(new CustomEvent('submit1'));
-      }
-    }
+    if (this.isMaxLength && length > this.isMaxLength)
+      inputEl.value = value.substring(0, this.isMaxLength);
     // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
     // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
     if (this.value !== value) this.onChange();
@@ -193,10 +194,13 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   onChange() {
     const {value} = this.inputEl;
+    const {length} = value;
     this.value = value;
     if (this.attributeSync) this.setAttribute('value', this.originalValue);
     // this.dispatchEvent(new CustomEvent('event', ev));
     this.onEvent(new CustomEvent('event'));
+    if (this.isMaxLength && length === this.isMaxLength)
+      this.onSubmit(new CustomEvent('submit'));
   }
 
   async connectedCallback() {
@@ -210,9 +214,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
     this.value = this.getAttribute('value');
     inputEl.value = this.value;
     this.onclick = () => inputEl.focus();
-    this.inputEl.addEventListener('focus', () =>
-      this.setAttribute('focus', ''),
-    );
+    this.addEventListener('focus', () => {
+      inputEl.setAttribute('focus', '');
+      inputEl.focus();
+    });
     this.inputEl.addEventListener('blur', () => this.removeAttribute('focus'));
   }
 
