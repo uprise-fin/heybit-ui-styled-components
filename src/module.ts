@@ -14,6 +14,7 @@ export * from '@/components/molecule/toast';
 export * from '@/components/molecule/tooltip';
 export * from '@/components/organism/button';
 export * from '@/components/organism/input';
+export * from '@/components/organism/input/textarea';
 export * from '@/components/organism/select';
 export * from '@/components/organism/tab';
 export * from '@/components/template/carousel';

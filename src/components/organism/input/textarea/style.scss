@@ -1,0 +1,90 @@
+@import '@/styles/utils/mixins';
+
+.hb-textarea {
+  @include host-styled {
+    display: flex;
+    height: var(--husc__textarea__height);
+    align-items: center;
+    padding: var(--husc__textarea__padding__top)
+      var(--husc__textarea__padding__right)
+      var(--husc__textarea__padding__bottom)
+      var(--husc__textarea__padding__left);
+    cursor: text;
+    font-family: var(--husc__font__family);
+    border: var(--husc__textarea__border__width) solid
+      var(--husc__textarea__border__color);
+    box-sizing: border-box;
+    transition: border-color var(--husc__transition__duration--ms);
+    border-radius: var(--husc__border__radius);
+    background: var(--husc__background__color);
+  }
+  @include host-styled('[data-error]') {
+    padding-left: calc(
+      var(--husc__textarea__padding__left) -
+        (
+          var(--husc__textarea__border__width--error) -
+            var(--husc__textarea__border__width)
+        )
+    );
+    padding-right: calc(
+      var(--husc__textarea__padding__right) -
+        (
+          var(--husc__textarea__border__width--error) -
+            var(--husc__textarea__border__width)
+        )
+    );
+    border-width: var(--husc__textarea__border__width--error);
+    border-color: var(--husc__textarea__border__color--error);
+    // background: var(--husc__background__color);
+  }
+  @include host-styled('[focus]:not([data-readonly])') {
+    padding-left: calc(
+      var(--husc__textarea__padding__left) -
+        (
+          var(--husc__textarea__border__width--focus) -
+            var(--husc__textarea__border__width)
+        )
+    );
+    padding-right: calc(
+      var(--husc__textarea__padding__right) -
+        (
+          var(--husc__textarea__border__width--focus) -
+            var(--husc__textarea__border__width)
+        )
+    );
+    border-width: var(--husc__textarea__border__width--focus);
+    border-color: var(--husc__textarea__border__color--focus);
+    // background: var(--husc__background__color);
+  }
+  @include host-styled('[data-readonly]') {
+    border-color: var(--husc__textarea__border__color--readonly);
+  }
+  &__el {
+    width: 0;
+    max-height: calc(
+      var(--husc__textarea__height) -
+        (
+          var(--husc__textarea__padding__top) +
+            var(--husc__textarea__padding__bottom)
+        )
+    );
+    flex: 1;
+    padding: 0;
+    font-size: var(--husc__textarea__font__size);
+    box-sizing: border-box;
+    border: 0;
+    text-align: inherit;
+    resize: none;
+    outline: none;
+    cursor: inherit;
+    font-family: var(--husc__font__family);
+    box-shadow: 0 0 0 999px var(--husc__background__color) inset;
+    //   box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
+    // }
+  }
+  &__slot {
+    position: relative;
+    display: inline-flex;
+    flex: 0;
+  }
+}

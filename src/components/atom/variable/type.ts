@@ -124,7 +124,6 @@ export const componentVariables = {
       color: basicVariables.border.color,
     },
   },
-
   icon: {
     color: colorPalette[SystemColor.black][900],
     size: basicVariables.size,
@@ -141,6 +140,29 @@ export const componentVariables = {
       'color--focus': colorPalette.black[800],
     },
     padding: {
+      top: 0,
+      bottom: 0,
+      right: 18,
+      left: 18,
+    },
+    font: {
+      size: basicVariables.font.size,
+    },
+  },
+  textarea: {
+    height: 56,
+    border: {
+      width: basicVariables.border.width,
+      'width--error': basicVariables.border.width * 2,
+      'width--focus': basicVariables.border.width * 2,
+      color: basicVariables.border.color,
+      'color--error': colorPalette.orange[300],
+      'color--readonly': colorPalette.black[400],
+      'color--focus': colorPalette.black[800],
+    },
+    padding: {
+      top: 8,
+      bottom: 8,
       right: 18,
       left: 18,
     },
