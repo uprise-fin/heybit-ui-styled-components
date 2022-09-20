@@ -184,7 +184,8 @@ export class HbTextarea extends InitAttribute<HbInputProps> {
           inputEl.value.length -
           (inputEl.value.length - this.toNumeric(inputEl.value, true).length);
       if (length > this.maxlength)
-        return (inputEl.value = inputEl.value.substring(0, this.maxlength));
+        inputEl.value = inputEl.value.substring(0, this.maxlength);
+      if (length === this.maxlength) new CustomEvent('submit');
     }
     // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
     // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
