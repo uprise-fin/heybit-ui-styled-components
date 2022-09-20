@@ -29,6 +29,8 @@ const Template: Story<HbInput> = ({
     .maxlength=${maxlength}
     .decimal=${decimal}
     .comma=${comma}
+    @submit=${($event: HbInputEvent) =>
+      console.log($event.target.originalValue, '서브밋')}
     @event=${($event: HbInputEvent) => console.log($event.target.originalValue)}
   ></hb-input>
 `;

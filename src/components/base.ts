@@ -9,6 +9,8 @@ import {LitElement} from 'lit';
 export class Base extends LitElement {
   event: (ev: unknown) => void;
 
+  submit: (ev: unknown) => void;
+
   #tabindex: string;
 
   get tabindex() {
@@ -29,6 +31,13 @@ export class Base extends LitElement {
     if (ev instanceof CustomEvent) {
       if (this.event) return this.event(ev);
       return this.dispatchEvent(new CustomEvent('event', ev));
+    }
+  }
+
+  onSubmit(ev: CustomEvent) {
+    if (ev instanceof CustomEvent) {
+      if (this.submit) return this.submit(ev);
+      return this.dispatchEvent(new CustomEvent('submit', ev));
     }
   }
 }
