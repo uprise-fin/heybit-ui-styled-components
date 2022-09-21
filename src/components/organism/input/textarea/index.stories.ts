@@ -39,8 +39,7 @@ export const text: Story<HbTextarea> = Template.bind({});
 text.args = {
   type: HbInputType.text,
   maxlength: 10,
-  value:
-    '글자입력해주세요글자글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요글자입력해주세요',
+  value: '글자입\n력해주세요',
   placeholder: '글자입력해주세요',
   error: false,
   readonly: false,
@@ -52,6 +51,7 @@ number.args = {
   placeholder: '숫자를써볼까요?',
   decimal: 2,
   comma: 3,
+  value: '1234567891',
   error: false,
   readonly: false,
 };

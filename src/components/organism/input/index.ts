@@ -139,35 +139,32 @@ export class HbInput extends InitAttribute<HbInputProps> {
     `;
   }
 
-  get isMaxLength() {
-    if (!this.maxlength) return 0;
-    const inputEl = this.inputEl;
-    let commaLength = 0;
-    let {value} = inputEl;
-    let length = value.length;
-    if (this.type === HbInputType.number)
-      commaLength = length - this.toNumeric(inputEl.value, true).length;
-
-    return this.maxlength + commaLength;
-  }
+  readonly ableNumber = Array(10)
+    .fill('')
+    .map((_, i) => i + '')
+    .concat('.');
 
   onInput(ev: HbInputEvent) {
     const inputEl = this.inputEl;
     let {value} = inputEl;
-    let {length} = value;
+    if (this.maxlength) {
+      if (this.type === HbInputType.number)
+        value = this.toNumeric(value, true).substring(0, this.maxlength);
+      else {
+        value = value.substring(0, this.maxlength);
+      }
+    }
+
     if (this.type === HbInputType.number) {
       //숫자만 입력받도록 값 변경
       const {data} = ev;
-      const ableData = Array(10)
-        .fill('')
-        .map((_, i) => i + '')
-        .concat('.');
-      if (data !== null && !ableData.includes(data)) inputEl.value = this.value;
+      if (data !== null && !this.ableNumber.includes(data))
+        inputEl.value = this.value;
       else inputEl.value = this.toNumeric(value);
       value = inputEl.value;
+    } else {
+      inputEl.value = value;
     }
-    if (this.isMaxLength && length > this.isMaxLength)
-      inputEl.value = value.substring(0, this.isMaxLength);
     // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
     // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
     if (this.value !== value) this.onChange();
@@ -194,12 +191,11 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   onChange() {
     const {value} = this.inputEl;
-    const {length} = value;
     this.value = value;
     if (this.attributeSync) this.setAttribute('value', this.originalValue);
     // this.dispatchEvent(new CustomEvent('event', ev));
     this.onEvent(new CustomEvent('event'));
-    if (this.isMaxLength && length === this.isMaxLength)
+    if (this.maxlength && this.originalValue.length === this.maxlength)
       this.onSubmit(new CustomEvent('submit'));
   }
 
@@ -229,6 +225,11 @@ export class HbInput extends InitAttribute<HbInputProps> {
     if (name === 'value') {
       // value값을 넘겨받을때(input이벤트없이 입력받을때)
       const inputEl = this.inputEl;
+      if (this.maxlength) {
+        if (this.type === HbInputType.number)
+          newVal = this.toNumeric(newVal, true).substring(0, this.maxlength);
+        else newVal = newVal.substring(0, this.maxlength);
+      }
       if (this.type === HbInputType.number) newVal = this.toNumeric(newVal);
       if (inputEl && inputEl.value !== newVal) inputEl.value = newVal;
     }
