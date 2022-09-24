@@ -168,7 +168,7 @@ export class HbCarousel extends Base {
   onEventDoingBound = this.onEventDoing.bind(this);
 
   async connectedCallback() {
-    super.connectedCallback();
+    await super.connectedCallback();
     this.itemElements = await getChildren(this.children);
     this.itemLength = this.itemElements.length;
     if (this.infinite) {

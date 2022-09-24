@@ -23,8 +23,8 @@ export class HbTransition extends Base {
     };
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  async connectedCallback() {
+    await super.connectedCallback();
     this.onanimationend = evnt => this.onAnimationEnd(evnt);
   }
 

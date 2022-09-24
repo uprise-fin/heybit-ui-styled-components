@@ -37,8 +37,8 @@ export class HbAnchor extends Base {
     };
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  async connectedCallback() {
+    await super.connectedCallback();
     this.tabindex = '0';
     this.onclick = this.adapterEvent;
   }

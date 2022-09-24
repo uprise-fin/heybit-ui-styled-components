@@ -200,7 +200,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   async connectedCallback() {
-    super.connectedCallback();
+    await super.connectedCallback();
     const inputEl = await getElement<HTMLInputElement>(
       this.shadowRoot,
       'input',

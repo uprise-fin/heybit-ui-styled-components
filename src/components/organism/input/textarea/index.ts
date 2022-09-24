@@ -222,8 +222,12 @@ export class HbTextarea extends InitAttribute<HbInputProps> {
       this.onSubmit(new CustomEvent('submit'));
   }
 
+  firstRendered() {
+    console.log(this.shadowRoot.getElementById('input')); // log null
+  }
+
   async connectedCallback() {
-    super.connectedCallback();
+    await super.connectedCallback();
     const inputEl = await getElement<HTMLTextAreaElement>(
       this.shadowRoot,
       'input',

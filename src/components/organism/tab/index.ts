@@ -37,7 +37,7 @@ export class HbTab extends Base {
   }
 
   async connectedCallback() {
-    super.connectedCallback();
+    await super.connectedCallback();
     const wrap = await getChildren(this.children);
     this.btns = wrap.filter(x => x.slot === 'header');
     this.contents = wrap.filter(x => x.slot !== 'header');

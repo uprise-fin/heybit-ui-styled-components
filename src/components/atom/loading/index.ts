@@ -29,8 +29,8 @@ export class HbLoading extends Base {
     };
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  async connectedCallback() {
+    await super.connectedCallback();
     this.ontransitionend = () =>
       this.delete ? this.remove() : this.setAttribute('done', '');
   }

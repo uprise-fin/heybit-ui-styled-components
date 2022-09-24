@@ -24,7 +24,7 @@ export class HbModal extends Base {
   }
 
   async connectedCallback() {
-    super.connectedCallback();
+    await super.connectedCallback();
     this.containerEl = await getElement<HTMLDivElement>(
       this.shadowRoot,
       'container',
