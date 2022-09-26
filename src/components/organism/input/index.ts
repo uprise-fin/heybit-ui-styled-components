@@ -1,3 +1,4 @@
+import {componentVariables} from '@/components/atom/variable/type';
 import {InitAttribute} from '@/components/base';
 import {getElement} from '@/utils';
 import {html} from 'lit';
@@ -7,7 +8,6 @@ import {HbInputEvent, HbInputProps, HbInputType} from './type';
 /**
  * An example element.
  *
- * @fires submit maxlength 에 도달했을때 호출
  * @fires event 값이 변경될때 발생
  * @property value 기본 값
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -50,6 +50,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   type: HbInputType = HbInputType.text;
 
+  nowrap = true;
+
   initialAttributes: (keyof HbInputProps)[] = ['value'];
 
   get readonly() {
@@ -85,6 +87,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
       error: {type: Boolean, Reflect: true},
       readonly: {type: Boolean, Reflect: true},
       _readonly: {type: Boolean, Reflect: true},
+      nowrap: {type: Boolean, Reflect: true},
     };
   }
 
@@ -122,21 +125,40 @@ export class HbInput extends InitAttribute<HbInputProps> {
   render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
-      <input
+      <textarea
         id="input"
+        rows="1"
         data-readonly=${this.readonly}
         class="hb-input__el"
         part="input"
         pattern=${this.pattern}
         inputmode=${this.inputmode}
         @input=${this.onInput}
+        @keydown=${this.onEnter}
         type=${this.isType}
         placeholder=${this.placeholder}
         ?readonly=${this._readonly}
-      />
+      ></textarea>
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `;
+  }
+
+  onResize() {
+    const inputEl = this.inputEl;
+    if (inputEl) {
+      const {minHeight, maxHeight, padding, border} = componentVariables.input;
+      const currentContentHeight =
+        minHeight - padding.bottom - padding.top - border.width * 2;
+      inputEl.style.height = 'auto';
+      const {scrollHeight} = inputEl;
+      const targetCurrentHeight = Math.min(
+        scrollHeight,
+        maxHeight - padding.bottom - padding.top - border.width * 2,
+      );
+      if (targetCurrentHeight >= currentContentHeight)
+        inputEl.style.height = targetCurrentHeight + 'px';
+    }
   }
 
   readonly ableNumber = Array(10)
@@ -144,9 +166,17 @@ export class HbInput extends InitAttribute<HbInputProps> {
     .map((_, i) => i + '')
     .concat('.');
 
+  onEnter(ev: KeyboardEvent) {
+    if (ev.key === 'Enter') {
+      ev.preventDefault();
+      this.onSubmit(new CustomEvent('submit'));
+    }
+  }
+
   onInput(ev: HbInputEvent) {
     const inputEl = this.inputEl;
     let {value} = inputEl;
+    if (this.nowrap) value = value.replace(/\n/g, '');
     if (this.maxlength) {
       if (this.type === HbInputType.number)
         value = this.toNumeric(value, true).substring(0, this.maxlength);
@@ -167,7 +197,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
     }
     // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
     // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
-    if (this.value !== value) this.onChange();
+    if (this.value !== value) {
+      this.onResize();
+      this.onChange();
+    }
   }
 
   toNumeric(value: string, toNumber: boolean = false) {
@@ -197,6 +230,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
     this.onEvent(new CustomEvent('event'));
     if (this.maxlength && this.originalValue.length === this.maxlength)
       this.onSubmit(new CustomEvent('submit'));
+  }
+
+  firstRendered() {
+    console.log(this.shadowRoot.getElementById('input')); // log null
   }
 
   async connectedCallback() {
@@ -231,7 +268,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
         else newVal = newVal.substring(0, this.maxlength);
       }
       if (this.type === HbInputType.number) newVal = this.toNumeric(newVal);
-      if (inputEl && inputEl.value !== newVal) inputEl.value = newVal;
+      if (inputEl && inputEl.value !== newVal) {
+        inputEl.value = newVal;
+        this.onResize();
+      }
     }
 
     super.attributeChangedCallback(name, _, newVal);

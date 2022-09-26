@@ -3,7 +3,8 @@
 .hb-input {
   @include host-styled {
     display: flex;
-    height: var(--husc__input__height);
+    min-height: var(--husc__input__minHeight);
+    max-height: var(--husc__input__maxHeight);
     align-items: center;
     padding: var(--husc__input__padding__top) var(--husc__input__padding__right)
       var(--husc__input__padding__bottom) var(--husc__input__padding__left);
@@ -69,6 +70,7 @@
     text-align: inherit;
     outline: none;
     cursor: inherit;
+    resize: none;
     font-family: var(--husc__font__family);
     box-shadow: 0 0 0 999px var(--husc__background__color) inset;
     //   box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
