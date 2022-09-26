@@ -205,7 +205,11 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   toNumeric(value: string, toNumber: boolean = false) {
     if (!value || typeof value !== 'string') return '';
-    const dotIndex = value.indexOf('.');
+    let dotIndex = value.indexOf('.');
+    if (dotIndex === 0) {
+      dotIndex = 1;
+      value = `0.${value}`;
+    }
     const hasDot = dotIndex > 0;
     let decimal = '';
     if (hasDot) {
