@@ -212,8 +212,9 @@ export class HbInput extends InitAttribute<HbInputProps> {
       decimal = value.substring(dotIndex + 1, dotIndex + 1 + this.decimal);
       value = value.substring(0, dotIndex);
     }
-    value = value.replace(/^00/gi, '0');
-    value = value.replace(/[^0-9]/gi, '');
+    value = value.replace(/^^0[{1-9}]/gi, '{1}'); // 최초 0뒤에 오는 숫자 => 앞 0 제거
+    value = value.replace(/^0{2,}/gi, '0'); // 최초 0 2개이상 0으로 변경
+    value = value.replace(/[^0-9]/gi, ''); // 숫자 말고 전부 제거
 
     if (!toNumber) {
       const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, 'g');
