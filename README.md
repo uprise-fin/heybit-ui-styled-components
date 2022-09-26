@@ -82,7 +82,13 @@ const loginButtonProps: HbButtonProps = {
 <hb-button class="hb-button" ...></hb-button>
 ```
 
-### 스벨트 사용 시 주의사항
+## 개발시 유의사항
+
+### 릴리즈 전 테스트
+
+storybook이나 demo로 테스트 후 해당 레포지토리에서 잘 작동하는지 확인해야 합니다. 그때마다 릴리즈하긴 번거로우니 pre-publish를 이용하여 빌드 후 dist폴더를 사용하려는 레포지토리의 node_modules/heybit-ui-styled-components/ 에 덮어씌워 줍니다.
+
+### 스벨트
 
 1. 속성값이 반영되지 않을 때
    disabled같은 기존 존재하는 속성일 경우 반영하지 않을 수 있다.
@@ -122,4 +128,4 @@ const loginButtonProps: HbButtonProps = {
 
 2. 초기 속성이 반영 안되는 경우
    버튼의 size, theme 등, 초기 스타일을 지정 후 렌더링 했을때 반영안될때
-   `initialAttributes`이 속성을 이용해서 렌더링 후에도 속성값에 반응하도록 처리
+   `initialAttributes`이 변수를 이용해서 렌더링 후에도 속성값에 반응하도록 처리
