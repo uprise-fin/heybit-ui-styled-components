@@ -205,7 +205,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   toNumeric(value: string, toNumber: boolean = false) {
     if (!value || typeof value !== 'string') return '';
-
+    console.log(value);
     const dotIndex = value.indexOf('.');
     const hasDot = dotIndex > 0;
     let decimal = '';
@@ -213,7 +213,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
       decimal = value.substring(dotIndex + 1, dotIndex + 1 + this.decimal);
       value = value.substring(0, dotIndex);
     }
-    value = value.replace(/[^0-9]/gi, '');
+    value = Number(value.replace(/[^0-9]/gi, '')) + '';
 
     if (!toNumber) {
       const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, 'g');
