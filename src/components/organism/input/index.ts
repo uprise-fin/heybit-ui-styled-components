@@ -212,7 +212,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
       decimal = value.substring(dotIndex + 1, dotIndex + 1 + this.decimal);
       value = value.substring(0, dotIndex);
     }
-    value = Number(value.replace(/[^0-9]/gi, '')) + '';
+    value = value.replace(/^00/gi, '0');
+    value = value.replace(/[^0-9]/gi, '');
 
     if (!toNumber) {
       const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, 'g');
