@@ -247,16 +247,15 @@ export class HbInput extends InitAttribute<HbInputProps> {
       this.shadowRoot,
       'input',
     );
-    this.tabindex = '0';
     this.inputEl = inputEl;
     this.value = this.getAttribute('value');
     inputEl.value = this.value;
     this.onclick = () => inputEl.focus();
     this.addEventListener('focus', () => {
-      inputEl.setAttribute('focus', '');
-      inputEl.focus();
+      this.setAttribute('data-focus', '');
+      this.inputEl.focus();
     });
-    this.inputEl.addEventListener('blur', () => this.removeAttribute('focus'));
+    this.addEventListener('blur', () => this.removeAttribute('data-focus'));
   }
 
   disconnectedCallback() {

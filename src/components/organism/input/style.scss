@@ -36,7 +36,7 @@
     border-color: var(--husc__input__border__color--error);
     // background: var(--husc__background__color);
   }
-  @include host-styled('[focus]:not([data-readonly])') {
+  @include host-styled('[data-focus]:not([data-readonly])') {
     padding-left: calc(
       var(--husc__input__padding__left) -
         (
