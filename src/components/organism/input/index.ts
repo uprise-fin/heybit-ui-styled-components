@@ -247,6 +247,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
       this.shadowRoot,
       'input',
     );
+    this.tabIndex = 0;
     this.inputEl = inputEl;
     this.value = this.getAttribute('value');
     inputEl.value = this.value;
