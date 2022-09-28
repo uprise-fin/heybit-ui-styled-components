@@ -48,13 +48,13 @@ export const initialHeaderGnb: HbHeaderNavi[] = [
     name: '예치상품',
     group: [
       {
-        name: '하베스트1',
-        desc: '블라블라',
+        name: '하베스트',
+        desc: '디지털자산 예치상품',
         event: () => console.log('예치상품1'),
       },
       {
-        name: '하베스트2',
-        desc: '블라블라',
+        name: '하베스트 락업',
+        desc: '디지털자산 중장기 예치상품',
         event: () => console.log('예치상품2'),
       },
     ],
@@ -85,11 +85,11 @@ export const initialHeaderMyMenu: HbHeaderMyMenu[] = [
     event: () => console.log('나의 현황'),
   },
   {
-    name: '하베스트',
+    name: '예치상품',
     type: HbButtonType.rectangle,
     theme: HbButtonTheme.quaternary,
     size: Size.medium,
-    event: () => console.log('하베스트'),
+    event: () => console.log('예치상품'),
   },
 ];
 export const initialHeaderAuthMenu: HbHeaderNavi[] = [

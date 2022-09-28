@@ -233,7 +233,7 @@ export const componentVariables = {
   header: {
     height: {
       '--mobile': 60,
-      '--desktop': 77,
+      '--desktop': 72,
     },
     logo: {
       width: {
