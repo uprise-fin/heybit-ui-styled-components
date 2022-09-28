@@ -181,7 +181,7 @@ export class HbHeader extends Base {
     `;
   }
 
-  get myMenuTemplate() {
+  myMenuTemplate(size: keyof typeof Size = 'medium') {
     return html`
       ${this.isMyMenu?.map(
         x =>
@@ -190,7 +190,7 @@ export class HbHeader extends Base {
             @event=${x.event}
             type=${HbButtonType.rectangle}
             theme=${x.theme}
-            size=${Size.medium}
+            size=${Size[size]}
             >${x.name}</hb-button
           >`,
       )}
@@ -316,7 +316,7 @@ export class HbHeader extends Base {
                   <strong>${this.userName}환영합니다.</strong>
                   <hb-if ?value=${this.loggedin}>
                     <p>${this.userEmail}</p>
-                    <div>${this.myMenuTemplate}</div>
+                    <div>${this.myMenuTemplate()}</div>
                   </hb-if>
                   <hb-if ?value=${!this.loggedin}>
                     <div
@@ -399,7 +399,7 @@ export class HbHeader extends Base {
               <p>${this.userEmail}</p>
             </div>
             <div class="hb-header--desktop__side-menu__content__menu">
-              ${this.myMenuTemplate}
+              ${this.myMenuTemplate('small')}
             </div>
             <div class="hb-header--desktop__side-menu__content__auth">
               ${this.authMenuTemplate}
