@@ -18,6 +18,7 @@
   }
   &__group-menu {
     display: none;
+    margin-bottom: 20px;
     .open & {
       display: block;
     }
