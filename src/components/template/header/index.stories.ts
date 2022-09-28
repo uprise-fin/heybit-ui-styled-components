@@ -58,8 +58,8 @@ const Template: Story<HbHeaderExps> = ({
 export const korea: Story<HbHeaderExps> = Template.bind({});
 korea.args = {
   event: () => console.log('로고클릭'),
-  loggedin: false,
-  pending: true,
+  loggedin: true,
+  pending: false,
   _user: {
     name: '윤창원',
     email: 'matthew@heybit.io',
