@@ -49,8 +49,11 @@
   }
   &__body {
     @include scroll();
+    $margin: 10px;
     overflow: auto;
-    margin: 0 10px;
+    margin-left: $margin;
+    margin-right: calc(var(--husc__modal__dialog__padding-right) * -1);
+    padding-right: calc(var(--husc__modal__dialog__padding-right) + $margin);
     &__content {
       display: block;
       font-weight: 400;

@@ -237,16 +237,13 @@ export class HbInput extends InitAttribute<HbInputProps> {
       this.onSubmit(new CustomEvent('submit'));
   }
 
-  firstRendered() {
-    console.log(this.shadowRoot.getElementById('input')); // log null
-  }
-
   async connectedCallback() {
     await super.connectedCallback();
     const inputEl = await getElement<HTMLInputElement>(
       this.shadowRoot,
       'input',
     );
+    this.tabIndex = 0;
     this.inputEl = inputEl;
     this.value = this.getAttribute('value');
     inputEl.value = this.value;
