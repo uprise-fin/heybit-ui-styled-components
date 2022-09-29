@@ -60,6 +60,10 @@ export class HbHeader extends Base {
     if (this.gnb) return this.gnb;
   }
 
+  isActive(active = false) {
+    return `hb-anchor${active ? ' active' : ''}`;
+  }
+
   get isMyMenu() {
     if (this.myMenu) return this.myMenu;
   }
@@ -91,7 +95,7 @@ export class HbHeader extends Base {
       ${this.isGnb?.map(
         x =>
           html`<hb-anchor
-            class="hb-anchor"
+            class=${this.isActive(x.active)}
             href=${x.href}
             target=${x.target}
             @event=${x.event}

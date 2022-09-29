@@ -15,6 +15,7 @@ export interface HbHeaderGroup extends HbAnchorProps {
 }
 export interface HbHeaderNavi extends HbAnchorProps {
   name: string;
+  active?: boolean;
   chip?: HbHeaderChip;
   group?: HbHeaderGroup[];
   groupOpen?: boolean;
@@ -46,6 +47,7 @@ export interface HbHeaderUser {
 export const initialHeaderGnb: HbHeaderNavi[] = [
   {
     name: '예치상품',
+    active: true,
     group: [
       {
         name: '하베스트',
