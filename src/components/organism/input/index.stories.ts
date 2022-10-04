@@ -1,15 +1,13 @@
 import {Meta, Story} from '@storybook/web-components';
 import {html} from 'lit';
-import {dev} from '@/utils';
 import './index';
 import type {HbInput} from './index';
 import {HbInputEvent, HbInputType} from './type';
 
-export default dev() &&
-  ({
-    title: 'components/organism/hb-input',
-    component: 'hb-input',
-  } as Meta);
+export default {
+  title: 'components/organism/hb-input',
+  component: 'hb-input',
+} as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story<HbInput> = ({
