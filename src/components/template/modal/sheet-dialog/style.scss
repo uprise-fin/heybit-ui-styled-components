@@ -56,6 +56,7 @@
     padding-right: calc(var(--husc__modal__dialog__padding-right) + $margin);
     &__content {
       display: block;
+      overflow: hidden;
       font-weight: 400;
       font-size: 14px;
       line-height: 140%;
