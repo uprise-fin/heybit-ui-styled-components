@@ -2,6 +2,7 @@
 
 .hb-event-dialog {
   &__container {
+    @include scroll();
     position: relative;
     overflow: auto;
     width: calc(100% - (var(--husc__modal__margin) * 2));
@@ -24,79 +25,5 @@
     border: 0;
     cursor: pointer;
     background: none;
-  }
-  &__head {
-    margin: 0 10px 12px;
-    &:empty {
-      margin-bottom: 0;
-    }
-    &__icon {
-      display: block;
-      max-width: 60px;
-      margin: auto;
-    }
-    &__title {
-      display: block;
-      margin: 12px 0 0;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 1.2;
-      text-align: center;
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-  &__body {
-    overflow: auto;
-    margin: 0 10px;
-    &__content {
-      display: block;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 140%;
-      text-align: center;
-      color: #727476;
-      box-sizing: border-box;
-    }
-  } //pnpm add -g pnpm
-
-  &__foot {
-    &__button {
-      &.horizon {
-        display: flex;
-        margin-left: -10px;
-        flex-direction: row;
-        @include slot-styled('*') {
-          flex: 1;
-          margin: 24px 0 0 10px;
-          border: 0;
-          text-align: center;
-        }
-      }
-      // &::slotted(*) {
-      //   flex: 1;
-      //   border: 0;
-      //   text-align: center;
-      // }
-      &.vertical {
-        display: block;
-        @include slot-styled('*:first-of-type') {
-          margin-top: 24px;
-        }
-        @include slot-styled('*') {
-          margin-top: 10px;
-        }
-      }
-    }
-    &__anchor {
-      display: block;
-      font-size: 0;
-      text-align: center;
-      @include slot-styled('*') {
-        display: inline-block;
-        margin-top: 16px;
-      }
-    }
   }
 }
