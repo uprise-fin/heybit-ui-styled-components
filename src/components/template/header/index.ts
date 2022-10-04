@@ -60,6 +60,10 @@ export class HbHeader extends Base {
     if (this.gnb) return this.gnb;
   }
 
+  isActive(href = '') {
+    return href && location.pathname.startsWith(href) ? ' active' : '';
+  }
+
   get isMyMenu() {
     if (this.myMenu) return this.myMenu;
   }
@@ -91,7 +95,7 @@ export class HbHeader extends Base {
       ${this.isGnb?.map(
         x =>
           html`<hb-anchor
-            class="hb-anchor"
+            class="hb-anchor${this.isActive(x.href)}"
             href=${x.href}
             target=${x.target}
             @event=${x.event}
@@ -118,7 +122,9 @@ export class HbHeader extends Base {
                     ${x.group.map(
                       y => html`
                         <hb-anchor
-                          class="hb-header__group-menu__item"
+                          class="hb-header__group-menu__item${this.isActive(
+                            x.href,
+                          )}"
                           href=${y.href}
                           target=${y.target}
                           @event=${y.event}
