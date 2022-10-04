@@ -58,6 +58,7 @@ export const initialHeaderGnb: HbHeaderNavi[] = [
         event: () => console.log('예치상품2'),
       },
     ],
+    href: '/iframe.html',
   },
   {
     name: '디파이',
