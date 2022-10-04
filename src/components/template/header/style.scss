@@ -125,7 +125,7 @@
           text-decoration: none;
           white-space: nowrap;
           font-size: 16px;
-          font-weight: 500;
+          font-weight: 400;
           align-items: center;
           color: inherit;
           &:first-child {
@@ -138,8 +138,14 @@
           &.active {
             color: var(--husc__orange--500);
           }
+          &.open {
+            > hb-icon {
+              transform: rotate(180deg);
+            }
+          }
           > hb-icon {
             margin-left: 5px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             &:only-child {
               margin: 0;
             }
@@ -160,8 +166,14 @@
           font-weight: 400;
           font-size: 16px;
           line-height: 19px;
+          &:hover {
+            hb-icon {
+              transform: rotate(180deg);
+            }
+          }
           hb-icon {
             position: relative;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           }
         }
       }
