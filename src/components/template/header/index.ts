@@ -370,7 +370,10 @@ export class HbHeader extends Base {
             <hb-if ?value=${!this.pending}>
               <hb-if ?value=${this.loggedin}>
                 <hb-button
-                  class="hb-header--desktop__navibar__actions__hamburber"
+                  class="hb-header--desktop__navibar__actions__hamburber${this
+                    .sidemenu
+                    ? ' open'
+                    : ''}"
                   @mouseenter=${this.onEnterSide}
                   @mouseleave=${this.onLeaveSide}
                   >${this.userName}<hb-icon
