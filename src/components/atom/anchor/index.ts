@@ -43,8 +43,9 @@ export class HbAnchor extends Base {
     this.onclick = this.adapterEvent;
   }
 
-  adapterEvent() {
+  adapterEvent(event: Event) {
     if (this.disabled) return;
+    event.stopImmediatePropagation();
     if (this.href) {
       const a = document.createElement('a');
       if (this.target) a.target = this.target;

@@ -50,7 +50,7 @@ export const initialHeaderGnb: HbHeaderNavi[] = [
       {
         name: '하베스트',
         desc: '디지털자산 예치상품',
-        event: () => console.log('예치상품1'),
+        href: '/iframe2.html',
       },
       {
         name: '하베스트 락업',
