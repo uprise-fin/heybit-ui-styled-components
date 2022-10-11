@@ -148,7 +148,7 @@ export class HbHeader extends Base {
         x =>
           html`<hb-anchor
             class="hb-anchor"
-            href=${x.href}
+            href=${x.group ? '' : x.href}
             target=${x.target}
             @event=${x.event}
             @click=${x.group ? this.onClickGroup : null}
