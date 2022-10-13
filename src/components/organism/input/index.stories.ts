@@ -55,3 +55,43 @@ number.args = {
   error: false,
   readonly: false,
 };
+const Template2: Story<HbInput> = ({
+  type,
+  maxlength,
+  value,
+  placeholder,
+  decimal,
+  comma,
+  error,
+  readonly,
+}) => html`
+  <style>
+    .test {
+      --husc__background__color: red;
+    }
+  </style>
+  <hb-input
+    class="test"
+    type=${type}
+    placeholder=${placeholder}
+    ?error=${error}
+    ?readonly=${readonly}
+    .maxlength=${maxlength}
+    .decimal=${decimal}
+    .comma=${comma}
+    .value=${value}
+    @submit=${($event: HbInputEvent) =>
+      console.log($event.target.originalValue, '서브밋')}
+    @event=${($event: HbInputEvent) => console.log($event.target.originalValue)}
+  ></hb-input>
+`;
+export const backgroundChanged: Story<HbInput> = Template2.bind({});
+number.args = {
+  type: HbInputType.text,
+  maxlength: 0,
+  value:
+    'dawkldjlkajdklawjdlkwajdklawdjlawdjlkawjdlawjdlwajdklawjdlkawjdlkajwlkdawjdlawkjdl',
+  placeholder: '글자입력해주세요',
+  error: false,
+  readonly: false,
+};
