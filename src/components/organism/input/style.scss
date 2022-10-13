@@ -74,6 +74,7 @@
     resize: none;
     font-family: var(--husc__font__family);
     box-shadow: 0 0 0 999px var(--husc__background__color) inset;
+    background: inherit;
     //   box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
     // }
   }
