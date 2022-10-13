@@ -3,7 +3,7 @@
 
 # [heybit-ui-styled-components](http://github.com/uprise-fin/heybit-ui-styled-components)
 
-## [preview](https://uprise-fin.github.io/heybit-ui-styled-components/)
+## [Preview](https://uprise-fin.github.io/heybit-ui-styled-components/)
 
 ## 설치 방법
 
@@ -13,7 +13,7 @@ pnpm add heybit-ui-styled-components
 
 ## 목적
 
-`heybit-ui-styled-components` 는 프론트엔드 프레임워크에 제약이 없는 라이브러리입니다.
+`heybit-ui-styled-components` 는 프론트엔드 프레임워크에 제약이 없는 라이브러리입니다. 헤이비트의 셀간 업무 효율을 위해 제작되었습니다.
 
 ## 세팅방법
 
@@ -23,7 +23,7 @@ pnpm add heybit-ui-styled-components
 
 ## 사용법
 
-1. 데모페이지에서 사용할 컴포넌트를 확인.
+1. [Preview](https://uprise-fin.github.io/heybit-ui-styled-components/)에서 사용할 컴포넌트를 확인.
 2. 인터페이스를 통해 컴포넌트의 props 와 slots을 확인
 
 ```typescript
@@ -81,6 +81,18 @@ const loginButtonProps: HbButtonProps = {
 <!-- after -->
 <hb-button class="hb-button" ...></hb-button>
 ```
+
+## 디자인 시스템
+
+피그마 링크: [figma](<https://www.figma.com/file/ykv0i8Yz2rxGqCOmbqR3ih/UI-Design-System-(Community)?node-id=185%3A690>)
+
+## 컬러에 대해
+
+피그마 라이브러리: [matercolors](https://www.figma.com/community/plugin/872008431843787391/Matercolor)
+
+NPM 패키지: [matercolors](https://www.npmjs.com/package/matercolors)
+
+동일한 라이브러리를 이용하여 동일한 컬러를 사용중입니다.
 
 ## 개발시 유의사항
 
