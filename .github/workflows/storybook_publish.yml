@@ -1,4 +1,5 @@
-name: deploy
+name: storybook deploy
+
 on:
   push:
     tags:
