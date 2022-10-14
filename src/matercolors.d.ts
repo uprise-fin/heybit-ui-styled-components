@@ -1,4 +1,4 @@
-declare module "matercolors" {
+declare module 'matercolors' {
   class Matercolor {
     // palette: Matercolor;
     50: string;

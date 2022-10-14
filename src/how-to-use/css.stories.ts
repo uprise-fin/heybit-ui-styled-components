@@ -1,6 +1,6 @@
-import {Meta, Story} from '@storybook/web-components';
-import {html} from 'lit';
-import type {HbButton} from '@/components/organism/button';
+import { Meta, Story } from '@storybook/web-components';
+import { html } from 'lit';
+import type { HbButton } from '@/components/organism/button';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
@@ -8,17 +8,11 @@ import type {HbButton} from '@/components/organism/button';
 // console.log(variables.cssText);
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'how-to-use/css',
+  title: 'how-to-use/css'
 } as Meta;
 const Template: Story<HbButton> = () =>
   html`
-    <div
-      class="hb-button"
-      theme="primary"
-      size="large"
-      type="rectangle"
-      tabindex="0"
-    >
+    <div class="hb-button" theme="primary" size="large" type="rectangle" tabindex="0">
       <!---->
       <!-- <div
         name="slot--left"

@@ -1,6 +1,6 @@
-import {Base} from '@/components/base';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { Base } from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 @customElement('hb-loading')
 export class HbLoading extends Base {
@@ -20,19 +20,18 @@ export class HbLoading extends Base {
 
   static get properties() {
     return {
-      loaded: {type: Boolean, Reflect: true},
-      duration: {type: Number, Reflect: true},
-      background: {type: String, Reflect: true},
-      backgroundAccent: {type: String, Reflect: true},
-      width: {type: String, Reflect: true},
-      height: {type: String, Reflect: true},
+      loaded: { type: Boolean, Reflect: true },
+      duration: { type: Number, Reflect: true },
+      background: { type: String, Reflect: true },
+      backgroundAccent: { type: String, Reflect: true },
+      width: { type: String, Reflect: true },
+      height: { type: String, Reflect: true }
     };
   }
 
   async connectedCallback() {
     await super.connectedCallback();
-    this.ontransitionend = () =>
-      this.delete ? this.remove() : this.setAttribute('done', '');
+    this.ontransitionend = () => (this.delete ? this.remove() : this.setAttribute('done', ''));
   }
 
   // render() {
@@ -47,9 +46,7 @@ export class HbLoading extends Base {
       <div
         style=${`--duration:${this.duration || 2000}ms;--background:${
           this.background || 'var(--husc__black--200)'
-        }; --background--accent:${
-          this.backgroundAccent || 'var(--husc__white--50)'
-        }`}
+        }; --background--accent:${this.backgroundAccent || 'var(--husc__white--50)'}`}
         class="hb-loading__wall"
         part="wall"
       ></div>

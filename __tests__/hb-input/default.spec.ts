@@ -1,5 +1,5 @@
-import {HbInput} from '@/module';
-import {getShadowElement} from '../utils';
+import { HbInput } from '@/module';
+import { getShadowElement } from '../utils';
 const SHADOW_TAG = 'hb-input';
 
 describe(SHADOW_TAG, () => {

@@ -1,12 +1,12 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {Size} from '@/components/atom/variable/type';
+import { HbTransitionType } from '@/components/atom/transition/type';
+import { Size } from '@/components/atom/variable/type';
 // import style from '@/styles/molecule/toast/index.scss';
-import {Base} from '@/components/base';
-import {componentVariables, HbIconName} from '@/index';
-import {getElement} from '@/utils';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {HbToastMessage, HbToastTheme} from './type';
+import { Base } from '@/components/base';
+import { componentVariables, HbIconName } from '@/index';
+import { getElement } from '@/utils';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { HbToastMessage, HbToastTheme } from './type';
 
 /**
  * @property open 온 오프
@@ -40,11 +40,11 @@ export class HbToast extends Base {
 
   static get properties() {
     return {
-      messages: {type: Array, Reflect: true},
-      duration: {type: Number, Reflect: true},
-      now: {type: Number, Reflect: true},
-      hide: {type: Boolean, Reflect: true},
-      timer: {type: Array, Reflect: true},
+      messages: { type: Array, Reflect: true },
+      duration: { type: Number, Reflect: true },
+      now: { type: Number, Reflect: true },
+      hide: { type: Boolean, Reflect: true },
+      timer: { type: Array, Reflect: true }
     };
   }
 
@@ -57,7 +57,7 @@ export class HbToast extends Base {
       const index = this.timer.length;
       const duration = (this.messages[index].duration || this.duration) - 1;
       const date = new Date().getTime() + duration;
-      this.timer.push({time: date, index});
+      this.timer.push({ time: date, index });
       setTimeout(() => (this.now = date), duration);
       // this.getHeight(index);
     }
@@ -69,11 +69,8 @@ export class HbToast extends Base {
       const element = await getElement(this.shadowRoot, `toast-${index}`);
       const height = element.scrollHeight;
 
-      [element].map(x =>
-        x.style.setProperty(
-          '--transition__height--bottom-up-height',
-          `${height}px`,
-        ),
+      [element].map((x) =>
+        x.style.setProperty('--transition__height--bottom-up-height', `${height}px`)
       );
 
       // element.setAttribute(
@@ -130,15 +127,13 @@ export class HbToast extends Base {
           class="hb-toast__position"
           type=${HbTransitionType.fade}
           ?show=${this.getShow(i)}
-          ><hb-transition
-            type=${HbTransitionType.bottomUp}
-            ?show=${this.getShow(i)}
+          ><hb-transition type=${HbTransitionType.bottomUp} ?show=${this.getShow(i)}
             ><div class="hb-toast__content">
               ${this.getIconTemplate(x.theme)}
               <div class="hb-toast__content__text">${x.text}</div>
             </div></hb-transition
           ></hb-transition
-        >`,
+        >`
     );
   }
 }

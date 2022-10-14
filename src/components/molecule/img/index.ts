@@ -1,7 +1,7 @@
-import {InitAttribute} from '@/components/base';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {HbImgProps} from './type';
+import { InitAttribute } from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { HbImgProps } from './type';
 
 /**
  * @property src
@@ -41,15 +41,15 @@ export class HbImg extends InitAttribute<HbImgProps> {
 
   static get properties() {
     return {
-      src: {type: String, Reflect: true},
-      alt: {type: String, Reflect: true},
-      loadingWidth: {type: Number, Reflect: true},
-      loadingHeight: {type: Number, Reflect: true},
-      multiSource: {type: Number, Reflect: true},
-      breakPoint: {type: Number, Reflect: true},
-      pcPrefix: {type: String, Reflect: true},
-      loaded: {type: Boolean, Reflect: true},
-      error: {type: Boolean, Reflect: true},
+      src: { type: String, Reflect: true },
+      alt: { type: String, Reflect: true },
+      loadingWidth: { type: Number, Reflect: true },
+      loadingHeight: { type: Number, Reflect: true },
+      multiSource: { type: Number, Reflect: true },
+      breakPoint: { type: Number, Reflect: true },
+      pcPrefix: { type: String, Reflect: true },
+      loaded: { type: Boolean, Reflect: true },
+      error: { type: Boolean, Reflect: true }
     };
   }
 
@@ -109,21 +109,13 @@ export class HbImg extends InitAttribute<HbImgProps> {
       <picture
         class="hb-img__picture"
         part="picture"
-        style=${this.loaded
-          ? ''
-          : `width:${this.loadingWidth}px; height:${this.loadingHeight}px;`}
+        style=${this.loaded ? '' : `width:${this.loadingWidth}px; height:${this.loadingHeight}px;`}
       >
         ${this.multiSource > 0
           ? this.breakPoint > 0
             ? html`
-                <source
-                  media=${`(max-width: ${this.breakPoint - 1}px)`}
-                  srcset=${this.srcset}
-                />
-                <source
-                  media=${`(min-width: ${this.breakPoint}px)`}
-                  srcset=${this.pcSrcset}
-                />
+                <source media=${`(max-width: ${this.breakPoint - 1}px)`} srcset=${this.srcset} />
+                <source media=${`(min-width: ${this.breakPoint}px)`} srcset=${this.pcSrcset} />
               `
             : html` <source srcset=${this.srcset} /> `
           : ''}

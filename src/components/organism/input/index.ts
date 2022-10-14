@@ -1,9 +1,9 @@
-import {componentVariables} from '@/components/atom/variable/type';
-import {InitAttribute} from '@/components/base';
-import {getElement} from '@/utils';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {HbInputEvent, HbInputProps, HbInputType} from './type';
+import { componentVariables } from '@/components/atom/variable/type';
+import { InitAttribute } from '@/components/base';
+import { getElement } from '@/utils';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { HbInputEvent, HbInputProps, HbInputType } from './type';
 
 /**
  * An example element.
@@ -76,18 +76,18 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   static get properties() {
     return {
-      _value: {type: String, Reflect: true},
-      value: {type: String, Reflect: true},
-      attributeSync: {type: Boolean, Reflect: true},
-      type: {type: String, Reflect: true},
-      placeholder: {type: String, Reflect: true},
-      maxlength: {type: Number, Reflect: true},
-      comma: {type: Number, Reflect: true},
-      decimal: {type: Number, Reflect: true},
-      error: {type: Boolean, Reflect: true},
-      readonly: {type: Boolean, Reflect: true},
-      _readonly: {type: Boolean, Reflect: true},
-      nowrap: {type: Boolean, Reflect: true},
+      _value: { type: String, Reflect: true },
+      value: { type: String, Reflect: true },
+      attributeSync: { type: Boolean, Reflect: true },
+      type: { type: String, Reflect: true },
+      placeholder: { type: String, Reflect: true },
+      maxlength: { type: Number, Reflect: true },
+      comma: { type: Number, Reflect: true },
+      decimal: { type: Number, Reflect: true },
+      error: { type: Boolean, Reflect: true },
+      readonly: { type: Boolean, Reflect: true },
+      _readonly: { type: Boolean, Reflect: true },
+      nowrap: { type: Boolean, Reflect: true }
     };
   }
 
@@ -117,8 +117,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   get originalValue() {
-    if (this.type === HbInputType.number)
-      return this.toNumeric(this._value, true);
+    if (this.type === HbInputType.number) return this.toNumeric(this._value, true);
     return this._value;
   }
 
@@ -147,14 +146,13 @@ export class HbInput extends InitAttribute<HbInputProps> {
   onResize() {
     const inputEl = this.inputEl;
     if (inputEl) {
-      const {minHeight, maxHeight, padding, border} = componentVariables.input;
-      const currentContentHeight =
-        minHeight - padding.bottom - padding.top - border.width * 2;
+      const { minHeight, maxHeight, padding, border } = componentVariables.input;
+      const currentContentHeight = minHeight - padding.bottom - padding.top - border.width * 2;
       inputEl.style.height = 'auto';
-      const {scrollHeight} = inputEl;
+      const { scrollHeight } = inputEl;
       const targetCurrentHeight = Math.min(
         scrollHeight,
-        maxHeight - padding.bottom - padding.top - border.width * 2,
+        maxHeight - padding.bottom - padding.top - border.width * 2
       );
       if (targetCurrentHeight >= currentContentHeight)
         inputEl.style.height = targetCurrentHeight + 'px';
@@ -175,7 +173,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   onInput(ev: HbInputEvent) {
     const inputEl = this.inputEl;
-    let {value} = inputEl;
+    let { value } = inputEl;
     if (this.nowrap) value = value.replace(/\n/g, '');
     if (this.maxlength) {
       if (this.type === HbInputType.number)
@@ -187,9 +185,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
     if (this.type === HbInputType.number) {
       //숫자만 입력받도록 값 변경
-      const {data} = ev;
-      if (data !== null && !this.ableNumber.includes(data))
-        inputEl.value = this.value;
+      const { data } = ev;
+      if (data !== null && !this.ableNumber.includes(data)) inputEl.value = this.value;
       else inputEl.value = this.toNumeric(value);
       value = inputEl.value;
     } else {
@@ -228,7 +225,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   onChange() {
-    const {value} = this.inputEl;
+    const { value } = this.inputEl;
     this.value = value;
     if (this.attributeSync) this.setAttribute('value', this.originalValue);
     // this.dispatchEvent(new CustomEvent('event', ev));
@@ -239,10 +236,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   async connectedCallback() {
     await super.connectedCallback();
-    const inputEl = await getElement<HTMLInputElement>(
-      this.shadowRoot,
-      'input',
-    );
+    const inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'input');
     this.tabIndex = 0;
     this.inputEl = inputEl;
     this.value = this.getAttribute('value');

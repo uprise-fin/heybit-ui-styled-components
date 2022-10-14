@@ -1,9 +1,9 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {HorizonAlign, VerticalAlign} from '@/components/atom/variable/type';
-import {Base} from '@/components/base';
-import {getElement} from '@/utils';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { HbTransitionType } from '@/components/atom/transition/type';
+import { HorizonAlign, VerticalAlign } from '@/components/atom/variable/type';
+import { Base } from '@/components/base';
+import { getElement } from '@/utils';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 /**
  * @fires close 닫기
@@ -25,12 +25,8 @@ export class HbModal extends Base {
 
   async connectedCallback() {
     await super.connectedCallback();
-    this.containerEl = await getElement<HTMLDivElement>(
-      this.shadowRoot,
-      'container',
-    );
-    this.containerEl!.onanimationend = (event: AnimationEvent) =>
-      this.onAnimationEnd(event);
+    this.containerEl = await getElement<HTMLDivElement>(this.shadowRoot, 'container');
+    this.containerEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
   }
 
   disconnectedCallback() {
@@ -55,7 +51,7 @@ export class HbModal extends Base {
     const obj = {
       0: ['auto', 'auto'],
       1: ['0', 'auto'],
-      2: ['auto', '0'],
+      2: ['auto', '0']
     };
     return `${obj[this.verticalAlign][0]} ${obj[this.horizonAlign][0]} ${
       obj[this.verticalAlign][1]
@@ -64,22 +60,18 @@ export class HbModal extends Base {
 
   static get properties() {
     return {
-      open: {type: Boolean, Reflect: true},
-      persistent: {type: Boolean, Reflect: true},
-      width: {type: String, Reflect: true},
-      transitionType: {type: String, Reflect: true},
-      verticalAlign: {type: Number, Reflect: true},
-      horizonAlign: {type: Number, Reflect: true},
+      open: { type: Boolean, Reflect: true },
+      persistent: { type: Boolean, Reflect: true },
+      width: { type: String, Reflect: true },
+      transitionType: { type: String, Reflect: true },
+      verticalAlign: { type: Number, Reflect: true },
+      horizonAlign: { type: Number, Reflect: true }
     };
   }
 
   render() {
     return html`
-      <hb-transition
-        ?show=${this.open}
-        id="modal-transition"
-        type=${HbTransitionType.fade}
-      >
+      <hb-transition ?show=${this.open} id="modal-transition" type=${HbTransitionType.fade}>
         <div class="hb-modal__wrap" @click=${this.adapterOnClose} part="layer">
           <hb-transition
             ?show=${this.open}

@@ -1,8 +1,8 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { HbTransitionType } from '@/components/atom/transition/type';
+import { Base } from '@/components/base';
+import { HbIconName } from '@/components/molecule/icon/type';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 /**
  * @fires close 닫기
@@ -37,14 +37,14 @@ export class HbEventDialog extends Base {
 
   static get properties() {
     return {
-      open: {type: Boolean, Reflect: true},
-      persistent: {type: Boolean, Reflect: true},
-      hideCloseBtn: {type: Boolean, Reflect: true},
-      width: {type: String, Reflect: true},
-      loadingWidth: {type: Number, Reflect: true},
-      loadingHeight: {type: Number, Reflect: true},
-      image: {type: String, Reflect: true},
-      href: {type: String, Reflect: true},
+      open: { type: Boolean, Reflect: true },
+      persistent: { type: Boolean, Reflect: true },
+      hideCloseBtn: { type: Boolean, Reflect: true },
+      width: { type: String, Reflect: true },
+      loadingWidth: { type: Number, Reflect: true },
+      loadingHeight: { type: Number, Reflect: true },
+      image: { type: String, Reflect: true },
+      href: { type: String, Reflect: true }
     };
   }
 
@@ -67,10 +67,7 @@ export class HbEventDialog extends Base {
                 part="close-btn"
                 id="close-btn"
               >
-                <hb-icon
-                  icon=${HbIconName['system/outline/close']}
-                  size="small"
-                ></hb-icon>
+                <hb-icon icon=${HbIconName['system/outline/close']} size="small"></hb-icon>
               </button>`}
           <hb-anchor href=${this.href}>
             <hb-img

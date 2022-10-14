@@ -1,4 +1,4 @@
-import {LitElement} from 'lit';
+import { LitElement } from 'lit';
 // export interface MouseCustomEvent extends Event {
 //   clientX: number;
 //   clientY: number;
@@ -50,11 +50,10 @@ export class InitAttribute<T> extends Base {
   }
 
   initAttribute() {
-    this.initialAttributes.forEach(key => {
+    this.initialAttributes.forEach((key) => {
       const attr = key as string;
       const value = (this as unknown)[key as keyof T];
-      if (value && this.getAttribute(attr) !== value)
-        this.setAttribute(attr, value as string);
+      if (value && this.getAttribute(attr) !== value) this.setAttribute(attr, value as string);
     });
   }
 }

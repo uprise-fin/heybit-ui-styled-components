@@ -10,5 +10,5 @@ export enum HbTransitionType {
   bottomUpHeight = 'bottom-up-height',
   bottomUp = 'bottom-up',
   topDown = 'top-down',
-  rightLeft = 'right-left',
+  rightLeft = 'right-left'
 }

@@ -1,12 +1,12 @@
-import {Meta, Story} from '@storybook/web-components';
-import {html} from 'lit';
+import { Meta, Story } from '@storybook/web-components';
+import { html } from 'lit';
 import './index';
-import type {HbInput} from './index';
-import {HbInputEvent, HbInputType} from './type';
+import type { HbInput } from './index';
+import { HbInputEvent, HbInputType } from './type';
 
 export default {
   title: 'components/organism/hb-input',
-  component: 'hb-input',
+  component: 'hb-input'
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
@@ -18,7 +18,7 @@ const Template: Story<HbInput> = ({
   decimal,
   comma,
   error,
-  readonly,
+  readonly
 }) => html`
   <hb-input
     type=${type}
@@ -29,8 +29,7 @@ const Template: Story<HbInput> = ({
     .decimal=${decimal}
     .comma=${comma}
     .value=${value}
-    @submit=${($event: HbInputEvent) =>
-      console.log($event.target.originalValue, '서브밋')}
+    @submit=${($event: HbInputEvent) => console.log($event.target.originalValue, '서브밋')}
     @event=${($event: HbInputEvent) => console.log($event.target.originalValue)}
   ></hb-input>
 `;
@@ -39,11 +38,10 @@ export const text: Story<HbInput> = Template.bind({});
 text.args = {
   type: HbInputType.text,
   maxlength: 10,
-  value:
-    'dawkldjlkajdklawjdlkwajdklawdjlawdjlkawjdlawjdlwajdklawjdlkawjdlkajwlkdawjdlawkjdl',
+  value: 'dawkldjlkajdklawjdlkwajdklawdjlawdjlkawjdlawjdlwajdklawjdlkawjdlkajwlkdawjdlawkjdl',
   placeholder: '글자입력해주세요',
   error: false,
-  readonly: false,
+  readonly: false
 };
 export const number: Story<HbInput> = Template.bind({});
 number.args = {
@@ -53,5 +51,5 @@ number.args = {
   decimal: 2,
   comma: 3,
   error: false,
-  readonly: false,
+  readonly: false
 };

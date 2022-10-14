@@ -1,7 +1,7 @@
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {Base} from '@/components/base';
-import {HbSkeletonType} from './type';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { Base } from '@/components/base';
+import { HbSkeletonType } from './type';
 
 @customElement('hb-skeleton')
 export class HbSkeleton extends Base {
@@ -19,16 +19,15 @@ export class HbSkeleton extends Base {
 
   static get properties() {
     return {
-      duration: {type: Number, Reflect: true},
-      background: {type: String, Reflect: true},
-      backgroundAccent: {type: String, Reflect: true},
-      type: {type: String, Reflect: true},
+      duration: { type: Number, Reflect: true },
+      background: { type: String, Reflect: true },
+      backgroundAccent: { type: String, Reflect: true },
+      type: { type: String, Reflect: true }
     };
   }
 
   get skeletonLength() {
-    if ([HbSkeletonType.card, HbSkeletonType.dropMenuTop].includes(this.type))
-      return 3;
+    if ([HbSkeletonType.card, HbSkeletonType.dropMenuTop].includes(this.type)) return 3;
     if ([HbSkeletonType.dropMenuBottom].includes(this.type)) return 2;
     return 1;
   }
@@ -49,7 +48,7 @@ export class HbSkeleton extends Base {
             duration=${this.duration}
             background=${this.background}
             backgroundAccent=${this.backgroundAccent}
-          ></hb-loading> `,
+          ></hb-loading> `
       );
   }
 }

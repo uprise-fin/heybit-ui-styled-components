@@ -1,7 +1,7 @@
 import '!style-loader!css-loader!sass-loader!../src/styles/index.scss';
 import '!style-loader!css-loader!../node_modules/pretendard/dist/web/static/pretendard.css';
 // import { setCustomElementsManifest } from '@storybook/web-components';
-import {SystemColor, ServiceColor, colorPalette} from '../src/index';
+import { SystemColor, ServiceColor, colorPalette } from '../src/index';
 import '../src/components/atom/variable';
 export const parameters = {
   colorPicker: {
@@ -16,15 +16,15 @@ export const parameters = {
                 ? va
                 : {
                     ...va,
-                    [`${k}--${vv}`]: v[vv],
+                    [`${k}--${vv}`]: v[vv]
                   },
-            {},
+            {}
           );
           return {
             ...a,
-            ...ov,
+            ...ov
           };
-        }, {}),
+        }, {})
       },
       {
         name: 'service color',
@@ -36,18 +36,18 @@ export const parameters = {
                 ? va
                 : {
                     ...va,
-                    [`${k}--${vv}`]: v[vv],
+                    [`${k}--${vv}`]: v[vv]
                   },
-            {},
+            {}
           );
           return {
             ...a,
-            ...ov,
+            ...ov
           };
-        }, {}),
-      },
-    ],
-  },
+        }, {})
+      }
+    ]
+  }
 };
 // import customElementsManifest from '../custom-elements.json';
 

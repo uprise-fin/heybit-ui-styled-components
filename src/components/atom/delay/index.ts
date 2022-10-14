@@ -1,6 +1,6 @@
-import {Base} from '@/components/base';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { Base } from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 @customElement('hb-delay')
 export class HbDelay extends Base {
@@ -16,19 +16,19 @@ export class HbDelay extends Base {
 
   static get properties() {
     return {
-      delay: {type: Number, Reflect: true},
-      name: {type: String, Reflect: true},
-      value: {type: String, Reflect: true},
+      delay: { type: Number, Reflect: true },
+      name: { type: String, Reflect: true },
+      value: { type: String, Reflect: true }
     };
   }
 
   async attributeChangedCallback(name: string, _: string, newVal: string) {
     super.attributeChangedCallback(name, _, newVal);
     if (name === 'value') {
-      await new Promise(resolve =>
+      await new Promise((resolve) =>
         setTimeout(() => {
           resolve(true);
-        }, this.delay),
+        }, this.delay)
       );
       if (['true', 'false'].includes(newVal)) {
         if (newVal === 'true') this.children[0].setAttribute(this.name, '');

@@ -4,7 +4,7 @@ export interface HbToastProps {
 }
 export enum HbToastTheme {
   'positive' = 'positive',
-  'negative' = 'negative',
+  'negative' = 'negative'
 }
 export interface HbToastMessage {
   text: string;

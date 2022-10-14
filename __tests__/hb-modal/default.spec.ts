@@ -1,5 +1,5 @@
-import {HbModal} from '@/module';
-import {getShadowElement, getShadowRoot} from '../utils';
+import { HbModal } from '@/module';
+import { getShadowElement, getShadowRoot } from '../utils';
 const SHADOW_TAG = 'hb-modal';
 describe(SHADOW_TAG, () => {
   let SHADOW_ELEMENT: HbModal;

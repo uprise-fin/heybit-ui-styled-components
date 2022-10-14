@@ -1,14 +1,14 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
+import { HbTransitionType } from '@/components/atom/transition/type';
+import { Base } from '@/components/base';
+import { HbIconName } from '@/components/molecule/icon/type';
 import {
   HbDialogAnchor,
   HbDialogButton,
-  HbModalButtonAlign,
+  HbModalButtonAlign
 } from '@/components/template/modal/type';
-import {wait} from '@/utils';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { wait } from '@/utils';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 /**
  * @fires close 닫기
@@ -61,7 +61,7 @@ export class HbPageDialog extends Base {
 
   get eventDisabled() {
     if (this.buttons && this.buttons?.length)
-      return this.buttons.map(x => x.loading).some(x => x);
+      return this.buttons.map((x) => x.loading).some((x) => x);
     return this.loading;
   }
   // get open() {
@@ -79,19 +79,19 @@ export class HbPageDialog extends Base {
 
   static get properties() {
     return {
-      open: {type: Boolean, Reflect: true},
-      buttons: {type: Array, Reflect: true},
-      disabled: {type: Boolean, Reflect: true},
-      eventDisabled: {type: Boolean, Reflect: true},
-      persistent: {type: Boolean, Reflect: true},
-      hideCloseBtn: {type: Boolean, Reflect: true},
-      width: {type: String, Reflect: true},
-      loading: {type: Boolean, Reflect: true},
-      baseLoadingDuration: {type: Number, Reflect: true},
-      buttonAlign: {type: String, Reflect: true},
-      title: {type: String, Reflect: true},
-      icon: {type: String, Reflect: true},
-      transitionType: {type: String, Reflect: true},
+      open: { type: Boolean, Reflect: true },
+      buttons: { type: Array, Reflect: true },
+      disabled: { type: Boolean, Reflect: true },
+      eventDisabled: { type: Boolean, Reflect: true },
+      persistent: { type: Boolean, Reflect: true },
+      hideCloseBtn: { type: Boolean, Reflect: true },
+      width: { type: String, Reflect: true },
+      loading: { type: Boolean, Reflect: true },
+      baseLoadingDuration: { type: Number, Reflect: true },
+      buttonAlign: { type: String, Reflect: true },
+      title: { type: String, Reflect: true },
+      icon: { type: String, Reflect: true },
+      transitionType: { type: String, Reflect: true }
     };
   }
 
@@ -104,10 +104,7 @@ export class HbPageDialog extends Base {
         ?persistent=${this.persistent || this.eventDisabled}
         transitionType=${this.transitionType}
       >
-        <div
-          class="hb-page-dialog__container ${this.transitionType}"
-          part="container"
-        >
+        <div class="hb-page-dialog__container ${this.transitionType}" part="container">
           ${this.hideCloseBtn
             ? ''
             : html` <hb-button
@@ -116,10 +113,7 @@ export class HbPageDialog extends Base {
                 class="hb-page-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon
-                  icon=${HbIconName['system/outline/close']}
-                  size="small"
-                ></hb-icon
+                ><hb-icon icon=${HbIconName['system/outline/close']} size="small"></hb-icon
               ></hb-button>`}
           <div class="hb-page-dialog__body">
             <slot class="hb-page-dialog__body__content"></slot>
@@ -130,7 +124,7 @@ export class HbPageDialog extends Base {
   }
 
   async adapterEvent(button: HbDialogButton, index: number) {
-    const {event} = button;
+    const { event } = button;
     if (this.baseLoadingDuration) {
       const on = this.buttons.slice();
       const off = this.buttons.slice();

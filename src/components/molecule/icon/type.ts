@@ -1,4 +1,4 @@
-import type {Size} from '@/components/atom/variable/type';
+import type { Size } from '@/components/atom/variable/type';
 export interface HbIconProps {
   icon: HbIconName;
   size: Size;
@@ -54,5 +54,5 @@ export enum HbIconName {
   'system/outline/qr' = 'system/outline/qr',
   'system/outline/refresh' = 'system/outline/refresh',
   'system/outline/ic-sysyem-checkbox-able' = 'system/outline/ic-sysyem-checkbox-able',
-  'system/outline/ic-sysyem-danger' = 'system/outline/ic-sysyem-danger',
+  'system/outline/ic-sysyem-danger' = 'system/outline/ic-sysyem-danger'
 }

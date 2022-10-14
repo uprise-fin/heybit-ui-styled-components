@@ -1,10 +1,10 @@
-import {colorPalette, Size, SystemColor} from '@/index';
-import {Meta, Story} from '@storybook/web-components';
-import {html} from 'lit';
+import { colorPalette, Size, SystemColor } from '@/index';
+import { Meta, Story } from '@storybook/web-components';
+import { html } from 'lit';
 import './index';
-import type {HbIcon} from './index';
+import type { HbIcon } from './index';
 import SVG from './svg';
-import {HbIconName} from './type';
+import { HbIconName } from './type';
 interface HbIconExpns extends HbIcon {
   color: string;
 }
@@ -16,40 +16,36 @@ export default {
     icon: {
       defaultValue: 'system/filled/add',
       options: iconList,
-      control: {type: 'radio'},
+      control: { type: 'radio' }
     },
     size: {
       defaultValue: Size.large,
       options: Object.keys(Size),
-      control: {type: 'radio'},
+      control: { type: 'radio' }
     },
     color: {
-      control: {type: 'text'},
-      defaultValue: colorPalette[SystemColor.black][900],
-    },
+      control: { type: 'text' },
+      defaultValue: colorPalette[SystemColor.black][900]
+    }
   },
   parameters: {
     colorPicker: {
-      applyColorTo: ['color'], // Must match argType key
-    },
-  },
+      applyColorTo: ['color'] // Must match argType key
+    }
+  }
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const OneTemplate: Story<HbIconExpns> = ({icon, size, color}) =>
-  html`<hb-icon
-    icon=${icon}
-    size=${size}
-    style="--husc__icon__color: ${color};"
-  ></hb-icon>`;
+const OneTemplate: Story<HbIconExpns> = ({ icon, size, color }) =>
+  html`<hb-icon icon=${icon} size=${size} style="--husc__icon__color: ${color};"></hb-icon>`;
 export const icon: Story<HbIconExpns> = OneTemplate.bind({});
-icon.args = {size: Size.large};
+icon.args = { size: Size.large };
 icon.parameters = {
   colorPicker: {
-    applyColorTo: ['color'], // Pass empty array to clear extra controls
-  },
+    applyColorTo: ['color'] // Pass empty array to clear extra controls
+  }
 };
-const SeveralTemplate: Story<HbIconExpns> = ({size, color}) =>
+const SeveralTemplate: Story<HbIconExpns> = ({ size, color }) =>
   html` <style>
       .table {
         display: flex;
@@ -65,20 +61,16 @@ const SeveralTemplate: Story<HbIconExpns> = ({size, color}) =>
       }
     </style>
     ${iconList.map(
-      x =>
+      (x) =>
         html`<div class="table">
-          <hb-icon
-            icon=${x}
-            size=${size}
-            style="--husc__icon__color: ${color};"
-          ></hb-icon>
+          <hb-icon icon=${x} size=${size} style="--husc__icon__color: ${color};"></hb-icon>
           <span>${x}</span>
-        </div>`,
+        </div>`
     )}`;
 export const icons: Story<HbIconExpns> = SeveralTemplate.bind({});
-icons.args = {size: Size.large};
+icons.args = { size: Size.large };
 icons.parameters = {
   colorPicker: {
-    applyColorTo: ['color'], // Pass empty array to clear extra controls
-  },
+    applyColorTo: ['color'] // Pass empty array to clear extra controls
+  }
 };

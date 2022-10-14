@@ -1,14 +1,10 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {Size} from '@/components/atom/variable/type';
-import {InitAttribute} from '@/components/base';
-import {
-  HbButtonProps,
-  HbButtonTheme,
-  HbButtonType,
-} from '@/components/organism/button/type';
-import {wait} from '@/utils';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { HbTransitionType } from '@/components/atom/transition/type';
+import { Size } from '@/components/atom/variable/type';
+import { InitAttribute } from '@/components/base';
+import { HbButtonProps, HbButtonTheme, HbButtonType } from '@/components/organism/button/type';
+import { wait } from '@/utils';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 /**
  * @fires event 클릭할때
@@ -76,13 +72,13 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   static get properties() {
     return {
-      theme: {type: String, Reflect: true},
-      size: {type: String, Reflect: true},
-      type: {type: String, Reflect: true},
-      loading: {type: Boolean, Reflect: true},
-      _loading: {type: Boolean, Reflect: true},
-      baseLoadingDuration: {type: Number, Reflect: true},
-      disabled: {type: Boolean, Reflect: true},
+      theme: { type: String, Reflect: true },
+      size: { type: String, Reflect: true },
+      type: { type: String, Reflect: true },
+      loading: { type: Boolean, Reflect: true },
+      _loading: { type: Boolean, Reflect: true },
+      baseLoadingDuration: { type: Number, Reflect: true },
+      disabled: { type: Boolean, Reflect: true }
     };
   }
 
@@ -126,7 +122,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     await super.connectedCallback();
     this.tabindex = '0';
     this.onclick = this.adapterEvent;
-    this.onkeyup = ev => ev.key === 'Enter' && this.adapterEvent();
+    this.onkeyup = (ev) => ev.key === 'Enter' && this.adapterEvent();
   }
 
   async adapterEvent() {

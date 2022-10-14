@@ -1,16 +1,16 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {componentVariables} from '@/components/atom/variable/type';
-import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {HbButtonType} from '@/components/organism/button/type';
+import { HbTransitionType } from '@/components/atom/transition/type';
+import { componentVariables } from '@/components/atom/variable/type';
+import { Base } from '@/components/base';
+import { HbIconName } from '@/components/molecule/icon/type';
+import { HbButtonType } from '@/components/organism/button/type';
 import {
   HbDialogAnchor,
   HbDialogButton,
-  HbModalButtonAlign,
+  HbModalButtonAlign
 } from '@/components/template/modal/type';
-import {wait} from '@/utils';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { wait } from '@/utils';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 /**
  * @fires close 닫기
@@ -63,7 +63,7 @@ export class HbDialog extends Base {
 
   get eventDisabled() {
     if (this.buttons && this.buttons?.length)
-      return this.buttons.map(x => x.loading).some(x => x);
+      return this.buttons.map((x) => x.loading).some((x) => x);
     return this.loading;
   }
   // get open() {
@@ -81,19 +81,19 @@ export class HbDialog extends Base {
 
   static get properties() {
     return {
-      open: {type: Boolean, Reflect: true},
-      buttons: {type: Array, Reflect: true},
-      disabled: {type: Boolean, Reflect: true},
-      eventDisabled: {type: Boolean, Reflect: true},
-      persistent: {type: Boolean, Reflect: true},
-      hideCloseBtn: {type: Boolean, Reflect: true},
-      width: {type: String, Reflect: true},
-      loading: {type: Boolean, Reflect: true},
-      baseLoadingDuration: {type: Number, Reflect: true},
-      buttonAlign: {type: String, Reflect: true},
-      title: {type: String, Reflect: true},
-      icon: {type: String, Reflect: true},
-      transitionType: {type: String, Reflect: true},
+      open: { type: Boolean, Reflect: true },
+      buttons: { type: Array, Reflect: true },
+      disabled: { type: Boolean, Reflect: true },
+      eventDisabled: { type: Boolean, Reflect: true },
+      persistent: { type: Boolean, Reflect: true },
+      hideCloseBtn: { type: Boolean, Reflect: true },
+      width: { type: String, Reflect: true },
+      loading: { type: Boolean, Reflect: true },
+      baseLoadingDuration: { type: Number, Reflect: true },
+      buttonAlign: { type: String, Reflect: true },
+      title: { type: String, Reflect: true },
+      icon: { type: String, Reflect: true },
+      transitionType: { type: String, Reflect: true }
     };
   }
 
@@ -115,14 +115,9 @@ export class HbDialog extends Base {
                 class="hb-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon
-                  icon=${HbIconName['system/outline/close']}
-                  size="small"
-                ></hb-icon
+                ><hb-icon icon=${HbIconName['system/outline/close']} size="small"></hb-icon
               ></hb-button>`}
-          <div
-            class="hb-dialog__head${!this.icon && !this.title ? ' empty' : ''}"
-          >
+          <div class="hb-dialog__head${!this.icon && !this.title ? ' empty' : ''}">
             ${this.icon
               ? html`<hb-img
                   part="icon"
@@ -132,9 +127,7 @@ export class HbDialog extends Base {
                   class="hb-dialog__head__icon"
                 ></hb-img>`
               : ''}${this.title
-              ? html`<p part="title" class="hb-dialog__head__title">
-                  ${this.title}
-                </p>`
+              ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>`
               : ''}
           </div>
           <div class="hb-dialog__body">
@@ -152,7 +145,7 @@ export class HbDialog extends Base {
                     theme=${x.theme}
                     size="medium"
                     >${x.name}</hb-button
-                  >`,
+                  >`
               )}
             </div>
             ${this.anchor && this.anchor.name
@@ -172,7 +165,7 @@ export class HbDialog extends Base {
   }
 
   async adapterEvent(button: HbDialogButton, index: number) {
-    const {event} = button;
+    const { event } = button;
     if (this.baseLoadingDuration) {
       const on = this.buttons.slice();
       const off = this.buttons.slice();

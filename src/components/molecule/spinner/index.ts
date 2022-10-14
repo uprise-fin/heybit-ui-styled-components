@@ -1,8 +1,8 @@
-import {Size} from '@/components/atom/variable/type';
-import {InitAttribute} from '@/components/base';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {HbSpinnerProps} from './type';
+import { Size } from '@/components/atom/variable/type';
+import { InitAttribute } from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { HbSpinnerProps } from './type';
 
 /**
  *
@@ -20,7 +20,7 @@ export class HbSpinner extends InitAttribute<HbSpinnerProps> {
 
   static get properties() {
     return {
-      size: {type: String, Reflect: true},
+      size: { type: String, Reflect: true }
       // size: { type: String, Reflect: true },
     };
   }

@@ -1,7 +1,7 @@
-import {Base} from '@/components/base';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {HbListEvent, HbListOption} from './type';
+import { Base } from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { HbListEvent, HbListOption } from './type';
 
 /**
  * @fires event
@@ -36,18 +36,18 @@ export class HbList extends Base {
 
   static get properties() {
     return {
-      options: {type: Array, Reflect: true},
-      value: {type: String, Reflect: true},
-      emptyText: {type: String, Reflect: true},
-      width: {type: Number, Reflect: true},
-      maxHeight: {type: Number, Reflect: true},
-      attributeSync: {type: Boolean, Reflect: true},
-      open: {type: Boolean, Reflect: true},
+      options: { type: Array, Reflect: true },
+      value: { type: String, Reflect: true },
+      emptyText: { type: String, Reflect: true },
+      width: { type: Number, Reflect: true },
+      maxHeight: { type: Number, Reflect: true },
+      attributeSync: { type: Boolean, Reflect: true },
+      open: { type: Boolean, Reflect: true }
     };
   }
 
   get values() {
-    return this.options.map(x => x.value) || [];
+    return this.options.map((x) => x.value) || [];
   }
 
   sto = setTimeout(() => {}, 0);
@@ -55,8 +55,8 @@ export class HbList extends Base {
   onSelect(ev: HbListEvent) {
     this.adapterHide();
     if (!(ev.target instanceof HTMLButtonElement)) return;
-    const {target} = ev;
-    const {value} = target.dataset;
+    const { target } = ev;
+    const { value } = target.dataset;
     if (this.value === value || !this.values.includes(value)) return;
     if (this.attributeSync) this.setAttribute('value', value!);
     this.value = value!;
@@ -78,14 +78,13 @@ export class HbList extends Base {
       <div
         class="hb-list__wrap"
         @click=${this.onSelect}
-        @keyup=${(evt: KeyboardEvent) =>
-          evt.key === 'Enter' && this.onSelect.call(this)}
+        @keyup=${(evt: KeyboardEvent) => evt.key === 'Enter' && this.onSelect.call(this)}
         data-empty-text=${this.emptyText}
         part="list"
         id="list"
       >
         ${this.options.map(
-          x =>
+          (x) =>
             html`
               <button
                 type="button"
@@ -95,7 +94,7 @@ export class HbList extends Base {
               >
                 ${x.label}
               </button>
-            `,
+            `
         )}
       </div>
     `;

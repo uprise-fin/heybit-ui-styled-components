@@ -1,5 +1,5 @@
-import {HbButton} from '@/module';
-import {getShadowElement} from '../utils';
+import { HbButton } from '@/module';
+import { getShadowElement } from '../utils';
 const SHADOW_TAG = 'hb-button';
 
 describe(SHADOW_TAG, () => {

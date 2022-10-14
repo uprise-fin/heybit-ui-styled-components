@@ -4,8 +4,7 @@
   display: flex;
   width: 100%;
   height: var(--husc__list__height);
-  padding: 0 var(--husc__list__padding__right) 0
-    var(--husc__list__padding__left);
+  padding: 0 var(--husc__list__padding__right) 0 var(--husc__list__padding__left);
   border: 0;
   align-items: center;
   font-size: inherit;
@@ -31,8 +30,7 @@
     font-size: var(--husc__list__font__size);
     font-family: var(--husc__font__family);
     border-radius: var(--husc__border__radius);
-    border: var(--husc__list__border__width) solid
-      var(--husc__list__border__color);
+    border: var(--husc__list__border__width) solid var(--husc__list__border__color);
     box-sizing: border-box;
   }
 

@@ -1,20 +1,20 @@
-import {Meta, Story} from '@storybook/web-components';
-import {html} from 'lit';
-import {basicVariables} from '@/index';
+import { Meta, Story } from '@storybook/web-components';
+import { html } from 'lit';
+import { basicVariables } from '@/index';
 import './index';
-import type {HbResponsive} from './index';
+import type { HbResponsive } from './index';
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
   title: 'components/atom/hb-responsive',
   component: 'hb-responsive',
   argTypes: {
     point: {
-      control: {type: 'number'},
-      defaultValue: basicVariables.layout.media,
-    },
-  },
+      control: { type: 'number' },
+      defaultValue: basicVariables.layout.media
+    }
+  }
 } as Meta;
-const Template: Story<HbResponsive> = ({point}) =>
+const Template: Story<HbResponsive> = ({ point }) =>
   html` <style>
       .line {
         position: fixed;
@@ -32,5 +32,5 @@ const Template: Story<HbResponsive> = ({point}) =>
 
 export const primary: Story<HbResponsive> = Template.bind({});
 primary.args = {
-  point: basicVariables.layout.media,
+  point: basicVariables.layout.media
 };

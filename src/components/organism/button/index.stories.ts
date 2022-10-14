@@ -1,32 +1,32 @@
-import {Meta, Story} from '@storybook/web-components';
-import {html} from 'lit';
-import {Size} from '@/components/atom/variable/type';
-import {HbButtonTheme, HbButtonType} from '@/components/organism/button/type';
+import { Meta, Story } from '@storybook/web-components';
+import { html } from 'lit';
+import { Size } from '@/components/atom/variable/type';
+import { HbButtonTheme, HbButtonType } from '@/components/organism/button/type';
 import './index';
-import type {HbButton} from './index';
-import {HbIconName} from '@/components/molecule/icon/type';
+import type { HbButton } from './index';
+import { HbIconName } from '@/components/molecule/icon/type';
 
 export default {
   title: 'components/organism/hb-button',
   argTypes: {
     theme: {
       options: Object.keys(HbButtonTheme),
-      control: {type: 'radio'},
+      control: { type: 'radio' }
     },
     size: {
       options: Object.keys(Size),
-      control: {type: 'radio'},
-      defaultValue: Size.large,
+      control: { type: 'radio' },
+      defaultValue: Size.large
     },
     color: {
-      control: {type: 'text'},
-    },
+      control: { type: 'text' }
+    }
   },
   parameters: {
     colorPicker: {
-      applyColorTo: ['color'], // Must match argType key
-    },
-  },
+      applyColorTo: ['color'] // Must match argType key
+    }
+  }
 } as Meta;
 interface HbButtonIconExps extends HbButton {
   color: string;
@@ -38,7 +38,7 @@ const NoTypeTemplate: Story<HbButton> = ({
   theme,
   size,
   title,
-  baseLoadingDuration,
+  baseLoadingDuration
 }) =>
   html`<hb-button
     .theme="${theme}"
@@ -56,7 +56,7 @@ const Template: Story<HbButton> = ({
   theme,
   size,
   title,
-  baseLoadingDuration,
+  baseLoadingDuration
 }) =>
   html`<hb-button
     .theme="${theme}"
@@ -74,7 +74,7 @@ const IconTemplate: Story<HbButtonIconExps> = ({
   theme,
   color,
   size,
-  baseLoadingDuration,
+  baseLoadingDuration
 }) =>
   html`<hb-button
     .theme="${theme}"
@@ -95,33 +95,33 @@ const args = {
   size: Size.large,
   baseLoadingDuration: 500,
   loading: false,
-  disabled: false,
+  disabled: false
 };
 export const rectangle: Story<HbButton> = Template.bind({});
 rectangle.args = {
   ...args,
   type: HbButtonType.rectangle,
-  theme: HbButtonTheme.primary,
+  theme: HbButtonTheme.primary
 };
 export const radius: Story<HbButton> = Template.bind({});
 radius.args = {
   ...args,
   theme: HbButtonTheme.primary,
-  type: HbButtonType.radius,
+  type: HbButtonType.radius
 };
 export const circle: Story<HbButtonIconExps> = IconTemplate.bind({});
 circle.args = {
   ...args,
   theme: HbButtonTheme.primary,
-  type: HbButtonType.circle,
+  type: HbButtonType.circle
 };
 circle.parameters = {
   colorPicker: {
-    applyColorTo: ['color'], // Pass empty array to clear extra controls
-  },
+    applyColorTo: ['color'] // Pass empty array to clear extra controls
+  }
 };
 
 export const noType: Story<HbButton> = NoTypeTemplate.bind({});
 noType.args = {
-  ...args,
+  ...args
 };

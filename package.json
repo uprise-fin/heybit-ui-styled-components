@@ -45,6 +45,7 @@
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
     "test": "jest -i",
+    "format": "prettier --write --plugin-search-dir=. .",
     "storybook": "pnpm env:dev && pnpm svg && start-storybook -p 6006",
     "pre-publish": "pnpm env:prod && pnpm svg && pnpm svg && pnpm cem && pnpm build && pnpm test",
     "build-storybook": "pnpm env:prod && pnpm svg && build-storybook",

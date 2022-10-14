@@ -1,6 +1,6 @@
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {Base} from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { Base } from '@/components/base';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -21,7 +21,7 @@ export class HbIf extends Base {
 
   static get properties() {
     return {
-      value: {type: Boolean, Reflect: true},
+      value: { type: Boolean, Reflect: true }
     };
   }
 

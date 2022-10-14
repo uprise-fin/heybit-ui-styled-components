@@ -2,13 +2,13 @@ const path = require('path');
 const pathsTransformer = require('ts-transform-paths').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: {
     'src/style': [path.resolve(__dirname, './src/styles/index.scss')],
     'src/index': [path.resolve(__dirname, './src/index.ts')],
-    'src/module': [path.resolve(__dirname, './src/module.ts')],
+    'src/module': [path.resolve(__dirname, './src/module.ts')]
   },
   module: {
     rules: [
@@ -19,10 +19,10 @@ module.exports = {
           {
             loader: 'ts-loader',
             options: {
-              getCustomTransformers: program => pathsTransformer(),
-            },
-          },
-        ],
+              getCustomTransformers: (program) => pathsTransformer()
+            }
+          }
+        ]
       },
       {
         test: /\.scss$/,
@@ -31,28 +31,28 @@ module.exports = {
           {
             loader: 'lit-scss-loader',
             options: {
-              minify: true, // defaults to false
-            },
+              minify: true // defaults to false
+            }
           },
           'extract-loader',
           'css-loader',
-          'sass-loader',
-        ],
+          'sass-loader'
+        ]
       },
       {
         test: /\.scss$/,
         include: [path.resolve(__dirname, './src/styles/index.scss')],
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader',
+        loader: 'svg-inline-loader'
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset',
-      },
-    ],
+        type: 'asset'
+      }
+    ]
   },
   plugins: [new MiniCssExtractPlugin(), new CleanWebpackPlugin(), new Dotenv()],
 
@@ -60,12 +60,12 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.svg', '.css', '.scss'],
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '~': path.resolve(__dirname, './'),
-    },
+      '~': path.resolve(__dirname, './')
+    }
   },
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin({extractComments: false})],
+    minimizer: [new TerserPlugin({ extractComments: false })]
   },
   // plugins: [new FixStyleOnlyEntriesPlugin(), new MiniCssExtractPlugin()],
 
@@ -74,11 +74,11 @@ module.exports = {
     filename: '[name].js',
     library: {
       name: 'heybit-ui-styled-components',
-      type: 'umd',
+      type: 'umd'
     },
     globalObject: 'this',
-    umdNamedDefine: true,
-  },
+    umdNamedDefine: true
+  }
 };
 // module.exports = {
 //   mode: "production",

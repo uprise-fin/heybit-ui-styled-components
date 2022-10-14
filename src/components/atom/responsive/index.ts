@@ -1,7 +1,7 @@
-import {Base} from '@/components/base';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {basicVariables} from '@/index';
+import { Base } from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { basicVariables } from '@/index';
 
 @customElement('hb-responsive')
 export class HbResponsive extends Base {
@@ -9,7 +9,7 @@ export class HbResponsive extends Base {
 
   static get properties() {
     return {
-      point: {type: Number, Reflect: true},
+      point: { type: Number, Reflect: true }
     };
   }
 

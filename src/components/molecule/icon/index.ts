@@ -1,10 +1,10 @@
-import {Size} from '@/components/atom/variable/type';
-import {InitAttribute} from '@/components/base';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
+import { Size } from '@/components/atom/variable/type';
+import { InitAttribute } from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import SVG from './svg';
-import {HbIconName, HbIconProps} from './type';
+import { HbIconName, HbIconProps } from './type';
 
 /**
  * @property open 온 오프
@@ -31,8 +31,8 @@ export class HbIcon extends InitAttribute<HbIconProps> {
 
   static get properties() {
     return {
-      icon: {type: String, Reflect: true},
-      size: {type: String, Reflect: true},
+      icon: { type: String, Reflect: true },
+      size: { type: String, Reflect: true }
     };
   }
 

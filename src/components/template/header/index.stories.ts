@@ -1,14 +1,14 @@
 import BetaBadge from '~/static/img_beta.svg';
-import {Meta, Story} from '@storybook/web-components';
-import {html} from 'lit';
+import { Meta, Story } from '@storybook/web-components';
+import { html } from 'lit';
 import './index';
-import type {HbHeader} from './index';
+import type { HbHeader } from './index';
 import {
   HbHeaderUser,
   initialHeaderAuthMenu,
   initialHeaderDefaultMenu,
   initialHeaderGnb,
-  initialHeaderMyMenu,
+  initialHeaderMyMenu
 } from './type';
 
 export default {
@@ -17,16 +17,16 @@ export default {
   argTypes: {
     pending: {
       options: [false, true],
-      defaultValue: false,
+      defaultValue: false
     },
     loggedin: {
       options: [false, true],
-      defaultValue: false,
-    },
-  },
+      defaultValue: false
+    }
+  }
 } as Meta;
 interface HbHeaderExps extends HbHeader {
-  _user: {name: string; email: string};
+  _user: { name: string; email: string };
   pending: boolean;
   loggedIn: boolean;
 }
@@ -39,10 +39,10 @@ const Template: Story<HbHeaderExps> = ({
   defaultMenu,
   event,
   pending,
-  loggedin,
+  loggedin
 }) => {
   const user: HbHeaderUser = {
-    ..._user,
+    ..._user
   };
   return html`<hb-header
     @event=${event}
@@ -62,22 +62,22 @@ korea.args = {
   pending: false,
   _user: {
     name: '윤창원',
-    email: 'matthew@heybit.io',
+    email: 'matthew@heybit.io'
   },
-  gnb: initialHeaderGnb.map(x => {
+  gnb: initialHeaderGnb.map((x) => {
     if (x.name === '디파이') {
       return {
         ...x,
         chip: {
           src: BetaBadge,
           alt: 'beta',
-          background: '#EEE8F8',
-        },
+          background: '#EEE8F8'
+        }
       };
     }
     return x;
   }),
   myMenu: initialHeaderMyMenu,
   authMenu: initialHeaderAuthMenu,
-  defaultMenu: initialHeaderDefaultMenu,
+  defaultMenu: initialHeaderDefaultMenu
 };

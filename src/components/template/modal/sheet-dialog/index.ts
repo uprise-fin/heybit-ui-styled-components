@@ -6,12 +6,12 @@ import {
   HbButtonType,
   HbModalButtonAlign,
   type HbDialogAnchor,
-  type HbDialogButton,
+  type HbDialogButton
 } from '@/index';
-import {Base} from '@/components/base';
-import {wait} from '@/utils';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { Base } from '@/components/base';
+import { wait } from '@/utils';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 /**
  * @fires close 닫기
@@ -61,7 +61,7 @@ export class HbSheetDialog extends Base {
 
   get eventDisabled() {
     if (this.buttons && this.buttons?.length)
-      return this.buttons.map(x => x.loading).some(x => x);
+      return this.buttons.map((x) => x.loading).some((x) => x);
     return this.loading;
   }
   // get open() {
@@ -78,18 +78,18 @@ export class HbSheetDialog extends Base {
   // value!: string;
   static get properties() {
     return {
-      open: {type: Boolean, Reflect: true},
-      buttons: {type: Array, Reflect: true},
-      eventDisabled: {type: Boolean, Reflect: true},
-      disabled: {type: Boolean, Reflect: true},
-      persistent: {type: Boolean, Reflect: true},
-      hideCloseBtn: {type: Boolean, Reflect: true},
-      width: {type: String, Reflect: true},
-      loading: {type: Boolean, Reflect: true},
-      baseLoadingDuration: {type: Number, Reflect: true},
-      buttonAlign: {type: String, Reflect: true},
-      title: {type: String, Reflect: true},
-      transitionType: {type: String, Reflect: true},
+      open: { type: Boolean, Reflect: true },
+      buttons: { type: Array, Reflect: true },
+      eventDisabled: { type: Boolean, Reflect: true },
+      disabled: { type: Boolean, Reflect: true },
+      persistent: { type: Boolean, Reflect: true },
+      hideCloseBtn: { type: Boolean, Reflect: true },
+      width: { type: String, Reflect: true },
+      loading: { type: Boolean, Reflect: true },
+      baseLoadingDuration: { type: Number, Reflect: true },
+      buttonAlign: { type: String, Reflect: true },
+      title: { type: String, Reflect: true },
+      transitionType: { type: String, Reflect: true }
     };
   }
 
@@ -112,16 +112,11 @@ export class HbSheetDialog extends Base {
                 class="hb-sheet-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon
-                  icon=${HbIconName['system/outline/close']}
-                  size="small"
-                ></hb-icon
+                ><hb-icon icon=${HbIconName['system/outline/close']} size="small"></hb-icon
               ></hb-button>`}
           <div class="hb-sheet-dialog__head${!this.title ? ' empty' : ''}">
             ${this.title
-              ? html`<p part="title" class="hb-sheet-dialog__head__title">
-                  ${this.title}
-                </p>`
+              ? html`<p part="title" class="hb-sheet-dialog__head__title">${this.title}</p>`
               : ''}
           </div>
           <div class="hb-sheet-dialog__body">
@@ -139,7 +134,7 @@ export class HbSheetDialog extends Base {
                     theme=${x.theme}
                     size="medium"
                     >${x.name}</hb-button
-                  >`,
+                  >`
               )}
             </div>
             ${this.anchor && this.anchor.name
@@ -159,7 +154,7 @@ export class HbSheetDialog extends Base {
   }
 
   async adapterEvent(button: HbDialogButton, index: number) {
-    const {event} = button;
+    const { event } = button;
     if (this.baseLoadingDuration) {
       const on = this.buttons.slice();
       const off = this.buttons.slice();

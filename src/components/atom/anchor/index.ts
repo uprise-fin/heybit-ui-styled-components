@@ -1,6 +1,6 @@
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {Base} from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { Base } from '@/components/base';
 /**
  *
  */
@@ -31,9 +31,9 @@ export class HbAnchor extends Base {
 
   static get properties() {
     return {
-      href: {type: String, Reflect: true},
-      target: {type: String, Reflect: true},
-      disabled: {type: Boolean, Reflect: true},
+      href: { type: String, Reflect: true },
+      target: { type: String, Reflect: true },
+      disabled: { type: Boolean, Reflect: true }
     };
   }
 

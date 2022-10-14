@@ -1,8 +1,8 @@
-import {HbSkeletonType} from '@/components/molecule/skeleton/type';
-import {Meta, Story} from '@storybook/web-components';
-import {html} from 'lit';
+import { HbSkeletonType } from '@/components/molecule/skeleton/type';
+import { Meta, Story } from '@storybook/web-components';
+import { html } from 'lit';
 import './index';
-import type {HbCarousel} from './index';
+import type { HbCarousel } from './index';
 
 export default {
   title: 'components/template/hb-carousel',
@@ -10,10 +10,10 @@ export default {
   argTypes: {
     index: {
       options: [0, 1, 2],
-      control: {type: 'radio'},
-      defaultValue: 0,
-    },
-  },
+      control: { type: 'radio' },
+      defaultValue: 0
+    }
+  }
 } as Meta;
 
 const ColorTemplate = (props: HbCarousel) => html`
@@ -51,32 +51,23 @@ const SkeletonTemplate = (props: HbCarousel) => html`
     flexWidth=${props.flexWidth}
     visibleLength=${props.visibleLength}
   >
-    <hb-skeleton
-      type=${HbSkeletonType.card}
-      style="margin: 0 10px;"
-    ></hb-skeleton>
-    <hb-skeleton
-      type=${HbSkeletonType.card}
-      style="margin: 0 10px;"
-    ></hb-skeleton>
-    <hb-skeleton
-      type=${HbSkeletonType.card}
-      style="margin: 0 10px;"
-    ></hb-skeleton>
+    <hb-skeleton type=${HbSkeletonType.card} style="margin: 0 10px;"></hb-skeleton>
+    <hb-skeleton type=${HbSkeletonType.card} style="margin: 0 10px;"></hb-skeleton>
+    <hb-skeleton type=${HbSkeletonType.card} style="margin: 0 10px;"></hb-skeleton>
   </hb-carousel>
 `;
-const StopTemplate: Story<HbCarousel> = props => {
+const StopTemplate: Story<HbCarousel> = (props) => {
   props.visibleLength = 1;
   props.indicate = true;
   return ColorTemplate(props);
 };
-const AutoTemplate: Story<HbCarousel> = props => {
+const AutoTemplate: Story<HbCarousel> = (props) => {
   props.visibleLength = 1;
   props.auto = true;
   props.indicate = true;
   return ColorTemplate(props);
 };
-const AutoInfiniteTemplate: Story<HbCarousel> = props => {
+const AutoInfiniteTemplate: Story<HbCarousel> = (props) => {
   props.fakeLength = 1;
   props.visibleLength = 3;
   props.auto = true;
@@ -84,7 +75,7 @@ const AutoInfiniteTemplate: Story<HbCarousel> = props => {
   props.indicate = true;
   return SkeletonTemplate(props);
 };
-const RollingInfiniteTemplate: Story<HbCarousel> = props => {
+const RollingInfiniteTemplate: Story<HbCarousel> = (props) => {
   props.fakeLength = 1;
   props.visibleLength = 3;
   props.auto = true;
@@ -96,37 +87,34 @@ const RollingInfiniteTemplate: Story<HbCarousel> = props => {
 export const stopCarousel: Story<HbCarousel> = StopTemplate.bind({});
 stopCarousel.args = {
   speed: 300,
-  draggable: true,
+  draggable: true
 };
 export const autoCarousel: Story<HbCarousel> = AutoTemplate.bind({});
 autoCarousel.args = {
   speed: 300,
   pause: true,
   draggable: true,
-  duration: 3000,
+  duration: 3000
 };
-export const autoInfiniteCarousel: Story<HbCarousel> =
-  AutoInfiniteTemplate.bind({});
+export const autoInfiniteCarousel: Story<HbCarousel> = AutoInfiniteTemplate.bind({});
 autoInfiniteCarousel.args = {
   speed: 300,
   pause: true,
   draggable: true,
-  duration: 3000,
+  duration: 3000
 };
-export const autoInfiniteFlexCarousel: Story<HbCarousel> =
-  AutoInfiniteTemplate.bind({});
+export const autoInfiniteFlexCarousel: Story<HbCarousel> = AutoInfiniteTemplate.bind({});
 autoInfiniteFlexCarousel.args = {
   speed: 300,
   fakeLength: 3,
   pause: true,
   flexWidth: 300,
   draggable: true,
-  duration: 3000,
+  duration: 3000
 };
-export const rollingInfiniteCarousel: Story<HbCarousel> =
-  RollingInfiniteTemplate.bind({});
+export const rollingInfiniteCarousel: Story<HbCarousel> = RollingInfiniteTemplate.bind({});
 rollingInfiniteCarousel.args = {
   fakeLength: 3,
   pause: true,
-  duration: 3000,
+  duration: 3000
 };

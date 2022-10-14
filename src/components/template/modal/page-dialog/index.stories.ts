@@ -1,11 +1,11 @@
-import {Meta, Story} from '@storybook/web-components';
-import {html} from 'lit';
+import { Meta, Story } from '@storybook/web-components';
+import { html } from 'lit';
 import './index';
-import type {HbPageDialog} from './index';
+import type { HbPageDialog } from './index';
 import desktopImg from '~/static/sample-desktop.png';
 import thunderImg from '~/static/sample-thunder.svg';
-import {HbButtonTheme} from '@/components/organism/button/type';
-import {HbModalButtonAlign} from '@/components/template/modal/type';
+import { HbButtonTheme } from '@/components/organism/button/type';
+import { HbModalButtonAlign } from '@/components/template/modal/type';
 interface HbPageDialogExpns extends HbPageDialog {
   content: string;
 }
@@ -17,25 +17,25 @@ export default {
   argTypes: {
     open: {
       options: [true, false],
-      control: {type: 'radio'},
-      defaultValue: true,
+      control: { type: 'radio' },
+      defaultValue: true
     },
     persistent: {
       options: [true, false],
-      control: {type: 'radio'},
-      defaultValue: true,
+      control: { type: 'radio' },
+      defaultValue: true
     },
     hideCloseBtn: {
       options: [true, false],
-      control: {type: 'radio'},
-      defaultValue: false,
-    },
+      control: { type: 'radio' },
+      defaultValue: false
+    }
     // buttonAlign: {
     //   options: Object.keys(buttonAlign),
     //   control: { type: "radio" },
     //   defaultValue: buttonAlign.vertical,
     // },
-  },
+  }
 } as Meta;
 const Template = (props: HbPageDialogExpns) => html`
   <style>
@@ -66,11 +66,11 @@ const Template = (props: HbPageDialogExpns) => html`
   </hb-dialog>
 `;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const HorizonTemplate: Story<HbPageDialogExpns> = props => {
+const HorizonTemplate: Story<HbPageDialogExpns> = (props) => {
   props.buttonAlign = HbModalButtonAlign.horizon;
   return Template(props);
 };
-const VerticalTemplate: Story<HbPageDialogExpns> = props => {
+const VerticalTemplate: Story<HbPageDialogExpns> = (props) => {
   props.buttonAlign = HbModalButtonAlign.vertical;
   return Template(props);
 };
@@ -83,39 +83,38 @@ horizon.args = {
   baseLoadingDuration: 0,
   icon: thunderImg,
   title: '팝업 예시입니다!',
-  content:
-    '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',
+  content: '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',
   buttons: [
     {
       name: '닫기',
       theme: HbButtonTheme.primary,
       event: async function () {
-        await new Promise(resolve => setTimeout(() => resolve(true), 5000));
-      },
+        await new Promise((resolve) => setTimeout(() => resolve(true), 5000));
+      }
     },
     {
       name: '열기',
       theme: HbButtonTheme.secondary,
       event: function () {
         console.log('2');
-      },
+      }
     },
     {
       name: '삼번',
       theme: HbButtonTheme.tertiary,
       event: function () {
         console.log('3');
-      },
-    },
-  ],
+      }
+    }
+  ]
 };
 export const vertical: Story<HbPageDialogExpns> = VerticalTemplate.bind({});
 vertical.args = {
   ...horizon.args,
   anchor: {
     name: '탈퇴하기',
-    href: 'https://www.heybit.io',
-  },
+    href: 'https://www.heybit.io'
+  }
 };
 // const EventPopupTemplate: Story<HbDialogExpns> = ({
 //   open,

@@ -2,25 +2,23 @@ import Matercolor from 'matercolors';
 
 export const prefix = 'husc';
 export type Level = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
-export const levels: Level[] = [
-  50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
-];
+export const levels: Level[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 export enum VerticalAlign {
   middle,
   top,
-  bottom,
+  bottom
 }
 export enum HorizonAlign {
   center,
   right,
-  left,
+  left
 }
 export enum Size {
   'xsmall' = 'xsmall',
   'small' = 'small',
   'medium' = 'medium',
   'large' = 'large',
-  'xlarge' = 'xlarge',
+  'xlarge' = 'xlarge'
 }
 export enum SystemColor {
   'white' = 'white',
@@ -28,11 +26,11 @@ export enum SystemColor {
   'orange' = 'orange',
   'yellow' = 'yellow',
   'green' = 'green',
-  'blue' = 'blue',
+  'blue' = 'blue'
 }
 export enum ServiceColor {
   'harvest' = 'harvest',
-  'defi' = 'defi',
+  'defi' = 'defi'
 }
 export type Color = SystemColor | ServiceColor;
 export type AllColor = Record<Color, Matercolor>;
@@ -45,14 +43,14 @@ export const colors = {
   [SystemColor.green]: '#27ae60',
   [SystemColor.blue]: '#2f80ed',
   [ServiceColor.harvest]: '#039985',
-  [ServiceColor.defi]: '#6d40c6',
+  [ServiceColor.defi]: '#6d40c6'
 };
 export const colorPalette = Object.entries(colors).reduce(
   (a, [name, color]) => ({
     ...a,
-    [name]: new Matercolor(color),
+    [name]: new Matercolor(color)
   }),
-  {},
+  {}
 ) as Record<Color, Matercolor>;
 export const basicVariables = {
   //기본 변수. 그냥도 사용하지만 컴포넌트로 확장됨
@@ -62,71 +60,71 @@ export const basicVariables = {
   "Malgun Gothic", sans-serif`,
     color: {
       void: colorPalette[SystemColor.white][50],
-      solid: colorPalette[SystemColor.black][900],
+      solid: colorPalette[SystemColor.black][900]
     },
-    size: 16,
+    size: 16
   },
   size: {
     [Size.large]: 32,
     [Size.medium]: 24,
     [Size.small]: 18,
-    [Size.xsmall]: 16,
+    [Size.xsmall]: 16
   },
   layout: {
     gutter: 22,
     media: 1020,
     'content-width': {
       '--mobile': 460,
-      '--desktop': 1060,
-    },
+      '--desktop': 1060
+    }
   },
   border: {
     width: 1,
     color: colorPalette[SystemColor.black][200],
-    radius: 4,
+    radius: 4
   },
   background: {
-    color: colorPalette[SystemColor.white][50],
+    color: colorPalette[SystemColor.white][50]
   },
   transition: {
     duration: {
       '--ms': '300ms',
-      number: 300,
+      number: 300
     },
     'delay-start': {
       '--ms': '0ms',
-      number: 0,
+      number: 0
     },
     'delay-end': {
       '--ms': '0ms',
-      number: 0,
-    },
-  },
+      number: 0
+    }
+  }
 };
 export const componentVariables = {
   //컴포넌트 변수
   dim: {
     background: {
-      color: colorPalette[SystemColor.black][900],
-    },
+      color: colorPalette[SystemColor.black][900]
+    }
   },
   list: {
     height: 50,
     padding: {
       right: 10,
-      left: 10,
+      left: 10
     },
     font: {
-      size: basicVariables.font.size,
+      size: basicVariables.font.size
     },
     border: {
       width: basicVariables.border.width,
-      color: basicVariables.border.color,
-    },
+      color: basicVariables.border.color
+    }
   },
   icon: {
     color: colorPalette[SystemColor.black][900],
-    size: basicVariables.size,
+    size: basicVariables.size
   },
   // input: {
   //   height: 56,
@@ -159,26 +157,26 @@ export const componentVariables = {
       color: basicVariables.border.color,
       'color--error': colorPalette.orange[300],
       'color--readonly': colorPalette.black[400],
-      'color--focus': colorPalette.black[800],
+      'color--focus': colorPalette.black[800]
     },
     padding: {
       top: 16,
       bottom: 16,
       right: 18,
-      left: 18,
+      left: 18
     },
     font: {
-      size: basicVariables.font.size,
-    },
+      size: basicVariables.font.size
+    }
   },
   button: {
     padding: {
       right: 10,
-      left: 10,
+      left: 10
     },
     font: {
-      size: basicVariables.font.size,
-    },
+      size: basicVariables.font.size
+    }
   },
   modal: {
     width: 400,
@@ -188,23 +186,23 @@ export const componentVariables = {
       'padding-top': 52,
       'padding-right': 20,
       'padding-bottom': 24,
-      'padding-left': 20,
+      'padding-left': 20
     },
     'sheet-dialog': {
       'padding-top': 52,
       'padding-right': 20,
       'padding-bottom': 30,
-      'padding-left': 20,
-    },
+      'padding-left': 20
+    }
   },
   spinner: {
     color: colorPalette[SystemColor.black][900],
-    size: basicVariables.size,
+    size: basicVariables.size
   },
   select: {
     font: {
-      size: basicVariables.font.size,
-    },
+      size: basicVariables.font.size
+    }
   },
   toast: {
     'max-width': 340,
@@ -213,33 +211,33 @@ export const componentVariables = {
       left: 20,
       right: 20,
       top: 10,
-      bottom: 10,
+      bottom: 10
     },
     padding: {
       top: 16,
       bottom: 16,
       right: 18,
-      left: 19,
+      left: 19
     },
     positive: {
       icon: 'system/filled/info',
-      color: colorPalette[SystemColor.green][400],
+      color: colorPalette[SystemColor.green][400]
     },
     negative: {
       icon: 'system/filled/danger',
-      color: colorPalette[SystemColor.orange][600],
-    },
+      color: colorPalette[SystemColor.orange][600]
+    }
   },
   header: {
     height: {
       '--mobile': 60,
-      '--desktop': 72,
+      '--desktop': 72
     },
     logo: {
       width: {
         '--mobile': 77,
-        '--desktop': 80,
-      },
-    },
-  },
+        '--desktop': 80
+      }
+    }
+  }
 };

@@ -32,8 +32,7 @@
         var(--background--accent) 61.3%,
         transparent 88.67%
       );
-      animation: skeleton-gradient var(--duration) cubic-bezier(0.4, 0, 0.2, 1)
-        infinite;
+      animation: skeleton-gradient var(--duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
   }
 }

@@ -4,27 +4,27 @@ $hb-button__size: (
   xlarge: (
     font-size: 17px,
     height: 70px,
-    border-radius: calc(var(--husc__border__radius) * 2),
+    border-radius: calc(var(--husc__border__radius) * 2)
   ),
   large: (
     font-size: 16px,
     height: 60px,
-    border-radius: calc(var(--husc__border__radius) * 2),
+    border-radius: calc(var(--husc__border__radius) * 2)
   ),
   medium: (
     font-size: 15px,
     height: 50px,
-    border-radius: var(--husc__border__radius),
+    border-radius: var(--husc__border__radius)
   ),
   small: (
     font-size: 13px,
     height: 40px,
-    border-radius: var(--husc__border__radius),
+    border-radius: var(--husc__border__radius)
   ),
   xsmall: (
     font-size: 13px,
     height: 30px,
-    border-radius: var(--husc__border__radius),
+    border-radius: var(--husc__border__radius)
   ),
   // xsmall: (
   //   font-size: 14px,
@@ -35,18 +35,16 @@ $hb-button__size: (
 $hb-button__type: (
   rectangle: (
     flex: flex,
-    padding: 0 var(--husc__button__padding__right) 0
-      var(--husc__button__padding__left),
+    padding: 0 var(--husc__button__padding__right) 0 var(--husc__button__padding__left)
   ),
   radius: (
     border-radius: 1000px,
-    padding: 0 var(--husc__button__padding__right) 0
-      var(--husc__button__padding__left),
+    padding: 0 var(--husc__button__padding__right) 0 var(--husc__button__padding__left)
   ),
   circle: (
     border-radius: 100%,
-    padding: 0,
-  ),
+    padding: 0
+  )
 );
 $hb-button__theme: (
   primary: (
@@ -55,7 +53,7 @@ $hb-button__theme: (
     active: var(--husc__orange--600),
     hover: var(--husc__orange--400),
     disabledBg: var(--husc__black--100),
-    disabledColor: var(--husc__black--400),
+    disabledColor: var(--husc__black--400)
   ),
   secondary: (
     bg: var(--husc__black),
@@ -63,7 +61,7 @@ $hb-button__theme: (
     active: var(--husc__black--900),
     hover: var(--husc__black--700),
     disabledBg: var(--husc__black--100),
-    disabledColor: var(--husc__black--400),
+    disabledColor: var(--husc__black--400)
   ),
   tertiary: (
     bg: var(--husc__black--100),
@@ -71,7 +69,7 @@ $hb-button__theme: (
     active: var(--husc__black--200),
     hover: var(--husc__black--50),
     disabledBg: var(--husc__black--100),
-    disabledColor: var(--husc__black--400),
+    disabledColor: var(--husc__black--400)
   ),
   quaternary: (
     bd: #dee0e3,
@@ -80,8 +78,8 @@ $hb-button__theme: (
     // hover: var(--husc__black--50),
     // disabledBg: var(--husc__black--100),
     disabledBd: var(--husc__black--300),
-    disabledColor: var(--husc__black--400),
-  ),
+    disabledColor: var(--husc__black--400)
+  )
 );
 .hb-button {
   @include disabled();
@@ -123,21 +121,15 @@ $hb-button__theme: (
       border: none !important;
       background: none !important;
     }
-    @include host-styled(
-      "[theme='#{$class}'][data-disabled]:not([data-loading])"
-    ) {
+    @include host-styled("[theme='#{$class}'][data-disabled]:not([data-loading])") {
       color: map-get($value, disabledColor);
       border-color: map-get($value, disabledBd);
       background: map-get($value, disabledBg);
     }
-    @include host-styled(
-      ":not([data-disabled]):not([data-loading])[theme='#{$class}']:hover"
-    ) {
+    @include host-styled(":not([data-disabled]):not([data-loading])[theme='#{$class}']:hover") {
       background: map-get($value, hover);
     }
-    @include host-styled(
-      ":not([data-disabled]):not([data-loading])[theme='#{$class}']:active"
-    ) {
+    @include host-styled(":not([data-disabled]):not([data-loading])[theme='#{$class}']:active") {
       background: map-get($value, active);
     }
   }

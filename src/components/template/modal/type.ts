@@ -4,7 +4,7 @@ import type {
   HbTransitionType,
   HorizonAlign,
   VerticalAlign,
-  HbIconName,
+  HbIconName
 } from '@/index';
 export interface HbModalProps {
   open?: boolean;
@@ -35,5 +35,5 @@ export interface HbDialogAnchor extends HbAnchorProps {
 
 export enum HbModalButtonAlign {
   'vertical' = 'vertical',
-  'horizon' = 'horizon',
+  'horizon' = 'horizon'
 }

@@ -27,7 +27,7 @@ pnpm add heybit-ui-styled-components
 2. 인터페이스를 통해 컴포넌트의 props 와 slots을 확인
 
 ```typescript
-import {HbButtonProps} from 'heybit-ui-styled-components';
+import { HbButtonProps } from 'heybit-ui-styled-components';
 ```
 
 3. 적절한 사용
@@ -36,7 +36,7 @@ import {HbButtonProps} from 'heybit-ui-styled-components';
 const loginButtonProps: HbButtonProps = {
   theme: HbButtonTheme.primary,
   size: Size.large,
-  type: HbButtonType.rectangle,
+  type: HbButtonType.rectangle
 };
 ```
 

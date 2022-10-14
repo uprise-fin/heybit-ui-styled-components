@@ -1,7 +1,7 @@
-import {Base} from '@/components/base';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
-import {HbTransitionType} from './type';
+import { Base } from '@/components/base';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import { HbTransitionType } from './type';
 
 @customElement('hb-transition')
 export class HbTransition extends Base {
@@ -17,21 +17,20 @@ export class HbTransition extends Base {
 
   static get properties() {
     return {
-      show: {type: Boolean, Reflect: true},
-      delete: {type: Boolean, Reflect: true},
-      type: {type: String, Reflect: true},
+      show: { type: Boolean, Reflect: true },
+      delete: { type: Boolean, Reflect: true },
+      type: { type: String, Reflect: true }
     };
   }
 
   async connectedCallback() {
     await super.connectedCallback();
-    this.onanimationend = evnt => this.onAnimationEnd(evnt);
+    this.onanimationend = (evnt) => this.onAnimationEnd(evnt);
   }
 
   onAnimationEnd(evnt: AnimationEvent) {
     this.stopPropagation(evnt);
-    if (evnt.animationName.includes('show'))
-      return this.classList.add('visible');
+    if (evnt.animationName.includes('show')) return this.classList.add('visible');
     if (this.delete) this.remove();
     return this.classList.remove('visible');
   }

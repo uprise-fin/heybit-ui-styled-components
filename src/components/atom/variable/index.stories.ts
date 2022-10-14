@@ -1,7 +1,7 @@
-import {Meta, Story} from '@storybook/web-components';
-import {html} from 'lit';
-import {SystemColor, ServiceColor, Color, levels, prefix} from './type';
-import {colorPalette} from './type';
+import { Meta, Story } from '@storybook/web-components';
+import { html } from 'lit';
+import { SystemColor, ServiceColor, Color, levels, prefix } from './type';
+import { colorPalette } from './type';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
@@ -10,7 +10,7 @@ import {colorPalette} from './type';
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 const reverseLevels = levels.reverse();
 export default {
-  title: 'components/atom/variable',
+  title: 'components/atom/variable'
 } as Meta;
 // // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 // const Template: Story<unknown> = () =>
@@ -70,9 +70,7 @@ const LevelTemplate: Story<unknown> = () =>
         <div class="box__item box__item--title box__item--reversal">
           시스템컬러
         </div>
-        ${reverseLevels.map(
-          x => html` <div class="box__item box__item--reversal">${x}</div> `,
-        )}
+        ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
       ${Object.keys(SystemColor).map(
         (name: Color) =>
@@ -82,28 +80,25 @@ const LevelTemplate: Story<unknown> = () =>
                 ${name}: ${colorPalette[name].color}
               </div>
               ${reverseLevels.map(
-                x =>
+                (x) =>
                   html`
                     <div
                       style="--backrgound: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
-                      class="box__item ${colorPalette[name].color ===
-                      colorPalette[name][x]
+                      class="box__item ${colorPalette[name].color === colorPalette[name][x]
                         ? 'box__item--primary'
                         : ''}"
                     ></div>
-                  `,
+                  `
               )}
             </div>
-          `,
+          `
       )}
       <div class="box">
         <div class="box__item box__item--title box__item--reversal">
           서비스컬러
         </div>
-        ${reverseLevels.map(
-          x => html` <div class="box__item box__item--reversal">${x}</div> `,
-        )}
+        ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
       ${Object.keys(ServiceColor).map(
         (name: Color) =>
@@ -113,20 +108,19 @@ const LevelTemplate: Story<unknown> = () =>
                 ${name}: ${colorPalette[name].color}
               </div>
               ${reverseLevels.map(
-                x =>
+                (x) =>
                   html`
                     <div
                       style="--backrgound: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
-                      class="box__item ${colorPalette[name].color ===
-                      colorPalette[name][x]
+                      class="box__item ${colorPalette[name].color === colorPalette[name][x]
                         ? 'box__item--primary'
                         : ''}"
                     ></div>
-                  `,
+                  `
               )}
             </div>
-          `,
+          `
       )}
       </div>
     </div>

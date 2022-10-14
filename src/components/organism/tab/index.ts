@@ -1,7 +1,7 @@
-import {Base} from '@/components/base';
-import {getChildren} from '@/utils';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { Base } from '@/components/base';
+import { getChildren } from '@/utils';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 /**
  * @property index
  * @slot content 기본 컨텐츠 영역
@@ -30,17 +30,17 @@ export class HbTab extends Base {
 
   static get properties() {
     return {
-      left: {type: Number, Reflect: true},
-      width: {type: Number, Reflect: true},
-      index: {type: String, Reflect: true},
+      left: { type: Number, Reflect: true },
+      width: { type: Number, Reflect: true },
+      index: { type: String, Reflect: true }
     };
   }
 
   async connectedCallback() {
     await super.connectedCallback();
     const wrap = await getChildren(this.children);
-    this.btns = wrap.filter(x => x.slot === 'header');
-    this.contents = wrap.filter(x => x.slot !== 'header');
+    this.btns = wrap.filter((x) => x.slot === 'header');
+    this.contents = wrap.filter((x) => x.slot !== 'header');
     this.setIndicator(this.index);
   }
 
@@ -61,11 +61,11 @@ export class HbTab extends Base {
     if (!this.btns.length || this._index === index) return;
     const number = +index;
     const target = this.btns[number];
-    const {offsetWidth, offsetLeft} = await target;
+    const { offsetWidth, offsetLeft } = await target;
     this._index = index;
     this.left = offsetLeft - this.offsetLeft;
     this.width = offsetWidth;
-    this.contents.map(x => x.removeAttribute('active'));
+    this.contents.map((x) => x.removeAttribute('active'));
     this.contents[number].setAttribute('active', '');
   }
 

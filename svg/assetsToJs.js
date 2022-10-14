@@ -5,26 +5,23 @@ const baseUrl = 'svg/assets';
 
 function write(...folder) {
   const folders = folder.join('/');
-  fs.readdirSync(`${baseUrl}/${folders}`).forEach(file => {
+  fs.readdirSync(`${baseUrl}/${folders}`).forEach((file) => {
     if (file.startsWith('.')) return;
     if (!file.endsWith('.svg')) return write(...folder, file);
     const svg = fs.readFileSync(`${baseUrl}/${folders}/${file}`, 'utf8');
     const name = file.replace(/.svg$/, '').replace('ic-system-', '');
     hbIconName.push(`${folders}/${name}`);
-    svgs[`${folders}/${name}`] =
-      svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
+    svgs[`${folders}/${name}`] = svg.substr(0, 5) + 'class="hb-icon__svg"' + svg.substr(3);
   });
 }
 write();
 
 fs.writeFile(
   'src/components/molecule/icon/svg.ts',
-  'const svgs = ' +
-    JSON.stringify(svgs) +
-    ';export default svgs as Record<string, string>;',
+  'const svgs = ' + JSON.stringify(svgs) + ';export default svgs as Record<string, string>;',
   () => {
     console.log('Complete conversion of svg file to text');
-  },
+  }
 );
 fs.writeFile(
   'src/components/molecule/icon/type.ts',
@@ -33,5 +30,5 @@ fs.writeFile(
     .join(',\n')},\n}\n`,
   () => {
     console.log('Complete conversion of type file to text');
-  },
+  }
 );

@@ -1,4 +1,4 @@
-import type {HbList} from '.';
+import type { HbList } from '.';
 export interface HbListProps {
   options: HbListOption[];
   value: string;

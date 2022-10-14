@@ -1,13 +1,13 @@
-import {HbTransitionType} from '@/components/atom/transition/type';
-import {Size} from '@/components/atom/variable/type';
-import {Base} from '@/components/base';
-import {HbIconName} from '@/components/molecule/icon/type';
-import {HbList} from '@/components/molecule/list';
-import {HbListOption} from '@/components/molecule/list/type';
-import {HbInput} from '@/components/organism/input';
-import {getElement} from '@/utils';
-import {html} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import { HbTransitionType } from '@/components/atom/transition/type';
+import { Size } from '@/components/atom/variable/type';
+import { Base } from '@/components/base';
+import { HbIconName } from '@/components/molecule/icon/type';
+import { HbList } from '@/components/molecule/list';
+import { HbListOption } from '@/components/molecule/list/type';
+import { HbInput } from '@/components/organism/input';
+import { getElement } from '@/utils';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 /**
  * @fires event 값이 변경될때 발생
@@ -65,34 +65,34 @@ export class HbSelect extends Base {
 
   static get properties() {
     return {
-      open: {type: Boolean, Reflect: true},
-      search: {type: Boolean, Reflect: true},
-      attributeSync: {type: Boolean, Reflect: true},
-      fixed: {type: Boolean, Reflect: true},
-      top: {type: Number, Reflect: true},
-      left: {type: Number, Reflect: true},
-      width: {type: Number, Reflect: true},
-      maxHeight: {type: Number, Reflect: true},
-      value: {type: String, Reflect: true},
-      options: {type: Array, Reflect: true},
-      emptyText: {type: String, Reflect: true},
-      inputValue: {type: String, Reflect: true},
-      parentQuery: {type: String, Reflect: true},
-      hasFocus: {type: Boolean, Reflect: true},
+      open: { type: Boolean, Reflect: true },
+      search: { type: Boolean, Reflect: true },
+      attributeSync: { type: Boolean, Reflect: true },
+      fixed: { type: Boolean, Reflect: true },
+      top: { type: Number, Reflect: true },
+      left: { type: Number, Reflect: true },
+      width: { type: Number, Reflect: true },
+      maxHeight: { type: Number, Reflect: true },
+      value: { type: String, Reflect: true },
+      options: { type: Array, Reflect: true },
+      emptyText: { type: String, Reflect: true },
+      inputValue: { type: String, Reflect: true },
+      parentQuery: { type: String, Reflect: true },
+      hasFocus: { type: Boolean, Reflect: true }
     };
   }
 
   get list() {
-    return this.options.filter(x => x.label.includes(this.inputValue)) || [];
+    return this.options.filter((x) => x.label.includes(this.inputValue)) || [];
   }
 
   get values() {
-    return this.options.map(x => x.value) || [];
+    return this.options.map((x) => x.value) || [];
   }
 
   get label() {
     if (this.hasFocus || !this.options) return this.inputValue;
-    return this.options.find(x => x.value === this.value)?.label || '';
+    return this.options.find((x) => x.value === this.value)?.label || '';
   }
 
   get scrollEventListener() {
@@ -122,17 +122,13 @@ export class HbSelect extends Base {
           size=${Size.small}
         ></hb-icon>
       </hb-input>
-      <hb-transition
-        id="select-transition"
-        ?show=${this.open}
-        type=${HbTransitionType.fade}
-      >
+      <hb-transition id="select-transition" ?show=${this.open} type=${HbTransitionType.fade}>
         <hb-list
           emptyText=${this.emptyText}
           id="list"
           class="hb-select__list"
-          style="width: ${this.width}px;transform: translate(${this
-            .left}px,${this.top}px);max-height:${this.maxHeight}px;"
+          style="width: ${this.width}px;transform: translate(${this.left}px,${this
+            .top}px);max-height:${this.maxHeight}px;"
           @event=${this.onSelect}
           .options=${this.list}
           .value=${this.value}
@@ -146,8 +142,7 @@ export class HbSelect extends Base {
     this.onfocus = () => this.adapterShow();
     this.onblur = () => this.adapterHide();
     this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'label');
-    if (this.parentQuery)
-      this.parentEl = document.querySelector(this.parentQuery);
+    if (this.parentQuery) this.parentEl = document.querySelector(this.parentQuery);
   }
 
   disconnectedCallback() {
@@ -156,7 +151,7 @@ export class HbSelect extends Base {
   }
 
   onScroll() {
-    const {bottom} = this.getBoundingClientRect();
+    const { bottom } = this.getBoundingClientRect();
     if (bottom > 100) this.maxHeight = window.innerHeight - bottom - 50;
     this.top = -(this.parentEl ? this.parentEl?.scrollTop : window.scrollY);
     this.left = -(this.parentEl ? this.parentEl?.scrollLeft : window.scrollX);
@@ -165,7 +160,7 @@ export class HbSelect extends Base {
   onScrollBound = this.onScroll.bind(this);
 
   onInput(ev: InputEvent) {
-    const {target} = ev;
+    const { target } = ev;
     if (!(target instanceof HbInput)) return;
     this.inputValue = target.value;
   }
@@ -173,9 +168,9 @@ export class HbSelect extends Base {
   onSelect(ev: Event) {
     ev.stopImmediatePropagation();
     this.adapterHide();
-    const {target} = ev;
+    const { target } = ev;
     if (!(target instanceof HbList)) return;
-    const {value} = target;
+    const { value } = target;
     if (this.attributeSync) this.setAttribute('value', value!);
     this.value = value!;
     this.inputValue = '';
@@ -184,7 +179,7 @@ export class HbSelect extends Base {
   }
 
   onShow() {
-    const {width, bottom} = this.getBoundingClientRect();
+    const { width, bottom } = this.getBoundingClientRect();
     this.open = true;
     this.width = width;
     this.maxHeight = window.innerHeight - bottom - 50;
@@ -208,11 +203,7 @@ export class HbSelect extends Base {
     this.blur();
     this.open = false;
     if (this.search) this.hasFocus = false;
-    if (this.fixed)
-      this.scrollEventListener.removeEventListener(
-        'scroll',
-        this.onScrollBound,
-      );
+    if (this.fixed) this.scrollEventListener.removeEventListener('scroll', this.onScrollBound);
   }
 
   adapterHide() {
