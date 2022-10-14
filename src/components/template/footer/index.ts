@@ -2,7 +2,7 @@ import { Size } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbFooterMenu, HbFooterSocialMenu } from './type';
+import { HbFooterChildren, HbFooterMenu, HbFooterSocialMenu } from './type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -43,19 +43,47 @@ export class HbFooter extends Base {
     };
   }
 
-  get menuTemplate() {
+  get footer() {
     return html`
-      ${this.menu?.map(
-        (x) =>
-          html`<hb-anchor
-            class=${x.accent ? 'hb-footer__accent' : ''}
-            href=${x.href}
-            target=${x.target}
-            @event=${x.event}
-            >${x.name}</hb-anchor
-          >`
-      )}
+      <div class="hb-footer__routes">
+        <nav class="hb-footer__menu">${this.menuTemplate}</nav>
+        <div class="hb-footer__social">${this.socialMenuTemplate}</div>
+      </div>
+      <article class="hb-footer__text">
+        <h1 class="hb-footer__title">업라이즈(주)</h1>
+        <address class="hb-footer__address">${this.upriseInfoTemplate}</address>
+        <p class="hb-footer__copy">${this.copy}</p>
+      </article>
     `;
+  }
+
+  get menuTemplate() {
+    return html`<ul class="info-list">
+      ${this.menu?.map(
+        ({ name, children }) =>
+          html`<li class="info-list__item">
+            <strong class="info-list__title">${name}</strong>
+            ${this.childrenTemplate(children)}
+          </li>`
+      )}
+    </ul>`;
+  }
+
+  childrenTemplate(children: HbFooterChildren[]) {
+    return html`<ul class="info-list info-list--children">
+      ${children.map(
+        (child) => html`<li class="info-list__item info-list__item--children">
+          <hb-anchor
+            class=${child.accent ? 'hb-footer__accent' : ''}
+            href=${child.href}
+            target=${child.target}
+            @event=${child.event}
+          >
+            ${child.name}
+          </hb-anchor>
+        </li>`
+      )}
+    </ul>`;
   }
 
   get socialMenuTemplate() {
@@ -70,24 +98,19 @@ export class HbFooter extends Base {
   }
 
   get upriseInfoTemplate() {
-    return html` ${this.upriseInfo?.concat(this.tell).map((x) => html`<p>${x}</p>`)} `;
+    return html`
+      ${[...this.upriseInfo, this.tell].map(
+        (info) => html`<span class="hb-footer__info">${info}</span>`
+      )}
+    `;
   }
 
   render() {
     return html`
       <hb-responsive>
-        <div slot="mobile" class="hb-footer--mobile">
-          <div class="hb-footer--mobile__menu">${this.menuTemplate}</div>
-          <div class="hb-footer--mobile__social">${this.socialMenuTemplate}</div>
-          <div class="hb-footer--mobile__text">${this.tell}<br />${this.copy}</div>
-        </div>
-        <div slot="desktop" class="hb-footer--desktop">
-          <div class="hb-footer--desktop__routes">
-            <div class="hb-footer--desktop__menu">${this.menuTemplate}</div>
-            <div class="hb-footer--desktop__social">${this.socialMenuTemplate}</div>
-          </div>
-          <div class="hb-footer--desktop__text">${this.upriseInfoTemplate}</div>
-        </div>
+        <footer slot="mobile" class="hb-footer hb-footer--mobile">${this.footer}</footer>
+
+        <footer slot="desktop" class="hb-footer hb-footer--desktop">${this.footer}</footer>
       </hb-responsive>
     `;
   }
