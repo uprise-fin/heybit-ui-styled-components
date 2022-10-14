@@ -1,9 +1,10 @@
+# npmjs registry 퍼블리시
 name: publish
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
 
 jobs:
   publish:
