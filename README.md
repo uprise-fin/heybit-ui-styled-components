@@ -94,6 +94,25 @@ NPM 패키지: [matercolors](https://www.npmjs.com/package/matercolors)
 
 동일한 라이브러리를 이용하여 동일한 컬러를 사용중입니다.
 
+## 아이콘에 대해
+
+svg이미지를 이용해 icon object를 만들고 <hb-icon> 컴포넌트에서 사용합니다.
+`svg/assetsToJs.js`을 실행하면 assets폴더내의 모든 svg파일을 폴더구조 및 파일명으로 이루어진 변수를 `components/molecule/icon/svg.ts` 파일로 생성합니다.
+
+### 아이콘 생성 시 주의사항
+
+svg 아이콘을 이용해 쉽게 컬러 및 스타일을 적용하기 위해선 디자인팀과 협업이 중요합니다.
+svg파일을 이룰때 내부 path를 하나로만 구성하는것이 필요한데, 이는 디자이너의 도움이 필요합니다.
+아래처럼 두개의 패스로 이루어진 아이콘이 있다면 두 path를 한개로 병합을 요청해야
+컴포넌트에서 정상 출력 및 컬러변경이 가능합니다.
+
+```html
+<svg>
+  <path />
+  <path />
+</svg>
+```
+
 ## 개발시 유의사항
 
 ### 릴리즈 전 테스트

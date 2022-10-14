@@ -1,7 +1,7 @@
 const fs = require('fs');
 const svgs = {};
 const hbIconName = [];
-const baseUrl = 'node/assets/icons';
+const baseUrl = 'svg/assets';
 
 function write(...folder) {
   const folders = folder.join('/');

@@ -40,7 +40,7 @@
     ]
   },
   "scripts": {
-    "svg": "node node/svg.js",
+    "svg": "node svg/assetsToJs.js",
     "dev": "npx webpack serve --config webpack.dev.js",
     "build": "npx webpack build --config webpack.prod.js",
     "cem": "cem analyze",
