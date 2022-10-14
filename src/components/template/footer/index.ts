@@ -2,7 +2,15 @@ import { Size } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbFooterChildren, HbFooterMenu, HbFooterSocialMenu } from './type';
+import {
+  type HbFooterChildren,
+  initialFooterCopy,
+  initialFooterMenu,
+  initialFooterSocialMenu,
+  initialFooterTell,
+  initialFooterUpriseInfo,
+  initialFooterCompany
+} from './type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -23,15 +31,17 @@ export class HbFooter extends Base {
     return [require('./style.scss').default];
   }
 
-  menu: HbFooterMenu[];
+  menu = initialFooterMenu;
 
-  socialMenu: HbFooterSocialMenu[];
+  socialMenu = initialFooterSocialMenu;
 
-  upriseInfo: string[];
+  upriseInfo = initialFooterUpriseInfo;
 
-  copy: string;
+  company = initialFooterCompany;
 
-  tell: string;
+  copy = initialFooterCopy;
+
+  tell = initialFooterTell;
 
   static get properties() {
     return {
@@ -50,7 +60,7 @@ export class HbFooter extends Base {
         <div class="hb-footer__social">${this.socialMenuTemplate}</div>
       </div>
       <article class="hb-footer__text">
-        <h1 class="hb-footer__title">업라이즈(주)</h1>
+        <h1 class="hb-footer__title">${this.company}</h1>
         <address class="hb-footer__address">${this.upriseInfoTemplate}</address>
         <p class="hb-footer__copy">${this.copy}</p>
       </article>

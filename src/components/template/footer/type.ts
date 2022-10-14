@@ -56,6 +56,7 @@ export const initialFooterMenu: HbFooterMenu[] = [
   }
 ];
 export const initialFooterCopy = '© 2021 Uprise, Inc. all rights reserved.';
+export const initialFooterCompany = '업라이즈(주)';
 export const initialFooterUpriseInfo: string[] = [
   '사업자등록번호: 596-87-01059',
   '대표이사 이충엽',
