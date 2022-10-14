@@ -40,7 +40,7 @@ const OneTemplate: Story<HbIconExpns> = ({icon, size, color}) =>
   html`<hb-icon
     icon=${icon}
     size=${size}
-    style="--icon__color: ${color};"
+    style="--husc__icon__color: ${color};"
   ></hb-icon>`;
 export const icon: Story<HbIconExpns> = OneTemplate.bind({});
 icon.args = {size: Size.large};
@@ -70,7 +70,7 @@ const SeveralTemplate: Story<HbIconExpns> = ({size, color}) =>
           <hb-icon
             icon=${x}
             size=${size}
-            style="--icon__color: ${color};"
+            style="--husc__icon__color: ${color};"
           ></hb-icon>
           <span>${x}</span>
         </div>`,
