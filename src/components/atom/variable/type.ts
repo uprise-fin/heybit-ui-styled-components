@@ -71,7 +71,7 @@ export const basicVariables = {
     [Size.xsmall]: 16
   },
   layout: {
-    gutter: 22,
+    gutter: 20,
     media: 1020,
     'content-width': {
       '--mobile': 460,
