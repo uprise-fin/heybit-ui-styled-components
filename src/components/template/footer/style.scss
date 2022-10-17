@@ -2,9 +2,11 @@
 .hb-footer {
   @include host-styled {
     display: block;
+    border-top: 1px solid var(--husc__black--200);
     font-family: var(--husc__font__family);
     background: var(--husc__white--50);
   }
+  border-top: 0;
   max-width: var(--husc__layout__content-width--mobile);
   margin: 0 auto;
   padding: 45px var(--husc__layout__gutter) 60px;
