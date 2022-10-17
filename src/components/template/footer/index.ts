@@ -171,9 +171,9 @@ export class HbFooter extends Base {
   render() {
     return html`
       <hb-responsive>
-        <footer slot="mobile" class="hb-footer hb-footer--mobile">${this.footer}</footer>
+        <footer slot="mobile" class="hb-footer--mobile">${this.footer}</footer>
 
-        <footer slot="desktop" class="hb-footer hb-footer--desktop">${this.footer}</footer>
+        <footer slot="desktop" class="hb-footer--desktop">${this.footer}</footer>
       </hb-responsive>
     `;
   }
