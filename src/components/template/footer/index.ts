@@ -69,7 +69,7 @@ export class HbFooter extends Base {
     {
       icon: HbIconName['system/filled/naver'],
       target: '_blank',
-      href: 'https://m.post.naver.com/my.nhn?memberNo=40921089/'
+      href: 'https://m.post.naver.com/my.nhn?memberNo=40921089'
     },
     {
       icon: HbIconName['system/filled/logo-twitter'],
