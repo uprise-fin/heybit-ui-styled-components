@@ -27,10 +27,10 @@ const Template: Story<HbFooter> = ({
 }) => html` <hb-footer
   .menu=${menu}
   .socialMenu=${socialMenu}
-  company=${company}
+  .company=${company}
   .upriseInfo=${upriseInfo}
-  copy=${copy}
-  tell=${tell}
+  .copy=${copy}
+  .tell=${tell}
 ></hb-footer>`;
 export const korea: Story<HbFooter> = Template.bind({});
 korea.args = {
