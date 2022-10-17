@@ -1,16 +1,9 @@
 import { Size } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
+import { HbIconName } from '@/index';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import {
-  type HbFooterChildren,
-  initialFooterCopy,
-  initialFooterMenu,
-  initialFooterSocialMenu,
-  initialFooterTell,
-  initialFooterUpriseInfo,
-  initialFooterCompany
-} from './type';
+import type { HbFooterChildren, HbFooterMenu, HbFooterSocialMenu } from './type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -31,17 +24,77 @@ export class HbFooter extends Base {
     return [require('./style.scss').default];
   }
 
-  menu = initialFooterMenu;
+  menu: HbFooterMenu[] = [
+    {
+      name: '이용약관',
+      children: [
+        {
+          name: '서비스 이용약관',
+          target: '_blank',
+          href: 'https://r.heybit.io/c/policy-ko/'
+        },
+        {
+          name: '개인정보 처리방침',
+          target: '_blank',
+          href: 'https://r.heybit.io/c/privacy-ko/',
+          accent: true
+        }
+      ]
+    },
+    {
+      name: '고객지원',
+      children: [
+        { name: '서비스 문의', href: 'mailto:help@heybit.io' },
+        { name: '사업제휴', href: 'mailto:business@heybit.io' }
+      ]
+    },
+    {
+      name: '팀',
+      children: [
+        {
+          name: '채용',
+          target: '_blank',
+          href: 'https://uprise.career.greetinghr.com/'
+        }
+      ]
+    }
+  ];
 
-  socialMenu = initialFooterSocialMenu;
+  socialMenu: HbFooterSocialMenu[] = [
+    {
+      icon: HbIconName['system/filled/logo-facebook'],
+      target: '_blank',
+      href: 'https://r.heybit.io/c/facebook/'
+    },
+    {
+      icon: HbIconName['system/filled/naver'],
+      target: '_blank',
+      href: 'https://m.post.naver.com/my.nhn?memberNo=40921089/'
+    },
+    {
+      icon: HbIconName['system/filled/logo-twitter'],
+      target: '_blank',
+      href: 'https://twitter.com/heybit_io/'
+    },
+    {
+      icon: HbIconName['system/filled/logo-instagram'],
+      target: '_blank',
+      href: 'https://www.instagram.com/heybit_io/'
+    }
+  ];
 
-  upriseInfo = initialFooterUpriseInfo;
+  upriseInfo = [
+    '사업자등록번호: 596-87-01059',
+    '대표이사 이충엽',
+    '서울시 강남구 강남대로 374번지 케이스퀘어2, 13층',
+    '통신판매업신고: 제2022-서울강남-04072호'
+  ];
 
-  company = initialFooterCompany;
+  company = '업라이즈(주)';
 
-  copy = initialFooterCopy;
+  copy = '© 2021 Uprise, Inc. all rights reserved.';
 
-  tell = initialFooterTell;
+  tell = '대표전화 1577-9069';
 
   static get properties() {
     return {
