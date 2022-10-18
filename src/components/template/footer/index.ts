@@ -69,7 +69,7 @@ export class HbFooter extends Base {
     {
       icon: HbIconName['system/filled/naver'],
       target: '_blank',
-      href: 'https://m.post.naver.com/my.nhn?memberNo=40921089/'
+      href: 'https://m.post.naver.com/my.nhn?memberNo=40921089'
     },
     {
       icon: HbIconName['system/filled/logo-twitter'],
@@ -94,7 +94,7 @@ export class HbFooter extends Base {
 
   copy = '© 2021 Uprise, Inc. all rights reserved.';
 
-  tell = '대표전화 1577-9069';
+  tel = '대표전화 1577-9069';
 
   static get properties() {
     return {
@@ -102,7 +102,7 @@ export class HbFooter extends Base {
       socialMenu: { type: Array, Reflect: true },
       upriseInfo: { type: Array, Reflect: true },
       copy: { type: String, Reflect: true },
-      tell: { type: String, Reflect: true }
+      tel: { type: String, Reflect: true }
     };
   }
 
@@ -162,7 +162,7 @@ export class HbFooter extends Base {
 
   get upriseInfoTemplate() {
     return html`
-      ${[...this.upriseInfo, this.tell].map(
+      ${[...this.upriseInfo, this.tel].map(
         (info) => html`<span class="hb-footer__info">${info}</span>`
       )}
     `;
@@ -171,9 +171,9 @@ export class HbFooter extends Base {
   render() {
     return html`
       <hb-responsive>
-        <footer slot="mobile" class="hb-footer hb-footer--mobile">${this.footer}</footer>
+        <footer slot="mobile" class="hb-footer--mobile">${this.footer}</footer>
 
-        <footer slot="desktop" class="hb-footer hb-footer--desktop">${this.footer}</footer>
+        <footer slot="desktop" class="hb-footer--desktop">${this.footer}</footer>
       </hb-responsive>
     `;
   }
