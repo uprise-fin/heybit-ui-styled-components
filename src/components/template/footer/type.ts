@@ -17,5 +17,5 @@ export interface HbFooterProps {
   socialMenu?: HbFooterSocialMenu[];
   upriseInfo?: string[];
   copy?: string;
-  tell?: string;
+  tel?: string;
 }
