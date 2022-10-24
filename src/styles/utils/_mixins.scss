@@ -1,3 +1,4 @@
+// TODO 제거 목표
 @mixin host-styled($selector: '*') {
   @if ($selector == '*') {
     @at-root :host {
@@ -13,12 +14,14 @@
     }
   }
 }
+// TODO 제거 목표
 @mixin child-styled($selector) {
   :host(#{$selector}) &,
   #{$selector} & {
     @content;
   }
 }
+// TODO 제거 목표
 @mixin slot-styled($selector) {
   &::slotted(#{$selector}) {
     @content;
