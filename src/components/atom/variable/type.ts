@@ -88,16 +88,13 @@ export const basicVariables = {
   },
   transition: {
     duration: {
-      '--ms': '300ms',
-      number: 300
+      '--ms': '300ms'
     },
     'delay-start': {
-      '--ms': '0ms',
-      number: 0
+      '--ms': '0ms'
     },
     'delay-end': {
-      '--ms': '0ms',
-      number: 0
+      '--ms': '0ms'
     }
   }
 };

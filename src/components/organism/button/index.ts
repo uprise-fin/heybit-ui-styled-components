@@ -89,7 +89,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
         part="slot--left"
         class="hb-button__slot hb-button__slot--left"
       ></slot>
-      <div class="hb-button__label">
+      <div class="hb-button__label" part="label">
         ${this._loading
           ? html`
               <hb-transition
@@ -106,7 +106,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
                 type=${HbTransitionType.fade}
                 ?show=${!this._loading}
               >
-                <slot part="label"></slot>
+                <slot></slot>
               </hb-transition>
             `}
       </div>
