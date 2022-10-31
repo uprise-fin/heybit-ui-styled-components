@@ -53,6 +53,7 @@ export enum HbIconName {
   'system/outline/naver' = 'system/outline/naver',
   'system/outline/qr' = 'system/outline/qr',
   'system/outline/refresh' = 'system/outline/refresh',
+  'system/outline/ic-sysyem-check-able' = 'system/outline/ic-sysyem-check-able',
   'system/outline/ic-sysyem-checkbox-able' = 'system/outline/ic-sysyem-checkbox-able',
   'system/outline/ic-sysyem-danger' = 'system/outline/ic-sysyem-danger'
 }
