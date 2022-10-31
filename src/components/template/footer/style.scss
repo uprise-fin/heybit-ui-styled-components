@@ -3,9 +3,10 @@
   .hb-footer {
     display: block;
     border-top: 1px solid var(--husc__black--200);
-    font-family: var(--husc__font__family);
+    font: 14px/1.4 var(--husc__font__family);
     background: var(--husc__white--50);
     padding: 45px var(--husc__layout__gutter) 60px;
+    color: var(--husc__black--900);
 
     footer {
       margin: 0 auto;
@@ -69,7 +70,7 @@
       overflow: hidden;
       position: relative;
       margin-top: 65px;
-      font-size: 14px;
+      line-height: 17px;
       color: var(--husc__black--500);
     }
     &__title {
@@ -79,12 +80,12 @@
       color: var(--husc__black--900);
     }
     &__address {
-      margin: -7px 0 0 -19px;
+      margin: -6px 0 0 -19px;
       font-style: normal;
     }
     &__info {
       display: inline-block;
-      margin: 7px 0 0;
+      margin: 6px 0 0;
       &::before {
         content: '|';
         margin: 0 8px;
@@ -107,19 +108,21 @@
         &__text {
           margin-top: 55px;
           font-size: 13px;
+          line-height: 16px;
         }
         &__title {
-          margin-bottom: 10px;
+          margin-bottom: 12px;
           font-size: 15px;
         }
         &__info {
+          margin-top: 5px;
           &:nth-child(3) {
             display: block;
           }
         }
       }
       .info-list {
-        font-size: 14px;
+        font-size: inherit;
         &__item {
           &:not(&--children) {
             flex-basis: 160px;
