@@ -170,7 +170,7 @@ export class HbHeader extends Base {
                           class="hb-header__group-menu__item"
                           href=${y.href}
                           target=${y.target}
-                          @event=${y.event}
+                          @event=${this.adapterEvent.bind(this, y.event)}
                           ><strong>${y.name}</strong>
                           <p>${y.desc}</p></hb-anchor
                         >
@@ -276,6 +276,11 @@ export class HbHeader extends Base {
   }
 
   onLeaveSide() {
+    this.sidemenu = false;
+  }
+
+  adapterEvent(event: Function) {
+    event();
     this.sidemenu = false;
   }
 
