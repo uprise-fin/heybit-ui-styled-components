@@ -18,12 +18,14 @@ const Template: Story<HbInput> = ({
   decimal,
   comma,
   error,
+  allowedFirstZero,
   readonly
 }) => html`
   <hb-input
     type=${type}
     placeholder=${placeholder}
     ?error=${error}
+    ?allowedFirstZero=${allowedFirstZero}
     ?readonly=${readonly}
     .maxlength=${maxlength}
     .decimal=${decimal}
@@ -51,5 +53,6 @@ number.args = {
   decimal: 2,
   comma: 3,
   error: false,
+  allowedFirstZero: true,
   readonly: false
 };
