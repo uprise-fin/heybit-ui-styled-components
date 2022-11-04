@@ -42,6 +42,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   decimal: number = 2;
 
+  notAllowedFirstZero: boolean;
+
   comma: number = 3;
 
   _readonly: boolean = false;
@@ -83,6 +85,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
       placeholder: { type: String, Reflect: true },
       maxlength: { type: Number, Reflect: true },
       comma: { type: Number, Reflect: true },
+      notAllowedFirstZero: { type: Boolean, Reflect: true },
       decimal: { type: Number, Reflect: true },
       error: { type: Boolean, Reflect: true },
       readonly: { type: Boolean, Reflect: true },
@@ -213,8 +216,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
       decimal = value.substring(dotIndex + 1, dotIndex + 1 + this.decimal);
       value = value.substring(0, dotIndex);
     }
-    value = value.replace(/^^0[{1-9}]/gi, '{1}'); // 최초 0뒤에 오는 숫자 => 앞 0 제거
-    value = value.replace(/^0{2,}/gi, '0'); // 최초 0 2개이상 0으로 변경
+    if (this.notAllowedFirstZero) {
+      value = value.replace(/^^0[{1-9}]/gi, '{1}'); // 최초 0뒤에 오는 숫자 => 앞 0 제거
+      value = value.replace(/^0{2,}/gi, '0'); // 최초 0 2개이상 0으로 변경
+    }
     value = value.replace(/[^0-9]/gi, ''); // 숫자 말고 전부 제거
 
     if (!toNumber) {
