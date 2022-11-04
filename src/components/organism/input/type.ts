@@ -13,7 +13,6 @@ export interface HbInputProps {
 export enum HbInputType {
   text = 'text',
   number = 'number',
-  currency = 'currency',
   password = 'password'
 }
 export enum HbInputSlots {
