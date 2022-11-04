@@ -17,7 +17,7 @@ function write(...folder) {
 write();
 
 fs.writeFile(
-  'src/components/molecule/icon/svg.ts',
+  'src/components/atom/icon/svg.ts',
   'const svgs = ' + JSON.stringify(svgs) + ';export default svgs as Record<string, string>;',
   () => {
     console.log('Complete conversion of svg file to text');

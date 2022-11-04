@@ -1,7 +1,7 @@
 import { Size } from '@/components/atom/variable/type';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import { HbIconName } from '../icon/type';
+import { HbIconName } from '../../atom/icon/type';
 import './index';
 import type { HbTooltip } from './index';
 
