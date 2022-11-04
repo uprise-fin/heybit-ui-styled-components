@@ -52,7 +52,7 @@ number.args = {
   placeholder: '숫자를써볼까요?',
   decimal: 2,
   comma: 3,
-  notAllowedFirstZero: false,
   error: false,
+  notAllowedFirstZero: false,
   readonly: false
 };
