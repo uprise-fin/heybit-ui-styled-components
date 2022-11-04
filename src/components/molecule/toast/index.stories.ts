@@ -1,7 +1,7 @@
 import { Size } from '@/components/atom/variable/type';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import { HbButtonTheme, HbButtonType } from '@/components/organism/button/type';
+import { HbButtonTheme, HbButtonType } from '@/components/molecule/button/type';
 import './index';
 import type { HbToast } from './index';
 import { HbToastTheme } from './type';
