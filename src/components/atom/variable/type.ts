@@ -65,6 +65,7 @@ export const basicVariables = {
     size: 16
   },
   size: {
+    [Size.xlarge]: 40,
     [Size.large]: 32,
     [Size.medium]: 24,
     [Size.small]: 18,
@@ -108,8 +109,8 @@ export const componentVariables = {
   list: {
     height: 50,
     padding: {
-      right: 10,
-      left: 10
+      right: 18,
+      left: 18
     },
     font: {
       size: basicVariables.font.size

@@ -63,6 +63,8 @@ export class HbSelect extends Base {
 
   inputValue = '';
 
+  resolve: (value?: unknown) => void = () => {};
+
   static get properties() {
     return {
       open: { type: Boolean, Reflect: true },
@@ -100,13 +102,10 @@ export class HbSelect extends Base {
     return window;
   }
 
-  sto = setTimeout(() => {}, 0);
-
   render() {
     return html`
       <hb-input
         class="hb-select__label"
-        @click=${this.onClick}
         id="label"
         part="label"
         class="hb-select__input"
@@ -124,9 +123,10 @@ export class HbSelect extends Base {
       </hb-input>
       <hb-transition id="select-transition" ?show=${this.open} type=${HbTransitionType.fade}>
         <hb-list
+          tabindex="0"
           emptyText=${this.emptyText}
           id="list"
-          class="hb-select__list"
+          class="hb-select__list${this.open ? ' hb-select__list--open' : ''}"
           style="width: ${this.width}px;transform: translate(${this.left}px,${this
             .top}px);max-height:${this.maxHeight}px;"
           @event=${this.onSelect}
@@ -140,7 +140,7 @@ export class HbSelect extends Base {
   async connectedCallback() {
     await super.connectedCallback();
     this.onfocus = () => this.adapterShow();
-    this.onblur = () => this.adapterHide();
+    this.onblur = () => this.onHide();
     this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'label');
     if (this.parentQuery) this.parentEl = document.querySelector(this.parentQuery);
   }
@@ -167,7 +167,6 @@ export class HbSelect extends Base {
 
   onSelect(ev: Event) {
     ev.stopImmediatePropagation();
-    this.adapterHide();
     const { target } = ev;
     if (!(target instanceof HbList)) return;
     const { value } = target;
@@ -176,13 +175,14 @@ export class HbSelect extends Base {
     this.inputValue = '';
     // this.dispatchEvent(new CustomEvent('event', evt));
     this.onEvent(new CustomEvent('event'));
+    this.resolve();
   }
 
   onShow() {
     const { width, bottom } = this.getBoundingClientRect();
     this.open = true;
     this.width = width;
-    this.maxHeight = window.innerHeight - bottom - 50;
+    this.maxHeight = Math.min(document.body.scrollHeight - bottom, window.innerHeight) - 100;
     if (this.search) this.hasFocus = true;
     if (this.fixed) {
       this.onScroll();
@@ -190,13 +190,10 @@ export class HbSelect extends Base {
     }
   }
 
-  onClick() {
-    this.inputEl.focus();
-  }
-
-  adapterShow() {
-    clearTimeout(this.sto);
+  async adapterShow() {
     this.onShow();
+    await new Promise((resolve) => (this.resolve = resolve));
+    this.onHide();
   }
 
   onHide() {
@@ -204,10 +201,6 @@ export class HbSelect extends Base {
     this.open = false;
     if (this.search) this.hasFocus = false;
     if (this.fixed) this.scrollEventListener.removeEventListener('scroll', this.onScrollBound);
-  }
-
-  adapterHide() {
-    this.sto = setTimeout(() => this.onHide(), 0);
   }
 }
 

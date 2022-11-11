@@ -5,7 +5,7 @@ const SHADOW_TAG = 'hb-button';
 describe(SHADOW_TAG, () => {
   let flag = false;
   let SHADOW_ELEMENT: HbButton;
-  const customEvent = () => (flag = true);
+  const customEvent = () => (flag = !flag);
 
   beforeEach(async () => {
     flag = false;
@@ -34,9 +34,9 @@ describe(SHADOW_TAG, () => {
     expect(flag).toEqual(false);
   });
   it(`${SHADOW_TAG}는 baseLoadingDuration옵션이 있을때 그 시간동안 click이벤트는 발생하지 않는다.`, async () => {
-    SHADOW_ELEMENT.setAttribute('baseLoadingDuration', '1000');
-    await SHADOW_ELEMENT.click();
-    await SHADOW_ELEMENT.click();
+    SHADOW_ELEMENT.setAttribute('baseLoadingDuration', '10000');
+    await SHADOW_ELEMENT.click(); // 첫 이벤트 발생
+    await SHADOW_ELEMENT.click(); // 두번째 이벤트 loading으로 발생 안함
     expect(flag).toEqual(true);
   });
   // it(`${SHADOW_TAG}에 'open' 프로퍼티가 있으면 화면에 보여야 한다.`, async () => {
