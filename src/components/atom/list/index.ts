@@ -87,6 +87,7 @@ export class HbList extends Base {
           (x) =>
             html`
               <button
+                tabindex="0"
                 type="button"
                 class="hb-list__btn"
                 ?data-selected=${x.value === this.value}

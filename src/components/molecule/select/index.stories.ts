@@ -1,15 +1,13 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import { dev } from '@/utils';
 import './index';
 import type { HbSelect } from './index';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
-export default dev() &&
-  ({
-    title: 'components/molecule/hb-select',
-    component: 'hb-select'
-  } as Meta);
+export default {
+  title: 'components/molecule/hb-select',
+  component: 'hb-select'
+} as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options, fixed }) =>
@@ -45,11 +43,6 @@ const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options, fixed }) =>
       ></hb-select>
       <div style="height: 99999px;"></div>
     </div>
-    <script>
-      window.onscroll = function () {
-        console.log('event22222');
-      };
-    </script>
   `;
 
 export const primary: Story<HbSelect> = OpionSlotTmpl.bind({});

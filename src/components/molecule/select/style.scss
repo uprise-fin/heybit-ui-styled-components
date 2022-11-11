@@ -11,11 +11,23 @@
 
   &__list {
     position: absolute;
+    pointer-events: none;
     @include child-styled('[fixed]') {
       position: fixed;
       will-change: transform;
     }
+    &--open {
+      pointer-events: auto;
+    }
   }
+  // &__layer {
+  //   z-index: -1;
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   left: 0;
+  // }
   // &__input {
   //   height: 100%;
   //   padding: 0;
@@ -29,7 +41,7 @@
     // @extend %option;
     cursor: pointer;
 
-    @include child-styled('.open') {
+    @include child-styled('.hb-select__list--open') {
       &:not(:read-only) {
         cursor: auto;
       }

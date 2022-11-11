@@ -48,7 +48,7 @@ const NoTypeTemplate: Story<HbButton> = ({
     ?disabled=${disabled}
     >${title}</hb-button
   >`;
-
+const ddd = () => console.log('zmfkajdkawd');
 const Template: Story<HbButton> = ({
   type,
   loading,
@@ -62,6 +62,7 @@ const Template: Story<HbButton> = ({
     .theme="${theme}"
     .size=${size}
     .type=${type}
+    @event=${ddd}
     .baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}

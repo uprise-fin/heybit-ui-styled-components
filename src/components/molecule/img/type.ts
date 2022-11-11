@@ -1,5 +1,5 @@
 export interface HbImgProps {
-  src?: string;
+  src: string;
   loadingWidth?: number;
   loadingHeight?: number;
   breakPoint?: number;
