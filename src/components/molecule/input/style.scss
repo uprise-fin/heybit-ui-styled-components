@@ -13,7 +13,7 @@
     border: var(--husc__input__border__width) solid var(--husc__input__border__color);
     box-sizing: border-box;
     transition: border-color var(--husc__transition__duration--ms);
-    border-radius: var(--husc__border__radius);
+    border-radius: calc(var(--husc__border__radius) * 2);
     background: var(--husc__background__color);
   }
   @include host-styled('[data-error]') {
@@ -23,6 +23,14 @@
     );
     padding-right: calc(
       var(--husc__input__padding__right) -
+        (var(--husc__input__border__width--error) - var(--husc__input__border__width))
+    );
+    padding-top: calc(
+      var(--husc__input__padding__top) -
+        (var(--husc__input__border__width--error) - var(--husc__input__border__width))
+    );
+    padding-bottom: calc(
+      var(--husc__input__padding__bottom) -
         (var(--husc__input__border__width--error) - var(--husc__input__border__width))
     );
     border-width: var(--husc__input__border__width--error);
@@ -38,12 +46,22 @@
       var(--husc__input__padding__right) -
         (var(--husc__input__border__width--focus) - var(--husc__input__border__width))
     );
+    padding-top: calc(
+      var(--husc__input__padding__top) -
+        (var(--husc__input__border__width--focus) - var(--husc__input__border__width))
+    );
+    padding-bottom: calc(
+      var(--husc__input__padding__bottom) -
+        (var(--husc__input__border__width--focus) - var(--husc__input__border__width))
+    );
     border-width: var(--husc__input__border__width--focus);
     border-color: var(--husc__input__border__color--focus);
     // background: var(--husc__background__color);
   }
   @include host-styled('[data-readonly]') {
     border-color: var(--husc__input__border__color--readonly);
+    background: var(--husc__input__border__color--readonly);
+    --husc__background__color: var(--husc__input__border__color--readonly);
   }
   &__el {
     width: 0;
@@ -52,6 +70,7 @@
     padding: 0;
     font-weight: inherit;
     font-size: var(--husc__input__font__size);
+    line-height: 1.3;
     box-sizing: border-box;
     border: 0;
     text-align: inherit;

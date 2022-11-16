@@ -146,20 +146,20 @@ export const componentVariables = {
   //   },
   // },
   input: {
-    minHeight: 56,
-    maxHeight: 72,
+    minHeight: 50,
+    maxHeight: 71,
     border: {
       width: basicVariables.border.width,
       'width--error': basicVariables.border.width * 2,
       'width--focus': basicVariables.border.width * 2,
       color: basicVariables.border.color,
-      'color--error': colorPalette.orange[300],
-      'color--readonly': colorPalette.black[400],
+      'color--error': '#FF5252',
+      'color--readonly': colorPalette.black[100],
       'color--focus': colorPalette.black[800]
     },
     padding: {
-      top: 16,
-      bottom: 16,
+      top: 13.5,
+      bottom: 13.5,
       right: 18,
       left: 18
     },
