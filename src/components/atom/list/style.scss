@@ -29,7 +29,7 @@
     display: block;
     font-size: var(--husc__list__font__size);
     font-family: var(--husc__font__family);
-    border-radius: var(--husc__border__radius);
+    border-radius: calc(var(--husc__border__radius) * 2);
     border: var(--husc__list__border__width) solid var(--husc__list__border__color);
     box-sizing: border-box;
   }
