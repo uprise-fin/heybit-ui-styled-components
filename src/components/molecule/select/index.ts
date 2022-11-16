@@ -117,7 +117,7 @@ export class HbSelect extends Base {
         <slot name="icon" class="hb-select__label--icon"></slot>
         <hb-icon
           slot="slot--right"
-          icon=${HbIconName['system/outline/arrow-down']}
+          icon=${HbIconName['system/outline/arrow-dropdown']}
           size=${Size.small}
         ></hb-icon>
       </hb-input>
