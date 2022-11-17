@@ -92,7 +92,7 @@ export class HbFooter extends Base {
 
   company = '업라이즈(주)';
 
-  copy = '© 2021 Uprise, Inc. all rights reserved.';
+  copy = `© ${new Date().getFullYear()} Uprise, Inc. all rights reserved.`;
 
   tel = '대표전화 1577-9069';
 
