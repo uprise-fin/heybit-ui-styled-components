@@ -154,7 +154,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
         @keydown=${this.onEnter}
         type=${this.isType}
         placeholder=${this.placeholder}
-        ?readonly=${this._readonly || this._disabled}
+        ?readonly=${this._readonly}
+        ?disabled=${this._disabled}
       ></textarea>
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
