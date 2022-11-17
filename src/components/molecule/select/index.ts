@@ -85,16 +85,16 @@ export class HbSelect extends Base {
   }
 
   get list() {
-    return this.options.filter((x) => x.label.includes(this.inputValue)) || [];
+    return this.options?.filter((x) => x.label.includes(this.inputValue)) || [];
   }
 
   get values() {
-    return this.options.map((x) => x.value) || [];
+    return this.options?.map((x) => x.value) || [];
   }
 
   get label() {
     if (this.hasFocus || !this.options) return this.inputValue;
-    return this.options.find((x) => x.value === this.value)?.label || '';
+    return this.options?.find((x) => x.value === this.value)?.label || '';
   }
 
   get scrollEventListener() {

@@ -76,14 +76,14 @@ export class HbList extends Base {
   render() {
     return html`
       <div
-        class="hb-list__wrap"
+        class="hb-list__wrap${this.options?.length ? '' : ' hb-list__wrap--empty'}"
         @click=${this.onSelect}
         @keyup=${(evt: KeyboardEvent) => evt.key === 'Enter' && this.onSelect.call(this)}
         data-empty-text=${this.emptyText}
         part="list"
         id="list"
       >
-        ${this.options.map(
+        ${this.options?.map(
           (x) =>
             html`
               <button

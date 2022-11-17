@@ -38,10 +38,19 @@
     overflow: auto;
     max-height: inherit;
     background: var(--husc__background__color);
-    &:empty {
+    &--empty {
       &::after {
         content: attr(data-empty-text);
         @extend %option;
+        width: fit-content;
+        height: calc(var(--husc__list__height) * 3);
+        margin: auto;
+      }
+      &:focus,
+      &:hover {
+        &::after {
+          background: none;
+        }
       }
     }
   }
