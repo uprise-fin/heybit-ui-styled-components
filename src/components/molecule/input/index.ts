@@ -48,6 +48,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   _readonly: boolean = false;
 
+  _disabled: boolean = false;
+
   maxlength?: number;
 
   type: HbInputType = HbInputType.text;
@@ -55,6 +57,16 @@ export class HbInput extends InitAttribute<HbInputProps> {
   nowrap = true;
 
   initialAttributes: (keyof HbInputProps)[] = ['value'];
+
+  get disabled() {
+    return this._disabled;
+  }
+
+  set disabled(value: boolean) {
+    this._disabled = value;
+    if (value) this.setAttribute('data-disabled', '');
+    else this.removeAttribute('data-disabled');
+  }
 
   get readonly() {
     return this._readonly;
@@ -90,6 +102,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
       error: { type: Boolean, Reflect: true },
       readonly: { type: Boolean, Reflect: true },
       _readonly: { type: Boolean, Reflect: true },
+      disabled: { type: Boolean, Reflect: true },
+      _disabled: { type: Boolean, Reflect: true },
       nowrap: { type: Boolean, Reflect: true }
     };
   }
@@ -131,6 +145,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
         id="input"
         rows="1"
         data-readonly=${this.readonly}
+        data-disabled=${this.disabled}
         class="hb-input__el"
         part="input"
         pattern=${this.pattern}
@@ -139,7 +154,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
         @keydown=${this.onEnter}
         type=${this.isType}
         placeholder=${this.placeholder}
-        ?readonly=${this._readonly}
+        ?readonly=${this._readonly || this._disabled}
       ></textarea>
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>

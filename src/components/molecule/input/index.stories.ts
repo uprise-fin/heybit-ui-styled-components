@@ -19,7 +19,8 @@ const Template: Story<HbInput> = ({
   comma,
   error,
   notAllowedFirstZero,
-  readonly
+  readonly,
+  disabled
 }) => html`
   <hb-input
     type=${type}
@@ -27,6 +28,7 @@ const Template: Story<HbInput> = ({
     ?error=${error}
     ?notAllowedFirstZero=${notAllowedFirstZero}
     ?readonly=${readonly}
+    ?disabled=${disabled}
     .maxlength=${maxlength}
     .decimal=${decimal}
     .comma=${comma}
@@ -43,7 +45,8 @@ text.args = {
   value: 'dawkldjlkajdklawjdlkwajdklawdjlawdjlkawjdlawjdlwajdklawjdlkawjdlkajwlkdawjdlawkjdl',
   placeholder: '글자입력해주세요',
   error: false,
-  readonly: false
+  readonly: false,
+  disabled: false
 };
 export const number: Story<HbInput> = Template.bind({});
 number.args = {
@@ -54,5 +57,6 @@ number.args = {
   comma: 3,
   error: false,
   notAllowedFirstZero: false,
-  readonly: false
+  readonly: false,
+  disabled: false
 };
