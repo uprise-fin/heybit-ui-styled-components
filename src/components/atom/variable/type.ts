@@ -154,7 +154,7 @@ export const componentVariables = {
       'width--focus': basicVariables.border.width * 2,
       color: basicVariables.border.color,
       'color--error': '#FF5252',
-      'color--readonly': colorPalette.black[100],
+      'color--disabled': colorPalette.black[100],
       'color--focus': colorPalette.black[800]
     },
     padding: {

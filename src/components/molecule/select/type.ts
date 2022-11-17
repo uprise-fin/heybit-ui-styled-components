@@ -7,5 +7,5 @@ export interface HbSelectProps {
   value?: string;
   placeholder?: string;
   emptyText?: string;
-  options: HbListOption[];
+  options?: HbListOption[];
 }
