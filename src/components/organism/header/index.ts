@@ -62,6 +62,10 @@ export class HbHeader extends Base {
     if (this.gnb) return this.gnb;
   }
 
+  get isGnbString() {
+    return JSON.stringify(this.gnb);
+  }
+
   isActive(href = '') {
     return href && location.pathname.startsWith(href) ? ' active' : '';
   }
@@ -76,6 +80,18 @@ export class HbHeader extends Base {
 
   get isDefaultMenu() {
     if (this.defaultMenu) return this.defaultMenu;
+  }
+
+  get isMyMenuString() {
+    return JSON.stringify(this.isMyMenu);
+  }
+
+  get isAuthMenuString() {
+    return JSON.stringify(this.isAuthMenu);
+  }
+
+  get isDefaultMenuString() {
+    return JSON.stringify(this.defaultMenu);
   }
 
   get isType() {
@@ -98,7 +114,7 @@ export class HbHeader extends Base {
   }
 
   gnbTemplateForDesktop = (() => {
-    let isGnb = this.isGnb;
+    let isGnb = this.isGnbString;
     let template = html`
       ${this.isGnb?.map(
         (x) =>
@@ -147,8 +163,8 @@ export class HbHeader extends Base {
       )}
     `;
     return () => {
-      if (isGnb !== this.isGnb) {
-        isGnb = this.isGnb;
+      if (isGnb !== this.isGnbString) {
+        isGnb = this.isGnbString;
         template = html`
           ${this.isGnb?.map(
             (x) =>
@@ -203,7 +219,7 @@ export class HbHeader extends Base {
   })();
 
   gnbTemplate = (() => {
-    let isGnb = this.isGnb;
+    let isGnb = this.isGnbString;
     let template = html`
       ${this.isGnb?.map(
         (x) =>
@@ -247,8 +263,8 @@ export class HbHeader extends Base {
       )}
     `;
     return () => {
-      if (isGnb !== this.isGnb) {
-        isGnb = this.isGnb;
+      if (isGnb !== this.isGnbString) {
+        isGnb = this.isGnbString;
         template = html`
           ${this.isGnb?.map(
             (x) =>
@@ -299,7 +315,7 @@ export class HbHeader extends Base {
 
   myMenuTemplate = (() => {
     let cacheSize = Size.medium;
-    let isMyMenu = this.isMyMenu;
+    let isMyMenu = this.isMyMenuString;
     let template = html`
       ${this.isMyMenu?.map(
         (x) =>
@@ -314,9 +330,9 @@ export class HbHeader extends Base {
       )}
     `;
     return (size = Size.medium) => {
-      if (isMyMenu !== this.isMyMenu || cacheSize !== size) {
+      if (isMyMenu !== this.isMyMenuString || cacheSize !== size) {
         cacheSize = size;
-        isMyMenu = this.isMyMenu;
+        isMyMenu = this.isMyMenuString;
         template = html`
           ${this.isMyMenu?.map(
             (x) =>
@@ -337,9 +353,9 @@ export class HbHeader extends Base {
   })();
 
   authMenuTemplate = (() => {
-    let isAuthMenu = this.isAuthMenu;
+    let isAuthMenu = this.isAuthMenuString;
     let template = html`
-      ${isAuthMenu?.map(
+      ${this.isAuthMenu?.map(
         (x) =>
           html`<hb-anchor class="hb-anchor" href=${x.href} target=${x.target} @event=${x.event}
             >${x.name}</hb-anchor
@@ -347,10 +363,10 @@ export class HbHeader extends Base {
       )}
     `;
     return () => {
-      if (isAuthMenu !== this.isAuthMenu) {
-        isAuthMenu = this.isAuthMenu;
+      if (isAuthMenu !== this.isAuthMenuString) {
+        isAuthMenu = this.isAuthMenuString;
         template = html`
-          ${isAuthMenu?.map(
+          ${this.isAuthMenu?.map(
             (x) =>
               html`<hb-anchor class="hb-anchor" href=${x.href} target=${x.target} @event=${x.event}
                 >${x.name}</hb-anchor
@@ -365,8 +381,8 @@ export class HbHeader extends Base {
 
   defaultMenuForDesktopTemplate = (() => {
     const themes = ['', HbButtonTheme.quaternary];
-    let isDefaultMenu = this.isDefaultMenu;
-    let template = html`${isDefaultMenu?.map(
+    let isDefaultMenu = this.isDefaultMenuString;
+    let template = html`${this.isDefaultMenu?.map(
       (x, i) =>
         html`<hb-button
           class="hb-button"
@@ -378,9 +394,9 @@ export class HbHeader extends Base {
         >`
     )}`;
     return () => {
-      if (isDefaultMenu !== this.isDefaultMenu) {
-        isDefaultMenu = this.isDefaultMenu;
-        template = html`${isDefaultMenu?.map(
+      if (isDefaultMenu !== this.isDefaultMenuString) {
+        isDefaultMenu = this.isDefaultMenuString;
+        template = html`${this.isDefaultMenu?.map(
           (x, i) =>
             html`<hb-button
               class="hb-button"
@@ -399,7 +415,7 @@ export class HbHeader extends Base {
 
   defaultMenuTemplate = (() => {
     const themes = [HbButtonTheme.quaternary, HbButtonTheme.primary];
-    let isDefaultMenu = this.isDefaultMenu;
+    let isDefaultMenu = this.isDefaultMenuString;
     let template = html`
       ${this.isDefaultMenu?.map(
         (x, i) => html`<hb-button
@@ -413,8 +429,8 @@ export class HbHeader extends Base {
       )}
     `;
     return () => {
-      if (isDefaultMenu !== this.isDefaultMenu) {
-        isDefaultMenu = this.isDefaultMenu;
+      if (isDefaultMenu !== this.isDefaultMenuString) {
+        isDefaultMenu = this.isDefaultMenuString;
         template = html`
           ${this.isDefaultMenu?.map(
             (x, i) => html`<hb-button
