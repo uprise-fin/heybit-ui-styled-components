@@ -5,10 +5,7 @@ export interface HbHeaderChip {
   alt: string;
   background: string;
 }
-export const enum HbHeaderType {
-  normal,
-  clear
-}
+export type HbHeaderType = 'normal' | 'clear';
 export interface HbHeaderGroup extends HbAnchorProps {
   name: string;
   desc: string;

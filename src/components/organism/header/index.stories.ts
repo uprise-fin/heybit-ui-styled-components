@@ -4,7 +4,6 @@ import { html } from 'lit';
 import './index';
 import type { HbHeader } from './index';
 import {
-  HbHeaderType,
   HbHeaderUser,
   initialHeaderAuthMenu,
   initialHeaderDefaultMenu,
@@ -84,7 +83,7 @@ korea.args = {
     }
     return x;
   }),
-  type: HbHeaderType.normal,
+  type: 'normal',
   myMenu: initialHeaderMyMenu,
   authMenu: initialHeaderAuthMenu,
   defaultMenu: initialHeaderDefaultMenu

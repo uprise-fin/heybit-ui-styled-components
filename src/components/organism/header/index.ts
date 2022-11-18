@@ -95,12 +95,12 @@ export class HbHeader extends Base {
   }
 
   get isType() {
-    return this.type ?? HbHeaderType.normal;
+    return this.type ?? 'normal';
   }
 
   static get properties() {
     return {
-      type: { type: Number, Reflect: true },
+      type: { type: String, Reflect: true },
       sidemenu: { type: Boolean, Reflect: true },
       loggedin: { type: Boolean, Reflect: true },
       pending: { type: Boolean, Reflect: true },
@@ -494,7 +494,7 @@ export class HbHeader extends Base {
   render() {
     return html`<hb-responsive>
       <div slot="mobile" part="mobile" class="hb-header--mobile">
-        <hb-if ?value=${this.isType === HbHeaderType.normal}>
+        <hb-if ?value=${this.isType === 'normal'}>
           <div class="hb-header--mobile__navibar">
             <hb-anchor @event=${this.onEvent} class="hb-anchor"
               ><hb-icon
@@ -548,7 +548,7 @@ export class HbHeader extends Base {
             </hb-transition>
           </hb-transition>
         </hb-if>
-        <hb-if ?value=${this.isType === HbHeaderType.clear}>
+        <hb-if ?value=${this.isType === 'clear'}>
           <div class="hb-header--mobile__navibar">
             <hb-anchor @event=${this.onEvent} class="hb-anchor"
               ><hb-icon
@@ -564,7 +564,7 @@ export class HbHeader extends Base {
         </hb-if>
       </div>
       <div slot="desktop" part="desktop" class="hb-header--desktop">
-        <hb-if ?value=${this.isType === HbHeaderType.normal}>
+        <hb-if ?value=${this.isType === 'normal'}>
           <div class="hb-header--desktop__navibar">
             <div class="hb-header--desktop__navibar__routes">
               <hb-anchor @event=${this.onEvent} class="hb-anchor"
@@ -621,7 +621,7 @@ export class HbHeader extends Base {
             </div>
           </hb-transition>
         </hb-if>
-        <hb-if ?value=${this.isType === HbHeaderType.clear}>
+        <hb-if ?value=${this.isType === 'clear'}>
           <div class="hb-header--desktop__navibar">
             <div class="hb-header--desktop__navibar__routes">
               <hb-anchor @event=${this.onEvent} class="hb-anchor"
