@@ -4,6 +4,7 @@ import { html } from 'lit';
 import './index';
 import type { HbHeader } from './index';
 import {
+  HbHeaderType,
   HbHeaderUser,
   initialHeaderAuthMenu,
   initialHeaderDefaultMenu,
@@ -39,6 +40,7 @@ const Template: Story<HbHeaderExps> = ({
   defaultMenu,
   event,
   pending,
+  type,
   loggedin
 }) => {
   const user: HbHeaderUser = {
@@ -49,6 +51,7 @@ const Template: Story<HbHeaderExps> = ({
     ?pending=${pending}
     ?loggedin=${loggedin}
     .user=${user}
+    .type=${type}
     .gnb=${gnb}
     .myMenu=${myMenu}
     .authMenu=${authMenu}
@@ -77,6 +80,7 @@ korea.args = {
     }
     return x;
   }),
+  type: HbHeaderType.normal,
   myMenu: initialHeaderMyMenu,
   authMenu: initialHeaderAuthMenu,
   defaultMenu: initialHeaderDefaultMenu

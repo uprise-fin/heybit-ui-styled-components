@@ -96,7 +96,7 @@ const args = {
   size: Size.large,
   baseLoadingDuration: 500,
   loading: false,
-  disabled: false
+  disabled: true
 };
 export const rectangle: Story<HbButton> = Template.bind({});
 rectangle.args = {
