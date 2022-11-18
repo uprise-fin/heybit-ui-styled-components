@@ -124,7 +124,7 @@ $hb-button__theme: (
     @include host-styled("[theme='#{$class}'][data-disabled]:not([data-loading])") {
       $disabledColor: map-get($value, disabledColor);
       color: $disabledColor;
-      --husc__icon__color: $disabledColor;
+      --husc__icon__color: #{$disabledColor};
       border-color: map-get($value, disabledBd);
       background: map-get($value, disabledBg);
     }
