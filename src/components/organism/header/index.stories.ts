@@ -27,6 +27,7 @@ export default {
   }
 } as Meta;
 interface HbHeaderExps extends HbHeader {
+  close?: Function;
   _user: { name: string; email: string };
   pending: boolean;
   loggedIn: boolean;
@@ -39,6 +40,7 @@ const Template: Story<HbHeaderExps> = ({
   authMenu,
   defaultMenu,
   event,
+  close,
   pending,
   type,
   loggedin
@@ -48,6 +50,7 @@ const Template: Story<HbHeaderExps> = ({
   };
   return html`<hb-header
     @event=${event}
+    @close=${close}
     ?pending=${pending}
     ?loggedin=${loggedin}
     .user=${user}
@@ -61,6 +64,7 @@ const Template: Story<HbHeaderExps> = ({
 export const korea: Story<HbHeaderExps> = Template.bind({});
 korea.args = {
   event: () => console.log('로고클릭'),
+  close: () => console.log('닫기'),
   loggedin: true,
   pending: false,
   _user: {

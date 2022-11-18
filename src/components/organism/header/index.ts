@@ -448,6 +448,10 @@ export class HbHeader extends Base {
     };
   })();
 
+  onClose() {
+    this.dispatchEvent(new CustomEvent('close'));
+  }
+
   onClickGroup(event: Event) {
     const path = event.composedPath && event.composedPath();
     const anchor = path[0];
@@ -553,7 +557,7 @@ export class HbHeader extends Base {
                 style="--husc__icon__size__large: var(--husc__header__logo__width--mobile);"
               ></hb-icon
             ></hb-anchor>
-            <hb-button class="hb-button"
+            <hb-button class="hb-button" @click=${this.onClose}
               ><hb-icon icon=${HbIconName['system/outline/close']} size=${Size.medium}></hb-icon
             ></hb-button>
           </div>
@@ -629,7 +633,7 @@ export class HbHeader extends Base {
               ></hb-anchor>
             </div>
             <div class="hb-header--desktop__navibar__actions">
-              <hb-button class="hb-button"
+              <hb-button class="hb-button" @click=${this.onClose}
                 ><hb-icon icon=${HbIconName['system/outline/close']} size=${Size.medium}></hb-icon
               ></hb-button>
             </div>

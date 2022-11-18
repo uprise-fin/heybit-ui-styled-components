@@ -25,7 +25,7 @@ export interface HbHeaderProps {
   myMenu: HbHeaderMyMenu[];
   authMenu: HbHeaderNavi[];
   defaultMenu: HbHeaderDefaultMenu[];
-  type: HbHeaderType;
+  type?: HbHeaderType;
   user?: HbHeaderUser;
   loggedin?: boolean;
   pending?: boolean;
