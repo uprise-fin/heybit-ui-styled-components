@@ -7,7 +7,7 @@ import { HbButtonType, HbButtonTheme } from '@/components/molecule/button/type';
 import { HbAnchor } from '@/module';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbHeaderMyMenu, HbHeaderNavi, HbHeaderUser } from './type';
+import { HbHeaderMyMenu, HbHeaderNavi, HbHeaderType, HbHeaderUser } from './type';
 /**
  * @fires change 값이 변경될때 발생
  * @property attributeSync true 시 value값이 arrtibute 싱크됨
@@ -27,6 +27,8 @@ export class HbHeader extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
+
+  type: HbHeaderType;
 
   user: HbHeaderUser;
 
@@ -60,6 +62,10 @@ export class HbHeader extends Base {
     if (this.gnb) return this.gnb;
   }
 
+  get isGnbString() {
+    return JSON.stringify(this.gnb);
+  }
+
   isActive(href = '') {
     return href && location.pathname.startsWith(href) ? ' active' : '';
   }
@@ -76,8 +82,25 @@ export class HbHeader extends Base {
     if (this.defaultMenu) return this.defaultMenu;
   }
 
+  get isMyMenuString() {
+    return JSON.stringify(this.isMyMenu);
+  }
+
+  get isAuthMenuString() {
+    return JSON.stringify(this.isAuthMenu);
+  }
+
+  get isDefaultMenuString() {
+    return JSON.stringify(this.defaultMenu);
+  }
+
+  get isType() {
+    return this.type ?? 'normal';
+  }
+
   static get properties() {
     return {
+      type: { type: String, Reflect: true },
       sidemenu: { type: Boolean, Reflect: true },
       loggedin: { type: Boolean, Reflect: true },
       pending: { type: Boolean, Reflect: true },
@@ -90,8 +113,9 @@ export class HbHeader extends Base {
     };
   }
 
-  get gnbTemplateForDesktop() {
-    return html`
+  gnbTemplateForDesktop = (() => {
+    let isGnb = this.isGnbString;
+    let template = html`
       ${this.isGnb?.map(
         (x) =>
           html`<hb-anchor
@@ -138,10 +162,65 @@ export class HbHeader extends Base {
           >`
       )}
     `;
-  }
+    return () => {
+      if (isGnb !== this.isGnbString) {
+        isGnb = this.isGnbString;
+        template = html`
+          ${this.isGnb?.map(
+            (x) =>
+              html`<hb-anchor
+                class="hb-anchor${this.isActive(x.href)}"
+                href=${x.href}
+                target=${x.target}
+                @event=${x.event}
+                @mouseenter=${this.onEnterGroup}
+                @mouseleave=${this.onLeaveGroup}
+                >${x.name}${x.chip
+                  ? html`<hb-img
+                      class="hb-header__chip"
+                      alt=${x.chip.alt}
+                      style="--background: ${x.chip.background}"
+                      src=${x.chip.src}
+                      loadingWidth=${26}
+                    />`
+                  : ''}${x.group
+                  ? html`<hb-icon
+                        icon=${HbIconName['system/outline/arrow-dropdown']}
+                        size=${Size.xsmall}
+                      ></hb-icon>
+                      <div
+                        class="hb-header__group-menu"
+                        @mouseenter=${this.onEnterGroup}
+                        @mouseleave=${this.onLeaveGroup}
+                      >
+                        ${x.group.map(
+                          (y) => html`
+                            <hb-anchor
+                              class="hb-header__group-menu__item${this.isActive(x.href)}"
+                              href=${y.href}
+                              target=${y.target}
+                              @event=${y.event}
+                              ><strong>${y.name}</strong>
+                              <p>${y.desc}</p></hb-anchor
+                            >
+                          `
+                        )}
+                        <i class="hb-header__group-menu__layer"></i>
+                        <i class="hb-header__group-menu__tip"></i>
+                      </div>`
+                  : ''}</hb-anchor
+              >`
+          )}
+        `;
+        return template;
+      }
+      return template;
+    };
+  })();
 
-  get gnbTemplate() {
-    return html`
+  gnbTemplate = (() => {
+    let isGnb = this.isGnbString;
+    let template = html`
       ${this.isGnb?.map(
         (x) =>
           html`<hb-anchor
@@ -183,10 +262,61 @@ export class HbHeader extends Base {
           >`
       )}
     `;
-  }
+    return () => {
+      if (isGnb !== this.isGnbString) {
+        isGnb = this.isGnbString;
+        template = html`
+          ${this.isGnb?.map(
+            (x) =>
+              html`<hb-anchor
+                class="hb-anchor"
+                href=${x.group ? '' : x.href}
+                target=${x.target}
+                @event=${x.event}
+                @click=${x.group ? this.onClickGroup : null}
+                >${x.name}${x.chip
+                  ? html`<hb-img
+                      class="hb-header__chip"
+                      alt=${x.chip.alt}
+                      style="--background: ${x.chip.background}"
+                      src=${x.chip.src}
+                      loadingWidth=${26}
+                    />`
+                  : ''}${x.group
+                  ? html`<hb-icon
+                        icon=${HbIconName['system/outline/arrow-dropdown']}
+                        size=${Size.xsmall}
+                      ></hb-icon>
+                      <div class="hb-header__group-menu">
+                        ${x.group.map(
+                          (y) => html`
+                            <hb-anchor
+                              class="hb-header__group-menu__item"
+                              href=${y.href}
+                              target=${y.target}
+                              @event=${this.adapterEvent.bind(this, y.event)}
+                              ><strong>${y.name}</strong>
+                              <p>${y.desc}</p></hb-anchor
+                            >
+                          `
+                        )}
+                        <i class="hb-header__group-menu__layer"></i>
+                        <i class="hb-header__group-menu__tip"></i>
+                      </div>`
+                  : ''}</hb-anchor
+              >`
+          )}
+        `;
+        return template;
+      }
+      return template;
+    };
+  })();
 
-  myMenuTemplate(size: keyof typeof Size = 'medium') {
-    return html`
+  myMenuTemplate = (() => {
+    let cacheSize = Size.medium;
+    let isMyMenu = this.isMyMenuString;
+    let template = html`
       ${this.isMyMenu?.map(
         (x) =>
           html`<hb-button
@@ -194,15 +324,37 @@ export class HbHeader extends Base {
             @event=${x.event}
             type=${HbButtonType.rectangle}
             theme=${x.theme}
-            size=${Size[size]}
+            size=${cacheSize}
             >${x.name}</hb-button
           >`
       )}
     `;
-  }
+    return (size = Size.medium) => {
+      if (isMyMenu !== this.isMyMenuString || cacheSize !== size) {
+        cacheSize = size;
+        isMyMenu = this.isMyMenuString;
+        template = html`
+          ${this.isMyMenu?.map(
+            (x) =>
+              html`<hb-button
+                class="hb-button"
+                @event=${x.event}
+                type=${HbButtonType.rectangle}
+                theme=${x.theme}
+                size=${cacheSize}
+                >${x.name}</hb-button
+              >`
+          )}
+        `;
+        return template;
+      }
+      return template;
+    };
+  })();
 
-  get authMenuTemplate() {
-    return html`
+  authMenuTemplate = (() => {
+    let isAuthMenu = this.isAuthMenuString;
+    let template = html`
       ${this.isAuthMenu?.map(
         (x) =>
           html`<hb-anchor class="hb-anchor" href=${x.href} target=${x.target} @event=${x.event}
@@ -210,28 +362,61 @@ export class HbHeader extends Base {
           >`
       )}
     `;
-  }
+    return () => {
+      if (isAuthMenu !== this.isAuthMenuString) {
+        isAuthMenu = this.isAuthMenuString;
+        template = html`
+          ${this.isAuthMenu?.map(
+            (x) =>
+              html`<hb-anchor class="hb-anchor" href=${x.href} target=${x.target} @event=${x.event}
+                >${x.name}</hb-anchor
+              >`
+          )}
+        `;
+        return template;
+      }
+      return template;
+    };
+  })();
 
-  get defaultMenuForDesktopTemplate() {
+  defaultMenuForDesktopTemplate = (() => {
     const themes = ['', HbButtonTheme.quaternary];
-    return html`
-      ${this.isDefaultMenu?.map(
-        (x, i) =>
-          html`<hb-button
-            class="hb-button"
-            theme=${themes[i]}
-            type=${HbButtonType.rectangle}
-            size=${Size.medium}
-            @event=${x.event}
-            >${x.name}</hb-button
-          >`
-      )}
-    `;
-  }
+    let isDefaultMenu = this.isDefaultMenuString;
+    let template = html`${this.isDefaultMenu?.map(
+      (x, i) =>
+        html`<hb-button
+          class="hb-button"
+          theme=${themes[i]}
+          type=${HbButtonType.rectangle}
+          size=${Size.medium}
+          @event=${x.event}
+          >${x.name}</hb-button
+        >`
+    )}`;
+    return () => {
+      if (isDefaultMenu !== this.isDefaultMenuString) {
+        isDefaultMenu = this.isDefaultMenuString;
+        template = html`${this.isDefaultMenu?.map(
+          (x, i) =>
+            html`<hb-button
+              class="hb-button"
+              theme=${themes[i]}
+              type=${HbButtonType.rectangle}
+              size=${Size.medium}
+              @event=${x.event}
+              >${x.name}</hb-button
+            >`
+        )}`;
+        return template;
+      }
+      return template;
+    };
+  })();
 
-  get defaultMenuTemplate() {
+  defaultMenuTemplate = (() => {
     const themes = [HbButtonTheme.quaternary, HbButtonTheme.primary];
-    return html`
+    let isDefaultMenu = this.isDefaultMenuString;
+    let template = html`
       ${this.isDefaultMenu?.map(
         (x, i) => html`<hb-button
           class="hb-button"
@@ -243,6 +428,28 @@ export class HbHeader extends Base {
         >`
       )}
     `;
+    return () => {
+      if (isDefaultMenu !== this.isDefaultMenuString) {
+        isDefaultMenu = this.isDefaultMenuString;
+        template = html`
+          ${this.isDefaultMenu?.map(
+            (x, i) => html`<hb-button
+              class="hb-button"
+              theme=${themes[i]}
+              size=${Size.large}
+              type=${HbButtonType.rectangle}
+              @event=${x.event}
+              >${x.name}</hb-button
+            >`
+          )}
+        `;
+      }
+      return template;
+    };
+  })();
+
+  onClose() {
+    this.dispatchEvent(new CustomEvent('close'));
   }
 
   onClickGroup(event: Event) {
@@ -287,116 +494,151 @@ export class HbHeader extends Base {
   render() {
     return html`<hb-responsive>
       <div slot="mobile" part="mobile" class="hb-header--mobile">
-        <div class="hb-header--mobile__navibar">
-          <hb-anchor @event=${this.onEvent} class="hb-anchor"
-            ><hb-icon
-              icon=${HbIconName['graphic/heybit']}
-              size=${Size.large}
-              style="--husc__icon__size__large: var(--husc__header__logo__width--mobile);"
-            ></hb-icon
-          ></hb-anchor>
-          <hb-button @event=${this.onEnterSide} class="hb-button"
-            ><hb-icon icon=${HbIconName['system/outline/menu-side']} size=${Size.medium}></hb-icon
-          ></hb-button>
-        </div>
-        <hb-transition
-          @click=${this.onLeaveSide}
-          class="hb-header--mobile__side-menu"
-          ?show=${this.sidemenu}
-          type=${HbTransitionType.fade}
-        >
-          <hb-transition ?show=${this.sidemenu} type=${HbTransitionType.rightLeft}>
-            <div class="hb-header--mobile__side-menu__content">
-              <div class="hb-header--mobile__side-menu__content__my">
-                <hb-if ?value=${this.pending}>
-                  <hb-skeleton type=${HbSkeletonType.dropMenuTop}></hb-skeleton>
-                </hb-if>
-                <hb-if ?value=${!this.pending}>
-                  <strong>${this.userName}환영합니다.</strong>
-                  <hb-if ?value=${this.loggedin}>
-                    <p>${this.userEmail}</p>
-                    <div>${this.myMenuTemplate()}</div>
-                  </hb-if>
-                  <hb-if ?value=${!this.loggedin}>
-                    <div class="hb-header--mobile__side-menu__content__my__btns">
-                      ${this.defaultMenuTemplate}
-                    </div>
-                  </hb-if>
-                </hb-if>
-              </div>
-              <div class="hb-header--mobile__side-menu__content__menu">${this.gnbTemplate}</div>
-              <div class="hb-header--mobile__side-menu__content__auth">
-                <hb-if ?value=${!this.pending && this.loggedin}> ${this.authMenuTemplate} </hb-if>
-                <hb-if ?value=${this.pending}>
-                  <hb-skeleton
-                    class="hb-header--mobile__skeleton"
-                    type=${HbSkeletonType.dropMenuBottom}
-                  ></hb-skeleton>
-                </hb-if>
-              </div>
-            </div>
-          </hb-transition>
-        </hb-transition>
-      </div>
-      <div slot="desktop" part="desktop" class="hb-header--desktop">
-        <div class="hb-header--desktop__navibar">
-          <div class="hb-header--desktop__navibar__routes">
+        <hb-if ?value=${this.isType === 'normal'}>
+          <div class="hb-header--mobile__navibar">
             <hb-anchor @event=${this.onEvent} class="hb-anchor"
               ><hb-icon
                 icon=${HbIconName['graphic/heybit']}
                 size=${Size.large}
-                style="--husc__icon__size__large: var(--husc__header__logo__width--desktop);"
+                style="--husc__icon__size__large: var(--husc__header__logo__width--mobile);"
               ></hb-icon
             ></hb-anchor>
-            ${this.gnbTemplateForDesktop}
+            <hb-button @event=${this.onEnterSide} class="hb-button"
+              ><hb-icon icon=${HbIconName['system/outline/menu-side']} size=${Size.medium}></hb-icon
+            ></hb-button>
           </div>
-          <div class="hb-header--desktop__navibar__actions">
-            <hb-if ?value=${this.pending}>
-              <hb-skeleton type=${HbSkeletonType.hamburger}></hb-skeleton
-            ></hb-if>
-            <hb-if ?value=${!this.pending}>
-              <hb-if ?value=${this.loggedin}>
-                <hb-button
-                  class="hb-header--desktop__navibar__actions__hamburber${this.sidemenu
-                    ? ' open'
-                    : ''}"
-                  @mouseenter=${this.onEnterSide}
-                  @mouseleave=${this.onLeaveSide}
-                  >${this.userName}<hb-icon
-                    icon=${HbIconName['system/outline/arrow-dropdown']}
-                    size=${Size.xsmall}
-                  ></hb-icon
-                ></hb-button>
-              </hb-if>
-              <hb-if ?value=${!this.loggedin} class="hb-header--desktop__navibar__actions__btns">
-                ${this.defaultMenuForDesktopTemplate}
-              </hb-if>
-            </hb-if>
-          </div>
-        </div>
-        <hb-transition
-          @mouseenter=${this.onEnterSide}
-          @mouseleave=${this.onLeaveSide}
-          class="hb-header--desktop__side-menu"
-          ?show=${this.sidemenu && this.loggedin && !this.pending}
-          type=${HbTransitionType.fade}
-        >
-          <!-- <hb-transition
+          <hb-transition
+            @click=${this.onLeaveSide}
+            class="hb-header--mobile__side-menu"
             ?show=${this.sidemenu}
-            type=${HbTransitionType.topDown}
-          > -->
-          <div class="hb-header--desktop__side-menu__content">
-            <div class="hb-header--desktop__side-menu__content__my">
-              <strong>${this.userName}환영합니다.</strong>
-              <p>${this.userEmail}</p>
-            </div>
-            <div class="hb-header--desktop__side-menu__content__menu">
-              ${this.myMenuTemplate('small')}
-            </div>
-            <div class="hb-header--desktop__side-menu__content__auth">${this.authMenuTemplate}</div>
+            type=${HbTransitionType.fade}
+          >
+            <hb-transition ?show=${this.sidemenu} type=${HbTransitionType.rightLeft}>
+              <div class="hb-header--mobile__side-menu__content">
+                <div class="hb-header--mobile__side-menu__content__my">
+                  <hb-if ?value=${this.pending}>
+                    <hb-skeleton type=${HbSkeletonType.dropMenuTop}></hb-skeleton>
+                  </hb-if>
+                  <hb-if ?value=${!this.pending}>
+                    <strong>${this.userName}환영합니다.</strong>
+                    <hb-if ?value=${this.loggedin}>
+                      <p>${this.userEmail}</p>
+                      <div>${this.myMenuTemplate()}</div>
+                    </hb-if>
+                    <hb-if ?value=${!this.loggedin}>
+                      <div class="hb-header--mobile__side-menu__content__my__btns">
+                        ${this.defaultMenuTemplate()}
+                      </div>
+                    </hb-if>
+                  </hb-if>
+                </div>
+                <div class="hb-header--mobile__side-menu__content__menu">${this.gnbTemplate()}</div>
+                <div class="hb-header--mobile__side-menu__content__auth">
+                  <hb-if ?value=${!this.pending && this.loggedin}>
+                    ${this.authMenuTemplate()}
+                  </hb-if>
+                  <hb-if ?value=${this.pending}>
+                    <hb-skeleton
+                      class="hb-header--mobile__skeleton"
+                      type=${HbSkeletonType.dropMenuBottom}
+                    ></hb-skeleton>
+                  </hb-if>
+                </div>
+              </div>
+            </hb-transition>
+          </hb-transition>
+        </hb-if>
+        <hb-if ?value=${this.isType === 'clear'}>
+          <div class="hb-header--mobile__navibar">
+            <hb-anchor @event=${this.onEvent} class="hb-anchor"
+              ><hb-icon
+                icon=${HbIconName['graphic/heybit']}
+                size=${Size.large}
+                style="--husc__icon__size__large: var(--husc__header__logo__width--mobile);"
+              ></hb-icon
+            ></hb-anchor>
+            <hb-button class="hb-button" @click=${this.onClose}
+              ><hb-icon icon=${HbIconName['system/outline/close']} size=${Size.medium}></hb-icon
+            ></hb-button>
           </div>
-          <!-- </hb-transition> -->
-        </hb-transition>
+        </hb-if>
+      </div>
+      <div slot="desktop" part="desktop" class="hb-header--desktop">
+        <hb-if ?value=${this.isType === 'normal'}>
+          <div class="hb-header--desktop__navibar">
+            <div class="hb-header--desktop__navibar__routes">
+              <hb-anchor @event=${this.onEvent} class="hb-anchor"
+                ><hb-icon
+                  icon=${HbIconName['graphic/heybit']}
+                  size=${Size.large}
+                  style="--husc__icon__size__large: var(--husc__header__logo__width--desktop);"
+                ></hb-icon
+              ></hb-anchor>
+              ${this.gnbTemplateForDesktop()}
+            </div>
+            <div class="hb-header--desktop__navibar__actions">
+              <hb-if ?value=${this.pending}>
+                <hb-skeleton type=${HbSkeletonType.hamburger}></hb-skeleton
+              ></hb-if>
+              <hb-if ?value=${!this.pending}>
+                <hb-if ?value=${this.loggedin}>
+                  <hb-button
+                    class="hb-header--desktop__navibar__actions__hamburber${this.sidemenu
+                      ? ' open'
+                      : ''}"
+                    @mouseenter=${this.onEnterSide}
+                    @mouseleave=${this.onLeaveSide}
+                    >${this.userName}<hb-icon
+                      icon=${HbIconName['system/outline/arrow-dropdown']}
+                      size=${Size.xsmall}
+                    ></hb-icon
+                  ></hb-button>
+                </hb-if>
+                <hb-if ?value=${!this.loggedin} class="hb-header--desktop__navibar__actions__btns">
+                  ${this.defaultMenuForDesktopTemplate()}
+                </hb-if>
+              </hb-if>
+            </div>
+          </div>
+          <hb-transition
+            @mouseenter=${this.onEnterSide}
+            @mouseleave=${this.onLeaveSide}
+            class="hb-header--desktop__side-menu"
+            ?show=${this.sidemenu && this.loggedin && !this.pending}
+            type=${HbTransitionType.fade}
+          >
+            <div class="hb-header--desktop__side-menu__content">
+              <div class="hb-header--desktop__side-menu__content__my">
+                <strong>${this.userName}환영합니다.</strong>
+                <p>${this.userEmail}</p>
+              </div>
+              <div class="hb-header--desktop__side-menu__content__menu">
+                ${this.myMenuTemplate(Size.small)}
+              </div>
+              <div class="hb-header--desktop__side-menu__content__auth">
+                ${this.authMenuTemplate()}
+              </div>
+            </div>
+          </hb-transition>
+        </hb-if>
+        <hb-if ?value=${this.isType === 'clear'}>
+          <div class="hb-header--desktop__navibar">
+            <div class="hb-header--desktop__navibar__routes">
+              <hb-anchor @event=${this.onEvent} class="hb-anchor"
+                ><hb-icon
+                  icon=${HbIconName['graphic/heybit']}
+                  size=${Size.large}
+                  style="--husc__icon__size__large: var(--husc__header__logo__width--desktop);"
+                ></hb-icon
+              ></hb-anchor>
+            </div>
+            <div class="hb-header--desktop__navibar__actions">
+              <hb-button class="hb-button" @click=${this.onClose}
+                ><hb-icon icon=${HbIconName['system/outline/close']} size=${Size.medium}></hb-icon
+              ></hb-button>
+            </div>
+          </div>
+        </hb-if>
       </div>
     </hb-responsive>`;
   }

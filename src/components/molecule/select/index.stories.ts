@@ -10,7 +10,14 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options, fixed, emptyText }) =>
+const OpionSlotTmpl: Story<HbSelect> = ({
+  value,
+  search,
+  options,
+  fixed,
+  emptyText,
+  placeholder
+}) =>
   html`
     <style>
       .wrap {
@@ -40,6 +47,7 @@ const OpionSlotTmpl: Story<HbSelect> = ({ value, search, options, fixed, emptyTe
         ?search=${search}
         .emptyText=${emptyText}
         .options=${options}
+        .placeholder=${placeholder}
         @event=${($event: Event) => console.log($event)}
       ></hb-select>
       <div style="height: 99999px;"></div>
@@ -52,6 +60,7 @@ primary.args = {
   fixed: false,
   value: '1',
   // options: undefined,
+  placeholder: '블라블라',
   emptyText: '내용이없습니다.',
   options: [
     { label: '1번', value: '1' },

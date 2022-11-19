@@ -302,6 +302,7 @@
       }
 
       &__content {
+        overflow-y: auto;
         width: 270px;
         height: 100vh;
         margin-left: auto;

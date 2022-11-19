@@ -5,6 +5,7 @@ export interface HbHeaderChip {
   alt: string;
   background: string;
 }
+export type HbHeaderType = 'normal' | 'clear';
 export interface HbHeaderGroup extends HbAnchorProps {
   name: string;
   desc: string;
@@ -21,6 +22,7 @@ export interface HbHeaderProps {
   myMenu: HbHeaderMyMenu[];
   authMenu: HbHeaderNavi[];
   defaultMenu: HbHeaderDefaultMenu[];
+  type?: HbHeaderType;
   user?: HbHeaderUser;
   loggedin?: boolean;
   pending?: boolean;
