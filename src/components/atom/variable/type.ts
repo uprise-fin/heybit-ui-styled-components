@@ -164,7 +164,10 @@ export const componentVariables = {
       left: 18
     },
     font: {
-      size: basicVariables.font.size
+      size: basicVariables.font.size,
+      color: {
+        '--placeholder': colorPalette.black[400]
+      }
     }
   },
   button: {

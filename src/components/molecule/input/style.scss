@@ -6,6 +6,7 @@
     min-height: var(--husc__input__minHeight);
     max-height: var(--husc__input__maxHeight);
     align-items: center;
+    color: var(--husc--black__800);
     padding: var(--husc__input__padding__top) var(--husc__input__padding__right)
       var(--husc__input__padding__bottom) var(--husc__input__padding__left);
     cursor: text;
@@ -69,6 +70,7 @@
     height: 100%;
     padding: 0;
     font-weight: inherit;
+    color: inherit;
     font-size: var(--husc__input__font__size);
     line-height: 1.3;
     box-sizing: border-box;
@@ -81,6 +83,9 @@
     font-family: var(--husc__font__family);
     box-shadow: 0 0 0 999px var(--husc__background__color) inset;
     background: inherit;
+    &::placeholder {
+      color: var(--husc__input__font__color--placeholder);
+    }
     //   box-shadow: 0 0 0 999px #{$hb-input__background--warning} inset;
     // }
   }
