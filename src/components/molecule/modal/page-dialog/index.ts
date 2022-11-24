@@ -1,12 +1,6 @@
+import { HbIconName } from '@/components/atom/icon/type';
 import { HbTransitionType } from '@/components/atom/transition/type';
 import { Base } from '@/components/base';
-import { HbIconName } from '@/components/atom/icon/type';
-import {
-  HbDialogAnchor,
-  HbDialogButton,
-  HbModalButtonAlign
-} from '@/components/molecule/modal/type';
-import { wait } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
@@ -49,19 +43,11 @@ export class HbPageDialog extends Base {
 
   hideCloseBtn = false;
 
-  buttonAlign = HbModalButtonAlign.horizon;
-
-  anchor: HbDialogAnchor;
-
-  buttons: HbDialogButton[];
-
   transitionType = HbTransitionType.zoom;
 
   disabled: boolean;
 
   get eventDisabled() {
-    if (this.buttons && this.buttons?.length)
-      return this.buttons.map((x) => x.loading).some((x) => x);
     return this.loading;
   }
   // get open() {
@@ -121,19 +107,6 @@ export class HbPageDialog extends Base {
         </div>
       </hb-modal>
     `;
-  }
-
-  async adapterEvent(button: HbDialogButton, index: number) {
-    const { event } = button;
-    if (this.baseLoadingDuration) {
-      const on = this.buttons.slice();
-      const off = this.buttons.slice();
-      on[index].loading = true;
-      this.buttons = on;
-      await Promise.all([event(), wait(this.baseLoadingDuration)]);
-      off[index].loading = false;
-      this.buttons = off;
-    } else event();
   }
 
   onClose() {

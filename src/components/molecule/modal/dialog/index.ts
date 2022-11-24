@@ -3,11 +3,7 @@ import { componentVariables } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
 import { HbIconName } from '@/components/atom/icon/type';
 import { HbButtonType } from '@/components/molecule/button/type';
-import {
-  HbDialogAnchor,
-  HbDialogButton,
-  HbModalButtonAlign
-} from '@/components/molecule/modal/type';
+import { HbDialogAnchor, HbDialogButton } from '@/components/molecule/modal/type';
 import { wait } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -51,7 +47,7 @@ export class HbDialog extends Base {
 
   hideCloseBtn = false;
 
-  buttonAlign = HbModalButtonAlign.horizon;
+  buttonAlign = 'horizon';
 
   anchor: HbDialogAnchor;
 

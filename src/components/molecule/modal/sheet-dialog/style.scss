@@ -78,11 +78,6 @@
           text-align: center;
         }
       }
-      // &::slotted(*) {
-      //   flex: 1;
-      //   border: 0;
-      //   text-align: center;
-      // }
       &.vertical {
         display: block;
         > * {
