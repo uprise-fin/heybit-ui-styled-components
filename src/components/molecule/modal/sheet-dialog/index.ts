@@ -4,7 +4,6 @@ import {
   VerticalAlign,
   HbIconName,
   HbButtonType,
-  HbModalButtonAlign,
   type HbDialogAnchor,
   type HbDialogButton
 } from '@/index';
@@ -49,7 +48,7 @@ export class HbSheetDialog extends Base {
 
   hideCloseBtn = false;
 
-  buttonAlign = HbModalButtonAlign.horizon;
+  buttonAlign = 'horizon';
 
   anchor: HbDialogAnchor;
 

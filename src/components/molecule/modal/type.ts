@@ -14,7 +14,11 @@ export interface HbModalProps {
   width?: number;
   persistent?: boolean;
 }
-export interface HbEventDialogProps extends HbModalProps {}
+export interface HbEventDialogProps extends HbModalProps {
+  image: string;
+  href: string;
+}
+export interface HbPageDialogProps extends HbModalProps {}
 export interface HbDialogProps extends HbModalProps {
   baseLoadingDuration?: number;
   loading?: boolean;
@@ -23,6 +27,7 @@ export interface HbDialogProps extends HbModalProps {
   hideCloseBtn?: boolean;
   anchor?: HbDialogAnchor;
   buttons?: HbDialogButton[];
+  buttonAlign?: HbModalButtonAlign;
 }
 export interface HbSheetDialogProps extends HbDialogProps {}
 
@@ -33,7 +38,4 @@ export interface HbDialogAnchor extends HbAnchorProps {
   name: string;
 }
 
-export enum HbModalButtonAlign {
-  'vertical' = 'vertical',
-  'horizon' = 'horizon'
-}
+export type HbModalButtonAlign = 'vertical' | 'horizon';

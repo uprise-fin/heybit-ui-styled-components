@@ -5,7 +5,6 @@ import type { HbDialog } from './index';
 import desktopImg from '~/static/sample-desktop.png';
 import thunderImg from '~/static/sample-thunder.svg';
 import { HbButtonTheme } from '@/components/molecule/button/type';
-import { HbModalButtonAlign } from '@/components/molecule/modal/type';
 interface HbDialogExpns extends HbDialog {
   content: string;
 }
@@ -68,11 +67,11 @@ const Template = (props: HbDialogExpns) => html`
 `;
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const HorizonTemplate: Story<HbDialogExpns> = (props) => {
-  props.buttonAlign = HbModalButtonAlign.horizon;
+  props.buttonAlign = 'horizon';
   return Template(props);
 };
 const VerticalTemplate: Story<HbDialogExpns> = (props) => {
-  props.buttonAlign = HbModalButtonAlign.vertical;
+  props.buttonAlign = 'vertical';
   return Template(props);
 };
 export const horizon: Story<HbDialogExpns> = HorizonTemplate.bind({});
