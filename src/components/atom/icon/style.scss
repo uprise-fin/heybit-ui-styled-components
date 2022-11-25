@@ -11,6 +11,8 @@
   @include host-styled {
     display: inline-flex;
     vertical-align: middle;
+    width: var(--husc__icon__size__medium);
+
     svg {
       fill: var(--husc__icon__color);
       > * {
