@@ -7,7 +7,6 @@
   padding: 0 var(--husc__list__padding__right) 0 var(--husc__list__padding__left);
   border: 0;
   align-items: center;
-  font-size: inherit;
   box-sizing: border-box;
   outline: none;
   background: none;
@@ -25,16 +24,16 @@
 
 .hb-list {
   @include host-styled {
+    @include inherit();
     overflow: hidden;
     display: block;
-    font-size: var(--husc__list__font__size);
-    font-family: var(--husc__font__family);
     border-radius: calc(var(--husc__border__radius) * 2);
     border: var(--husc__list__border__width) solid var(--husc__list__border__color);
     box-sizing: border-box;
   }
 
   &__wrap {
+    @include inherit();
     overflow: auto;
     max-height: inherit;
     background: var(--husc__background__color);
@@ -56,6 +55,7 @@
   }
   &__btn {
     @extend %option;
+    @include inherit();
     cursor: pointer;
   }
 }
