@@ -97,6 +97,12 @@
     }
   }
 }
+@mixin inherit($slot: 'font') {
+  @if ($slot == 'font') {
+    font: inherit;
+    color: inherit;
+  }
+}
 // @function getHoverColor($color) {
 //   @return getInteractiveColor($color, 10);
 // }
