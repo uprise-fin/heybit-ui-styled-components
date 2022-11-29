@@ -20,17 +20,18 @@
     background: var(--background);
     &::before {
       content: '';
-      $size: 47%;
+      $size: 120px;
       position: absolute;
       left: -$size;
       width: $size;
       height: 100%;
       background: linear-gradient(
         to right,
-        transparent 35.09%,
-        var(--background--accent) 61.3%,
-        transparent 88.67%
+        transparent 0%,
+        var(--background--accent) 50.52%,
+        transparent 100%
       );
+      opacity: 0.7;
       animation: skeleton-gradient var(--duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
   }
