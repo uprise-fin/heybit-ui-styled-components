@@ -12,13 +12,13 @@
   &__list {
     position: absolute;
     pointer-events: none;
+    max-height: calc(100vh - 200px);
     @include child-styled('[fixed]') {
       position: fixed;
       will-change: transform;
     }
     &--open {
       pointer-events: auto;
-      padding-bottom: 40px;
     }
   }
   // &__layer {
