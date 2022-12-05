@@ -179,10 +179,11 @@ export class HbSelect extends Base {
   }
 
   onShow() {
-    const { width, bottom } = this.getBoundingClientRect();
+    const { width } = this.getBoundingClientRect();
     this.open = true;
     this.width = width;
-    this.maxHeight = Math.min(document.body.scrollHeight - bottom, window.innerHeight) - 100;
+    // this.maxHeight = Math.min(document.body.scrollHeight - bottom, window.innerHeight) - 100;
+    this.maxHeight = window.innerHeight - 100;
     if (this.search) this.hasFocus = true;
     if (this.fixed) {
       this.onScroll();
