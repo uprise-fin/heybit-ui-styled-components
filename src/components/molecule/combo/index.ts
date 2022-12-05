@@ -23,8 +23,8 @@ import { customElement } from 'lit/decorators.js';
  * @csspart list
  */
 
-@customElement('hb-select')
-export class HbSelect extends Base {
+@customElement('hb-combo')
+export class HbCombo extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -54,6 +54,8 @@ export class HbSelect extends Base {
   value = '';
 
   options: HbListOption[] = [];
+
+  placeholder = '검색어를 입력해주세요.';
 
   emptyText = '검색결과가 없습니다.';
 
@@ -86,6 +88,15 @@ export class HbSelect extends Base {
     return this.options?.filter((x) => x.label.includes(this.inputValue)) || [];
   }
 
+  get values() {
+    return this.options?.map((x) => x.value) || [];
+  }
+
+  get label() {
+    if (this.hasFocus || !this.options) return this.inputValue;
+    return this.options?.find((x) => x.value === this.value)?.label || '';
+  }
+
   get scrollEventListener() {
     if (this.parentQuery) return this.parentEl;
     return window;
@@ -93,40 +104,106 @@ export class HbSelect extends Base {
 
   render() {
     return html`
-      <select
-        class="hb-select__el"
-        @change=${this.onSelect}
-        ?disabled=${!this.list || !this.list.length}
+      <hb-input
+        class="hb-combo__label"
+        id="label"
+        part="label"
+        class="hb-combo__input"
+        ?readonly=${!this.search}
+        value=${this.label}
+        placeholder=${this.placeholder}
+        @event=${this.onInput}
       >
-        ${this.list && this.list.length
-          ? this.list.map((x) => html` <option value=${x.value}>${x.label}</option> `)
-          : html`<option>${this.emptyText}</option>`}
-      </select>
-      <span class="hb-select__icon-wrap">
+        <slot name="icon" class="hb-combo__label--icon"></slot>
         <hb-icon
-          class="hb-select__icon-wrap__el"
+          slot="slot--right"
           icon=${HbIconName['system/outline/arrow-dropdown']}
           size=${Size.small}
         ></hb-icon>
-      </span>
+      </hb-input>
+      <hb-transition id="select-transition" ?show=${this.open} type=${HbTransitionType.fade}>
+        <hb-list
+          tabindex="0"
+          emptyText=${this.emptyText}
+          id="list"
+          class="hb-combo__list${this.open ? ' hb-combo__list--open' : ''}"
+          style="width: ${this.width}px;transform: translate(${this.left}px,${this.top}px);"
+          @event=${this.onSelect}
+          .options=${this.list}
+          .value=${this.value}
+        ></hb-list>
+      </hb-transition>
     `;
+  }
+
+  async connectedCallback() {
+    await super.connectedCallback();
+    this.onfocus = () => this.adapterShow();
+    this.onblur = () => this.onHide();
+    this.inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'label');
+    if (this.parentQuery) this.parentEl = document.querySelector(this.parentQuery);
+  }
+
+  disconnectedCallback() {
+    this.onfocus = () => null;
+    this.onblur = () => null;
+  }
+
+  onScroll() {
+    const { bottom } = this.getBoundingClientRect();
+    if (bottom > 100) this.maxHeight = window.innerHeight - bottom - 50;
+    this.top = -(this.parentEl ? this.parentEl?.scrollTop : window.scrollY);
+    this.left = -(this.parentEl ? this.parentEl?.scrollLeft : window.scrollX);
+  }
+
+  onScrollBound = this.onScroll.bind(this);
+
+  onInput(ev: InputEvent) {
+    const { target } = ev;
+    if (!(target instanceof HbInput)) return;
+    this.inputValue = target.value;
   }
 
   onSelect(ev: Event) {
     ev.stopImmediatePropagation();
     const { target } = ev;
-    if (!(target instanceof HTMLSelectElement)) return;
+    if (!(target instanceof HbList)) return;
     const { value } = target;
     if (this.attributeSync) this.setAttribute('value', value!);
     this.value = value!;
     this.inputValue = '';
     // this.dispatchEvent(new CustomEvent('event', evt));
     this.onEvent(new CustomEvent('event'));
+    this.resolve();
+  }
+
+  onShow() {
+    const { width } = this.getBoundingClientRect();
+    this.open = true;
+    this.width = width;
+    if (this.search) this.hasFocus = true;
+    if (this.fixed) {
+      this.onScroll();
+      this.scrollEventListener.addEventListener('scroll', this.onScrollBound);
+    }
+  }
+
+  async adapterShow() {
+    this.onShow();
+    await new Promise((resolve) => (this.resolve = resolve));
+    this.onHide();
+  }
+
+  onHide() {
+    this.blur();
+    this.open = false;
+    if (this.search) this.hasFocus = false;
+    if (this.fixed) this.scrollEventListener.removeEventListener('scroll', this.onScrollBound);
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'hb-select': HbSelect;
+    'hb-combo': HbCombo;
   }
 }
