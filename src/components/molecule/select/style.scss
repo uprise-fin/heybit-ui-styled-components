@@ -12,6 +12,7 @@
   &__list {
     position: absolute;
     pointer-events: none;
+    max-height: 70vh;
     @include child-styled('[fixed]') {
       position: fixed;
       will-change: transform;

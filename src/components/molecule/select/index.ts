@@ -127,8 +127,7 @@ export class HbSelect extends Base {
           emptyText=${this.emptyText}
           id="list"
           class="hb-select__list${this.open ? ' hb-select__list--open' : ''}"
-          style="width: ${this.width}px;transform: translate(${this.left}px,${this
-            .top}px);max-height:${this.maxHeight}px;"
+          style="width: ${this.width}px;transform: translate(${this.left}px,${this.top}px);"
           @event=${this.onSelect}
           .options=${this.list}
           .value=${this.value}
@@ -179,10 +178,9 @@ export class HbSelect extends Base {
   }
 
   onShow() {
-    const { width, bottom } = this.getBoundingClientRect();
+    const { width } = this.getBoundingClientRect();
     this.open = true;
     this.width = width;
-    this.maxHeight = Math.min(document.body.scrollHeight - bottom, window.innerHeight) - 100;
     if (this.search) this.hasFocus = true;
     if (this.fixed) {
       this.onScroll();
