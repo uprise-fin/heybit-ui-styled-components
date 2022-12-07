@@ -4,6 +4,7 @@
   @include host-styled {
     display: flex;
     border-radius: calc(var(--husc__border__radius) * 2);
+    border: var(--husc__input__border__width) solid var(--husc__input__border__color);
     background: var(--husc__background__color);
   }
   &__el {
@@ -18,7 +19,6 @@
     cursor: text;
     font-size: var(--husc__input__font__size);
     font-family: var(--husc__font__family);
-    border: var(--husc__input__border__width) solid var(--husc__input__border__color);
     box-sizing: border-box;
     border: 0;
     background: none;
