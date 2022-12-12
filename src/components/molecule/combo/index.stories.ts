@@ -1,16 +1,16 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
-import type { HbSelect } from './index';
+import type { HbCombo } from './index';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'components/molecule/hb-select',
-  component: 'hb-select'
+  title: 'components/molecule/hb-combo',
+  component: 'hb-combo'
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const OpionSlotTmpl: Story<HbSelect> = ({ value, options, emptyText }) =>
+const OpionSlotTmpl: Story<HbCombo> = ({ value, search, options, fixed, emptyText, placeholder }) =>
   html`
     <style>
       .wrap {
@@ -34,20 +34,26 @@ const OpionSlotTmpl: Story<HbSelect> = ({ value, options, emptyText }) =>
       <br />
       <br />
       <div style="height: 299px;"></div>
-      <hb-select
+      <hb-combo
         value=${value}
+        ?fixed=${fixed}
+        ?search=${search}
         .emptyText=${emptyText}
         .options=${options}
+        .placeholder=${placeholder}
         @event=${($event: Event) => console.log($event)}
-      ></hb-select>
+      ></hb-combo>
       <div style="height: 99999px;"></div>
     </div>
   `;
 
-export const primary: Story<HbSelect> = OpionSlotTmpl.bind({});
+export const primary: Story<HbCombo> = OpionSlotTmpl.bind({});
 primary.args = {
-  value: '5',
+  search: false,
+  fixed: false,
+  value: '1',
   // options: undefined,
+  placeholder: '블라블라',
   emptyText: '내용이없습니다.',
   options: [
     { label: '1번', value: '1' },

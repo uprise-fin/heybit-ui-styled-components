@@ -2,35 +2,57 @@
 
 .hb-select {
   @include host-styled {
-    display: flex;
-    border-radius: calc(var(--husc__border__radius) * 2);
-    border: var(--husc__input__border__width) solid var(--husc__input__border__color);
-    background: var(--husc__background__color);
-  }
-  &__el {
-    display: flex;
-    width: 100%;
-    min-height: var(--husc__input__minHeight);
-    max-height: var(--husc__input__maxHeight);
-    align-items: center;
-    color: var(--husc--black__800);
-    padding: var(--husc__input__padding__top) calc(var(--husc__input__padding__right) * 3)
-      var(--husc__input__padding__bottom) var(--husc__input__padding__left);
-    cursor: text;
-    font-size: var(--husc__input__font__size);
+    // z-index: zIndex("레이어");
+    // position: relative;
+    display: block;
     font-family: var(--husc__font__family);
-    box-sizing: border-box;
-    border: 0;
-    background: none;
-    transition: border-color var(--husc__transition__duration--ms);
-    appearance: none;
+    font-size: var(--husc__select__font__size);
   }
-  &__icon-wrap {
-    width: 0;
+
+  &__select {
+    position: absolute;
+    height: 50px;
+    margin-top: -50px;
+    opacity: 0;
+  }
+
+  &__list {
+    position: absolute;
     pointer-events: none;
-    &__el {
-      height: 100%;
-      transform: translateX(-200%);
+    max-height: 70vh;
+    @include child-styled('[fixed]') {
+      position: fixed;
+      will-change: transform;
+    }
+    &--open {
+      pointer-events: auto;
+    }
+  }
+  // &__layer {
+  //   z-index: -1;
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   left: 0;
+  // }
+  // &__input {
+  //   height: 100%;
+  //   padding: 0;
+  //   font-size: inherit;
+  //   flex: 1;
+  //   border: 0;
+  //   outline: none;
+  //   cursor: inherit;
+  // }
+  &__label {
+    // @extend %option;
+    cursor: pointer;
+
+    @include child-styled('.hb-select__list--open') {
+      &:not(:read-only) {
+        cursor: auto;
+      }
     }
   }
   // &__modal {
