@@ -8,6 +8,7 @@ export interface HbListProps {
 export interface HbListOption {
   label: string;
   value: string;
+  disabled?: boolean;
 }
 export interface HbListEvent extends Event {
   target: HbList;

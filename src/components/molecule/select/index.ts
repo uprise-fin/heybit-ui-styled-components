@@ -17,35 +17,48 @@ export class HbSelect extends Base {
     return [require('./style.scss').default];
   }
 
+  disabled: boolean;
+
   value = '';
 
   options: HbListOption[] = [];
 
-  emptyText = '검색결과가 없습니다.';
+  placeholder = '선택해주세요.';
+
+  emptyText = '데이터가 없습니다.';
 
   static get properties() {
     return {
       value: { type: String, Reflect: true },
+      disabled: { type: Boolean, Reflect: true },
       options: { type: Array, Reflect: true },
+      placeholder: { type: String, Reflect: true },
       emptyText: { type: String, Reflect: true }
     };
   }
 
   get list() {
-    return this.options || [];
+    const placeholder: HbListOption[] = [{ value: '', label: this.placeholder, disabled: true }];
+    return placeholder.concat(
+      this.options.length ? this.options : [{ value: ' ', label: this.emptyText, disabled: true }]
+    );
   }
 
   render() {
     return html`
-      <select class="hb-select__el" @change=${this.onSelect} ?disabled=${!this.list.length}>
-        ${this.list.length
-          ? this.list.map(
-              (x) =>
-                html`
-                  <option ?selected=${this.value === x.value} value=${x.value}>${x.label}</option>
-                `
-            )
-          : html`<option>${this.emptyText}</option>`}
+      <select
+        class=${'hb-select__el' + (this.value === '' ? ' hb-select__el--init' : '')}
+        @change=${this.onSelect}
+        ?disabled=${this.disabled}
+      >
+        ${this.list.map(
+          (x) =>
+            html`
+              <option ?selected=${this.value === x.value} value=${x.value} ?disabled=${x.disabled}>
+                ${x.label}
+              </option>
+            `
+        )}
       </select>
       <span class="hb-select__icon-wrap">
         <hb-icon
