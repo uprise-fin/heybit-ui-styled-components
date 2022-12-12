@@ -51,7 +51,7 @@ export const primary: Story<HbCombo> = OpionSlotTmpl.bind({});
 primary.args = {
   search: false,
   fixed: false,
-  value: '1',
+  value: '',
   // options: undefined,
   placeholder: '블라블라',
   emptyText: '내용이없습니다.',

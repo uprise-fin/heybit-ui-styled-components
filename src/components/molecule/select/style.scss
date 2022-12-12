@@ -24,6 +24,9 @@
     background: none;
     transition: border-color var(--husc__transition__duration--ms);
     appearance: none;
+    &--init {
+      color: var(--husc__input__font__color--placeholder);
+    }
   }
   &__icon-wrap {
     width: 0;
