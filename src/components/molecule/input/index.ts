@@ -178,39 +178,9 @@ export class HbInput extends InitAttribute<HbInputProps> {
     }
   }
 
-  readonly ableNumber = Array(10)
-    .fill('')
-    .map((_, i) => i + '')
-    .concat('.');
+  readonly ableNumber = /([.,0-9])/;
 
-  readonly ableEnglish = [
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p',
-    'q',
-    'r',
-    's',
-    't',
-    'u',
-    'v',
-    'w',
-    'x',
-    'y',
-    'z'
-  ];
+  readonly ableEnglish = /[a-z]/;
 
   onEnter(ev: KeyboardEvent) {
     if (ev.key === 'Enter') {
@@ -234,12 +204,13 @@ export class HbInput extends InitAttribute<HbInputProps> {
     if (this.type === HbInputType.number) {
       //숫자만 입력받도록 값 변경
       const { data } = ev;
-      if (data !== null && !this.ableNumber.includes(data)) inputEl.value = this.value;
+      if (data !== null && !this.ableNumber.test(data)) inputEl.value = this.value;
       else inputEl.value = this.toNumeric(value);
       value = inputEl.value;
     } else if (this.type === HbInputType.english) {
       const { data } = ev;
-      if (data !== null && !this.ableEnglish.includes(data)) inputEl.value = this.value;
+
+      if (data !== null && !this.ableEnglish.test(data)) inputEl.value = this.value;
       value = inputEl.value;
     } else {
       inputEl.value = value;
