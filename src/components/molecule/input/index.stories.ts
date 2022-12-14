@@ -60,3 +60,15 @@ number.args = {
   readonly: false,
   disabled: false
 };
+export const english: Story<HbInput> = Template.bind({});
+english.args = {
+  type: HbInputType.english,
+  maxlength: 10,
+  placeholder: '숫자를써볼까요?',
+  decimal: 2,
+  comma: 3,
+  error: false,
+  notAllowedFirstZero: false,
+  readonly: false,
+  disabled: false
+};
