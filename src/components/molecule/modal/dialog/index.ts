@@ -79,6 +79,7 @@ export class HbDialog extends Base {
     return {
       open: { type: Boolean, Reflect: true },
       buttons: { type: Array, Reflect: true },
+      anchor: { type: Object, Reflect: true },
       disabled: { type: Boolean, Reflect: true },
       eventDisabled: { type: Boolean, Reflect: true },
       persistent: { type: Boolean, Reflect: true },
