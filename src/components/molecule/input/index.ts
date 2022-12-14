@@ -178,9 +178,9 @@ export class HbInput extends InitAttribute<HbInputProps> {
     }
   }
 
-  readonly ableNumber = /([.,0-9])/;
+  readonly ableNumber = /([.|0-9])/;
 
-  readonly ableEnglish = /[a-z]/;
+  readonly ableEnglish = /[a-z|A-Z]/;
 
   onEnter(ev: KeyboardEvent) {
     if (ev.key === 'Enter') {
