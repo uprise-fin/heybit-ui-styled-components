@@ -119,7 +119,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   get isType() {
-    if (this.type === HbInputType.number) return HbInputType.text;
+    if ([HbInputType.number, HbInputType.english].includes(this.type)) return HbInputType.text;
     return this.type;
   }
 
@@ -183,6 +183,35 @@ export class HbInput extends InitAttribute<HbInputProps> {
     .map((_, i) => i + '')
     .concat('.');
 
+  readonly ableEnglish = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z'
+  ];
+
   onEnter(ev: KeyboardEvent) {
     if (ev.key === 'Enter') {
       ev.preventDefault();
@@ -207,6 +236,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
       const { data } = ev;
       if (data !== null && !this.ableNumber.includes(data)) inputEl.value = this.value;
       else inputEl.value = this.toNumeric(value);
+      value = inputEl.value;
+    } else if (this.type === HbInputType.english) {
+      const { data } = ev;
+      if (data !== null && !this.ableEnglish.includes(data)) inputEl.value = this.value;
       value = inputEl.value;
     } else {
       inputEl.value = value;

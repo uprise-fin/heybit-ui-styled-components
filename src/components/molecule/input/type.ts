@@ -13,7 +13,8 @@ export interface HbInputProps {
 export enum HbInputType {
   text = 'text',
   number = 'number',
-  password = 'password'
+  password = 'password',
+  english = 'english'
 }
 export enum HbInputSlots {
   'slot--left' = 'slot--left',
