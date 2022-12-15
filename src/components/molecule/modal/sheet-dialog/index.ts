@@ -80,6 +80,7 @@ export class HbSheetDialog extends Base {
       open: { type: Boolean, Reflect: true },
       buttons: { type: Array, Reflect: true },
       eventDisabled: { type: Boolean, Reflect: true },
+      anchor: { type: Object, Reflect: true },
       disabled: { type: Boolean, Reflect: true },
       persistent: { type: Boolean, Reflect: true },
       hideCloseBtn: { type: Boolean, Reflect: true },
