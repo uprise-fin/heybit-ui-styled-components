@@ -180,7 +180,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   readonly ableNumber = /([.|0-9])/;
 
-  readonly ableEnglish = /[a-z|A-Z]/;
+  readonly ableEnglish = /[a-z]/i;
 
   onEnter(ev: KeyboardEvent) {
     if (ev.key === 'Enter') {
@@ -221,6 +221,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
       this.onResize();
       this.onChange();
     }
+  }
+
+  toEnglish(value: string) {
+    return value.replace(/([^a-z])/gi, '');
   }
 
   toNumeric(value: string, toNumber: boolean = false) {
@@ -282,12 +286,13 @@ export class HbInput extends InitAttribute<HbInputProps> {
     if (name === 'value') {
       // value값을 넘겨받을때(input이벤트없이 입력받을때)
       const inputEl = this.inputEl;
-      if (this.maxlength) {
-        if (this.type === HbInputType.number)
-          newVal = this.toNumeric(newVal, true).substring(0, this.maxlength);
-        else newVal = newVal.substring(0, this.maxlength);
-      }
-      if (this.type === HbInputType.number) newVal = this.toNumeric(newVal);
+      if (this.type === HbInputType.number) {
+        newVal = this.toNumeric(newVal);
+        if (this.maxlength) newVal.substring(0, this.maxlength);
+      } else if (this.type === HbInputType.english) {
+        newVal = this.toEnglish(newVal);
+        if (this.maxlength) newVal.substring(0, this.maxlength);
+      } else newVal = newVal.substring(0, this.maxlength);
       if (inputEl && inputEl.value !== newVal) {
         inputEl.value = newVal;
         this.onResize();

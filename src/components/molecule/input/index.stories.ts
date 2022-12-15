@@ -36,6 +36,7 @@ const Template: Story<HbInput> = ({
     @submit=${($event: HbInputEvent) => console.log($event.target.originalValue, '서브밋')}
     @event=${($event: HbInputEvent) => console.log($event.target.originalValue)}
   ></hb-input>
+  <button @click=${() => console.log(document.querySelector('hb-input').value)}>서브밋</button>
 `;
 
 export const text: Story<HbInput> = Template.bind({});
@@ -64,7 +65,7 @@ export const english: Story<HbInput> = Template.bind({});
 english.args = {
   type: HbInputType.english,
   maxlength: 10,
-  placeholder: '숫자를써볼까요?',
+  placeholder: '영어만 써봅니다?',
   decimal: 2,
   comma: 3,
   error: false,
