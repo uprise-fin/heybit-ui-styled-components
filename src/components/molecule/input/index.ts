@@ -138,6 +138,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
     return this._value;
   }
 
+  get isMaxlength() {
+    return this.maxlength || Infinity;
+  }
+
   render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
@@ -193,28 +197,25 @@ export class HbInput extends InitAttribute<HbInputProps> {
     const inputEl = this.inputEl;
     let { value } = inputEl;
     if (this.nowrap) value = value.replace(/\n/g, '');
-    if (this.maxlength) {
-      if (this.type === HbInputType.number)
-        value = this.toNumeric(value, true).substring(0, this.maxlength);
-      else {
-        value = value.substring(0, this.maxlength);
-      }
-    }
+    // if (this.maxlength) {
+    //   if (this.type === HbInputType.number)
+    //     value = this.toNumeric(value, true).substring(0, this.maxlength);
+    //   else {
+    //     value = value.substring(0, this.maxlength);
+    //   }
+    // }
 
+    const { data } = ev;
     if (this.type === HbInputType.number) {
-      //숫자만 입력받도록 값 변경
-      const { data } = ev;
-      if (data !== null && !this.ableNumber.test(data)) inputEl.value = this.value;
-      else inputEl.value = this.toNumeric(value);
-      value = inputEl.value;
+      if (data !== null && !this.ableNumber.test(data)) value = this.value;
+      else value = this.toNumeric(value);
     } else if (this.type === HbInputType.english) {
-      const { data } = ev;
-
-      if (data !== null && !this.ableEnglish.test(data)) inputEl.value = this.value;
-      value = inputEl.value;
+      if (data !== null && !this.ableEnglish.test(data)) value = this.value;
+      else value = this.toEnglish(value);
     } else {
-      inputEl.value = value;
+      value = value.substring(0, this.isMaxlength);
     }
+    inputEl.value = value;
     // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
     // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
     if (this.value !== value) {
@@ -224,7 +225,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   toEnglish(value: string) {
-    return value.replace(/([^a-z])/gi, '');
+    return value.replace(/([^a-z])/gi, '').substring(0, this.isMaxlength);
   }
 
   toNumeric(value: string, toNumber: boolean = false) {
@@ -244,7 +245,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
       value = value.replace(/^^0[{1-9}]/gi, '{1}'); // 최초 0뒤에 오는 숫자 => 앞 0 제거
       value = value.replace(/^0{2,}/gi, '0'); // 최초 0 2개이상 0으로 변경
     }
-    value = value.replace(/[^0-9]/gi, ''); // 숫자 말고 전부 제거
+    value = value.replace(/[^0-9]/gi, '').substring(0, this.isMaxlength); // 숫자 말고 전부 제거
 
     if (!toNumber) {
       const req = new RegExp(`\\B(?=(\\d{${this.comma}})+(?!\\d))`, 'g');
@@ -288,14 +289,15 @@ export class HbInput extends InitAttribute<HbInputProps> {
       const inputEl = this.inputEl;
       if (this.type === HbInputType.number) {
         newVal = this.toNumeric(newVal);
-        if (this.maxlength) newVal.substring(0, this.maxlength);
       } else if (this.type === HbInputType.english) {
         newVal = this.toEnglish(newVal);
-        if (this.maxlength) newVal.substring(0, this.maxlength);
-      } else newVal = newVal.substring(0, this.maxlength);
+      } else {
+        newVal = newVal.substring(0, this.isMaxlength);
+      }
       if (inputEl && inputEl.value !== newVal) {
         inputEl.value = newVal;
         this.onResize();
+        this.onChange();
       }
     }
 
