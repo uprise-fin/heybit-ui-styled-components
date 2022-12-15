@@ -57,7 +57,19 @@ number.args = {
   decimal: 2,
   comma: 3,
   error: false,
-  notAllowedFirstZero: false,
+
+  readonly: false,
+  disabled: false
+};
+export const currency: Story<HbInput> = Template.bind({});
+currency.args = {
+  type: HbInputType.currency,
+  maxlength: 10,
+  placeholder: '숫자를써볼까요?',
+  decimal: 2,
+  comma: 3,
+  error: false,
+
   readonly: false,
   disabled: false
 };
@@ -69,7 +81,7 @@ english.args = {
   decimal: 2,
   comma: 3,
   error: false,
-  notAllowedFirstZero: false,
+
   readonly: false,
   disabled: false
 };
