@@ -18,7 +18,6 @@ const Template: Story<HbInput> = ({
   decimal,
   comma,
   error,
-  notAllowedFirstZero,
   readonly,
   disabled
 }) => html`
@@ -26,7 +25,6 @@ const Template: Story<HbInput> = ({
     type=${type}
     placeholder=${placeholder}
     ?error=${error}
-    ?notAllowedFirstZero=${notAllowedFirstZero}
     ?readonly=${readonly}
     ?disabled=${disabled}
     .maxlength=${maxlength}
