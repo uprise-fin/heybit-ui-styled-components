@@ -111,7 +111,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   get inputmode() {
-    if ([HbInputType.number, HbInputType.currency].includes(this.type)) return 'decimal';
+    if ([HbInputType.number].includes(this.type)) return 'numeric';
+    if ([HbInputType.currency].includes(this.type)) return 'decimal';
     return null;
   }
 
