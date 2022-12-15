@@ -42,8 +42,6 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   decimal: number = 2;
 
-  notAllowedFirstZero: boolean;
-
   comma: number = 3;
 
   _readonly: boolean = false;
@@ -97,7 +95,6 @@ export class HbInput extends InitAttribute<HbInputProps> {
       placeholder: { type: String, Reflect: true },
       maxlength: { type: Number, Reflect: true },
       comma: { type: Number, Reflect: true },
-      notAllowedFirstZero: { type: Boolean, Reflect: true },
       decimal: { type: Number, Reflect: true },
       error: { type: Boolean, Reflect: true },
       readonly: { type: Boolean, Reflect: true },
@@ -109,17 +106,18 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   get pattern() {
-    if (this.type === 'number') return '[0-9]*';
+    if ([HbInputType.number, HbInputType.currency].includes(this.type)) return '[0-9]*';
     return null;
   }
 
   get inputmode() {
-    if (this.type === 'number') return 'decimal';
+    if ([HbInputType.number, HbInputType.currency].includes(this.type)) return 'decimal';
     return null;
   }
 
   get isType() {
-    if ([HbInputType.number, HbInputType.english].includes(this.type)) return HbInputType.text;
+    if ([HbInputType.number, HbInputType.currency, HbInputType.english].includes(this.type))
+      return HbInputType.text;
     return this.type;
   }
 
@@ -134,7 +132,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   get originalValue() {
-    if (this.type === HbInputType.number) return this.toNumeric(this._value, true);
+    if (this.type === HbInputType.currency) return this.toCurrency(this._value, true);
     return this._value;
   }
 
@@ -182,7 +180,9 @@ export class HbInput extends InitAttribute<HbInputProps> {
     }
   }
 
-  readonly ableNumber = /([.|0-9])/;
+  readonly ableNumber = /([0-9])/;
+
+  readonly ableCurrency = /([.|0-9])/;
 
   readonly ableEnglish = /[a-z]/i;
 
@@ -199,7 +199,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
     if (this.nowrap) value = value.replace(/\n/g, '');
     // if (this.maxlength) {
     //   if (this.type === HbInputType.number)
-    //     value = this.toNumeric(value, true).substring(0, this.maxlength);
+    //     value = this.toCurrency(value, true).substring(0, this.maxlength);
     //   else {
     //     value = value.substring(0, this.maxlength);
     //   }
@@ -208,7 +208,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
     const { data } = ev;
     if (this.type === HbInputType.number) {
       if (data !== null && !this.ableNumber.test(data)) value = this.value;
-      else value = this.toNumeric(value);
+      else value = this.toNumber(value);
+    } else if (this.type === HbInputType.currency) {
+      if (data !== null && !this.ableCurrency.test(data)) value = this.value;
+      else value = this.toCurrency(value);
     } else if (this.type === HbInputType.english) {
       if (data !== null && !this.ableEnglish.test(data)) value = this.value;
       else value = this.toEnglish(value);
@@ -228,7 +231,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
     return value.replace(/([^a-z])/gi, '').substring(0, this.isMaxlength);
   }
 
-  toNumeric(value: string, toNumber: boolean = false) {
+  toCurrency(value: string, toNumber: boolean = false) {
     if (!value || typeof value !== 'string') return '';
     let dotIndex = value.indexOf('.');
     if (dotIndex === 0) {
@@ -241,10 +244,8 @@ export class HbInput extends InitAttribute<HbInputProps> {
       decimal = value.substring(dotIndex + 1, dotIndex + 1 + this.decimal);
       value = value.substring(0, dotIndex);
     }
-    if (this.notAllowedFirstZero) {
-      value = value.replace(/^^0[{1-9}]/gi, '{1}'); // 최초 0뒤에 오는 숫자 => 앞 0 제거
-      value = value.replace(/^0{2,}/gi, '0'); // 최초 0 2개이상 0으로 변경
-    }
+    value = value.replace(/^^0[{1-9}]/gi, '{1}'); // 최초 0뒤에 오는 숫자 => 앞 0 제거
+    value = value.replace(/^0{2,}/gi, '0'); // 최초 0 2개이상 0으로 변경
     value = value.replace(/[^0-9]/gi, '').substring(0, this.isMaxlength); // 숫자 말고 전부 제거
 
     if (!toNumber) {
@@ -252,6 +253,12 @@ export class HbInput extends InitAttribute<HbInputProps> {
       value = value.replace(req, ',');
     }
     return value + `${hasDot ? '.' : ''}${decimal.replace(/[^0-9]/gi, '')}`;
+  }
+
+  toNumber(value: string) {
+    if (!value || typeof value !== 'string') return '';
+
+    return value.replace(/[^0-9]/gi, '').substring(0, this.isMaxlength); // 숫자 말고 전부 제거
   }
 
   onChange() {
@@ -288,7 +295,9 @@ export class HbInput extends InitAttribute<HbInputProps> {
       // value값을 넘겨받을때(input이벤트없이 입력받을때)
       const inputEl = this.inputEl;
       if (this.type === HbInputType.number) {
-        newVal = this.toNumeric(newVal);
+        newVal = this.toNumber(newVal);
+      } else if (this.type === HbInputType.currency) {
+        newVal = this.toCurrency(newVal);
       } else if (this.type === HbInputType.english) {
         newVal = this.toEnglish(newVal);
       } else {
