@@ -31,10 +31,10 @@ const Template: Story<HbInput> = ({
     .decimal=${decimal}
     .comma=${comma}
     .value=${value}
-    @submit=${($event: HbInputEvent) => console.log($event.target.originalValue, '서브밋')}
+    @submit=${($event: HbInputEvent) => console.log($event.target.originalValue, 'submit')}
     @event=${($event: HbInputEvent) => console.log($event.target.originalValue)}
   ></hb-input>
-  <button @click=${() => console.log(document.querySelector('hb-input').value)}>서브밋</button>
+  <button @click=${() => console.log(document.querySelector('hb-input').value)}>submit</button>
 `;
 
 export const text: Story<HbInput> = Template.bind({});
