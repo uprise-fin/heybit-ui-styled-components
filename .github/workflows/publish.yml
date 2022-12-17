@@ -2,9 +2,8 @@
 name: publish
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [closed]
 
 jobs:
   publish:
