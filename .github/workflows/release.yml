@@ -1,10 +1,9 @@
-# npmjs registry 퍼블리시
-name: publish
+name: create release
 
 on:
   push:
     branches:
-      - 'release/**'
+      - 'v*'
 
 jobs:
   publish:
