@@ -13,6 +13,9 @@ jobs:
     runs-on: macOS-latest
     permissions: write-all
     steps:
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
       - uses: actions/checkout@v2
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v2
@@ -46,3 +49,15 @@ jobs:
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.package-version.outputs.current-version}}
+          release_name: Release ${{ steps.package-version.outputs.current-version}}🌈
+          body: |
+            https://www.npmjs.com/package/heybit-ui-styled-components npmjs에서 릴리즈 정보를 확인하세요.
+          draft: false
+          prerelease: false
