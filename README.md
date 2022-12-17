@@ -58,6 +58,11 @@ const loginButtonProps: HbButtonProps = {
 >
 ```
 
+## 배포방법
+
+1. 태그로 storybook 에 배포 && 테스트하기
+2. package.json 의 버전을 알맞게 올리고 main 브랜치에 PR & merged => 배포완료
+
 ### 글로벌 css에 스타일을 넣어서 컴포넌트가 정상적인 디자인으로 노출되지 않는다면?
 
 1. 글로벌 css에 스타일을 특정 스타일을 제거하기 어렵다면 not 셀렉터로 우회하는 방법
