@@ -292,6 +292,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   attributeChangedCallback(name: string, _: string, newVal: string) {
     if (name === 'value') {
+      if (this.disabled) return;
       // value값을 넘겨받을때(input이벤트없이 입력받을때)
       const inputEl = this.inputEl;
       if (this.type === HbInputType.number) {
