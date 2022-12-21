@@ -3,7 +3,7 @@ import { InitAttribute } from '@/components/base';
 import { getElement } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbInputEvent, HbInputProps, HbInputType } from './type';
+import { HbInputProps, HbInputType } from './type';
 
 /**
  * An example element.
@@ -30,7 +30,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
     return [require('./style.scss').default];
   }
 
-  _value = '';
+  _value?: string;
 
   inputEl?: HTMLInputElement;
 
@@ -88,7 +88,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   static get properties() {
     return {
-      _value: { type: String, Reflect: true },
+      // _value: { type: String, Reflect: true },
       value: { type: String, Reflect: true },
       attributeSync: { type: Boolean, Reflect: true },
       type: { type: String, Reflect: true },
@@ -121,10 +121,27 @@ export class HbInput extends InitAttribute<HbInputProps> {
     return this.type;
   }
 
-  set value(value: string) {
+  set value(originalValue: string) {
+    let value = originalValue;
+    if ((this.readonly || this.disabled) && this._value !== undefined) value = this._value;
     if (!value || value === 'null') value = '';
-    this._value = value || '';
-    this.setAttribute('value', value);
+    if (this.nowrap) value = value.replace(/\n/g, '');
+    if (this.type === HbInputType.number) {
+      value = this.toNumber(value);
+    } else if (this.type === HbInputType.currency) {
+      value = this.toCurrency(value);
+    } else if (this.type === HbInputType.english) {
+      value = this.toEnglish(value);
+    } else {
+      value = value.substring(0, this.isMaxlength);
+    }
+    if (this._value !== value) {
+      this._value = value || '';
+      this.onResize();
+      this.onChange();
+      this.setAttribute('value', this._value);
+    }
+    if (originalValue !== value && this.inputEl) this.inputEl.value = this._value;
   }
 
   get value() {
@@ -193,38 +210,10 @@ export class HbInput extends InitAttribute<HbInputProps> {
     }
   }
 
-  onInput(ev: HbInputEvent) {
+  onInput() {
     const inputEl = this.inputEl;
-    let { value } = inputEl;
-    if (this.nowrap) value = value.replace(/\n/g, '');
-    // if (this.maxlength) {
-    //   if (this.type === HbInputType.number)
-    //     value = this.toCurrency(value, true).substring(0, this.maxlength);
-    //   else {
-    //     value = value.substring(0, this.maxlength);
-    //   }
-    // }
-
-    const { data } = ev;
-    if (this.type === HbInputType.number) {
-      if (data !== null && !this.ableNumber.test(data)) value = this.value;
-      else value = this.toNumber(value);
-    } else if (this.type === HbInputType.currency) {
-      if (data !== null && !this.ableCurrency.test(data)) value = this.value;
-      else value = this.toCurrency(value);
-    } else if (this.type === HbInputType.english) {
-      if (data !== null && !this.ableEnglish.test(data)) value = this.value;
-      else value = this.toEnglish(value);
-    } else {
-      value = value.substring(0, this.isMaxlength);
-    }
-    inputEl.value = value;
-    // 인풋에 입력 시 attribute 체인지에 안 태우는 이유는 체인지 이벤트가 발생 안하기 때문입니다.
-    // 유저가, 혹은 시스템이 값을 바꿀땐 체인지가 발생 안하는게 맞고 유저가 입력 시 체인지 이벤트를 받아야하니까요.
-    if (this.value !== value) {
-      this.onResize();
-      this.onChange();
-    }
+    const { value } = inputEl;
+    this.value = value;
   }
 
   toEnglish(value: string) {
@@ -262,10 +251,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   onChange() {
-    const { value } = this.inputEl;
-    this.value = value;
-    if (this.attributeSync) this.setAttribute('value', this.originalValue);
-    // this.dispatchEvent(new CustomEvent('event', ev));
+    if (!this.inputEl) return;
     this.onEvent(new CustomEvent('event'));
     if (this.maxlength && this.originalValue.length === this.maxlength)
       this.onSubmit(new CustomEvent('submit'));
@@ -291,23 +277,9 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === 'value') {
-      // value값을 넘겨받을때(input이벤트없이 입력받을때)
-      const inputEl = this.inputEl;
-      if (this.type === HbInputType.number) {
-        newVal = this.toNumber(newVal);
-      } else if (this.type === HbInputType.currency) {
-        newVal = this.toCurrency(newVal);
-      } else if (this.type === HbInputType.english) {
-        newVal = this.toEnglish(newVal);
-      } else {
-        newVal = newVal.substring(0, this.isMaxlength);
-      }
-      if (inputEl && inputEl.value !== newVal && !this.disabled && !this.readonly) {
-        inputEl.value = newVal;
-        this.onResize();
-        this.onChange();
-      }
+    if (name === 'value' && _ !== newVal) {
+      this.value = newVal;
+      if (this.inputEl) this.inputEl.value = this.value;
     }
 
     super.attributeChangedCallback(name, _, newVal);
