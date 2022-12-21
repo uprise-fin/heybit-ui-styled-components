@@ -49,7 +49,6 @@ export class HbSelect extends Base {
     let value = originalValue;
     if (this.disabled && this._value !== undefined) value = this._value;
     if (this._value !== value) {
-      console.log('dddd');
       this._value = value || '';
       this.setAttribute('value', this._value);
     }
@@ -95,10 +94,10 @@ export class HbSelect extends Base {
     this.onEvent(new CustomEvent('event'));
   }
 
-  attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === 'value' && _ !== newVal) this.onSelect(new Event('change'));
+  attributeChangedCallback(name: string, oldVal: string, newVal: string) {
+    if (name === 'value' && oldVal !== newVal) this.onSelect(new Event('change'));
 
-    super.attributeChangedCallback(name, _, newVal);
+    super.attributeChangedCallback(name, oldVal, newVal);
   }
 }
 
