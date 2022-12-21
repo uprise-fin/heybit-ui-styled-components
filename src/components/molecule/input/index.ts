@@ -276,13 +276,13 @@ export class HbInput extends InitAttribute<HbInputProps> {
     this.onclick = () => null;
   }
 
-  attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === 'value' && _ !== newVal) {
+  attributeChangedCallback(name: string, oldVal: string, newVal: string) {
+    if (name === 'value' && oldVal !== newVal) {
       this.value = newVal;
       if (this.inputEl) this.inputEl.value = this.value;
     }
 
-    super.attributeChangedCallback(name, _, newVal);
+    super.attributeChangedCallback(name, oldVal, newVal);
   }
   // attributeChangedCallback(name: any, oldVal: any, newVal: any) {
   //   console.log('attribute change: ', name, newVal);
