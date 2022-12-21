@@ -19,7 +19,7 @@ export class HbSelect extends Base {
 
   disabled: boolean;
 
-  value = '';
+  _value?: string;
 
   options: HbListOption[] = [];
 
@@ -29,6 +29,7 @@ export class HbSelect extends Base {
 
   static get properties() {
     return {
+      _value: { type: String, Reflect: true },
       value: { type: String, Reflect: true },
       disabled: { type: Boolean, Reflect: true },
       options: { type: Array, Reflect: true },
@@ -44,17 +45,31 @@ export class HbSelect extends Base {
     );
   }
 
+  set value(originalValue: string) {
+    let value = originalValue;
+    if (this.disabled && this._value !== undefined) value = this._value;
+    if (this._value !== value) {
+      console.log('dddd');
+      this._value = value || '';
+      this.setAttribute('value', this._value);
+    }
+  }
+
+  get value() {
+    return this._value;
+  }
+
   render() {
     return html`
       <select
-        class=${'hb-select__el' + (this.value === '' ? ' hb-select__el--init' : '')}
+        class=${'hb-select__el' + (this._value === '' ? ' hb-select__el--init' : '')}
         @change=${this.onSelect}
         ?disabled=${this.disabled}
       >
         ${this.list.map(
           (x) =>
             html`
-              <option ?selected=${this.value === x.value} value=${x.value} ?disabled=${x.disabled}>
+              <option ?selected=${this._value === x.value} value=${x.value} ?disabled=${x.disabled}>
                 ${x.label}
               </option>
             `
@@ -78,6 +93,12 @@ export class HbSelect extends Base {
     this.value = value!;
     // this.dispatchEvent(new CustomEvent('event', evt));
     this.onEvent(new CustomEvent('event'));
+  }
+
+  attributeChangedCallback(name: string, _: string, newVal: string) {
+    if (name === 'value' && _ !== newVal) this.onSelect(new Event('change'));
+
+    super.attributeChangedCallback(name, _, newVal);
   }
 }
 
