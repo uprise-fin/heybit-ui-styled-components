@@ -138,7 +138,6 @@ export class HbInput extends InitAttribute<HbInputProps> {
       this._value = value || '';
       this.onResize();
       this.onChange();
-      this.setAttribute('value', this._value);
     }
     if (originalValue !== value && this.inputEl) this.inputEl.value = this._value;
   }

@@ -65,7 +65,6 @@ export class HbSelect extends Base {
     let value = originalValue;
     if (this._value !== value) {
       this._value = value || '';
-      this.setAttribute('value', this._value);
       this.focus();
     }
   }
