@@ -2,6 +2,7 @@ import { HbIconName } from '@/components/atom/icon/type';
 import { HbListOption } from '@/components/atom/list/type';
 import { Size } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
+import { getElement } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
@@ -16,6 +17,8 @@ export class HbSelect extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
+
+  selectEl?: HTMLSelectElement;
 
   disabled: boolean;
 
@@ -38,6 +41,19 @@ export class HbSelect extends Base {
     };
   }
 
+  async connectedCallback() {
+    await super.connectedCallback();
+    const selectEl = await getElement<HTMLSelectElement>(this.shadowRoot, 'select');
+    this.tabIndex = 0;
+    this.selectEl = selectEl;
+    this.onclick = () => selectEl.focus();
+    this.addEventListener('focus', () => {
+      this.setAttribute('data-focus', '');
+      this.selectEl.focus();
+    });
+    this.addEventListener('blur', () => this.removeAttribute('data-focus'));
+  }
+
   get list() {
     const placeholder: HbListOption[] = [{ value: '', label: this.placeholder, disabled: true }];
     return placeholder.concat(
@@ -51,6 +67,7 @@ export class HbSelect extends Base {
     if (this._value !== value) {
       this._value = value || '';
       this.setAttribute('value', this._value);
+      this.focus();
     }
   }
 
@@ -61,6 +78,7 @@ export class HbSelect extends Base {
   render() {
     return html`
       <select
+        id="select"
         class=${'hb-select__el' + (this._value === '' ? ' hb-select__el--init' : '')}
         @change=${this.onSelect}
         ?disabled=${this.disabled}
@@ -90,7 +108,6 @@ export class HbSelect extends Base {
     if (!(target instanceof HTMLSelectElement)) return;
     const { value } = target;
     this.value = value!;
-    // this.dispatchEvent(new CustomEvent('event', evt));
     this.onEvent(new CustomEvent('event'));
   }
 
