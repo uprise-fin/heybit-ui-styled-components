@@ -123,7 +123,6 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   set value(originalValue: string) {
     let value = originalValue;
-    if (this.disabled && this._value !== undefined) value = this._value;
     if (!value || value === 'null') value = '';
     if (this.nowrap) value = value.replace(/\n/g, '');
     if (this.type === HbInputType.number) {

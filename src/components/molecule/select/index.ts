@@ -63,7 +63,6 @@ export class HbSelect extends Base {
 
   set value(originalValue: string) {
     let value = originalValue;
-    if (this.disabled && this._value !== undefined) value = this._value;
     if (this._value !== value) {
       this._value = value || '';
       this.setAttribute('value', this._value);
