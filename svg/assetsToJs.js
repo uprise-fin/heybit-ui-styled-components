@@ -25,7 +25,7 @@ fs.writeFile(
 );
 fs.writeFile(
   'src/components/atom/icon/type.ts',
-  `import { Size } from '@/components/atom/variable/type';\nexport interface HbIconProps {\n  icon: HbIconName;\n  size: Size;\n}\nexport type HbIconName = ${hbIconName
+  `import { Size } from '@/components/atom/variable/type';\nexport interface HbIconProps {\n  icon: HbIconName;\n  size: Size;\n}\nexport type HbIconName =${hbIconName
     .map((x, i) => `${i === 0 ? '\n' : ''}  | '${x}'`)
     .join('\n')};\n`,
   () => {
