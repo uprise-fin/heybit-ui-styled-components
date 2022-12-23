@@ -1,49 +1,30 @@
 import Matercolor from 'matercolors';
 
 export const prefix = 'husc';
-export type Level = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
-export const levels: Level[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-export enum VerticalAlign {
-  middle,
-  top,
-  bottom
-}
-export enum HorizonAlign {
-  center,
-  right,
-  left
-}
-export enum Size {
-  'xsmall' = 'xsmall',
-  'small' = 'small',
-  'medium' = 'medium',
-  'large' = 'large',
-  'xlarge' = 'xlarge'
-}
-export enum SystemColor {
-  'white' = 'white',
-  'black' = 'black',
-  'orange' = 'orange',
-  'yellow' = 'yellow',
-  'green' = 'green',
-  'blue' = 'blue'
-}
-export enum ServiceColor {
-  'harvest' = 'harvest',
-  'defi' = 'defi'
-}
+export const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] as const;
+export type Level = typeof levels[number];
+export const verticalAligns = ['middle', 'top', 'bottom'] as const;
+export type VerticalAlign = typeof verticalAligns[number];
+export const horizonAligns = ['center', 'right', 'left'] as const;
+export type HorizonAlign = typeof horizonAligns[number];
+export const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
+export type Size = typeof sizes[number];
+export const systemColors = ['white', 'black', 'orange', 'yellow', 'green', 'blue'] as const;
+export type SystemColor = typeof systemColors[number];
+export const serviceColors = ['harvest', 'defi'] as const;
+export type ServiceColor = typeof serviceColors[number];
 export type Color = SystemColor | ServiceColor;
 export type AllColor = Record<Color, Matercolor>;
 
-export const colors = {
-  [SystemColor.white]: '#ffffff',
-  [SystemColor.black]: '#404244',
-  [SystemColor.orange]: '#ff602f',
-  [SystemColor.yellow]: '#ffbe02',
-  [SystemColor.green]: '#27ae60',
-  [SystemColor.blue]: '#2f80ed',
-  [ServiceColor.harvest]: '#039985',
-  [ServiceColor.defi]: '#6d40c6'
+export const colors: Record<Color, string> = {
+  white: '#ffffff',
+  black: '#404244',
+  orange: '#ff602f',
+  yellow: '#ffbe02',
+  green: '#27ae60',
+  blue: '#2f80ed',
+  harvest: '#039985',
+  defi: '#6d40c6'
 };
 export const colorPalette = Object.entries(colors).reduce(
   (a, [name, color]) => ({
@@ -51,7 +32,7 @@ export const colorPalette = Object.entries(colors).reduce(
     [name]: new Matercolor(color)
   }),
   {}
-) as Record<Color, Matercolor>;
+) as AllColor;
 export const basicVariables = {
   //기본 변수. 그냥도 사용하지만 컴포넌트로 확장됨
   font: {
@@ -59,17 +40,17 @@ export const basicVariables = {
   "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
   "Malgun Gothic", sans-serif`,
     color: {
-      void: colorPalette[SystemColor.white][50],
-      solid: colorPalette[SystemColor.black][900]
+      void: colorPalette.white[50],
+      solid: colorPalette.black[900]
     },
     size: 16
   },
   size: {
-    [Size.xlarge]: 40,
-    [Size.large]: 32,
-    [Size.medium]: 24,
-    [Size.small]: 18,
-    [Size.xsmall]: 16
+    xlarge: 40,
+    large: 32,
+    medium: 24,
+    small: 18,
+    xsmall: 16
   },
   layout: {
     gutter: 20,
@@ -81,11 +62,11 @@ export const basicVariables = {
   },
   border: {
     width: 1,
-    color: colorPalette[SystemColor.black][200],
+    color: colorPalette.black[200],
     radius: 4
   },
   background: {
-    color: colorPalette[SystemColor.white][50]
+    color: colorPalette.white[50]
   },
   transition: {
     duration: {
@@ -103,7 +84,7 @@ export const componentVariables = {
   //컴포넌트 변수
   dim: {
     background: {
-      color: colorPalette[SystemColor.black][900]
+      color: colorPalette.black[900]
     }
   },
   list: {
@@ -121,7 +102,7 @@ export const componentVariables = {
     }
   },
   icon: {
-    color: colorPalette[SystemColor.black][900],
+    color: colorPalette.black[900],
     size: basicVariables.size
   },
   // input: {
@@ -182,7 +163,7 @@ export const componentVariables = {
   modal: {
     width: 400,
     margin: 20,
-    background: colorPalette[SystemColor.white][50],
+    background: colorPalette.white[50],
     dialog: {
       'padding-top': 52,
       'padding-right': 20,
@@ -197,7 +178,7 @@ export const componentVariables = {
     }
   },
   spinner: {
-    color: colorPalette[SystemColor.black][900],
+    color: colorPalette.black[900],
     size: basicVariables.size
   },
   select: {
@@ -222,11 +203,11 @@ export const componentVariables = {
     },
     positive: {
       icon: 'system/filled/info',
-      color: colorPalette[SystemColor.green][400]
+      color: colorPalette.green[400]
     },
     negative: {
       icon: 'system/filled/danger',
-      color: colorPalette[SystemColor.orange][600]
+      color: colorPalette.orange[600]
     }
   },
   header: {

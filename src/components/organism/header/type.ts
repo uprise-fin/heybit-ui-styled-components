@@ -1,5 +1,5 @@
-import { Size, type HbAnchorProps } from '@/index';
-import { HbButtonProps, HbButtonTheme, HbButtonType } from '@/components/molecule/button/type';
+import { HbButtonProps } from '@/components/molecule/button/type';
+import { type HbAnchorProps } from '@/index';
 export interface HbHeaderChip {
   src: string;
   alt: string;
@@ -78,16 +78,16 @@ export const initialHeaderGnb: HbHeaderNavi[] = [
 export const initialHeaderMyMenu: HbHeaderMyMenu[] = [
   {
     name: '나의 현황',
-    type: HbButtonType.rectangle,
-    theme: HbButtonTheme.primary,
-    size: Size.medium,
+    type: 'rectangle',
+    theme: 'primary',
+    size: 'medium',
     event: () => console.log('나의 현황')
   },
   {
     name: '예치상품',
-    type: HbButtonType.rectangle,
-    theme: HbButtonTheme.quaternary,
-    size: Size.medium,
+    type: 'rectangle',
+    theme: 'quaternary',
+    size: 'medium',
     event: () => console.log('예치상품')
   }
 ];

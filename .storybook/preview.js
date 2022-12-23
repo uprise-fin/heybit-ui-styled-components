@@ -1,15 +1,16 @@
 import '!style-loader!css-loader!sass-loader!../src/styles/index.scss';
 import '!style-loader!css-loader!../node_modules/pretendard/dist/web/static/pretendard.css';
 // import { setCustomElementsManifest } from '@storybook/web-components';
-import { SystemColor, ServiceColor, colorPalette } from '../src/index';
+import { colorPalette } from '../src/index';
 import '../src/components/atom/variable';
+import { serviceColors, systemColors } from '../src/components/atom/variable/type';
 export const parameters = {
   colorPicker: {
     palettes: [
       {
         name: 'system color',
         palette: Object.entries(colorPalette).reduce((a, [k, v]) => {
-          if (!SystemColor[k]) return a;
+          if (!systemColors[k]) return a;
           const ov = Object.keys(v).reduce(
             (va, vv) =>
               isNaN(vv)
@@ -29,7 +30,7 @@ export const parameters = {
       {
         name: 'service color',
         palette: Object.entries(colorPalette).reduce((a, [k, v]) => {
-          if (!ServiceColor[k]) return a;
+          if (!serviceColors[k]) return a;
           const ov = Object.keys(v).reduce(
             (va, vv) =>
               isNaN(vv)

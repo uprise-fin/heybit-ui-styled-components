@@ -1,13 +1,10 @@
+import { Base } from '@/components/base';
 import {
-  HbTransitionType,
   componentVariables,
-  VerticalAlign,
-  HbIconName,
-  HbButtonType,
+  HbTransitionType,
   type HbDialogAnchor,
   type HbDialogButton
 } from '@/index';
-import { Base } from '@/components/base';
 import { wait } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -54,7 +51,7 @@ export class HbSheetDialog extends Base {
 
   buttons: HbDialogButton[] = [];
 
-  transitionType = HbTransitionType.bottomUp;
+  transitionType: HbTransitionType = 'bottom-up';
 
   disabled: boolean;
 
@@ -97,7 +94,7 @@ export class HbSheetDialog extends Base {
     return html`
       <hb-modal
         @close=${this.onClose}
-        verticalAlign=${VerticalAlign.bottom}
+        verticalAlign="bottom"
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
@@ -112,7 +109,7 @@ export class HbSheetDialog extends Base {
                 class="hb-sheet-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon icon=${HbIconName['system/outline/close']} size="small"></hb-icon
+                ><hb-icon icon="system/outline/close" size="small"></hb-icon
               ></hb-button>`}
           <div class="hb-sheet-dialog__head${!this.title ? ' empty' : ''}">
             ${this.title
@@ -129,7 +126,7 @@ export class HbSheetDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || this.disabled}
-                    type=${HbButtonType.rectangle}
+                    type="rectangle"
                     @event=${this.adapterEvent.bind(this, x, i)}
                     theme=${x.theme}
                     size="medium"

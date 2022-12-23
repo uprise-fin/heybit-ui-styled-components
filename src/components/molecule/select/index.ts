@@ -1,6 +1,4 @@
-import { HbIconName } from '@/components/atom/icon/type';
 import { HbListOption } from '@/components/atom/list/type';
-import { Size } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
 import { getElement } from '@/utils';
 import { html } from 'lit';
@@ -93,8 +91,8 @@ export class HbSelect extends Base {
       <span class="hb-select__icon-wrap">
         <hb-icon
           class="hb-select__icon-wrap__el"
-          icon=${HbIconName['system/outline/arrow-dropdown']}
-          size=${Size.small}
+          icon="system/outline/arrow-dropdown"
+          size="small"
         ></hb-icon>
       </span>
     `;

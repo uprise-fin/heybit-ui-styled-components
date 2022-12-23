@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbInput } from './index';
-import { HbInputEvent, HbInputType } from './type';
+import { HbInputEvent } from './type';
 
 export default {
   title: 'components/molecule/hb-input',
@@ -39,7 +39,7 @@ const Template: Story<HbInput> = ({
 
 export const text: Story<HbInput> = Template.bind({});
 text.args = {
-  type: HbInputType.text,
+  type: 'text',
   maxlength: 10,
   value: 'dawkldjlkajdklawjdlkwajdklawdjlawdjlkawjdlawjdlwajdklawjdlkawjdlkajwlkdawjdlawkjdl',
   placeholder: '글자입력해주세요',
@@ -49,7 +49,7 @@ text.args = {
 };
 export const number: Story<HbInput> = Template.bind({});
 number.args = {
-  type: HbInputType.number,
+  type: 'number',
   maxlength: 10,
   placeholder: '숫자를써볼까요?',
   decimal: 2,
@@ -61,7 +61,7 @@ number.args = {
 };
 export const currency: Story<HbInput> = Template.bind({});
 currency.args = {
-  type: HbInputType.currency,
+  type: 'currency',
   maxlength: 10,
   placeholder: '숫자를써볼까요?',
   decimal: 2,
@@ -73,7 +73,7 @@ currency.args = {
 };
 export const english: Story<HbInput> = Template.bind({});
 english.args = {
-  type: HbInputType.english,
+  type: 'english',
   maxlength: 10,
   placeholder: '영어만 써봅니다?',
   decimal: 2,

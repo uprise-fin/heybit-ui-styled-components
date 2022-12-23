@@ -1,9 +1,6 @@
-import { HbTransitionType } from '@/components/atom/transition/type';
 import { Size } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
-import { HbIconName } from '@/components/atom/icon/type';
-import { HbSkeletonType } from '@/components/molecule/skeleton/type';
-import { HbButtonType, HbButtonTheme } from '@/components/molecule/button/type';
+import { HbButtonTheme } from '@/components/molecule/button/type';
 import { HbAnchor } from '@/module';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -134,10 +131,7 @@ export class HbHeader extends Base {
                   loadingWidth=${26}
                 />`
               : ''}${x.group
-              ? html`<hb-icon
-                    icon=${HbIconName['system/outline/arrow-dropdown']}
-                    size=${Size.xsmall}
-                  ></hb-icon>
+              ? html`<hb-icon icon="system/outline/arrow-dropdown" size="xsmall"></hb-icon>
                   <div
                     class="hb-header__group-menu"
                     @mouseenter=${this.onEnterGroup}
@@ -184,10 +178,7 @@ export class HbHeader extends Base {
                       loadingWidth=${26}
                     />`
                   : ''}${x.group
-                  ? html`<hb-icon
-                        icon=${HbIconName['system/outline/arrow-dropdown']}
-                        size=${Size.xsmall}
-                      ></hb-icon>
+                  ? html`<hb-icon icon="system/outline/arrow-dropdown" size="xsmall"></hb-icon>
                       <div
                         class="hb-header__group-menu"
                         @mouseenter=${this.onEnterGroup}
@@ -238,10 +229,7 @@ export class HbHeader extends Base {
                   loadingWidth=${26}
                 />`
               : ''}${x.group
-              ? html`<hb-icon
-                    icon=${HbIconName['system/outline/arrow-dropdown']}
-                    size=${Size.xsmall}
-                  ></hb-icon>
+              ? html`<hb-icon icon="system/outline/arrow-dropdown" size="xsmall"></hb-icon>
                   <div class="hb-header__group-menu">
                     ${x.group.map(
                       (y) => html`
@@ -283,10 +271,7 @@ export class HbHeader extends Base {
                       loadingWidth=${26}
                     />`
                   : ''}${x.group
-                  ? html`<hb-icon
-                        icon=${HbIconName['system/outline/arrow-dropdown']}
-                        size=${Size.xsmall}
-                      ></hb-icon>
+                  ? html`<hb-icon icon="system/outline/arrow-dropdown" size="xsmall"></hb-icon>
                       <div class="hb-header__group-menu">
                         ${x.group.map(
                           (y) => html`
@@ -314,7 +299,7 @@ export class HbHeader extends Base {
   })();
 
   myMenuTemplate = (() => {
-    let cacheSize = Size.medium;
+    let cacheSize: Size = 'medium';
     let isMyMenu = this.isMyMenuString;
     let template = html`
       ${this.isMyMenu?.map(
@@ -322,14 +307,14 @@ export class HbHeader extends Base {
           html`<hb-button
             class="hb-button"
             @event=${x.event}
-            type=${HbButtonType.rectangle}
+            type="rectangle"
             theme=${x.theme}
             size=${cacheSize}
             >${x.name}</hb-button
           >`
       )}
     `;
-    return (size = Size.medium) => {
+    return (size: Size = 'medium') => {
       if (isMyMenu !== this.isMyMenuString || cacheSize !== size) {
         cacheSize = size;
         isMyMenu = this.isMyMenuString;
@@ -339,7 +324,7 @@ export class HbHeader extends Base {
               html`<hb-button
                 class="hb-button"
                 @event=${x.event}
-                type=${HbButtonType.rectangle}
+                type="rectangle"
                 theme=${x.theme}
                 size=${cacheSize}
                 >${x.name}</hb-button
@@ -380,15 +365,15 @@ export class HbHeader extends Base {
   })();
 
   defaultMenuForDesktopTemplate = (() => {
-    const themes = ['', HbButtonTheme.quaternary];
+    const themes = ['', 'quaternary'];
     let isDefaultMenu = this.isDefaultMenuString;
     let template = html`${this.isDefaultMenu?.map(
       (x, i) =>
         html`<hb-button
           class="hb-button"
           theme=${themes[i]}
-          type=${HbButtonType.rectangle}
-          size=${Size.medium}
+          type="rectangle"
+          size="medium"
           @event=${x.event}
           >${x.name}</hb-button
         >`
@@ -401,8 +386,8 @@ export class HbHeader extends Base {
             html`<hb-button
               class="hb-button"
               theme=${themes[i]}
-              type=${HbButtonType.rectangle}
-              size=${Size.medium}
+              type="rectangle"
+              size="medium"
               @event=${x.event}
               >${x.name}</hb-button
             >`
@@ -414,15 +399,15 @@ export class HbHeader extends Base {
   })();
 
   defaultMenuTemplate = (() => {
-    const themes = [HbButtonTheme.quaternary, HbButtonTheme.primary];
+    const themes: HbButtonTheme[] = ['quaternary', 'primary'];
     let isDefaultMenu = this.isDefaultMenuString;
     let template = html`
       ${this.isDefaultMenu?.map(
         (x, i) => html`<hb-button
           class="hb-button"
           theme=${themes[i]}
-          size=${Size.large}
-          type=${HbButtonType.rectangle}
+          size="large"
+          type="rectangle"
           @event=${x.event}
           >${x.name}</hb-button
         >`
@@ -436,8 +421,8 @@ export class HbHeader extends Base {
             (x, i) => html`<hb-button
               class="hb-button"
               theme=${themes[i]}
-              size=${Size.large}
-              type=${HbButtonType.rectangle}
+              size="large"
+              type="rectangle"
               @event=${x.event}
               >${x.name}</hb-button
             >`
@@ -498,26 +483,26 @@ export class HbHeader extends Base {
           <div class="hb-header--mobile__navibar">
             <hb-anchor @event=${this.onEvent} class="hb-anchor"
               ><hb-icon
-                icon=${HbIconName['graphic/heybit']}
-                size=${Size.large}
+                icon="graphic/heybit"
+                size="large"
                 style="--husc__icon__size__large: var(--husc__header__logo__width--mobile);"
               ></hb-icon
             ></hb-anchor>
             <hb-button @event=${this.onEnterSide} class="hb-button"
-              ><hb-icon icon=${HbIconName['system/outline/menu-side']} size=${Size.medium}></hb-icon
+              ><hb-icon icon="system/outline/menu-side" size="medium"></hb-icon
             ></hb-button>
           </div>
           <hb-transition
             @click=${this.onLeaveSide}
             class="hb-header--mobile__side-menu"
             ?show=${this.sidemenu}
-            type=${HbTransitionType.fade}
+            type="fade"
           >
-            <hb-transition ?show=${this.sidemenu} type=${HbTransitionType.rightLeft}>
+            <hb-transition ?show=${this.sidemenu} type="right-left">
               <div class="hb-header--mobile__side-menu__content">
                 <div class="hb-header--mobile__side-menu__content__my">
                   <hb-if ?value=${this.pending}>
-                    <hb-skeleton type=${HbSkeletonType.dropMenuTop}></hb-skeleton>
+                    <hb-skeleton type="drop-menu-top"></hb-skeleton>
                   </hb-if>
                   <hb-if ?value=${!this.pending}>
                     <strong>${this.userName}환영합니다.</strong>
@@ -540,7 +525,7 @@ export class HbHeader extends Base {
                   <hb-if ?value=${this.pending}>
                     <hb-skeleton
                       class="hb-header--mobile__skeleton"
-                      type=${HbSkeletonType.dropMenuBottom}
+                      type="drop-menu-bottom"
                     ></hb-skeleton>
                   </hb-if>
                 </div>
@@ -552,13 +537,13 @@ export class HbHeader extends Base {
           <div class="hb-header--mobile__navibar">
             <hb-anchor @event=${this.onEvent} class="hb-anchor"
               ><hb-icon
-                icon=${HbIconName['graphic/heybit']}
-                size=${Size.large}
+                icon="graphic/heybit"
+                size="large"
                 style="--husc__icon__size__large: var(--husc__header__logo__width--mobile);"
               ></hb-icon
             ></hb-anchor>
             <hb-button class="hb-button" @click=${this.onClose}
-              ><hb-icon icon=${HbIconName['system/outline/close']} size=${Size.medium}></hb-icon
+              ><hb-icon icon="system/outline/close" size="medium"></hb-icon
             ></hb-button>
           </div>
         </hb-if>
@@ -569,17 +554,15 @@ export class HbHeader extends Base {
             <div class="hb-header--desktop__navibar__routes">
               <hb-anchor @event=${this.onEvent} class="hb-anchor"
                 ><hb-icon
-                  icon=${HbIconName['graphic/heybit']}
-                  size=${Size.large}
+                  icon="graphic/heybit"
+                  size="large"
                   style="--husc__icon__size__large: var(--husc__header__logo__width--desktop);"
                 ></hb-icon
               ></hb-anchor>
               ${this.gnbTemplateForDesktop()}
             </div>
             <div class="hb-header--desktop__navibar__actions">
-              <hb-if ?value=${this.pending}>
-                <hb-skeleton type=${HbSkeletonType.hamburger}></hb-skeleton
-              ></hb-if>
+              <hb-if ?value=${this.pending}> <hb-skeleton type="hamburger"></hb-skeleton></hb-if>
               <hb-if ?value=${!this.pending}>
                 <hb-if ?value=${this.loggedin}>
                   <hb-button
@@ -589,8 +572,8 @@ export class HbHeader extends Base {
                     @mouseenter=${this.onEnterSide}
                     @mouseleave=${this.onLeaveSide}
                     >${this.userName}<hb-icon
-                      icon=${HbIconName['system/outline/arrow-dropdown']}
-                      size=${Size.xsmall}
+                      icon="system/outline/arrow-dropdown"
+                      size="xsmall"
                     ></hb-icon
                   ></hb-button>
                 </hb-if>
@@ -605,7 +588,7 @@ export class HbHeader extends Base {
             @mouseleave=${this.onLeaveSide}
             class="hb-header--desktop__side-menu"
             ?show=${this.sidemenu && this.loggedin && !this.pending}
-            type=${HbTransitionType.fade}
+            type="fade"
           >
             <div class="hb-header--desktop__side-menu__content">
               <div class="hb-header--desktop__side-menu__content__my">
@@ -613,7 +596,7 @@ export class HbHeader extends Base {
                 <p>${this.userEmail}</p>
               </div>
               <div class="hb-header--desktop__side-menu__content__menu">
-                ${this.myMenuTemplate(Size.small)}
+                ${this.myMenuTemplate('small')}
               </div>
               <div class="hb-header--desktop__side-menu__content__auth">
                 ${this.authMenuTemplate()}
@@ -626,15 +609,15 @@ export class HbHeader extends Base {
             <div class="hb-header--desktop__navibar__routes">
               <hb-anchor @event=${this.onEvent} class="hb-anchor"
                 ><hb-icon
-                  icon=${HbIconName['graphic/heybit']}
-                  size=${Size.large}
+                  icon="graphic/heybit"
+                  size="large"
                   style="--husc__icon__size__large: var(--husc__header__logo__width--desktop);"
                 ></hb-icon
               ></hb-anchor>
             </div>
             <div class="hb-header--desktop__navibar__actions">
               <hb-button class="hb-button" @click=${this.onClose}
-                ><hb-icon icon=${HbIconName['system/outline/close']} size=${Size.medium}></hb-icon
+                ><hb-icon icon="system/outline/close" size="medium"></hb-icon
               ></hb-button>
             </div>
           </div>

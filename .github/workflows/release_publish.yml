@@ -36,6 +36,10 @@ jobs:
         uses: JesseTG/rm@v1.0.2
         with:
           path: ./__tests__
+      - name: remove how-to-use
+        uses: JesseTG/rm@v1.0.2
+        with:
+          path: ./dist/src/how-to-use
       - name: remove src
         uses: JesseTG/rm@v1.0.2
         with:

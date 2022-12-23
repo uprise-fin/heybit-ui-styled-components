@@ -24,10 +24,10 @@ fs.writeFile(
   }
 );
 fs.writeFile(
-  'src/components/molecule/icon/type.ts',
-  `import type {Size} from '@/components/atom/variable/type';\nexport interface HbIconProps {\n  icon: HbIconName;\n  size: Size;\n}\nexport enum HbIconName {${hbIconName
-    .map((x, i) => `${i === 0 ? '\n' : ''}  '${x}' = '${x}'`)
-    .join(',\n')},\n}\n`,
+  'src/components/atom/icon/type.ts',
+  `import { Size } from '@/components/atom/variable/type';\nexport interface HbIconProps {\n  icon: HbIconName;\n  size: Size;\n}\nexport type HbIconName =${hbIconName
+    .map((x, i) => `${i === 0 ? '\n' : ''}  | '${x}'`)
+    .join('\n')};\n`,
   () => {
     console.log('Complete conversion of type file to text');
   }

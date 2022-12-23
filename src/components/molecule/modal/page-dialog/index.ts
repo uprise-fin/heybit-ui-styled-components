@@ -1,4 +1,3 @@
-import { HbIconName } from '@/components/atom/icon/type';
 import { HbTransitionType } from '@/components/atom/transition/type';
 import { Base } from '@/components/base';
 import { html } from 'lit';
@@ -43,7 +42,7 @@ export class HbPageDialog extends Base {
 
   hideCloseBtn = false;
 
-  transitionType = HbTransitionType.zoom;
+  transitionType: HbTransitionType = 'zoom';
 
   disabled: boolean;
 
@@ -99,7 +98,7 @@ export class HbPageDialog extends Base {
                 class="hb-page-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon icon=${HbIconName['system/outline/close']} size="small"></hb-icon
+                ><hb-icon icon="system/outline/close" size="small"></hb-icon
               ></hb-button>`}
           <div class="hb-page-dialog__body">
             <slot class="hb-page-dialog__body__content"></slot>

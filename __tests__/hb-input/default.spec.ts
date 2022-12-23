@@ -1,7 +1,6 @@
 import { HbInput } from '@/module';
 import { getShadowElement } from '../utils';
 const SHADOW_TAG = 'hb-input';
-
 describe(SHADOW_TAG, () => {
   let SHADOW_ELEMENT: HbInput;
 
@@ -21,10 +20,20 @@ describe(SHADOW_TAG, () => {
     expect(SHADOW_ELEMENT.value).toEqual('123,123');
     expect(SHADOW_ELEMENT.originalValue).toEqual('123123');
   });
+  it(`${SHADOW_TAG}는 type="text"일때 정상 입력되야 한다.`, async () => {
+    SHADOW_ELEMENT.setAttribute('type', 'text');
+    SHADOW_ELEMENT.setAttribute('value', 'djawklda jw123123');
+    expect(SHADOW_ELEMENT.value).toEqual('djawklda jw123123');
+  });
   it(`${SHADOW_TAG}는 type="number"일때 숫자만 받아야 한다.`, async () => {
     SHADOW_ELEMENT.setAttribute('type', 'number');
     SHADOW_ELEMENT.setAttribute('value', 'djawkldajw123123');
     expect(SHADOW_ELEMENT.value).toEqual('123123');
+  });
+  it(`${SHADOW_TAG}는 type="english"일때 숫자만 받아야 한다.`, async () => {
+    SHADOW_ELEMENT.setAttribute('type', 'english');
+    SHADOW_ELEMENT.setAttribute('value', 'djawkldajw123123');
+    expect(SHADOW_ELEMENT.value).toEqual('djawkldajw');
   });
 
   it(`${SHADOW_TAG}는 maxlength를 지정하면 그 이상의 값은 가질 수 없다.`, async () => {

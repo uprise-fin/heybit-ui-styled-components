@@ -1,6 +1,4 @@
-import { Size } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
-import { HbIconName } from '@/index';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import type { HbFooterChildren, HbFooterMenu, HbFooterSocialMenu } from './type';
@@ -62,22 +60,22 @@ export class HbFooter extends Base {
 
   socialMenu: HbFooterSocialMenu[] = [
     {
-      icon: HbIconName['system/filled/logo-facebook'],
+      icon: 'system/filled/logo-facebook',
       target: '_blank',
       href: 'https://r.heybit.io/c/facebook/'
     },
     {
-      icon: HbIconName['system/filled/naver'],
+      icon: 'system/filled/naver',
       target: '_blank',
       href: 'https://m.post.naver.com/my.nhn?memberNo=40921089'
     },
     {
-      icon: HbIconName['system/filled/logo-twitter'],
+      icon: 'system/filled/logo-twitter',
       target: '_blank',
       href: 'https://twitter.com/heybit_io/'
     },
     {
-      icon: HbIconName['system/filled/logo-instagram'],
+      icon: 'system/filled/logo-instagram',
       target: '_blank',
       href: 'https://www.instagram.com/heybit_io/'
     }
@@ -154,7 +152,7 @@ export class HbFooter extends Base {
       ${this.socialMenu?.map(
         (x) =>
           html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
-            ><hb-icon size=${Size.medium} icon=${x.icon}></hb-icon
+            ><hb-icon size="medium" icon=${x.icon}></hb-icon
           ></hb-anchor>`
       )}
     `;

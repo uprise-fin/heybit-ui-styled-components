@@ -10,17 +10,8 @@ export interface HbInputProps {
   error?: boolean;
   readonly?: boolean;
 }
-export enum HbInputType {
-  text = 'text',
-  number = 'number',
-  currency = 'currency',
-  password = 'password',
-  english = 'english'
-}
-export enum HbInputSlots {
-  'slot--left' = 'slot--left',
-  'slot--right' = 'slot--right'
-}
+export type HbInputType = 'text' | 'number' | 'currency' | 'password' | 'english';
+export type HbInputSlots = 'slot--left' | 'slot--right';
 export interface HbInputEvent extends InputEvent {
   target: HbInput;
 }

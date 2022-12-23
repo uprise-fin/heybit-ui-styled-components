@@ -1,4 +1,3 @@
-import { HbSkeletonType } from '@/components/molecule/skeleton/type';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
@@ -51,9 +50,9 @@ const SkeletonTemplate = (props: HbCarousel) => html`
     flexWidth=${props.flexWidth}
     visibleLength=${props.visibleLength}
   >
-    <hb-skeleton type=${HbSkeletonType.card} style="margin: 0 10px;"></hb-skeleton>
-    <hb-skeleton type=${HbSkeletonType.card} style="margin: 0 10px;"></hb-skeleton>
-    <hb-skeleton type=${HbSkeletonType.card} style="margin: 0 10px;"></hb-skeleton>
+    <hb-skeleton type="card" style="margin: 0 10px;"></hb-skeleton>
+    <hb-skeleton type="card" style="margin: 0 10px;"></hb-skeleton>
+    <hb-skeleton type="card" style="margin: 0 10px;"></hb-skeleton>
   </hb-carousel>
 `;
 const StopTemplate: Story<HbCarousel> = (props) => {

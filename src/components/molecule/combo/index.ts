@@ -1,9 +1,6 @@
-import { HbTransitionType } from '@/components/atom/transition/type';
-import { Size } from '@/components/atom/variable/type';
-import { Base } from '@/components/base';
-import { HbIconName } from '@/components/atom/icon/type';
 import { HbList } from '@/components/atom/list';
 import { HbListOption } from '@/components/atom/list/type';
+import { Base } from '@/components/base';
 import { HbInput } from '@/components/molecule/input';
 import { getElement } from '@/utils';
 import { html } from 'lit';
@@ -115,13 +112,9 @@ export class HbCombo extends Base {
         @event=${this.onInput}
       >
         <slot name="icon" class="hb-combo__label--icon"></slot>
-        <hb-icon
-          slot="slot--right"
-          icon=${HbIconName['system/outline/arrow-dropdown']}
-          size=${Size.small}
-        ></hb-icon>
+        <hb-icon slot="slot--right" icon="system/outline/arrow-dropdown" size="small"></hb-icon>
       </hb-input>
-      <hb-transition id="select-transition" ?show=${this.open} type=${HbTransitionType.fade}>
+      <hb-transition id="select-transition" ?show=${this.open} type="fade">
         <hb-list
           tabindex="0"
           emptyText=${this.emptyText}

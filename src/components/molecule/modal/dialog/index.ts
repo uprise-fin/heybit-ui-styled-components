@@ -1,8 +1,6 @@
 import { HbTransitionType } from '@/components/atom/transition/type';
 import { componentVariables } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
-import { HbIconName } from '@/components/atom/icon/type';
-import { HbButtonType } from '@/components/molecule/button/type';
 import { HbDialogAnchor, HbDialogButton } from '@/components/molecule/modal/type';
 import { wait } from '@/utils';
 import { html } from 'lit';
@@ -53,7 +51,7 @@ export class HbDialog extends Base {
 
   buttons: HbDialogButton[];
 
-  transitionType = HbTransitionType.zoom;
+  transitionType: HbTransitionType = 'zoom';
 
   disabled: boolean;
 
@@ -112,7 +110,7 @@ export class HbDialog extends Base {
                 class="hb-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon icon=${HbIconName['system/outline/close']} size="small"></hb-icon
+                ><hb-icon icon="system/outline/close" size="small"></hb-icon
               ></hb-button>`}
           <div class="hb-dialog__head${!this.icon && !this.title ? ' empty' : ''}">
             ${this.icon
@@ -137,7 +135,7 @@ export class HbDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || this.disabled}
-                    type=${HbButtonType.rectangle}
+                    type="rectangle"
                     @event=${this.adapterEvent.bind(this, x, i)}
                     theme=${x.theme}
                     size="medium"

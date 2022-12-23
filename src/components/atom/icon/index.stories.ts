@@ -1,6 +1,7 @@
-import { colorPalette, Size, SystemColor } from '@/index';
+import { colorPalette } from '@/index';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
+import { sizes } from '../variable/type';
 import './index';
 import type { HbIcon } from './index';
 import SVG from './svg';
@@ -19,13 +20,13 @@ export default {
       control: { type: 'radio' }
     },
     size: {
-      defaultValue: Size.large,
-      options: Object.keys(Size),
+      defaultValue: 'large',
+      options: sizes,
       control: { type: 'radio' }
     },
     color: {
       control: { type: 'text' },
-      defaultValue: colorPalette[SystemColor.black][900]
+      defaultValue: colorPalette.black[900]
     }
   },
   parameters: {
@@ -39,7 +40,7 @@ export default {
 const OneTemplate: Story<HbIconExpns> = ({ icon, size, color }) =>
   html`<hb-icon icon=${icon} size=${size} style="--husc__icon__color: ${color};"></hb-icon>`;
 export const icon: Story<HbIconExpns> = OneTemplate.bind({});
-icon.args = { size: Size.large };
+icon.args = { size: 'large' };
 icon.parameters = {
   colorPicker: {
     applyColorTo: ['color'] // Pass empty array to clear extra controls
@@ -68,7 +69,7 @@ const SeveralTemplate: Story<HbIconExpns> = ({ size, color }) =>
         </div>`
     )}`;
 export const icons: Story<HbIconExpns> = SeveralTemplate.bind({});
-icons.args = { size: Size.large };
+icons.args = { size: 'large' };
 icons.parameters = {
   colorPicker: {
     applyColorTo: ['color'] // Pass empty array to clear extra controls
