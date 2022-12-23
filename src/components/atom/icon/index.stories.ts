@@ -1,6 +1,7 @@
-import { colorPalette, Size } from '@/index';
+import { colorPalette } from '@/index';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
+import { sizes } from '../variable/type';
 import './index';
 import type { HbIcon } from './index';
 import SVG from './svg';
@@ -20,7 +21,7 @@ export default {
     },
     size: {
       defaultValue: 'large',
-      options: ['xsmall', 'small', 'medium', 'large', 'xlarge'] as Size[],
+      options: sizes,
       control: { type: 'radio' }
     },
     color: {

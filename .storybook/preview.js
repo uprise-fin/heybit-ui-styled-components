@@ -3,15 +3,14 @@ import '!style-loader!css-loader!../node_modules/pretendard/dist/web/static/pret
 // import { setCustomElementsManifest } from '@storybook/web-components';
 import { colorPalette } from '../src/index';
 import '../src/components/atom/variable';
-const SystemColor = ['white', 'black', 'orange', 'yellow', 'green', 'blue'];
-const ServiceColor = ['harvest', 'defi'];
+import { serviceColors, systemColors } from '../src/components/atom/variable/type';
 export const parameters = {
   colorPicker: {
     palettes: [
       {
         name: 'system color',
         palette: Object.entries(colorPalette).reduce((a, [k, v]) => {
-          if (!SystemColor[k]) return a;
+          if (!systemColors[k]) return a;
           const ov = Object.keys(v).reduce(
             (va, vv) =>
               isNaN(vv)
@@ -31,7 +30,7 @@ export const parameters = {
       {
         name: 'service color',
         palette: Object.entries(colorPalette).reduce((a, [k, v]) => {
-          if (!ServiceColor[k]) return a;
+          if (!serviceColors[k]) return a;
           const ov = Object.keys(v).reduce(
             (va, vv) =>
               isNaN(vv)

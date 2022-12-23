@@ -1,13 +1,13 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import { Color, colorPalette, levels, prefix } from './type';
+import { Color, colorPalette, levels, prefix, serviceColors, systemColors } from './type';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
 
 // console.log(variables.cssText);
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
-const reverseLevels = levels.reverse();
+const reverseLevels = [...levels].reverse();
 export default {
   title: 'components/atom/variable'
 } as Meta;
@@ -71,7 +71,7 @@ const LevelTemplate: Story<unknown> = () =>
         </div>
         ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
-      ${['white', 'black', 'orange', 'yellow', 'green', 'blue'].map(
+      ${systemColors.map(
         (name: Color) =>
           html`
             <div class="box">
@@ -99,7 +99,7 @@ const LevelTemplate: Story<unknown> = () =>
         </div>
         ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
-      ${['harvest', 'defi'].map(
+      ${serviceColors.map(
         (name: Color) =>
           html`
             <div class="box">

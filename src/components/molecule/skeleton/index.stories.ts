@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbSkeleton } from './index';
-import { HbSkeletonType } from './type';
+import { hbSkeletonTypes } from './type';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
@@ -10,7 +10,7 @@ export default {
   component: 'hb-skeleton',
   argTypes: {
     type: {
-      options: ['card', 'drop-menu-top', 'drop-menu-bottom', 'hamburger'] as HbSkeletonType[],
+      options: hbSkeletonTypes,
       control: { type: 'radio' },
       defaultValue: 'card'
     }

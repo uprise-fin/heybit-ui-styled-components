@@ -1,6 +1,7 @@
-import { colorPalette, Size } from '@/index';
+import { colorPalette } from '@/index';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
+import { sizes } from '../variable/type';
 import './index';
 import type { HbSpinner } from './index';
 
@@ -13,7 +14,7 @@ export default {
   component: 'hb-spinner',
   argTypes: {
     size: {
-      options: ['xsmall', 'small', 'medium', 'large', 'xlarge'] as Size[],
+      options: sizes,
       control: { type: 'radio' },
       defaultValue: 'large'
     },

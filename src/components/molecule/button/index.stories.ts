@@ -1,19 +1,19 @@
-import { Size } from '@/components/atom/variable/type';
+import { Size, sizes } from '@/components/atom/variable/type';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbButton } from './index';
-import { HbButtonTheme } from './type';
+import { hbButtonThemes } from './type';
 
 export default {
   title: 'components/molecule/hb-button',
   argTypes: {
     theme: {
-      options: ['primary', 'secondary', 'tertiary', 'quaternary'] as HbButtonTheme[],
+      options: hbButtonThemes,
       control: { type: 'radio' }
     },
     size: {
-      options: ['xsmall', 'small', 'medium', 'large', 'xlarge'] as Size[],
+      options: sizes,
       control: { type: 'radio' },
       defaultValue: 'large'
     },

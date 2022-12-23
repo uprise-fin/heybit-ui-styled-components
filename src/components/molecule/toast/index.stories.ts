@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbToast } from './index';
-import { HbToastTheme } from './type';
+import { hbToastTheme, HbToastTheme } from './type';
 
 export default {
   title: 'components/molecule/hb-toast',
@@ -14,7 +14,7 @@ export default {
       defaultValue: true
     },
     theme: {
-      options: ['positive', 'negative'],
+      options: hbToastTheme,
       control: { type: 'radio' },
       defaultValue: 'positive'
     }

@@ -4,10 +4,12 @@ export interface HbTransitionProps {
   type: HbTransitionType;
 }
 
-export type HbTransitionType =
-  | 'fade'
-  | 'zoom'
-  | 'bottom-up-height'
-  | 'bottom-up'
-  | 'top-down'
-  | 'right-left';
+export const hbTransitionTypes = [
+  'fade',
+  'zoom',
+  'bottom-up-height',
+  'bottom-up',
+  'top-down',
+  'right-left'
+] as const;
+export type HbTransitionType = typeof hbTransitionTypes[number];

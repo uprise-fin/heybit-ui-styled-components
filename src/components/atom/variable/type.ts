@@ -1,14 +1,18 @@
 import Matercolor from 'matercolors';
 
 export const prefix = 'husc';
-export type Level = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
-export const levels: Level[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-export type VerticalAlign = 'middle' | 'top' | 'bottom';
-export type HorizonAlign = 'center' | 'right' | 'left';
-export type Size = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-export type SystemColor = 'white' | 'black' | 'orange' | 'yellow' | 'green' | 'blue';
-
-export type ServiceColor = 'harvest' | 'defi';
+export const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] as const;
+export type Level = typeof levels[number];
+export const verticalAligns = ['middle', 'top', 'bottom'] as const;
+export type VerticalAlign = typeof verticalAligns[number];
+export const horizonAligns = ['center', 'right', 'left'] as const;
+export type HorizonAlign = typeof horizonAligns[number];
+export const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
+export type Size = typeof sizes[number];
+export const systemColors = ['white', 'black', 'orange', 'yellow', 'green', 'blue'] as const;
+export type SystemColor = typeof systemColors[number];
+export const serviceColors = ['harvest', 'defi'] as const;
+export type ServiceColor = typeof serviceColors[number];
 export type Color = SystemColor | ServiceColor;
 export type AllColor = Record<Color, Matercolor>;
 
@@ -28,7 +32,7 @@ export const colorPalette = Object.entries(colors).reduce(
     [name]: new Matercolor(color)
   }),
   {}
-) as Record<Color, Matercolor>;
+) as AllColor;
 export const basicVariables = {
   //기본 변수. 그냥도 사용하지만 컴포넌트로 확장됨
   font: {

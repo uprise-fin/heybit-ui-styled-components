@@ -9,5 +9,7 @@ export interface HbButtonProps {
   event?: () => void;
 }
 export type HbButtonSlots = 'slot--left' | 'slot--right';
-export type HbButtonType = 'rectangle' | 'radius' | 'circle';
-export type HbButtonTheme = 'primary' | 'secondary' | 'tertiary' | 'quaternary';
+export const hbButtonTypes = ['rectangle', 'radius', 'circle'] as const;
+export type HbButtonType = typeof hbButtonTypes[number];
+export const hbButtonThemes = ['primary', 'secondary', 'tertiary', 'quaternary'] as const;
+export type HbButtonTheme = typeof hbButtonThemes[number];

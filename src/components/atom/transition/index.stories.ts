@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbTransition } from './index';
-import { HbTransitionType } from './type';
+import { hbTransitionTypes } from './type';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
@@ -15,14 +15,7 @@ export default {
       defaultValue: false
     },
     type: {
-      options: [
-        'fade',
-        'zoom',
-        'bottom-up-height',
-        'bottom-up',
-        'top-down',
-        'right-left'
-      ] as HbTransitionType[],
+      options: hbTransitionTypes,
       control: { type: 'radio' },
       defaultValue: 'fade'
     }
