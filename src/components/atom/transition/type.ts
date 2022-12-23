@@ -4,11 +4,10 @@ export interface HbTransitionProps {
   type: HbTransitionType;
 }
 
-export enum HbTransitionType {
-  fade = 'fade',
-  zoom = 'zoom',
-  bottomUpHeight = 'bottom-up-height',
-  bottomUp = 'bottom-up',
-  topDown = 'top-down',
-  rightLeft = 'right-left'
-}
+export type HbTransitionType =
+  | 'fade'
+  | 'zoom'
+  | 'bottom-up-height'
+  | 'bottom-up'
+  | 'top-down'
+  | 'right-left';

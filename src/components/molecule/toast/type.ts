@@ -2,10 +2,7 @@ export interface HbToastProps {
   messages: HbToastMessage[];
   duration?: number;
 }
-export enum HbToastTheme {
-  'positive' = 'positive',
-  'negative' = 'negative'
-}
+export type HbToastTheme = 'positive' | 'negative';
 export interface HbToastMessage {
   text: string;
   theme?: HbToastTheme;

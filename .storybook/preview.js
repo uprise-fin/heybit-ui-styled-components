@@ -1,8 +1,10 @@
 import '!style-loader!css-loader!sass-loader!../src/styles/index.scss';
 import '!style-loader!css-loader!../node_modules/pretendard/dist/web/static/pretendard.css';
 // import { setCustomElementsManifest } from '@storybook/web-components';
-import { SystemColor, ServiceColor, colorPalette } from '../src/index';
+import { colorPalette } from '../src/index';
 import '../src/components/atom/variable';
+const SystemColor = ['white', 'black', 'orange', 'yellow', 'green', 'blue'];
+const ServiceColor = ['harvest', 'defi'];
 export const parameters = {
   colorPicker: {
     palettes: [

@@ -71,7 +71,7 @@ export class HbCarousel extends Base {
 
   dragDistance = 0;
 
-  eventStatus: HbCarouselEventStatus = HbCarouselEventStatus.done;
+  eventStatus: HbCarouselEventStatus = 'done';
 
   sto: ReturnType<typeof setTimeout>;
 
@@ -96,7 +96,7 @@ export class HbCarousel extends Base {
       rolling: { type: Boolean, Reflect: true },
       holderFlag: { type: Boolean, Reflect: true },
       draggable: { type: Boolean, Reflect: true },
-      eventStatus: { type: Number, Reflect: true },
+      eventStatus: { type: String, Reflect: true },
       dragDistance: { type: Number, Reflect: true },
       index: { type: Number, Reflect: true },
       flexWidth: { type: Number, Reflect: true },
@@ -114,7 +114,7 @@ export class HbCarousel extends Base {
   }
 
   get transitionFlag() {
-    if (this.eventStatus === HbCarouselEventStatus.done) return true;
+    if (this.eventStatus === 'done') return true;
     return false;
   }
 
@@ -145,7 +145,7 @@ export class HbCarousel extends Base {
   get itemPosition() {
     if (this.holderFlag) return '';
     const currentPosition = (this.index * this.clientWidth) / this.visibleLength;
-    if ([HbCarouselEventStatus.doing, HbCarouselEventStatus.fake].includes(this.eventStatus)) {
+    if (['doing', 'fake'].includes(this.eventStatus)) {
       this.userIndex = this.closeIndex(currentPosition + this.dragDistance);
       return `${-currentPosition - this.dragDistance}px`;
     }
@@ -193,25 +193,25 @@ export class HbCarousel extends Base {
       this.onAuto(step);
       if (this.pause) {
         this.onmouseenter = () => {
-          if (this.eventStatus === HbCarouselEventStatus.done) {
+          if (this.eventStatus === 'done') {
             this.holderFlag = true;
             clearTimeout(this.sto);
           }
         };
         this.onmouseleave = () => {
-          if (this.eventStatus === HbCarouselEventStatus.done) {
+          if (this.eventStatus === 'done') {
             this.holderFlag = false;
             this.onAuto();
           }
         };
         this.ontouchstart = () => {
-          if (this.eventStatus === HbCarouselEventStatus.done) {
+          if (this.eventStatus === 'done') {
             this.holderFlag = true;
             clearTimeout(this.sto);
           }
         };
         this.ontouchend = () => {
-          if (this.eventStatus === HbCarouselEventStatus.done) {
+          if (this.eventStatus === 'done') {
             this.holderFlag = false;
             this.onAuto();
           }
@@ -245,8 +245,7 @@ export class HbCarousel extends Base {
     let duration = this.duration;
     clearTimeout(this.sto);
     if (this.index + step < this.itemLength) {
-      if (this.eventStatus !== HbCarouselEventStatus.done)
-        this.eventStatus = HbCarouselEventStatus.done;
+      if (this.eventStatus !== 'done') this.eventStatus = 'done';
       this.index += step;
       step = 1;
     } else {
@@ -254,7 +253,7 @@ export class HbCarousel extends Base {
       duration = 0;
       step = 0;
       if (this.infinite) {
-        this.eventStatus = HbCarouselEventStatus.fake;
+        this.eventStatus = 'fake';
         this.dragDistance = -this.clientWidth / this.visibleLength;
         this.userIndex = this.itemLength - 1;
       }
@@ -290,9 +289,9 @@ export class HbCarousel extends Base {
   }
 
   onEventStart(event: MouseEvent | TouchEvent) {
-    if (this.eventStatus === HbCarouselEventStatus.done) {
+    if (this.eventStatus === 'done') {
       this.holderFlag = false;
-      this.eventStatus = HbCarouselEventStatus.start;
+      this.eventStatus = 'start';
       const { clientX, clientY } = this.getClientPoint(event);
 
       this.startPointer = {
@@ -303,12 +302,12 @@ export class HbCarousel extends Base {
   }
 
   onEventEnd(event: MouseEvent | TouchEvent) {
-    if (this.eventStatus === HbCarouselEventStatus.doing) {
+    if (this.eventStatus === 'doing') {
       event.stopImmediatePropagation(); // drag 했을때 클릭 이벤트 발생시키지 않기
       this.index = this.userIndex;
       this.dragDistance = 0;
     }
-    this.eventStatus = HbCarouselEventStatus.done;
+    this.eventStatus = 'done';
   }
 
   closeIndex(position: number) {
@@ -329,14 +328,14 @@ export class HbCarousel extends Base {
   }
 
   onEventDoing(event: MouseEvent | TouchEvent) {
-    if ([HbCarouselEventStatus.start, HbCarouselEventStatus.doing].includes(this.eventStatus)) {
+    if (['start', 'doing'].includes(this.eventStatus)) {
       const { clientX, clientY } = this.getClientPoint(event);
       const starterClientX = this.startPointer.clientX;
       const starterClientY = this.startPointer.clientY;
       this.dragDistance = starterClientX - clientX;
-      if (this.eventStatus === HbCarouselEventStatus.start)
+      if (this.eventStatus === 'start')
         if (this.diff(starterClientX, clientX) > 10 || this.diff(starterClientY, clientY) > 10)
-          this.eventStatus = HbCarouselEventStatus.doing; // 드레그가 시작됐다고 판단하는 움직임 +- 10
+          this.eventStatus = 'doing'; // 드레그가 시작됐다고 판단하는 움직임 +- 10
     }
   }
 

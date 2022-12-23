@@ -50,7 +50,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   maxlength?: number;
 
-  type: HbInputType = HbInputType.text;
+  type: HbInputType = 'text';
 
   nowrap = true;
 
@@ -106,18 +106,17 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   get pattern() {
-    if ([HbInputType.number, HbInputType.currency].includes(this.type)) return '[0-9]*';
+    if (['number', 'currency'].includes(this.type)) return '[0-9]*';
     return null;
   }
 
   get inputmode() {
-    if ([HbInputType.number, HbInputType.currency].includes(this.type)) return 'decimal';
+    if (['number', 'currency'].includes(this.type)) return 'decimal';
     return null;
   }
 
   get isType() {
-    if ([HbInputType.number, HbInputType.currency, HbInputType.english].includes(this.type))
-      return HbInputType.text;
+    if (['number', 'currency', 'english'].includes(this.type)) return 'text';
     return this.type;
   }
 
@@ -125,11 +124,11 @@ export class HbInput extends InitAttribute<HbInputProps> {
     let value = originalValue;
     if (!value || value === 'null') value = '';
     if (this.nowrap) value = value.replace(/\n/g, '');
-    if (this.type === HbInputType.number) {
+    if (this.type === 'number') {
       value = this.toNumber(value);
-    } else if (this.type === HbInputType.currency) {
+    } else if (this.type === 'currency') {
       value = this.toCurrency(value);
-    } else if (this.type === HbInputType.english) {
+    } else if (this.type === 'english') {
       value = this.toEnglish(value);
     } else {
       value = value.substring(0, this.isMaxlength);
@@ -147,7 +146,7 @@ export class HbInput extends InitAttribute<HbInputProps> {
   }
 
   get originalValue() {
-    if (this.type === HbInputType.currency) return this.toCurrency(this._value, true);
+    if (this.type === 'currency') return this.toCurrency(this._value, true);
     return this._value;
   }
 

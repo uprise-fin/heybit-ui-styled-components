@@ -16,7 +16,21 @@ import { customElement } from 'lit/decorators.js';
  * @slot container
  * @csspart container
  */
-
+const obj = [
+  ['auto', 'auto'],
+  ['0', 'auto'],
+  ['auto', '0']
+];
+const verObj = {
+  middle: obj[0],
+  top: obj[1],
+  bottom: obj[2]
+};
+const horObj = {
+  center: obj[0],
+  right: obj[1],
+  left: obj[2]
+};
 @customElement('hb-modal')
 export class HbModal extends Base {
   static get styles() {
@@ -33,9 +47,9 @@ export class HbModal extends Base {
     this.containerEl.onanimationend = () => null;
   }
 
-  verticalAlign: VerticalAlign = VerticalAlign.middle;
+  verticalAlign: VerticalAlign = 'middle';
 
-  horizonAlign: HorizonAlign = HorizonAlign.center;
+  horizonAlign: HorizonAlign = 'center';
 
   transitionType: HbTransitionType;
 
@@ -48,14 +62,9 @@ export class HbModal extends Base {
   persistent = false;
 
   get position() {
-    const obj = {
-      0: ['auto', 'auto'],
-      1: ['0', 'auto'],
-      2: ['auto', '0']
-    };
-    return `${obj[this.verticalAlign][0]} ${obj[this.horizonAlign][0]} ${
-      obj[this.verticalAlign][1]
-    } ${obj[this.horizonAlign][1]}`;
+    return `${verObj[this.verticalAlign][0]} ${horObj[this.horizonAlign][0]} ${
+      verObj[this.verticalAlign][1]
+    } ${horObj[this.horizonAlign][1]}`;
   }
 
   static get properties() {
@@ -64,14 +73,14 @@ export class HbModal extends Base {
       persistent: { type: Boolean, Reflect: true },
       width: { type: String, Reflect: true },
       transitionType: { type: String, Reflect: true },
-      verticalAlign: { type: Number, Reflect: true },
-      horizonAlign: { type: Number, Reflect: true }
+      verticalAlign: { type: String, Reflect: true },
+      horizonAlign: { type: String, Reflect: true }
     };
   }
 
   render() {
     return html`
-      <hb-transition ?show=${this.open} id="modal-transition" type=${HbTransitionType.fade}>
+      <hb-transition ?show=${this.open} id="modal-transition" type=${'fade'}>
         <div class="hb-modal__wrap" @click=${this.adapterOnClose} part="layer">
           <hb-transition
             ?show=${this.open}

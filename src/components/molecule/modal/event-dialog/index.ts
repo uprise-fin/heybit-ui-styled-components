@@ -1,6 +1,4 @@
-import { HbTransitionType } from '@/components/atom/transition/type';
 import { Base } from '@/components/base';
-import { HbIconName } from '@/components/atom/icon/type';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
@@ -55,7 +53,7 @@ export class HbEventDialog extends Base {
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent}
-        transitionType=${HbTransitionType.zoom}
+        transitionType=${'zoom'}
       >
         <div class="hb-event-dialog__container">
           ${this.hideCloseBtn
@@ -67,7 +65,7 @@ export class HbEventDialog extends Base {
                 part="close-btn"
                 id="close-btn"
               >
-                <hb-icon icon=${HbIconName['system/outline/close']} size="small"></hb-icon>
+                <hb-icon icon=${'system/outline/close'} size="small"></hb-icon>
               </button>`}
           <hb-anchor href=${this.href}>
             <hb-img

@@ -1,7 +1,2 @@
-export enum HbCarouselEventStatus {
-  start,
-  doing,
-  done,
-  fake
-}
+export type HbCarouselEventStatus = 'start' | 'doing' | 'done' | 'fake';
 export interface HbCarouselProps {}

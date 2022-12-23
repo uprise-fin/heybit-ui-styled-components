@@ -1,10 +1,9 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import './index';
-import type { HbDialog } from './index';
 import desktopImg from '~/static/sample-desktop.png';
 import thunderImg from '~/static/sample-thunder.svg';
-import { HbButtonTheme } from '@/components/molecule/button/type';
+import './index';
+import type { HbDialog } from './index';
 interface HbDialogExpns extends HbDialog {
   content: string;
 }
@@ -88,21 +87,21 @@ horizon.args = {
   buttons: [
     {
       name: '닫기',
-      theme: HbButtonTheme.primary,
+      theme: 'primary',
       event: async function () {
         await new Promise((resolve) => setTimeout(() => resolve(true), 5000));
       }
     },
     {
       name: '열기',
-      theme: HbButtonTheme.secondary,
+      theme: 'secondary',
       event: function () {
         console.log('2');
       }
     },
     {
       name: '삼번',
-      theme: HbButtonTheme.tertiary,
+      theme: 'tertiary',
       event: function () {
         console.log('3');
       }

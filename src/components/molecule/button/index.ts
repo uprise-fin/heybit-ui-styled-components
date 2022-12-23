@@ -1,4 +1,3 @@
-import { HbTransitionType } from '@/components/atom/transition/type';
 import { Size } from '@/components/atom/variable/type';
 import { InitAttribute } from '@/components/base';
 import { HbButtonProps, HbButtonTheme, HbButtonType } from '@/components/molecule/button/type';
@@ -94,7 +93,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
           ? html`
               <hb-transition
                 class="hb-button__label__transition"
-                type=${HbTransitionType.fade}
+                type=${'fade'}
                 ?show=${this._loading}
               >
                 <hb-spinner size=${this.size}></hb-spinner>
@@ -103,7 +102,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
           : html`
               <hb-transition
                 class="hb-button__label__transition"
-                type=${HbTransitionType.fade}
+                type=${'fade'}
                 ?show=${!this._loading}
               >
                 <slot></slot>

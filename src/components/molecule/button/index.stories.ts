@@ -1,22 +1,21 @@
+import { Size } from '@/components/atom/variable/type';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import { Size } from '@/components/atom/variable/type';
-import { HbButtonTheme, HbButtonType } from '@/components/molecule/button/type';
 import './index';
 import type { HbButton } from './index';
-import { HbIconName } from '@/components/atom/icon/type';
+import { HbButtonTheme } from './type';
 
 export default {
   title: 'components/molecule/hb-button',
   argTypes: {
     theme: {
-      options: Object.keys(HbButtonTheme),
+      options: ['primary', 'secondary', 'tertiary', 'quaternary'] as HbButtonTheme[],
       control: { type: 'radio' }
     },
     size: {
-      options: Object.keys(Size),
+      options: ['xsmall', 'small', 'medium', 'large', 'xlarge'] as Size[],
       control: { type: 'radio' },
-      defaultValue: Size.large
+      defaultValue: 'large'
     },
     color: {
       control: { type: 'text' }
@@ -84,16 +83,12 @@ const IconTemplate: Story<HbButtonIconExps> = ({
     .baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
-    ><hb-icon
-      icon=${HbIconName['system/filled/add']}
-      size=${size}
-      style="--icon__color: ${color};"
-    ></hb-icon
+    ><hb-icon icon=${'system/filled/add'} size=${size} style="--icon__color: ${color};"></hb-icon
   ></hb-button>`;
 
 const args = {
   title: '내용을 입력해보세요',
-  size: Size.large,
+  size: 'large' as Size,
   baseLoadingDuration: 500,
   loading: false,
   disabled: false
@@ -101,20 +96,20 @@ const args = {
 export const rectangle: Story<HbButton> = Template.bind({});
 rectangle.args = {
   ...args,
-  type: HbButtonType.rectangle,
-  theme: HbButtonTheme.primary
+  type: 'rectangle',
+  theme: 'primary'
 };
 export const radius: Story<HbButton> = Template.bind({});
 radius.args = {
   ...args,
-  theme: HbButtonTheme.primary,
-  type: HbButtonType.radius
+  theme: 'primary',
+  type: 'radius'
 };
 export const circle: Story<HbButtonIconExps> = IconTemplate.bind({});
 circle.args = {
   ...args,
-  theme: HbButtonTheme.primary,
-  type: HbButtonType.circle
+  theme: 'primary',
+  type: 'circle'
 };
 circle.parameters = {
   colorPicker: {

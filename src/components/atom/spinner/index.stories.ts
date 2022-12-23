@@ -1,9 +1,9 @@
-import { colorPalette, Size, SystemColor } from '@/index';
+import { colorPalette, Size } from '@/index';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-
 import './index';
 import type { HbSpinner } from './index';
+
 interface HbSpinnerExps extends HbSpinner {
   color: string;
 }
@@ -13,13 +13,13 @@ export default {
   component: 'hb-spinner',
   argTypes: {
     size: {
-      options: Object.keys(Size),
+      options: ['xsmall', 'small', 'medium', 'large', 'xlarge'] as Size[],
       control: { type: 'radio' },
-      defaultValue: Size.large
+      defaultValue: 'large'
     },
     color: {
       control: { type: 'text' },
-      defaultValue: colorPalette[SystemColor.black][900]
+      defaultValue: colorPalette.black[900]
     }
   },
   parameters: {
@@ -35,7 +35,7 @@ const Template: Story<HbSpinnerExps> = ({ size, color }) =>
 
 export const primary: Story<HbSpinnerExps> = Template.bind({});
 primary.args = {
-  size: Size.large
+  size: 'large'
 };
 primary.parameters = {
   colorPicker: {

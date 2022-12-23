@@ -1,7 +1,4 @@
 export interface HbResponsiveProps {
   point?: number;
 }
-export enum HbResponsiveSlot {
-  mobile = 'mobile',
-  desktop = 'desktop'
-}
+export type HbResponsiveSlot = 'mobile' | 'desktop';

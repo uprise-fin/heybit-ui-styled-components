@@ -1,7 +1,6 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import { SystemColor, ServiceColor, Color, levels, prefix } from './type';
-import { colorPalette } from './type';
+import { Color, colorPalette, levels, prefix } from './type';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
@@ -72,7 +71,7 @@ const LevelTemplate: Story<unknown> = () =>
         </div>
         ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
-      ${Object.keys(SystemColor).map(
+      ${['white', 'black', 'orange', 'yellow', 'green', 'blue'].map(
         (name: Color) =>
           html`
             <div class="box">
@@ -100,7 +99,7 @@ const LevelTemplate: Story<unknown> = () =>
         </div>
         ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
-      ${Object.keys(ServiceColor).map(
+      ${['harvest', 'defi'].map(
         (name: Color) =>
           html`
             <div class="box">

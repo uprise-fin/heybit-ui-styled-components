@@ -8,18 +8,6 @@ export interface HbButtonProps {
   disabled?: boolean;
   event?: () => void;
 }
-export enum HbButtonSlots {
-  'slot--left' = 'slot--left',
-  'slot--right' = 'slot--right'
-}
-export enum HbButtonType {
-  'rectangle' = 'rectangle',
-  'radius' = 'radius',
-  'circle' = 'circle'
-}
-export enum HbButtonTheme {
-  'primary' = 'primary',
-  'secondary' = 'secondary',
-  'tertiary' = 'tertiary',
-  'quaternary' = 'quaternary'
-}
+export type HbButtonSlots = 'slot--left' | 'slot--right';
+export type HbButtonType = 'rectangle' | 'radius' | 'circle';
+export type HbButtonTheme = 'primary' | 'secondary' | 'tertiary' | 'quaternary';

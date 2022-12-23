@@ -1,7 +1,6 @@
+import { Base } from '@/components/base';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbTransitionType } from '@/components/atom/transition/type';
-import { Base } from '@/components/base';
 
 /**
  * @property open 온 오프
@@ -66,7 +65,7 @@ export class HbTooltip extends Base {
       <hb-transition
         class="hb-tooltip__transition"
         id="tooltip-transition"
-        type=${HbTransitionType.fade}
+        type=${'fade'}
         ?show=${this.open}
         ><slot part="content" class="hb-tooltip__content"></slot
       ></hb-transition>
