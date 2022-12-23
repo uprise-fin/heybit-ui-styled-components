@@ -94,7 +94,7 @@ export class HbSheetDialog extends Base {
     return html`
       <hb-modal
         @close=${this.onClose}
-        verticalAlign=${'bottom'}
+        verticalAlign="bottom"
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
@@ -109,7 +109,7 @@ export class HbSheetDialog extends Base {
                 class="hb-sheet-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon icon=${'system/outline/close'} size="small"></hb-icon
+                ><hb-icon icon="system/outline/close" size="small"></hb-icon
               ></hb-button>`}
           <div class="hb-sheet-dialog__head${!this.title ? ' empty' : ''}">
             ${this.title
@@ -126,7 +126,7 @@ export class HbSheetDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || this.disabled}
-                    type=${'rectangle'}
+                    type="rectangle"
                     @event=${this.adapterEvent.bind(this, x, i)}
                     theme=${x.theme}
                     size="medium"

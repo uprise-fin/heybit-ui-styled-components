@@ -80,7 +80,7 @@ export class HbModal extends Base {
 
   render() {
     return html`
-      <hb-transition ?show=${this.open} id="modal-transition" type=${'fade'}>
+      <hb-transition ?show=${this.open} id="modal-transition" type="fade">
         <div class="hb-modal__wrap" @click=${this.adapterOnClose} part="layer">
           <hb-transition
             ?show=${this.open}

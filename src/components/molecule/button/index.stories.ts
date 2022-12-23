@@ -83,7 +83,7 @@ const IconTemplate: Story<HbButtonIconExps> = ({
     .baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
-    ><hb-icon icon=${'system/filled/add'} size=${size} style="--icon__color: ${color};"></hb-icon
+    ><hb-icon icon="system/filled/add" size=${size} style="--icon__color: ${color};"></hb-icon
   ></hb-button>`;
 
 const args = {

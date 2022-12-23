@@ -112,13 +112,9 @@ export class HbCombo extends Base {
         @event=${this.onInput}
       >
         <slot name="icon" class="hb-combo__label--icon"></slot>
-        <hb-icon
-          slot="slot--right"
-          icon=${'system/outline/arrow-dropdown'}
-          size=${'small'}
-        ></hb-icon>
+        <hb-icon slot="slot--right" icon="system/outline/arrow-dropdown" size="small"></hb-icon>
       </hb-input>
-      <hb-transition id="select-transition" ?show=${this.open} type=${'fade'}>
+      <hb-transition id="select-transition" ?show=${this.open} type="fade">
         <hb-list
           tabindex="0"
           emptyText=${this.emptyText}

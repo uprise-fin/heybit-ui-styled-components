@@ -65,7 +65,7 @@ export class HbTooltip extends Base {
       <hb-transition
         class="hb-tooltip__transition"
         id="tooltip-transition"
-        type=${'fade'}
+        type="fade"
         ?show=${this.open}
         ><slot part="content" class="hb-tooltip__content"></slot
       ></hb-transition>

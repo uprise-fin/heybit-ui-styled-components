@@ -42,9 +42,9 @@ const Template: Story<HbToastExns> = ({ visibleIcon, contents, theme }) => {
     if (!element.messages) element.messages = [];
     element.messages = [...element.messages, message];
   }
-  return html`<hb-button type=${'rectangle'} theme=${'primary'} size=${'large'} @event=${reset}
+  return html`<hb-button type="rectangle" theme="primary" size="large" @event=${reset}
       >토스트리셋</hb-button
-    ><br /><hb-button type=${'rectangle'} theme=${'secondary'} size=${'large'} @event=${event}
+    ><br /><hb-button type="rectangle" theme="secondary" size="large" @event=${event}
       >토스트 추가하기</hb-button
     ><hb-toast id="toast"></hb-toast>`;
 };

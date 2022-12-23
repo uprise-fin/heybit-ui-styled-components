@@ -6,7 +6,7 @@ export default {
 } as Meta;
 const Template: Story<HbButton> = () =>
   html`
-    <hb-button theme="primary" size="large" type=${'rectangle'} tabindex="0"
+    <hb-button theme="primary" size="large" type="rectangle" tabindex="0"
       >primary large block</hb-button
     >
   `;

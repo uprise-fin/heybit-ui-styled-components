@@ -91,8 +91,8 @@ export class HbSelect extends Base {
       <span class="hb-select__icon-wrap">
         <hb-icon
           class="hb-select__icon-wrap__el"
-          icon=${'system/outline/arrow-dropdown'}
-          size=${'small'}
+          icon="system/outline/arrow-dropdown"
+          size="small"
         ></hb-icon>
       </span>
     `;

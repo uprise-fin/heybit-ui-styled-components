@@ -53,7 +53,7 @@ export class HbEventDialog extends Base {
         width=${this.width}
         ?open=${this.open}
         ?persistent=${this.persistent}
-        transitionType=${'zoom'}
+        transitionType="zoom"
       >
         <div class="hb-event-dialog__container">
           ${this.hideCloseBtn
@@ -65,7 +65,7 @@ export class HbEventDialog extends Base {
                 part="close-btn"
                 id="close-btn"
               >
-                <hb-icon icon=${'system/outline/close'} size="small"></hb-icon>
+                <hb-icon icon="system/outline/close" size="small"></hb-icon>
               </button>`}
           <hb-anchor href=${this.href}>
             <hb-img

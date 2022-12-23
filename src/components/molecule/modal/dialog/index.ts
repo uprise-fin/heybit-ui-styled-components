@@ -110,7 +110,7 @@ export class HbDialog extends Base {
                 class="hb-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
-                ><hb-icon icon=${'system/outline/close'} size="small"></hb-icon
+                ><hb-icon icon="system/outline/close" size="small"></hb-icon
               ></hb-button>`}
           <div class="hb-dialog__head${!this.icon && !this.title ? ' empty' : ''}">
             ${this.icon
@@ -135,7 +135,7 @@ export class HbDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || this.disabled}
-                    type=${'rectangle'}
+                    type="rectangle"
                     @event=${this.adapterEvent.bind(this, x, i)}
                     theme=${x.theme}
                     size="medium"

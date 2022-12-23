@@ -152,7 +152,7 @@ export class HbFooter extends Base {
       ${this.socialMenu?.map(
         (x) =>
           html`<hb-anchor href=${x.href} target=${x.target} @event=${x.event}
-            ><hb-icon size=${'medium'} icon=${x.icon}></hb-icon
+            ><hb-icon size="medium" icon=${x.icon}></hb-icon
           ></hb-anchor>`
       )}
     `;
