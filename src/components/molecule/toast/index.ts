@@ -4,7 +4,7 @@ import { componentVariables, HbIconName } from '@/index';
 import { getElement } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbToastMessage, HbToastTheme } from './type';
+import { HbToastMessage, hbToastTheme, HbToastTheme } from './type';
 
 /**
  * @property open 온 오프
@@ -100,7 +100,7 @@ export class HbToast extends Base {
   //   return msg.replace(/\[!]/g, '')
   // }
   getIconTemplate(theme?: HbToastTheme) {
-    if (['positive', 'negative'].includes(theme)) {
+    if (hbToastTheme.includes(theme)) {
       const icon = componentVariables.toast[theme].icon as HbIconName;
       const color = componentVariables.toast[theme].color;
       return html`<hb-icon
