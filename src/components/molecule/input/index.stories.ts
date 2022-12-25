@@ -41,7 +41,7 @@ export const text: Story<HbInput> = Template.bind({});
 text.args = {
   type: 'text',
   maxlength: 10,
-  value: 'dawkldjlkajdklawjdlkwajdklawdjlawdjlkawjdlawjdlwajdklawjdlkawjdlkajwlkdawjdlawkjdl',
+  value: 'value 123 sample',
   placeholder: '글자입력해주세요',
   error: false,
   readonly: false,
@@ -50,21 +50,22 @@ text.args = {
 export const number: Story<HbInput> = Template.bind({});
 number.args = {
   type: 'number',
-  maxlength: 10,
+  maxlength: 9,
   placeholder: '숫자를써볼까요?',
   decimal: 2,
   comma: 3,
   error: false,
-
+  value: '123456789',
   readonly: false,
   disabled: false
 };
 export const currency: Story<HbInput> = Template.bind({});
 currency.args = {
   type: 'currency',
-  maxlength: 10,
+  maxlength: 9,
   placeholder: '숫자를써볼까요?',
   decimal: 2,
+  value: '123456789',
   comma: 3,
   error: false,
 
@@ -74,9 +75,10 @@ currency.args = {
 export const english: Story<HbInput> = Template.bind({});
 english.args = {
   type: 'english',
-  maxlength: 10,
+  maxlength: 9,
   placeholder: '영어만 써봅니다?',
   decimal: 2,
+  value: 'value sample',
   comma: 3,
   error: false,
 
