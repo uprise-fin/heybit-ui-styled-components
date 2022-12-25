@@ -1,10 +1,11 @@
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbAnchor } from './index';
 
 export default {
-  title: 'components/molecule/hb-anchor',
+  title: `${getFolderName()}/molecule/hb-anchor`,
   component: 'hb-anchor'
 } as Meta;
 

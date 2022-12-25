@@ -1,3 +1,4 @@
+const packageConfig = require('../package.json');
 export function getChildren(children: HTMLCollection, timer?: number): PromiseLike<HTMLElement[]> {
   const index = typeof timer === 'number' ? ++timer : 0;
   if (children.length === 0 && index < 10) {
@@ -38,4 +39,7 @@ export function wait(time = 500): Promise<void> {
 
 export function dev() {
   return process.env.ENVIRONMENT === 'dev';
+}
+export function getFolderName(isDev = false) {
+  return isDev ? 'dev' : `v${packageConfig.version}`;
 }

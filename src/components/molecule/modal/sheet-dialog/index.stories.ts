@@ -1,3 +1,4 @@
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import desktopImg from '~/static/sample-desktop.png';
@@ -9,7 +10,7 @@ interface HbSheetDialogExpns extends HbSheetDialog {
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'components/molecule/hb-sheet-dialog',
+  title: `${getFolderName()}/molecule/hb-sheet-dialog`,
   component: 'hb-sheet-dialog',
   argTypes: {
     open: {

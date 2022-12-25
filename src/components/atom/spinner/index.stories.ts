@@ -1,4 +1,5 @@
 import { colorPalette } from '@/index';
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import { sizes } from '../variable/type';
@@ -10,7 +11,7 @@ interface HbSpinnerExps extends HbSpinner {
 }
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'components/atom/hb-spinner',
+  title: `${getFolderName()}/atom/hb-spinner`,
   component: 'hb-spinner',
   argTypes: {
     size: {

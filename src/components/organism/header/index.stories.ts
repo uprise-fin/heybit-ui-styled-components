@@ -10,9 +10,10 @@ import {
   initialHeaderGnb,
   initialHeaderMyMenu
 } from './type';
+import { getFolderName } from '@/utils';
 
 export default {
-  title: 'components/organism/hb-header',
+  title: `${getFolderName()}/organism/hb-header`,
   component: 'hb-header',
   argTypes: {
     pending: {

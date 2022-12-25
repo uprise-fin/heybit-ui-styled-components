@@ -1,10 +1,11 @@
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbLoading } from './index';
 
 export default {
-  title: 'components/atom/hb-loading',
+  title: `${getFolderName()}/atom/hb-loading`,
   component: 'hb-loading'
 } as Meta;
 

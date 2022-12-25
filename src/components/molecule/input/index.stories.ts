@@ -1,3 +1,4 @@
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
@@ -5,7 +6,7 @@ import type { HbInput } from './index';
 import { HbInputEvent } from './type';
 
 export default {
-  title: 'components/molecule/hb-input',
+  title: `${getFolderName()}/molecule/hb-input`,
   component: 'hb-input'
 } as Meta;
 

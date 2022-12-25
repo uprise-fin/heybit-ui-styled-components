@@ -1,3 +1,4 @@
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
@@ -5,7 +6,7 @@ import type { HbToast } from './index';
 import { hbToastTheme, HbToastTheme } from './type';
 
 export default {
-  title: 'components/molecule/hb-toast',
+  title: `${getFolderName()}/molecule/hb-toast`,
   component: 'hb-toast',
   argTypes: {
     visibleIcon: {

@@ -3,10 +3,11 @@ import { html } from 'lit';
 import './index';
 import type { HbEventDialog } from './index';
 import desktopImg from '~/static/sample-desktop.png';
+import { getFolderName } from '@/utils';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'components/molecule/hb-event-dialog',
+  title: `${getFolderName()}/molecule/hb-event-dialog`,
   component: 'hb-event-dialog',
   argTypes: {
     open: {

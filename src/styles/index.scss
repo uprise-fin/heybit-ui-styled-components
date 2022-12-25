@@ -4,6 +4,7 @@
 @import '@/components/atom/list/style';
 @import '@/components/atom/spinner/style';
 
+@import '@/components/molecule/button/style';
 @import '@/components/molecule/anchor/style';
 @import '@/components/molecule/img/style';
 @import '@/components/molecule/skeleton/style';
@@ -12,7 +13,8 @@
 @import '@/components/molecule/button/style';
 @import '@/components/molecule/input/style';
 @import '@/components/molecule/select/style';
-@import '@/components/molecule/tab/style';
+// @import '@/components/molecule/combo/style';
+// @import '@/components/molecule/tab/style';
 @import '@/components/molecule/modal/style';
 @import '@/components/molecule/modal/dialog/style';
 @import '@/components/molecule/modal/event-dialog/style';

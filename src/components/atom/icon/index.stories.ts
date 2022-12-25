@@ -1,4 +1,5 @@
 import { colorPalette } from '@/index';
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import { sizes } from '../variable/type';
@@ -11,7 +12,7 @@ interface HbIconExpns extends HbIcon {
 }
 const iconList = Object.keys(SVG) as HbIconName[];
 export default {
-  title: 'components/atom/hb-icon',
+  title: `${getFolderName()}/atom/hb-icon`,
   component: 'hb-icon',
   argTypes: {
     icon: {

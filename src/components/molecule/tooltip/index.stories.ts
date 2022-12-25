@@ -1,10 +1,11 @@
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbTooltip } from './index';
 
 export default {
-  title: 'components/molecule/hb-tooltip',
+  title: `${getFolderName()}/molecule/hb-tooltip`,
   component: 'hb-tooltip',
   argTypes: {
     open: {

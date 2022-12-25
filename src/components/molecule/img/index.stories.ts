@@ -1,10 +1,11 @@
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbImg } from './index';
 
 export default {
-  title: 'components/molecule/hb-img',
+  title: `${getFolderName()}/molecule/hb-img`,
   component: 'hb-img'
 } as Meta;
 

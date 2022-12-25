@@ -1,14 +1,13 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import { dev } from '@/utils';
+import { getFolderName } from '@/utils';
 import './index';
 import type { HbList } from './index';
 
-export default dev() &&
-  ({
-    title: 'components/atom/hb-list',
-    component: 'hb-list'
-  } as Meta);
+export default {
+  title: `${getFolderName()}/atom/hb-list`,
+  component: 'hb-list'
+} as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 
