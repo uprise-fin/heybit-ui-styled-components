@@ -30,7 +30,7 @@ const Template: Story<HbInput> = ({
     .maxlength=${maxlength}
     .decimal=${decimal}
     .comma=${comma}
-    .value=${value}
+    value=${value}
     @submit=${($event: HbInputEvent) => console.log($event.target.originalValue, 'submit')}
     @event=${($event: HbInputEvent) => console.log($event.target.originalValue)}
   ></hb-input>
