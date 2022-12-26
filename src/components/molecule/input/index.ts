@@ -120,25 +120,28 @@ export class HbInput extends InitAttribute<HbInputProps> {
     return this.type;
   }
 
-  set value(originalValue: string) {
-    let value = originalValue;
-    if (!value || value === 'null') value = '';
-    if (this.nowrap) value = value.replace(/\n/g, '');
-    if (this.type === 'number') {
-      value = this.toNumber(value);
-    } else if (this.type === 'currency') {
-      value = this.toCurrency(value);
-    } else if (this.type === 'english') {
-      value = this.toEnglish(value);
-    } else {
-      value = value.substring(0, this.isMaxlength);
+  set value(value: string) {
+    if (this._value !== value && value !== null) {
+      if (!value || value === 'null') value = '';
+      const { inputEl } = this;
+      if (this.nowrap) value = (value || '').replace(/\n/g, '');
+      if (this.type === 'number') {
+        value = this.toNumber(value);
+      } else if (this.type === 'currency') {
+        value = this.toCurrency(value);
+      } else if (this.type === 'english') {
+        value = this.toEnglish(value);
+      } else {
+        value = value.substring(0, this.isMaxlength);
+      }
+
+      this._value = value;
+      if (inputEl && inputEl?.value !== value) inputEl.value = value;
+      else {
+        this.onResize();
+        this.onChange();
+      }
     }
-    if (this._value !== value) {
-      this._value = value || '';
-      this.onResize();
-      this.onChange();
-    }
-    if (originalValue !== value && this.inputEl) this.inputEl.value = this._value;
   }
 
   get value() {
@@ -271,15 +274,6 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
   disconnectedCallback() {
     this.onclick = () => null;
-  }
-
-  attributeChangedCallback(name: string, oldVal: string, newVal: string) {
-    if (name === 'value' && oldVal !== newVal) {
-      this.value = newVal;
-      if (this.inputEl) this.inputEl.value = this.value;
-    }
-
-    super.attributeChangedCallback(name, oldVal, newVal);
   }
 }
 

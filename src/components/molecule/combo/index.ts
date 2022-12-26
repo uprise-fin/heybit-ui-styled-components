@@ -164,7 +164,6 @@ export class HbCombo extends Base {
     const { value } = target;
     if (this.attributeSync) this.setAttribute('value', value!);
     this.value = value!;
-    this.inputValue = '';
     // this.dispatchEvent(new CustomEvent('event', evt));
     this.onEvent(new CustomEvent('event'));
     this.resolve();
@@ -174,7 +173,10 @@ export class HbCombo extends Base {
     const { width } = this.getBoundingClientRect();
     this.open = true;
     this.width = width;
-    if (this.search) this.hasFocus = true;
+    if (this.search) {
+      this.hasFocus = true;
+      this.inputValue = '';
+    }
     if (this.fixed) {
       this.onScroll();
       this.scrollEventListener.addEventListener('scroll', this.onScrollBound);
