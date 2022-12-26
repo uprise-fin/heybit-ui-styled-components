@@ -59,11 +59,11 @@ export class HbSelect extends Base {
     );
   }
 
-  set value(originalValue: string) {
-    let value = originalValue;
+  set value(value: string) {
     if (this._value !== value) {
-      this._value = value || '';
       this.focus();
+      this._value = value || '';
+      this.blur();
     }
   }
 

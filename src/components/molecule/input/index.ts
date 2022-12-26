@@ -281,13 +281,6 @@ export class HbInput extends InitAttribute<HbInputProps> {
 
     super.attributeChangedCallback(name, oldVal, newVal);
   }
-  // attributeChangedCallback(name: any, oldVal: any, newVal: any) {
-  //   console.log('attribute change: ', name, newVal);
-  //   // super.attributeChangedCallback(name, oldVal, newVal);
-  // }
-  // changeProperties() {
-  //   console.log('djawkldjaw')
-  // }
 }
 
 declare global {

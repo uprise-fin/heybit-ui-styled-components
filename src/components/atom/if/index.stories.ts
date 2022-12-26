@@ -1,10 +1,11 @@
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbIf } from './index';
 
 export default {
-  title: 'components/atom/hb-if',
+  title: `${getFolderName()}/atom/hb-if`,
   component: 'hb-if'
 } as Meta;
 

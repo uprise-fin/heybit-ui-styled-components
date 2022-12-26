@@ -1,4 +1,5 @@
 import { Size, sizes } from '@/components/atom/variable/type';
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
@@ -6,7 +7,7 @@ import type { HbButton } from './index';
 import { hbButtonThemes } from './type';
 
 export default {
-  title: 'components/molecule/hb-button',
+  title: `${getFolderName()}/molecule/hb-button`,
   argTypes: {
     theme: {
       options: hbButtonThemes,

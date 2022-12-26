@@ -3,9 +3,10 @@ import { html } from 'lit';
 import { basicVariables } from '@/index';
 import './index';
 import type { HbResponsive } from './index';
+import { getFolderName } from '@/utils';
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'components/atom/hb-responsive',
+  title: `${getFolderName()}/atom/hb-responsive`,
   component: 'hb-responsive',
   argTypes: {
     point: {

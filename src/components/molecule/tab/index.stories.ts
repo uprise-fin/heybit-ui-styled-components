@@ -1,21 +1,20 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import { dev } from '@/utils';
+import { getFolderName } from '@/utils';
 import './index';
 import type { HbTab } from './index';
 
-export default dev() &&
-  ({
-    title: 'components/molecule/hb-tab',
-    component: 'hb-tab',
-    argTypes: {
-      index: {
-        options: ['0', '1', '2'],
-        control: { type: 'radio' },
-        defaultValue: '0'
-      }
+export default {
+  title: `${getFolderName(true)}/molecule/hb-tab`,
+  component: 'hb-tab',
+  argTypes: {
+    index: {
+      options: ['0', '1', '2'],
+      control: { type: 'radio' },
+      defaultValue: '0'
     }
-  } as Meta);
+  }
+} as Meta;
 
 const Template: Story<HbTab> = ({ index }) =>
   html`<hb-tab index=${index}>

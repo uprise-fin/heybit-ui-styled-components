@@ -54,8 +54,6 @@ export class HbTooltip extends Base {
     const { x, y, width, height } = this.getBoundingClientRect();
     const { innerWidth, innerHeight } = window;
     this.position = [x + width / 2 > innerWidth / 2, y + height / 2 > innerHeight / 2];
-    // if ((x + width / 2) > innerWidth / 2) console.log('오른쪽')
-    // if ((y + height / 2) > innerHeight / 2) console.log('아래쪽')
     this.open = true;
   }
 

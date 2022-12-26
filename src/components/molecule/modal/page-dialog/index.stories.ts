@@ -1,3 +1,4 @@
+import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import desktopImg from '~/static/sample-desktop.png';
@@ -10,7 +11,7 @@ interface HbPageDialogExpns extends HbPageDialog {
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: 'components/molecule/hb-page-dialog',
+  title: `${getFolderName()}/molecule/hb-page-dialog`,
   component: 'hb-page-dialog',
   argTypes: {
     open: {
