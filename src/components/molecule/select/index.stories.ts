@@ -52,7 +52,7 @@ const OpionSlotTmpl: Story<HbSelect> = ({ value, options, placeholder, emptyText
 
 export const primary: Story<HbSelect> = OpionSlotTmpl.bind({});
 primary.args = {
-  value: '',
+  value: undefined,
   disabled: false,
   emptyText: '블라블라',
   placeholder: '내용이없습니다.',

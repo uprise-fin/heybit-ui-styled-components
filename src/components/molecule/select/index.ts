@@ -53,16 +53,18 @@ export class HbSelect extends Base {
   }
 
   get list() {
-    const placeholder: HbListOption[] = [{ value: '', label: this.placeholder, disabled: true }];
-    return placeholder.concat(
-      this.options.length ? this.options : [{ value: ' ', label: this.emptyText, disabled: true }]
-    );
+    const placeholder: HbListOption[] = [
+      { value: undefined, label: this.placeholder, disabled: true }
+    ];
+    return this.options?.length
+      ? placeholder.concat(this.options)
+      : [{ value: null, label: this.emptyText, disabled: true }];
   }
 
   set value(value: string) {
     if (this._value !== value) {
       this.focus();
-      this._value = value || '';
+      this._value = value;
       this.blur();
     }
   }
@@ -75,14 +77,18 @@ export class HbSelect extends Base {
     return html`
       <select
         id="select"
-        class=${'hb-select__el' + (this._value === '' ? ' hb-select__el--init' : '')}
+        class=${'hb-select__el' + (this._value ? '' : ' hb-select__el--init')}
         @change=${this.onSelect}
         ?disabled=${this.disabled}
       >
         ${this.list.map(
-          (x) =>
+          (x, i) =>
             html`
-              <option ?selected=${this._value === x.value} value=${x.value} ?disabled=${x.disabled}>
+              <option
+                ?selected=${this._value ? this._value === x.value : i === 0}
+                value=${x.value}
+                ?disabled=${x.disabled}
+              >
                 ${x.label}
               </option>
             `
