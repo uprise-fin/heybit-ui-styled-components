@@ -1,9 +1,9 @@
 import { componentVariables } from '@/components/atom/variable/type';
-import { InitAttribute } from '@/components/base';
+import { Base } from '@/components/base';
 import { getElement } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbInputProps, HbInputType } from './type';
+import { HbInputType } from './type';
 
 /**
  * An example element.
@@ -25,7 +25,7 @@ import { HbInputProps, HbInputType } from './type';
  */
 
 @customElement('hb-input')
-export class HbInput extends InitAttribute<HbInputProps> {
+export class HbInput extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -53,8 +53,6 @@ export class HbInput extends InitAttribute<HbInputProps> {
   type: HbInputType = 'text';
 
   nowrap = true;
-
-  initialAttributes: (keyof HbInputProps)[] = ['value'];
 
   get disabled() {
     return this._disabled;
