@@ -136,9 +136,9 @@ export class HbInput extends Base {
       this._value = value;
       if (inputEl && inputEl?.value !== value) inputEl.value = value;
       else {
-        this.onResize();
         this.onChange();
       }
+      this.onResize();
     }
   }
 
