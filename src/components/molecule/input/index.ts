@@ -262,6 +262,7 @@ export class HbInput extends Base {
     this.inputEl = inputEl;
     this.value = this.getAttribute('value');
     inputEl.value = this.value;
+    this.onResize();
     this.onclick = () => inputEl.focus();
     this.addEventListener('focus', () => {
       this.setAttribute('data-focus', '');
