@@ -40,6 +40,10 @@ export interface HbHeaderMyMenu extends HbButtonProps {
 export interface HbHeaderUser {
   name?: string;
   email?: string;
+  global?: {
+    name: string;
+    message: string;
+  };
 }
 export const initialHeaderGnb: HbHeaderNavi[] = [
   {
