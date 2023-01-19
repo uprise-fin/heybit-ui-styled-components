@@ -45,8 +45,12 @@ export class HbHeader extends Base {
 
   get userName() {
     const name = this.user?.name;
-    if (this.loggedin && name) return `${name}님 `;
-    return '';
+    if (!this.loggedin || !name) return '';
+    return this.user?.global.name || `${name}님`;
+  }
+
+  get welcomeMessage() {
+    return this.user?.global.message || `${this.userName} 환영합니다.`;
   }
 
   get userEmail() {
@@ -505,7 +509,7 @@ export class HbHeader extends Base {
                     <hb-skeleton type="drop-menu-top"></hb-skeleton>
                   </hb-if>
                   <hb-if ?value=${!this.pending}>
-                    <strong>${this.userName}환영합니다.</strong>
+                    <strong>${this.welcomeMessage}</strong>
                     <hb-if ?value=${this.loggedin}>
                       <p>${this.userEmail}</p>
                       <div>${this.myMenuTemplate()}</div>
@@ -592,7 +596,7 @@ export class HbHeader extends Base {
           >
             <div class="hb-header--desktop__side-menu__content">
               <div class="hb-header--desktop__side-menu__content__my">
-                <strong>${this.userName}환영합니다.</strong>
+                <strong>${this.welcomeMessage}</strong>
                 <p>${this.userEmail}</p>
               </div>
               <div class="hb-header--desktop__side-menu__content__menu">
