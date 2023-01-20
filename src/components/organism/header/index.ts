@@ -46,11 +46,11 @@ export class HbHeader extends Base {
   get userName() {
     const name = this.user?.name;
     if (!this.loggedin || !name) return '';
-    return this.user?.global.name || `${name}님`;
+    return this.user?.global?.name || `${name}님`;
   }
 
   get welcomeMessage() {
-    return this.user?.global.message || `${this.userName} 환영합니다.`;
+    return this.user?.global?.message || `${this.userName} 환영합니다.`;
   }
 
   get userEmail() {
