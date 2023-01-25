@@ -292,6 +292,7 @@ export class HbCarousel extends Base {
     if (this.eventStatus === 'done') {
       this.holderFlag = false;
       this.eventStatus = 'start';
+      clearTimeout(this.sto);
       const { clientX, clientY } = this.getClientPoint(event);
 
       this.startPointer = {
@@ -301,13 +302,13 @@ export class HbCarousel extends Base {
     }
   }
 
-  onEventEnd(event: MouseEvent | TouchEvent) {
+  onEventEnd() {
     if (this.eventStatus === 'doing') {
-      event.stopImmediatePropagation(); // drag 했을때 클릭 이벤트 발생시키지 않기
       this.index = this.userIndex;
       this.dragDistance = 0;
     }
     this.eventStatus = 'done';
+    this.onAuto();
   }
 
   closeIndex(position: number) {
