@@ -342,7 +342,8 @@ export class HbCarousel extends Base {
   render() {
     return html`
       <div
-        class="hb-carousel__wrap"
+        class=${'hb-carousel__wrap' +
+        (this.eventStatus === 'doing' ? ' hb-carousel__wrap--drag' : '')}
         style="transform: translateX(${this.itemPosition});--duration: ${this
           .transitionDuration}ms;--type: ${this.rolling ? 'linear' : 'ease'};"
       >

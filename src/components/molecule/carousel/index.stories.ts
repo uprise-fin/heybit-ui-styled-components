@@ -51,7 +51,7 @@ const SkeletonTemplate = (props: HbCarousel) => html`
     flexWidth=${props.flexWidth}
     visibleLength=${props.visibleLength}
   >
-    <hb-skeleton type="card" style="margin: 0 10px;"></hb-skeleton>
+    <hb-skeleton @click=${() => console.log(111)} type="card" style="margin: 0 10px;"></hb-skeleton>
     <hb-skeleton type="card" style="margin: 0 10px;"></hb-skeleton>
     <hb-skeleton type="card" style="margin: 0 10px;"></hb-skeleton>
   </hb-carousel>
