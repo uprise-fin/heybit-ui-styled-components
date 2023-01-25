@@ -11,6 +11,9 @@
     font-size: 0;
     transition: transform var(--type) var(--duration);
     will-change: transform;
+    &--drag > * {
+      pointer-events: none;
+    }
   }
   &__indicate {
     display: flex;
