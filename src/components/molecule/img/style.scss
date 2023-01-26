@@ -6,13 +6,13 @@
     font-size: 0;
   }
   &__picture {
-    display: flex;
-    width: inherit;
-    height: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
     &__img {
       flex: 1;
-      max-width: 100%;
-      max-height: 100%;
+      width: inherit;
+      height: inherit;
       opacity: 0;
       transition: opacity var(--husc__transition__duration--ms);
       &[loaded] {
@@ -22,8 +22,8 @@
   }
   &__loading {
     position: absolute;
-    width: inherit;
-    height: inherit;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
   }
 }
