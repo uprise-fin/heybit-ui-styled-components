@@ -184,7 +184,7 @@ export class HbCarousel extends Base {
       this.addEventListener('mousedown', this.onEventStartBound);
       window.addEventListener('mouseup', this.onEventEndBound);
       window.addEventListener('mousemove', this.onEventDoingBound);
-      window.addEventListener('touchstart', this.onEventStartBound);
+      this.addEventListener('touchstart', this.onEventStartBound);
       window.addEventListener('touchend', this.onEventEndBound);
       window.addEventListener('touchmove', this.onEventDoingBound);
     }
