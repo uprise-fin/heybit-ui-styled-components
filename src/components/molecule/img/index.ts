@@ -106,11 +106,7 @@ export class HbImg extends InitAttribute<HbImgProps> {
         ?loaded=${this.loaded || this.error}
         style="width:${this.loadingWidth}px; height:${this.loadingHeight}px;"
       ></hb-loading>
-      <picture
-        class="hb-img__picture"
-        part="picture"
-        style=${this.loaded ? '' : `width:${this.loadingWidth}px; height:${this.loadingHeight}px;`}
-      >
+      <picture class="hb-img__picture" part="picture">
         ${this.multiSource > 0
           ? this.breakPoint > 0
             ? html`
