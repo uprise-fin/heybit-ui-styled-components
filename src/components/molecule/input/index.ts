@@ -132,12 +132,14 @@ export class HbInput extends Base {
       } else {
         value = value.substring(0, this.isMaxlength);
       }
-
-      this._value = value;
-      if (inputEl && inputEl?.value !== this.originalValue) inputEl.value = value;
-      else {
-        this.onChange();
+      if (inputEl) {
+        inputEl.value = value;
+        if (value !== this._value) {
+          this._value = value;
+          this.onChange();
+        }
       }
+
       this.onResize();
     }
   }
