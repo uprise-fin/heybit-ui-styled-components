@@ -153,8 +153,8 @@ export const componentVariables = {
   },
   button: {
     padding: {
-      right: 10,
-      left: 10
+      right: 16,
+      left: 16
     },
     font: {
       size: basicVariables.font.size

@@ -138,7 +138,7 @@ export class HbInput extends Base {
           this._value = value;
           this.onChange();
         }
-      }
+      } else this._value = value;
 
       this.onResize();
     }
