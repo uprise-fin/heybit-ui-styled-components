@@ -7,8 +7,8 @@ import { customElement } from 'lit/decorators.js';
  * @property value
  */
 
-@customElement('hb-check')
-export class HbCheck extends Base {
+@customElement('hb-switch')
+export class HbSwitch extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -29,24 +29,33 @@ export class HbCheck extends Base {
     this.onEvent(new CustomEvent('event'));
   }
 
+  onEnter(ev: KeyboardEvent) {
+    if (ev.key === 'Enter') {
+      ev.preventDefault();
+      this.onChange();
+    }
+  }
+
   render() {
     return html`<label
-      class="hb-check__label${this.value ? ' hb-check__label--active' : ''}${this.loading
-        ? ' hb-check__label--loading'
+      tabindex="0"
+      @keydown=${this.onEnter}
+      class="hb-switch__label${this.value ? ' hb-switch__label--active' : ''}${this.loading
+        ? ' hb-switch__label--loading'
         : ''}"
       ><input
         @change=${this.onChange}
         ?checked=${this.value}
         type="checkbox"
-        class="hb-check__input" /><i class="hb-check__icon"></i
-      ><hb-spinner class="hb-check__spinner" size="medium"></hb-spinner
+        class="hb-switch__input" /><i class="hb-switch__icon"></i
+      ><hb-spinner class="hb-switch__spinner" size="medium"></hb-spinner
     ></label>`;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'hb-check': HbCheck;
+    'hb-switch': HbSwitch;
   }
 }
 // const NAME = "hb-list";

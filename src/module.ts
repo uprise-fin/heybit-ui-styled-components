@@ -1,6 +1,6 @@
 // export * from '@/components/atom/delay';
 export * from '@/components/atom/if';
-export * from '@/components/atom/check';
+export * from '@/components/atom/switch';
 export * from '@/components/atom/loading';
 export * from '@/components/atom/responsive';
 export * from '@/components/atom/transition';

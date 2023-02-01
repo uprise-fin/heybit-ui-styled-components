@@ -1,11 +1,11 @@
 @import '@/styles/utils/mixins';
-.hb-check {
+.hb-switch {
   $height: 26px;
-  // @include host-styled {
-  //   display: block;
-  // }
   &__label {
+    position: relative;
     display: block;
+    width: 48px;
+    height: $height;
     cursor: pointer;
     &--loading {
       cursor: progress;
@@ -16,22 +16,23 @@
   }
   &__spinner {
     position: absolute;
-    margin: #{-$height + 1px} 0 0 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     pointer-events: none;
     display: none;
-    .hb-check__label--loading & {
+    .hb-switch__label--loading & {
       display: block;
     }
   }
   &__icon {
-    position: relative;
     display: block;
-    width: 48px;
-    height: $height;
+    width: 100%;
+    height: 100%;
     border-radius: $height;
     transition: background-color var(--husc__transition__type) var(--husc__transition__duration--ms);
     will-change: background-color;
-    background: #CDD1D6;
+    background: #cdd1d6;
     &::before {
       content: '';
       position: absolute;
@@ -59,13 +60,13 @@
       will-change: opacity;
       background-color: var(--husc__black);
     }
-    .hb-check__label--active & {
+    .hb-switch__label--active & {
       background: var(--husc__orange);
       &::before {
-        transform: translate(20px,-50%);
+        transform: translate(20px, -50%);
       }
     }
-    .hb-check__label--loading & {
+    .hb-switch__label--loading & {
       &::after {
         opacity: 0.2;
       }
