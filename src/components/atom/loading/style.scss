@@ -32,7 +32,7 @@
         transparent 100%
       );
       opacity: 0.7;
-      animation: skeleton-gradient var(--husc__transition__duration--ms)
+      animation: skeleton-gradient var(--duration)
         cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
   }
