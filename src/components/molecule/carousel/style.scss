@@ -9,7 +9,7 @@
   }
   &__wrap {
     font-size: 0;
-    transition: transform var(--type) var(--duration);
+    transition: transform var(--husc__transition__type) var(--husc__transition__duration--ms);
     will-change: transform;
     &--drag > * {
       pointer-events: none;

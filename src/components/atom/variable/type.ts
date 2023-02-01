@@ -72,6 +72,7 @@ export const basicVariables = {
     duration: {
       '--ms': '300ms'
     },
+    type: 'ease',
     'delay-start': {
       '--ms': '0ms'
     },

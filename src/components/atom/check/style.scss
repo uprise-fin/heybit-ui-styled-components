@@ -1,0 +1,74 @@
+@import '@/styles/utils/mixins';
+.hb-check {
+  $height: 26px;
+  // @include host-styled {
+  //   display: block;
+  // }
+  &__label {
+    display: block;
+    cursor: pointer;
+    &--loading {
+      cursor: progress;
+    }
+  }
+  &__input {
+    display: none;
+  }
+  &__spinner {
+    position: absolute;
+    margin: #{-$height + 1px} 0 0 10px;
+    pointer-events: none;
+    display: none;
+    .hb-check__label--loading & {
+      display: block;
+    }
+  }
+  &__icon {
+    position: relative;
+    display: block;
+    width: 48px;
+    height: $height;
+    border-radius: $height;
+    transition: background-color var(--husc__transition__type) var(--husc__transition__duration--ms);
+    will-change: background-color;
+    background: #CDD1D6;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 4px;
+      width: 20px;
+      height: 20px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      transition: transform var(--husc__transition__type) var(--husc__transition__duration--ms);
+      will-change: transform;
+      background: #fff;
+    }
+    &::after {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      border-radius: $height;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity var(--husc__transition__type) var(--husc__transition__duration--ms);
+      will-change: opacity;
+      background-color: var(--husc__black);
+    }
+    .hb-check__label--active & {
+      background: var(--husc__orange);
+      &::before {
+        transform: translate(20px,-50%);
+      }
+    }
+    .hb-check__label--loading & {
+      &::after {
+        opacity: 0.2;
+      }
+    }
+  }
+}
