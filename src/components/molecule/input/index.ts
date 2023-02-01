@@ -30,7 +30,7 @@ export class HbInput extends Base {
     return [require('./style.scss').default];
   }
 
-  _value?: string;
+  _value: string = '';
 
   inputEl?: HTMLInputElement;
 
