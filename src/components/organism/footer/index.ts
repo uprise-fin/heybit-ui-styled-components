@@ -42,8 +42,8 @@ export class HbFooter extends Base {
     {
       name: '고객지원',
       children: [
-        { name: '서비스 문의', href: 'mailto:help@heybit.io' },
-        { name: '사업제휴', href: 'mailto:business@heybit.io' }
+        { name: '서비스 문의', target: '_blank', href: 'mailto:help@heybit.io' },
+        { name: '사업제휴', target: '_blank', href: 'mailto:business@heybit.io' }
       ]
     },
     {
@@ -55,6 +55,10 @@ export class HbFooter extends Base {
           href: 'https://uprise.career.greetinghr.com/'
         }
       ]
+    },
+    {
+      name: '관련 사이트',
+      children: [{ name: 'Heybit Global', target: '_blank', href: 'https://www.heybit.com/en' }]
     }
   ];
 
