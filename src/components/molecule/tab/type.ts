@@ -1,7 +1,7 @@
 import { HbTab } from '.';
 
 export interface HbTabProps {
-  value?: number;
+  value?: string;
 }
 export interface HbTabEvent extends Event {
   target: HbTab;
