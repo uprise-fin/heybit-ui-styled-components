@@ -1,5 +1,5 @@
 import type { HbListOption } from '@/index';
-
+import type { HbCombo } from '.';
 export interface HbComboProps {
   open?: boolean;
   search?: boolean;
@@ -8,4 +8,8 @@ export interface HbComboProps {
   placeholder?: string;
   emptyText?: string;
   options?: HbListOption[];
+}
+
+export interface HbComboEvent extends Event {
+  target: HbCombo;
 }

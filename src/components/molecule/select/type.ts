@@ -1,3 +1,4 @@
+import type { HbSelect } from '.';
 import type { HbListOption } from '@/index';
 
 export interface HbSelectProps {
@@ -8,4 +9,7 @@ export interface HbSelectProps {
   placeholder?: string;
   emptyText?: string;
   options?: HbListOption[];
+}
+export interface HbSelectEvent extends Event {
+  target: HbSelect;
 }
