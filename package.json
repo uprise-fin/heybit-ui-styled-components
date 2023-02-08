@@ -1,7 +1,7 @@
 {
   "name": "heybit-ui-styled-components",
   "customElements": "custom-elements.json",
-  "version": "0.37.27",
+  "version": "0.37.28",
   "files": [
     "dist/src/**"
   ],
