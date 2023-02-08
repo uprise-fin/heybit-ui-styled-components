@@ -5,7 +5,7 @@ import './index';
 import type { HbTab } from './index';
 
 export default {
-  title: `${getFolderName(true)}/molecule/hb-tab`,
+  title: `${getFolderName()}/molecule/hb-tab`,
   component: 'hb-tab',
   argTypes: {
     index: {
@@ -16,8 +16,8 @@ export default {
   }
 } as Meta;
 
-const Template: Story<HbTab> = ({ index }) =>
-  html`<hb-tab index=${index}>
+const Template: Story<HbTab> = ({ value }) =>
+  html`<hb-tab value=${value}>
     <button slot="header">업라이즈</button>
     <button slot="header">헤이비트는 헤이비트!</button>
     <button slot="header">이루다</button>
@@ -27,5 +27,5 @@ const Template: Story<HbTab> = ({ index }) =>
   </hb-tab>`;
 export const primary: Story<HbTab> = Template.bind({});
 primary.args = {
-  index: '0'
+  value: '0'
 };

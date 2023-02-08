@@ -17,7 +17,7 @@ export * from '@/components/molecule/button/type';
 export * from '@/components/molecule/input/type';
 export * from '@/components/molecule/select/type';
 // export * from '@/components/molecule/combo/type';
-// export * from '@/components/organism/tab/type';
+export * from '@/components/molecule/tab/type';
 export * from '@/components/molecule/carousel/type';
 export * from '@/components/molecule/modal/type';
 export * from '@/components/organism/header/type';

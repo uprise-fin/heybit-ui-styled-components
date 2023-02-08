@@ -9,9 +9,9 @@
     display: inline-block;
     &__btns {
       display: flex;
-      border: 1px solid #000;
+      border-bottom: 1px solid var(--husc__black--300);
       @include slot-styled('*') {
-        padding: 20px;
+        padding: 14px var(--husc__layout__gutter);
         border: 0;
         font-size: inherit;
         cursor: pointer;
