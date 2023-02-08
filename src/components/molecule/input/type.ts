@@ -1,4 +1,5 @@
 import type { HbInput } from '.';
+
 export interface HbInputProps {
   value?: string;
   attributeSync?: boolean;
@@ -10,8 +11,8 @@ export interface HbInputProps {
   error?: boolean;
   readonly?: boolean;
 }
-export type HbInputType = 'text' | 'number' | 'currency' | 'password' | 'english';
-export type HbInputSlots = 'slot--left' | 'slot--right';
 export interface HbInputEvent extends InputEvent {
   target: HbInput;
 }
+export type HbInputType = 'text' | 'number' | 'currency' | 'password' | 'english';
+export type HbInputSlots = 'slot--left' | 'slot--right';
