@@ -18,7 +18,7 @@ export * from '@/components/molecule/button';
 export * from '@/components/molecule/input';
 export * from '@/components/molecule/select';
 // export * from '@/components/molecule/combo';
-// export * from '@/components/molecule/tab';
+export * from '@/components/molecule/tab';
 export * from '@/components/molecule/carousel';
 export * from '@/components/molecule/modal';
 export * from '@/components/molecule/modal/dialog';

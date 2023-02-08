@@ -1,9 +1,10 @@
+import { basicVariables } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
 import { getChildren } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 /**
- * @property index
+ * @property value
  * @slot content 기본 컨텐츠 영역
  * @slot header 버튼 영역
  * @csspart header
@@ -20,9 +21,9 @@ export class HbTab extends Base {
 
   contents: HTMLElement[] = [];
 
-  index: string;
+  value: string;
 
-  _index: string;
+  _value: string;
 
   left = 0;
 
@@ -32,7 +33,7 @@ export class HbTab extends Base {
     return {
       left: { type: Number, Reflect: true },
       width: { type: Number, Reflect: true },
-      index: { type: String, Reflect: true }
+      value: { type: String, Reflect: true }
     };
   }
 
@@ -41,11 +42,11 @@ export class HbTab extends Base {
     const wrap = await getChildren(this.children);
     this.btns = wrap.filter((x) => x.slot === 'header');
     this.contents = wrap.filter((x) => x.slot !== 'header');
-    this.setIndicator(this.index);
+    this.setIndicator(this.value);
   }
 
   attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === 'index') {
+    if (name === 'value') {
       this.setIndicator(newVal);
     }
     super.attributeChangedCallback(name, _, newVal);
@@ -53,18 +54,19 @@ export class HbTab extends Base {
 
   onClick(ev: Event) {
     const target = ev.target as HTMLElement;
-    const index = this.btns.indexOf(target);
-    this.setAttribute('index', index.toString());
+    const value = this.btns.indexOf(target);
+    this.setAttribute('value', value.toString());
+    this.onEvent(new CustomEvent('event'));
   }
 
-  async setIndicator(index: string) {
-    if (!this.btns.length || this._index === index) return;
-    const number = +index;
+  async setIndicator(value: string) {
+    if (!this.btns.length || this._value === value) return;
+    const number = +value;
     const target = this.btns[number];
     const { offsetWidth, offsetLeft } = await target;
-    this._index = index;
-    this.left = offsetLeft - this.offsetLeft;
-    this.width = offsetWidth;
+    this._value = value;
+    this.left = offsetLeft - this.offsetLeft + basicVariables.layout.gutter;
+    this.width = offsetWidth - basicVariables.layout.gutter * 2;
     this.contents.map((x) => x.removeAttribute('active'));
     this.contents[number].setAttribute('active', '');
   }
