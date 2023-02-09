@@ -21,13 +21,20 @@ export class HbTab extends Base {
 
   contents: HTMLElement[] = [];
 
-  value: string;
-
-  _value: string;
+  #value = '';
 
   left = 0;
 
   width = 0;
+
+  get value() {
+    return this.#value;
+  }
+
+  set value(value: string) {
+    this.#value = value;
+    this.setIndicator();
+  }
 
   static get properties() {
     return {
@@ -42,32 +49,25 @@ export class HbTab extends Base {
     const wrap = await getChildren(this.children);
     this.btns = wrap.filter((x) => x.slot === 'header');
     this.contents = wrap.filter((x) => x.slot !== 'header');
-    this.setIndicator(this.value);
-  }
-
-  attributeChangedCallback(name: string, _: string, newVal: string) {
-    if (name === 'value') {
-      this.setIndicator(newVal);
-    }
-    super.attributeChangedCallback(name, _, newVal);
+    this.setIndicator();
   }
 
   onClick(ev: Event) {
     const target = ev.target as HTMLElement;
     const value = this.btns.indexOf(target);
-    this.setAttribute('value', value.toString());
+    this.value = value.toString();
     this.onEvent(new CustomEvent('event'));
   }
 
-  async setIndicator(value: string) {
-    if (!this.btns.length || this._value === value) return;
-    const number = +value;
+  async setIndicator() {
+    if (!this.btns.length) return;
+    const number = +this.#value;
     const target = this.btns[number];
     const { offsetWidth, offsetLeft } = await target;
-    this._value = value;
     this.left = offsetLeft - this.offsetLeft + basicVariables.layout.gutter;
     this.width = offsetWidth - basicVariables.layout.gutter * 2;
-    this.contents.map((x) => x.removeAttribute('active'));
+    this.btns.concat(this.contents).map((x) => x.removeAttribute('active'));
+    this.btns[number].setAttribute('active', '');
     this.contents[number].setAttribute('active', '');
   }
 

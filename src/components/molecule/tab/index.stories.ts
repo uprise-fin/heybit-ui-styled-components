@@ -11,7 +11,7 @@ export default {
     index: {
       options: ['0', '1', '2'],
       control: { type: 'radio' },
-      defaultValue: '0'
+      defaultValue: '2'
     }
   }
 } as Meta;
@@ -27,5 +27,5 @@ const Template: Story<HbTab> = ({ value }) =>
   </hb-tab>`;
 export const primary: Story<HbTab> = Template.bind({});
 primary.args = {
-  value: '0'
+  value: '2'
 };

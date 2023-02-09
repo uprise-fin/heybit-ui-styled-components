@@ -6,7 +6,7 @@
     font-family: var(--husc__font__family);
   }
   &__header {
-    display: inline-block;
+    display: block;
     &__btns {
       display: flex;
       border-bottom: 1px solid var(--husc__black--300);
@@ -16,6 +16,9 @@
         font-size: inherit;
         cursor: pointer;
         background: none;
+      }
+      @include slot-styled('[active]') {
+        font-weight: 700;
       }
     }
     &__indicator {
