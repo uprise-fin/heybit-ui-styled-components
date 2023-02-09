@@ -59,13 +59,8 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     this._loading = value;
     if (value) {
       this.setAttribute('data-loading', '');
-      const width = this.style.width.substring(0, this.style.width.length - 2);
-      this.dataset.width = width;
-      this.style.width = this.offsetWidth ? this.offsetWidth + 'px' : '';
     } else {
       this.removeAttribute('data-loading');
-      const width = this.dataset.width;
-      this.style.width = width ? width + 'px' : '';
     }
   }
 
