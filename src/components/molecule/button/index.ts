@@ -56,12 +56,20 @@ export class HbButton extends InitAttribute<HbButtonProps> {
   }
 
   set loading(value: boolean) {
-    this._loading = value;
     if (value) {
+      if (this.style.width) {
+        this.dataset.width = this.style.width;
+      }
+      const style = getComputedStyle(this);
+      this.style.width = style.width;
       this.setAttribute('data-loading', '');
     } else {
+      if (this.dataset.width) {
+        this.style.width = this.dataset.width;
+      }
       this.removeAttribute('data-loading');
     }
+    this._loading = value;
   }
 
   static get properties() {
@@ -77,39 +85,27 @@ export class HbButton extends InitAttribute<HbButtonProps> {
   }
 
   render() {
-    return html`
-      <slot
-        name="slot--left"
-        part="slot--left"
-        class="hb-button__slot hb-button__slot--left"
-      ></slot>
-      <div class="hb-button__label" part="label">
-        ${this._loading
-          ? html`
-              <hb-transition
-                class="hb-button__label__transition"
-                type="fade"
-                ?show=${this._loading}
-              >
-                <hb-spinner size=${this.size}></hb-spinner>
-              </hb-transition>
-            `
-          : html`
-              <hb-transition
-                class="hb-button__label__transition"
-                type="fade"
-                ?show=${!this._loading}
-              >
-                <slot></slot>
-              </hb-transition>
-            `}
-      </div>
-      <slot
-        name="slot--right"
-        part="slot--right"
-        class="hb-button__slot hb-button__slot--right"
-      ></slot>
-    `;
+    return this._loading
+      ? html`
+          <hb-transition class="hb-button__loading" type="fade" ?show=${this._loading}>
+            <hb-spinner size=${this.size}></hb-spinner>
+          </hb-transition>
+        `
+      : html`
+          <slot
+            name="slot--left"
+            part="slot--left"
+            class="hb-button__slot hb-button__slot--left"
+          ></slot>
+          <div class="hb-button__label" id="label" part="label">
+            <slot></slot>
+          </div>
+          <slot
+            name="slot--right"
+            part="slot--right"
+            class="hb-button__slot hb-button__slot--right"
+          ></slot>
+        `;
   }
 
   async connectedCallback() {

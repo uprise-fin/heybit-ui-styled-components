@@ -66,7 +66,9 @@ const Template: Story<HbButton> = ({
     .baseLoadingDuration=${baseLoadingDuration}
     ?loading=${loading}
     ?disabled=${disabled}
-    >${title}</hb-button
+  >
+    <span slot="slot--left">ㅇㅇㅇ</span>
+    ${title}</hb-button
   >`;
 const IconTemplate: Story<HbButtonIconExps> = ({
   type,

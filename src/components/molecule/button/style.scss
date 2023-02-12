@@ -191,6 +191,12 @@ $hb-button__theme: (
     //   right: 0;
     // }
   }
+  &__loading {
+    width: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &__label {
     display: flex;
     align-items: center;
