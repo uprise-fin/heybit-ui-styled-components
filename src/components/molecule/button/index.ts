@@ -66,6 +66,8 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     } else {
       if (this.dataset.width) {
         this.style.width = this.dataset.width;
+      } else {
+        this.style.width = '';
       }
       this.removeAttribute('data-loading');
     }
