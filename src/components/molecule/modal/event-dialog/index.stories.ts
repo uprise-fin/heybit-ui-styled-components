@@ -28,13 +28,7 @@ const Template = (props: HbEventDialog) => html`
       background: url(${desktopImg}) no-repeat top center;
     }
   </style>
-  <hb-event-dialog
-    ?open=${props.open}
-    ?persistent=${props.persistent}
-    image=${props.image}
-    href=${props.href}
-  >
-  </hb-event-dialog>
+  <hb-event-dialog ?open=${props.open} image=${props.image} href=${props.href}> </hb-event-dialog>
 `;
 export const primary: Story<HbEventDialog> = Template.bind({});
 primary.args = {

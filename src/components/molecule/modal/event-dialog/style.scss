@@ -4,13 +4,19 @@
   &__container {
     @include scroll();
     position: relative;
-    overflow: auto;
+    overflow: hidden;
     width: calc(100% - (var(--husc__modal__margin) * 2));
     margin: auto;
     max-height: calc(100vh - var(--husc__modal__margin) - var(--husc__modal__margin));
-    border-radius: calc(var(--husc__border__radius) * 3);
-    background: var(--husc__modal__background);
+    // &--loaded {
+    //   overflow: auto;
+    // }
     &__img {
+      display: block;
+      border-radius: calc(var(--husc__border__radius) * 3);
+      background: var(--husc__modal__background);
+    }
+    &__anchor {
       display: block;
     }
   }
@@ -24,5 +30,35 @@
     border: 0;
     cursor: pointer;
     background: none;
+  }
+  &__footer {
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    gap: 48px;
+    background: none;
+  }
+  &__btn {
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    background: none;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 16px;
+      margin-left: -25px;
+      pointer-events: none;
+      background: #fff;
+    }
+    &:first-child {
+      &::before {
+        display: none;
+      }
+    }
   }
 }
