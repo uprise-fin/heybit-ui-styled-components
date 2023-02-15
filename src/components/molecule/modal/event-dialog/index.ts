@@ -25,13 +25,17 @@ export class HbEventDialog extends Base {
 
   open: boolean;
 
-  persistent = false;
+  persistent = true;
 
-  hideCloseBtn = false;
+  hideCloseBtn = true;
 
   image = '';
 
   href = '';
+
+  loaded = false;
+
+  cookieKey = 'main-popup';
 
   static get properties() {
     return {
@@ -41,9 +45,16 @@ export class HbEventDialog extends Base {
       width: { type: String, Reflect: true },
       loadingWidth: { type: Number, Reflect: true },
       loadingHeight: { type: Number, Reflect: true },
+      loaded: { type: Boolean, Reflect: true },
       image: { type: String, Reflect: true },
+      cookieKey: { type: String, Reflect: true },
       href: { type: String, Reflect: true }
     };
+  }
+
+  get isOpen() {
+    const open = document.cookie.indexOf(`${this.cookieKey}=`);
+    return this.open && open === -1;
   }
 
   render() {
@@ -51,7 +62,7 @@ export class HbEventDialog extends Base {
       <hb-modal
         @close=${this.onClose}
         width=${this.width}
-        ?open=${this.open}
+        ?open=${this.isOpen}
         ?persistent=${this.persistent}
         transitionType="zoom"
       >
@@ -67,17 +78,32 @@ export class HbEventDialog extends Base {
               >
                 <hb-icon icon="system/outline/close" size="small"></hb-icon>
               </button>`}
-          <hb-anchor href=${this.href}>
+          <hb-anchor class="hb-event-dialog__container__anchor" href=${this.href}>
             <hb-img
               class="hb-event-dialog__container__img"
               src=${this.image}
+              @load=${() => (this.loaded = true)}
+              @error=${() => (this.loaded = true)}
               loadingWidth=${this.loadingWidth}
               loadingHeight=${this.loadingHeight}
             ></hb-img>
           </hb-anchor>
+          ${this.loaded
+            ? html`<div class="hb-event-dialog__footer">
+                <button @click=${this.adapterClose} class="hb-event-dialog__btn">
+                  3일간 보지않기
+                </button>
+                <button @click=${this.onClose} class="hb-event-dialog__btn">닫기</button>
+              </div>`
+            : ''}
         </div>
       </hb-modal>
     `;
+  }
+
+  adapterClose() {
+    document.cookie = `${this.cookieKey} = true; max-age=259200`;
+    this.onClose();
   }
 
   onClose() {
