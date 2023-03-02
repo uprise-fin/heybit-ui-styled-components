@@ -21,6 +21,7 @@
     }
   }
   &__close-btn {
+    z-index: 2;
     position: absolute;
     top: 0;
     right: 0;
@@ -28,6 +29,7 @@
     height: 52px;
     padding: 0;
     border: 0;
+    opacity: 0.3;
     cursor: pointer;
     background: none;
   }
