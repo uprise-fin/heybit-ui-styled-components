@@ -6,6 +6,7 @@
     font-family: var(--husc__font__family);
   }
   &__header {
+    position: relative;
     display: block;
     &__btns {
       display: flex;
@@ -23,6 +24,7 @@
     }
     &__indicator {
       position: absolute;
+      left: 0;
       width: 0;
       height: 2px;
       margin-top: -2px;
