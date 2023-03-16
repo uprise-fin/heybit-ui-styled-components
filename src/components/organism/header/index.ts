@@ -127,7 +127,7 @@ export class HbHeader extends Base {
               : ''}"
             href=${x.href}
             target=${x.target}
-            @event=${x.event}
+            @event=${this.adapterEvent.bind(this, x.event)}
             @mouseenter=${this.onEnterGroup}
             @mouseleave=${this.onLeaveGroup}
             >${x.name}${x.chip
@@ -153,7 +153,7 @@ export class HbHeader extends Base {
                           )}${this.active === y.active ? ' active' : ''}"
                           href=${y.href}
                           target=${y.target}
-                          @event=${y.event}
+                          @event=${this.adapterEvent.bind(this, y.event)}
                           ><strong>${y.name}</strong>
                           <p>${y.desc}</p></hb-anchor
                         >
@@ -177,7 +177,7 @@ export class HbHeader extends Base {
             class="hb-anchor"
             href=${x.group ? '' : x.href}
             target=${x.target}
-            @event=${x.event}
+            @event=${this.adapterEvent.bind(this, x.event)}
             @click=${x.group ? this.onClickGroup : null}
             >${x.name}${x.chip
               ? html`<hb-img
@@ -219,7 +219,7 @@ export class HbHeader extends Base {
                 class="hb-anchor"
                 href=${x.group ? '' : x.href}
                 target=${x.target}
-                @event=${x.event}
+                @event=${this.adapterEvent.bind(this, x.event)}
                 @click=${x.group ? this.onClickGroup : null}
                 >${x.name}${x.chip
                   ? html`<hb-img
