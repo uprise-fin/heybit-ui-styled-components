@@ -25,6 +25,8 @@ export class HbHeader extends Base {
     return [require('./style.scss').default];
   }
 
+  active: string = 'none';
+
   type: HbHeaderType;
 
   user: HbHeaderUser;
@@ -102,6 +104,7 @@ export class HbHeader extends Base {
   static get properties() {
     return {
       type: { type: String, Reflect: true },
+      active: { type: String, Reflect: true },
       sidemenu: { type: Boolean, Reflect: true },
       loggedin: { type: Boolean, Reflect: true },
       pending: { type: Boolean, Reflect: true },
@@ -114,13 +117,14 @@ export class HbHeader extends Base {
     };
   }
 
-  gnbTemplateForDesktop = (() => {
-    let isGnb = this.isGnbString;
-    let template = html`
-      ${this.isGnb?.map(
+  gnbTemplateForDesktop() {
+    return html`
+      ${this.gnb?.map(
         (x) =>
           html`<hb-anchor
-            class="hb-anchor${this.isActive(x.href)}"
+            class="hb-anchor${this.isActive(x.href || x.active)}${this.active === x.active
+              ? ' active'
+              : ''}"
             href=${x.href}
             target=${x.target}
             @event=${x.event}
@@ -144,7 +148,9 @@ export class HbHeader extends Base {
                     ${x.group.map(
                       (y) => html`
                         <hb-anchor
-                          class="hb-header__group-menu__item${this.isActive(x.href)}"
+                          class="hb-header__group-menu__item${this.isActive(
+                            y.href || y.active
+                          )}${this.active === y.active ? ' active' : ''}"
                           href=${y.href}
                           target=${y.target}
                           @event=${y.event}
@@ -160,58 +166,7 @@ export class HbHeader extends Base {
           >`
       )}
     `;
-    return () => {
-      if (isGnb !== this.isGnbString) {
-        isGnb = this.isGnbString;
-        template = html`
-          ${this.isGnb?.map(
-            (x) =>
-              html`<hb-anchor
-                class="hb-anchor${this.isActive(x.href)}"
-                href=${x.href}
-                target=${x.target}
-                @event=${x.event}
-                @mouseenter=${this.onEnterGroup}
-                @mouseleave=${this.onLeaveGroup}
-                >${x.name}${x.chip
-                  ? html`<hb-img
-                      class="hb-header__chip"
-                      alt=${x.chip.alt}
-                      style="--background: ${x.chip.background}"
-                      src=${x.chip.src}
-                      loadingWidth=${26}
-                    />`
-                  : ''}${x.group
-                  ? html`<hb-icon icon="system/outline/arrow-dropdown" size="xsmall"></hb-icon>
-                      <div
-                        class="hb-header__group-menu"
-                        @mouseenter=${this.onEnterGroup}
-                        @mouseleave=${this.onLeaveGroup}
-                      >
-                        ${x.group.map(
-                          (y) => html`
-                            <hb-anchor
-                              class="hb-header__group-menu__item${this.isActive(x.href)}"
-                              href=${y.href}
-                              target=${y.target}
-                              @event=${y.event}
-                              ><strong>${y.name}</strong>
-                              <p>${y.desc}</p></hb-anchor
-                            >
-                          `
-                        )}
-                        <i class="hb-header__group-menu__layer"></i>
-                        <i class="hb-header__group-menu__tip"></i>
-                      </div>`
-                  : ''}</hb-anchor
-              >`
-          )}
-        `;
-        return template;
-      }
-      return template;
-    };
-  })();
+  }
 
   gnbTemplate = (() => {
     let isGnb = this.isGnbString;
@@ -368,13 +323,12 @@ export class HbHeader extends Base {
     };
   })();
 
-  defaultMenuForDesktopTemplate = (() => {
+  defaultMenuForDesktopTemplate() {
     const themes = ['', 'quaternary'];
-    let isDefaultMenu = this.isDefaultMenuString;
-    let template = html`${this.isDefaultMenu?.map(
+    return html`${this.isDefaultMenu?.map(
       (x, i) =>
         html`<hb-button
-          class="hb-button"
+          class="hb-button${this.active === x.active ? ' active' : ''}"
           theme=${themes[i]}
           type="rectangle"
           size="medium"
@@ -382,25 +336,7 @@ export class HbHeader extends Base {
           >${x.name}</hb-button
         >`
     )}`;
-    return () => {
-      if (isDefaultMenu !== this.isDefaultMenuString) {
-        isDefaultMenu = this.isDefaultMenuString;
-        template = html`${this.isDefaultMenu?.map(
-          (x, i) =>
-            html`<hb-button
-              class="hb-button"
-              theme=${themes[i]}
-              type="rectangle"
-              size="medium"
-              @event=${x.event}
-              >${x.name}</hb-button
-            >`
-        )}`;
-        return template;
-      }
-      return template;
-    };
-  })();
+  }
 
   defaultMenuTemplate = (() => {
     const themes: HbButtonTheme[] = ['quaternary', 'primary'];
