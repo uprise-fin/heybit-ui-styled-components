@@ -265,7 +265,7 @@ export class HbHeader extends Base {
         (x) =>
           html`<hb-button
             class="hb-button"
-            @event=${x.event}
+            @event=${this.adapterEvent.bind(this, x.event)}
             type="rectangle"
             theme=${x.theme}
             size=${cacheSize}
@@ -282,7 +282,7 @@ export class HbHeader extends Base {
             (x) =>
               html`<hb-button
                 class="hb-button"
-                @event=${x.event}
+                @event=${this.adapterEvent.bind(this, x.event)}
                 type="rectangle"
                 theme=${x.theme}
                 size=${cacheSize}
@@ -301,7 +301,11 @@ export class HbHeader extends Base {
     let template = html`
       ${this.isAuthMenu?.map(
         (x) =>
-          html`<hb-anchor class="hb-anchor" href=${x.href} target=${x.target} @event=${x.event}
+          html`<hb-anchor
+            class="hb-anchor"
+            href=${x.href}
+            target=${x.target}
+            @event=${this.adapterEvent.bind(this, x.event)}
             >${x.name}</hb-anchor
           >`
       )}
@@ -312,7 +316,11 @@ export class HbHeader extends Base {
         template = html`
           ${this.isAuthMenu?.map(
             (x) =>
-              html`<hb-anchor class="hb-anchor" href=${x.href} target=${x.target} @event=${x.event}
+              html`<hb-anchor
+                class="hb-anchor"
+                href=${x.href}
+                target=${x.target}
+                @event=${this.adapterEvent.bind(this, x.event)}
                 >${x.name}</hb-anchor
               >`
           )}
@@ -332,7 +340,7 @@ export class HbHeader extends Base {
           theme=${themes[i]}
           type="rectangle"
           size="medium"
-          @event=${x.event}
+          @event=${this.adapterEvent.bind(this, x.event)}
           >${x.name}</hb-button
         >`
     )}`;
@@ -348,7 +356,7 @@ export class HbHeader extends Base {
           theme=${themes[i]}
           size="large"
           type="rectangle"
-          @event=${x.event}
+          @event=${this.adapterEvent.bind(this, x.event)}
           >${x.name}</hb-button
         >`
       )}
@@ -363,7 +371,7 @@ export class HbHeader extends Base {
               theme=${themes[i]}
               size="large"
               type="rectangle"
-              @event=${x.event}
+              @event=${this.adapterEvent.bind(this, x.event)}
               >${x.name}</hb-button
             >`
           )}
