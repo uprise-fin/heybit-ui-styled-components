@@ -419,9 +419,11 @@ export class HbHeader extends Base {
     this.sidemenu = false;
   }
 
-  adapterEvent(event: Function) {
-    event();
-    this.sidemenu = false;
+  adapterEvent(event: Function | undefined) {
+    if (event instanceof Function) {
+      event();
+      this.sidemenu = false;
+    }
   }
 
   render() {
