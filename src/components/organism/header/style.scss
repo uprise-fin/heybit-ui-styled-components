@@ -158,6 +158,9 @@
           gap: 30px;
           hb-button {
             min-width: 70px;
+            &.active {
+              color: var(--husc__orange--500);
+            }
           }
         }
         &__hamburber {

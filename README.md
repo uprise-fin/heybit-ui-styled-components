@@ -167,5 +167,6 @@ storybook이나 demo로 테스트 후 해당 레포지토리에서 잘 작동하
    `initialAttributes`이 변수를 이용해서 렌더링 후에도 속성값에 반응하도록 처리
 
 3. hb-input이 textarea를 쓴 이유
-  - password를 제외하면 모든 기능을 textarea로 대체할 수 있습니다.
-  - 가장 중요한 로그인기능에서 자동완성, 1password등이 작동하지 않아서 shadow-dom에서 input을 사용할 필요가 없어서 textarea로 고정합니다.
+
+- password를 제외하면 모든 기능을 textarea로 대체할 수 있습니다.
+- 가장 중요한 로그인기능에서 자동완성, 1password등이 작동하지 않아서 shadow-dom에서 input을 사용할 필요가 없어서 textarea로 고정합니다.

@@ -9,12 +9,14 @@ export type HbHeaderType = 'normal' | 'clear';
 export interface HbHeaderGroup extends HbAnchorProps {
   name: string;
   desc: string;
+  active?: string;
 }
 export interface HbHeaderNavi extends HbAnchorProps {
   name: string;
   chip?: HbHeaderChip;
   group?: HbHeaderGroup[];
   groupOpen?: boolean;
+  active?: string;
 }
 
 export interface HbHeaderProps {
@@ -30,6 +32,7 @@ export interface HbHeaderProps {
 }
 export interface HbHeaderDefaultMenu {
   name: string;
+  active?: string;
   event?: () => void;
 }
 export interface HbHeaderMyMenu extends HbButtonProps {
