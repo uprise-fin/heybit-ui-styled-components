@@ -134,7 +134,6 @@ export class HbHeader extends Base {
               ? html`<hb-img
                   class="hb-header__chip"
                   alt=${x.chip.alt}
-                  style="--background: ${x.chip.background}"
                   src=${x.chip.src}
                   loadingWidth=${26}
                 />`
@@ -183,7 +182,6 @@ export class HbHeader extends Base {
               ? html`<hb-img
                   class="hb-header__chip"
                   alt=${x.chip.alt}
-                  style="--background: ${x.chip.background}"
                   src=${x.chip.src}
                   loadingWidth=${26}
                 />`
@@ -225,7 +223,6 @@ export class HbHeader extends Base {
                   ? html`<hb-img
                       class="hb-header__chip"
                       alt=${x.chip.alt}
-                      style="--background: ${x.chip.background}"
                       src=${x.chip.src}
                       loadingWidth=${26}
                     />`
