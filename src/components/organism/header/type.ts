@@ -3,7 +3,6 @@ import { type HbAnchorProps } from '@/index';
 export interface HbHeaderChip {
   src: string;
   alt: string;
-  background?: string;
 }
 export type HbHeaderType = 'normal' | 'clear';
 export interface HbHeaderGroup extends HbAnchorProps {

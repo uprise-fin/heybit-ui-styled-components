@@ -1,3 +1,4 @@
+import BetaBadge from '~/static/label_beta.svg';
 import RewardBadge from '~/static/reward.svg';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
@@ -77,6 +78,15 @@ korea.args = {
         ...x,
         chip: {
           src: RewardBadge,
+          alt: 'beta'
+        }
+      };
+    }
+    if (x.name === '디파이') {
+      return {
+        ...x,
+        chip: {
+          src: BetaBadge,
           alt: 'beta'
         }
       };
