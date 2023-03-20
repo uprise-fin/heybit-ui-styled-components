@@ -69,7 +69,7 @@ export class HbFooter extends Base {
       href: 'https://r.heybit.io/c/facebook/'
     },
     {
-      icon: 'system/filled/naver',
+      icon: 'system/filled/logo-naver',
       target: '_blank',
       href: 'https://m.post.naver.com/my.nhn?memberNo=40921089'
     },
