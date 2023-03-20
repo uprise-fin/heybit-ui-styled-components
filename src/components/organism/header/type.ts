@@ -3,7 +3,6 @@ import { type HbAnchorProps } from '@/index';
 export interface HbHeaderChip {
   src: string;
   alt: string;
-  background: string;
 }
 export type HbHeaderType = 'normal' | 'clear';
 export interface HbHeaderGroup extends HbAnchorProps {
@@ -75,6 +74,10 @@ export const initialHeaderGnb: HbHeaderNavi[] = [
   },
   {
     name: '인사이트',
+    event: () => console.log('인사이트')
+  },
+  {
+    name: '리워드',
     event: () => console.log('인사이트')
   },
   {

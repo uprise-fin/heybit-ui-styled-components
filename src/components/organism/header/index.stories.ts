@@ -1,4 +1,5 @@
-import BetaBadge from '~/static/img_beta.svg';
+import BetaBadge from '~/static/label_beta.svg';
+import RewardBadge from '~/static/reward.svg';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
@@ -72,13 +73,21 @@ korea.args = {
     email: 'matthew@heybit.io'
   },
   gnb: initialHeaderGnb.map((x) => {
+    if (x.name === '리워드') {
+      return {
+        ...x,
+        chip: {
+          src: RewardBadge,
+          alt: 'beta'
+        }
+      };
+    }
     if (x.name === '디파이') {
       return {
         ...x,
         chip: {
           src: BetaBadge,
-          alt: 'beta',
-          background: '#EEE8F8'
+          alt: 'beta'
         }
       };
     }
