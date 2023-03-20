@@ -9,10 +9,11 @@
   &__chip {
     position: absolute;
     top: 50%;
-    height: 15px;
+    // height: 15px;
     margin-left: 6px;
-    padding: 4px 5px;
-    border-radius: 6px;
+    padding-bottom: 1px;
+    // padding: 4px 5px;
+    // border-radius: 6px;
     transform: translateY(-50%);
     background: var(--background);
   }
@@ -104,9 +105,8 @@
     }
     .hb-header__chip {
       position: static;
-      margin-left: 4px;
-      height: 13px;
       transform: none;
+      margin-left: 4px;
     }
     &__navibar {
       position: relative;
