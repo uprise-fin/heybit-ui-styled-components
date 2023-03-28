@@ -117,7 +117,7 @@ export const initialHeaderDefaultMenu: HbHeaderDefaultMenu[] = [
     event: () => console.log('로그인')
   },
   {
-    name: '가입',
+    name: '회원가입',
     event: () => console.log('가입')
   }
 ];

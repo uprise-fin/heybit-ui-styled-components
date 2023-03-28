@@ -329,14 +329,14 @@ export class HbHeader extends Base {
   })();
 
   defaultMenuForDesktopTemplate() {
-    const themes = ['', 'quaternary'];
+    const themes = ['', 'secondary'];
     return html`${this.isDefaultMenu?.map(
       (x, i) =>
         html`<hb-button
           class="hb-button${this.active === x.active ? ' active' : ''}"
           theme=${themes[i]}
-          type="rectangle"
-          size="medium"
+          type="radius"
+          size="small"
           @event=${this.adapterEvent.bind(this, x.event)}
           >${x.name}</hb-button
         >`

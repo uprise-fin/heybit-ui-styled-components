@@ -154,9 +154,10 @@
       &__actions {
         &__btns {
           display: flex;
-          gap: 30px;
+          gap: 14px;
           hb-button {
             min-width: 70px;
+            padding: 0 20px;
             &.active {
               color: var(--husc__orange--500);
             }
