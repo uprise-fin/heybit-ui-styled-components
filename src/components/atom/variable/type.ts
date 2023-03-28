@@ -57,7 +57,7 @@ export const basicVariables = {
     media: 1020,
     'content-width': {
       '--mobile': 460,
-      '--desktop': 1060
+      '--desktop': 1024
     }
   },
   border: {
