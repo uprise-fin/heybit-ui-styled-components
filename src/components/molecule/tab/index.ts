@@ -68,7 +68,7 @@ export class HbTab extends Base {
     this.width = offsetWidth - basicVariables.layout.gutter * 2;
     this.btns.concat(this.contents).map((x) => x.removeAttribute('active'));
     this.btns[number].setAttribute('active', '');
-    this.contents[number].setAttribute('active', '');
+    this.contents[number]?.setAttribute('active', '');
   }
 
   render() {
