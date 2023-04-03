@@ -18,7 +18,7 @@ export type AllColor = Record<Color, Matercolor>;
 
 export const colors: Record<Color, string> = {
   white: '#ffffff',
-  black: '#404244',
+  black: '#36373a',
   orange: '#ff602f',
   yellow: '#ffbe02',
   green: '#27ae60',
