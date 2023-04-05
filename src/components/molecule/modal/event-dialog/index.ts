@@ -9,6 +9,8 @@ import { customElement } from 'lit/decorators.js';
  * @property persistent
  * @property hideCloseBtn
  * @property image
+ * @property textLongClose 3일간 보지않기 버튼 텍스트 편집
+ * @property textClose 닫기 버튼 텍스트 편집
  */
 
 @customElement('hb-event-dialog')
@@ -33,6 +35,10 @@ export class HbEventDialog extends Base {
 
   href = '';
 
+  textLongClose = '3일간 보지않기';
+
+  textClose = '닫기';
+
   loaded = false;
 
   cookieKey = 'main-popup';
@@ -47,6 +53,8 @@ export class HbEventDialog extends Base {
       loadingHeight: { type: Number, Reflect: true },
       loaded: { type: Boolean, Reflect: true },
       image: { type: String, Reflect: true },
+      textLongClose: { type: String, Reflect: true },
+      textClose: { type: String, Reflect: true },
       cookieKey: { type: String, Reflect: true },
       href: { type: String, Reflect: true }
     };
@@ -91,9 +99,11 @@ export class HbEventDialog extends Base {
           ${this.loaded
             ? html`<div class="hb-event-dialog__footer">
                 <button @click=${this.adapterClose} class="hb-event-dialog__btn">
-                  3일간 보지않기
+                  ${this.textLongClose}
                 </button>
-                <button @click=${this.onClose} class="hb-event-dialog__btn">닫기</button>
+                <button @click=${this.onClose} class="hb-event-dialog__btn">
+                  ${this.textClose}
+                </button>
               </div>`
             : ''}
         </div>
