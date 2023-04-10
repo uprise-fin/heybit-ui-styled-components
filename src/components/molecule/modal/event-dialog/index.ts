@@ -19,11 +19,7 @@ export class HbEventDialog extends Base {
     return [require('./style.scss').default];
   }
 
-  width = '400px';
-
-  loadingWidth = 400;
-
-  loadingHeight = 490;
+  width = '300px';
 
   open: boolean;
 
@@ -92,8 +88,6 @@ export class HbEventDialog extends Base {
               src=${this.image}
               @load=${() => (this.loaded = true)}
               @error=${() => (this.loaded = true)}
-              loadingWidth=${this.loadingWidth}
-              loadingHeight=${this.loadingHeight}
             ></hb-img>
           </hb-anchor>
           ${this.loaded

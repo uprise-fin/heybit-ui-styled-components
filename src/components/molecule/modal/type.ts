@@ -18,6 +18,10 @@ export interface HbEventDialogProps extends HbModalProps {
   image: string;
   href: string;
 }
+export interface HbNoticeDialogProps extends HbModalProps {
+  image: string;
+  href: string;
+}
 export interface HbPageDialogProps extends HbModalProps {}
 export interface HbDialogProps extends HbModalProps {
   baseLoadingDuration?: number;

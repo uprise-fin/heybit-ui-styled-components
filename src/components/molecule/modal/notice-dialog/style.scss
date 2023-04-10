@@ -1,0 +1,51 @@
+@import '@/styles/utils/mixins';
+
+.hb-notice-dialog {
+  &__container {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    border-radius: calc(var(--husc__border__radius) * 3);
+    &.bottom-up {
+      margin-bottom: 0;
+    }
+  }
+  &__close-btn {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    opacity: 0.3;
+    background: none;
+  }
+  &__body {
+    &__visual {
+      display: block;
+    }
+  }
+
+  &__foot {
+    text-align: center;
+    padding: 0 var(--husc__modal__dialog__padding-right)
+      var(--husc__modal__dialog__padding-bottom) var(--husc__modal__dialog__padding-left);
+    background: var(--husc__modal__background);
+    &__button-wrap {
+      &.horizon {
+        display: flex;
+        margin-left: -10px;
+        flex-direction: row;
+        > * {
+          flex: 1;
+          margin: 24px 0 0 10px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
