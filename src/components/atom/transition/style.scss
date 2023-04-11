@@ -5,6 +5,8 @@
   }
   @include host-styled('[show]') {
     display: block;
+    position: relative;
+    z-index: 4;
   }
 }
 .hb-transition {
