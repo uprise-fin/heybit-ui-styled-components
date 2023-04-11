@@ -91,6 +91,7 @@ $hb-button__theme: (
   @include loading();
   @include host-styled {
     display: inline-flex;
+    justify-content: center;
     font-size: var(--husc__button__font-size);
     font-family: var(--husc__font__family);
     box-sizing: border-box;
