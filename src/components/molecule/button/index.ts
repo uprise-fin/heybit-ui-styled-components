@@ -90,7 +90,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     return this._loading
       ? html`
           <hb-transition class="hb-button__loading" type="fade" ?show=${this._loading}>
-            <hb-spinner size=${this.size}></hb-spinner>
+            <hb-spinner size="small"></hb-spinner>
           </hb-transition>
         `
       : html`

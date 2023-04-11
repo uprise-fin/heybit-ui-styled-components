@@ -17,7 +17,7 @@ $hb-button__size: (
     font-size: 15px,
     height: 50px,
     font-weight: 700,
-    border-radius: var(--husc__border__radius)
+    border-radius: calc(var(--husc__border__radius) * 2)
   ),
   small: (
     font-size: 13px,
@@ -91,6 +91,7 @@ $hb-button__theme: (
   @include loading();
   @include host-styled {
     display: inline-flex;
+    justify-content: center;
     font-size: var(--husc__button__font-size);
     font-family: var(--husc__font__family);
     box-sizing: border-box;
