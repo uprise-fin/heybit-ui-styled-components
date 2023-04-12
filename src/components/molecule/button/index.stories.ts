@@ -90,7 +90,7 @@ const IconTemplate: Story<HbButtonIconExps> = ({
   ></hb-button>`;
 
 const args = {
-  title: '내용을 입력해보세요',
+  title: '내용을 입력해보세요.',
   size: 'large' as Size,
   baseLoadingDuration: 500,
   loading: false,
