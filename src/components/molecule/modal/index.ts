@@ -41,6 +41,8 @@ export class HbModal extends Base {
     await super.connectedCallback();
     this.containerEl = await getElement<HTMLDivElement>(this.shadowRoot, 'container');
     this.containerEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
+
+    console.log(this.height);
   }
 
   disconnectedCallback() {
@@ -57,6 +59,8 @@ export class HbModal extends Base {
 
   width = '0';
 
+  height = '0px';
+
   open: boolean;
 
   persistent = false;
@@ -72,6 +76,7 @@ export class HbModal extends Base {
       open: { type: Boolean, Reflect: true },
       persistent: { type: Boolean, Reflect: true },
       width: { type: String, Reflect: true },
+      height: { type: String, Reflect: true },
       transitionType: { type: String, Reflect: true },
       verticalAlign: { type: String, Reflect: true },
       horizonAlign: { type: String, Reflect: true }
@@ -89,7 +94,7 @@ export class HbModal extends Base {
           >
             <div
               class="hb-modal__container"
-              style=${`--husc__modal__width: ${this.width};`}
+              style=${`--husc__modal__width: ${this.width}; min-height: ${this.height}`}
               id="container"
               part="container"
               @click=${this.stopPropagation}

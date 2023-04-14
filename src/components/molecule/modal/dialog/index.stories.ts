@@ -47,6 +47,7 @@ const Template = (props: HbDialogExpns) => html`
       console.log('djakldjawlkjadwlk');
     }}
     width=${props.width}
+    height=${props.height}
     ?open=${props.open}
     .icon=${props.icon}
     .title=${props.title}
@@ -77,6 +78,7 @@ const VerticalTemplate: Story<HbDialogExpns> = (props) => {
 export const horizon: Story<HbDialogExpns> = HorizonTemplate.bind({});
 horizon.args = {
   width: '1000px',
+  height: '0px',
   open: true,
   persistent: true,
   loading: false,

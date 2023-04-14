@@ -35,6 +35,8 @@ export class HbDialog extends Base {
 
   width = componentVariables.modal.width + 'px';
 
+  height = '0px';
+
   open: boolean;
 
   icon = '';
@@ -83,6 +85,7 @@ export class HbDialog extends Base {
       persistent: { type: Boolean, Reflect: true },
       hideCloseBtn: { type: Boolean, Reflect: true },
       width: { type: String, Reflect: true },
+      height: { type: String, Reflect: true },
       loading: { type: Boolean, Reflect: true },
       baseLoadingDuration: { type: Number, Reflect: true },
       buttonAlign: { type: String, Reflect: true },
@@ -97,6 +100,7 @@ export class HbDialog extends Base {
       <hb-modal
         @close=${this.onClose}
         width=${this.width}
+        height=${this.height}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
         transitionType=${this.transitionType}
