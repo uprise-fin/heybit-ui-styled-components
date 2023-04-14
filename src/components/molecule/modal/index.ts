@@ -41,8 +41,6 @@ export class HbModal extends Base {
     await super.connectedCallback();
     this.containerEl = await getElement<HTMLDivElement>(this.shadowRoot, 'container');
     this.containerEl!.onanimationend = (event: AnimationEvent) => this.onAnimationEnd(event);
-
-    console.log(this.height);
   }
 
   disconnectedCallback() {
