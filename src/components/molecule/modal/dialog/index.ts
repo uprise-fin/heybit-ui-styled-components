@@ -101,7 +101,7 @@ export class HbDialog extends Base {
         ?persistent=${this.persistent || this.eventDisabled}
         transitionType=${this.transitionType}
       >
-        <div class="hb-dialog__container ${this.transitionType}">
+        <div class="hb-dialog__container ${this.transitionType}" part="container">
           ${this.hideCloseBtn
             ? ''
             : html` <hb-button
