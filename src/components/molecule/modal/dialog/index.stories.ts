@@ -14,6 +14,18 @@ export default {
   title: `${getFolderName()}/molecule/hb-dialog`,
   component: 'hb-dialog',
   argTypes: {
+    layout: {
+      type: { name: 'string', required: false },
+      defaultValue: 'normal',
+      options: ['normal', 'page'],
+      description:
+        '반응형으로 적용하려면 모바일 디바이스에서는 page layout, 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
+      table: {
+        type: { summary: 'normal | page' },
+        defaultValue: { summary: 'normal' }
+      },
+      control: { type: 'select' }
+    },
     open: {
       options: [true, false],
       control: { type: 'radio' },
@@ -46,6 +58,7 @@ const Template = (props: HbDialogExpns) => html`
     @event=${function () {
       console.log('djakldjawlkjadwlk');
     }}
+    layout="${props.layout}"
     width=${props.width}
     height=${props.height}
     ?open=${props.open}
@@ -77,6 +90,7 @@ const VerticalTemplate: Story<HbDialogExpns> = (props) => {
 };
 export const horizon: Story<HbDialogExpns> = HorizonTemplate.bind({});
 horizon.args = {
+  layout: 'normal',
   width: '1000px',
   height: '0px',
   open: true,
