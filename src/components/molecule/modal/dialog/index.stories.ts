@@ -19,7 +19,7 @@ export default {
       defaultValue: 'normal',
       options: ['normal', 'page'],
       description:
-        '모바일 디바이스에서는 page layout, 데스크탑 이상의 크기(1024px)에서는 normal layout을 사용합니다.',
+        '반응형으로 적용하려면 모바일 디바이스에서는 page layout, 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
       table: {
         type: { summary: 'normal | page' },
         defaultValue: { summary: 'normal' }
