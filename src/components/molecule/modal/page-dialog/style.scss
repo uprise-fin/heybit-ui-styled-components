@@ -19,7 +19,7 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    padding: var(--husc__modal__margin);
+    padding: 60px var(--husc__modal__margin) var(--husc__modal__margin) var(--husc__modal__margin);
     box-sizing: border-box;
     background: var(--husc__modal__background);
   }
@@ -28,11 +28,10 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 52px;
-    height: 52px;
+    width: 60px;
+    height: 60px;
     padding: 0;
     border: 0;
-    opacity: 0.3;
     cursor: pointer;
     background: none;
   }

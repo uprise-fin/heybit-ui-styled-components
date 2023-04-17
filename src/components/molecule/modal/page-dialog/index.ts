@@ -98,6 +98,7 @@ export class HbPageDialog extends Base {
                 class="hb-page-dialog__close-btn"
                 part="close-btn"
                 id="close-btn"
+                color="#1F2123"
                 ><hb-icon icon="system/outline/close" size="small"></hb-icon
               ></hb-button>`}
           <div class="hb-page-dialog__body">
