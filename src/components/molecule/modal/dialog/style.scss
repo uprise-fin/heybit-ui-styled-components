@@ -30,6 +30,15 @@
     &.bottom-up {
       margin-bottom: 0;
     }
+    &.page-layout {
+      width: 100vw;
+      height: 100vh;
+      max-height: none;
+      margin: 0;
+      padding: var(--husc__modal__margin);
+      box-sizing: border-box;
+      border-radius: 0;
+    }
   }
   &__close-btn {
     z-index: 2;

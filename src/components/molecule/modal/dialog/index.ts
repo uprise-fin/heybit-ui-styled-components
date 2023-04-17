@@ -29,6 +29,8 @@ export class HbDialog extends Base {
     return [require('./style.scss').default];
   }
 
+  layout = 'normal';
+
   loading = false;
 
   baseLoadingDuration = 500;
@@ -77,6 +79,7 @@ export class HbDialog extends Base {
 
   static get properties() {
     return {
+      layout: { type: String, Reflect: true },
       open: { type: Boolean, Reflect: true },
       buttons: { type: Array, Reflect: true },
       anchor: { type: Object, Reflect: true },
@@ -99,13 +102,16 @@ export class HbDialog extends Base {
     return html`
       <hb-modal
         @close=${this.onClose}
-        width=${this.width}
+        width=${this.layout !== 'page' ? this.width : '100%'}
         height=${this.height}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
         transitionType=${this.transitionType}
       >
-        <div class="hb-dialog__container ${this.transitionType}" part="container">
+        <div
+          class="hb-dialog__container ${this.transitionType} ${this.layout}-layout"
+          part="container"
+        >
           ${this.hideCloseBtn
             ? ''
             : html` <hb-button
