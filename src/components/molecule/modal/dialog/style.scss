@@ -25,7 +25,7 @@
     margin: var(--husc__modal__margin);
     padding: var(--husc__modal__dialog__padding-top) var(--husc__modal__dialog__padding-right)
       var(--husc__modal__dialog__padding-bottom) var(--husc__modal__dialog__padding-left);
-    border-radius: calc(var(--husc__border__radius) * 3);
+    border-radius: calc(var(--husc__border__radius) * 5);
     background: var(--husc__modal__background);
     &.bottom-up {
       margin-bottom: 0;
@@ -54,7 +54,7 @@
     background: none;
   }
   &__head {
-    margin: 0 10px 12px;
+    margin: 0 0 12px;
     &.empty {
       margin-bottom: 0;
     }
@@ -79,16 +79,15 @@
     @include scroll();
     $margin: 10px;
     overflow: auto;
-    margin-left: $margin;
     margin-right: calc(var(--husc__modal__dialog__padding-right) * -1);
-    padding-right: calc(var(--husc__modal__dialog__padding-right) + $margin);
+    padding-right: calc(var(--husc__modal__dialog__padding-right));
     &__content {
       display: block;
       overflow: hidden;
       font-weight: 400;
       font-size: 14px;
       line-height: 140%;
-      text-align: center;
+      text-align: left;
       color: #727476;
       box-sizing: border-box;
     }
