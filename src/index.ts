@@ -5,6 +5,7 @@ export * from '@/components/atom/loading/type';
 export * from '@/components/atom/responsive/type';
 export * from '@/components/atom/transition/type';
 export * from '@/components/atom/variable/type';
+export * from '@/components/atom/colors/type';
 export * from '@/components/atom/icon/type';
 export * from '@/components/atom/list/type';
 export * from '@/components/atom/spinner/type';
