@@ -1,8 +1,13 @@
+import packageConfig from '../package.json';
 import '!style-loader!css-loader!sass-loader!../src/styles/index.scss';
 import '!style-loader!css-loader!sass-loader!./style.css';
 import { colorPalette } from '../src/index';
 import '../src/components/atom/variable';
 import { serviceColors, systemColors } from '../src/components/atom/variable/type';
+
+console.log(`%cVersion: v${packageConfig.version}`, 'color: #ff691e');
+console.log('%cPlatform: Web', 'color: #ff691e');
+
 export const parameters = {
   colorPicker: {
     palettes: [

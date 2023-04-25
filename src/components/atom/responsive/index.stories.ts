@@ -1,12 +1,10 @@
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { basicVariables } from '@/index';
 import './index';
 import type { HbResponsive } from './index';
-import { getFolderName } from '@/utils';
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: `${getFolderName()}/atom/hb-responsive`,
   component: 'hb-responsive',
   argTypes: {
     point: {
@@ -14,24 +12,27 @@ export default {
       defaultValue: basicVariables.layout.media
     }
   }
-} as Meta;
-const Template: Story<HbResponsive> = ({ point }) =>
-  html` <style>
-      .line {
-        position: fixed;
-        top: 0;
-        left: ${point}px;
-        height: 100%;
-        border-right: 2px dashed #000;
-      }
-    </style>
-    <div class="line"></div>
-    <hb-responsive point=${point}
-      ><div slot="desktop">데스크탑</div>
-      <div slot="mobile">모바일</div></hb-responsive
-    >`;
+} as Meta<HbResponsive>;
 
-export const primary: Story<HbResponsive> = Template.bind({});
-primary.args = {
-  point: basicVariables.layout.media
+type Story = StoryObj<HbResponsive>;
+
+export const Template: Story = {
+  render: ({ point }) =>
+    html` <style>
+        .line {
+          position: fixed;
+          top: 0;
+          left: ${point}px;
+          height: 100%;
+          border-right: 2px dashed #000;
+        }
+      </style>
+      <div class="line"></div>
+      <hb-responsive point=${point}
+        ><div slot="desktop">데스크탑</div>
+        <div slot="mobile">모바일</div></hb-responsive
+      >`,
+  args: {
+    point: basicVariables.layout.media
+  }
 };

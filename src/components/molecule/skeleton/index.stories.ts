@@ -1,5 +1,4 @@
-import { getFolderName } from '@/utils';
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbSkeleton } from './index';
@@ -7,34 +6,38 @@ import { hbSkeletonTypes } from './type';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: `${getFolderName()}/molecule/hb-skeleton`,
   component: 'hb-skeleton',
+  render: ({ type }) => html` <hb-skeleton type=${type} style="width: 200px;"></hb-skeleton> `,
   argTypes: {
     type: {
       options: hbSkeletonTypes,
-      control: { type: 'radio' },
-      defaultValue: 'card'
+      control: { type: 'radio' }
     }
   }
-} as Meta;
+} as Meta<HbSkeleton>;
 
-// More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbSkeleton> = ({ type }) =>
-  html` <hb-skeleton type=${type} style="width: 200px;"></hb-skeleton> `;
+type Story = StoryObj<HbSkeleton>;
 
-export const card: Story<HbSkeleton> = Template.bind({});
-card.args = {
-  type: 'card'
+export const Card: Story = {
+  args: {
+    type: 'card'
+  }
 };
-export const hamburger: Story<HbSkeleton> = Template.bind({});
-hamburger.args = {
-  type: 'hamburger'
+
+export const Hamburger: Story = {
+  args: {
+    type: 'hamburger'
+  }
 };
-export const dropMenuTop: Story<HbSkeleton> = Template.bind({});
-dropMenuTop.args = {
-  type: 'drop-menu-top'
+
+export const DropMenuTop: Story = {
+  args: {
+    type: 'drop-menu-top'
+  }
 };
-export const dropMenuBottom: Story<HbSkeleton> = Template.bind({});
-dropMenuBottom.args = {
-  type: 'drop-menu-bottom'
+
+export const DropMenuBottom: Story = {
+  args: {
+    type: 'drop-menu-bottom'
+  }
 };

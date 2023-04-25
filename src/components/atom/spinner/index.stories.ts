@@ -1,6 +1,5 @@
 import { colorPalette } from '@/index';
-import { getFolderName } from '@/utils';
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { sizes } from '../variable/type';
 import './index';
@@ -11,36 +10,31 @@ interface HbSpinnerExps extends HbSpinner {
 }
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: `${getFolderName()}/atom/hb-spinner`,
   component: 'hb-spinner',
   argTypes: {
     size: {
       options: sizes,
-      control: { type: 'radio' },
-      defaultValue: 'large'
+      control: { type: 'radio' }
     },
     color: {
-      control: { type: 'text' },
-      defaultValue: colorPalette.black[900]
+      control: { type: 'color' }
     }
+  },
+  args: {
+    size: 'large',
+    color: colorPalette.black[900]
   },
   parameters: {
     colorPicker: {
       applyColorTo: ['color'] // Must match argType key
     }
   }
-} as Meta;
+} as Meta<HbSpinnerExps>;
+
+type Story = StoryObj<HbSpinnerExps>;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbSpinnerExps> = ({ size, color }) =>
-  html` <hb-spinner size=${size} style="--husc__spinner__color: ${color}"></hb-spinner> `;
-
-export const primary: Story<HbSpinnerExps> = Template.bind({});
-primary.args = {
-  size: 'large'
-};
-primary.parameters = {
-  colorPicker: {
-    applyColorTo: ['color'] // Pass empty array to clear extra controls
-  }
+export const Template: Story = {
+  render: ({ size, color }) =>
+    html` <hb-spinner size=${size} style="--husc__spinner__color: ${color}"></hb-spinner> `
 };

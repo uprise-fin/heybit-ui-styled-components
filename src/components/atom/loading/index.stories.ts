@@ -1,20 +1,20 @@
-import { getFolderName } from '@/utils';
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbLoading } from './index';
 
 export default {
-  title: `${getFolderName()}/atom/hb-loading`,
   component: 'hb-loading'
-} as Meta;
+} as Meta<HbLoading>;
 
-const Template: Story<HbLoading> = () => html` <style>
-    .loading {
-      width: 300px;
-      height: 300px;
-    }
-  </style>
-  <hb-loading class="loading"></hb-loading>`;
+type Story = StoryObj<HbLoading>;
 
-export const float: Story<HbLoading> = Template.bind({});
+export const Template: Story = {
+  render: () => html` <style>
+      .loading {
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+    <hb-loading class="loading"></hb-loading>`
+};

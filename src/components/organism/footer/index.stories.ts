@@ -1,14 +1,15 @@
-import { getFolderName } from '@/utils';
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbFooter } from './index';
 
 export default {
-  title: `${getFolderName()}/organism/hb-footer`,
   component: 'hb-footer'
-} as Meta;
+} as Meta<HbFooter>;
 
-// More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbFooter> = () => html` <hb-footer></hb-footer>`;
-export const korea: Story<HbFooter> = Template.bind({});
+type Story = StoryObj<HbFooter>;
+
+const Template = () => html` <hb-footer></hb-footer>`;
+export const korea: Story = {
+  render: () => Template()
+};
