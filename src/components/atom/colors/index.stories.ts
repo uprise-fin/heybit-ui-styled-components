@@ -7,7 +7,9 @@ import {
   levelsV2,
   prefixV2,
   serviceColorsV2,
-  systemColorsV2
+  statusColorV2,
+  systemColorsV2,
+  ServiceColorV2
 } from './type';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
@@ -47,7 +49,7 @@ const LevelTemplate: Story<unknown> = () =>
         white-space: nowrap;
         text-align: center;
         vertical-align: middle;
-        background: var(--backrgound);
+        background: var(--background);
       }
       .box__item:before {
         content: attr(data-color);
@@ -74,23 +76,19 @@ const LevelTemplate: Story<unknown> = () =>
     </style>
     <div class="table">
       <div class="box">
-        <div class="box__item box__item--title box__item--reversal">
-          시스템컬러
-        </div>
+        <div class="box__item box__item--title box__item--reversal">시스템컬러</div>
         ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
       ${systemColorsV2.map(
         (name: ColorV2) =>
           html`
             <div class="box">
-              <div class="box__item box__item--title box__item--reversal">
-                ${name}: ${colorPaletteV2[name].color}
-              </div>
+              <div class="box__item box__item--title box__item--reversal">${name}</div>
               ${reverseLevels.map(
                 (x) =>
                   html`
                     <div
-                      style="--backrgound: var(--${prefixV2}__${name}--${x})"
+                      style="--background: var(--${prefixV2}__${name}--${x})"
                       data-color="${colorPaletteV2[name][x]}"
                       class="box__item ${colorPaletteV2[name].color === colorPaletteV2[name][x]
                         ? 'box__item--primary'
@@ -102,33 +100,21 @@ const LevelTemplate: Story<unknown> = () =>
           `
       )}
       <div class="box">
-        <div class="box__item box__item--title box__item--reversal">
-          서비스컬러
-        </div>
-        ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
+        <div class="box__item box__item--title box__item--reversal">서비스컬러</div>
+        ${serviceColorsV2.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
-      ${serviceColorsV2.map(
-        (name: ColorV2) =>
-          html`
-            <div class="box">
-              <div class="box__item box__item--title box__item--reversal">
-                ${name}: ${colorPaletteV2[name].color}
-              </div>
-              ${reverseLevels.map(
-                (x) =>
-                  html`
-                    <div
-                      style="--backrgound: var(--${prefixV2}__${name}--${x})"
-                      data-color="${colorPaletteV2[name][x]}"
-                      class="box__item ${colorPaletteV2[name].color === colorPaletteV2[name][x]
-                        ? 'box__item--primary'
-                        : ''}"
-                    ></div>
-                  `
-              )}
-            </div>
-          `
-      )}
+      <div class="box">
+        <div class="box__item box__item--title box__item--reversal">Primary Color</div>
+        ${serviceColorsV2.map(
+          (name: ServiceColorV2) =>
+            html`
+              <div
+                class="box__item"
+                style="--background: var(--${prefixV2}__${name})"
+                data-color="${statusColorV2[name]}"
+              ></div>
+            `
+        )}
       </div>
     </div>
   `;

@@ -11,33 +11,52 @@ export const sizesV2 = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const
 export type SizeV2 = typeof sizesV2[number];
 export const systemColorsV2 = [
   'white',
+  'black',
+  'brown',
+  'yellow',
+  'green',
+  'orange',
+  'purple',
+  'red',
+  'blue'
+] as const;
+export type SystemColorV2 = typeof systemColorsV2[number];
+export const serviceColorsV2 = [
   'heybit',
   'harvest',
   'defi',
-  'brown',
-  'yellow',
-  'black',
+  'text',
   'success',
   'error',
+  'warning',
   'link'
 ] as const;
-export type SystemColorV2 = typeof systemColorsV2[number];
-export const serviceColorsV2 = ['heybit', 'harvest', 'defi'] as const;
 export type ServiceColorV2 = typeof serviceColorsV2[number];
-export type ColorV2 = SystemColorV2 | ServiceColorV2;
+export type ColorV2 = SystemColorV2;
+export type StatusColorV2 = ServiceColorV2;
 export type AllColorV2 = Record<ColorV2, Matercolor>;
 
 export const colorsV2: Record<ColorV2, string> = {
-  white: '#ffffff',
-  heybit: '#c04707',
-  harvest: '#114d24',
-  defi: '#504aca',
-  brown: '#241c15',
-  yellow: '#fb7d28',
-  black: '#16171a',
-  success: '#00561e',
-  error: '#bd1b0f',
-  link: '#1f41b6'
+  white: '#FFFFFF',
+  black: '#16171A',
+  brown: '#241C15',
+  yellow: '#fB7d28',
+  green: '#00561E',
+  orange: '#C04707',
+  purple: '#504ACA',
+  red: '#BD1B0F',
+  blue: '#1F41B6'
+};
+
+export const statusColorV2: Record<StatusColorV2, string> = {
+  heybit: '#ff7d41',
+  harvest: '#54aa6c',
+  defi: '#9d83f8',
+  text: '#36373a',
+  success: '#00a652',
+  error: '#f8452a',
+  warning: '#ffc93a',
+  link: '#0095ff'
 };
 export const colorPaletteV2 = Object.entries(colorsV2).reduce(
   (a, [name, color]) => ({
@@ -46,7 +65,7 @@ export const colorPaletteV2 = Object.entries(colorsV2).reduce(
   }),
   {}
 ) as AllColorV2;
-console.log(colorPaletteV2);
+// console.log(colorPaletteV2);
 export const basicVariablesV2 = {
   //기본 변수. 그냥도 사용하지만 컴포넌트로 확장됨
   font: {
@@ -218,11 +237,11 @@ export const componentVariablesV2 = {
     },
     positive: {
       icon: 'system/filled/info',
-      color: colorPaletteV2.success[400]
+      color: colorPaletteV2.black[400]
     },
     negative: {
       icon: 'system/filled/danger',
-      color: colorPaletteV2.heybit[600]
+      color: colorPaletteV2.black[600]
     }
   },
   header: {

@@ -1,6 +1,7 @@
 import Matercolor from 'matercolors';
 import {
   ColorV2,
+  statusColorV2,
   colorsV2,
   colorPaletteV2,
   prefixV2,
@@ -41,6 +42,10 @@ export default (function setRootStyleProperty() {
         if (colorsV2[origin] === color) setProperty(`--${prefixV2}__${origin}--primary`, level);
         setProperty(`--${prefixV2}__${origin}--${level}`, color);
       });
+    });
+    Object.entries(statusColorV2).map((item) => {
+      const [serviecName, serviceColor] = item;
+      setProperty(`--${prefixV2}__${serviecName}`, serviceColor);
     });
 
     // another variables

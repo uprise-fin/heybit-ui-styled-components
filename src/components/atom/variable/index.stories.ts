@@ -40,7 +40,7 @@ const LevelTemplate: Story<unknown> = () =>
         white-space: nowrap;
         text-align: center;
         vertical-align: middle;
-        background: var(--backrgound);
+        background: var(--background);
       }
       .box__item:before {
         content: attr(data-color);
@@ -83,7 +83,7 @@ const LevelTemplate: Story<unknown> = () =>
                 (x) =>
                   html`
                     <div
-                      style="--backrgound: var(--${prefix}__${name}--${x})"
+                      style="--background: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
                       class="box__item ${colorPalette[name].color === colorPalette[name][x]
                         ? 'box__item--primary'
@@ -111,7 +111,7 @@ const LevelTemplate: Story<unknown> = () =>
                 (x) =>
                   html`
                     <div
-                      style="--backrgound: var(--${prefix}__${name}--${x})"
+                      style="--background: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
                       class="box__item ${colorPalette[name].color === colorPalette[name][x]
                         ? 'box__item--primary'
