@@ -64,8 +64,8 @@ const LevelTemplate: Story<unknown> = () =>
         color: #fff;
       }
       .box__item--primary::before {
-        content: 'P';
-        font-size: 2em;
+        content: 'P ['attr(data-color)']';
+        font-size: 1.5em;
       }
       .box__item--reversal {
         color: #fff;
