@@ -7,9 +7,10 @@ import {
   levelsV2,
   prefixV2,
   serviceColorsV2,
-  statusColorV2,
   systemColorsV2,
-  ServiceColorV2
+  ServiceColorV2,
+  statusColorPaletteV2,
+  statusColorPrimaryV2
 } from './type';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
@@ -101,18 +102,27 @@ const LevelTemplate: Story<unknown> = () =>
       )}
       <div class="box">
         <div class="box__item box__item--title box__item--reversal">서비스컬러</div>
-        ${serviceColorsV2.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
+        ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
-      <div class="box">
-        <div class="box__item box__item--title box__item--reversal">Primary Color</div>
         ${serviceColorsV2.map(
           (name: ServiceColorV2) =>
             html`
-              <div
-                class="box__item"
-                style="--background: var(--${prefixV2}__${name})"
-                data-color="${statusColorV2[name]}"
-              ></div>
+              <div class="box">
+                <div class="box__item box__item--title box__item--reversal">${name}</div>
+                ${reverseLevels.map(
+                  (x) =>
+                    html`
+                      <div
+                        style="--background: var(--${prefixV2}__${name}--${x})"
+                        data-color="${statusColorPaletteV2[name][x]}"
+                        class="box__item ${statusColorPrimaryV2[name] ===
+                        statusColorPaletteV2[name][x]
+                          ? 'box__item--primary'
+                          : ''}"
+                      ></div>
+                    `
+                )}
+              </div>
             `
         )}
       </div>

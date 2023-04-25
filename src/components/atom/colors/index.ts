@@ -3,10 +3,13 @@ import {
   ColorV2,
   statusColorV2,
   colorsV2,
+  StatusColorV2,
   colorPaletteV2,
+  statusColorPaletteV2,
   prefixV2,
   basicVariablesV2,
-  componentVariablesV2
+  componentVariablesV2,
+  statusColorPrimaryV2
 } from './type';
 
 function setProperty(key: string, value: string) {
@@ -39,13 +42,20 @@ export default (function setRootStyleProperty() {
       setProperty(`--${prefixV2}__${origin}`, colorsV2[origin]);
       Object.entries(obj).forEach(([level, color]) => {
         if (!(+level > 0)) return;
-        if (colorsV2[origin] === color) setProperty(`--${prefixV2}__${origin}--primary`, level);
+        // if (colorsV2[origin] === color) setProperty(`--${prefixV2}__${origin}--primary`, level);
         setProperty(`--${prefixV2}__${origin}--${level}`, color);
       });
     });
-    Object.entries(statusColorV2).map((item) => {
-      const [serviecName, serviceColor] = item;
-      setProperty(`--${prefixV2}__${serviecName}`, serviceColor);
+
+    Object.entries(statusColorPaletteV2).forEach(([origin, obj]: [StatusColorV2, Matercolor]) => {
+      setProperty(`--${prefixV2}__${origin}`, statusColorV2[origin]);
+      Object.entries(obj).forEach(([level, color]) => {
+        console.log(statusColorPrimaryV2[origin] === color);
+        if (!(+level > 0)) return;
+        if (statusColorPrimaryV2[origin] === color)
+          setProperty(`--${prefixV2}__${origin}--primary`, level);
+        setProperty(`--${prefixV2}__${origin}--${level}`, color);
+      });
     });
 
     // another variables

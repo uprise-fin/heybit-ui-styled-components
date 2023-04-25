@@ -35,20 +35,32 @@ export type ServiceColorV2 = typeof serviceColorsV2[number];
 export type ColorV2 = SystemColorV2;
 export type StatusColorV2 = ServiceColorV2;
 export type AllColorV2 = Record<ColorV2, Matercolor>;
+export type AllStatusColorV2 = Record<StatusColorV2, Matercolor>;
 
 export const colorsV2: Record<ColorV2, string> = {
   white: '#FFFFFF',
   black: '#16171A',
   brown: '#241C15',
   yellow: '#fB7d28',
-  green: '#00561E',
+  green: '#8ED2A6',
   orange: '#C04707',
-  purple: '#504ACA',
+  purple: '#DED5FE',
   red: '#BD1B0F',
-  blue: '#1F41B6'
+  blue: '#1386FC'
 };
 
 export const statusColorV2: Record<StatusColorV2, string> = {
+  heybit: `${colorsV2.orange}`,
+  harvest: `${colorsV2.green}`,
+  defi: `${colorsV2.purple}`,
+  text: `${colorsV2.black}`,
+  success: `${colorsV2.green}`,
+  error: `${colorsV2.red}`,
+  warning: `${colorsV2.yellow}`,
+  link: `${colorsV2.blue}`
+};
+
+export const statusColorPrimaryV2: Record<StatusColorV2, string> = {
   heybit: '#ff7d41',
   harvest: '#54aa6c',
   defi: '#9d83f8',
@@ -58,6 +70,7 @@ export const statusColorV2: Record<StatusColorV2, string> = {
   warning: '#ffc93a',
   link: '#0095ff'
 };
+
 export const colorPaletteV2 = Object.entries(colorsV2).reduce(
   (a, [name, color]) => ({
     ...a,
@@ -65,7 +78,15 @@ export const colorPaletteV2 = Object.entries(colorsV2).reduce(
   }),
   {}
 ) as AllColorV2;
-// console.log(colorPaletteV2);
+
+export const statusColorPaletteV2 = Object.entries(statusColorV2).reduce(
+  (a, [name, color]) => ({
+    ...a,
+    [name]: new Matercolor(color)
+  }),
+  {}
+) as AllStatusColorV2;
+
 export const basicVariablesV2 = {
   //기본 변수. 그냥도 사용하지만 컴포넌트로 확장됨
   font: {
