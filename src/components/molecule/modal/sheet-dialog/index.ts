@@ -1,3 +1,4 @@
+import '../';
 import { Base } from '@/components/base';
 import {
   componentVariables,

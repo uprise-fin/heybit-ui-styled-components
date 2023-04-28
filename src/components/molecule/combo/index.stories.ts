@@ -42,7 +42,6 @@ const OpionSlotTmpl = ({ value, search, options, fixed, emptyText, placeholder }
         .placeholder=${placeholder}
         @event=${($event: Event) => console.log($event)}
       ></hb-combo>
-      <div style="height: 99999px;"></div>
     </div>
   `;
 

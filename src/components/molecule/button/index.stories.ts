@@ -81,16 +81,16 @@ export const radius: Story = {
   }
 };
 
-// export const circle: Story = {
-//   render: ({ size, type, theme }) => html`<hb-button theme="${theme}" size=${size} type=${type}>
-//     <hb-icon icon="system/filled/add" size=${size} style="--icon__color: #fff;"></hb-icon>
-//   </hb-button>`,
-//   args: {
-//     size: 'large',
-//     type: 'circle',
-//     theme: 'primary'
-//   }
-// };
+export const circle: Story = {
+  render: ({ size, type, theme }) => html`<hb-button theme="${theme}" size=${size} type=${type}>
+    <hb-icon icon="system/filled/add" size=${size} style="--icon__color: #fff;"></hb-icon>
+  </hb-button>`,
+  args: {
+    size: 'large',
+    type: 'circle',
+    theme: 'primary'
+  }
+};
 
 export const noType: Story = {
   render: ({ label, size }) => html`<hb-button size=${size}> ${label} </hb-button>`,
