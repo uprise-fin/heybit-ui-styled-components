@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/web-components';
-import { html, nothing } from 'lit';
+import { html } from 'lit';
 import './index';
 import type { HbSwitch } from './index';
 
@@ -17,8 +17,8 @@ type Story = StoryObj<HbSwitch>;
 export const OpionSlotTmpl: Story = {
   render: ({ value, loading }) =>
     html`<hb-switch
-      value=${value || nothing}
-      loading=${loading || nothing}
+      ?value=${value}
+      ?loading=${loading}
       @event=${($event: Event) => console.log($event)}
     ></hb-switch>`
 };

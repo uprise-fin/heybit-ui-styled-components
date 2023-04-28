@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/web-components';
-import { html, nothing } from 'lit';
+import { html } from 'lit';
 import './index';
 import type { HbIf } from './index';
 
@@ -11,7 +11,7 @@ type Story = StoryObj<HbIf>;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 export const Template: Story = {
-  render: ({ value }) => html`<hb-if value=${value || nothing}>ddwadawd</hb-if>`,
+  render: ({ value }) => html`<hb-if ?value=${value}>ddwadawd</hb-if>`,
   args: {
     value: false
   }

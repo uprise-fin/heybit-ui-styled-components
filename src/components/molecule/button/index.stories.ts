@@ -1,6 +1,6 @@
 import { sizes } from '@/components/atom/variable/type';
 import { Meta, StoryObj } from '@storybook/web-components';
-import { html, nothing } from 'lit';
+import { html } from 'lit';
 import './index';
 import type { HbButton } from './index';
 import { hbButtonThemes, hbButtonTypes } from './type';
@@ -11,15 +11,13 @@ export default {
   component: 'hb-button',
   tags: ['autodocs'],
   render: ({ label, size, baseLoadingDuration, loading, disabled, type, theme }) => html`<hb-button
-    theme="${theme}"
-    size=${size}
-    type=${type}
+    .theme="${theme}"
+    .size=${size}
+    .type=${type}
+    .baseLoadingDuration=${baseLoadingDuration}
+    ?loading=${loading}
+    ?disabled=${disabled}
     @event=${handleClick}
-    baseLoadingDuration=${baseLoadingDuration || nothing}
-    loading=${loading || nothing}
-    data-loading=${loading ? '' : nothing}
-    disabled=${disabled || nothing}
-    data-disabled=${disabled ? '' : nothing}
   >
     <span slot="slot--left">ㅇㅇㅇ</span>
     ${label}
