@@ -41,7 +41,7 @@ export const basicVariables = {
   "Malgun Gothic", sans-serif`,
     color: {
       void: colorPalette.white[50],
-      solid: colorPalette.black[900]
+      solid: colorPalette.black[800]
     },
     size: 16
   },
@@ -85,7 +85,7 @@ export const componentVariables = {
   //컴포넌트 변수
   dim: {
     background: {
-      color: colorPalette.black[900]
+      color: colorPalette.black[800]
     }
   },
   list: {
@@ -103,7 +103,7 @@ export const componentVariables = {
     }
   },
   icon: {
-    color: colorPalette.black[900],
+    color: colorPalette.black[800],
     size: basicVariables.size
   },
   // input: {
@@ -179,7 +179,7 @@ export const componentVariables = {
     }
   },
   spinner: {
-    color: colorPalette.black[900],
+    color: colorPalette.black[800],
     size: basicVariables.size
   },
   select: {

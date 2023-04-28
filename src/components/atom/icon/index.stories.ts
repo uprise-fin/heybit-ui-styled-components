@@ -30,7 +30,7 @@ export default {
   },
   args: {
     size: 'large',
-    color: colorPalette.black[900]
+    color: colorPalette.black[800]
   }
 } as Meta<HbIconExpns>;
 
