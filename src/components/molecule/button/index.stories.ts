@@ -5,7 +5,7 @@ import './index';
 import type { HbButton } from './index';
 import { hbButtonThemes, hbButtonTypes } from './type';
 
-const handleClick = () => alert('Clicked!');
+const handleClick = () => console.log('Clicked!');
 
 export default {
   component: 'hb-button',

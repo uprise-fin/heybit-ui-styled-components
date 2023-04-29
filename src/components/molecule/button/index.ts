@@ -30,7 +30,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   label: string;
 
-  type: HbButtonType = 'rectangle';
+  type: HbButtonType;
 
   size: Size;
 
