@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import type { HbButton } from '@/components/molecule/button';
 // const variables = Object.values(
@@ -9,8 +9,11 @@ import type { HbButton } from '@/components/molecule/button';
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
   title: 'how-to-use/css'
-} as Meta;
-const Template: Story<HbButton> = () =>
+} as Meta<HbButton>;
+
+type Story = StoryObj<HbButton>;
+
+const Template = () =>
   html`
     <div class="hb-button" theme="primary" size="large" type="rectangle" tabindex="0">
       <!---->
@@ -27,4 +30,7 @@ const Template: Story<HbButton> = () =>
       ></div> -->
     </div>
   `;
-export const hbButton: Story<HbButton> = Template.bind({});
+
+export const hbButton: Story = {
+  render: () => Template()
+};

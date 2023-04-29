@@ -1,27 +1,25 @@
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbEventDialog } from './index';
 import desktopImg from '~/static/sample-desktop.png';
-import { getFolderName } from '@/utils';
 
-// More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: `${getFolderName()}/molecule/hb-event-dialog`,
   component: 'hb-event-dialog',
   argTypes: {
     open: {
       options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: true
+      control: { type: 'radio' }
     },
     persistent: {
       options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: true
+      control: { type: 'radio' }
     }
   }
-} as Meta;
+} as Meta<HbEventDialog>;
+
+type Story = StoryObj<HbEventDialog>;
+
 const Template = (props: HbEventDialog) => html`
   <style>
     body {
@@ -37,13 +35,15 @@ const Template = (props: HbEventDialog) => html`
   >
   </hb-event-dialog>
 `;
-export const primary: Story<HbEventDialog> = Template.bind({});
-primary.args = {
-  open: true,
-  persistent: true,
-  href: 'https://www.heybit.io/harvest/',
-  image:
-    'https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png',
-  textLongClose: '3일간 보지 않기',
-  textClose: '닫기'
+export const Primary: Story = {
+  render: (args) => Template(args),
+  args: {
+    open: true,
+    persistent: true,
+    href: 'https://www.heybit.io/harvest/',
+    image:
+      'https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png',
+    textLongClose: '3일간 보지 않기',
+    textClose: '닫기'
+  }
 };

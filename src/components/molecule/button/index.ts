@@ -4,6 +4,9 @@ import { HbButtonProps, HbButtonTheme, HbButtonType } from '@/components/molecul
 import { wait } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
+import '@/components/atom/icon';
+import '@/components/atom/spinner';
+import '@/components/atom/transition';
 
 /**
  * @fires event 클릭할때
@@ -25,7 +28,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     return [require('./style.scss').default];
   }
 
-  labelEl: HTMLElement;
+  label: string;
 
   type: HbButtonType;
 

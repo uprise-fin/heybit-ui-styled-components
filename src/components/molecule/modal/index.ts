@@ -1,3 +1,6 @@
+import '@/components/molecule/anchor';
+import '@/components/molecule/button';
+import '@/components/molecule/img';
 import { HbTransitionType } from '@/components/atom/transition/type';
 import { HorizonAlign, VerticalAlign } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';

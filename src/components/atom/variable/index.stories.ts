@@ -1,4 +1,3 @@
-import { getFolderName } from '@/utils';
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import { Color, colorPalette, levels, prefix, serviceColors, systemColors } from './type';
@@ -10,7 +9,7 @@ import { Color, colorPalette, levels, prefix, serviceColors, systemColors } from
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 const reverseLevels = [...levels].reverse();
 export default {
-  title: `${getFolderName()}/atom/variable`
+  component: 'hb-variable'
 } as Meta;
 // // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 // const Template: Story<unknown> = () =>

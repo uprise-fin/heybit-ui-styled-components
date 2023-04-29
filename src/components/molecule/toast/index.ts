@@ -1,4 +1,4 @@
-// import style from '@/styles/molecule/toast/index.scss';
+import '@/components/molecule/button';
 import { Base } from '@/components/base';
 import { componentVariables, HbIconName } from '@/index';
 import { getElement } from '@/utils';

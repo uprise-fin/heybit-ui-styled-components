@@ -1,3 +1,7 @@
+import '@/components/atom/responsive';
+import '@/components/molecule/anchor';
+import '@/components/molecule/button';
+import '@/components/molecule/img';
 import { Size } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
 import { HbButtonTheme } from '@/components/molecule/button/type';
@@ -12,10 +16,10 @@ import { HbHeaderMyMenu, HbHeaderNavi, HbHeaderType, HbHeaderUser } from './type
  * @property value 기본 값
  * @property options Options[] 옵션
  * @property search 서치 온오프
- * @slot icon - optional, icon부분을 커스텀할때 사용
+ * @slot icon - optional, i<con부분을 커스텀할때 사용
  * @slot caret - optional, caret부분을 커스텀할때 사용
  * @slot option - required, select의 옵션 엘리먼트
- * @csspart label
+ * @csspart label>
  * @csspart list
  */
 

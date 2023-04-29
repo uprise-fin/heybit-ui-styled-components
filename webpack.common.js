@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: {
+    '@': [path.resolve(__dirname, './src/')],
     'src/style': [path.resolve(__dirname, './src/styles/index.scss')],
     'src/index': [path.resolve(__dirname, './src/index.ts')],
     'src/module': [path.resolve(__dirname, './src/module.ts')]

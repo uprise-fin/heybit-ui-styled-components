@@ -1,5 +1,4 @@
-import { getFolderName } from '@/utils';
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import desktopImg from '~/static/sample-desktop.png';
 import thunderImg from '~/static/sample-thunder.svg';
@@ -11,31 +10,25 @@ interface HbPageDialogExpns extends HbPageDialog {
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: `${getFolderName()}/molecule/hb-page-dialog`,
   component: 'hb-page-dialog',
   argTypes: {
     open: {
       options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: true
+      control: { type: 'radio' }
     },
     persistent: {
       options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: true
+      control: { type: 'radio' }
     },
     hideCloseBtn: {
       options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: false
+      control: { type: 'radio' }
     }
-    // buttonAlign: {
-    //   options: Object.keys(buttonAlign),
-    //   control: { type: "radio" },
-    //   defaultValue: buttonAlign.vertical,
-    // },
   }
-} as Meta;
+} as Meta<HbPageDialogExpns>;
+
+type Story = StoryObj<HbPageDialogExpns>;
+
 const Template = (props: HbPageDialogExpns) => html`
   <style>
     body {
@@ -60,16 +53,16 @@ const Template = (props: HbPageDialogExpns) => html`
     </div>
   </hb-dialog>
 `;
-// More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const normal: Story<HbPageDialogExpns> = (props) => {
-  return Template(props);
-};
-export const horizon: Story<HbPageDialogExpns> = normal.bind({});
-horizon.args = {
-  open: true,
-  persistent: true,
-  loading: false,
-  disabled: false,
-  baseLoadingDuration: 0,
-  icon: thunderImg
+
+export const Horizon: Story = {
+  render: (args) => Template(args),
+  args: {
+    open: true,
+    persistent: true,
+    loading: false,
+    disabled: false,
+    baseLoadingDuration: 0,
+    icon: thunderImg,
+    hideCloseBtn: false
+  }
 };

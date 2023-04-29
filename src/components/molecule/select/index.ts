@@ -1,3 +1,4 @@
+import '@/components/atom/icon';
 import { HbListOption } from '@/components/atom/list/type';
 import { Base } from '@/components/base';
 import { getElement } from '@/utils';

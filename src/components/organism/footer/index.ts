@@ -1,3 +1,6 @@
+import '@/components/atom/icon';
+import '@/components/atom/responsive';
+import '@/components/molecule/anchor';
 import { Base } from '@/components/base';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
