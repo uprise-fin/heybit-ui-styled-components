@@ -1,6 +1,7 @@
 {
   "assumptions": {
-    "setPublicClassFields": true
+    "setPublicClassFields": true,
+    "privateFieldsAsSymbols": true
   },
   "sourceType": "unambiguous",
   "presets": [
