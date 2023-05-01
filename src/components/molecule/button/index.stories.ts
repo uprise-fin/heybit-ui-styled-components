@@ -19,46 +19,46 @@ export default {
     ?disabled=${disabled}
     @event=${handleClick}
   >
-    <span slot="slot--left">ㅇㅇㅇ</span>
     ${label}
   </hb-button>`,
   argTypes: {
     label: {
-      description: 'Slot only'
+      name: '',
+      description: 'Slot content'
     },
     size: {
-      table: {
-        type: { summary: 'xsmall | small | medium | large | xlarge' }
-      },
       options: sizes,
-      control: { type: 'select' }
+      control: { type: 'radio' }
     },
     baseLoadingDuration: {
       table: {
         type: { summary: 'number' }
       }
     },
-    type: {
-      description: 'circle 타입 버튼에는 보통 아이콘을 넣어 사용합니다.',
+    loading: {
       table: {
-        type: { summary: 'rectangle | radius | circle' }
-      },
+        defaultValue: { summary: 'false' }
+      }
+    },
+    disabled: {
+      table: {
+        defaultValue: { summary: 'false' }
+      }
+    },
+    type: {
       options: hbButtonTypes,
-      control: { type: 'select' }
+      control: { type: 'radio' }
     },
     theme: {
-      table: {
-        type: { summary: 'primary | secondary | tertiary | quaternary' }
-      },
       options: hbButtonThemes,
-      control: { type: 'select' }
+      control: { type: 'radio' }
     }
   }
 } as Meta<HbButton>;
 
 type Story = StoryObj<HbButton>;
 
-export const rectangle: Story = {
+export const Rectangle: Story = {
   args: {
     label: '내용을 입력하세요',
     size: 'large',
@@ -70,18 +70,27 @@ export const rectangle: Story = {
   }
 };
 
-export const radius: Story = {
+export const Secondary: Story = {
   args: {
-    label: 'Rounded Button',
-    size: 'large',
-    type: 'radius',
-    theme: 'primary'
+    label: 'Secondary',
+    size: 'medium',
+    type: 'rectangle',
+    theme: 'secondary'
   }
 };
 
-export const circle: Story = {
+export const Radius: Story = {
+  args: {
+    label: 'Rounded Button',
+    size: 'medium',
+    type: 'radius',
+    theme: 'quaternary'
+  }
+};
+
+export const Circle: Story = {
   render: ({ size, type, theme }) => html`<hb-button theme="${theme}" size=${size} type=${type}>
-    <hb-icon icon="system/filled/add" size=${size} style="--icon__color: #fff;"></hb-icon>
+    <hb-icon icon="system/filled/add" size="large" style="--icon__color: #fff;"></hb-icon>
   </hb-button>`,
   args: {
     size: 'large',
@@ -90,10 +99,13 @@ export const circle: Story = {
   }
 };
 
-export const noType: Story = {
-  render: ({ label, size }) => html`<hb-button size=${size}> ${label} </hb-button>`,
+export const NoType: Story = {
+  render: ({ label, size }) => html`<hb-button size=${size}>
+    ${label}
+    <hb-icon icon="system/outline/arrow_right" size="small" style="--icon__color: #fff;"></hb-icon>
+  </hb-button>`,
   args: {
     label: 'Text Only',
-    size: 'large'
+    size: 'medium'
   }
 };
