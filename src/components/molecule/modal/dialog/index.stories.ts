@@ -11,86 +11,92 @@ interface HbDialogExpns extends HbDialog {
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
   component: 'hb-dialog',
+  tags: ['autodocs'],
+  render: (props) => html` <style>
+      body {
+        background: url(${desktopImg}) no-repeat top center;
+      }
+    </style>
+    <hb-dialog
+      @event=${function () {
+        console.log('djakldjawlkjadwlk');
+      }}
+      layout="${props.layout}"
+      width=${props.width}
+      height=${props.height}
+      ?open=${props.open}
+      .icon=${props.icon}
+      .title=${props.title}
+      .buttonAlign=${props.buttonAlign}
+      ?loading=${props.loading}
+      .baseLoadingDuration=${props.baseLoadingDuration}
+      ?persistent=${props.persistent}
+      ?hideCloseBtn=${props.hideCloseBtn}
+      .buttons=${props.buttons}
+      .anchor=${props.anchor}
+    >
+      <div
+        style="font-weight: 400;font-size: 14px;line-height: 140%;text-align: center;color: #828486;"
+      >
+        ${props.content}
+      </div>
+    </hb-dialog>`,
   argTypes: {
     layout: {
       type: { name: 'string', required: false },
-      defaultValue: 'normal',
-      options: ['normal', 'page'],
+      options: ['normal', 'page', 'sheet'],
       description:
-        '반응형으로 적용하려면 모바일 디바이스에서는 page layout, 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
+        '반응형으로 적용하려면 모바일 디바이스에서는 page 또는 sheet layout , 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
       table: {
-        type: { summary: 'normal | page' },
+        type: { summary: 'normal | page | sheet' },
         defaultValue: { summary: 'normal' }
       },
-      control: { type: 'select' }
+      control: { type: 'radio' }
     },
     open: {
-      options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: true
+      table: {
+        defaultValue: { summary: 'false' }
+      }
     },
     persistent: {
-      options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: true
+      table: {
+        defaultValue: { summary: 'false' }
+      }
+    },
+    loading: {
+      table: {
+        defaultValue: { summary: 'false' }
+      }
+    },
+    disabled: {
+      table: {
+        defaultValue: { summary: 'false' }
+      }
     },
     hideCloseBtn: {
-      options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: false
+      table: {
+        defaultValue: { summary: 'false' }
+      }
+    },
+    buttonAlign: {
+      options: ['horizon', 'vertical'],
+      control: { type: 'radio' }
     }
-    // buttonAlign: {
-    //   options: Object.keys(buttonAlign),
-    //   control: { type: "radio" },
-    //   defaultValue: buttonAlign.vertical,
-    // },
   }
 } as Meta<HbDialogExpns>;
 
 type Story = StoryObj<HbDialogExpns>;
 
-const Template = (props: HbDialogExpns) => html`
-  <style>
-    body {
-      background: url(${desktopImg}) no-repeat top center;
-    }
-  </style>
-  <hb-dialog
-    @event=${function () {
-      console.log('djakldjawlkjadwlk');
-    }}
-    layout="${props.layout}"
-    width=${props.width}
-    height=${props.height}
-    ?open=${props.open}
-    .icon=${props.icon}
-    .title=${props.title}
-    .buttonAlign=${props.buttonAlign}
-    ?loading=${props.loading}
-    .baseLoadingDuration=${props.baseLoadingDuration}
-    ?persistent=${props.persistent}
-    ?hideCloseBtn=${props.hideCloseBtn}
-    .buttons=${props.buttons}
-    .anchor=${props.anchor}
-  >
-    <div
-      style="font-weight: 400;font-size: 14px;line-height: 140%;text-align: center;color: #828486;"
-    >
-      ${props.content}
-    </div>
-  </hb-dialog>
-`;
-
 export const Horizon: Story = {
-  render: (args) => Template(args),
   args: {
     layout: 'normal',
     width: '1000px',
-    height: '0px',
-    open: true,
-    persistent: true,
+    open: false,
+    persistent: false,
     loading: false,
     disabled: false,
+    hideCloseBtn: false,
+    buttonAlign: 'horizon',
     baseLoadingDuration: 0,
     icon: thunderImg,
     title: '팝업 예시입니다!',
@@ -117,13 +123,11 @@ export const Horizon: Story = {
           console.log('3');
         }
       }
-    ],
-    buttonAlign: 'horizon'
+    ]
   }
 };
 
 export const Vertical: Story = {
-  render: (args) => Template(args),
   args: {
     ...Horizon.args,
     anchor: {
@@ -131,5 +135,21 @@ export const Vertical: Story = {
       href: 'https://www.heybit.io'
     },
     buttonAlign: 'vertical'
+  }
+};
+
+export const Page: Story = {
+  args: {
+    ...Horizon.args,
+    layout: 'page',
+    width: 'auto'
+  }
+};
+
+export const Sheet: Story = {
+  args: {
+    ...Horizon.args,
+    layout: 'sheet',
+    width: 'auto'
   }
 };
