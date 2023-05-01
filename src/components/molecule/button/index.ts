@@ -28,7 +28,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     return [require('./style.scss').default];
   }
 
-  label: string;
+  label = '';
 
   type: HbButtonType;
 
