@@ -2,7 +2,11 @@ import '../';
 import { HbTransitionType } from '@/components/atom/transition/type';
 import { componentVariables } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
-import { HbDialogAnchor, HbDialogButton } from '@/components/molecule/modal/type';
+import {
+  HbDialogAnchor,
+  HbDialogButton,
+  HbModalButtonAlign
+} from '@/components/molecule/modal/type';
 import { wait } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -50,33 +54,23 @@ export class HbDialog extends Base {
 
   hideCloseBtn = false;
 
-  buttonAlign = 'horizon';
+  buttonAlign: HbModalButtonAlign = 'horizon';
 
   anchor: HbDialogAnchor;
 
   buttons: HbDialogButton[];
 
-  transitionType: HbTransitionType = 'zoom';
-
   disabled: boolean;
+
+  get transitionType(): HbTransitionType {
+    return this.layout === 'sheet' ? 'bottom-up' : 'zoom';
+  }
 
   get eventDisabled() {
     if (this.buttons && this.buttons?.length)
       return this.buttons.map((x) => x.loading).some((x) => x);
     return this.loading;
   }
-  // get open() {
-  //   return this._open;
-  // }
-  // set open(val: boolean) {
-  //   if (this._open !== val) {
-  //     this._open = val
-  //     this.onToggle(val)
-  //   }
-  // }
-
-  // @property()
-  // value!: string;
 
   static get properties() {
     return {
@@ -103,6 +97,7 @@ export class HbDialog extends Base {
     return html`
       <hb-modal
         @close=${this.onClose}
+        verticalAlign=${this.layout === 'sheet' ? 'bottom' : 'middle'}
         width=${this.layout !== 'page' ? this.width : '100%'}
         height=${this.height}
         ?open=${this.open}
