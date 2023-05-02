@@ -2,7 +2,7 @@ import packageConfig from '../package.json';
 import '!style-loader!css-loader!sass-loader!../src/styles/index.scss';
 import '!style-loader!css-loader!sass-loader!./style.css';
 // import { colorPalette } from '../src/components/atom/variable/type';
-import '../src/components/atom/variable';
+// import '../src/components/atom/variable';
 // import { serviceColors, systemColors } from '../src/components/atom/variable/type';
 import { Preview } from '@storybook/web-components';
 
