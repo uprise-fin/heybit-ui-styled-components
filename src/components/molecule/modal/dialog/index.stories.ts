@@ -53,6 +53,9 @@ export default {
       },
       control: { type: 'radio' }
     },
+    width: {
+      description: 'normal type dialog에만 해당합니다.'
+    },
     open: {
       table: {
         defaultValue: { summary: 'false' }
@@ -130,6 +133,7 @@ export const Horizon: Story = {
 export const Vertical: Story = {
   args: {
     ...Horizon.args,
+    open: true,
     anchor: {
       name: '탈퇴하기',
       href: 'https://www.heybit.io'
@@ -142,7 +146,7 @@ export const Page: Story = {
   args: {
     ...Horizon.args,
     layout: 'page',
-    width: 'auto'
+    width: ''
   }
 };
 
@@ -150,6 +154,6 @@ export const Sheet: Story = {
   args: {
     ...Horizon.args,
     layout: 'sheet',
-    width: 'auto'
+    width: ''
   }
 };
