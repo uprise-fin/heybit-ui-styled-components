@@ -1,59 +1,63 @@
 import packageConfig from '../package.json';
 import '!style-loader!css-loader!sass-loader!../src/styles/index.scss';
 import '!style-loader!css-loader!sass-loader!./style.css';
-import { colorPalette } from '../src/index';
+// import { colorPalette } from '../src/components/atom/variable/type';
 import '../src/components/atom/variable';
-import { serviceColors, systemColors } from '../src/components/atom/variable/type';
+// import { serviceColors, systemColors } from '../src/components/atom/variable/type';
+import { Preview } from '@storybook/web-components';
 
 console.log(`%cVersion: v${packageConfig.version}`, 'color: #ff691e');
 console.log('%cPlatform: Web', 'color: #ff691e');
 
-export const parameters = {
-  colorPicker: {
-    palettes: [
-      {
-        name: 'system color',
-        palette: Object.entries(colorPalette).reduce((a, [k, v]) => {
-          if (!systemColors[k]) return a;
-          const ov = Object.keys(v).reduce(
-            (va, vv) =>
-              isNaN(vv)
-                ? va
-                : {
-                    ...va,
-                    [`${k}--${vv}`]: v[vv]
-                  },
-            {}
-          );
-          return {
-            ...a,
-            ...ov
-          };
-        }, {})
-      },
-      {
-        name: 'service color',
-        palette: Object.entries(colorPalette).reduce((a, [k, v]) => {
-          if (!serviceColors[k]) return a;
-          const ov = Object.keys(v).reduce(
-            (va, vv) =>
-              isNaN(vv)
-                ? va
-                : {
-                    ...va,
-                    [`${k}--${vv}`]: v[vv]
-                  },
-            {}
-          );
-          return {
-            ...a,
-            ...ov
-          };
-        }, {})
-      }
-    ]
-  }
+const preview: Preview = {
+  // colorPicker: {
+  //   palettes: [
+  //     {
+  //       name: 'system color',
+  //       palette: Object.entries(colorPalette).reduce((a, [k, v]) => {
+  //         if (!systemColors[k]) return a;
+  //         const ov = Object.keys(v).reduce(
+  //           (va, vv) =>
+  //             isNaN(vv)
+  //               ? va
+  //               : {
+  //                   ...va,
+  //                   [`${k}--${vv}`]: v[vv]
+  //                 },
+  //           {}
+  //         );
+  //         return {
+  //           ...a,
+  //           ...ov
+  //         };
+  //       }, {})
+  //     },
+  //     {
+  //       name: 'service color',
+  //       palette: Object.entries(colorPalette).reduce((a, [k, v]) => {
+  //         if (!serviceColors[k]) return a;
+  //         const ov = Object.keys(v).reduce(
+  //           (va, vv) =>
+  //             isNaN(vv)
+  //               ? va
+  //               : {
+  //                   ...va,
+  //                   [`${k}--${vv}`]: v[vv]
+  //                 },
+  //           {}
+  //         );
+  //         return {
+  //           ...a,
+  //           ...ov
+  //         };
+  //       }, {})
+  //     }
+  //   ]
+  // }
 };
+
+export default preview;
+
 // import customElementsManifest from '../custom-elements.json';
 
 // setCustomElementsManifest(customElementsManifest);
