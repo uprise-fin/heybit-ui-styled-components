@@ -16,7 +16,6 @@ import {
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
 
-// console.log(variables.cssText);
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 const reverseLevels = [...levelsV2].reverse();
 export default {

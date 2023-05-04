@@ -52,52 +52,52 @@ export const parameters = {
     ]
   }
 };
-export const parametersV2 = {
-  colorPicker: {
-    palettes: [
-      {
-        name: 'system color V2',
-        palette: Object.entries(colorPaletteV2).reduce((a, [k, v]) => {
-          if (!systemColorsV2[k]) return a;
-          const ov = Object.keys(v).reduce(
-            (va, vv) =>
-              isNaN(vv)
-                ? va
-                : {
-                    ...va,
-                    [`${k}--${vv}`]: v[vv]
-                  },
-            {}
-          );
-          return {
-            ...a,
-            ...ov
-          };
-        }, {})
-      },
-      {
-        name: 'service color V2',
-        palette: Object.entries(colorPaletteV2).reduce((a, [k, v]) => {
-          if (!serviceColorsV2[k]) return a;
-          const ov = Object.keys(v).reduce(
-            (va, vv) =>
-              isNaN(vv)
-                ? va
-                : {
-                    ...va,
-                    [`${k}--${vv}`]: v[vv]
-                  },
-            {}
-          );
-          return {
-            ...a,
-            ...ov
-          };
-        }, {})
-      }
-    ]
-  }
-};
+// export const parametersV2 = {
+//   colorPicker: {
+//     palettes: [
+//       {
+//         name: 'system color V2',
+//         palette: Object.entries(colorPaletteV2).reduce((a, [k, v]) => {
+//           if (!systemColorsV2[k]) return a;
+//           const ov = Object.keys(v).reduce(
+//             (va, vv) =>
+//               isNaN(vv)
+//                 ? va
+//                 : {
+//                     ...va,
+//                     [`${k}--${vv}`]: v[vv]
+//                   },
+//             {}
+//           );
+//           return {
+//             ...a,
+//             ...ov
+//           };
+//         }, {})
+//       },
+//       {
+//         name: 'service color V2',
+//         palette: Object.entries(colorPaletteV2).reduce((a, [k, v]) => {
+//           if (!serviceColorsV2[k]) return a;
+//           const ov = Object.keys(v).reduce(
+//             (va, vv) =>
+//               isNaN(vv)
+//                 ? va
+//                 : {
+//                     ...va,
+//                     [`${k}--${vv}`]: v[vv]
+//                   },
+//             {}
+//           );
+//           return {
+//             ...a,
+//             ...ov
+//           };
+//         }, {})
+//       }
+//     ]
+//   }
+// };
 // import customElementsManifest from '../custom-elements.json';
 
 // setCustomElementsManifest(customElementsManifest);

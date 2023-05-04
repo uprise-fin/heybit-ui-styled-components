@@ -50,7 +50,6 @@ export default (function setRootStyleProperty() {
     Object.entries(statusColorPaletteV2).forEach(([origin, obj]: [StatusColorV2, Matercolor]) => {
       setProperty(`--${prefixV2}__${origin}`, statusColorV2[origin]);
       Object.entries(obj).forEach(([level, color]) => {
-        console.log(statusColorPrimaryV2[origin] === color);
         if (!(+level > 0)) return;
         if (statusColorPrimaryV2[origin] === color)
           setProperty(`--${prefixV2}__${origin}--primary`, level);
