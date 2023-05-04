@@ -1,8 +1,10 @@
+import '@/components/molecule/skeleton';
 import { Base } from '@/components/base';
 import { getChildren } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { HbCarouselEventStatus } from './type';
+
 /**
  * @property open 온 오프
  * @property width

@@ -201,6 +201,7 @@ $hb-button__theme: (
   &__label {
     display: flex;
     align-items: center;
+    gap: 0 4px;
     margin: auto;
   }
 }

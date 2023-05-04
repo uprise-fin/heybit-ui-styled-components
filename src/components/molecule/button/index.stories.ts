@@ -1,126 +1,111 @@
-import { Size, sizes } from '@/components/atom/variable/type';
-import { getFolderName } from '@/utils';
-import { Meta, Story } from '@storybook/web-components';
+import { sizes } from '@/components/atom/variable/type';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbButton } from './index';
-import { hbButtonThemes } from './type';
+import { hbButtonThemes, hbButtonTypes } from './type';
+
+const handleClick = () => console.log('Clicked!');
 
 export default {
-  title: `${getFolderName()}/molecule/hb-button`,
+  component: 'hb-button',
+  tags: ['autodocs'],
+  render: ({ label, size, baseLoadingDuration, loading, disabled, type, theme }) => html`<hb-button
+    .theme="${theme}"
+    .size=${size}
+    .type=${type}
+    .baseLoadingDuration=${baseLoadingDuration}
+    ?loading=${loading}
+    ?disabled=${disabled}
+    @event=${handleClick}
+  >
+    ${label}
+  </hb-button>`,
   argTypes: {
-    theme: {
-      options: hbButtonThemes,
-      control: { type: 'radio' }
+    label: {
+      name: '',
+      description: 'Slot content'
     },
     size: {
       options: sizes,
-      control: { type: 'radio' },
-      defaultValue: 'large'
+      control: { type: 'radio' }
     },
-    color: {
-      control: { type: 'text' }
-    }
-  },
-  parameters: {
-    colorPicker: {
-      applyColorTo: ['color'] // Must match argType key
+    baseLoadingDuration: {
+      table: {
+        type: { summary: 'number' }
+      }
+    },
+    loading: {
+      table: {
+        defaultValue: { summary: 'false' }
+      }
+    },
+    disabled: {
+      table: {
+        defaultValue: { summary: 'false' }
+      }
+    },
+    type: {
+      options: hbButtonTypes,
+      control: { type: 'radio' }
+    },
+    theme: {
+      options: hbButtonThemes,
+      control: { type: 'radio' }
     }
   }
-} as Meta;
-interface HbButtonIconExps extends HbButton {
-  color: string;
-}
+} as Meta<HbButton>;
 
-const NoTypeTemplate: Story<HbButton> = ({
-  loading,
-  disabled,
-  theme,
-  size,
-  title,
-  baseLoadingDuration
-}) =>
-  html`<hb-button
-    .theme="${theme}"
-    .size=${size}
-    .baseLoadingDuration=${baseLoadingDuration}
-    ?loading=${loading}
-    ?disabled=${disabled}
-    >${title}</hb-button
-  >`;
-const ddd = () => console.log('zmfkajdkawd');
-const Template: Story<HbButton> = ({
-  type,
-  loading,
-  disabled,
-  theme,
-  size,
-  title,
-  baseLoadingDuration
-}) =>
-  html`<hb-button
-    .theme="${theme}"
-    .size=${size}
-    .type=${type}
-    @event=${ddd}
-    .baseLoadingDuration=${baseLoadingDuration}
-    ?loading=${loading}
-    ?disabled=${disabled}
-  >
-    <span slot="slot--left">ㅇㅇㅇ</span>
-    ${title}</hb-button
-  >`;
-const IconTemplate: Story<HbButtonIconExps> = ({
-  type,
-  loading,
-  disabled,
-  theme,
-  color,
-  size,
-  baseLoadingDuration
-}) =>
-  html`<hb-button
-    .theme="${theme}"
-    .size=${size}
-    .type=${type}
-    .baseLoadingDuration=${baseLoadingDuration}
-    ?loading=${loading}
-    ?disabled=${disabled}
-    ><hb-icon icon="system/filled/add" size=${size} style="--icon__color: ${color};"></hb-icon
-  ></hb-button>`;
+type Story = StoryObj<HbButton>;
 
-const args = {
-  title: '내용을 입력해보세요.',
-  size: 'large' as Size,
-  baseLoadingDuration: 500,
-  loading: false,
-  disabled: false
-};
-export const rectangle: Story<HbButton> = Template.bind({});
-rectangle.args = {
-  ...args,
-  type: 'rectangle',
-  theme: 'primary'
-};
-export const radius: Story<HbButton> = Template.bind({});
-radius.args = {
-  ...args,
-  theme: 'primary',
-  type: 'radius'
-};
-export const circle: Story<HbButtonIconExps> = IconTemplate.bind({});
-circle.args = {
-  ...args,
-  theme: 'primary',
-  type: 'circle'
-};
-circle.parameters = {
-  colorPicker: {
-    applyColorTo: ['color'] // Pass empty array to clear extra controls
+export const Rectangle: Story = {
+  args: {
+    label: '내용을 입력하세요',
+    size: 'large',
+    baseLoadingDuration: 500,
+    loading: false,
+    disabled: false,
+    type: 'rectangle',
+    theme: 'primary'
   }
 };
 
-export const noType: Story<HbButton> = NoTypeTemplate.bind({});
-noType.args = {
-  ...args
+export const Secondary: Story = {
+  args: {
+    label: 'Secondary',
+    size: 'medium',
+    type: 'rectangle',
+    theme: 'secondary'
+  }
+};
+
+export const Radius: Story = {
+  args: {
+    label: 'Rounded Button',
+    size: 'medium',
+    type: 'radius',
+    theme: 'quaternary'
+  }
+};
+
+export const Circle: Story = {
+  render: ({ size, type, theme }) => html`<hb-button theme="${theme}" size=${size} type=${type}>
+    <hb-icon icon="system/filled/add" size="large" style="--icon__color: #fff;"></hb-icon>
+  </hb-button>`,
+  args: {
+    size: 'large',
+    type: 'circle',
+    theme: 'primary'
+  }
+};
+
+export const NoType: Story = {
+  render: ({ label, size }) => html`<hb-button size=${size}>
+    ${label}
+    <hb-icon icon="system/outline/arrow_right" size="small" style="--icon__color: #fff;"></hb-icon>
+  </hb-button>`,
+  args: {
+    label: 'Text Only',
+    size: 'medium'
+  }
 };

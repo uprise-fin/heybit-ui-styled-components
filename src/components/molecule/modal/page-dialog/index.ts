@@ -1,3 +1,4 @@
+import '../';
 import { HbTransitionType } from '@/components/atom/transition/type';
 import { Base } from '@/components/base';
 import { html } from 'lit';

@@ -1,3 +1,5 @@
+import '@/components/atom/list';
+import '@/components/atom/transition';
 import { HbList } from '@/components/atom/list';
 import { HbListOption } from '@/components/atom/list/type';
 import { Base } from '@/components/base';

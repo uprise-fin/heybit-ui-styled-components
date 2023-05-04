@@ -1,3 +1,4 @@
+import '@/components/atom/loading';
 import { InitAttribute } from '@/components/base';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';

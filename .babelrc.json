@@ -1,0 +1,24 @@
+{
+  "assumptions": {
+    "setPublicClassFields": true
+  },
+  "sourceType": "unambiguous",
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "shippedProposals": true,
+        "loose": true,
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "@babel/preset-flow",
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties"]
+  ]
+}

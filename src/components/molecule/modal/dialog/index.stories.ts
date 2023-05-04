@@ -1,5 +1,4 @@
-import { getFolderName } from '@/utils';
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import desktopImg from '~/static/sample-desktop.png';
 import thunderImg from '~/static/sample-thunder.svg';
@@ -11,187 +10,150 @@ interface HbDialogExpns extends HbDialog {
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: `${getFolderName()}/molecule/hb-dialog`,
   component: 'hb-dialog',
+  tags: ['autodocs'],
+  render: (props) => html` <style>
+      body {
+        background: url(${desktopImg}) no-repeat top center;
+      }
+    </style>
+    <hb-dialog
+      @event=${function () {
+        console.log('djakldjawlkjadwlk');
+      }}
+      layout="${props.layout}"
+      width=${props.width}
+      height=${props.height}
+      ?open=${props.open}
+      .icon=${props.icon}
+      .title=${props.title}
+      .buttonAlign=${props.buttonAlign}
+      ?loading=${props.loading}
+      .baseLoadingDuration=${props.baseLoadingDuration}
+      ?persistent=${props.persistent}
+      ?hideCloseBtn=${props.hideCloseBtn}
+      .buttons=${props.buttons}
+      .anchor=${props.anchor}
+    >
+      <div
+        style="font-weight: 400;font-size: 14px;line-height: 140%;text-align: center;color: #828486;"
+      >
+        ${props.content}
+      </div>
+    </hb-dialog>`,
   argTypes: {
     layout: {
       type: { name: 'string', required: false },
-      defaultValue: 'normal',
-      options: ['normal', 'page'],
+      options: ['normal', 'page', 'sheet'],
       description:
-        '반응형으로 적용하려면 모바일 디바이스에서는 page layout, 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
+        '반응형으로 적용하려면 모바일 디바이스에서는 page 또는 sheet layout , 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
       table: {
-        type: { summary: 'normal | page' },
+        type: { summary: 'normal | page | sheet' },
         defaultValue: { summary: 'normal' }
       },
-      control: { type: 'select' }
+      control: { type: 'radio' }
+    },
+    width: {
+      description: 'normal type dialog에만 해당합니다.'
     },
     open: {
-      options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: true
+      table: {
+        defaultValue: { summary: 'false' }
+      }
     },
     persistent: {
-      options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: true
+      table: {
+        defaultValue: { summary: 'false' }
+      }
+    },
+    loading: {
+      table: {
+        defaultValue: { summary: 'false' }
+      }
+    },
+    disabled: {
+      table: {
+        defaultValue: { summary: 'false' }
+      }
     },
     hideCloseBtn: {
-      options: [true, false],
-      control: { type: 'radio' },
-      defaultValue: false
-    }
-    // buttonAlign: {
-    //   options: Object.keys(buttonAlign),
-    //   control: { type: "radio" },
-    //   defaultValue: buttonAlign.vertical,
-    // },
-  }
-} as Meta;
-const Template = (props: HbDialogExpns) => html`
-  <style>
-    body {
-      background: url(${desktopImg}) no-repeat top center;
-    }
-  </style>
-  <hb-dialog
-    @event=${function () {
-      console.log('djakldjawlkjadwlk');
-    }}
-    layout="${props.layout}"
-    width=${props.width}
-    height=${props.height}
-    ?open=${props.open}
-    .icon=${props.icon}
-    .title=${props.title}
-    .buttonAlign=${props.buttonAlign}
-    ?loading=${props.loading}
-    .baseLoadingDuration=${props.baseLoadingDuration}
-    ?persistent=${props.persistent}
-    ?hideCloseBtn=${props.hideCloseBtn}
-    .buttons=${props.buttons}
-    .anchor=${props.anchor}
-  >
-    <div
-      style="font-weight: 400;font-size: 14px;line-height: 140%;text-align: center;color: #828486;"
-    >
-      ${props.content}
-    </div>
-  </hb-dialog>
-`;
-// More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const HorizonTemplate: Story<HbDialogExpns> = (props) => {
-  props.buttonAlign = 'horizon';
-  return Template(props);
-};
-const VerticalTemplate: Story<HbDialogExpns> = (props) => {
-  props.buttonAlign = 'vertical';
-  return Template(props);
-};
-export const horizon: Story<HbDialogExpns> = HorizonTemplate.bind({});
-horizon.args = {
-  layout: 'normal',
-  width: '1000px',
-  height: '0px',
-  open: true,
-  persistent: true,
-  loading: false,
-  disabled: false,
-  baseLoadingDuration: 0,
-  icon: thunderImg,
-  title: '팝업 예시입니다!',
-  content: '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',
-  buttons: [
-    {
-      name: '닫기',
-      theme: 'primary',
-      event: async function () {
-        await new Promise((resolve) => setTimeout(() => resolve(true), 5000));
+      table: {
+        defaultValue: { summary: 'false' }
       }
     },
-    {
-      name: '열기',
-      theme: 'secondary',
-      event: function () {
-        console.log('2');
-      }
-    },
-    {
-      name: '삼번',
-      theme: 'tertiary',
-      event: function () {
-        console.log('3');
-      }
+    buttonAlign: {
+      options: ['horizon', 'vertical'],
+      control: { type: 'radio' }
     }
-  ]
-};
-export const vertical: Story<HbDialogExpns> = VerticalTemplate.bind({});
-vertical.args = {
-  ...horizon.args,
-  anchor: {
-    name: '탈퇴하기',
-    href: 'https://www.heybit.io'
   }
-};
-// const EventPopupTemplate: Story<HbDialogExpns> = ({
-//   open,
-//   persistent,
-//   hideCloseBtn,
-//   // storybook 옵션
-//   icon,
-//   title,
-//   content,
-//   button,
-// }) =>
-//   html`
-//     <style>
-//       body {
-//         background-image: url(${desktopImg});
-//       }
-//     </style>
-//     <hb-dialog
-//       width=${460}
-//       ?open=${open}
-//       icon=${icon}
-//       title=${title}
-//       buttonAlign=${buttonAlign.horizon}
-//       ?persistent=${persistent}
-//       ?hideCloseBtn=${hideCloseBtn}
-//     >
-//       <hb-img
-//         style="display: block;"
-//         slot="content"
-//         src=${content}
-//         loadingWidth="400"
-//         loadingHeight="490"
-//       ></hb-img>
-//       ${button
-//         ? button.map(
-//             (x) =>
-//               html`
-//                 <hb-button slot="button" theme=${x.theme} size="medium"
-//                   >${x.name}</hb-button
-//                 >
-//               `
-//           )
-//         : ""}
-//     </hb-dialog>
-//   `;
+} as Meta<HbDialogExpns>;
 
-// export const event: Story<HbDialogExpns> = EventPopupTemplate.bind({});
-// event.args = {
-//   open: true,
-//   persistent: true,
-//   content:
-//     "https://storage.googleapis.com/heybit-dev-aiden.appspot.com/banners/web/1651803570_bn-popup-kr-pcw-harvest event-400x490.png",
-//   button: [
-//     {
-//       name: "닫기",
-//       theme: theme.primary,
-//     },
-//     {
-//       name: "3일동안 안열기",
-//       theme: theme.quinary,
-//     },
-//   ],
-// };
+type Story = StoryObj<HbDialogExpns>;
+
+export const Horizon: Story = {
+  args: {
+    layout: 'normal',
+    width: '1000px',
+    open: false,
+    persistent: false,
+    loading: false,
+    disabled: false,
+    hideCloseBtn: false,
+    buttonAlign: 'horizon',
+    baseLoadingDuration: 0,
+    icon: thunderImg,
+    title: '팝업 예시입니다!',
+    content: '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',
+    buttons: [
+      {
+        name: '닫기',
+        theme: 'primary',
+        event: async function () {
+          await new Promise((resolve) => setTimeout(() => resolve(true), 5000));
+        }
+      },
+      {
+        name: '열기',
+        theme: 'secondary',
+        event: function () {
+          console.log('2');
+        }
+      },
+      {
+        name: '삼번',
+        theme: 'tertiary',
+        event: function () {
+          console.log('3');
+        }
+      }
+    ]
+  }
+};
+
+export const Vertical: Story = {
+  args: {
+    ...Horizon.args,
+    open: true,
+    anchor: {
+      name: '탈퇴하기',
+      href: 'https://www.heybit.io'
+    },
+    buttonAlign: 'vertical'
+  }
+};
+
+export const Page: Story = {
+  args: {
+    ...Horizon.args,
+    layout: 'page',
+    width: ''
+  }
+};
+
+export const Sheet: Story = {
+  args: {
+    ...Horizon.args,
+    layout: 'sheet',
+    width: ''
+  }
+};

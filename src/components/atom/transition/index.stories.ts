@@ -1,5 +1,4 @@
-import { getFolderName } from '@/utils';
-import { Meta, Story } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbTransition } from './index';
@@ -7,32 +6,27 @@ import { hbTransitionTypes } from './type';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: `${getFolderName()}/atom/hb-transition`,
   component: 'hb-transition',
   argTypes: {
-    show: {
-      options: [false, true],
-      control: { type: 'radio' },
-      defaultValue: false
-    },
     type: {
       options: hbTransitionTypes,
-      control: { type: 'radio' },
-      defaultValue: 'fade'
+      control: { type: 'radio' }
     }
+  },
+  args: {
+    show: false,
+    type: 'fade'
   }
-} as Meta;
+} as Meta<HbTransition>;
+
+type Story = StoryObj<HbTransition>;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story<HbTransition> = ({ show, type }) =>
-  html`
-    <hb-transition type=${type} ?show=${show}
-      ><div style="background: red;">블라블라</div></hb-transition
-    >
-  `;
-
-export const visible: Story<HbTransition> = Template.bind({});
-visible.args = {
-  show: false,
-  type: 'fade'
+export const Template: Story = {
+  render: ({ show, type }) =>
+    html`
+      <hb-transition type=${type} ?show=${show}
+        ><div style="background: red;">블라블라</div></hb-transition
+      >
+    `
 };
