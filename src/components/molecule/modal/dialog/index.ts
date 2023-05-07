@@ -98,7 +98,7 @@ export class HbDialog extends Base {
       <hb-modal
         @close=${this.onClose}
         verticalAlign=${this.layout === 'sheet' ? 'bottom' : 'middle'}
-        width=${this.width}
+        width=${this.layout === 'normal' ? this.width : 'auto'}
         height=${this.height}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
