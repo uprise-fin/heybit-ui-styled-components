@@ -1,0 +1,29 @@
+@import '@/styles/utils/mixins';
+
+.row {
+  margin: 0 -20px;
+  display: flex;
+
+  .col {
+    margin: 0 20px;
+    width: 50%;
+  }
+}
+
+@include mobile {
+  .row {
+    display: block;
+    .col {
+      width: 100%;
+    }
+  }
+}
+.container-md,
+.container-sm {
+  .row {
+    display: block;
+    .col {
+      width: 100%;
+    }
+  }
+}

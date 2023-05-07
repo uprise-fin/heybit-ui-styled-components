@@ -5,6 +5,7 @@ import '!style-loader!css-loader!sass-loader!./style.css';
 // import '../src/components/atom/variable';
 // import { serviceColors, systemColors } from '../src/components/atom/variable/type';
 import { Preview } from '@storybook/web-components';
+import '../src/styles/index.scss';
 
 console.log(`%cVersion: v${packageConfig.version}`, 'color: #ff691e');
 console.log('%cPlatform: Web', 'color: #ff691e');

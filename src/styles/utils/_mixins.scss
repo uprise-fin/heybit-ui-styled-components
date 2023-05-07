@@ -1,3 +1,10 @@
+$break-width-for-mobile: 1024px - 1px;
+@mixin mobile {
+  @media (max-width: $break-width-for-mobile) {
+    @content;
+  }
+}
+
 // TODO 제거 목표
 @mixin host-styled($selector: '*') {
   @if ($selector == '*') {

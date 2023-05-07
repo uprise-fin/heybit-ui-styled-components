@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: {
     '@': [path.resolve(__dirname, './src/')],
@@ -55,7 +57,20 @@ module.exports = {
       }
     ]
   },
-  plugins: [new MiniCssExtractPlugin(), new CleanWebpackPlugin(), new Dotenv()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new CleanWebpackPlugin(),
+    new Dotenv(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: '**/*.scss',
+          to: 'scss',
+          context: 'src'
+        }
+      ]
+    })
+  ],
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.svg', '.css', '.scss'],

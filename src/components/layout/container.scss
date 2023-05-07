@@ -1,0 +1,19 @@
+@import '@/styles/utils/mixins';
+
+.container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 1024px;
+
+  &.container-md {
+    width: 800px;
+  }
+
+  @include mobile {
+    width: 500px;
+  }
+  &.container-sm {
+    width: 500px;
+  }
+}
