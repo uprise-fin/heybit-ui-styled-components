@@ -69,6 +69,15 @@ module.exports = {
           context: 'src'
         }
       ]
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/styles/_loaded_override.scss',
+          to: 'scss/styles/_loaded.scss',
+          force: true
+        }
+      ]
     })
   ],
 
