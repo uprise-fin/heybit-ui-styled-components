@@ -1,29 +1,23 @@
-@import '@/styles/utils/mixins';
+// 변수, 함수등을 사용하기 위함인데, 다른방법 알면 추천 좀.
+// storybook 에서는 global로 설정하면 안 됨.
+// 상대경로러 설정해 주세요.
+@import '../../styles/loaded';
 
-.row {
-  margin: 0 -20px;
-  display: flex;
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: $gutter;
+}
 
-  .col {
-    margin: 0 20px;
-    width: 50%;
+@media (max-width: $breakpoint) {
+  .grid {
+    grid-template-columns: auto;
   }
 }
 
-@include mobile {
-  .row {
-    display: block;
-    .col {
-      width: 100%;
-    }
-  }
-}
-.container-md,
-.container-sm {
-  .row {
-    display: block;
-    .col {
-      width: 100%;
-    }
+.containers-md,
+.containers-sm {
+  .grid {
+    grid-template-columns: auto;
   }
 }

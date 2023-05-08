@@ -3,7 +3,9 @@
 @import '@/tokens/token.scss';
 @import './body.scss';
 
-// @import '@/components/content';
+@import './utils/mixins';
+
+@import '@/components/content';
 @import '@/components/layout';
 @import '@/components/container';
 

@@ -16,21 +16,21 @@ export const Section = ({}) => {
 
         한 단짜리 레이아웃 입니다.
         section
-          container
+          .containers
             panel
             card
 
         두 단짜리 레이아웃 입니다.
         가이드에서는 50% 비율의 2단만 지원합니다.
         section
-          container
-            row
-              col
+          .containers
+            .grid
+              .grid-item
                 panel
-              col
+              .grid-item
                 card
-      </pre>
-      
+      </pre
+      >
     </section>
   `;
 };

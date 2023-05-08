@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import '@/tokens/token.scss';
 import './container.scss';
 
 /**
@@ -7,13 +8,13 @@ import './container.scss';
 export const Container = ({ size, color }: any) => {
   //TOTO 쉐도우가 없다!!
 
-  const classed = ['container'];
+  const classed = ['containers'];
   if (color) {
     classed.push(color);
   }
   if (size && size !== 'large') {
     size = size == 'small' ? 'sm' : 'md';
-    classed.push('container-' + size);
+    classed.push('containers-' + size);
   }
 
   return html`

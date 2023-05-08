@@ -1,19 +1,23 @@
-@import '@/styles/utils/mixins';
+// 변수, 함수등을 사용하기 위함인데, 다른방법 알면 추천 좀.
+// storybook 에서는 global로 설정하면 안 됨.
+// 상대경로로 설정해 주세요. (사용처에서 절대경로 못 찾음..)
+@import '../../styles/loaded';
 
-.container {
+.containers {
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 0 20px;
-  width: 1024px;
+  padding: 0 $container-margin;
+  max-width: $desktop-size;
+  // max-width: $screen-desktop;
 
-  &.container-md {
-    width: 800px;
+  &-md {
+    width: $medium-size;
+  }
+  &-sm {
+    width: $mobile-size;
   }
 
   @include mobile {
-    width: 500px;
-  }
-  &.container-sm {
-    width: 500px;
+    width: $mobile-size;
   }
 }

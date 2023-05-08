@@ -18,12 +18,16 @@ import '../container/index.scss';
       width:1100px;
     }
 
-    .container {
+    .containers {
       margin:0 auto;
     }
 
     .row {
       margin:0 -20px;
+    }
+
+    .fixed {
+      grid-template-columns: 200px auto;
     }
 
 `}
@@ -46,7 +50,7 @@ import '../container/index.scss';
 ### 기본 레이아웃을 잡는 방법.
 
 <div class="section">
-  <div class="container p">
+  <div class="containers p">
     <div class="panel">
       <h1>Title 입니다.</h1>
       내용 내용 내용 내용 내용 내용 내용 내용 내용
@@ -57,7 +61,7 @@ import '../container/index.scss';
 ### 섹션 전체에 배경을 사용하는 방법
 
 <div class="section p">
-  <div class="container">
+  <div class="containers">
     <div class="card success">
       <div class="card-heading">Title</div>
       <div class="card-body">내용 내용 내용 내용 내용 내용 내용 </div>
@@ -70,13 +74,13 @@ import '../container/index.scss';
 ### 2단으로 사용하는 방법
 
 <div class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col">
+  <div class="containers">
+    <div class="grid">
+      <div class="grid-item">
         <h1>Title 입니다.</h1>
         내용
       </div>
-      <div class="col">
+      <div class="grid-item">
         <h1>Title 입니다.</h1>
         내용
       </div>
@@ -87,16 +91,24 @@ import '../container/index.scss';
 ### 2단에 카드 사용하는 법
 
 <div class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col">
+  <div class="containers">
+    <div class="grid">
+      <div class="grid-item">
         <div class="panel">
           <h1>Title 입니다.</h1>
           내용 내용 내용 내용 내용 내용 내용 내용 내용
         </div>
       </div>
 
-      <div class="col">
+      <div class="grid-item">
+        <div class="card">
+          <div class="card-heading">Title</div>
+          <div class="card-body">내용 내용 내용 내용 내용 내용 내용 </div>
+          <div class="card-footer">footer footer footer </div>
+        </div>
+      </div>
+
+      <div class="grid-item">
         <div class="card">
           <div class="card-heading">Title</div>
           <div class="card-body">내용 내용 내용 내용 내용 내용 내용 </div>
@@ -104,8 +116,57 @@ import '../container/index.scss';
         </div>
 
       </div>
+
+      <div class="grid-item">
+        <div class="card">
+          <div class="card-heading">Title</div>
+          <div class="card-body">내용 내용 내용 내용 내용 내용 내용 </div>
+          <div class="card-footer">footer footer footer </div>
+        </div>
+      </div>
+
     </div>
 
+  </div>
+</div>
+
+### 2단에 1열 사이즈를 변경하는 법
+
+<div class="section">
+  <div class="containers">
+    <div class="grid fixed">
+      <div class="grid-item">
+        <h1>Title 입니다.</h1>
+        내용
+      </div>
+      <div class="grid-item">
+        <div class="card">
+          <div class="card-heading">Title</div>
+          <div class="card-body">내용 내용 내용 내용 내용 내용 내용 </div>
+          <div class="card-footer">footer footer footer </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+### 작은 컨테이너
+
+<div class="section">
+  <div class="containers containers-sm">
+    <div class="grid fixed">
+      <div class="grid-item">
+        <h1>Title 입니다.</h1>
+        내용
+      </div>
+      <div class="grid-item">
+        <div class="card">
+          <div class="card-heading">Title</div>
+          <div class="card-body">내용 내용 내용 내용 내용 내용 내용 </div>
+          <div class="card-footer">footer footer footer </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

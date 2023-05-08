@@ -1,6 +1,15 @@
 // size
-$screen-desktop: var(--husc__layout__content-width--desktop) !default;
+$breakpoint: 1020px !default;
+
+$container-margin: 20px;
+$desktop-width: var(--husc__layout__content-width--desktop) !default;
+
+$medium-size: 800 !default;
+$mobile-size: calc(var(--husc__layout__content-width--mobile) + $container-margin * 2) !default;
+$desktop-size: calc($desktop-width + $container-margin * 2) !default;
+
 $size-unit: 4px !default;
+$grid-gutter-size: 20px;
 
 // scss-docs-start theme-color-variables
 $primary: var(--husc__orange) !default;
@@ -71,34 +80,35 @@ $radius-base: $size-unit;
 // box-shadow
 
 // text theme
+$head-color: var(--husc__black--900) !default;
 .h1 {
   font-size: 34px;
-  color: var(--husc__black--900);
+  color: $head-color;
   font-weight: 700;
 }
 .h2 {
   font-size: 30px;
-  color: var(--husc__black--900);
+  color: $head-color;
   font-weight: 700;
 }
 .h3 {
   font-size: 26px;
-  color: var(--husc__black--900);
+  color: $head-color;
   font-weight: 700;
 }
 .h4 {
   font-size: 22px;
-  color: var(--husc__black--900);
+  color: $head-color;
   font-weight: 700;
 }
 .h5 {
   font-size: 18px;
-  color: var(--husc__black--900);
+  color: $head-color;
   font-weight: 700;
 }
 .h6 {
   font-size: 16px;
-  color: var(--husc__black--900);
+  color: $head-color;
   font-weight: 700;
 }
 

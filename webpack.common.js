@@ -34,7 +34,7 @@ module.exports = {
           {
             loader: 'lit-scss-loader',
             options: {
-              minify: true // defaults to false
+              minify: true // defaults to false,
             }
           },
           'extract-loader',
