@@ -3,11 +3,12 @@ import '!style-loader!css-loader!sass-loader!../src/styles/index.scss';
 import '!style-loader!css-loader!sass-loader!./style.css';
 // import { colorPalette } from '../src/components/atom/variable/type';
 import '../src/components/atom/variable';
+import '../src/components/atom/colors';
 // import { serviceColors, systemColors } from '../src/components/atom/variable/type';
 import { Preview } from '@storybook/web-components';
 
-console.log(`%cVersion: v${packageConfig.version}`, 'color: #ff691e');
-console.log('%cPlatform: Web', 'color: #ff691e');
+// console.log(`%cVersion: v${packageConfig.version}`, 'color: #ff691e');
+// console.log('%cPlatform: Web', 'color: #ff691e');
 
 const preview: Preview = {
   // colorPicker: {

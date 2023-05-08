@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/web-components';
+import { Story } from '@storybook/web-components';
 import { html } from 'lit';
 import {
   ColorV2,
@@ -18,8 +18,8 @@ import {
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 const reverseLevels = [...levelsV2].reverse();
 export default {
-  title: `hb-colors`
-} as Meta;
+  component: `hb-colors`
+};
 // // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 // const Template: Story<unknown> = () =>
 //   html`
