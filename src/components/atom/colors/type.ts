@@ -89,6 +89,11 @@ export const statusColorPaletteV2 = Object.entries(statusColorV2).reduce(
 
 export const basicVariablesV2 = {
   //기본 변수. 그냥도 사용하지만 컴포넌트로 확장됨
+  blue: {
+    '--900': 'indigo',
+    '--800': '#369',
+    '--700': 'gray'
+  },
   font: {
     family: `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
   "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",

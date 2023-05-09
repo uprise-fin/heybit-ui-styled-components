@@ -9,7 +9,8 @@ import {
   systemColorsV2,
   ServiceColorV2,
   statusColorPaletteV2,
-  statusColorPrimaryV2
+  statusColorPrimaryV2,
+  basicVariablesV2
 } from './type';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
@@ -88,7 +89,8 @@ const LevelTemplate: Story<unknown> = () =>
                   html`
                     <div
                       style="--background: var(--${prefixV2}__${name}--${x})"
-                      data-color="${colorPaletteV2[name][x]}"
+                      data-color="${(basicVariablesV2 as any)[name]?.[`--${x}`] ||
+                      colorPaletteV2[name][x]}"
                       class="box__item ${colorPaletteV2[name].color === colorPaletteV2[name][x]
                         ? 'box__item--primary'
                         : ''}"
