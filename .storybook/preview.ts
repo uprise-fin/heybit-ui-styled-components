@@ -55,6 +55,15 @@ const preview: Preview = {
   //     }
   //   ]
   // }
+  parameters: {
+    options: {
+      storySort: {
+        method: '',
+        order: ['Tokens', 'Layout', 'Container', 'Content'],
+        locales: ''
+      }
+    }
+  }
 };
 
 export default preview;
