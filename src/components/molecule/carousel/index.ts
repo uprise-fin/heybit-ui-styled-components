@@ -148,7 +148,7 @@ export class HbCarousel extends Base {
     if (this.holderFlag) return '';
     const currentPosition = (this.index * this.clientWidth) / this.visibleLength;
     if (['doing', 'fake'].includes(this.eventStatus)) {
-      this.userIndex = this.closeIndex(currentPosition + this.dragDistance);
+      this.userIndex = this.closeIndex(currentPosition + this.dragDistance * 2);
       return `${-currentPosition - this.dragDistance}px`;
     }
 
@@ -371,6 +371,7 @@ export class HbCarousel extends Base {
             (_, i) =>
               html`<button
                 @click=${() => this.onIndicateClick(i)}
+                part="indicate-btn${i === this.index ? ' accent' : ''}"
                 class="hb-carousel__indicate__btn${i === this.index
                   ? ' hb-carousel__indicate__btn--accent'
                   : ''}"
