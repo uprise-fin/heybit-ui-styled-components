@@ -91,6 +91,7 @@ export class HbDialog extends Base {
       loading: { type: Boolean, Reflect: true },
       baseLoadingDuration: { type: Number, Reflect: true },
       buttonAlign: { type: String, Reflect: true },
+      headAlign: { type: String, Reflect: true },
       title: { type: String, Reflect: true },
       icon: { type: String, Reflect: true },
       transitionType: { type: String, Reflect: true }
