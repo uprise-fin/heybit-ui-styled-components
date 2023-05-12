@@ -70,13 +70,12 @@
   }
   &__head {
     margin: 0 0 12px;
+    text-align: var(--head-align);
     &.empty {
       margin-bottom: 0;
     }
     &__icon {
-      display: block;
       max-width: 60px;
-      margin: auto;
     }
     &__title {
       display: block;
@@ -84,7 +83,6 @@
       font-weight: 700;
       font-size: 20px;
       line-height: 1.2;
-      text-align: center;
       &:first-child {
         margin-top: 0;
       }

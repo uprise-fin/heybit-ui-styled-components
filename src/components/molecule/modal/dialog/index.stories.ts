@@ -4,6 +4,7 @@ import desktopImg from '~/static/sample-desktop.png';
 import thunderImg from '~/static/sample-thunder.svg';
 import './index';
 import type { HbDialog } from './index';
+import { horizonAligns } from '@/components/atom/variable/type';
 interface HbDialogExpns extends HbDialog {
   content: string;
 }
@@ -25,6 +26,7 @@ export default {
       width=${props.width}
       height=${props.height}
       ?open=${props.open}
+      .headAlign=${props.headAlign}
       .icon=${props.icon}
       .title=${props.title}
       .buttonAlign=${props.buttonAlign}
@@ -81,6 +83,13 @@ export default {
         defaultValue: { summary: 'false' }
       }
     },
+    headAlign: {
+      options: horizonAligns,
+      control: { type: 'radio' },
+      table: {
+        defaultValue: { summary: 'center' }
+      }
+    },
     buttonAlign: {
       options: ['horizon', 'vertical'],
       control: { type: 'radio' }
@@ -101,6 +110,7 @@ export const Horizon: Story = {
     hideCloseBtn: false,
     buttonAlign: 'horizon',
     baseLoadingDuration: 0,
+    headAlign: 'center',
     icon: thunderImg,
     title: '팝업 예시입니다!',
     content: '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',

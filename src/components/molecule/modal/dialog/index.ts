@@ -1,6 +1,6 @@
 import '../';
 import { HbTransitionType } from '@/components/atom/transition/type';
-import { componentVariables } from '@/components/atom/variable/type';
+import { type HorizonAlign, componentVariables } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
 import {
   HbDialogAnchor,
@@ -9,6 +9,8 @@ import {
 } from '@/components/molecule/modal/type';
 import { wait } from '@/utils';
 import { html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { customElement } from 'lit/decorators.js';
 
 /**
@@ -45,6 +47,8 @@ export class HbDialog extends Base {
   height = '0px';
 
   open: boolean;
+
+  headAlign: HorizonAlign = 'center';
 
   icon = '';
 
@@ -103,6 +107,7 @@ export class HbDialog extends Base {
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
         transitionType=${this.transitionType}
+        style=${styleMap({ ['--head-align']: this.headAlign })}
       >
         <div
           class="hb-dialog__container ${this.transitionType} ${this.layout}-layout"
@@ -118,7 +123,12 @@ export class HbDialog extends Base {
                 id="close-btn"
                 ><hb-icon icon="system/outline/close" size="small"></hb-icon
               ></hb-button>`}
-          <div class="hb-dialog__head${!this.icon && !this.title ? ' empty' : ''}">
+          <div
+            class=${classMap({
+              ['hb-dialog__head']: true,
+              empty: !this.icon && !this.title
+            })}
+          >
             ${this.icon
               ? html`<hb-img
                   part="icon"
