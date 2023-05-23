@@ -10,11 +10,21 @@ const handleClick = () => console.log('Clicked!');
 export default {
   component: 'hb-button',
   tags: ['autodocs'],
-  render: ({ label, size, baseLoadingDuration, loading, disabled, type, theme }) => html`<hb-button
+  render: ({
+    label,
+    size,
+    baseLoadingDuration,
+    plain,
+    loading,
+    disabled,
+    type,
+    theme
+  }) => html`<hb-button
     .theme="${theme}"
     .size=${size}
     .type=${type}
     .baseLoadingDuration=${baseLoadingDuration}
+    ?plain=${plain}
     ?loading=${loading}
     ?disabled=${disabled}
     @event=${handleClick}
@@ -33,6 +43,13 @@ export default {
     baseLoadingDuration: {
       table: {
         type: { summary: 'number' }
+      }
+    },
+    plain: {
+      description:
+        '디자인보다 먼저 실험적 도입된 타입이므로 일부 버튼은 어색할 수 있습니다. 반드시 확인 후 사용하세요.',
+      table: {
+        defaultValue: { summary: 'false' }
       }
     },
     loading: {
@@ -63,10 +80,18 @@ export const Rectangle: Story = {
     label: '내용을 입력하세요',
     size: 'large',
     baseLoadingDuration: 500,
+    plain: false,
     loading: false,
     disabled: false,
     type: 'rectangle',
     theme: 'primary'
+  }
+};
+
+export const Plain: Story = {
+  args: {
+    ...Rectangle.args,
+    plain: true
   }
 };
 
