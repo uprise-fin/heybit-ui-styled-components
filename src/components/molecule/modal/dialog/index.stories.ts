@@ -58,6 +58,12 @@ export default {
     width: {
       description: 'normal type dialog에만 해당합니다.'
     },
+    scrollLock: {
+      description: `body 요소에 modal-open 클래스가 추가되므로 { overflow: hidden; }을 주어 스크롤 제어가 가능합니다.`,
+      table: {
+        defaultValue: { summary: 'true' }
+      }
+    },
     open: {
       table: {
         defaultValue: { summary: 'false' }
@@ -103,6 +109,7 @@ export const Horizon: Story = {
   args: {
     layout: 'normal',
     width: '1000px',
+    scrollLock: true,
     open: false,
     persistent: false,
     loading: false,
