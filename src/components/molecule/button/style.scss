@@ -117,7 +117,7 @@ $hb-button__theme: (
       --husc__icon__color: #{$color};
       color: $color;
       transition: background var(--husc__transition__duration--ms),
-        opacity var(--husc__transition__duration--ms);
+        color var(--husc__transition__duration--ms), opacity var(--husc__transition__duration--ms);
       background: $bg;
     }
     @include host-styled("[type='custom'][theme='#{$class}']") {
@@ -127,6 +127,17 @@ $hb-button__theme: (
       --husc__spinner__color: #{$customColor};
       border: none !important;
       background: none !important;
+    }
+    @include host-styled("[plain][theme='#{$class}']") {
+      color: $bg;
+      border: 1px solid $bg;
+      background: transparent;
+    }
+    @include host-styled(
+      ":not([data-disabled]):not([data-loading])[plain][theme='#{$class}']:hover"
+    ) {
+      background: map-get($value, bg);
+      color: map-get($value, color);
     }
     @include host-styled("[theme='#{$class}'][data-disabled]:not([data-loading])") {
       $disabledColor: map-get($value, disabledColor);

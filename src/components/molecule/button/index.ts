@@ -40,6 +40,8 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   initialAttributes: (keyof HbButtonProps)[] = ['size', 'theme', 'type'];
 
+  plain: boolean = false;
+
   _loading: boolean = false;
 
   #disabled: boolean = false;
@@ -83,6 +85,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       size: { type: String, Reflect: true },
       type: { type: String, Reflect: true },
       loading: { type: Boolean, Reflect: true },
+      plain: { type: Boolean, Reflect: true },
       _loading: { type: Boolean, Reflect: true },
       baseLoadingDuration: { type: Number, Reflect: true },
       disabled: { type: Boolean, Reflect: true }
