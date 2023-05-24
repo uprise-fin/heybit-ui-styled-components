@@ -185,6 +185,8 @@ $hb-button__theme: (
       background: none !important;
     }
     @include host-styled("[plain][theme='#{$class}']") {
+      --husc__icon__color: #{$bg};
+      --husc__spinner__color: #{$bg};
       color: $bg;
       border: 1px solid $bg;
       background: transparent;
