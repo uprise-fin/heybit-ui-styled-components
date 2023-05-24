@@ -32,11 +32,11 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   type: HbButtonType;
 
-  size: Size;
+  size: Size = 'medium';
 
   baseLoadingDuration = 0;
 
-  theme: HbButtonTheme;
+  theme: HbButtonTheme = 'primary';
 
   initialAttributes: (keyof HbButtonProps)[] = ['size', 'theme', 'type'];
 
