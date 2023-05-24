@@ -15,7 +15,7 @@
       var(--husc__modal__sheet-dialog__padding-right)
       var(--husc__modal__sheet-dialog__padding-bottom)
       var(--husc__modal__sheet-dialog__padding-left);
-    border-radius: calc(var(--husc__border__radius) * 3) calc(var(--husc__border__radius) * 3) 0 0;
+    border-radius: calc(var(--husc__border__radius) * 6) calc(var(--husc__border__radius) * 6) 0 0;
     background: var(--husc__modal__background);
     &.bottom-up {
       margin-bottom: 0;
@@ -35,7 +35,7 @@
     background: none;
   }
   &__head {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     &.empty {
       margin-bottom: 0;
     }
