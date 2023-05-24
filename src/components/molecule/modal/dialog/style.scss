@@ -36,7 +36,7 @@
       height: 100dvh;
       max-height: none;
       margin: 0;
-      padding: var(--husc__modal__margin);
+      padding: 60px var(--husc__modal__margin) var(--husc__modal__dialog__padding-bottom);
       box-sizing: border-box;
       border-radius: 0;
     }
