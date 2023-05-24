@@ -20,7 +20,6 @@ export const hbButtonThemes = [
   'info',
   'tertiary',
   'quaternary',
-  'heybit',
   'harvest',
   'defi'
 ] as const;

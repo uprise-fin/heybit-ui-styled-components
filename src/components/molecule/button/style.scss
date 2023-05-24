@@ -53,20 +53,20 @@ $hb-button__type: (
 );
 $hb-button__theme: (
   primary: (
-    bg: var(--husc__orange),
+    bg: var(--hb__heybit),
     color: var(--husc__font__color__void),
-    active: var(--husc__orange--600),
-    hover: var(--husc__orange--400),
-    disabledBg: var(--husc__black--100),
-    disabledColor: var(--husc__black--400)
+    active: var(--hb__heybit--500),
+    hover: var(--hb__heybit--300),
+    disabledBg: var(--hb__black--100),
+    disabledColor: var(--hb__black--400)
   ),
   secondary: (
-    bg: var(--husc__black),
+    bg: var(--hb__secondary),
     color: var(--husc__font__color__void),
-    active: var(--husc__black--900),
-    hover: var(--husc__black--700),
-    disabledBg: var(--husc__black--100),
-    disabledColor: var(--husc__black--400)
+    active: var(--hb__black--900),
+    hover: var(--hb__black--700),
+    disabledBg: var(--hb__black--100),
+    disabledColor: var(--hb__black--400)
   ),
   success: (
     bg: var(--hb__success),
@@ -116,14 +116,6 @@ $hb-button__theme: (
     // disabledBg: var(--husc__black--100),
     disabledBd: var(--husc__black--300),
     disabledColor: var(--husc__black--400)
-  ),
-  heybit: (
-    bg: var(--hb__heybit),
-    color: var(--husc__font__color__void),
-    active: var(--hb__heybit--500),
-    hover: var(--hb__heybit--300),
-    disabledBg: var(--hb__black--100),
-    disabledColor: var(--hb__black--400)
   ),
   harvest: (
     bg: var(--hb__harvest),
@@ -176,20 +168,22 @@ $hb-button__theme: (
         color var(--husc__transition__duration--ms), opacity var(--husc__transition__duration--ms);
       background: $bg;
     }
-    @include host-styled("[type='custom'][theme='#{$class}']") {
-      $customColor: $bg;
-      color: var(--husc__white);
-      color: $customColor;
-      --husc__spinner__color: #{$customColor};
-      border: none !important;
-      background: none !important;
-    }
+    // @include host-styled("[type='custom'][theme='#{$class}']") {
+    //   $customColor: $bg;
+    //   color: var(--husc__white);
+    //   color: $customColor;
+    //   --husc__spinner__color: #{$customColor};
+    //   border: none !important;
+    //   background: none !important;
+    // }
     @include host-styled("[plain][theme='#{$class}']") {
       --husc__icon__color: #{$bg};
       --husc__spinner__color: #{$bg};
       color: $bg;
-      border: 1px solid $bg;
       background: transparent;
+    }
+    @include host-styled(":not([data-disabled])[plain][theme='#{$class}']") {
+      border: 1px solid $bg;
     }
     @include host-styled(
       ":not([data-disabled]):not([data-loading])[plain][theme='#{$class}']:hover"
