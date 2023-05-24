@@ -154,7 +154,7 @@ $hb-button__theme: (
   @each $class, $value in $hb-button__theme {
     $bd: map-get($value, bd);
     $bg: map-get($value, bg);
-    @include host-styled("[type][theme='#{$class}']") {
+    @include host-styled("[theme='#{$class}']") {
       @if ($bd) {
         border: 1px solid $bd;
       } @else {

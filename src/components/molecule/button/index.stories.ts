@@ -37,9 +37,6 @@ export default {
       description: 'Slot content'
     },
     size: {
-      table: {
-        defaultValue: { summary: 'medium' }
-      },
       options: sizes,
       control: { type: 'radio' }
     },
@@ -70,9 +67,6 @@ export default {
       control: { type: 'radio' }
     },
     theme: {
-      table: {
-        defaultValue: { summary: 'primary' }
-      },
       options: hbButtonThemes,
       control: { type: 'select' }
     }
@@ -103,14 +97,15 @@ export const Plain: Story = {
 
 export const Secondary: Story = {
   args: {
+    ...Rectangle.args,
     label: 'Secondary',
-    type: 'rectangle',
     theme: 'secondary'
   }
 };
 
 export const Radius: Story = {
   args: {
+    ...Rectangle.args,
     label: 'Rounded Button',
     type: 'radius',
     theme: 'success'
