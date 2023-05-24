@@ -66,7 +66,7 @@ export class HbDialog extends Base {
 
   disabled: boolean;
 
-  scrollLock = true;
+  preventBodyScroll = true;
 
   get transitionType(): HbTransitionType {
     return this.layout === 'sheet' ? 'bottom-up' : 'zoom';
@@ -85,7 +85,7 @@ export class HbDialog extends Base {
       buttons: { type: Array, Reflect: true },
       anchor: { type: Object, Reflect: true },
       disabled: { type: Boolean, Reflect: true },
-      scrollLock: { type: Boolean, Reflect: true },
+      preventBodyScroll: { type: Boolean, Reflect: true },
       eventDisabled: { type: Boolean, Reflect: true },
       persistent: { type: Boolean, Reflect: true },
       hideCloseBtn: { type: Boolean, Reflect: true },
@@ -102,7 +102,7 @@ export class HbDialog extends Base {
   }
 
   render() {
-    document.body.classList.toggle('modal-open', this.scrollLock && this.open);
+    document.body.classList.toggle('modal-open', this.preventBodyScroll && this.open);
     return html`
       <hb-modal
         @close=${this.onClose}
