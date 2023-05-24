@@ -25,7 +25,7 @@
     margin: var(--husc__modal__margin);
     padding: var(--husc__modal__dialog__padding-top) var(--husc__modal__dialog__padding-right)
       var(--husc__modal__dialog__padding-bottom) var(--husc__modal__dialog__padding-left);
-    border-radius: calc(var(--husc__border__radius) * 5);
+    border-radius: calc(var(--husc__border__radius) * 4);
     background: var(--husc__modal__background);
     &.bottom-up {
       margin-bottom: 0;
@@ -53,7 +53,7 @@
         var(--husc__modal__sheet-dialog__padding-bottom)
         var(--husc__modal__sheet-dialog__padding-left);
       box-sizing: border-box;
-      border-radius: calc(var(--husc__border__radius) * 3) calc(var(--husc__border__radius) * 3) 0 0;
+      border-radius: calc(var(--husc__border__radius) * 6) calc(var(--husc__border__radius) * 6) 0 0;
     }
   }
   &__close-btn {
@@ -70,7 +70,7 @@
     background: none;
   }
   &__head {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     text-align: var(--head-align);
     &.empty {
       margin-bottom: 0;
@@ -82,7 +82,7 @@
       display: block;
       margin: 12px 0 0;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 22px;
       line-height: 1.2;
       &:first-child {
         margin-top: 0;
