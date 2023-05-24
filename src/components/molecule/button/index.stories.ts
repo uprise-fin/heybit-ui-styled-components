@@ -113,7 +113,7 @@ export const Radius: Story = {
   args: {
     label: 'Rounded Button',
     type: 'radius',
-    theme: 'quaternary'
+    theme: 'success'
   }
 };
 
