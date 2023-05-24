@@ -68,6 +68,38 @@ $hb-button__theme: (
     disabledBg: var(--husc__black--100),
     disabledColor: var(--husc__black--400)
   ),
+  success: (
+    bg: var(--hb__success),
+    color: var(--husc__font__color__void),
+    active: var(--hb__green--600),
+    hover: var(--hb__green--400),
+    disabledBg: var(--hb__black--100),
+    disabledColor: var(--hb__black--400)
+  ),
+  error: (
+    bg: var(--hb__error),
+    color: var(--husc__font__color__void),
+    active: var(--hb__red--600),
+    hover: var(--hb__red--400),
+    disabledBg: var(--hb__black--100),
+    disabledColor: var(--hb__black--400)
+  ),
+  warning: (
+    bg: var(--hb__warning),
+    color: var(--husc__font__color__void),
+    active: var(--hb__yellow--600),
+    hover: var(--hb__yellow--400),
+    disabledBg: var(--hb__black--100),
+    disabledColor: var(--hb__black--400)
+  ),
+  info: (
+    bg: var(--hb__info),
+    color: var(--husc__font__color__void),
+    active: var(--hb__blue--600),
+    hover: var(--hb__blue--400),
+    disabledBg: var(--hb__black--100),
+    disabledColor: var(--hb__black--400)
+  ),
   tertiary: (
     bg: var(--husc__black--100),
     color: var(--husc__font__color__solid),
@@ -84,6 +116,30 @@ $hb-button__theme: (
     // disabledBg: var(--husc__black--100),
     disabledBd: var(--husc__black--300),
     disabledColor: var(--husc__black--400)
+  ),
+  heybit: (
+    bg: var(--hb__heybit),
+    color: var(--husc__font__color__void),
+    active: var(--hb__heybit--500),
+    hover: var(--hb__heybit--300),
+    disabledBg: var(--hb__black--100),
+    disabledColor: var(--hb__black--400)
+  ),
+  harvest: (
+    bg: var(--hb__harvest),
+    color: var(--husc__font__color__void),
+    active: var(--hb__harvest--500),
+    hover: var(--hb__harvest--300),
+    disabledBg: var(--hb__black--100),
+    disabledColor: var(--hb__black--400)
+  ),
+  defi: (
+    bg: var(--hb__defi),
+    color: var(--husc__font__color__void),
+    active: var(--hb__defi--500),
+    hover: var(--hb__defi--300),
+    disabledBg: var(--hb__black--100),
+    disabledColor: var(--hb__black--400)
   )
 );
 .hb-button {

@@ -68,7 +68,7 @@ export default {
     },
     theme: {
       options: hbButtonThemes,
-      control: { type: 'radio' }
+      control: { type: 'select' }
     }
   }
 } as Meta<HbButton>;

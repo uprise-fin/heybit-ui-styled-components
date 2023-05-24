@@ -11,5 +11,17 @@ export interface HbButtonProps {
 export type HbButtonSlots = 'slot--left' | 'slot--right';
 export const hbButtonTypes = ['rectangle', 'radius', 'circle'] as const;
 export type HbButtonType = typeof hbButtonTypes[number];
-export const hbButtonThemes = ['primary', 'secondary', 'tertiary', 'quaternary'] as const;
+export const hbButtonThemes = [
+  'primary',
+  'secondary',
+  'success',
+  'error',
+  'warning',
+  'info',
+  'tertiary',
+  'quaternary',
+  'heybit',
+  'harvest',
+  'defi'
+] as const;
 export type HbButtonTheme = typeof hbButtonThemes[number];
