@@ -37,6 +37,9 @@ export default {
       description: 'Slot content'
     },
     size: {
+      table: {
+        defaultValue: { summary: 'medium' }
+      },
       options: sizes,
       control: { type: 'radio' }
     },
@@ -67,6 +70,9 @@ export default {
       control: { type: 'radio' }
     },
     theme: {
+      table: {
+        defaultValue: { summary: 'primary' }
+      },
       options: hbButtonThemes,
       control: { type: 'select' }
     }
@@ -78,7 +84,7 @@ type Story = StoryObj<HbButton>;
 export const Rectangle: Story = {
   args: {
     label: '내용을 입력하세요',
-    size: 'large',
+    size: 'medium',
     baseLoadingDuration: 500,
     plain: false,
     loading: false,
@@ -98,7 +104,6 @@ export const Plain: Story = {
 export const Secondary: Story = {
   args: {
     label: 'Secondary',
-    size: 'medium',
     type: 'rectangle',
     theme: 'secondary'
   }
@@ -107,7 +112,6 @@ export const Secondary: Story = {
 export const Radius: Story = {
   args: {
     label: 'Rounded Button',
-    size: 'medium',
     type: 'radius',
     theme: 'quaternary'
   }
@@ -125,12 +129,11 @@ export const Circle: Story = {
 };
 
 export const NoType: Story = {
-  render: ({ label, size }) => html`<hb-button size=${size}>
+  render: ({ label }) => html`<hb-button>
     ${label}
     <hb-icon icon="system/outline/arrow_right" size="small" style="--icon__color: #fff;"></hb-icon>
   </hb-button>`,
   args: {
-    label: 'Text Only',
-    size: 'medium'
+    label: 'Text Only'
   }
 };
