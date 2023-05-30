@@ -36,6 +36,8 @@ export class HbDialog extends Base {
     return [require('./style.scss').default];
   }
 
+  #bodyClass = 'modal-open';
+
   layout = 'normal';
 
   loading = false;
@@ -102,7 +104,7 @@ export class HbDialog extends Base {
   }
 
   render() {
-    document.body.classList.toggle('modal-open', this.preventBodyScroll && this.open);
+    document.body.classList.toggle(this.#bodyClass, this.preventBodyScroll && this.open);
     return html`
       <hb-modal
         @close=${this.onClose}
@@ -198,6 +200,11 @@ export class HbDialog extends Base {
     this.removeAttribute('open');
     // this.dispatchEvent(new CustomEvent('close'));
     this.onEvent(new CustomEvent('event'));
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    document.body.classList.remove(this.#bodyClass);
   }
 }
 
