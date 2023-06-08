@@ -57,6 +57,7 @@
   @if $name == '토스트' {
     @return 10000;
   }
+  @return 10;
 }
 // @function toHSL($color, $level: "") {
 //   $lightness: $level + "%";
