@@ -21,6 +21,20 @@ export default {
 //         `
 //     )}
 //   `;
+const copy = (color: Color) => () => {
+  const variables = [...levels]
+    .map((level) => `--${prefix}__${color}--${level}: ${colorPalette[color][level]};`)
+    .join('');
+
+  navigator.clipboard.writeText(variables).then(
+    () => {
+      alert('Successfully copied this line.');
+    },
+    () => {
+      alert('Failed to copy.');
+    }
+  );
+};
 const LevelTemplate: Story<unknown> = () =>
   html`
     <style>
@@ -76,7 +90,7 @@ const LevelTemplate: Story<unknown> = () =>
           html`
             <div class="box">
               <div class="box__item box__item--title box__item--reversal">
-                ${name}: ${colorPalette[name].color}
+                <button @click=${copy(name)}>Copy</button> ${name}: ${colorPalette[name].color}
               </div>
               ${reverseLevels.map(
                 (x) =>
@@ -104,6 +118,7 @@ const LevelTemplate: Story<unknown> = () =>
           html`
             <div class="box">
               <div class="box__item box__item--title box__item--reversal">
+                <button @click=${copy(name)}>Copy</button>
                 ${name}: ${colorPalette[name].color}
               </div>
               ${reverseLevels.map(
