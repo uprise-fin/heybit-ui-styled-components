@@ -4,7 +4,6 @@ export * from '@/components/atom/switch';
 export * from '@/components/atom/loading';
 export * from '@/components/atom/responsive';
 export * from '@/components/atom/transition';
-export * from '@/components/atom/variable';
 export * from '@/components/atom/icon';
 export * from '@/components/atom/list';
 export * from '@/components/atom/spinner';
