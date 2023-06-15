@@ -10,7 +10,8 @@
 }
 
 :host(:hover),
-:host(:focus) {
+:host(:focus),
+:host([open]) {
   overflow: visible;
   .hb-tooltip {
     &__content {
