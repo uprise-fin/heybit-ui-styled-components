@@ -1,28 +1,41 @@
 @import '@/styles/utils/mixins';
 
-.hb-tooltip {
-  @include host-styled {
-    position: relative;
-    display: inline-block;
-    width: 18px;
-    height: 0.2em;
-    vertical-align: middle;
-    font-family: var(--husc__font__family);
-    outline: none;
-  }
-  &__front {
-    display: block;
-    cursor: pointer;
+:host {
+  overflow: hidden;
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  font-family: var(--husc__font__family);
+  outline: none;
+}
 
-    @include slot-styled('*') {
-      position: absolute;
-      transform: translateY(-50%);
+:host(:hover),
+:host(:focus),
+:host([open]) {
+  overflow: visible;
+  .hb-tooltip {
+    &__content {
+      margin: 0;
+      z-index: 1;
+      opacity: 1;
     }
   }
+}
+
+.hb-tooltip {
+  &__front {
+    cursor: pointer;
+  }
+
   &__content {
-    position: absolute;
     display: block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    z-index: -1;
+    opacity: 0;
     min-width: 250px;
+    margin-top: -999px;
     padding: 18px 16px;
     border-radius: 4px;
     font-size: 13px;
@@ -30,5 +43,7 @@
     box-shadow: 0 4px 10px 0 rgba(#000, 0.2);
     border: 1px solid #000;
     background-color: #fff;
+    text-align: left;
+    transition: var(--husc__transition__duration--ms) opacity;
   }
 }
