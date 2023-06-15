@@ -62,13 +62,7 @@ export class HbTooltip extends Base {
   render() {
     return html`
       <slot name="front" part="front" class="hb-tooltip__front"></slot>
-      <hb-transition
-        class="hb-tooltip__transition"
-        id="tooltip-transition"
-        type="fade"
-        ?show=${this.open}
-        ><slot part="content" class="hb-tooltip__content"></slot
-      ></hb-transition>
+      <slot part="content" class="hb-tooltip__content"></slot>
     `;
   }
 }
