@@ -1,0 +1,31 @@
+import { Canvas, Meta, Story } from '@storybook/blocks';
+import '../styles/_variables.scss';
+
+<Meta title="Tokens/Colors" />
+<style>
+{`  .secondary { background: var(--husc__black--400) !important; } .success { background: var(--husc__green) !important; } .danger { background: var(--husc__input__border__color--error) !important; } .warning { background: var(--husc__yellow) !important; }`}
+
+</style>
+
+# Colors
+
+일관성을 위해 인터페이스 전체에서 아래에 정의된 색상 팔레트를 사용합니다.
+
+# Color Tokens
+
+## Color 값은 아래 2가지로 구분 됩니다.
+
+- #### Color
+  - 디자인 색상을 위한 기준 색상 값입니다.
+  - FE에서는 일반적으로 사용하지 않습니다.
+  - 디자인 커스텀에 대해 대응 할 때에만 사용합니다.
+    - 예) <code>button color="primary"</code> 의 경우 primary 색상을 orange-300 등으로 변경하는 경우.
+- #### Theme Color
+  - 의미에 따라 기본 정의한 색상이며, FE에서는 대부분 이 정보를 사용합니다.
+  - 기준값입니다. 디자인에 따라 Color 등을 바탕으로 변경해야 할 수 있습니다.
+  - 예)
+    - primary : <code class="primary">button color="primary"</code>
+    - secondary : <code >button color="primary"</code>
+    - success : <code >button color="primary"</code>
+    - danger : <code>button color="primary"</code>
+    - warning : <code >button color="primary"</code>

@@ -3,8 +3,8 @@ import Path from 'path';
 
 const AppSourceDir = Path.join(__dirname, '..', 'src');
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/preset-scss'],
   framework: {
     name: '@storybook/web-components-webpack5',
     options: {}

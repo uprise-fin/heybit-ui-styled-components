@@ -1,0 +1,35 @@
+// 변수, 함수등을 사용하기 위함인데, 다른방법 알면 추천 좀.
+// storybook 에서는 global로 설정하면 안 됨.
+// 상대경로러 설정해 주세요.
+@import '../../styles/loaded';
+
+body {
+  --grid-t: 1024px;
+}
+
+$breakpoint: unquote('var(--hbc__breakpoint)');
+
+.grid {
+  --grid-gutter: var(--hb__grid-gutter, var(--hbc__gutter));
+  // $breakpoint: 1020px !default;
+
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: var(--grid-gutter);
+  max-width: $breakpoint;
+
+  @media (max-width: $breakpoint) {
+    grid-template-columns: auto;
+  }
+}
+
+// @include mobile {
+//   width: var(--hbc__size-mobile);
+// }
+
+.containers-md,
+.containers-sm {
+  .grid {
+    grid-template-columns: auto;
+  }
+}
