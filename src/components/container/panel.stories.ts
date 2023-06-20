@@ -6,16 +6,7 @@ export default {
   tags: ['autodocs'],
   render: (args: any) => Panel(args),
   controls: { hideNoControlsWarning: true },
-  argTypes: {
-    size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large']
-    },
-    color: {
-      control: { type: 'select' },
-      options: ['primary', 'success', 'warning', 'danger', 'caption']
-    }
-  }
+  argTypes: {}
 };
 
 export const NoneStory = {

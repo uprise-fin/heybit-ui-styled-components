@@ -77,7 +77,7 @@
 // }
 
 @mixin mobile {
-  @media (max-width: var(--hbc__breakpoint)) {
+  @media (max-width: $breakpoint) {
     @content;
   }
 }

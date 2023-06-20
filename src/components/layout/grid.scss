@@ -3,29 +3,18 @@
 // 상대경로러 설정해 주세요.
 @import '../../styles/loaded';
 
-body {
-  --grid-t: 1024px;
-}
-
-$breakpoint: unquote('var(--hbc__breakpoint)');
-
 .grid {
   --grid-gutter: var(--hb__grid-gutter, var(--hbc__gutter));
-  // $breakpoint: 1020px !default;
 
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: var(--grid-gutter);
-  max-width: $breakpoint;
+  max-width: var(--hbc__width-desktop);
 
-  @media (max-width: $breakpoint) {
+  @include mobile {
     grid-template-columns: auto;
   }
 }
-
-// @include mobile {
-//   width: var(--hbc__size-mobile);
-// }
 
 .containers-md,
 .containers-sm {

@@ -1,9 +1,9 @@
 @import './variables.scss';
 
 @import '@/tokens/token.scss';
-@import './body.scss';
-
 @import './utils/mixins';
+
+@import './body.scss';
 
 @import '@/components/content';
 @import '@/components/layout';

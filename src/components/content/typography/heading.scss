@@ -2,32 +2,54 @@
 // storybook 에서는 global로 설정하면 안 됨.
 @import '../../../styles/loaded.scss';
 
-h1 {
-  font-size: 40px;
-}
-h2 {
-  font-size: 36px;
-}
-h3 {
-  font-size: 32px;
-}
-h4 {
-  font-size: 28px;
-}
-h5 {
-  font-size: 24px;
-}
-h6 {
-  font-size: 22px;
+:root {
+  --hbc__color_head: var(--hb__color_head, var(--hb__black--900));
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: $head-color;
+.h1 {
+  color: var(--hbc__color_head);
+  font-size: 34px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h2 {
+  color: var(--hbc__color_head);
+  font-size: 30px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h3 {
+  color: var(--hbc__color_head);
+  font-size: 26px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h4 {
+  color: var(--hbc__color_head);
+  font-size: 22px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h5 {
+  color: var(--hbc__color_head);
+  font-size: 18px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h6 {
+  color: var(--hbc__color_head);
+  font-size: 14px;
+  line-height: 140%;
+  font-weight: 700;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
   small {
     font-size: 0.6em;
     opacity: 0.6;

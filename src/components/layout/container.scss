@@ -4,7 +4,7 @@
 @import '../../styles/loaded';
 
 .containers {
-  --hbc__size-desctop: calc(var(--hbc__width-desctop) + var(--hbc__container-margin) * 2);
+  --hbc__size-desktop: calc(var(--hbc__width-desktop) + var(--hbc__container-margin) * 2);
   --hbc__size-medium: calc(var(--hbc__width-medium) + var(--hbc__container-margin) * 2);
   --hbc__size-mobile: calc(var(--hbc__width-mobile) + var(--hbc__container-margin) * 2);
 

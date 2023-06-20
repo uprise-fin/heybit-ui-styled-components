@@ -1,0 +1,7 @@
+@import '../../styles/loaded.scss';
+
+.panel {
+  .panel-heading {
+    @include text-subtitle1;
+  }
+}

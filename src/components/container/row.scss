@@ -1,0 +1,40 @@
+.hb-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+
+  > * {
+    flex-grow: 1;
+  }
+
+  .leading {
+    order: -1;
+    flex-grow: 0;
+  }
+  .trailing {
+    order: 1;
+    flex-grow: 0;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #828486;
+  }
+
+  .value {
+    margin-left: auto;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: #323436;
+  }
+}

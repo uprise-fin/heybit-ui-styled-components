@@ -1,0 +1,23 @@
+ul {
+  > li {
+    margin-left: 7px;
+    list-style-type: '•';
+    padding: 5px 0 5px 8px;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &.list-unstyled {
+    > li {
+      margin-left: 0;
+      padding-left: 0;
+      list-style-type: none;
+    }
+  }
+}

@@ -18,17 +18,8 @@ export const Panel = ({ size, color }: any) => {
 
   return html`
     <div class="panel">
-      <h1>H1h1H1h1H1h1</h1>
-      <h2>H2h2H2h2H2h2</h2>
-      <h3>H3h3H3h3H3h3</h3>
-
-      <div>
-        내용이 들어갑니다.<br />
-        가나다라 마바사아 자차카파<br />
-        가나다라 마바사아 자차카파<br />
-        가나다라 마바사아 자차카파<br />
-        가나다라 마바사아 자차카파<br />
-      </div>
+      <div class="panel-heading">패널 타이틀 입니다.</div>
+      <div class="panel-body">내용 내용 내용 내용</div>
     </div>
   `;
 };

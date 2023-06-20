@@ -1,61 +1,61 @@
-@import '@/styles/utils/mixins';
+// @import '@/styles/utils/mixins';
 
-%option {
-  display: flex;
-  width: 100%;
-  height: var(--husc__list__height);
-  padding: 0 var(--husc__list__padding__right) 0 var(--husc__list__padding__left);
-  border: 0;
-  align-items: center;
-  box-sizing: border-box;
-  outline: none;
-  background: none;
-  &:focus,
-  &:hover {
-    background: var(--husc__black--50);
-  }
-  &[data-selected] {
-    background: var(--husc__black--100);
-  }
-  &[hidden] {
-    display: none;
-  }
-}
+// %option {
+//   display: flex;
+//   width: 100%;
+//   height: var(--husc__list__height);
+//   padding: 0 var(--husc__list__padding__right) 0 var(--husc__list__padding__left);
+//   border: 0;
+//   align-items: center;
+//   box-sizing: border-box;
+//   outline: none;
+//   background: none;
+//   &:focus,
+//   &:hover {
+//     background: var(--husc__black--50);
+//   }
+//   &[data-selected] {
+//     background: var(--husc__black--100);
+//   }
+//   &[hidden] {
+//     display: none;
+//   }
+// }
 
-.hb-list {
-  @include host-styled {
-    @include inherit();
-    overflow: hidden;
-    display: block;
-    border-radius: calc(var(--husc__border__radius) * 2);
-    border: var(--husc__list__border__width) solid var(--husc__list__border__color);
-    box-sizing: border-box;
-  }
+// .hb-list {
+//   @include host-styled {
+//     @include inherit();
+//     overflow: hidden;
+//     display: block;
+//     border-radius: calc(var(--husc__border__radius) * 2);
+//     border: var(--husc__list__border__width) solid var(--husc__list__border__color);
+//     box-sizing: border-box;
+//   }
 
-  &__wrap {
-    @include inherit();
-    overflow: auto;
-    max-height: inherit;
-    background: var(--husc__background__color);
-    &--empty {
-      &::after {
-        content: attr(data-empty-text);
-        @extend %option;
-        width: fit-content;
-        height: calc(var(--husc__list__height) * 3);
-        margin: auto;
-      }
-      &:focus,
-      &:hover {
-        &::after {
-          background: none;
-        }
-      }
-    }
-  }
-  &__btn {
-    @extend %option;
-    @include inherit();
-    cursor: pointer;
-  }
-}
+//   &__wrap {
+//     @include inherit();
+//     overflow: auto;
+//     max-height: inherit;
+//     background: var(--husc__background__color);
+//     &--empty {
+//       &::after {
+//         content: attr(data-empty-text);
+//         @extend %option;
+//         width: fit-content;
+//         height: calc(var(--husc__list__height) * 3);
+//         margin: auto;
+//       }
+//       &:focus,
+//       &:hover {
+//         &::after {
+//           background: none;
+//         }
+//       }
+//     }
+//   }
+//   &__btn {
+//     @extend %option;
+//     @include inherit();
+//     cursor: pointer;
+//   }
+// }
