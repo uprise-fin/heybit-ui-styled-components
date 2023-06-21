@@ -1,13 +1,18 @@
-import { HbList } from './hb-list';
-import './hb-list.scss';
+import { HbRow } from './hb-row';
+import './hb-row.scss';
 
 // More on how to set up stories at: https://storybook.js.org/docs/web-components/writing-stories/introduction
 export default {
-  title: 'Container/Hb-List',
+  title: 'Container/Hb-Row',
   tags: ['autodocs'],
-  render: () => HbList(),
+  render: (args: any) => HbRow(args),
   controls: { hideNoControlsWarning: true },
-  argTypes: {}
+  argTypes: {
+    align: {
+      control: { type: 'select' },
+      options: ['top', 'bottom']
+    }
+  }
 };
 
 export const NoneStory = {

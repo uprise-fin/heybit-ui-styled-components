@@ -13,27 +13,26 @@ export const Card = ({ size, color, outline }: any) => {
   }
   if (size && size !== 'medium') {
     if (size == 'form') {
-      classed.push('card-form');
+      classed.push('card--form');
     } else {
       size = size == 'small' ? 'sm' : 'lg';
-      classed.push('card-' + size);
+      classed.push('card--' + size);
     }
   }
   if (outline && outline == 'true') {
-    console.log(outline);
-    classed.push('outline');
+    classed.push('card--outline');
   }
 
   return html`
     <div class=${classed.join(' ')}>
-      <div class="card-heading">제목입니다.</div>
-      <div class="card-content">내용입니다.</div>
-      <div class="card-footer">footer 입니다.</div>
+      <div class="card__title">제목입니다.</div>
+      <div class="card__body">내용입니다.</div>
+      <div class="card__footer">footer 입니다.</div>
     </div>
 
     <br />
     <div class=${classed.join(' ')} style="background:#f00">
-      <div class="card-content">내용 없는 카드</div>
+      <div class="card__body">내용 없는 카드</div>
     </div>
   `;
 };

@@ -7,20 +7,7 @@ export default {
   tags: ['autodocs'],
   render: (args: any) => Paper(args),
   controls: { hideNoControlsWarning: true },
-  argTypes: {
-    size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large', 'form']
-    },
-    color: {
-      control: { type: 'select' },
-      options: ['primary', 'success', 'warning', 'danger', 'desc', 'dark']
-    },
-    outline: {
-      control: { type: 'select' },
-      options: ['false', 'true']
-    }
-  }
+  argTypes: {}
 };
 
 export const NoneStory = {

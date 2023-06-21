@@ -158,3 +158,44 @@
 //     font-family: $font-family;
 //   }
 // }
+
+// font-mixins
+@mixin text-subtitle1 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 160%;
+  color: var(--hb__black--800);
+}
+@mixin text-subtitle2 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 160%;
+  color: var(--hb__black--800);
+}
+
+@mixin text-body1 {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 160%;
+  color: var(--hb__black--600);
+}
+@mixin text-body2 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 160%;
+  color: var(--hb__black--600);
+}
+
+@mixin text-caption {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  color: var(--hb__black--600);
+}
+
+@mixin text-desc {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 140%;
+  color: var(--hb__black--500);
+}

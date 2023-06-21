@@ -1,6 +1,5 @@
-// media query 에서는 css 변수가 안 먹힘.
-// media query 용으로 브레이크 포인트는 scss변수로 선언함.
-$breakpoint: 1020px;
+// media query는 변수 지원을 안 하기 때문에,
+// /styles/_variables.scss 에서 $breakpoint: 1020px; 를 지정 하였음.
 
 :root {
   --hbc__unit-size: 4px;
@@ -64,43 +63,3 @@ $breakpoint: 1020px;
 // .overline {
 //   font-size: 13px;
 // }
-
-@mixin text-subtitle1 {
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 160%;
-  color: var(--hb__black--800);
-}
-@mixin text-subtitle2 {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 160%;
-  color: var(--hb__black--800);
-}
-
-@mixin text-body1 {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 160%;
-  color: var(--hb__black--600);
-}
-@mixin text-body2 {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 160%;
-  color: var(--hb__black--600);
-}
-
-@mixin text-caption {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 140%;
-  color: var(--hb__black--600);
-}
-
-@mixin text-desc {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 140%;
-  color: var(--hb__black--500);
-}

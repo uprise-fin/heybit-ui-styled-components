@@ -1,0 +1,3 @@
+// media query 에서는 css 변수가 안 먹힘.
+// media query 용으로 브레이크 포인트는 scss변수로 선언함.
+$breakpoint: 1020px;

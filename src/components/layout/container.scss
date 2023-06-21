@@ -13,6 +13,12 @@
   padding: 0 var(--hbc__container-margin);
   max-width: var(--hbc__size-desktop);
 
+  font-family: var(--hbc__font__family);
+  font-size: var(--hbc__font__size);
+  color: var(--hbc__font__color);
+  font-weight: var(--hbc__font__weight);
+  line-height: var(--hbc__font__line-height);
+
   &-md {
     width: var(--hbc__size-medium);
   }

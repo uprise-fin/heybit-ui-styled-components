@@ -1,7 +1,7 @@
 @import '../../styles/loaded.scss';
 
 .panel {
-  .panel-heading {
+  &__title {
     @include text-subtitle1;
   }
 }

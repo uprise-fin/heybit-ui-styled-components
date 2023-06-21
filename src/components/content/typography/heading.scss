@@ -2,12 +2,10 @@
 // storybook 에서는 global로 설정하면 안 됨.
 @import '../../../styles/loaded.scss';
 
-:root {
-  --hbc__color_head: var(--hb__color_head, var(--hb__black--900));
-}
+$hbc__color-head: var(--hb__color_head, var(--hb__black--900));
 
 .h1 {
-  color: var(--hbc__color_head);
+  color: $hbc__color-head;
   font-size: 34px;
   line-height: 140%;
   font-weight: 700;

@@ -6,58 +6,93 @@
   padding: 20px 20px;
   background-color: #fff;
   border-radius: 20px;
-  border-color: var(--hbc__card--border-color);
   border-width: 0;
   border-style: solid;
 
-  .card-heading {
+  .card__title {
     @include text-subtitle2;
     margin-bottom: 10px;
   }
 
-  &.card-sm {
+  .card__body {
+  }
+
+  &.card--sm {
     border-radius: 16px;
     padding: 16px 20px;
   }
-  &.card-lg {
+  &.card--lg {
     border-radius: 24px;
     padding: 24px 20px;
   }
-  &.card-form {
+  &.card--form {
     border-radius: 8px;
     padding: 18px 16px;
     border-width: 0px;
   }
 
-  &.outline {
+  &--outline {
+    border-color: var(--hbc__card--border-color);
     border-width: 1px;
   }
 
   &.primary {
-    background-color: var(--hb__orange--50);
-    border-color: var(--hb__orange--200);
+    color: var(--hb__black--700);
+    background-color: var(--hb__heybit--50);
+    border-color: var(--hb__heybit--200);
+
+    .card-heading {
+      color: var(--hb__black--900);
+    }
   }
 
   &.success {
+    color: var(--hb__black--700);
     background-color: var(--hb__green--50);
     border-color: var(--hb__green--200);
+
+    .card-heading {
+      color: var(--hb__black--900);
+    }
   }
 
   &.danger {
+    color: var(--hb__black--700);
     background-color: var(--hb__red--50);
     border-color: var(--hb__red--200);
+
+    .card-heading {
+      color: var(--hb__black--900);
+    }
   }
 
   &.warning {
+    color: var(--hb__black--700);
     background-color: var(--hb__yellow--50);
     border-color: var(--hb__yellow--200);
+
+    .card-heading {
+      color: var(--hb__black--900);
+    }
+  }
+
+  &.info {
+    color: var(--hb__black--700);
+    background-color: var(--hb__blue--50);
+    border-color: var(--hbc__info);
+
+    .card-heading {
+      color: var(--hb__black--900);
+    }
   }
 
   &.desc {
+    color: var(--hb__black--700);
     background-color: var(--hb__black--100);
   }
 
   &.dark {
+    color: #fff;
     background-color: var(--hb__black--800);
   }
 }

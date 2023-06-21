@@ -14,7 +14,7 @@ export default {
     },
     color: {
       control: { type: 'select' },
-      options: ['primary', 'success', 'warning', 'danger', 'desc', 'dark']
+      options: ['primary', 'success', 'warning', 'danger', 'desc']
     },
     outline: {
       control: { type: 'select' },
