@@ -108,7 +108,7 @@ type Story = StoryObj<HbDialogExpns>;
 export const Horizon: Story = {
   args: {
     layout: 'normal',
-    width: '1000px',
+    width: '340px',
     preventBodyScroll: true,
     open: false,
     persistent: false,
