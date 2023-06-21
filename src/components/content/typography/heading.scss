@@ -11,31 +11,31 @@ $hbc__color-head: var(--hb__color_head, var(--hb__black--900));
   font-weight: 700;
 }
 .h2 {
-  color: var(--hbc__color_head);
+  color: $hbc__color-head;
   font-size: 30px;
   line-height: 140%;
   font-weight: 700;
 }
 .h3 {
-  color: var(--hbc__color_head);
+  color: $hbc__color-head;
   font-size: 26px;
   line-height: 140%;
   font-weight: 700;
 }
 .h4 {
-  color: var(--hbc__color_head);
+  color: $hbc__color-head;
   font-size: 22px;
   line-height: 140%;
   font-weight: 700;
 }
 .h5 {
-  color: var(--hbc__color_head);
+  color: $hbc__color-head;
   font-size: 18px;
   line-height: 140%;
   font-weight: 700;
 }
 .h6 {
-  color: var(--hbc__color_head);
+  color: $hbc__color-head;
   font-size: 14px;
   line-height: 140%;
   font-weight: 700;

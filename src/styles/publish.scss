@@ -7,9 +7,8 @@
 @import '@/components/layout';
 
 .containers {
-  --hbc__color_head: var(--hb__black--900);
-
-  @import './helper';
   @import '@/components/content';
   @import '@/components/container';
+
+  @import './helper';
 }
