@@ -126,7 +126,7 @@ export class HbSheetDialog extends Base {
                 (x, i) =>
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
-                    ?disabled=${this.eventDisabled || this.disabled}
+                    ?disabled=${this.eventDisabled || x.disabled || this.disabled}
                     type="rectangle"
                     @event=${this.adapterEvent.bind(this, x, i)}
                     theme=${x.theme}
