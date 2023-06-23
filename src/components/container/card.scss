@@ -30,7 +30,7 @@
     border-width: 1px;
   }
 
-  &.primary {
+  &.card--primary {
     color: var(--hb__black--700);
     background-color: var(--hb__heybit--50);
     border-color: var(--hb__heybit--200);
@@ -40,7 +40,7 @@
     }
   }
 
-  &.success {
+  &.card--success {
     color: var(--hb__black--700);
     background-color: var(--hb__green--50);
     border-color: var(--hb__green--200);
@@ -50,7 +50,7 @@
     }
   }
 
-  &.danger {
+  &.card--danger {
     color: var(--hb__black--700);
     background-color: var(--hb__red--50);
     border-color: var(--hb__red--200);
@@ -60,7 +60,7 @@
     }
   }
 
-  &.warning {
+  &.card--warning {
     color: var(--hb__black--700);
     background-color: var(--hb__yellow--50);
     border-color: var(--hb__yellow--200);
@@ -70,7 +70,7 @@
     }
   }
 
-  &.info {
+  &.card--info {
     color: var(--hb__black--700);
     background-color: var(--hb__blue--50);
     border-color: var(--hbc__info);
@@ -80,12 +80,12 @@
     }
   }
 
-  &.desc {
+  &.card--desc {
     color: var(--hb__black--700);
     background-color: var(--hb__black--100);
   }
 
-  &.dark {
+  &.card--dark {
     color: #fff;
     background-color: var(--hb__black--800);
   }

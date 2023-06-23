@@ -9,7 +9,7 @@ export const Card = ({ size, color, outline }: any) => {
 
   const classed = ['card'];
   if (color) {
-    classed.push(color);
+    classed.push('card--' + color);
   }
   if (size && size !== 'medium') {
     if (size == 'form') {
