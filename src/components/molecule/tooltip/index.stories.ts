@@ -6,11 +6,11 @@ import type { HbTooltip } from './index';
 export default {
   component: 'hb-tooltip',
   render: ({ open }) =>
-    html`안녕하세요 헤이비트는
-      <hb-tooltip ?open=${open}
-        ><hb-icon icon="system/outline/info" slot="front" size="small"></hb-icon>
-        <div>헤이비트</div></hb-tooltip
-      >입니다.`
+    html`<span style="display:inline-block;vertical-align:middle;">안녕하세요 헤이비트는</span>
+      <hb-tooltip ?open=${open}>
+        <hb-icon icon="system/outline/info" slot="front" size="small"></hb-icon>
+        <div>헤이비트</div> </hb-tooltip
+      ><span style="display:inline-block;vertical-align:middle;">입니다.</span>`
 } as Meta<HbTooltip>;
 
 type Story = StoryObj<HbTooltip>;
