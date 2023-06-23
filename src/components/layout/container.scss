@@ -11,7 +11,7 @@
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0 var(--hbc__container-margin);
-  max-width: var(--hbc__size-desktop);
+  max-width: var(--hbc__size-mobile);
 
   font-family: var(--hbc__font__family);
   font-size: var(--hbc__font__size);
@@ -19,13 +19,10 @@
   font-weight: var(--hbc__font__weight);
   line-height: var(--hbc__font__line-height);
 
-  &-md {
-    width: var(--hbc__size-medium);
+  &--md {
+    max-width: var(--hbc__size-medium);
   }
-  &-sm {
-    width: var(--hbc__size-mobile);
-  }
-  @include mobile {
-    width: var(--hbc__size-mobile);
+  &--lg {
+    max-width: var(--hbc__size-desktop);
   }
 }

@@ -7,7 +7,7 @@
   --grid-gutter: var(--hb__grid-gutter, var(--hbc__gutter));
 
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto;
   grid-gap: var(--grid-gutter);
   max-width: var(--hbc__width-desktop);
 
@@ -16,9 +16,8 @@
   }
 }
 
-.containers-md,
-.containers-sm {
+.containers--lg {
   .grid {
-    grid-template-columns: auto;
+    grid-template-columns: 1fr 1fr;
   }
 }

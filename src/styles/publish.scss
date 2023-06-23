@@ -7,8 +7,8 @@
 @import '@/components/layout';
 
 .containers {
+  @import './helper';
+
   @import '@/components/content';
   @import '@/components/container';
-
-  @import './helper';
 }

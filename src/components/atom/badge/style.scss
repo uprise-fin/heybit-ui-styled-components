@@ -1,0 +1,39 @@
+:host {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid var(--hb__black--100);
+  background: var(--hb__black--50);
+  color: var(--hb__black--400);
+  font-size: 13px;
+}
+
+:host([color='primary']) {
+  border-color: var(--husc__orange--100);
+  background: var(--husc__orange--50);
+  color: var(--husc__orange--400);
+}
+:host([color='secondary']) {
+  border-color: var(--hb__black--100);
+  background: var(--hb__black--50);
+  color: var(--hb__black--400);
+}
+:host([color='success']) {
+  border-color: var(--hb__green--100);
+  background: var(--hb__green--50);
+  color: var(--hb__green--400);
+}
+:host([color='danger']) {
+  border-color: var(--hb__red--100);
+  background: var(--hb__red--50);
+  color: var(--hb__red--400);
+}
+:host([color='warning']) {
+  border-color: var(--hb__yellow--100);
+  background: var(--hb__yellow--50);
+  color: var(--hb__brown--500);
+}
+:host([color='info']) {
+  border-color: var(--hb__blue--100);
+  background: var(--hb__blue--50);
+  color: var(--hb__blue--400);
+}
