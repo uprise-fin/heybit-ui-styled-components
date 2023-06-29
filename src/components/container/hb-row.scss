@@ -8,6 +8,10 @@
 
   > * {
     flex-grow: 1;
+
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
   }
 
   &__leading {
@@ -33,16 +37,11 @@
 
   &-label {
     font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #828486;
+    color: var(--hb__black--600);
   }
 
   &-value {
     margin-left: auto;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
-    color: #323436;
+    color: var(--hb__black--800);
   }
 }

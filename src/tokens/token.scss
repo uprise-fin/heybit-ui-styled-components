@@ -8,7 +8,7 @@
   // container 정보
   --hbc__width-desktop: var(--hb__width-desktop, 1024px);
   --hbc__width-medium: var(--hb__width-medium, 760px);
-  --hbc__width-mobile: var(--hb__width-mobile, 500px);
+  --hbc__width-mobile: var(--hb__width-mobile, 460px);
   // --hbc__breakpoint: var(--hb__breakpoint, calc(var(--hbc__width-desktop) + (-4px)));
   --hbc__breakpoint: $breakpoint;
   --hbc__container-margin: var(--hb__container-margin, var(--hbc__gutter));

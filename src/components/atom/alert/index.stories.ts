@@ -4,7 +4,7 @@ import './index';
 import type { HbAlert } from './index';
 
 export default {
-  component: 'hb-badge',
+  component: 'hb-alert',
   argTypes: {
     color: {
       control: { type: 'select' },
