@@ -15,8 +15,8 @@ import { Base } from '@/components/base';
  * @csspart list
  */
 
-@customElement('hb-badge')
-export class HbBadge extends Base {
+@customElement('hb-chip')
+export class HbChip extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -36,6 +36,6 @@ export class HbBadge extends Base {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'hb-badge': HbBadge;
+    'hb-chip': HbChip;
   }
 }

@@ -8,7 +8,7 @@ export * from '@/components/atom/icon';
 export * from '@/components/atom/list';
 export * from '@/components/atom/spinner';
 export * from '@/components/atom/alert';
-export * from '@/components/atom/badge';
+export * from '@/components/atom/chip';
 
 export * from '@/components/molecule/anchor';
 export * from '@/components/molecule/img';
