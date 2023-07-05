@@ -161,14 +161,14 @@
 
 // font-mixins
 @mixin text-subtitle1 {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   line-height: 160%;
   color: var(--hb__black--800);
 }
 @mixin text-subtitle2 {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 160%;
   color: var(--hb__black--800);
 }
@@ -177,23 +177,23 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 160%;
-  color: var(--hb__black--600);
+  color: var(--hb__black--800);
 }
 @mixin text-body2 {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 160%;
-  color: var(--hb__black--600);
+  color: var(--hb__black--800);
 }
 
-@mixin text-caption {
+@mixin text-overline {
   font-size: 14px;
   font-weight: 400;
   line-height: 140%;
   color: var(--hb__black--600);
 }
 
-@mixin text-desc {
+@mixin text-caption {
   font-size: 13px;
   font-weight: 400;
   line-height: 140%;

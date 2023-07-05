@@ -15,16 +15,16 @@
 
   // 기본 색상 변수 매핑
   --hbc__primary: var(--hb__primary, var(--hb__heybit));
-  --hbc__secondary: var(--hb__secondary, var(--hb__black--800));
-  --hbc__success: var(--hb__success, var(--hb__green--500));
-  --hbc__danger: var(--hb__danger, var(--hb__red--500));
-  --hbc__warning: var(--hb__warning, var(--hb__yellow--500));
-  --hbc__info: var(--hb__info, var(--hb__blue--500));
+  --hbc__secondary: var(--hb__black--800);
+  --hbc__success: var(--hb__green--500);
+  --hbc__danger: var(--hb__red--700);
+  --hbc__warning: var(--hb__yellow--500);
+  --hbc__info: var(--hb__blue--500);
 
   --hbc__font__faily_default: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   --hbc__font__size: var(--hb__font__size, 15px);
-  --hbc__font__color: var(--hb__font__color, var(--hb__black--600));
+  --hbc__font__color: var(--hb__font__color, var(--hb__black--800));
   --hbc__font__weight: var(--hb__font__weight, 400);
   --hbc__font__line-height: var(--hb__font__line-height, 23px);
 

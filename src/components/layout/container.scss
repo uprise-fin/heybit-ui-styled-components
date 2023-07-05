@@ -25,4 +25,11 @@
   &--lg {
     max-width: var(--hbc__size-desktop);
   }
+
+  &--md,
+  &--lg {
+    @include mobile {
+      max-width: var(--hbc__size-mobile);
+    }
+  }
 }

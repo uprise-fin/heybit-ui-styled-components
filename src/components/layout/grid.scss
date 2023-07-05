@@ -10,14 +10,14 @@
   grid-template-columns: auto;
   grid-gap: var(--grid-gutter);
   max-width: var(--hbc__width-desktop);
-
-  @include mobile {
-    grid-template-columns: auto;
-  }
 }
 
 .containers--lg {
   .grid {
     grid-template-columns: 1fr 1fr;
+
+    @include mobile {
+      grid-template-columns: auto;
+    }
   }
 }

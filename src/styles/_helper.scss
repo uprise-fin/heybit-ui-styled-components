@@ -23,11 +23,11 @@
 .text-body2 {
   @include text-body2;
 }
+.text-overline {
+  @include text-overline;
+}
 .text-caption {
   @include text-caption;
-}
-.text-desc {
-  @include text-desc;
 }
 
 //
@@ -70,11 +70,11 @@
     color: #fff;
   }
 
-  .text-caption {
+  .text-overline {
     color: #888;
   }
 
-  .text-desc {
+  .text-caption {
     color: #888;
   }
 
