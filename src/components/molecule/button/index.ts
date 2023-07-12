@@ -46,6 +46,10 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   #disabled: boolean = false;
 
+  href = '';
+
+  target: React.HTMLAttributeAnchorTarget = '';
+
   get plain() {
     return this.#plain;
   }
@@ -98,7 +102,9 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       plain: { type: Boolean, Reflect: true },
       _loading: { type: Boolean, Reflect: true },
       baseLoadingDuration: { type: Number, Reflect: true },
-      disabled: { type: Boolean, Reflect: true }
+      disabled: { type: Boolean, Reflect: true },
+      href: { type: String, Reflect: true },
+      target: { type: String, Reflect: true }
     };
   }
 
@@ -132,13 +138,23 @@ export class HbButton extends InitAttribute<HbButtonProps> {
         ></slot>`
     };
 
-    return html`<button
-      class="hb-button__container"
-      @click="${this._handleClick}"
-      ?disabled=${this.disabled}
-    >
-      ${this._loading ? template.loading : template.default}
-    </button>`;
+    return html`${this.href
+      ? html`<a
+          class="hb-button__container"
+          href="${this.href}"
+          target="${this.target}"
+          ?disabled=${this.disabled}
+          rel="${this.target === '_blank' ? 'noreferrer noopener' : null}"
+        >
+          ${template.default}
+        </a>`
+      : html`<button
+          class="hb-button__container"
+          @click="${this._handleClick}"
+          ?disabled=${this.disabled}
+        >
+          ${this._loading ? template.loading : template.default}
+        </button>`}`;
   }
 }
 

@@ -18,7 +18,9 @@ export default {
     loading,
     disabled,
     type,
-    theme
+    theme,
+    href,
+    target
   }) => html`<hb-button
     .theme="${theme}"
     .size=${size}
@@ -27,6 +29,8 @@ export default {
     ?plain=${plain}
     ?loading=${loading}
     ?disabled=${disabled}
+    .href=${href}
+    .target=${target}
     @event=${handleClick}
   >
     ${label}
@@ -109,6 +113,15 @@ export const Radius: Story = {
     label: 'Rounded Button',
     type: 'radius',
     theme: 'success'
+  }
+};
+
+export const Link: Story = {
+  args: {
+    ...Rectangle.args,
+    label: '헤이비트 홈 바로가기',
+    href: 'https://www.heybit.io',
+    target: '_blank'
   }
 };
 
