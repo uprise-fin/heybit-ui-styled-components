@@ -110,7 +110,7 @@ $hb-button__theme: (
     bd: #dee0e3,
     color: var(--husc__font__color__solid),
     active: var(--husc__black--100),
-    // hover: var(--husc__black--50),
+    hover: var(--husc__black--50),
     // disabledBg: var(--husc__black--100),
     disabledBd: var(--husc__black--300),
     disabledColor: var(--husc__black--400)
@@ -278,7 +278,7 @@ $hb-button__theme: (
     }
 
     &:focus-visible {
-      outline: 1px dotted var(--hb__secondary);
+      outline: -webkit-focus-ring-color auto 1px;
     }
 
     &:focus:not(:focus-visible) {
