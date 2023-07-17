@@ -50,6 +50,8 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   target: React.HTMLAttributeAnchorTarget = '';
 
+  rel = '';
+
   get plain() {
     return this.#plain;
   }
@@ -104,7 +106,8 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       baseLoadingDuration: { type: Number, Reflect: true },
       disabled: { type: Boolean, Reflect: true },
       href: { type: String, Reflect: true },
-      target: { type: String, Reflect: true }
+      target: { type: String, Reflect: true },
+      rel: { type: String, Reflect: true }
     };
   }
 
@@ -144,7 +147,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
           href="${this.href}"
           target="${this.target}"
           ?disabled=${this.disabled}
-          rel="${this.target === '_blank' ? 'noreferrer noopener' : null}"
+          rel="${this.rel || this.target === '_blank' ? 'noreferrer noopener' : ''}"
         >
           ${template.default}
         </a>`

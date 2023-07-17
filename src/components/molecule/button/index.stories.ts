@@ -20,7 +20,8 @@ export default {
     type,
     theme,
     href,
-    target
+    target,
+    rel
   }) => html`<hb-button
     .theme="${theme}"
     .size=${size}
@@ -31,6 +32,7 @@ export default {
     ?disabled=${disabled}
     .href=${href}
     .target=${target}
+    .rel=${rel}
     @event=${handleClick}
   >
     ${label}
@@ -83,6 +85,13 @@ export default {
       description: 'Native 속성입니다. href가 있어야만 동작합니다.',
       table: {
         type: { summary: '_self | _blank | _parent | _top' }
+      }
+    },
+    rel: {
+      description:
+        "Native 속성입니다. target: _blank인 경우에는 'noreferrer noopener'로 기본 동작합니다.",
+      table: {
+        type: { summary: 'string' }
       }
     }
   }
