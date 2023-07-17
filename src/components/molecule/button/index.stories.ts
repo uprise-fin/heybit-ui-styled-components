@@ -74,13 +74,13 @@ export default {
       control: { type: 'select' }
     },
     href: {
-      description: '값이 있으면 a 태그로 렌더링됩니다.',
+      description: 'Native 속성입니다. 값이 있으면 a 태그로 렌더링됩니다.',
       table: {
         type: { summary: 'string' }
       }
     },
     target: {
-      description: 'href가 있어야만 동작합니다.',
+      description: 'Native 속성입니다. href가 있어야만 동작합니다.',
       table: {
         type: { summary: '_self | _blank | _parent | _top' }
       }
