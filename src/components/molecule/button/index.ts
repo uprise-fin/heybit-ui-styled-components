@@ -46,6 +46,12 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   #disabled: boolean = false;
 
+  href = '';
+
+  target: React.HTMLAttributeAnchorTarget = '';
+
+  rel = '';
+
   get plain() {
     return this.#plain;
   }
@@ -98,50 +104,60 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       plain: { type: Boolean, Reflect: true },
       _loading: { type: Boolean, Reflect: true },
       baseLoadingDuration: { type: Number, Reflect: true },
-      disabled: { type: Boolean, Reflect: true }
+      disabled: { type: Boolean, Reflect: true },
+      href: { type: String, Reflect: true },
+      target: { type: String, Reflect: true },
+      rel: { type: String, Reflect: true }
     };
   }
 
-  render() {
-    return this._loading
-      ? html`
-          <hb-transition class="hb-button__loading" type="fade" ?show=${this._loading}>
-            <hb-spinner size="small"></hb-spinner>
-          </hb-transition>
-        `
-      : html`
-          <slot
-            name="slot--left"
-            part="slot--left"
-            class="hb-button__slot hb-button__slot--left"
-          ></slot>
-          <div class="hb-button__label" id="label" part="label">
-            <slot></slot>
-          </div>
-          <slot
-            name="slot--right"
-            part="slot--right"
-            class="hb-button__slot hb-button__slot--right"
-          ></slot>
-        `;
-  }
-
-  async connectedCallback() {
-    await super.connectedCallback();
-    this.tabindex = '0';
-    this.onclick = this.adapterEvent;
-    this.onkeyup = (ev) => ev.key === 'Enter' && this.adapterEvent();
-  }
-
-  async adapterEvent() {
+  async _handleClick() {
     if (this.loading || this.disabled) return;
     this.onEvent(new CustomEvent('event'));
-    // this.dispatchEvent(new CustomEvent('event', ev));
     if (this.baseLoadingDuration) {
       this.loading = true;
       await wait(this.baseLoadingDuration);
       this.loading = false;
     }
+  }
+
+  render() {
+    const template = {
+      loading: html`<hb-transition class="hb-button__loading" type="fade" ?show=${this._loading}>
+        <hb-spinner size="small"></hb-spinner>
+      </hb-transition>`,
+      default: html`<slot
+          name="slot--left"
+          part="slot--left"
+          class="hb-button__slot hb-button__slot--left"
+        ></slot>
+        <div class="hb-button__label" id="label" part="label">
+          <slot></slot>
+        </div>
+        <slot
+          name="slot--right"
+          part="slot--right"
+          class="hb-button__slot hb-button__slot--right"
+        ></slot>`
+    };
+
+    return html`${this.href
+      ? html`<a
+          class="hb-button__container"
+          href="${this.href}"
+          target="${this.target}"
+          ?disabled=${this.disabled}
+          rel="${this.rel || this.target === '_blank' ? 'noreferrer noopener' : ''}"
+        >
+          ${template.default}
+        </a>`
+      : html`<button
+          class="hb-button__container"
+          @click="${this._handleClick}"
+          ?disabled=${this.disabled}
+        >
+          ${this._loading ? template.loading : template.default}
+        </button>`}`;
   }
 }
 

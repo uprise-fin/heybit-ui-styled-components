@@ -18,7 +18,10 @@ export default {
     loading,
     disabled,
     type,
-    theme
+    theme,
+    href,
+    target,
+    rel
   }) => html`<hb-button
     .theme="${theme}"
     .size=${size}
@@ -27,6 +30,9 @@ export default {
     ?plain=${plain}
     ?loading=${loading}
     ?disabled=${disabled}
+    .href=${href}
+    .target=${target}
+    .rel=${rel}
     @event=${handleClick}
   >
     ${label}
@@ -46,8 +52,7 @@ export default {
       }
     },
     plain: {
-      description:
-        '디자인보다 먼저 실험적 도입된 타입이므로 일부 버튼은 어색할 수 있습니다. 반드시 확인 후 사용하세요.',
+      description: 'tertiary theme와 같이 사용할 경우 디자인이 어색합니다.',
       table: {
         defaultValue: { summary: 'false' }
       }
@@ -69,6 +74,25 @@ export default {
     theme: {
       options: hbButtonThemes,
       control: { type: 'select' }
+    },
+    href: {
+      description: 'Native 속성입니다. 값이 있으면 a 태그로 렌더링됩니다.',
+      table: {
+        type: { summary: 'string' }
+      }
+    },
+    target: {
+      description: 'Native 속성입니다. href가 있어야만 동작합니다.',
+      table: {
+        type: { summary: '_self | _blank | _parent | _top' }
+      }
+    },
+    rel: {
+      description:
+        "Native 속성입니다. target: _blank인 경우에는 'noreferrer noopener'로 기본 동작합니다.",
+      table: {
+        type: { summary: 'string' }
+      }
     }
   }
 } as Meta<HbButton>;
@@ -109,6 +133,15 @@ export const Radius: Story = {
     label: 'Rounded Button',
     type: 'radius',
     theme: 'success'
+  }
+};
+
+export const Link: Story = {
+  args: {
+    ...Rectangle.args,
+    label: '헤이비트 홈 바로가기',
+    href: 'https://www.heybit.io',
+    target: '_blank'
   }
 };
 

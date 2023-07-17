@@ -39,12 +39,10 @@ $hb-button__size: (
 );
 $hb-button__type: (
   rectangle: (
-    flex: flex,
-    padding: 0 var(--husc__button__padding__right) 0 var(--husc__button__padding__left)
+    flex: flex
   ),
   radius: (
-    border-radius: 1000px,
-    padding: 0 var(--husc__button__padding__right) 0 var(--husc__button__padding__left)
+    border-radius: 1000px
   ),
   circle: (
     border-radius: 100%,
@@ -112,7 +110,7 @@ $hb-button__theme: (
     bd: #dee0e3,
     color: var(--husc__font__color__solid),
     active: var(--husc__black--100),
-    // hover: var(--husc__black--50),
+    hover: var(--husc__black--50),
     // disabledBg: var(--husc__black--100),
     disabledBd: var(--husc__black--300),
     disabledColor: var(--husc__black--400)
@@ -266,5 +264,32 @@ $hb-button__theme: (
     align-items: center;
     gap: 0 4px;
     margin: auto;
+  }
+
+  &__container {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    &:disabled,
+    &[disabled] {
+      pointer-events: none;
+    }
+
+    &:focus-visible {
+      outline: -webkit-focus-ring-color auto 1px;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+  }
+}
+
+:host([type='rectangle']),
+:host([type='radius']) {
+  .hb-button__container {
+    padding: 0 16px;
   }
 }
