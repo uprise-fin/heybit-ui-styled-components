@@ -144,6 +144,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     return html`${this.href
       ? html`<a
           class="hb-button__container"
+          part="container"
           href="${this.href}"
           target="${this.target}"
           ?disabled=${this.disabled}
@@ -153,6 +154,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
         </a>`
       : html`<button
           class="hb-button__container"
+          part="container"
           @click="${this._handleClick}"
           ?disabled=${this.disabled}
         >
