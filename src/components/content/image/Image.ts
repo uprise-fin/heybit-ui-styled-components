@@ -3,7 +3,7 @@ import './image.scss';
 /**
  * Primary UI component for user interaction
  */
-export const Image = ({}) => {
+export const Heading = ({}) => {
   return html`
     <h1>h1. Heybit heading</h1>
     <h2>h2. Heybit heading</h2>

@@ -3,7 +3,7 @@ import './text.scss';
 /**
  * Primary UI component for user interaction
  */
-export const Text = ({}) => {
+export const Typo = ({}) => {
   return html`
     <p>You can use the mark tag to <mark>highlight</mark> text.</p>
     <p><del>This line of text is meant to be treated as deleted text.</del></p>
