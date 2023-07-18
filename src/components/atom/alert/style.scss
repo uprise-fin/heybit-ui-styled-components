@@ -1,0 +1,27 @@
+:host {
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--hb__black--50);
+  color: var(--hb__black--900);
+  font-size: 13px;
+  display: block;
+}
+
+:host([color='primary']) {
+  background: var(--husc__orange--50);
+}
+:host([color='secondary']) {
+  background: var(--hb__black--50);
+}
+:host([color='success']) {
+  background: var(--hb__green--50);
+}
+:host([color='danger']) {
+  background: var(--hb__red--50);
+}
+:host([color='warning']) {
+  background: var(--hb__yellow--50);
+}
+:host([color='info']) {
+  background: var(--hb__blue--50);
+}

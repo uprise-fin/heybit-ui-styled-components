@@ -1,0 +1,8 @@
+.hb-list {
+  > * {
+    &:not(:first-child) {
+      margin-top: 8px;
+      padding-top: 8px;
+    }
+  }
+}

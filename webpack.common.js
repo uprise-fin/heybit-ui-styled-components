@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: {
     '@': [path.resolve(__dirname, './src/')],
-    'src/style': [path.resolve(__dirname, './src/styles/index.scss')],
+    'src/style': [path.resolve(__dirname, './src/styles/publish.scss')],
     'src/index': [path.resolve(__dirname, './src/index.ts')],
     'src/module': [path.resolve(__dirname, './src/module.ts')]
   },
@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: [path.resolve(__dirname, './src/styles/index.scss')],
+        exclude: [path.resolve(__dirname, './src/styles/publish.scss')],
         use: [
           {
             loader: 'lit-scss-loader',
@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: [path.resolve(__dirname, './src/styles/index.scss')],
+        include: [path.resolve(__dirname, './src/styles/publish.scss')],
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {

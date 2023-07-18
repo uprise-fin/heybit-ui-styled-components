@@ -1,0 +1,14 @@
+@import './variables';
+
+@import '@/tokens/token';
+@import './utils/mixins';
+
+// containers 등은 root 설정
+@import '@/components/layout';
+
+.containers {
+  @import '@/components/content';
+  @import '@/components/container';
+}
+
+@import './helper';

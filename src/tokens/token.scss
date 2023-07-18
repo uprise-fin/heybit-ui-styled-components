@@ -1,0 +1,65 @@
+// media query는 변수 지원을 안 하기 때문에,
+// /styles/_variables.scss 에서 $breakpoint: 1020px; 를 지정 하였음.
+
+:root {
+  --hbc__unit-size: 4px;
+  --hbc__gutter: var(--hb__gutter, calc(var(--hbc__unit-size) * 5));
+
+  // container 정보
+  --hbc__width-desktop: var(--hb__width-desktop, 1024px);
+  --hbc__width-medium: var(--hb__width-medium, 760px);
+  --hbc__width-mobile: var(--hb__width-mobile, 460px);
+  // --hbc__breakpoint: var(--hb__breakpoint, calc(var(--hbc__width-desktop) + (-4px)));
+  --hbc__breakpoint: $breakpoint;
+  --hbc__container-margin: var(--hb__container-margin, var(--hbc__gutter));
+
+  // 기본 색상 변수 매핑
+  --hbc__primary: var(--hb__primary, var(--hb__heybit));
+  --hbc__secondary: var(--hb__black--800);
+  --hbc__success: var(--hb__green--500);
+  --hbc__danger: var(--hb__red--700);
+  --hbc__warning: var(--hb__yellow--500);
+  --hbc__info: var(--hb__blue--500);
+
+  --hbc__font__faily_default: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --hbc__font__size: var(--hb__font__size, 15px);
+  --hbc__font__color: var(--hb__font__color, var(--hb__black--800));
+  --hbc__font__weight: var(--hb__font__weight, 400);
+  --hbc__font__line-height: var(--hb__font__line-height, 23px);
+
+  --hbc__h1__size: var(--hb__h1__size, 36px);
+  --hbc__h2__size: var(--hb__h2__size, 32px);
+  --hbc__h3__size: var(--hb__h3__size, 28px);
+  --hbc__h4__size: var(--hb__h4__size, 24px);
+  --hbc__h5__size: var(--hb__h5__size, 20px);
+  --hbc__h6__size: var(--hb__h6__size, 16px);
+
+  //
+}
+
+// box-shadow
+
+// text theme
+
+// .title {
+//   @extend .h4;
+// }
+// .subtitle1 {
+//   @extend .h5;
+// }
+// .subtitle2 {
+//   @extend .h6;
+// }
+// .body1 {
+//   font-size: 16px;
+// }
+// .body2 {
+//   font-size: 15px;
+// }
+// .caption {
+//   font-size: 14px;
+// }
+// .overline {
+//   font-size: 13px;
+// }

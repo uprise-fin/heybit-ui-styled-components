@@ -1,0 +1,55 @@
+// 변수, 함수등을 사용하기 위함인데, 다른방법 알면 추천 좀.
+// storybook 에서는 global로 설정하면 안 됨.
+@import '../../../styles/loaded.scss';
+
+$hbc__color-head: var(--hb__color_head, var(--hb__black--900));
+
+.h1 {
+  color: $hbc__color-head;
+  font-size: 34px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h2 {
+  color: $hbc__color-head;
+  font-size: 30px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h3 {
+  color: $hbc__color-head;
+  font-size: 26px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h4 {
+  color: $hbc__color-head;
+  font-size: 22px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h5 {
+  color: $hbc__color-head;
+  font-size: 18px;
+  line-height: 140%;
+  font-weight: 700;
+}
+.h6 {
+  color: $hbc__color-head;
+  font-size: 14px;
+  line-height: 140%;
+  font-weight: 700;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
+  small {
+    font-size: 0.6em;
+    opacity: 0.6;
+  }
+}

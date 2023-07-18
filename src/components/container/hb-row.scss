@@ -1,0 +1,45 @@
+.hb-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+
+  > * {
+    flex-grow: 1;
+  }
+
+  &__leading {
+    order: -1;
+    flex-grow: 0;
+  }
+  &__trailing {
+    order: 1;
+    flex-grow: 0;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &--top {
+    align-items: flex-start;
+  }
+
+  &--bottom {
+    align-items: flex-end;
+  }
+
+  &-label {
+    color: var(--hb__black--600);
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &-value {
+    color: var(--hb__black--800);
+    font-weight: 500;
+    line-height: normal;
+  }
+}
