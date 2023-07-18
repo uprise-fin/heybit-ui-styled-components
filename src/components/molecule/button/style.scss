@@ -132,12 +132,14 @@ $hb-button__theme: (
     disabledColor: var(--hb__black--400)
   )
 );
+
 .hb-button {
   @include disabled();
   @include loading();
   @include host-styled {
     display: inline-flex;
     justify-content: center;
+    padding: 0 !important;
     font-size: var(--husc__button__font-size);
     font-family: var(--husc__font__family);
     box-sizing: border-box;
