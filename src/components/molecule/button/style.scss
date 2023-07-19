@@ -272,12 +272,8 @@ $hb-button__theme: (
     all: unset;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
     width: 100%;
-
-    &:disabled,
-    &[disabled] {
-      pointer-events: none;
-    }
 
     &:focus-visible {
       outline: -webkit-focus-ring-color auto 1px;
