@@ -145,11 +145,10 @@ $hb-button__theme: (
     box-sizing: border-box;
     cursor: pointer;
     opacity: 1;
-    // &::before,
-    // &::after {
-    //   flex: auto;
-    //   content: "";
-    // }
+
+    hb-spinner {
+      margin: auto;
+    }
   }
   @each $class, $value in $hb-button__theme {
     $bd: map-get($value, bd);
@@ -256,10 +255,7 @@ $hb-button__theme: (
     // }
   }
   &__loading {
-    width: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: contents !important;
   }
   &__label {
     display: flex;
