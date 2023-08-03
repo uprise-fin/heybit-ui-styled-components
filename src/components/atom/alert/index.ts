@@ -21,7 +21,17 @@ export class HbAlert extends Base {
     return [require('./style.scss').default];
   }
 
-  color: string;
+  #color: string = '';
+
+  get color() {
+    return this.#color;
+  }
+
+  set color(value: string) {
+    this.#color = value;
+    if (value) this.setAttribute('color', value);
+    else this.removeAttribute('color');
+  }
 
   static get properties() {
     return {
