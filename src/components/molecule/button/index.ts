@@ -147,17 +147,11 @@ export class HbButton extends InitAttribute<HbButtonProps> {
           part="container"
           href="${this.href}"
           target="${this.target}"
-          ?disabled=${this.disabled}
           rel="${this.rel || this.target === '_blank' ? 'noreferrer noopener' : ''}"
         >
           ${template.default}
         </a>`
-      : html`<button
-          class="hb-button__container"
-          part="container"
-          @click="${this._handleClick}"
-          ?disabled=${this.disabled}
-        >
+      : html`<button class="hb-button__container" part="container" @click="${this._handleClick}">
           ${this._loading ? template.loading : template.default}
         </button>`}`;
   }

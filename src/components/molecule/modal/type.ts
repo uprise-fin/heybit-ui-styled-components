@@ -3,8 +3,7 @@ import type {
   HbAnchorProps,
   HbTransitionType,
   HorizonAlign,
-  VerticalAlign,
-  HbIconName
+  VerticalAlign
 } from '@/index';
 export interface HbModalProps {
   open?: boolean;
@@ -22,7 +21,7 @@ export interface HbPageDialogProps extends HbModalProps {}
 export interface HbDialogProps extends HbModalProps {
   baseLoadingDuration?: number;
   loading?: boolean;
-  icon?: HbIconName;
+  icon?: string;
   title?: string;
   hideCloseBtn?: boolean;
   anchor?: HbDialogAnchor;

@@ -39,6 +39,7 @@ export type HbIconName =
   | 'system/outline/close'
   | 'system/outline/danger'
   | 'system/outline/info'
+  | 'system/outline/less'
   | 'system/outline/logo-binance'
   | 'system/outline/logo-bnb'
   | 'system/outline/logo-btc'

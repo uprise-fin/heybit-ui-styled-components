@@ -91,7 +91,7 @@
     "extract-loader": "^5.1.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
-    "jest": "26.0.1",
+    "jest": "^26.0.0",
     "lint-staged": "^13.0.3",
     "lit-scss-loader": "^2.0.1",
     "mini-css-extract-plugin": "^2.5.2",
@@ -117,10 +117,10 @@
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.6.0",
-    "lit": "^2.1.1",
+    "lit": "^2.7.6",
     "matercolors": "^2.3.0"
   },
   "optionalDependencies": {
-    "lit-html": "^2.2.3"
+    "lit-html": "^2.7.5"
   }
 }
