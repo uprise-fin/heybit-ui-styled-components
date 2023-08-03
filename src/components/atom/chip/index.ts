@@ -28,9 +28,9 @@ export class HbChip extends Base {
   }
 
   set color(value: string) {
+    const oldVal = this.#color;
     this.#color = value;
-    if (value) this.setAttribute('color', value);
-    else this.removeAttribute('color');
+    this.requestUpdate('color', oldVal);
   }
 
   static get properties() {
