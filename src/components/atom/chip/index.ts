@@ -12,7 +12,7 @@ export class HbChip extends Base {
     return [require('./style.scss').default];
   }
 
-  @property()
+  @property({ reflect: true })
   color = '';
 
   render() {
