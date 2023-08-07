@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { Base } from '@/components/base';
 /**
  *
@@ -11,31 +11,17 @@ export class HbAnchor extends Base {
     return [require('./style.scss').default];
   }
 
+  @property()
   href = '';
 
+  @property()
   target = '';
 
+  @property()
   text: string;
 
-  #disabled: boolean = false;
-
-  get disabled() {
-    return this.#disabled;
-  }
-
-  set disabled(value: boolean) {
-    this.#disabled = value;
-    if (value) this.setAttribute('data-disabled', '');
-    else this.removeAttribute('data-disabled');
-  }
-
-  static get properties() {
-    return {
-      href: { type: String, Reflect: true },
-      target: { type: String, Reflect: true },
-      disabled: { type: Boolean, Reflect: true }
-    };
-  }
+  @property({ type: Boolean })
+  disabled: boolean = false;
 
   async connectedCallback() {
     await super.connectedCallback();

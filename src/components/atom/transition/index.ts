@@ -1,6 +1,6 @@
 import { Base } from '@/components/base';
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { HbTransitionType } from './type';
 
 @customElement('hb-transition')
@@ -9,32 +9,14 @@ export class HbTransition extends Base {
     return [require('./style.scss').default];
   }
 
-  #show = false;
+  @property({ type: Boolean })
+  show = false;
 
+  @property({ type: Boolean })
   delete = false;
 
+  @property()
   type: HbTransitionType;
-
-  get show() {
-    return this.#show;
-  }
-
-  set show(value: boolean) {
-    this.#show = value;
-    if (value) {
-      this.setAttribute('show', '');
-    } else {
-      this.removeAttribute('show');
-    }
-  }
-
-  static get properties() {
-    return {
-      show: { type: Boolean, Reflect: true },
-      delete: { type: Boolean, Reflect: true },
-      type: { type: String, Reflect: true }
-    };
-  }
 
   async connectedCallback() {
     await super.connectedCallback();

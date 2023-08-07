@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { Base } from '@/components/base';
 /**
  * @fires change 값이 변경될때 발생
@@ -21,23 +21,8 @@ export class HbAlert extends Base {
     return [require('./style.scss').default];
   }
 
-  #color: string = '';
-
-  get color() {
-    return this.#color;
-  }
-
-  set color(value: string) {
-    this.#color = value;
-    if (value) this.setAttribute('color', value);
-    else this.removeAttribute('color');
-  }
-
-  static get properties() {
-    return {
-      color: { type: String, Reflect: true }
-    };
-  }
+  @property()
+  color = '';
 
   render() {
     return html` <slot></slot> `;

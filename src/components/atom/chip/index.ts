@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { Base } from '@/components/base';
 /**
  * @fires change 값이 변경될때 발생
@@ -21,16 +21,8 @@ export class HbChip extends Base {
     return [require('./style.scss').default];
   }
 
-  static get properties() {
-    return {
-      color: { type: String, Reflect: true }
-    };
-  }
-
-  constructor() {
-    super();
-    this.color = '';
-  }
+  @property()
+  color = '';
 
   render() {
     return html` <slot></slot> `;
