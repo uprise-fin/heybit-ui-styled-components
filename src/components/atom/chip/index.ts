@@ -21,22 +21,15 @@ export class HbChip extends Base {
     return [require('./style.scss').default];
   }
 
-  #color: string = '';
-
-  get color() {
-    return this.#color;
-  }
-
-  set color(value: string) {
-    const oldVal = this.#color;
-    this.#color = value;
-    this.requestUpdate('color', oldVal);
-  }
-
   static get properties() {
     return {
       color: { type: String, Reflect: true }
     };
+  }
+
+  constructor() {
+    super();
+    this.color = '';
   }
 
   render() {
