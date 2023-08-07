@@ -16,6 +16,16 @@ export type ServiceColor = typeof serviceColors[number];
 export type Color = SystemColor | ServiceColor;
 export type AllColor = Record<Color, Matercolor>;
 
+export const systemThemes = [
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'danger',
+  'info'
+] as const;
+export type SystemTheme = typeof systemThemes[number];
+
 export const colors: Record<Color, string> = {
   white: '#ffffff',
   black: '#36373a',
