@@ -9,10 +9,7 @@ export default {
   argTypes: {
     color: {
       control: { type: 'select' },
-      options: systemThemes,
-      table: {
-        defaultValue: { summary: 'secondary' }
-      }
+      options: systemThemes
     }
   }
 } as Meta<HbChip>;

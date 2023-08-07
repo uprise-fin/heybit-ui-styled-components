@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { Base } from '@/components/base';
-import { SystemTheme } from '@/index';
+import type { SystemTheme } from '@/index';
 /**
  * @property color 지정 테마
  * @slot - 기본 slot
@@ -19,7 +19,7 @@ export class HbChip extends Base {
     };
   }
 
-  color: SystemTheme = 'secondary';
+  color: SystemTheme;
 
   render() {
     return html` <slot></slot> `;
