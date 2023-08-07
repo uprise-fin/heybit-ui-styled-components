@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 import { Base } from '@/components/base';
 /**
  * @property color 지정 테마
@@ -12,7 +12,12 @@ export class HbChip extends Base {
     return [require('./style.scss').default];
   }
 
-  @property({ reflect: true })
+  static get properties() {
+    return {
+      color: { reflect: true }
+    };
+  }
+
   color = '';
 
   render() {
