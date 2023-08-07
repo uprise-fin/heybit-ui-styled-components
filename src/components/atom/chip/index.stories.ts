@@ -2,13 +2,14 @@ import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbChip } from './index';
+import { systemThemes } from '@/index';
 
 export default {
   component: 'hb-chip',
   argTypes: {
     color: {
       control: { type: 'select' },
-      options: ['primary', 'success', 'warning', 'danger', 'info']
+      options: systemThemes
     }
   }
 } as Meta<HbChip>;
