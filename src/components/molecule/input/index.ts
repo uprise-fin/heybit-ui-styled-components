@@ -38,7 +38,7 @@ export class HbInput extends Base {
 
   placeholder = '';
 
-  #error = false;
+  _error = false;
 
   decimal: number = 2;
 
@@ -75,11 +75,11 @@ export class HbInput extends Base {
   }
 
   get error() {
-    return this.#error;
+    return this._error;
   }
 
   set error(value: boolean) {
-    this.#error = value;
+    this._error = value;
     if (value) this.setAttribute('data-error', '');
     else this.removeAttribute('data-error');
   }

@@ -9,18 +9,18 @@ export class HbTransition extends Base {
     return [require('./style.scss').default];
   }
 
-  #show = false;
+  _show = false;
 
   delete = false;
 
   type: HbTransitionType;
 
   get show() {
-    return this.#show;
+    return this._show;
   }
 
   set show(value: boolean) {
-    this.#show = value;
+    this._show = value;
     if (value) {
       this.setAttribute('show', '');
     } else {

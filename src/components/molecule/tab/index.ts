@@ -21,18 +21,18 @@ export class HbTab extends Base {
 
   contents: HTMLElement[] = [];
 
-  #value = '';
+  _value = '';
 
   left = 0;
 
   width = 0;
 
   get value() {
-    return this.#value;
+    return this._value;
   }
 
   set value(value: string) {
-    this.#value = value;
+    this._value = value;
     this.setIndicator();
   }
 
@@ -61,7 +61,7 @@ export class HbTab extends Base {
 
   async setIndicator() {
     if (!this.btns.length) return;
-    const number = +this.#value;
+    const number = +this._value;
     const target = this.btns[number];
     const { offsetWidth, offsetLeft } = await target;
     this.left = offsetLeft - this.offsetLeft + basicVariables.layout.gutter;

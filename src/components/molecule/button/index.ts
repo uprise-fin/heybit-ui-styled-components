@@ -40,11 +40,11 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   initialAttributes: (keyof HbButtonProps)[] = ['size', 'theme', 'type'];
 
-  #plain: boolean = false;
+  _plain: boolean = false;
 
   _loading: boolean = false;
 
-  #disabled: boolean = false;
+  _disabled: boolean = false;
 
   href = '';
 
@@ -53,21 +53,21 @@ export class HbButton extends InitAttribute<HbButtonProps> {
   rel = '';
 
   get plain() {
-    return this.#plain;
+    return this._plain;
   }
 
   set plain(value: boolean) {
-    this.#plain = value;
+    this._plain = value;
     if (value) this.setAttribute('plain', '');
     else this.removeAttribute('plain');
   }
 
   get disabled() {
-    return this.#disabled;
+    return this._disabled;
   }
 
   set disabled(value: boolean) {
-    this.#disabled = value;
+    this._disabled = value;
     if (value) this.setAttribute('data-disabled', '');
     else this.removeAttribute('data-disabled');
   }
