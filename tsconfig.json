@@ -14,7 +14,6 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "useDefineForClassFields": false,
     "allowJs": true,
     "declaration": true,
     "outDir": "dist",
