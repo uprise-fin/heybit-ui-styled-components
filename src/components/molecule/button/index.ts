@@ -130,7 +130,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       this.loading = false;
     }
 
-    if (!this.isSubmit) return this.onEvent(new CustomEvent('event'));
+    if (!form || !this.isSubmit) return this.onEvent(new CustomEvent('event'));
 
     form.requestSubmit();
   }
