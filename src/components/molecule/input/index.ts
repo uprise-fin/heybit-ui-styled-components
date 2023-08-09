@@ -4,6 +4,7 @@ import { getElement } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { HbInputType } from './type';
+import '@/components/molecule/button';
 
 /**
  * An example element.
@@ -53,6 +54,10 @@ export class HbInput extends Base {
   type: HbInputType = 'text';
 
   nowrap = true;
+
+  static formAssociated = true;
+
+  private readonly internals = (this as HTMLElement).attachInternals();
 
   get disabled() {
     return this._disabled;
@@ -204,10 +209,13 @@ export class HbInput extends Base {
   readonly ableEnglish = /[a-z]/i;
 
   onEnter(ev: KeyboardEvent) {
-    if (ev.key === 'Enter') {
+    if (ev.key !== 'Enter') return;
+    if (!this.internals.form) {
       ev.preventDefault();
-      this.onSubmit(new CustomEvent('submit'));
+      return this.onSubmit(new CustomEvent('submit'));
     }
+    this.internals.setFormValue(this._value);
+    this.internals.form.requestSubmit();
   }
 
   onInput() {
