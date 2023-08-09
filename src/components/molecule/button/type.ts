@@ -6,6 +6,7 @@ export interface HbButtonProps {
   type?: HbButtonType;
   baseLoadingDuration?: number;
   disabled?: boolean;
+  isSubmit?: boolean;
   event?: () => void;
 }
 export type HbButtonSlots = 'slot--left' | 'slot--right';
