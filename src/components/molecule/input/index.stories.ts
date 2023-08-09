@@ -27,14 +27,17 @@ export default {
       .decimal=${decimal}
       .comma=${comma}
       value=${value}
-      @submit=${($event: HbInputEvent) => console.log($event.target.originalValue, 'submit')}
       @event=${($event: HbInputEvent) => console.log($event.target.originalValue)}
     ></hb-input>
-    <button @click=${() => console.log(document.querySelector('hb-input').value)}>submit</button>
   `
 } as Meta<HbInput>;
 
 type Story = StoryObj<HbInput>;
+
+const submit = (e: Event) => {
+  e.preventDefault();
+  console.dir(e);
+};
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 export const Template: Story = {
@@ -47,6 +50,17 @@ export const Template: Story = {
     readonly: false,
     disabled: false
   }
+};
+
+export const Form: Story = {
+  render: () => html`<form
+    @submit=${submit}
+    style="display: flex; flex-flow: column wrap; gap: 20px 0;"
+  >
+    <hb-input type="text" placeholder="글자입력해주세요" value="foo"></hb-input>
+    <hb-input type="text" placeholder="글자입력해주세요" value="bar"></hb-input>
+    <hb-button theme="secondary" size="medium" type="rectangle" isSubmit> Submit </hb-button>
+  </form>`
 };
 
 export const Digit: Story = {

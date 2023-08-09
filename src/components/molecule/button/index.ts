@@ -52,6 +52,8 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   rel = '';
 
+  isSubmit = false;
+
   get plain() {
     return this._plain;
   }
@@ -107,18 +109,30 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       disabled: { type: Boolean, Reflect: true },
       href: { type: String, Reflect: true },
       target: { type: String, Reflect: true },
-      rel: { type: String, Reflect: true }
+      rel: { type: String, Reflect: true },
+      isSubmit: { type: Boolean, reflect: true }
     };
   }
 
+  static formAssociated = true;
+
+  private readonly internals = (this as HTMLElement).attachInternals();
+
   async _handleClick() {
+    const {
+      internals: { form }
+    } = this;
+
     if (this.loading || this.disabled) return;
-    this.onEvent(new CustomEvent('event'));
     if (this.baseLoadingDuration) {
       this.loading = true;
       await wait(this.baseLoadingDuration);
       this.loading = false;
     }
+
+    if (!this.isSubmit) return this.onEvent(new CustomEvent('event'));
+
+    form.requestSubmit();
   }
 
   render() {
