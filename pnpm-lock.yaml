@@ -63,6 +63,9 @@ devDependencies:
   '@storybook/addon-mdx-gfm':
     specifier: ^7.0.7
     version: 7.0.7
+  '@storybook/preset-scss':
+    specifier: ^1.0.3
+    version: 1.0.3(css-loader@6.5.1)(sass-loader@12.4.0)(style-loader@3.3.1)
   '@storybook/web-components':
     specifier: ^7.0.7
     version: 7.0.7(lit@2.7.6)(react-dom@18.2.0)(react@18.2.0)
@@ -5174,6 +5177,18 @@ packages:
 
   /@storybook/postinstall@7.0.7:
     resolution: {integrity: sha512-APcZ2KaR7z1aJje3pID4Ywmt1/aVcP3Sc4ltzNdH9mCkEsuq0fZHHQrYSa9Ya1IPRmSeLZ5/23q1iyqmGU3zoQ==}
+    dev: true
+
+  /@storybook/preset-scss@1.0.3(css-loader@6.5.1)(sass-loader@12.4.0)(style-loader@3.3.1):
+    resolution: {integrity: sha512-o9Iz6wxPeNENrQa2mKlsDKynBfqU2uWaRP80HeWp4TkGgf7/x3DVF2O7yi9N0x/PI1qzzTTpxlQ90D62XmpiTw==}
+    peerDependencies:
+      css-loader: '*'
+      sass-loader: '*'
+      style-loader: '*'
+    dependencies:
+      css-loader: 6.5.1(webpack@5.64.4)
+      sass-loader: 12.4.0(sass@1.49.7)(webpack@5.64.4)
+      style-loader: 3.3.1(webpack@5.64.4)
     dev: true
 
   /@storybook/preset-web-components-webpack@7.0.7(@babel/core@7.17.0)(lit@2.7.6)(webpack@5.64.4):
