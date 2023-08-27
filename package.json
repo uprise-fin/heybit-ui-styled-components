@@ -102,7 +102,7 @@
     "react-dom": "^18.2.0",
     "sass": "^1.49.7",
     "sass-loader": "^12.4.0",
-    "storybook": "^7.0.7",
+    "storybook": "7.0.7",
     "style-loader": "^3.3.1",
     "svg-inline-loader": "^0.8.2",
     "terser-webpack-plugin": "^5.3.1",
