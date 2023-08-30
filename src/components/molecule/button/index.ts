@@ -1,6 +1,11 @@
 import { Size } from '@/components/atom/variable/type';
 import { InitAttribute } from '@/components/base';
-import { HbButtonProps, HbButtonTheme, HbButtonType } from '@/components/molecule/button/type';
+import {
+  HbButtonNativeType,
+  HbButtonProps,
+  HbButtonTheme,
+  HbButtonType
+} from '@/components/molecule/button/type';
 import { wait } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -52,7 +57,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   rel = '';
 
-  isSubmit = false;
+  'native-type': HbButtonNativeType = 'button';
 
   get plain() {
     return this._plain;
@@ -110,7 +115,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       href: { type: String, Reflect: true },
       target: { type: String, Reflect: true },
       rel: { type: String, Reflect: true },
-      isSubmit: { type: Boolean, reflect: true }
+      'native-type': { type: String, reflect: true }
     };
   }
 
@@ -130,7 +135,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       this.loading = false;
     }
 
-    if (!form || !this.isSubmit) return this.onEvent(new CustomEvent('event'));
+    if (!form || this['native-type'] !== 'submit') return this.onEvent(new CustomEvent('event'));
 
     form.requestSubmit();
   }

@@ -59,7 +59,9 @@ export const Form: Story = {
   >
     <hb-input type="text" placeholder="글자입력해주세요" value="foo"></hb-input>
     <hb-input type="text" placeholder="글자입력해주세요" value="bar"></hb-input>
-    <hb-button theme="secondary" size="medium" type="rectangle" isSubmit> Submit </hb-button>
+    <hb-button theme="secondary" size="medium" type="rectangle" native-type="submit">
+      Submit
+    </hb-button>
   </form>`
 };
 
