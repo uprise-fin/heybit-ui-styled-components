@@ -57,8 +57,8 @@ export const Form: Story = {
     @submit=${submit}
     style="display: flex; flex-flow: column wrap; gap: 20px 0;"
   >
-    <hb-input type="text" placeholder="글자입력해주세요" value="foo"></hb-input>
-    <hb-input type="text" placeholder="글자입력해주세요" value="bar"></hb-input>
+    <hb-input type="text"></hb-input>
+    <hb-input type="text"></hb-input>
     <hb-button theme="secondary" size="medium" type="rectangle" native-type="submit">
       Submit
     </hb-button>
