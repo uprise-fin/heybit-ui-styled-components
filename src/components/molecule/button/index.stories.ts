@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbButton } from './index';
-import { hbButtonThemes, hbButtonTypes } from './type';
+import { hbButtonThemes, hbButtonTypes, hbButtonNativeTypes } from './type';
 
 const handleClick = () => console.log('Clicked!');
 
@@ -21,7 +21,8 @@ export default {
     theme,
     href,
     target,
-    rel
+    rel,
+    'native-type': nativeType
   }) => html`<hb-button
     .theme="${theme}"
     .size=${size}
@@ -33,6 +34,7 @@ export default {
     .href=${href}
     .target=${target}
     .rel=${rel}
+    .native-type=${nativeType}
     @event=${handleClick}
   >
     ${label}
@@ -69,6 +71,15 @@ export default {
     },
     type: {
       options: hbButtonTypes,
+      control: { type: 'radio' }
+    },
+    'native-type': {
+      options: hbButtonNativeTypes,
+      description: 'Native 속성입니다. form 안에서 hb-input과 함께 동작합니다.',
+      table: {
+        defaultValue: { summary: 'button' },
+        type: { summary: 'button | submit' }
+      },
       control: { type: 'radio' }
     },
     theme: {
@@ -108,7 +119,8 @@ export const Rectangle: Story = {
     loading: false,
     disabled: false,
     type: 'rectangle',
-    theme: 'primary'
+    theme: 'primary',
+    'native-type': 'button'
   }
 };
 
