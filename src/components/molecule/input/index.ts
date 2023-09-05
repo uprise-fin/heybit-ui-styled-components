@@ -210,10 +210,16 @@ export class HbInput extends Base {
 
   onEnter(ev: KeyboardEvent) {
     if (ev.key !== 'Enter') return;
+
     if (!this.internals.form) {
       ev.preventDefault();
       return this.onSubmit(new CustomEvent('submit'));
     }
+
+    const buttonEl = [...this.internals.form.children].find((el) => el.nodeName === 'HB-BUTTON');
+    const isReadySubmit = buttonEl && !(buttonEl as HTMLButtonElement).disabled;
+
+    if (!isReadySubmit) return;
     this.internals.setFormValue(this._value);
     this.internals.form.requestSubmit();
   }

@@ -59,7 +59,7 @@ export const Form: Story = {
   >
     <hb-input type="text"></hb-input>
     <hb-input type="text"></hb-input>
-    <hb-button theme="secondary" size="medium" type="rectangle" native-type="submit">
+    <hb-button theme="secondary" size="medium" type="rectangle" disabled native-type="submit">
       Submit
     </hb-button>
   </form>`
