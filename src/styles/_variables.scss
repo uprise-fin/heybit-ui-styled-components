@@ -1,3 +1,325 @@
+:root {
+  --hb__heybit: var(--heybit, var(--hb__heybit--400));
+  --hb__heybit--50: #fbeae7;
+  --hb__heybit--100: #ffd0bc;
+  --hb__heybit--200: #ffb291;
+  --hb__heybit--300: #ff9465;
+  --hb__heybit--400: #ff7d41;
+  --hb__heybit--500: #ff691c;
+  --hb__heybit--600: #f56318;
+  --hb__heybit--700: #e75b13;
+  --hb__heybit--800: #d9540f;
+  --hb__heybit--900: #c04707;
+
+  --hb__harvest: var(--harvest, var(--hb__harvest--400));
+  --hb__harvest--50: #e5f2e9;
+  --hb__harvest--100: #c1e0c9;
+  --hb__harvest--200: #99cba6;
+  --hb__harvest--300: #71b884;
+  --hb__harvest--400: #54aa6c;
+  --hb__harvest--500: #359c54;
+  --hb__harvest--600: #2e8e4b;
+  --hb__harvest--700: #257c40;
+  --hb__harvest--800: #1d6c36;
+  --hb__harvest--900: #114d24;
+
+  --hb__defi: var(--defi, var(--hb__defi--400));
+  --hb__defi--50: #f2eeff;
+  --hb__defi--100: #ded5fe;
+  --hb__defi--200: #c8b9fe;
+  --hb__defi--300: #b19bfc;
+  --hb__defi--400: #9d83f8;
+  --hb__defi--500: #8a6df4;
+  --hb__defi--600: #7f66ec;
+  --hb__defi--700: #705de1;
+  --hb__defi--800: #6456d9;
+  --hb__defi--900: #504aca;
+
+  --hb__black--50: #f7f8fc;
+  --hb__black--100: #eff0f5;
+  --hb__black--200: #e4e6ea;
+  --hb__black--300: #d3d5d9;
+  --hb__black--400: #afb0b5;
+  --hb__black--500: #8f9094;
+  --hb__black--600: #67686c;
+  --hb__black--700: #545559;
+  --hb__black--800: #36373a;
+  --hb__black--900: #16171a;
+
+  --hb__brown--50: #fff7ed;
+  --hb__brown--100: #fef1e7;
+  --hb__brown--200: #f6e9df;
+  --hb__brown--300: #e6dad0;
+  --hb__brown--400: #c2b7ad;
+  --hb__brown--500: #a3978e;
+  --hb__brown--600: #796f66;
+  --hb__brown--700: #655b53;
+  --hb__brown--800: #463c35;
+  --hb__brown--900: #241c15;
+
+  --hb__red--50: #ffebed;
+  --hb__red--100: #ffcdd0;
+  --hb__red--200: #f49b96;
+  --hb__red--300: #eb746e;
+  --hb__red--400: #f55448;
+  --hb__red--500: #f8452a;
+  --hb__red--600: #eb3b2a;
+  --hb__red--700: #d93025;
+  --hb__red--800: #cc281d;
+  --hb__red--900: #bd1b0f;
+
+  --hb__yellow--50: #fff9e4;
+  --hb__yellow--100: #ffeeba;
+  --hb__yellow--200: #ffe48e;
+  --hb__yellow--300: #ffdb62;
+  --hb__yellow--400: #ffd146;
+  --hb__yellow--500: #ffc93a;
+  --hb__yellow--600: #ffbb34;
+  --hb__yellow--700: #fea930;
+  --hb__yellow--800: #fd992d;
+  --hb__yellow--900: #fb7d28;
+
+  --hb__green--50: #e3f4e9;
+  --hb__green--100: #bbe4c9;
+  --hb__green--200: #8ed2a6;
+  --hb__green--300: #5dc184;
+  --hb__green--400: #33b46b;
+  --hb__green--500: #00a652;
+  --hb__green--600: #009848;
+  --hb__green--700: #00863d;
+  --hb__green--800: #007532;
+  --hb__green--900: #00561e;
+
+  --hb__blue--50: #e3f2ff;
+  --hb__blue--100: #bbdeff;
+  --hb__blue--200: #8dcaff;
+  --hb__blue--300: #5cb5ff;
+  --hb__blue--400: #34a4ff;
+  --hb__blue--500: #0095ff;
+  --hb__blue--600: #1386fc;
+  --hb__blue--700: #1a73e8;
+  --hb__blue--800: #1d62d5;
+  --hb__blue--900: #1f41b6;
+
+  --hb__primary: var(--primary, var(--hb__heybit--400));
+  --hb__secondary: var(--secondary, var(--hb__black--800));
+  --hb__success: var(--success, var(--hb__green--500));
+  --hb__danger: var(--danger, var(--hb__red--500));
+  --hb__error: var(--error, var(--hb__red--500));
+  --hb__warning: var(--warning, var(--hb__yellow--500));
+  --hb__info: var(--info, var(--hb__blue--500));
+
+  --husc__white: #ffffff;
+  --husc__white--primary: 50;
+  --husc__white--50: #ffffff;
+  --husc__white--100: #fafafa;
+  --husc__white--200: #f5f5f5;
+  --husc__white--300: #f0f0f0;
+  --husc__white--400: #dedede;
+  --husc__white--500: #c2c2c2;
+  --husc__white--600: #979797;
+  --husc__white--700: #818181;
+  --husc__white--800: #606060;
+  --husc__white--900: #3c3c3c;
+
+  --husc__black: #36373a;
+  --husc__black--50: #f7f8fc;
+  --husc__black--100: #eff0f4;
+  --husc__black--200: #e5e6ea;
+  --husc__black--300: #d4d5d9;
+  --husc__black--400: #b0b1b4;
+  --husc__black--500: #8f9094;
+  --husc__black--600: #67696c;
+  --husc__black--700: #545558;
+  --husc__black--primary: 800;
+  --husc__black--800: #36373a;
+  --husc__black--900: #16171a;
+
+  --husc__orange: #ff602f;
+  --husc__orange--50: #faeae8;
+  --husc__orange--100: #fecebf;
+  --husc__orange--200: #feae96;
+  --husc__orange--300: #fe8f6d;
+  --husc__orange--400: #ff774d;
+  --husc__orange--primary: 500;
+  --husc__orange--500: #ff602f;
+  --husc__orange--600: #f45a2b;
+  --husc__orange--700: #e65326;
+  --husc__orange--800: #d84c23;
+  --husc__orange--900: #be401b;
+
+  --husc__yellow: #ffbe02;
+  --husc__yellow--50: #fff8e1;
+  --husc__yellow--100: #ffebb2;
+  --husc__yellow--200: #ffde81;
+  --husc__yellow--300: #ffd34d;
+  --husc__yellow--400: #ffc726;
+  --husc__yellow--primary: 500;
+  --husc__yellow--500: #ffbe02;
+  --husc__yellow--600: #ffb000;
+  --husc__yellow--700: #ff9d00;
+  --husc__yellow--800: #ff8c00;
+  --husc__yellow--900: #fe6c02;
+
+  --husc__green: #27ae60;
+  --husc__green--50: #e6f5eb;
+  --husc__green--100: #c2e6ce;
+  --husc__green--200: #9ad6ae;
+  --husc__green--300: #70c68f;
+  --husc__green--400: #4fba77;
+  --husc__green--primary: 500;
+  --husc__green--500: #27ae60;
+  --husc__green--600: #1f9f56;
+  --husc__green--700: #148d4a;
+  --husc__green--800: #097c3f;
+  --husc__green--900: #005c2b;
+
+  --husc__blue: #2f80ed;
+  --husc__blue--50: #e3f1ff;
+  --husc__blue--100: #bbdcff;
+  --husc__blue--200: #90c6ff;
+  --husc__blue--300: #64b0fe;
+  --husc__blue--400: #459ffe;
+  --husc__blue--500: #2d8efc;
+  --husc__blue--primary: 600;
+  --husc__blue--600: #2f80ed;
+  --husc__blue--700: #2e6ed9;
+  --husc__blue--800: #2d5cc7;
+  --husc__blue--900: #293da7;
+
+  --husc__harvest: #039985;
+  --husc__harvest--50: #e0f2f0;
+  --husc__harvest--100: #b3e0da;
+  --husc__harvest--200: #81cdc2;
+  --husc__harvest--300: #4fb8a9;
+  --husc__harvest--400: #28a997;
+  --husc__harvest--primary: 500;
+  --husc__harvest--500: #039985;
+  --husc__harvest--600: #028c78;
+  --husc__harvest--700: #017c68;
+  --husc__harvest--800: #006c5a;
+  --husc__harvest--900: #00503e;
+
+  --husc__defi: #6d40c6;
+  --husc__defi--50: #eee8f8;
+  --husc__defi--100: #d4c6ee;
+  --husc__defi--200: #b7a1e3;
+  --husc__defi--300: #9a7ad8;
+  --husc__defi--400: #845dcf;
+  --husc__defi--primary: 500;
+  --husc__defi--500: #6d40c6;
+  --husc__defi--600: #633bc0;
+  --husc__defi--700: #5633b6;
+  --husc__defi--800: #492daf;
+  --husc__defi--900: #3420a1;
+
+  --husc__font__family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+
+  --husc__font__color__void: #ffffff;
+  --husc__font__color__solid: #16171a;
+  --husc__font__size: 16px;
+
+  --husc__size__xlarge: 40px;
+  --husc__size__large: 32px;
+  --husc__size__medium: 24px;
+  --husc__size__small: 18px;
+  --husc__size__xsmall: 16px;
+
+  --husc__layout__gutter: 20px;
+  --husc__layout__media: 1020px;
+  --husc__layout__content-width--mobile: 460px;
+  --husc__layout__content-width--desktop: 1024px;
+
+  --husc__border__width: 1px;
+  --husc__border__color: #e5e6ea;
+  --husc__border__radius: 4px;
+
+  --husc__background__color: #ffffff;
+
+  --husc__transition__duration--ms: 300ms;
+  --husc__transition__type: ease;
+  --husc__transition__delay-start--ms: 0ms;
+  --husc__transition__delay-end--ms: 0ms;
+
+  --husc__dim__background__color: #16171a;
+
+  --husc__list__height: 50px;
+  --husc__list__padding__right: 18px;
+  --husc__list__padding__left: 18px;
+  --husc__list__font__size: 16px;
+  --husc__list__border__width: 1px;
+  --husc__list__border__color: #e5e6ea;
+
+  --husc__icon__color: #16171a;
+  --husc__icon__size__xlarge: 40px;
+  --husc__icon__size__large: 32px;
+  --husc__icon__size__medium: 24px;
+  --husc__icon__size__small: 18px;
+  --husc__icon__size__xsmall: 16px;
+
+  --husc__input__minHeight: 50px;
+  --husc__input__maxHeight: 71px;
+  --husc__input__border__width: 1px;
+  --husc__input__border__width--error: 2px;
+  --husc__input__border__width--focus: 2px;
+  --husc__input__border__color: #e5e6ea;
+  --husc__input__border__color--error: #ff5252;
+  --husc__input__border__color--disabled: var(--hb__black--100);
+  --husc__input__border__color--focus: #36373a;
+  --husc__input__padding__top: 13.5px;
+  --husc__input__padding__bottom: 13.5px;
+  --husc__input__padding__right: 18px;
+  --husc__input__padding__left: 18px;
+  --husc__input__font__size: 16px;
+  --husc__input__font__color--placeholder: #b0b1b4;
+
+  --husc__button__padding__right: 10px;
+  --husc__button__padding__left: 10px;
+  --husc__button__font__size: 16px;
+
+  --husc__modal__width: 340px;
+  --husc__modal__margin: 20px;
+  --husc__modal__background: #ffffff;
+  --husc__modal__dialog__padding-top: 52px;
+  --husc__modal__dialog__padding-right: 20px;
+  --husc__modal__dialog__padding-bottom: 24px;
+  --husc__modal__dialog__padding-left: 20px;
+  --husc__modal__sheet-dialog__padding-top: 52px;
+  --husc__modal__sheet-dialog__padding-right: 20px;
+  --husc__modal__sheet-dialog__padding-bottom: 30px;
+  --husc__modal__sheet-dialog__padding-left: 20px;
+
+  --husc__spinner__color: #16171a;
+  --husc__spinner__size__xlarge: 40px;
+  --husc__spinner__size__large: 32px;
+  --husc__spinner__size__medium: 24px;
+  --husc__spinner__size__small: 18px;
+  --husc__spinner__size__xsmall: 16px;
+
+  --husc__select__font__size: 16px;
+
+  --husc__toast__max-width: 340px;
+  --husc__toast__min-height: 52px;
+  --husc__toast__margin__left: 20px;
+  --husc__toast__margin__right: 20px;
+  --husc__toast__margin__top: 10px;
+  --husc__toast__margin__bottom: 10px;
+  --husc__toast__padding__top: 16px;
+  --husc__toast__padding__bottom: 16px;
+  --husc__toast__padding__right: 18px;
+  --husc__toast__padding__left: 19px;
+  --husc__toast__positive__icon: system/filled/info;
+  --husc__toast__positive__color: #4fba77;
+  --husc__toast__negative__icon: system/filled/danger;
+  --husc__toast__negative__color: #f45a2b;
+
+  --husc__header__height--mobile: 60px;
+  --husc__header__height--desktop: 72px;
+  --husc__header__logo__width--mobile: 77px;
+  --husc__header__logo__width--desktop: 80px;
+}
+
 // media query 에서는 css 변수가 안 먹힘.
 // media query 용으로 브레이크 포인트는 scss변수로 선언함.
 $breakpoint: 1020px;
