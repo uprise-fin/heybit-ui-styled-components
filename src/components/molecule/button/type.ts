@@ -6,6 +6,9 @@ export interface HbButtonProps {
   type?: HbButtonType;
   baseLoadingDuration?: number;
   disabled?: boolean;
+  href?: string;
+  target?: React.HTMLAttributeAnchorTarget | string;
+  rel?: string;
   'native-type'?: HbButtonNativeType;
   event?: () => void;
 }

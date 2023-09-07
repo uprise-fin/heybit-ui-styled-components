@@ -217,14 +217,15 @@ export class HbInput extends Base {
       return this.onSubmit(new CustomEvent('submit'));
     }
 
-    const buttonSubmitEl = [...this.internals.form.children].find((el) => {
+    const isReadySubmit = [...this.internals.form.children].some((el) => {
       const hbButtonEl: HbButtonProps & Element = el;
       return (
         hbButtonEl.nodeName === 'HB-BUTTON' &&
-        (!hbButtonEl['native-type'] || hbButtonEl['native-type'] === 'submit')
+        !hbButtonEl.href &&
+        (!hbButtonEl['native-type'] || hbButtonEl['native-type'] === 'submit') &&
+        !hbButtonEl.disabled
       );
     });
-    const isReadySubmit = buttonSubmitEl && !(buttonSubmitEl as HTMLButtonElement).disabled;
 
     if (!isReadySubmit) return;
     this.internals.setFormValue(this._value);
