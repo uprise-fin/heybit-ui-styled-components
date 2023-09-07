@@ -84,7 +84,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       plain: { type: Boolean, reflect: true },
       _loading: { type: Boolean, Reflect: true },
       baseLoadingDuration: { type: Number, Reflect: true },
-      disabled: { type: Boolean, reflect: true },
+      disabled: { type: Boolean, Reflect: true },
       href: { type: String, Reflect: true },
       target: { type: String, Reflect: true },
       rel: { type: String, Reflect: true }
