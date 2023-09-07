@@ -40,37 +40,17 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   initialAttributes: (keyof HbButtonProps)[] = ['size', 'theme', 'type'];
 
-  _plain: boolean = false;
+  plain: boolean = false;
 
   _loading: boolean = false;
 
-  _disabled: boolean = false;
+  disabled: boolean = false;
 
   href = '';
 
   target: React.HTMLAttributeAnchorTarget = '';
 
   rel = '';
-
-  get plain() {
-    return this._plain;
-  }
-
-  set plain(value: boolean) {
-    this._plain = value;
-    if (value) this.setAttribute('plain', '');
-    else this.removeAttribute('plain');
-  }
-
-  get disabled() {
-    return this._disabled;
-  }
-
-  set disabled(value: boolean) {
-    this._disabled = value;
-    if (value) this.setAttribute('data-disabled', '');
-    else this.removeAttribute('data-disabled');
-  }
 
   get loading() {
     return this._loading;
@@ -101,10 +81,10 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       size: { type: String, Reflect: true },
       type: { type: String, Reflect: true },
       loading: { type: Boolean, Reflect: true },
-      plain: { type: Boolean, Reflect: true },
+      plain: { type: Boolean, reflect: true },
       _loading: { type: Boolean, Reflect: true },
       baseLoadingDuration: { type: Number, Reflect: true },
-      disabled: { type: Boolean, Reflect: true },
+      disabled: { type: Boolean, reflect: true },
       href: { type: String, Reflect: true },
       target: { type: String, Reflect: true },
       rel: { type: String, Reflect: true }
@@ -151,7 +131,12 @@ export class HbButton extends InitAttribute<HbButtonProps> {
         >
           ${template.default}
         </a>`
-      : html`<button class="hb-button__container" part="container" @click="${this._handleClick}">
+      : html`<button
+          .disabled="${this.disabled}"
+          class="hb-button__container"
+          part="container"
+          @click="${this._handleClick}"
+        >
           ${this._loading ? template.loading : template.default}
         </button>`}`;
   }
