@@ -92,7 +92,8 @@ const LevelTemplate: Story<unknown> = () =>
         flex-direction: column;
         justify-content: center;
         color: #fff;
-        width: 150px;
+        flex: 1 0 auto;
+        width: 130px;
         height: 130px;
         border-radius:100%;
         text-align: center;
