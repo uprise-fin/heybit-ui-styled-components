@@ -65,8 +65,6 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   set plain(value: boolean) {
     this._plain = value;
-    if (value) this.setAttribute('plain', '');
-    else this.removeAttribute('plain');
   }
 
   get loading() {
