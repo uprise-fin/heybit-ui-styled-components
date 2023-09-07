@@ -5,6 +5,7 @@ import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { HbInputType } from './type';
 import '@/components/molecule/button';
+import { HbButtonProps } from '@/index';
 
 /**
  * An example element.
@@ -216,8 +217,14 @@ export class HbInput extends Base {
       return this.onSubmit(new CustomEvent('submit'));
     }
 
-    const buttonEl = [...this.internals.form.children].find((el) => el.nodeName === 'HB-BUTTON');
-    const isReadySubmit = buttonEl && !(buttonEl as HTMLButtonElement).disabled;
+    const buttonSubmitEl = [...this.internals.form.children].find((el) => {
+      const hbButtonEl: HbButtonProps & Element = el;
+      return (
+        hbButtonEl.nodeName === 'HB-BUTTON' &&
+        (!hbButtonEl['native-type'] || hbButtonEl['native-type'] === 'submit')
+      );
+    });
+    const isReadySubmit = buttonSubmitEl && !(buttonSubmitEl as HTMLButtonElement).disabled;
 
     if (!isReadySubmit) return;
     this.internals.setFormValue(this._value);

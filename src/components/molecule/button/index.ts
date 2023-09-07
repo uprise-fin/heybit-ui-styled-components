@@ -57,7 +57,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   rel = '';
 
-  'native-type': HbButtonNativeType = 'button';
+  'native-type': HbButtonNativeType | undefined;
 
   get plain() {
     return this._plain;
@@ -135,9 +135,9 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       this.loading = false;
     }
 
-    if (!form || this['native-type'] !== 'submit') return this.onEvent(new CustomEvent('event'));
-
-    form.requestSubmit();
+    if (form && (!this['native-type'] || this['native-type'] === 'submit'))
+      return form.requestSubmit();
+    this.onEvent(new CustomEvent('event'));
   }
 
   render() {
