@@ -77,9 +77,9 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   static get properties() {
     return {
-      theme: { type: String, Reflect: true },
+      theme: { type: String, reflect: true },
       size: { type: String, Reflect: true },
-      type: { type: String, Reflect: true },
+      type: { type: String },
       loading: { type: Boolean, Reflect: true },
       plain: { type: Boolean, reflect: true },
       _loading: { type: Boolean, Reflect: true },
