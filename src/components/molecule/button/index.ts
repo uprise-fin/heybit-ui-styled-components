@@ -49,7 +49,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   _loading: boolean = false;
 
-  disabled: boolean = false;
+  _disabled: boolean = false;
 
   href = '';
 
@@ -65,6 +65,18 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   set plain(value: boolean) {
     this._plain = value;
+    if (value) this.setAttribute('plain', '');
+    else this.removeAttribute('plain');
+  }
+
+  get disabled() {
+    return this._disabled;
+  }
+
+  set disabled(value: boolean) {
+    this._disabled = value;
+    if (value) this.setAttribute('data-disabled', '');
+    else this.removeAttribute('data-disabled');
   }
 
   get loading() {
@@ -92,17 +104,17 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   static get properties() {
     return {
-      theme: { type: String, Reflect: true },
-      size: { type: String, Reflect: true },
-      type: { type: String, Reflect: true },
-      loading: { type: Boolean, Reflect: true },
-      plain: { type: Boolean, Reflect: true },
-      _loading: { type: Boolean, Reflect: true },
-      baseLoadingDuration: { type: Number, Reflect: true },
+      theme: { type: String, reflect: true },
+      size: { type: String, reflect: true },
+      type: { type: String, reflect: true },
+      loading: { type: Boolean, reflect: true },
+      plain: { type: Boolean, reflect: true },
+      _loading: { type: Boolean, reflect: true },
+      baseLoadingDuration: { type: Number, reflect: true },
       disabled: { type: Boolean, reflect: true },
-      href: { type: String, Reflect: true },
-      target: { type: String, Reflect: true },
-      rel: { type: String, Reflect: true },
+      href: { type: String, reflect: true },
+      target: { type: String, reflect: true },
+      rel: { type: String, reflect: true },
       'native-type': { type: String, reflect: true }
     };
   }
