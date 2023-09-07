@@ -173,7 +173,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       : html`<button
           class="hb-button__container"
           part="container"
-          ?disabled=${this.disabled}
+          ?disabled=${this._disabled}
           @click="${this._handleClick}"
         >
           ${this._loading ? template.loading : template.default}
