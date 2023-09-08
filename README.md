@@ -21,6 +21,23 @@ pnpm add heybit-ui-styled-components
 <script src="/node_modules/heybit-ui-styled-components/dist/src/module.js"></script>
 ```
 
+### 스벨트
+
+```js
+// +layout.svelte
+
+import styledComponentJsUrl from 'heybit-ui-styled-components/dist/src/module.js?url';
+import 'heybit-ui-styled-components/dist/src/style.css';
+```
+
+```html
+<!-- +layout.svelte -->
+
+<svelte:head>
+  <script src="{styledComponentJsUrl}"></script>
+</svelte:head>
+```
+
 ## 사용법
 
 1. [Preview](https://uprise-fin.github.io/heybit-ui-styled-components/)에서 사용할 컴포넌트를 확인.
