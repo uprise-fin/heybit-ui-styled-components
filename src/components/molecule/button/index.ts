@@ -45,8 +45,6 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   theme: HbButtonTheme;
 
-  initialAttributes: (keyof HbButtonProps)[] = ['size', 'theme', 'type'];
-
   _plain: boolean = false;
 
   _loading: boolean = false;

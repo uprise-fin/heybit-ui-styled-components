@@ -29,11 +29,11 @@ export default {
     rel,
     'native-type': nativeType
   }) => html`<hb-button
-    .theme="${theme}"
-    .size=${size}
-    .type=${type}
+    theme="${theme}"
+    size=${size}
+    type=${type}
     .baseLoadingDuration=${baseLoadingDuration}
-    ?plain=${plain}
+    .plain=${plain}
     .loading=${loading}
     .disabled=${disabled}
     .href=${href}
