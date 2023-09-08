@@ -217,7 +217,7 @@ export class HbInput extends Base {
       return this.onSubmit(new CustomEvent('submit'));
     }
 
-    const isReadySubmit = [...this.internals.form.children].some((el) => {
+    const isReadySubmit = [...this.internals.form].some((el) => {
       const hbButtonEl: HbButtonProps & Element = el;
       return (
         hbButtonEl.nodeName === 'HB-BUTTON' &&
