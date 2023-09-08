@@ -34,8 +34,8 @@ export default {
     .type=${type}
     .baseLoadingDuration=${baseLoadingDuration}
     ?plain=${plain}
-    ?loading=${loading}
-    ?disabled=${disabled}
+    .loading=${loading}
+    .disabled=${disabled}
     .href=${href}
     .target=${target}
     .rel=${rel}
