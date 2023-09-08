@@ -1,8 +1,6 @@
 import type { Size } from '@/components/atom/variable/type';
-import { InitAttribute } from '@/components/base';
 import type {
   HbButtonNativeType,
-  HbButtonProps,
   HbButtonTheme,
   HbButtonType
 } from '@/components/molecule/button/type';
@@ -14,6 +12,7 @@ import '@/components/atom/icon';
 import '@/components/atom/spinner';
 import '@/components/atom/transition';
 import '@/components/molecule/input';
+import { Base } from '@/components/base';
 
 /**
  * @fires event 클릭할때
@@ -30,7 +29,7 @@ import '@/components/molecule/input';
  */
 
 @customElement('hb-button')
-export class HbButton extends InitAttribute<HbButtonProps> {
+export class HbButton extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
