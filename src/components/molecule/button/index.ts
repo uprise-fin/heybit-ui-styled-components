@@ -1,14 +1,15 @@
-import { Size } from '@/components/atom/variable/type';
+import type { Size } from '@/components/atom/variable/type';
 import { InitAttribute } from '@/components/base';
-import {
+import type {
   HbButtonNativeType,
   HbButtonProps,
   HbButtonTheme,
   HbButtonType
 } from '@/components/molecule/button/type';
 import { wait } from '@/utils';
-import { html } from 'lit';
+import { type TemplateResult, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
+import { html as staticHtml, literal } from 'lit/static-html.js';
 import '@/components/atom/icon';
 import '@/components/atom/spinner';
 import '@/components/atom/transition';
@@ -126,6 +127,8 @@ export class HbButton extends InitAttribute<HbButtonProps> {
   private readonly internals = (this as HTMLElement).attachInternals();
 
   async _handleClick() {
+    if (this.href) return;
+
     const {
       internals: { form }
     } = this;
@@ -142,7 +145,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     this.onEvent(new CustomEvent('event'));
   }
 
-  render() {
+  render(): TemplateResult {
     const template = {
       loading: html`<hb-transition class="hb-button__loading" type="fade" ?show=${this._loading}>
         <hb-spinner size="small"></hb-spinner>
@@ -162,24 +165,21 @@ export class HbButton extends InitAttribute<HbButtonProps> {
         ></slot>`
     };
 
-    return html`${this.href
-      ? html`<a
+    const isDisabled = this._disabled && !this.href;
+
+    const button = this.href ? literal`a` : literal`button`;
+
+    return staticHtml`<${button}
           class="hb-button__container"
           part="container"
-          href="${this.href}"
-          target="${this.target}"
-          rel="${this.rel || this.target === '_blank' ? 'noreferrer noopener' : ''}"
-        >
-          ${template.default}
-        </a>`
-      : html`<button
-          class="hb-button__container"
-          part="container"
-          ?disabled=${this._disabled}
+          .href="${this.href}"
+          .target="${this.target}"
+          .rel="${this.rel || this.target === '_blank' ? 'noreferrer noopener' : ''}"
+          ?disabled=${isDisabled}
           @click="${this._handleClick}"
         >
           ${this._loading ? template.loading : template.default}
-        </button>`}`;
+        </${button}>`;
   }
 }
 
