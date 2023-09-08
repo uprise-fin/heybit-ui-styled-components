@@ -46,7 +46,7 @@ export class HbButton extends Base {
 
   plain: boolean = false;
 
-  _loading: boolean = false;
+  loading: boolean = false;
 
   disabled: boolean = false;
 
@@ -58,36 +58,12 @@ export class HbButton extends Base {
 
   'native-type': HbButtonNativeType | undefined;
 
-  get loading() {
-    return this._loading;
-  }
-
-  set loading(value: boolean) {
-    if (value) {
-      if (this.style.width) {
-        this.dataset.width = this.style.width;
-      }
-      const style = getComputedStyle(this);
-      this.style.width = style.width;
-      this.setAttribute('data-loading', '');
-    } else {
-      if (this.dataset.width) {
-        this.style.width = this.dataset.width;
-      } else {
-        this.style.width = '';
-      }
-      this.removeAttribute('data-loading');
-    }
-    this._loading = value;
-  }
-
   static get properties() {
     return {
       theme: { type: String, reflect: true },
       size: { type: String, reflect: true },
       type: { type: String, reflect: true },
       loading: { type: Boolean, reflect: true },
-      _loading: { type: Boolean, reflect: true },
       plain: { type: Boolean, reflect: true },
       baseLoadingDuration: { type: Number, reflect: true },
       disabled: { type: Boolean, reflect: true },
@@ -123,7 +99,7 @@ export class HbButton extends Base {
 
   render(): TemplateResult {
     const template = {
-      loading: html`<hb-transition class="hb-button__loading" type="fade" ?show=${this._loading}>
+      loading: html`<hb-transition class="hb-button__loading" type="fade" ?show=${this.loading}>
         <hb-spinner size="small"></hb-spinner>
       </hb-transition>`,
       default: html`<slot
@@ -154,7 +130,7 @@ export class HbButton extends Base {
           ?disabled=${isDisabled}
           @click="${this._handleClick}"
         >
-          ${this._loading ? template.loading : template.default}
+          ${this.loading ? template.loading : template.default}
         </${button}>`;
   }
 }
