@@ -50,11 +50,11 @@ export class HbButton extends Base {
 
   disabled: boolean = false;
 
-  href = '';
+  href: string;
 
-  target: React.HTMLAttributeAnchorTarget = '';
+  target: React.HTMLAttributeAnchorTarget;
 
-  rel = '';
+  rel: string;
 
   'native-type': HbButtonNativeType | undefined;
 
