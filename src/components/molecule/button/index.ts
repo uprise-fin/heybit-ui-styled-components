@@ -44,7 +44,7 @@ export class HbButton extends Base {
 
   theme: HbButtonTheme;
 
-  _plain: boolean = false;
+  plain: boolean = false;
 
   _loading: boolean = false;
 
@@ -57,16 +57,6 @@ export class HbButton extends Base {
   rel = '';
 
   'native-type': HbButtonNativeType | undefined;
-
-  get plain() {
-    return this._plain;
-  }
-
-  set plain(value: boolean) {
-    this._plain = value;
-    if (value) this.setAttribute('plain', '');
-    else this.removeAttribute('plain');
-  }
 
   get disabled() {
     return this._disabled;
