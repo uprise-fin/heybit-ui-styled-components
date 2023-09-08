@@ -55,7 +55,8 @@ export default {
     },
     baseLoadingDuration: {
       table: {
-        type: { summary: 'number' }
+        type: { summary: 'number' },
+        defaultValue: { summary: 0 }
       }
     },
     plain: {
