@@ -34,11 +34,6 @@ export default {
 
 type Story = StoryObj<HbInput>;
 
-const submit = (e: Event) => {
-  e.preventDefault();
-  console.dir(e);
-};
-
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 export const Template: Story = {
   args: {
@@ -50,17 +45,6 @@ export const Template: Story = {
     readonly: false,
     disabled: false
   }
-};
-
-export const Form: Story = {
-  render: () => html`<form
-    @submit=${submit}
-    style="display: flex; flex-flow: column wrap; gap: 20px 0;"
-  >
-    <hb-input type="text"></hb-input>
-    <hb-input type="text"></hb-input>
-    <hb-button theme="secondary" size="medium" type="rectangle"> Submit </hb-button>
-  </form>`
 };
 
 export const Digit: Story = {

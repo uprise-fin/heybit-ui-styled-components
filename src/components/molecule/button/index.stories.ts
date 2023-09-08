@@ -7,6 +7,11 @@ import { hbButtonThemes, hbButtonTypes, hbButtonNativeTypes } from './type';
 
 const handleClick = () => console.log('Clicked!');
 
+const submit = (e: Event) => {
+  e.preventDefault();
+  console.dir(e);
+};
+
 export default {
   component: 'hb-button',
   tags: ['autodocs'],
@@ -75,9 +80,9 @@ export default {
     },
     'native-type': {
       options: hbButtonNativeTypes,
-      description: 'Native 속성입니다. form 안에서 hb-input과 함께 동작합니다.',
+      description:
+        'Native 속성입니다. form 안에서 hb-input과 함께 동작합니다. (reset 타입은 추가 예정)',
       table: {
-        defaultValue: { summary: 'button' },
         type: { summary: 'button | submit' }
       },
       control: { type: 'radio' }
@@ -122,6 +127,22 @@ export const Rectangle: Story = {
     theme: 'primary',
     'native-type': 'button'
   }
+};
+
+export const Form: Story = {
+  render: () => html`<form
+    @submit=${submit}
+    style="display: flex; flex-flow: column wrap; gap: 20px 0;"
+  >
+    <hb-input type="text"></hb-input>
+    <hb-input type="text"></hb-input>
+    <div class="buttons" style="display: contents">
+      <hb-button theme="secondary" size="medium" type="rectangle"> Submit </hb-button>
+      <hb-button theme="secondary" size="medium" type="rectangle" native-type="button" plain>
+        Normal Button
+      </hb-button>
+    </div>
+  </form>`
 };
 
 export const Plain: Story = {

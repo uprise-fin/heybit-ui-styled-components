@@ -12,6 +12,7 @@ import { customElement } from 'lit/decorators.js';
 import '@/components/atom/icon';
 import '@/components/atom/spinner';
 import '@/components/atom/transition';
+import '@/components/molecule/input';
 
 /**
  * @fires event 클릭할때
