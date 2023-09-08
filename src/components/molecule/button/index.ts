@@ -49,7 +49,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   _loading: boolean = false;
 
-  _disabled: boolean = false;
+  disabled: boolean = false;
 
   href = '';
 
@@ -69,15 +69,15 @@ export class HbButton extends InitAttribute<HbButtonProps> {
     else this.removeAttribute('plain');
   }
 
-  get disabled() {
-    return this._disabled;
-  }
+  // get disabled() {
+  //   return this._disabled;
+  // }
 
-  set disabled(value: boolean) {
-    this._disabled = value;
-    if (value) this.setAttribute('data-disabled', '');
-    else this.removeAttribute('data-disabled');
-  }
+  // set disabled(value: boolean) {
+  //   this._disabled = value;
+  //   if (value) this.setAttribute('data-disabled', '');
+  //   else this.removeAttribute('data-disabled');
+  // }
 
   get loading() {
     return this._loading;
@@ -112,6 +112,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       _loading: { type: Boolean, reflect: true },
       baseLoadingDuration: { type: Number, reflect: true },
       disabled: { type: Boolean, reflect: true },
+      // _disabled: { type: Boolean, reflect: true },
       href: { type: String, reflect: true },
       target: { type: String, reflect: true },
       rel: { type: String, reflect: true },
@@ -173,7 +174,7 @@ export class HbButton extends InitAttribute<HbButtonProps> {
       : html`<button
           class="hb-button__container"
           part="container"
-          ?disabled=${this._disabled}
+          ?disabled=${this.disabled}
           @click="${this._handleClick}"
         >
           ${this._loading ? template.loading : template.default}
