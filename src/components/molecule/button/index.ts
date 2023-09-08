@@ -1,12 +1,18 @@
 import { Size } from '@/components/atom/variable/type';
 import { InitAttribute } from '@/components/base';
-import { HbButtonProps, HbButtonTheme, HbButtonType } from '@/components/molecule/button/type';
+import {
+  HbButtonNativeType,
+  HbButtonProps,
+  HbButtonTheme,
+  HbButtonType
+} from '@/components/molecule/button/type';
 import { wait } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import '@/components/atom/icon';
 import '@/components/atom/spinner';
 import '@/components/atom/transition';
+import '@/components/molecule/input';
 
 /**
  * @fires event 클릭할때
@@ -51,6 +57,8 @@ export class HbButton extends InitAttribute<HbButtonProps> {
   target: React.HTMLAttributeAnchorTarget = '';
 
   rel = '';
+
+  'native-type': HbButtonNativeType | undefined;
 
   get plain() {
     return this._plain;
@@ -97,28 +105,41 @@ export class HbButton extends InitAttribute<HbButtonProps> {
 
   static get properties() {
     return {
-      theme: { type: String, Reflect: true },
-      size: { type: String, Reflect: true },
-      type: { type: String, Reflect: true },
-      loading: { type: Boolean, Reflect: true },
-      plain: { type: Boolean, Reflect: true },
-      _loading: { type: Boolean, Reflect: true },
-      baseLoadingDuration: { type: Number, Reflect: true },
-      disabled: { type: Boolean, Reflect: true },
-      href: { type: String, Reflect: true },
-      target: { type: String, Reflect: true },
-      rel: { type: String, Reflect: true }
+      theme: { type: String, reflect: true },
+      size: { type: String, reflect: true },
+      type: { type: String, reflect: true },
+      loading: { type: Boolean, reflect: true },
+      _loading: { type: Boolean, reflect: true },
+      plain: { type: Boolean, reflect: true },
+      baseLoadingDuration: { type: Number, reflect: true },
+      disabled: { type: Boolean, reflect: true },
+      _disabled: { type: Boolean, reflect: true },
+      href: { type: String, reflect: true },
+      target: { type: String, reflect: true },
+      rel: { type: String, reflect: true },
+      'native-type': { type: String, reflect: true }
     };
   }
 
+  static formAssociated = true;
+
+  private readonly internals = (this as HTMLElement).attachInternals();
+
   async _handleClick() {
+    const {
+      internals: { form }
+    } = this;
+
     if (this.loading || this.disabled) return;
-    this.onEvent(new CustomEvent('event'));
     if (this.baseLoadingDuration) {
       this.loading = true;
       await wait(this.baseLoadingDuration);
       this.loading = false;
     }
+
+    if (form && (!this['native-type'] || this['native-type'] === 'submit'))
+      return form.requestSubmit();
+    this.onEvent(new CustomEvent('event'));
   }
 
   render() {
@@ -151,7 +172,12 @@ export class HbButton extends InitAttribute<HbButtonProps> {
         >
           ${template.default}
         </a>`
-      : html`<button class="hb-button__container" part="container" @click="${this._handleClick}">
+      : html`<button
+          class="hb-button__container"
+          part="container"
+          ?disabled=${this._disabled}
+          @click="${this._handleClick}"
+        >
           ${this._loading ? template.loading : template.default}
         </button>`}`;
   }

@@ -27,10 +27,8 @@ export default {
       .decimal=${decimal}
       .comma=${comma}
       value=${value}
-      @submit=${($event: HbInputEvent) => console.log($event.target.originalValue, 'submit')}
       @event=${($event: HbInputEvent) => console.log($event.target.originalValue)}
     ></hb-input>
-    <button @click=${() => console.log(document.querySelector('hb-input').value)}>submit</button>
   `
 } as Meta<HbInput>;
 

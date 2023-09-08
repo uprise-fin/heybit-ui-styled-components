@@ -6,8 +6,14 @@ export interface HbButtonProps {
   type?: HbButtonType;
   baseLoadingDuration?: number;
   disabled?: boolean;
+  href?: string;
+  target?: React.HTMLAttributeAnchorTarget | string;
+  rel?: string;
+  'native-type'?: HbButtonNativeType;
   event?: () => void;
 }
+export const hbButtonNativeTypes = ['button', 'submit'] as const;
+export type HbButtonNativeType = typeof hbButtonNativeTypes[number];
 export type HbButtonSlots = 'slot--left' | 'slot--right';
 export const hbButtonTypes = ['rectangle', 'radius', 'circle'] as const;
 export type HbButtonType = typeof hbButtonTypes[number];

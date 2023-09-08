@@ -3,9 +3,14 @@ import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './index';
 import type { HbButton } from './index';
-import { hbButtonThemes, hbButtonTypes } from './type';
+import { hbButtonThemes, hbButtonTypes, hbButtonNativeTypes } from './type';
 
 const handleClick = () => console.log('Clicked!');
+
+const submit = (e: Event) => {
+  e.preventDefault();
+  console.dir(e);
+};
 
 export default {
   component: 'hb-button',
@@ -21,7 +26,8 @@ export default {
     theme,
     href,
     target,
-    rel
+    rel,
+    'native-type': nativeType
   }) => html`<hb-button
     .theme="${theme}"
     .size=${size}
@@ -33,6 +39,7 @@ export default {
     .href=${href}
     .target=${target}
     .rel=${rel}
+    .native-type=${nativeType}
     @event=${handleClick}
   >
     ${label}
@@ -69,6 +76,15 @@ export default {
     },
     type: {
       options: hbButtonTypes,
+      control: { type: 'radio' }
+    },
+    'native-type': {
+      options: hbButtonNativeTypes,
+      description:
+        'Native 속성입니다. form 안에서 hb-input과 함께 동작합니다. (reset 타입은 추가 예정)',
+      table: {
+        type: { summary: 'button | submit' }
+      },
       control: { type: 'radio' }
     },
     theme: {
@@ -108,8 +124,25 @@ export const Rectangle: Story = {
     loading: false,
     disabled: false,
     type: 'rectangle',
-    theme: 'primary'
+    theme: 'primary',
+    'native-type': 'button'
   }
+};
+
+export const Form: Story = {
+  render: () => html`<form
+    @submit=${submit}
+    style="display: flex; flex-flow: column wrap; gap: 20px 0;"
+  >
+    <hb-input type="text"></hb-input>
+    <hb-input type="text"></hb-input>
+    <div class="buttons" style="display: contents">
+      <hb-button theme="secondary" size="medium" type="rectangle"> Submit </hb-button>
+      <hb-button theme="secondary" size="medium" type="rectangle" native-type="button" plain>
+        Normal Button
+      </hb-button>
+    </div>
+  </form>`
 };
 
 export const Plain: Story = {
