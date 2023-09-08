@@ -134,7 +134,6 @@ $hb-button__theme: (
 );
 
 .hb-button {
-  @include disabled();
   @include loading();
   @include host-styled {
     display: inline-flex;
@@ -181,26 +180,27 @@ $hb-button__theme: (
       color: $bg;
       background: transparent;
     }
-    @include host-styled(":not([data-disabled])[plain][theme='#{$class}']") {
+    @include host-styled('[disabled]:not([data-loading])') {
+      cursor: not-allowed;
+    }
+    @include host-styled(":not([disabled])[plain][theme='#{$class}']") {
       border: 1px solid $bg;
     }
-    @include host-styled(
-      ":not([data-disabled]):not([data-loading])[plain][theme='#{$class}']:hover"
-    ) {
+    @include host-styled(":not([disabled]):not([data-loading])[plain][theme='#{$class}']:hover") {
       background: map-get($value, bg);
       color: map-get($value, color);
     }
-    @include host-styled("[theme='#{$class}'][data-disabled]:not([data-loading])") {
+    @include host-styled("[theme='#{$class}'][disabled]:not([data-loading])") {
       $disabledColor: map-get($value, disabledColor);
       color: $disabledColor;
       --husc__icon__color: #{$disabledColor};
       border-color: map-get($value, disabledBd);
       background: map-get($value, disabledBg);
     }
-    @include host-styled(":not([data-disabled]):not([data-loading])[theme='#{$class}']:hover") {
+    @include host-styled(":not([disabled]):not([data-loading])[theme='#{$class}']:hover") {
       background: map-get($value, hover);
     }
-    @include host-styled(":not([data-disabled]):not([data-loading])[theme='#{$class}']:active") {
+    @include host-styled(":not([disabled]):not([data-loading])[theme='#{$class}']:active") {
       background: map-get($value, active);
     }
   }

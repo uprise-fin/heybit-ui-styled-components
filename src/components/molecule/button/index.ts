@@ -48,7 +48,7 @@ export class HbButton extends Base {
 
   _loading: boolean = false;
 
-  _disabled: boolean = false;
+  disabled: boolean = false;
 
   href = '';
 
@@ -57,16 +57,6 @@ export class HbButton extends Base {
   rel = '';
 
   'native-type': HbButtonNativeType | undefined;
-
-  get disabled() {
-    return this._disabled;
-  }
-
-  set disabled(value: boolean) {
-    this._disabled = value;
-    if (value) this.setAttribute('data-disabled', '');
-    else this.removeAttribute('data-disabled');
-  }
 
   get loading() {
     return this._loading;
@@ -101,7 +91,6 @@ export class HbButton extends Base {
       plain: { type: Boolean, reflect: true },
       baseLoadingDuration: { type: Number, reflect: true },
       disabled: { type: Boolean, reflect: true },
-      _disabled: { type: Boolean, reflect: true },
       href: { type: String, reflect: true },
       target: { type: String, reflect: true },
       rel: { type: String, reflect: true },
@@ -152,7 +141,7 @@ export class HbButton extends Base {
         ></slot>`
     };
 
-    const isDisabled = this._disabled && !this.href;
+    const isDisabled = this.disabled && !this.href;
 
     const button = this.href ? literal`a` : literal`button`;
 
