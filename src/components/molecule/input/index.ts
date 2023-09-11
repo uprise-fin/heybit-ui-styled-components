@@ -98,6 +98,7 @@ export class HbInput extends Base {
     return {
       // _value: { type: String, reflect: true },
       value: { type: String, reflect: true },
+      id: { type: String, reflect: true },
       name: { type: String, reflect: true },
       attributeSync: { type: Boolean, reflect: true },
       type: { type: String, reflect: true },
