@@ -29,9 +29,9 @@ export default {
     rel,
     'native-type': nativeType
   }) => html`<hb-button
-    .theme="${theme}"
-    .size=${size}
-    .type=${type}
+    theme="${theme}"
+    size=${size}
+    type=${type}
     .baseLoadingDuration=${baseLoadingDuration}
     ?plain=${plain}
     ?loading=${loading}
@@ -55,7 +55,8 @@ export default {
     },
     baseLoadingDuration: {
       table: {
-        type: { summary: 'number' }
+        type: { summary: 'number' },
+        defaultValue: { summary: 0 }
       }
     },
     plain: {
