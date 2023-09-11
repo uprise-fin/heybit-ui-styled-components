@@ -3,7 +3,7 @@ import { Base } from '@/components/base';
 import { getElement } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbInputType } from './type';
+import type { HTMLInputTypeAttribute, HbInputType } from './type';
 import '@/components/molecule/button';
 import { HbButtonProps } from '@/index';
 
@@ -121,7 +121,7 @@ export class HbInput extends Base {
 
   get isType() {
     if (['number', 'currency', 'english'].includes(this.type)) return 'text';
-    return this.type;
+    return this.type as HTMLInputTypeAttribute;
   }
 
   set value(value: string) {
@@ -166,7 +166,7 @@ export class HbInput extends Base {
   render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
-      <textarea
+      <input
         id="input"
         rows="1"
         data-readonly=${this.readonly}
@@ -181,7 +181,7 @@ export class HbInput extends Base {
         placeholder=${this.placeholder}
         ?readonly=${this._readonly}
         ?disabled=${this._disabled}
-      ></textarea>
+      ></input>
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `;

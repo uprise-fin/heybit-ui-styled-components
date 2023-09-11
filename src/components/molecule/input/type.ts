@@ -14,5 +14,31 @@ export interface HbInputProps {
 export interface HbInputEvent extends InputEvent {
   target: HbInput;
 }
-export type HbInputType = 'text' | 'number' | 'currency' | 'password' | 'english';
+
+export type HTMLInputTypeAttribute =
+  | 'button'
+  | 'checkbox'
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'file'
+  | 'hidden'
+  | 'image'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'radio'
+  | 'range'
+  | 'reset'
+  | 'search'
+  | 'submit'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
+
+export type HbInputType = HTMLInputTypeAttribute | 'currency' | 'english';
+// export type HbInputType = 'text' | 'number' | 'currency' | 'password' | 'english';
 export type HbInputSlots = 'slot--left' | 'slot--right';
