@@ -103,11 +103,11 @@ export class HbFooter extends Base {
 
   static get properties() {
     return {
-      menu: { type: Array, Reflect: true },
-      socialMenu: { type: Array, Reflect: true },
-      upriseInfo: { type: Array, Reflect: true },
-      copy: { type: String, Reflect: true },
-      tel: { type: String, Reflect: true }
+      menu: { type: Array, reflect: true },
+      socialMenu: { type: Array, reflect: true },
+      upriseInfo: { type: Array, reflect: true },
+      copy: { type: String, reflect: true },
+      tel: { type: String, reflect: true }
     };
   }
 

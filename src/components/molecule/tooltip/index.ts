@@ -19,10 +19,10 @@ export class HbTooltip extends Base {
 
   static get properties() {
     return {
-      open: { type: Boolean, Reflect: true },
-      width: { type: Number, Reflect: true },
-      height: { type: Number, Reflect: true },
-      position: { type: Array, Reflect: true }
+      open: { type: Boolean, reflect: true },
+      width: { type: Number, reflect: true },
+      height: { type: Number, reflect: true },
+      position: { type: Array, reflect: true }
     };
   }
 

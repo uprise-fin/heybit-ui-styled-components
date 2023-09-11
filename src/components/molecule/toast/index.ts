@@ -38,11 +38,11 @@ export class HbToast extends Base {
 
   static get properties() {
     return {
-      messages: { type: Array, Reflect: true },
-      duration: { type: Number, Reflect: true },
-      now: { type: Number, Reflect: true },
-      hide: { type: Boolean, Reflect: true },
-      timer: { type: Array, Reflect: true }
+      messages: { type: Array, reflect: true },
+      duration: { type: Number, reflect: true },
+      now: { type: Number, reflect: true },
+      hide: { type: Boolean, reflect: true },
+      timer: { type: Array, reflect: true }
     };
   }
 

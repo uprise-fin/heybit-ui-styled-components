@@ -91,23 +91,23 @@ export class HbCarousel extends Base {
   // value!: string;
   static get properties() {
     return {
-      auto: { type: Boolean, Reflect: true },
-      pause: { type: Boolean, Reflect: true },
-      infinite: { type: Boolean, Reflect: true },
-      indicate: { type: Boolean, Reflect: true },
-      rolling: { type: Boolean, Reflect: true },
-      holderFlag: { type: Boolean, Reflect: true },
-      draggable: { type: Boolean, Reflect: true },
-      eventStatus: { type: String, Reflect: true },
-      dragDistance: { type: Number, Reflect: true },
-      index: { type: Number, Reflect: true },
-      flexWidth: { type: Number, Reflect: true },
-      fakeLength: { type: Number, Reflect: true },
-      itemLength: { type: Number, Reflect: true },
-      transitionFlag: { type: Boolean, Reflect: true },
-      visibleLength: { type: Number, Reflect: true },
-      duration: { type: Number, Reflect: true },
-      speed: { type: Number, Reflect: true }
+      auto: { type: Boolean, reflect: true },
+      pause: { type: Boolean, reflect: true },
+      infinite: { type: Boolean, reflect: true },
+      indicate: { type: Boolean, reflect: true },
+      rolling: { type: Boolean, reflect: true },
+      holderFlag: { type: Boolean, reflect: true },
+      draggable: { type: Boolean, reflect: true },
+      eventStatus: { type: String, reflect: true },
+      dragDistance: { type: Number, reflect: true },
+      index: { type: Number, reflect: true },
+      flexWidth: { type: Number, reflect: true },
+      fakeLength: { type: Number, reflect: true },
+      itemLength: { type: Number, reflect: true },
+      transitionFlag: { type: Boolean, reflect: true },
+      visibleLength: { type: Number, reflect: true },
+      duration: { type: Number, reflect: true },
+      speed: { type: Number, reflect: true }
     };
   }
 

@@ -20,12 +20,12 @@ export class HbLoading extends Base {
 
   static get properties() {
     return {
-      loaded: { type: Boolean, Reflect: true },
-      duration: { type: Number, Reflect: true },
-      background: { type: String, Reflect: true },
-      backgroundAccent: { type: String, Reflect: true },
-      width: { type: String, Reflect: true },
-      height: { type: String, Reflect: true }
+      loaded: { type: Boolean, reflect: true },
+      duration: { type: Number, reflect: true },
+      background: { type: String, reflect: true },
+      backgroundAccent: { type: String, reflect: true },
+      width: { type: String, reflect: true },
+      height: { type: String, reflect: true }
     };
   }
 

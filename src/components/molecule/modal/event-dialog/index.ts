@@ -46,18 +46,18 @@ export class HbEventDialog extends Base {
 
   static get properties() {
     return {
-      open: { type: Boolean, Reflect: true },
-      persistent: { type: Boolean, Reflect: true },
-      hideCloseBtn: { type: Boolean, Reflect: true },
-      width: { type: String, Reflect: true },
-      loadingWidth: { type: Number, Reflect: true },
-      loadingHeight: { type: Number, Reflect: true },
-      loaded: { type: Boolean, Reflect: true },
-      image: { type: String, Reflect: true },
-      textLongClose: { type: String, Reflect: true },
-      textClose: { type: String, Reflect: true },
-      cookieKey: { type: String, Reflect: true },
-      href: { type: String, Reflect: true }
+      open: { type: Boolean, reflect: true },
+      persistent: { type: Boolean, reflect: true },
+      hideCloseBtn: { type: Boolean, reflect: true },
+      width: { type: String, reflect: true },
+      loadingWidth: { type: Number, reflect: true },
+      loadingHeight: { type: Number, reflect: true },
+      loaded: { type: Boolean, reflect: true },
+      image: { type: String, reflect: true },
+      textLongClose: { type: String, reflect: true },
+      textClose: { type: String, reflect: true },
+      cookieKey: { type: String, reflect: true },
+      href: { type: String, reflect: true }
     };
   }
 

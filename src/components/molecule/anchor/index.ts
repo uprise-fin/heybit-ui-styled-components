@@ -31,9 +31,9 @@ export class HbAnchor extends Base {
 
   static get properties() {
     return {
-      href: { type: String, Reflect: true },
-      target: { type: String, Reflect: true },
-      disabled: { type: Boolean, Reflect: true }
+      href: { type: String, reflect: true },
+      target: { type: String, reflect: true },
+      disabled: { type: Boolean, reflect: true }
     };
   }
 

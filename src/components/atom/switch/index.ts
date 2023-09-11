@@ -20,8 +20,8 @@ export class HbSwitch extends Base {
 
   static get properties() {
     return {
-      value: { type: Boolean, Reflect: true },
-      loading: { type: Boolean, Reflect: true }
+      value: { type: Boolean, reflect: true },
+      loading: { type: Boolean, reflect: true }
     };
   }
 
