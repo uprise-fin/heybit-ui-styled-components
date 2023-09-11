@@ -14,8 +14,6 @@ export class HbSpinner extends InitAttribute<HbSpinnerProps> {
     return [require('./style.scss').default];
   }
 
-  initialAttributes: (keyof HbSpinnerProps)[] = ['size'];
-
   size: Size;
 
   static get properties() {

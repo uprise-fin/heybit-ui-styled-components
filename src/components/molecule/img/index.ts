@@ -38,8 +38,6 @@ export class HbImg extends InitAttribute<HbImgProps> {
 
   error = false;
 
-  initialAttributes: (keyof HbImgProps)[] = ['src'];
-
   static get properties() {
     return {
       src: { type: String, Reflect: true },

@@ -27,8 +27,6 @@ export class HbIcon extends InitAttribute<HbIconProps> {
 
   size: Size;
 
-  initialAttributes: (keyof HbIconProps)[] = ['size'];
-
   static get properties() {
     return {
       icon: { type: String, Reflect: true },
