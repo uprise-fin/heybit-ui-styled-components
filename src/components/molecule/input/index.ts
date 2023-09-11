@@ -166,7 +166,7 @@ export class HbInput extends Base {
   render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
-      <input
+      <textarea
         rows="1"
         data-readonly=${this.readonly}
         data-disabled=${this.disabled}
@@ -180,7 +180,7 @@ export class HbInput extends Base {
         placeholder=${this.placeholder}
         ?readonly=${this._readonly}
         ?disabled=${this._disabled}
-      ></input>
+      ></textarea>
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
     `;
