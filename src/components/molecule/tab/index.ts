@@ -38,9 +38,9 @@ export class HbTab extends Base {
 
   static get properties() {
     return {
-      left: { type: Number, reflect: true },
-      width: { type: Number, reflect: true },
-      value: { type: String, reflect: true }
+      left: { type: Number, Reflect: true },
+      width: { type: Number, Reflect: true },
+      value: { type: String, Reflect: true }
     };
   }
 

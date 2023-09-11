@@ -31,12 +31,12 @@ export class HbSelect extends Base {
 
   static get properties() {
     return {
-      _value: { type: String, reflect: true },
-      value: { type: String, reflect: true },
-      disabled: { type: Boolean, reflect: true },
-      options: { type: Array, reflect: true },
-      placeholder: { type: String, reflect: true },
-      emptyText: { type: String, reflect: true }
+      _value: { type: String, Reflect: true },
+      value: { type: String, Reflect: true },
+      disabled: { type: Boolean, Reflect: true },
+      options: { type: Array, Reflect: true },
+      placeholder: { type: String, Reflect: true },
+      emptyText: { type: String, Reflect: true }
     };
   }
 

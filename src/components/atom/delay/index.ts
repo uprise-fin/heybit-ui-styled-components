@@ -16,9 +16,9 @@ export class HbDelay extends Base {
 
   static get properties() {
     return {
-      delay: { type: Number, reflect: true },
-      name: { type: String, reflect: true },
-      value: { type: String, reflect: true }
+      delay: { type: Number, Reflect: true },
+      name: { type: String, Reflect: true },
+      value: { type: String, Reflect: true }
     };
   }
 

@@ -107,17 +107,17 @@ export class HbHeader extends Base {
 
   static get properties() {
     return {
-      type: { type: String, reflect: true },
-      active: { type: String, reflect: true },
-      sidemenu: { type: Boolean, reflect: true },
-      loggedin: { type: Boolean, reflect: true },
-      pending: { type: Boolean, reflect: true },
-      navigations: { type: Array, reflect: true },
-      gnb: { type: Array, reflect: true },
-      defaultMenu: { type: Array, reflect: true },
-      myMenu: { type: Array, reflect: true },
-      authMenu: { type: Array, reflect: true },
-      user: { type: Object, reflect: true }
+      type: { type: String, Reflect: true },
+      active: { type: String, Reflect: true },
+      sidemenu: { type: Boolean, Reflect: true },
+      loggedin: { type: Boolean, Reflect: true },
+      pending: { type: Boolean, Reflect: true },
+      navigations: { type: Array, Reflect: true },
+      gnb: { type: Array, Reflect: true },
+      defaultMenu: { type: Array, Reflect: true },
+      myMenu: { type: Array, Reflect: true },
+      authMenu: { type: Array, Reflect: true },
+      user: { type: Object, Reflect: true }
     };
   }
 

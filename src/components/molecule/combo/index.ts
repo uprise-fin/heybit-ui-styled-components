@@ -66,20 +66,20 @@ export class HbCombo extends Base {
 
   static get properties() {
     return {
-      open: { type: Boolean, reflect: true },
-      search: { type: Boolean, reflect: true },
-      attributeSync: { type: Boolean, reflect: true },
-      fixed: { type: Boolean, reflect: true },
-      top: { type: Number, reflect: true },
-      left: { type: Number, reflect: true },
-      width: { type: Number, reflect: true },
-      maxHeight: { type: Number, reflect: true },
-      value: { type: String, reflect: true },
-      options: { type: Array, reflect: true },
-      emptyText: { type: String, reflect: true },
-      inputValue: { type: String, reflect: true },
-      parentQuery: { type: String, reflect: true },
-      hasFocus: { type: Boolean, reflect: true }
+      open: { type: Boolean, Reflect: true },
+      search: { type: Boolean, Reflect: true },
+      attributeSync: { type: Boolean, Reflect: true },
+      fixed: { type: Boolean, Reflect: true },
+      top: { type: Number, Reflect: true },
+      left: { type: Number, Reflect: true },
+      width: { type: Number, Reflect: true },
+      maxHeight: { type: Number, Reflect: true },
+      value: { type: String, Reflect: true },
+      options: { type: Array, Reflect: true },
+      emptyText: { type: String, Reflect: true },
+      inputValue: { type: String, Reflect: true },
+      parentQuery: { type: String, Reflect: true },
+      hasFocus: { type: Boolean, Reflect: true }
     };
   }
 

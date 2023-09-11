@@ -20,10 +20,10 @@ export class HbSkeleton extends Base {
 
   static get properties() {
     return {
-      duration: { type: Number, reflect: true },
-      background: { type: String, reflect: true },
-      backgroundAccent: { type: String, reflect: true },
-      type: { type: String, reflect: true }
+      duration: { type: Number, Reflect: true },
+      background: { type: String, Reflect: true },
+      backgroundAccent: { type: String, Reflect: true },
+      type: { type: String, Reflect: true }
     };
   }
 

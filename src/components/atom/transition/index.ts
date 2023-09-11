@@ -30,9 +30,9 @@ export class HbTransition extends Base {
 
   static get properties() {
     return {
-      show: { type: Boolean, reflect: true },
-      delete: { type: Boolean, reflect: true },
-      type: { type: String, reflect: true }
+      show: { type: Boolean, Reflect: true },
+      delete: { type: Boolean, Reflect: true },
+      type: { type: String, Reflect: true }
     };
   }
 

@@ -36,13 +36,13 @@ export class HbList extends Base {
 
   static get properties() {
     return {
-      options: { type: Array, reflect: true },
-      value: { type: String, reflect: true },
-      emptyText: { type: String, reflect: true },
-      width: { type: Number, reflect: true },
-      maxHeight: { type: Number, reflect: true },
-      attributeSync: { type: Boolean, reflect: true },
-      open: { type: Boolean, reflect: true }
+      options: { type: Array, Reflect: true },
+      value: { type: String, Reflect: true },
+      emptyText: { type: String, Reflect: true },
+      width: { type: Number, Reflect: true },
+      maxHeight: { type: Number, Reflect: true },
+      attributeSync: { type: Boolean, Reflect: true },
+      open: { type: Boolean, Reflect: true }
     };
   }
 

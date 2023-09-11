@@ -82,24 +82,24 @@ export class HbDialog extends Base {
 
   static get properties() {
     return {
-      layout: { type: String, reflect: true },
-      open: { type: Boolean, reflect: true },
-      buttons: { type: Array, reflect: true },
-      anchor: { type: Object, reflect: true },
-      disabled: { type: Boolean, reflect: true },
-      preventBodyScroll: { type: Boolean, reflect: true },
-      eventDisabled: { type: Boolean, reflect: true },
-      persistent: { type: Boolean, reflect: true },
-      hideCloseBtn: { type: Boolean, reflect: true },
-      width: { type: String, reflect: true },
-      height: { type: String, reflect: true },
-      loading: { type: Boolean, reflect: true },
-      baseLoadingDuration: { type: Number, reflect: true },
-      buttonAlign: { type: String, reflect: true },
-      headAlign: { type: String, reflect: true },
-      title: { type: String, reflect: true },
-      icon: { type: String, reflect: true },
-      transitionType: { type: String, reflect: true }
+      layout: { type: String, Reflect: true },
+      open: { type: Boolean, Reflect: true },
+      buttons: { type: Array, Reflect: true },
+      anchor: { type: Object, Reflect: true },
+      disabled: { type: Boolean, Reflect: true },
+      preventBodyScroll: { type: Boolean, Reflect: true },
+      eventDisabled: { type: Boolean, Reflect: true },
+      persistent: { type: Boolean, Reflect: true },
+      hideCloseBtn: { type: Boolean, Reflect: true },
+      width: { type: String, Reflect: true },
+      height: { type: String, Reflect: true },
+      loading: { type: Boolean, Reflect: true },
+      baseLoadingDuration: { type: Number, Reflect: true },
+      buttonAlign: { type: String, Reflect: true },
+      headAlign: { type: String, Reflect: true },
+      title: { type: String, Reflect: true },
+      icon: { type: String, Reflect: true },
+      transitionType: { type: String, Reflect: true }
     };
   }
 

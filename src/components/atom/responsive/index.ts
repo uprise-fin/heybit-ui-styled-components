@@ -9,7 +9,7 @@ export class HbResponsive extends Base {
 
   static get properties() {
     return {
-      point: { type: Number, reflect: true }
+      point: { type: Number, Reflect: true }
     };
   }
 

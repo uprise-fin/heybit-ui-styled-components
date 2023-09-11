@@ -21,7 +21,7 @@ export class HbIf extends Base {
 
   static get properties() {
     return {
-      value: { type: Boolean, reflect: true }
+      value: { type: Boolean, Reflect: true }
     };
   }
 
