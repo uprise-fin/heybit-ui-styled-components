@@ -34,12 +34,6 @@ export class HbIcon extends Base {
     };
   }
 
-  // attributeChangedCallback(name: string, _: string, newVal: string) {
-  //   if (name === 'color') this.style.fill = newVal;
-
-  //   super.attributeChangedCallback(name, _, newVal);
-  // }
-
   render() {
     return html`${unsafeSVG(SVG[this.icon])}`;
   }

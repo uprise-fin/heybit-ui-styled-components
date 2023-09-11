@@ -127,16 +127,7 @@ export class HbImg extends Base {
     `;
   }
 
-  // onLoad(evt: Event) {
-  //   this.loaded = true
-  //   this.dispatchEvent(new CustomEvent("load", evt));
-  // }
-  // onError(evt: Event) {
-  //   this.error = true
-  //   this.dispatchEvent(new CustomEvent("error", evt));
-  // }
   onLoad(event: Event) {
-    // this.onChipLoaded;
     this.loaded = true;
     this.dispatchEvent(new Event('load', event));
   }
@@ -152,42 +143,3 @@ declare global {
     'hb-img': HbImg;
   }
 }
-// const NAME = "hb-img";
-// customElements.get(NAME) ||
-//   customElements.define(
-//     NAME,
-//     class extends CustomElement {
-//       template = require(`./${NAME}.hbs`);
-//       css = require(`./${NAME}.scss`).default;
-//       properties = {
-//         id: {
-//           closeBtn: "close-btn",
-//           wrap: "wrap",
-//         },
-//       };
-//       constructor() {
-//         super();
-//       }
-//       connectedCallback(): void {
-//         super.connectedCallback();
-//         this.isWrapEl.onanimationstart = () => this.onAnimationStart();
-//         this.isWrapEl.onanimationend = () => this.onAnimationEnd();
-//         this.isCloseBtnEl.onclick = () => this.onHide();
-//       }
-//       get isCloseBtnEl() {
-//         return this.shadowRoot.getElementById(
-//           this.isProperties.id.closeBtn
-//         ) as HTMLButtonElement;
-//       }
-//       get isWrapEl() {
-//         return this.shadowRoot.getElementById(
-//           this.isProperties.id.wrap
-//         ) as HTMLButtonElement;
-//       }
-
-//       onHide() {
-//         this.classList.add(this.isProperties.classList.animation);
-//         super.onHide();
-//       }
-//     }
-//   );
