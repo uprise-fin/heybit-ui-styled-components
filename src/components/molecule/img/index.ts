@@ -87,15 +87,6 @@ export class HbImg extends Base {
     return arr.join(',');
   }
 
-  // set src(src: string) {
-  //   if (this.srcset) src = ''
-  //   this._src = src
-  // }
-
-  // get src() {
-  //   return this._src
-  // }
-
   render() {
     return html`
       <hb-loading
