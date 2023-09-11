@@ -41,19 +41,3 @@ export class Base extends LitElement {
     }
   }
 }
-export class InitAttribute<T> extends Base {
-  initialAttributes: (keyof T)[];
-
-  requestUpdate() {
-    if (this.initialAttributes) this.initAttribute();
-    super.requestUpdate();
-  }
-
-  initAttribute() {
-    this.initialAttributes.forEach((key) => {
-      const attr = key as string;
-      const value = (this as unknown)[key as keyof T];
-      if (value && this.getAttribute(attr) !== value) this.setAttribute(attr, value as string);
-    });
-  }
-}

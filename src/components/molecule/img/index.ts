@@ -1,8 +1,7 @@
 import '@/components/atom/loading';
-import { InitAttribute } from '@/components/base';
+import { Base } from '@/components/base';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbImgProps } from './type';
 
 /**
  * @property src
@@ -15,7 +14,7 @@ import { HbImgProps } from './type';
  */
 
 @customElement('hb-img')
-export class HbImg extends InitAttribute<HbImgProps> {
+export class HbImg extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
