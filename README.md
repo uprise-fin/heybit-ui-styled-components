@@ -147,49 +147,9 @@ svg파일을 이룰때 내부 path를 하나로만 구성하는것이 필요한�
 
 storybook이나 demo로 테스트 후 해당 레포지토리에서 잘 작동하는지 확인해야 합니다. 그때마다 릴리즈하긴 번거로우니 pre-publish를 이용하여 빌드 후 dist폴더를 사용하려는 레포지토리의 node_modules/heybit-ui-styled-components/ 에 덮어씌워 줍니다.
 
-### 스벨트
+### 기타
 
-1. 속성값이 반영되지 않을 때
-   disabled같은 기존 존재하는 속성일 경우 반영하지 않을 수 있다.
-
-```typescript
-  // before
-  static get properties() {
-    return {
-      ...
-      disabled: {type: Boolean, Reflect: true},
-    };
-  }
-  disabled = false;
-  // before
-```
-
-```typescript
-  // after
-  static get properties() {
-    return {
-      ...
-      disabled: {type: Boolean, Reflect: true},
-    };
-  }
-  #disabled: boolean = false;
-
-  get disabled() {
-    return this.#disabled;
-  }
-
-  set disabled(value: boolean) {
-    this.#disabled = value;
-    if (value) this.setAttribute('data-disabled', '');
-    else this.removeAttribute('data-disabled');
-  }
-```
-
-2. 초기 속성이 반영 안되는 경우
-   버튼의 size, theme 등, 초기 스타일을 지정 후 렌더링 했을때 반영안될때
-   `initialAttributes`이 변수를 이용해서 렌더링 후에도 속성값에 반응하도록 처리
-
-3. hb-input이 textarea를 쓴 이유
+1. hb-input이 textarea를 쓴 이유
 
 - password를 제외하면 모든 기능을 textarea로 대체할 수 있습니다.
 - 가장 중요한 로그인기능에서 자동완성, 1password등이 작동하지 않아서 shadow-dom에서 input을 사용할 필요가 없어서 textarea로 고정합니다.
