@@ -17,8 +17,7 @@ export class HbSpinner extends Base {
 
   static get properties() {
     return {
-      size: { type: String, Reflect: true }
-      // size: { type: String, Reflect: true },
+      size: { type: String, reflect: true }
     };
   }
 

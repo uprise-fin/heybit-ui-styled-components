@@ -29,8 +29,8 @@ export class HbIcon extends Base {
 
   static get properties() {
     return {
-      icon: { type: String, Reflect: true },
-      size: { type: String, Reflect: true }
+      icon: { type: String, reflect: true },
+      size: { type: String, reflect: true }
     };
   }
 
