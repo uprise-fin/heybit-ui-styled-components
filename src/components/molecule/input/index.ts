@@ -92,20 +92,20 @@ export class HbInput extends Base {
 
   static get properties() {
     return {
-      // _value: { type: String, reflect: true },
-      value: { type: String, reflect: true },
-      attributeSync: { type: Boolean, reflect: true },
-      type: { type: String, reflect: true },
-      placeholder: { type: String, reflect: true },
-      maxlength: { type: Number, reflect: true },
-      comma: { type: Number, reflect: true },
-      decimal: { type: Number, reflect: true },
-      error: { type: Boolean, reflect: true },
-      readonly: { type: Boolean, reflect: true },
-      _readonly: { type: Boolean, reflect: true },
-      disabled: { type: Boolean, reflect: true },
-      _disabled: { type: Boolean, reflect: true },
-      nowrap: { type: Boolean, reflect: true }
+      // _value: { type: String, Reflect: true },
+      value: { type: String, Reflect: true },
+      attributeSync: { type: Boolean, Reflect: true },
+      type: { type: String, Reflect: true },
+      placeholder: { type: String, Reflect: true },
+      maxlength: { type: Number, Reflect: true },
+      comma: { type: Number, Reflect: true },
+      decimal: { type: Number, Reflect: true },
+      error: { type: Boolean, Reflect: true },
+      readonly: { type: Boolean, Reflect: true },
+      _readonly: { type: Boolean, Reflect: true },
+      disabled: { type: Boolean, Reflect: true },
+      _disabled: { type: Boolean, Reflect: true },
+      nowrap: { type: Boolean, Reflect: true }
     };
   }
 
