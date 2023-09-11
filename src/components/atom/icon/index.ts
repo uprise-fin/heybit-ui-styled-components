@@ -1,10 +1,10 @@
 import { Size } from '@/components/atom/variable/type';
-import { InitAttribute } from '@/components/base';
+import { Base } from '@/components/base';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import SVG from './svg';
-import { HbIconName, HbIconProps } from './type';
+import { HbIconName } from './type';
 
 /**
  * @property open 온 오프
@@ -18,7 +18,7 @@ import { HbIconName, HbIconProps } from './type';
  */
 
 @customElement('hb-icon')
-export class HbIcon extends InitAttribute<HbIconProps> {
+export class HbIcon extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -27,12 +27,10 @@ export class HbIcon extends InitAttribute<HbIconProps> {
 
   size: Size;
 
-  initialAttributes: (keyof HbIconProps)[] = ['size'];
-
   static get properties() {
     return {
-      icon: { type: String, Reflect: true },
-      size: { type: String, Reflect: true }
+      icon: { type: String, reflect: true },
+      size: { type: String, reflect: true }
     };
   }
 

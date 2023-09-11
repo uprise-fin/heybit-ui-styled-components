@@ -1,27 +1,23 @@
 import { Size } from '@/components/atom/variable/type';
-import { InitAttribute } from '@/components/base';
+import { Base } from '@/components/base';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbSpinnerProps } from './type';
 
 /**
  *
  */
 
 @customElement('hb-spinner')
-export class HbSpinner extends InitAttribute<HbSpinnerProps> {
+export class HbSpinner extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
-
-  initialAttributes: (keyof HbSpinnerProps)[] = ['size'];
 
   size: Size;
 
   static get properties() {
     return {
-      size: { type: String, Reflect: true }
-      // size: { type: String, Reflect: true },
+      size: { type: String, reflect: true }
     };
   }
 

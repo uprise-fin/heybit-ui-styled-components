@@ -1,8 +1,7 @@
 import '@/components/atom/loading';
-import { InitAttribute } from '@/components/base';
+import { Base } from '@/components/base';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { HbImgProps } from './type';
 
 /**
  * @property src
@@ -15,7 +14,7 @@ import { HbImgProps } from './type';
  */
 
 @customElement('hb-img')
-export class HbImg extends InitAttribute<HbImgProps> {
+export class HbImg extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
@@ -38,19 +37,17 @@ export class HbImg extends InitAttribute<HbImgProps> {
 
   error = false;
 
-  initialAttributes: (keyof HbImgProps)[] = ['src'];
-
   static get properties() {
     return {
-      src: { type: String, Reflect: true },
-      alt: { type: String, Reflect: true },
-      loadingWidth: { type: Number, Reflect: true },
-      loadingHeight: { type: Number, Reflect: true },
-      multiSource: { type: Number, Reflect: true },
-      breakPoint: { type: Number, Reflect: true },
-      pcPrefix: { type: String, Reflect: true },
-      loaded: { type: Boolean, Reflect: true },
-      error: { type: Boolean, Reflect: true }
+      src: { type: String, reflect: true },
+      alt: { type: String, reflect: true },
+      loadingWidth: { type: Number, reflect: true },
+      loadingHeight: { type: Number, reflect: true },
+      multiSource: { type: Number, reflect: true },
+      breakPoint: { type: Number, reflect: true },
+      pcPrefix: { type: String, reflect: true },
+      loaded: { type: Boolean, reflect: true },
+      error: { type: Boolean, reflect: true }
     };
   }
 
