@@ -34,10 +34,6 @@ export class HbInput extends Base {
 
   _value: string = '';
 
-  id: string;
-
-  name: string;
-
   inputEl?: HTMLInputElement;
 
   attributeSync = false;
@@ -98,8 +94,6 @@ export class HbInput extends Base {
     return {
       // _value: { type: String, reflect: true },
       value: { type: String, reflect: true },
-      id: { type: String, reflect: true },
-      name: { type: String, reflect: true },
       attributeSync: { type: Boolean, reflect: true },
       type: { type: String, reflect: true },
       placeholder: { type: String, reflect: true },
@@ -173,8 +167,6 @@ export class HbInput extends Base {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
       <input
-        id=${this.id}
-        name=${this.name}
         rows="1"
         data-readonly=${this.readonly}
         data-disabled=${this.disabled}
