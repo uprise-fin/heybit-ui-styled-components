@@ -168,7 +168,7 @@ const LevelTemplate: Story<unknown> = () =>
           `
       )}
       </div>
-      <div class="status__items">
+      <div class="status">
       ${Object.keys(statusColors).map(
         (key: SystemTheme) =>
           html`
@@ -178,7 +178,7 @@ const LevelTemplate: Story<unknown> = () =>
             </dl>
           `
       )}
-    </div>
+      </div>
     </div>
   `;
 
