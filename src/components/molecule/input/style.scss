@@ -17,7 +17,7 @@
     border-radius: calc(var(--husc__border__radius) * 2);
     background: var(--husc__background__color);
   }
-  @include host-styled('[data-error]') {
+  @include host-styled('[error]') {
     padding-left: calc(
       var(--husc__input__padding__left) -
         (var(--husc__input__border__width--error) - var(--husc__input__border__width))
@@ -38,7 +38,7 @@
     border-color: var(--husc__input__border__color--error);
     // background: var(--husc__background__color);
   }
-  @include host-styled('[data-focus]:not([data-disabled])') {
+  @include host-styled(':focus:not([error])') {
     padding-left: calc(
       var(--husc__input__padding__left) -
         (var(--husc__input__border__width--focus) - var(--husc__input__border__width))
@@ -59,7 +59,7 @@
     border-color: var(--husc__input__border__color--focus);
     // background: var(--husc__background__color);
   }
-  @include host-styled('[data-disabled]') {
+  @include host-styled(':disabled') {
     border-color: var(--husc__input__border__color--disabled);
     background: var(--husc__input__border__color--disabled);
     --husc__background__color: var(--husc__input__border__color--disabled);

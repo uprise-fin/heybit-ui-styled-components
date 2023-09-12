@@ -40,15 +40,15 @@ export class HbInput extends Base {
 
   placeholder = '';
 
-  _error = false;
+  error = false;
 
   decimal: number = 2;
 
   comma: number = 3;
 
-  _readonly: boolean = false;
+  readonly = false;
 
-  _disabled: boolean = false;
+  disabled = false;
 
   maxlength?: number;
 
@@ -60,52 +60,20 @@ export class HbInput extends Base {
 
   private readonly internals = (this as HTMLElement).attachInternals();
 
-  get disabled() {
-    return this._disabled;
-  }
-
-  set disabled(value: boolean) {
-    this._disabled = value;
-    if (value) this.setAttribute('data-disabled', '');
-    else this.removeAttribute('data-disabled');
-  }
-
-  get readonly() {
-    return this._readonly;
-  }
-
-  set readonly(value: boolean) {
-    this._readonly = value;
-    if (value) this.setAttribute('data-readonly', '');
-    else this.removeAttribute('data-readonly');
-  }
-
-  get error() {
-    return this._error;
-  }
-
-  set error(value: boolean) {
-    this._error = value;
-    if (value) this.setAttribute('data-error', '');
-    else this.removeAttribute('data-error');
-  }
-
   static get properties() {
     return {
-      // _value: { type: String, Reflect: true },
-      value: { type: String, Reflect: true },
-      attributeSync: { type: Boolean, Reflect: true },
-      type: { type: String, Reflect: true },
-      placeholder: { type: String, Reflect: true },
-      maxlength: { type: Number, Reflect: true },
-      comma: { type: Number, Reflect: true },
-      decimal: { type: Number, Reflect: true },
-      error: { type: Boolean, Reflect: true },
-      readonly: { type: Boolean, Reflect: true },
-      _readonly: { type: Boolean, Reflect: true },
-      disabled: { type: Boolean, Reflect: true },
-      _disabled: { type: Boolean, Reflect: true },
-      nowrap: { type: Boolean, Reflect: true }
+      // _value: { type: String, reflect: true },
+      value: { type: String, reflect: true },
+      attributeSync: { type: Boolean, reflect: true },
+      type: { type: String, reflect: true },
+      placeholder: { type: String, reflect: true },
+      maxlength: { type: Number, reflect: true },
+      comma: { type: Number, reflect: true },
+      decimal: { type: Number, reflect: true },
+      error: { type: Boolean, reflect: true },
+      readonly: { type: Boolean, reflect: true },
+      disabled: { type: Boolean, reflect: true },
+      nowrap: { type: Boolean, reflect: true }
     };
   }
 
@@ -169,8 +137,6 @@ export class HbInput extends Base {
       <textarea
         id="input"
         rows="1"
-        data-readonly=${this.readonly}
-        data-disabled=${this.disabled}
         class="hb-input__el"
         part="input"
         pattern=${this.pattern}
@@ -179,8 +145,8 @@ export class HbInput extends Base {
         @keydown=${this.onEnter}
         type=${this.isType}
         placeholder=${this.placeholder}
-        ?readonly=${this._readonly}
-        ?disabled=${this._disabled}
+        ?readonly=${this.readonly}
+        ?disabled=${this.disabled}
       ></textarea>
       <i class="hb-input__border" part="border"></i>
       <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
@@ -286,12 +252,6 @@ export class HbInput extends Base {
     this.value = this.getAttribute('value');
     inputEl.value = this.value;
     this.onResize();
-    this.onclick = () => inputEl.focus();
-    this.addEventListener('focus', () => {
-      this.setAttribute('data-focus', '');
-      this.inputEl.focus();
-    });
-    this.addEventListener('blur', () => this.removeAttribute('data-focus'));
   }
 
   disconnectedCallback() {
