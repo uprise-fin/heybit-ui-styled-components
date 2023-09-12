@@ -282,7 +282,6 @@ export class HbInput extends Base {
   async connectedCallback() {
     await super.connectedCallback();
     const inputEl = await getElement<HTMLInputElement>(this.shadowRoot, 'input');
-    this.tabIndex = 0;
     this.inputEl = inputEl;
     this.value = this.getAttribute('value');
     inputEl.value = this.value;
@@ -305,30 +304,3 @@ declare global {
     'hb-input': HbInput;
   }
 }
-
-// const NAME = "hb-input";
-// customElements.get(NAME) ||
-//   customElements.define(
-//     NAME,
-//     class extends CustomElement {
-//       template = require(`./${NAME}.hbs`);
-//       css = require(`./${NAME}.scss`).default;
-//       value: string;
-//       constructor() {
-//         super();
-//       }
-//       connectedCallback(): void {
-//         super.connectedCallback();
-//         this.isInputEl.onfocus = () => {
-//           this.value = this.isInputEl.value;
-//         };
-//         this.isInputEl.onblur = (evt: Event) => {
-//           if (this.value !== this.isInputEl.value)
-//             this.dispatchEvent(new CustomEvent("change", evt));
-//         };
-//       }
-//       get isInputEl() {
-//         return this.shadowRoot.getElementById("input") as HTMLInputElement;
-//       }
-//     }
-//   );
