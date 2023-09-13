@@ -1,20 +1,20 @@
 import Matercolor from 'matercolors';
 
-export const prefix = 'husc';
+export const prefix = 'hb';
 export const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] as const;
-export type Level = typeof levels[number];
+export type Level = (typeof levels)[number];
 export const verticalAligns = ['middle', 'top', 'bottom'] as const;
-export type VerticalAlign = typeof verticalAligns[number];
+export type VerticalAlign = (typeof verticalAligns)[number];
 export const horizonAligns = ['center', 'right', 'left'] as const;
-export type HorizonAlign = typeof horizonAligns[number];
+export type HorizonAlign = (typeof horizonAligns)[number];
 export const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
-export type Size = typeof sizes[number];
-export const systemColors = ['white', 'black', 'orange', 'yellow', 'green', 'blue'] as const;
-export type SystemColor = typeof systemColors[number];
-export const serviceColors = ['harvest', 'defi'] as const;
-export type ServiceColor = typeof serviceColors[number];
-export type Color = SystemColor | ServiceColor;
-export type AllColor = Record<Color, Matercolor>;
+export type Size = (typeof sizes)[number];
+export const systemColors = ['black', 'brown', 'yellow', 'red', 'green', 'blue', 'purple'] as const;
+export type SystemColor = (typeof systemColors)[number];
+export const serviceColors = ['heybit', 'harvest', 'reward'] as const;
+export type ServiceColor = (typeof serviceColors)[number];
+export type CreateColor = SystemColor | ServiceColor;
+export type AllColor = Record<CreateColor, Matercolor>;
 
 export const systemThemes = [
   'primary',
@@ -24,25 +24,51 @@ export const systemThemes = [
   'danger',
   'info'
 ] as const;
-export type SystemTheme = typeof systemThemes[number];
+export type SystemTheme = (typeof systemThemes)[number];
 
-export const colors: Record<Color, string> = {
-  white: '#ffffff',
+export const createColors: Record<CreateColor, string> = {
   black: '#36373a',
-  orange: '#ff602f',
-  yellow: '#ffbe02',
-  green: '#27ae60',
-  blue: '#2f80ed',
-  harvest: '#039985',
-  defi: '#6d40c6'
+  brown: '#A3978E',
+  yellow: '#FB7D28',
+  red: '#CC281D',
+  green: '#8ED2A6',
+  blue: '#1386FC',
+  purple: '#DED5FE',
+  heybit: '#C04707',
+  harvest: '#114D24',
+  reward: '#EBECFD'
 };
-export const colorPalette = Object.entries(colors).reduce(
+
+export const statusColors: Record<SystemTheme, string> = {
+  primary: '#FF7D41',
+  secondary: '#36373a',
+  success: '#00A652',
+  warning: '#FFC93A',
+  danger: '#F8452A',
+  info: '#0095FF'
+};
+
+export const primaryColors: Record<CreateColor, string> = {
+  black: '#36373a', //800
+  brown: '#665b53', //700
+  yellow: '#fea930', //700
+  red: '#f55447', //400
+  green: '#33b46b', //400
+  blue: '#1a73e8', //700
+  purple: '#5258e4', //500
+  heybit: '#ff7d41', //400
+  harvest: '#54aa6c', //400
+  reward: '#595ad9' //400
+};
+
+export const colorPalette = Object.entries(createColors).reduce(
   (a, [name, color]) => ({
     ...a,
     [name]: new Matercolor(color)
   }),
   {}
 ) as AllColor;
+
 export const basicVariables = {
   //기본 변수. 그냥도 사용하지만 컴포넌트로 확장됨
   font: {
@@ -50,7 +76,7 @@ export const basicVariables = {
   "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
   "Malgun Gothic", sans-serif`,
     color: {
-      void: colorPalette.white[50],
+      void: '#FFFFFF',
       solid: colorPalette.black[800]
     },
     size: 16
@@ -76,7 +102,7 @@ export const basicVariables = {
     radius: 4
   },
   background: {
-    color: colorPalette.white[50]
+    color: '#FFFFFF'
   },
   transition: {
     duration: {
@@ -174,7 +200,7 @@ export const componentVariables = {
   modal: {
     width: 400,
     margin: 20,
-    background: colorPalette.white[50],
+    background: '#FFFFFF',
     dialog: {
       'padding-top': 52,
       'padding-right': 20,
@@ -218,7 +244,7 @@ export const componentVariables = {
     },
     negative: {
       icon: 'system/filled/danger',
-      color: colorPalette.orange[600]
+      color: colorPalette.red[600]
     }
   },
   header: {

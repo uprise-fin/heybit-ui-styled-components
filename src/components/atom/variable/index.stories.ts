@@ -1,6 +1,16 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
-import { Color, colorPalette, levels, prefix, serviceColors, systemColors } from './type';
+import {
+  CreateColor,
+  SystemTheme,
+  colorPalette,
+  levels,
+  prefix,
+  serviceColors,
+  statusColors,
+  systemColors,
+  primaryColors
+} from './type';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
 // ).find((x: CSSStyleRule) => x.selectorText === ":root") as CSSStyleRule;
@@ -21,7 +31,7 @@ export default {
 //         `
 //     )}
 //   `;
-const copy = (color: Color) => () => {
+const copy = (color: CreateColor) => () => {
   const variables = [...levels]
     .map((level) => `--${prefix}__${color}--${level}: ${colorPalette[color][level]};`)
     .join('');
@@ -53,7 +63,7 @@ const LevelTemplate: Story<unknown> = () =>
         white-space: nowrap;
         text-align: center;
         vertical-align: middle;
-        background: var(--backrgound);
+        background: var(--background);
       }
       .box__item:before {
         content: attr(data-color);
@@ -77,6 +87,32 @@ const LevelTemplate: Story<unknown> = () =>
       .box__item--title {
         width: 100px;
       }
+      .status{
+        width: 100%;
+        display: flex;
+        gap: 35px;
+      }
+      .status__item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        flex: 1 0 auto;
+        width: 130px;
+        height: 130px;
+        border-radius:100%;
+        text-align: center;
+        background: var(--background);
+      }
+      .status__item-title{
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .status__item-content{
+        margin:0;
+        font-size: 12px;
+        font-weight: 400;
+      }
     </style>
     <div class="table">
       <div class="box">
@@ -86,19 +122,19 @@ const LevelTemplate: Story<unknown> = () =>
         ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
       ${systemColors.map(
-        (name: Color) =>
+        (name: CreateColor) =>
           html`
             <div class="box">
               <div class="box__item box__item--title box__item--reversal">
-                <button @click=${copy(name)}>Copy</button> ${name}: ${colorPalette[name].color}
+                <button @click=${copy(name)}>Copy</button> ${name}: ${primaryColors[name]}
               </div>
               ${reverseLevels.map(
                 (x) =>
                   html`
                     <div
-                      style="--backrgound: var(--${prefix}__${name}--${x})"
+                      style="--background: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
-                      class="box__item ${colorPalette[name].color === colorPalette[name][x]
+                      class="box__item ${primaryColors[name] === colorPalette[name][x]
                         ? 'box__item--primary'
                         : ''}"
                     ></div>
@@ -114,26 +150,37 @@ const LevelTemplate: Story<unknown> = () =>
         ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
       ${serviceColors.map(
-        (name: Color) =>
+        (name: CreateColor) =>
           html`
             <div class="box">
               <div class="box__item box__item--title box__item--reversal">
                 <button @click=${copy(name)}>Copy</button>
-                ${name}: ${colorPalette[name].color}
+                ${name}: ${primaryColors[name]}
               </div>
               ${reverseLevels.map(
                 (x) =>
                   html`
                     <div
-                      style="--backrgound: var(--${prefix}__${name}--${x})"
+                      style="--background: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
-                      class="box__item ${colorPalette[name].color === colorPalette[name][x]
+                      class="box__item ${primaryColors[name] === colorPalette[name][x]
                         ? 'box__item--primary'
                         : ''}"
                     ></div>
                   `
               )}
             </div>
+          `
+      )}
+      </div>
+      <div class="status">
+      ${Object.keys(statusColors).map(
+        (key: SystemTheme) =>
+          html`
+            <dl class="status__item" style="--background: ${statusColors[key]}">
+              <dt class="status__item-title">${key}</dt>
+              <dd class="status__item-content">${statusColors[key]}</dd>
+            </dl>
           `
       )}
       </div>
