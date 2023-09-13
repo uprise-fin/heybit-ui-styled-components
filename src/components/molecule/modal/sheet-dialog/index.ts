@@ -36,7 +36,7 @@ export class HbSheetDialog extends Base {
 
   baseLoadingDuration = 500;
 
-  width = componentVariables.modal.width + 'px';
+  width = componentVariables.modal.sheetWidth + 'px';
 
   open: boolean;
 

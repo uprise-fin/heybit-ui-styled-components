@@ -59,10 +59,10 @@
   &__close-btn {
     z-index: 2;
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 52px;
-    height: 52px;
+    top: 14px;
+    right: 14px;
+    width: 24px;
+    height: 24px;
     padding: 0;
     border: 0;
     cursor: pointer;
@@ -82,12 +82,21 @@
       display: block;
       margin: 12px 0 0;
       font-weight: 700;
-      font-size: 22px;
+      font-size: 16px;
       line-height: 1.2;
       &:first-child {
         margin-top: 0;
       }
     }
+  }
+  &__caption {
+    text-align: var(--head-align);
+    font-size: 16px;
+    font-weight: 700;
+  }
+  p + &__caption {
+    font-size: 14px;
+    font-weight: 400;
   }
   &__body {
     @include scroll();
