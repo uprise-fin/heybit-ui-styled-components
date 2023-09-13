@@ -70,17 +70,18 @@
     background: none;
   }
   &__head {
-    margin: 0 0 10px;
+    margin: 0 0 20px;
     text-align: var(--head-align);
     &.empty {
       margin-bottom: 0;
     }
     &__icon {
       max-width: 60px;
+      margin-bottom: 20px;
     }
     &__title {
       display: block;
-      margin: 12px 0 0;
+      margin: 0;
       font-weight: 700;
       font-size: 16px;
       line-height: 1.2;
@@ -93,8 +94,9 @@
     text-align: var(--head-align);
     font-size: 16px;
     font-weight: 700;
+    margin: 20px 0 0;
   }
-  p + &__caption {
+  .hb-dialog__head__title + &__caption {
     font-size: 14px;
     font-weight: 400;
   }
@@ -107,8 +109,8 @@
     &__content {
       display: block;
       overflow: hidden;
-      font-weight: 400;
-      font-size: 14px;
+      font-weight: 500;
+      font-size: 15px;
       line-height: 140%;
       text-align: left;
       color: #727476;
@@ -132,17 +134,22 @@
       &.vertical {
         display: block;
         > * {
-          margin-top: 10px;
+          margin-top: 12px;
           &:first-child {
-            margin-top: 24px;
+            margin-top: 20px;
           }
         }
       }
     }
     &__anc {
-      display: inline-block;
-      margin-top: 16px;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 16px;
+      margin-top: 12px;
+      min-height: 30px;
+      font-weight: 500;
+      font-size: 15px;
     }
   }
 }

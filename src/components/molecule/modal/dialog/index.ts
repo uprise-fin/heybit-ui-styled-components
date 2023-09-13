@@ -45,7 +45,7 @@ export class HbDialog extends Base {
 
   baseLoadingDuration = 500;
 
-  width = componentVariables.modal.dialogWidth + 'px';
+  width = componentVariables.modal.width.dialog + 'px';
 
   height = '0px';
 
@@ -139,6 +139,7 @@ export class HbDialog extends Base {
               ['hb-dialog__head']: true,
               empty: !this.icon && !this.title
             })}
+            part="head"
           >
             ${this.icon
               ? html`<hb-img

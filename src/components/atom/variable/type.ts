@@ -198,8 +198,10 @@ export const componentVariables = {
     }
   },
   modal: {
-    sheetWidth: 340,
-    dialogWidth: 280,
+    width: {
+      sheet: 375,
+      dialog: 280
+    },
     margin: 20,
     background: '#FFFFFF',
     dialog: {
