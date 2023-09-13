@@ -5,7 +5,7 @@ import type {
   HbButtonType
 } from '@/components/molecule/button/type';
 import { wait } from '@/utils';
-import { type TemplateResult, html } from 'lit';
+import { type TemplateResult, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { html as staticHtml, literal } from 'lit/static-html.js';
 import '@/components/atom/icon';
@@ -52,7 +52,7 @@ export class HbButton extends Base {
 
   href: string;
 
-  target: React.HTMLAttributeAnchorTarget;
+  target: React.HTMLAttributeAnchorTarget = '';
 
   rel: string;
 
@@ -125,7 +125,7 @@ export class HbButton extends Base {
           class="hb-button__container"
           part="container"
           .href="${this.href}"
-          .target="${this.target}"
+          .target="${this.target || nothing}"
           .rel="${this.rel || this.target === '_blank' ? 'noreferrer noopener' : ''}"
           ?disabled=${isDisabled}
           @click="${this._handleClick}"
