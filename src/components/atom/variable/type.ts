@@ -13,8 +13,8 @@ export const systemColors = ['black', 'brown', 'yellow', 'red', 'green', 'blue',
 export type SystemColor = (typeof systemColors)[number];
 export const serviceColors = ['heybit', 'harvest', 'reward'] as const;
 export type ServiceColor = (typeof serviceColors)[number];
-export type Color = SystemColor | ServiceColor;
-export type AllColor = Record<Color, Matercolor>;
+export type CreateColor = SystemColor | ServiceColor;
+export type AllColor = Record<CreateColor, Matercolor>;
 
 export const systemThemes = [
   'primary',
@@ -26,7 +26,7 @@ export const systemThemes = [
 ] as const;
 export type SystemTheme = (typeof systemThemes)[number];
 
-export const colors: Record<Color, string> = {
+export const createColors: Record<CreateColor, string> = {
   black: '#36373a',
   brown: '#A3978E',
   yellow: '#FB7D28',
@@ -36,7 +36,7 @@ export const colors: Record<Color, string> = {
   purple: '#DED5FE',
   heybit: '#C04707',
   harvest: '#114D24',
-  reward: '#DED5FE'
+  reward: '#EBECFD'
 };
 
 export const statusColors: Record<SystemTheme, string> = {
@@ -48,7 +48,20 @@ export const statusColors: Record<SystemTheme, string> = {
   info: '#0095FF'
 };
 
-export const colorPalette = Object.entries(colors).reduce(
+export const primaryColors: Record<CreateColor, string> = {
+  black: '#36373a', //800
+  brown: '#665b53', //700
+  yellow: '#fea930', //700
+  red: '#f55447', //400
+  green: '#33b46b', //400
+  blue: '#1a73e8', //700
+  purple: '#5258e4', //500
+  heybit: '#ff7d41', //400
+  harvest: '#54aa6c', //400
+  reward: '#595ad9' //400
+};
+
+export const colorPalette = Object.entries(createColors).reduce(
   (a, [name, color]) => ({
     ...a,
     [name]: new Matercolor(color)

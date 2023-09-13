@@ -1,14 +1,15 @@
 import { Meta, Story } from '@storybook/web-components';
 import { html } from 'lit';
 import {
-  Color,
+  CreateColor,
   SystemTheme,
   colorPalette,
   levels,
   prefix,
   serviceColors,
   statusColors,
-  systemColors
+  systemColors,
+  primaryColors
 } from './type';
 // const variables = Object.values(
 //   require("./initial.scss").default.styleSheet.cssRules
@@ -30,7 +31,7 @@ export default {
 //         `
 //     )}
 //   `;
-const copy = (color: Color) => () => {
+const copy = (color: CreateColor) => () => {
   const variables = [...levels]
     .map((level) => `--${prefix}__${color}--${level}: ${colorPalette[color][level]};`)
     .join('');
@@ -75,6 +76,10 @@ const LevelTemplate: Story<unknown> = () =>
       .box__item:nth-child(3) {
         color: #fff;
       }
+      .box__item--primary::before {
+        content: 'P';
+        font-size: 2em;
+      }
       .box__item--reversal {
         color: #fff;
         background: #000;
@@ -82,7 +87,7 @@ const LevelTemplate: Story<unknown> = () =>
       .box__item--title {
         width: 100px;
       }
-      .status__items{
+      .status{
         width: 100%;
         display: flex;
         gap: 35px;
@@ -117,11 +122,11 @@ const LevelTemplate: Story<unknown> = () =>
         ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
       ${systemColors.map(
-        (name: Color) =>
+        (name: CreateColor) =>
           html`
             <div class="box">
               <div class="box__item box__item--title box__item--reversal">
-                <button @click=${copy(name)}>Copy</button> ${name}: ${colorPalette[name].color}
+                <button @click=${copy(name)}>Copy</button> ${name}: ${primaryColors[name]}
               </div>
               ${reverseLevels.map(
                 (x) =>
@@ -129,7 +134,7 @@ const LevelTemplate: Story<unknown> = () =>
                     <div
                       style="--background: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
-                      class="box__item ${colorPalette[name].color === colorPalette[name][x]
+                      class="box__item ${primaryColors[name] === colorPalette[name][x]
                         ? 'box__item--primary'
                         : ''}"
                     ></div>
@@ -145,12 +150,12 @@ const LevelTemplate: Story<unknown> = () =>
         ${reverseLevels.map((x) => html` <div class="box__item box__item--reversal">${x}</div> `)}
       </div>
       ${serviceColors.map(
-        (name: Color) =>
+        (name: CreateColor) =>
           html`
             <div class="box">
               <div class="box__item box__item--title box__item--reversal">
                 <button @click=${copy(name)}>Copy</button>
-                ${name}: ${colorPalette[name].color}
+                ${name}: ${primaryColors[name]}
               </div>
               ${reverseLevels.map(
                 (x) =>
@@ -158,7 +163,7 @@ const LevelTemplate: Story<unknown> = () =>
                     <div
                       style="--background: var(--${prefix}__${name}--${x})"
                       data-color="${colorPalette[name][x]}"
-                      class="box__item ${colorPalette[name].color === colorPalette[name][x]
+                      class="box__item ${primaryColors[name] === colorPalette[name][x]
                         ? 'box__item--primary'
                         : ''}"
                     ></div>
