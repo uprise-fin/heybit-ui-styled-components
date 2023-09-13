@@ -152,11 +152,11 @@ export const Horizon: Story = {
 export const Vertical: Story = {
   args: {
     ...Horizon.args,
-    open: true,
     anchor: {
       name: '탈퇴하기',
       href: 'https://www.heybit.io'
     },
+    open: true,
     buttonAlign: 'vertical'
   }
 };
@@ -173,6 +173,11 @@ export const Sheet: Story = {
   args: {
     ...Horizon.args,
     layout: 'sheet',
+    anchor: {
+      name: '탈퇴하기',
+      href: 'https://www.heybit.io'
+    },
+    buttonAlign: 'vertical',
     width: ''
   }
 };
