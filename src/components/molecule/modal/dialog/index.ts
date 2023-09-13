@@ -21,6 +21,7 @@ import { customElement } from 'lit/decorators.js';
  * @property hideCloseBtn
  * @property icon
  * @property title
+ * @property caption
  * @slot 내용
  * @csspart container
  * @csspart icon
@@ -44,7 +45,7 @@ export class HbDialog extends Base {
 
   baseLoadingDuration = 500;
 
-  width = componentVariables.modal.width + 'px';
+  width = componentVariables.modal.dialogWidth + 'px';
 
   height = '0px';
 
@@ -55,6 +56,8 @@ export class HbDialog extends Base {
   icon = '';
 
   title = '';
+
+  caption = '';
 
   persistent = false;
 
@@ -98,6 +101,7 @@ export class HbDialog extends Base {
       buttonAlign: { type: String, Reflect: true },
       headAlign: { type: String, Reflect: true },
       title: { type: String, Reflect: true },
+      caption: { type: String, Reflect: true },
       icon: { type: String, Reflect: true },
       transitionType: { type: String, Reflect: true }
     };
@@ -146,6 +150,9 @@ export class HbDialog extends Base {
                 ></hb-img>`
               : ''}${this.title
               ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>`
+              : ''}
+            ${this.caption
+              ? html`<p part="caption" class="hb-dialog__caption">${this.caption}</p>`
               : ''}
           </div>
           <div class="hb-dialog__body">

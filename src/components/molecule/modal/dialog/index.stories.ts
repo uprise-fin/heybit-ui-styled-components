@@ -29,6 +29,7 @@ export default {
       .headAlign=${props.headAlign}
       .icon=${props.icon}
       .title=${props.title}
+      .caption=${props.caption}
       .buttonAlign=${props.buttonAlign}
       ?loading=${props.loading}
       .baseLoadingDuration=${props.baseLoadingDuration}
@@ -120,6 +121,7 @@ export const Horizon: Story = {
     headAlign: 'center',
     icon: thunderImg,
     title: '팝업 예시입니다!',
+    caption: '캡션 예시입니다.',
     content: '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',
     buttons: [
       {
