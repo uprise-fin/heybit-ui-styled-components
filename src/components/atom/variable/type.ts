@@ -36,7 +36,7 @@ export const createColors: Record<CreateColor, string> = {
   purple: '#DED5FE',
   heybit: '#C04707',
   harvest: '#114D24',
-  reward: '#EBECFD'
+  reward: '#848EF3'
 };
 
 export const statusColors: Record<SystemTheme, string> = {
@@ -55,10 +55,10 @@ export const primaryColors: Record<CreateColor, string> = {
   red: '#f55447', //400
   green: '#33b46b', //400
   blue: '#1a73e8', //700
-  purple: '#5258e4', //500
+  purple: '#8a6df4', //500
   heybit: '#ff7d41', //400
   harvest: '#54aa6c', //400
-  reward: '#595ad9' //400
+  reward: '#6872ef' //400
 };
 
 export const colorPalette = Object.entries(createColors).reduce(
