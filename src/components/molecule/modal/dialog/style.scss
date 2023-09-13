@@ -70,7 +70,7 @@
     background: none;
   }
   &__head {
-    margin: 0 0 20px;
+    margin: 0;
     text-align: var(--head-align);
     &.empty {
       margin-bottom: 0;
@@ -81,7 +81,7 @@
     }
     &__title {
       display: block;
-      margin: 0;
+      margin: 0 0 20px;
       font-weight: 700;
       font-size: 16px;
       line-height: 1.2;
@@ -94,7 +94,7 @@
     text-align: var(--head-align);
     font-size: 16px;
     font-weight: 700;
-    margin: 20px 0 0;
+    margin: 0 0 20px;
   }
   .hb-dialog__head__title + &__caption {
     font-size: 14px;
@@ -105,6 +105,7 @@
     $margin: 10px;
     overflow: auto;
     margin-right: calc(var(--husc__modal__dialog__padding-right) * -1);
+    margin-bottom: 20px;
     padding-right: calc(var(--husc__modal__dialog__padding-right));
     &__content {
       display: block;
@@ -136,7 +137,7 @@
         > * {
           margin-top: 12px;
           &:first-child {
-            margin-top: 20px;
+            margin-top: 0;
           }
         }
       }
