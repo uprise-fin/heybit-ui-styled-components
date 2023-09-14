@@ -105,11 +105,11 @@
     $margin: 10px;
     overflow: auto;
     margin-right: calc(var(--husc__modal__dialog__padding-right) * -1);
-    margin-bottom: 20px;
     padding-right: calc(var(--husc__modal__dialog__padding-right));
     &__content {
       display: block;
       overflow: hidden;
+      margin-bottom: 20px;
       font-weight: 500;
       font-size: 15px;
       line-height: 140%;
@@ -128,7 +128,7 @@
         flex-direction: row;
         > * {
           flex: 1;
-          margin: 24px 0 0 10px;
+          margin: 0 0 0 10px;
           text-align: center;
         }
       }
