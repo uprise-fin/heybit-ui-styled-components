@@ -141,7 +141,7 @@ export class HbDialog extends Base {
             })}
             part="head"
           >
-            <div part="icon-title">
+            <div class="hb-dialog__head__icon-title" part="icon-title">
               ${this.icon
                 ? html`<hb-img
                     part="icon"
