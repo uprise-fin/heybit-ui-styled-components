@@ -59,8 +59,8 @@
   &__close-btn {
     z-index: 2;
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 22px;
+    right: 20px;
     width: 24px;
     height: 24px;
     padding: 0;
@@ -75,17 +75,23 @@
     &.empty {
       margin-bottom: 0;
     }
+    &__icon-title {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding-right: 34px;
+    }
     &__icon {
-      max-width: 60px;
-      margin-bottom: 8px;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 0;
     }
     &__title {
       display: block;
-      // margin: 0 0 20px;
       margin: 0;
       font-weight: 700;
-      font-size: 16px;
-      line-height: 1.2;
+      font-size: 20px;
+      line-height: 1.4;
       &:first-child {
         margin-top: 0;
       }
@@ -93,14 +99,13 @@
   }
   &__caption {
     text-align: var(--head-align);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
-    margin: 8px 0 0;
-    // margin: 0 0 20px;
   }
   .hb-dialog__head__title + &__caption {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 8px 0 0;
   }
   &__body {
     @include scroll();
@@ -115,7 +120,7 @@
       font-size: 15px;
       line-height: 140%;
       text-align: left;
-      color: #727476;
+      color: #36373a;
       box-sizing: border-box;
     }
   } //pnpm add -g pnpm

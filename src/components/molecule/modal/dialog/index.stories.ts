@@ -38,11 +38,7 @@ export default {
       .buttons=${props.buttons}
       .anchor=${props.anchor}
     >
-      <div
-        style="font-weight: 400;font-size: 14px;line-height: 140%;text-align: center;color: #828486;"
-      >
-        ${props.content}
-      </div>
+      <div>${props.content}</div>
     </hb-dialog>`,
   argTypes: {
     layout: {
@@ -121,7 +117,6 @@ export const Horizon: Story = {
     headAlign: 'center',
     icon: thunderImg,
     title: '팝업 예시입니다!',
-    caption: '캡션 예시입니다.',
     content: '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',
     buttons: [
       {
