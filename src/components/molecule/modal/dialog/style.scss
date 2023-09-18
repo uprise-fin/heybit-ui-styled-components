@@ -70,7 +70,7 @@
     background: none;
   }
   &__head {
-    margin: 0;
+    margin: 0 0 20px;
     text-align: var(--head-align);
     &.empty {
       margin-bottom: 0;
@@ -81,7 +81,8 @@
     }
     &__title {
       display: block;
-      margin: 0 0 20px;
+      // margin: 0 0 20px;
+      margin: 0;
       font-weight: 700;
       font-size: 16px;
       line-height: 1.2;
@@ -94,7 +95,8 @@
     text-align: var(--head-align);
     font-size: 16px;
     font-weight: 700;
-    margin: 0 0 20px;
+    margin: 20px 0 0;
+    // margin: 0 0 20px;
   }
   .hb-dialog__head__title + &__caption {
     font-size: 14px;
@@ -109,7 +111,6 @@
     &__content {
       display: block;
       overflow: hidden;
-      margin-bottom: 20px;
       font-weight: 500;
       font-size: 15px;
       line-height: 140%;
@@ -121,6 +122,7 @@
 
   &__foot {
     text-align: center;
+    margin-top: 20px;
     &__button-wrap {
       &.horizon {
         display: flex;
