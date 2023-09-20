@@ -4,7 +4,7 @@
   &__container {
     @include scroll();
     position: relative;
-    overflow: hidden;
+    overflow: auto;
     width: calc(100% - (var(--husc__modal__margin) * 2));
     margin: auto;
     max-height: calc(100vh - var(--husc__modal__margin) - var(--husc__modal__margin));
