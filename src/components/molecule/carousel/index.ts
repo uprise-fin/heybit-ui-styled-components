@@ -375,6 +375,7 @@ export class HbCarousel extends Base {
                 class="hb-carousel__indicate__btn${i === this.index
                   ? ' hb-carousel__indicate__btn--accent'
                   : ''}"
+                title="View Item ${i + 1}"
               ></button>`
           )}
       </div>`;
