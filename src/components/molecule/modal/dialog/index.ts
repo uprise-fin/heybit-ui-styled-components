@@ -137,7 +137,7 @@ export class HbDialog extends Base {
           <div
             class=${classMap({
               ['hb-dialog__head']: true,
-              empty: !this.icon && !this.title
+              empty: !this.title && !this.caption
             })}
             part="head"
           >
