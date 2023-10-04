@@ -141,20 +141,22 @@ export class HbDialog extends Base {
             })}
             part="head"
           >
-            <div class="hb-dialog__head__icon-title" part="icon-title">
-              ${this.icon
-                ? html`<hb-img
-                    part="icon"
-                    loadingWidth="60"
-                    loadingHeight="60"
-                    src=${this.icon}
-                    class="hb-dialog__head__icon"
-                  ></hb-img>`
-                : ''}
-              ${this.title
-                ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>`
-                : ''}
-            </div>
+            ${this.title
+              ? html`<div class="hb-dialog__head__icon-title" part="icon-title">
+                  ${this.icon
+                    ? html`<hb-img
+                        part="icon"
+                        loadingWidth="60"
+                        loadingHeight="60"
+                        src=${this.icon}
+                        class="hb-dialog__head__icon"
+                      ></hb-img>`
+                    : ''}
+                  ${this.title
+                    ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>`
+                    : ''}
+                </div>`
+              : ''}
             ${this.caption
               ? html`<p part="caption" class="hb-dialog__caption">${this.caption}</p>`
               : ''}
