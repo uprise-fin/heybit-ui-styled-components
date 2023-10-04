@@ -116,8 +116,10 @@ export const Horizon: Story = {
     baseLoadingDuration: 0,
     headAlign: 'center',
     icon: thunderImg,
-    title: '팝업 예시입니다!',
-    content: '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',
+    title: 'Title( 팝업 타이틀 )',
+    caption: 'Caption( 팝업 캡션 )',
+    content:
+      'Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 )',
     buttons: [
       {
         name: '닫기',

@@ -102,9 +102,9 @@
     font-size: 18px;
     font-weight: 700;
   }
-  .hb-dialog__icon-title + &__caption {
-    font-size: 15px;
-    font-weight: 500;
+  .hb-dialog__head__icon-title + &__caption {
+    font-size: 14px;
+    font-weight: 400;
     margin: 8px 0 0;
   }
   &__body {
