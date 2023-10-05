@@ -97,6 +97,9 @@
       }
     }
   }
+  &__close-btn + &__head > &__title {
+    padding-right: 0;
+  }
   &__caption {
     text-align: var(--head-align);
     font-size: 18px;
