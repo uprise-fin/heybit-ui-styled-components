@@ -87,6 +87,7 @@
       margin-bottom: 0;
     }
     &__title {
+      white-space: pre-wrap;
       display: block;
       margin: 0;
       font-weight: 700;
@@ -101,6 +102,7 @@
     padding-right: 0;
   }
   &__caption {
+    white-space: pre-wrap;
     text-align: var(--head-align);
     font-size: 18px;
     font-weight: 700;
