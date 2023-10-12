@@ -1,11 +1,12 @@
 import '../';
 import { HbTransitionType } from '@/components/atom/transition/type';
-import { type HorizonAlign, componentVariables } from '@/components/atom/variable/type';
+import { componentVariables } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
 import {
   HbDialogAnchor,
   HbDialogButton,
-  HbModalButtonAlign
+  HbModalButtonAlign,
+  HbModalHeadAlign
 } from '@/components/molecule/modal/type';
 import { wait } from '@/utils';
 import { html } from 'lit';
@@ -51,7 +52,7 @@ export class HbDialog extends Base {
 
   open: boolean;
 
-  headAlign: HorizonAlign = 'center';
+  headAlign: HbModalHeadAlign = 'center';
 
   icon = '';
 

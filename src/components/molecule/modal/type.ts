@@ -38,3 +38,5 @@ export interface HbDialogAnchor extends HbAnchorProps {
 }
 
 export type HbModalButtonAlign = 'vertical' | 'horizon';
+
+export type HbModalHeadAlign = 'left' | 'center' | 'right';
