@@ -79,7 +79,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      padding-right: 34px;
+      padding-right: 0;
     }
     &__icon {
       width: 30px;
@@ -99,8 +99,10 @@
       }
     }
   }
-  &__close-btn + &__head > &__head__icon-title {
-    padding-right: 0;
+  &__close-btn + &__head {
+    .hb-dialog__head__icon-title {
+      padding-right: 34px;
+    }
   }
   &__caption {
     white-space: pre-wrap;
