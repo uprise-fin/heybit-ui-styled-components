@@ -43,17 +43,17 @@ export default {
   argTypes: {
     layout: {
       type: { name: 'string', required: false },
-      options: ['normal', 'page', 'sheet'],
+      options: ['dialog', 'page', 'sheet'],
       description:
-        '반응형으로 적용하려면 모바일 디바이스에서는 page 또는 sheet layout , 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
+        '반응형으로 적용하려면 모바일 디바이스에서는 page 또는 sheet layout , 데스크탑 이상의 크기(1020px)에서는 dialog layout을 사용합니다.',
       table: {
-        type: { summary: 'normal | page | sheet' },
-        defaultValue: { summary: 'normal' }
+        type: { summary: 'dialog | page | sheet' },
+        defaultValue: { summary: 'dialog' }
       },
       control: { type: 'radio' }
     },
     width: {
-      description: 'normal type dialog에만 해당합니다.'
+      description: 'dialog에만 해당합니다.'
     },
     preventBodyScroll: {
       description: `dialog가 열릴 때, modal-open 클래스 추가 여부를 결정합니다. 클래스가 있는 경우, body { overflow: hidden; }을 주어 스크롤 제어가 가능합니다.`,
@@ -104,15 +104,15 @@ type Story = StoryObj<HbDialogExpns>;
 
 export const Horizon: Story = {
   args: {
-    layout: 'normal',
+    layout: 'dialog',
     width: '340px',
     preventBodyScroll: true,
     open: false,
     persistent: false,
     loading: false,
     disabled: false,
-    hideCloseBtn: false,
-    buttonAlign: 'horizon',
+    hideCloseBtn: true,
+    buttonAlign: 'vertical',
     baseLoadingDuration: 0,
     headAlign: 'center',
     icon: thunderImg,
@@ -127,21 +127,21 @@ export const Horizon: Story = {
         event: async function () {
           await new Promise((resolve) => setTimeout(() => resolve(true), 5000));
         }
-      },
-      {
-        name: '열기',
-        theme: 'secondary',
-        event: function () {
-          console.log('2');
-        }
-      },
-      {
-        name: '삼번',
-        theme: 'tertiary',
-        event: function () {
-          console.log('3');
-        }
       }
+      // {
+      //   name: '열기',
+      //   theme: 'secondary',
+      //   event: function () {
+      //     console.log('2');
+      //   }
+      // },
+      // {
+      //   name: '삼번',
+      //   theme: 'tertiary',
+      //   event: function () {
+      //     console.log('3');
+      //   }
+      // }
     ]
   }
 };
@@ -149,10 +149,10 @@ export const Horizon: Story = {
 export const Vertical: Story = {
   args: {
     ...Horizon.args,
-    anchor: {
-      name: '탈퇴하기',
-      href: 'https://www.heybit.io'
-    },
+    // anchor: {
+    //   name: '탈퇴하기',
+    //   href: 'https://www.heybit.io'
+    // },
     open: true,
     buttonAlign: 'vertical'
   }
