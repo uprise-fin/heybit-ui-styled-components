@@ -30,15 +30,36 @@
     &.bottom-up {
       margin-bottom: 0;
     }
-    &.page-layout {
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
-      max-height: none;
+    &.dialog-layout {
+      width: 240px;
       margin: 0;
-      padding: 60px var(--husc__modal__margin) var(--husc__modal__dialog__padding-bottom);
-      box-sizing: border-box;
-      border-radius: 0;
+      padding: var(--husc__modal__dialog__padding-top) var(--husc__modal__dialog__padding-right)
+        var(--husc__modal__dialog__padding-bottom) var(--husc__modal__dialog__padding-left);
+      .hb-dialog__head {
+        margin-bottom: 0;
+        &__icon {
+          width: 36px;
+          height: 36px;
+        }
+        &__title {
+          font-size: 18px;
+          line-height: 23px;
+        }
+        &__icon-title {
+          display: flex;
+          flex-direction: column;
+          padding: 1px !important;
+          gap: 8px;
+        }
+      }
+      .hb-dialog__close-btn + .hb-dialog__head {
+        .hb-dialog__head__icon-title {
+          padding: 22px 0 0 !important;
+        }
+      }
+      .hb-dialog__body {
+        display: none;
+      }
     }
     &.sheet-layout {
       width: 100vw;
@@ -70,7 +91,7 @@
     background: none;
   }
   &__head {
-    margin: 0;
+    margin: 0 0 20px;
     text-align: var(--head-align);
     &.empty {
       margin-bottom: 0;
