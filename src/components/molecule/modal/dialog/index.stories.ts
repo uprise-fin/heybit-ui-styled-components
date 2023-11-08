@@ -20,7 +20,7 @@ export default {
     </style>
     <hb-dialog
       @event=${function () {
-        console.log('djakldjawlkjadwlk');
+        console.log('test');
       }}
       layout="${props.layout}"
       width=${props.width}
@@ -43,17 +43,17 @@ export default {
   argTypes: {
     layout: {
       type: { name: 'string', required: false },
-      options: ['dialog', 'page', 'sheet'],
+      options: ['normal', 'sheet', 'dialog'],
       description:
-        '반응형으로 적용하려면 모바일 디바이스에서는 page 또는 sheet layout , 데스크탑 이상의 크기(1020px)에서는 dialog layout을 사용합니다.',
+        '반응형으로 적용하려면 모바일 디바이스에서는 sheet layout , 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
       table: {
-        type: { summary: 'dialog | page | sheet' },
-        defaultValue: { summary: 'dialog' }
+        type: { summary: 'normal | sheet | dialog' },
+        defaultValue: { summary: 'normal' }
       },
       control: { type: 'radio' }
     },
     width: {
-      description: 'dialog에만 해당합니다.'
+      description: 'normal type dialog에만 해당합니다.'
     },
     preventBodyScroll: {
       description: `dialog가 열릴 때, modal-open 클래스 추가 여부를 결정합니다. 클래스가 있는 경우, body { overflow: hidden; }을 주어 스크롤 제어가 가능합니다.`,
@@ -105,18 +105,17 @@ type Story = StoryObj<HbDialogExpns>;
 export const Horizon: Story = {
   args: {
     layout: 'dialog',
-    width: '340px',
     preventBodyScroll: true,
     open: false,
     persistent: false,
     loading: false,
     disabled: false,
-    hideCloseBtn: true,
+    hideCloseBtn: false,
     buttonAlign: 'vertical',
     baseLoadingDuration: 0,
     headAlign: 'center',
     icon: thunderImg,
-    title: 'Title( 팝업 타이틀 )',
+    // title: 'Title( 팝업 타이틀 )',
     caption: 'Caption( 팝업 캡션 )',
     content:
       'Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 )',
@@ -158,10 +157,10 @@ export const Vertical: Story = {
   }
 };
 
-export const Page: Story = {
+export const Dialog: Story = {
   args: {
     ...Horizon.args,
-    layout: 'page',
+    layout: 'dialog',
     width: ''
   }
 };
