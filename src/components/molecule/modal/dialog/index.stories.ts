@@ -115,7 +115,7 @@ export const Horizon: Story = {
     baseLoadingDuration: 0,
     headAlign: 'center',
     icon: thunderImg,
-    // title: 'Title( 팝업 타이틀 )',
+    title: 'Title( 팝업 타이틀 )',
     caption: 'Caption( 팝업 캡션 )',
     content:
       'Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 )',
@@ -126,21 +126,21 @@ export const Horizon: Story = {
         event: async function () {
           await new Promise((resolve) => setTimeout(() => resolve(true), 5000));
         }
+      },
+      {
+        name: '열기',
+        theme: 'secondary',
+        event: function () {
+          console.log('2');
+        }
+      },
+      {
+        name: '삼번',
+        theme: 'tertiary',
+        event: function () {
+          console.log('3');
+        }
       }
-      // {
-      //   name: '열기',
-      //   theme: 'secondary',
-      //   event: function () {
-      //     console.log('2');
-      //   }
-      // },
-      // {
-      //   name: '삼번',
-      //   theme: 'tertiary',
-      //   event: function () {
-      //     console.log('3');
-      //   }
-      // }
     ]
   }
 };
@@ -148,10 +148,10 @@ export const Horizon: Story = {
 export const Vertical: Story = {
   args: {
     ...Horizon.args,
-    // anchor: {
-    //   name: '탈퇴하기',
-    //   href: 'https://www.heybit.io'
-    // },
+    anchor: {
+      name: '탈퇴하기',
+      href: 'https://www.heybit.io'
+    },
     open: true,
     buttonAlign: 'vertical'
   }
