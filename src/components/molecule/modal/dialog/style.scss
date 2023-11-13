@@ -43,12 +43,12 @@
         }
         &__title {
           font-size: 18px;
-          line-height: 23px;
+          line-height: 130%;
         }
         &__icon-title {
           display: flex;
           flex-direction: column;
-          padding: 1px !important;
+          padding: 0 !important;
           gap: 8px;
         }
       }
@@ -130,6 +130,7 @@
     text-align: var(--head-align);
     font-size: 18px;
     font-weight: 700;
+    color: var(--hb__black--500);
     margin: 0;
   }
   .hb-dialog__head__icon-title + &__caption {

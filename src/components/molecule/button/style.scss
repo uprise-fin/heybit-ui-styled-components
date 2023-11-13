@@ -23,7 +23,7 @@ $hb-button__size: (
     font-size: 13px,
     height: 40px,
     font-weight: 500,
-    border-radius: var(--husc__border__radius)
+    border-radius: calc(var(--husc__border__radius) * 2)
   ),
   xsmall: (
     font-size: 13px,
