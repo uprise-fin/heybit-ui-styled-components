@@ -158,8 +158,11 @@
 
   &__foot {
     text-align: center;
-    margin-top: 20px;
     &__button-wrap {
+      margin-top: 0;
+      &:has(> *) {
+        margin-top: 20px;
+      }
       &.horizon {
         display: flex;
         margin-left: -10px;

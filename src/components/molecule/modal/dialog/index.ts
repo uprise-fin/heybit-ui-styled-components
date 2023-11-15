@@ -177,18 +177,17 @@ export class HbDialog extends Base {
                     size=${this.layout === 'dialog' ? 'small' : 'medium'}
                     >${x.name}</hb-button
                   >`
-              )}
+              )}${this.anchor && this.anchor.name
+                ? html`<hb-anchor
+                    ?disabled=${this.eventDisabled || this.disabled}
+                    class="hb-dialog__foot__anc"
+                    href=${this.anchor.href}
+                    target=${this.anchor.target}
+                    @event=${this.anchor.event}
+                    >${this.anchor.name}</hb-anchor
+                  >`
+                : ''}
             </div>
-            ${this.anchor && this.anchor.name
-              ? html`<hb-anchor
-                  ?disabled=${this.eventDisabled || this.disabled}
-                  class="hb-dialog__foot__anc"
-                  href=${this.anchor.href}
-                  target=${this.anchor.target}
-                  @event=${this.anchor.event}
-                  >${this.anchor.name}</hb-anchor
-                >`
-              : ''}
           </div>
         </div>
       </hb-modal>
