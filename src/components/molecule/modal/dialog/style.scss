@@ -137,6 +137,7 @@
     font-size: 14px;
     font-weight: 400;
     margin: 8px 0 0;
+    color: var(--hb__black--800)
   }
   &__body {
     @include scroll();
