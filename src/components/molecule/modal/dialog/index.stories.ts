@@ -28,6 +28,8 @@ export default {
       ?open=${props.open}
       .headAlign=${props.headAlign}
       .icon=${props.icon}
+      .iconColor=${props.iconColor}
+      .image=${props.image}
       .title=${props.title}
       .caption=${props.caption}
       .buttonAlign=${props.buttonAlign}
@@ -114,7 +116,9 @@ export const Horizon: Story = {
     buttonAlign: 'vertical',
     baseLoadingDuration: 0,
     headAlign: 'center',
-    icon: thunderImg,
+    image: thunderImg,
+    // icon: 'system/filled/logo-naver',
+    // iconColor: 'var(--hb__harvest--800)',
     title: 'Title( 팝업 타이틀 )',
     caption: 'Caption( 팝업 캡션 )',
     content:

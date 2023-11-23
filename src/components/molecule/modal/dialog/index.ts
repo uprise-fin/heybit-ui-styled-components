@@ -20,6 +20,8 @@ import { customElement } from 'lit/decorators.js';
  * @property persistent
  * @property hideCloseBtn
  * @property icon
+ * @property iconColor
+ * @property image
  * @property title
  * @property caption
  * @slot 내용
@@ -54,6 +56,10 @@ export class HbDialog extends Base {
   headAlign: HorizonAlign = 'center';
 
   icon = '';
+
+  iconColor = '';
+
+  image = '';
 
   title = '';
 
@@ -103,6 +109,8 @@ export class HbDialog extends Base {
       title: { type: String, Reflect: true },
       caption: { type: String, Reflect: true },
       icon: { type: String, Reflect: true },
+      iconColor: { type: String, Reflect: true },
+      image: { type: String, Reflect: true },
       transitionType: { type: String, Reflect: true }
     };
   }
@@ -144,11 +152,20 @@ export class HbDialog extends Base {
             ${this.title
               ? html`<div class="hb-dialog__head__icon-title" part="icon-title">
                   ${this.icon
-                    ? html`<hb-img
+                    ? html`<hb-icon
                         part="icon"
                         loadingWidth="60"
                         loadingHeight="60"
-                        src=${this.icon}
+                        icon=${this.icon}
+                        class="hb-dialog__head__icon"
+                        style=${this.iconColor ? `--husc__icon__color:${this.iconColor}` : ''}
+                      ></hb-img>`
+                    : this.image
+                    ? html`<hb-img
+                        part="image"
+                        loadingWidth="60"
+                        loadingHeight="60"
+                        src=${this.image}
                         class="hb-dialog__head__icon"
                       ></hb-img>`
                     : ''}
