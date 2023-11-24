@@ -20,7 +20,10 @@ import { customElement } from 'lit/decorators.js';
  * @property persistent
  * @property hideCloseBtn
  * @property icon
+ * @property iconColor
+ * @property image
  * @property title
+ * @property caption
  * @slot 내용
  * @csspart container
  * @csspart icon
@@ -44,7 +47,7 @@ export class HbDialog extends Base {
 
   baseLoadingDuration = 500;
 
-  width = componentVariables.modal.width + 'px';
+  width = componentVariables.modal.width.dialog + 'px';
 
   height = '0px';
 
@@ -54,7 +57,13 @@ export class HbDialog extends Base {
 
   icon = '';
 
+  iconColor = '';
+
+  image = '';
+
   title = '';
+
+  caption = '';
 
   persistent = false;
 
@@ -98,7 +107,10 @@ export class HbDialog extends Base {
       buttonAlign: { type: String, Reflect: true },
       headAlign: { type: String, Reflect: true },
       title: { type: String, Reflect: true },
+      caption: { type: String, Reflect: true },
       icon: { type: String, Reflect: true },
+      iconColor: { type: String, Reflect: true },
+      image: { type: String, Reflect: true },
       transitionType: { type: String, Reflect: true }
     };
   }
@@ -133,19 +145,37 @@ export class HbDialog extends Base {
           <div
             class=${classMap({
               ['hb-dialog__head']: true,
-              empty: !this.icon && !this.title
+              empty: !this.title && !this.caption
             })}
+            part="head"
           >
-            ${this.icon
-              ? html`<hb-img
-                  part="icon"
-                  loadingWidth="60"
-                  loadingHeight="60"
-                  src=${this.icon}
-                  class="hb-dialog__head__icon"
-                ></hb-img>`
-              : ''}${this.title
-              ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>`
+            ${this.title
+              ? html`<div class="hb-dialog__head__icon-title" part="icon-title">
+                  ${this.icon
+                    ? html`<hb-icon
+                        part="icon"
+                        loadingWidth="60"
+                        loadingHeight="60"
+                        icon=${this.icon}
+                        class="hb-dialog__head__icon"
+                        style=${this.iconColor ? `--husc__icon__color:${this.iconColor}` : ''}
+                      ></hb-img>`
+                    : this.image
+                    ? html`<hb-img
+                        part="image"
+                        loadingWidth="60"
+                        loadingHeight="60"
+                        src=${this.image}
+                        class="hb-dialog__head__icon"
+                      ></hb-img>`
+                    : ''}
+                  ${this.title
+                    ? html`<p part="title" class="hb-dialog__head__title">${this.title}</p>`
+                    : ''}
+                </div>`
+              : ''}
+            ${this.caption
+              ? html`<p part="caption" class="hb-dialog__caption">${this.caption}</p>`
               : ''}
           </div>
           <div class="hb-dialog__body">
@@ -161,21 +191,20 @@ export class HbDialog extends Base {
                     type="rectangle"
                     @event=${this.adapterEvent.bind(this, x, i)}
                     theme=${x.theme}
-                    size="medium"
+                    size=${this.layout === 'dialog' ? 'small' : 'medium'}
                     >${x.name}</hb-button
                   >`
-              )}
+              )}${this.anchor && this.anchor.name
+                ? html`<hb-anchor
+                    ?disabled=${this.eventDisabled || this.disabled}
+                    class="hb-dialog__foot__anc"
+                    href=${this.anchor.href}
+                    target=${this.anchor.target}
+                    @event=${this.anchor.event}
+                    >${this.anchor.name}</hb-anchor
+                  >`
+                : ''}
             </div>
-            ${this.anchor && this.anchor.name
-              ? html`<hb-anchor
-                  ?disabled=${this.eventDisabled || this.disabled}
-                  class="hb-dialog__foot__anc"
-                  href=${this.anchor.href}
-                  target=${this.anchor.target}
-                  @event=${this.anchor.event}
-                  >${this.anchor.name}</hb-anchor
-                >`
-              : ''}
           </div>
         </div>
       </hb-modal>

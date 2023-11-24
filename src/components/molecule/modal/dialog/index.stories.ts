@@ -20,7 +20,7 @@ export default {
     </style>
     <hb-dialog
       @event=${function () {
-        console.log('djakldjawlkjadwlk');
+        console.log('test');
       }}
       layout="${props.layout}"
       width=${props.width}
@@ -28,7 +28,10 @@ export default {
       ?open=${props.open}
       .headAlign=${props.headAlign}
       .icon=${props.icon}
+      .iconColor=${props.iconColor}
+      .image=${props.image}
       .title=${props.title}
+      .caption=${props.caption}
       .buttonAlign=${props.buttonAlign}
       ?loading=${props.loading}
       .baseLoadingDuration=${props.baseLoadingDuration}
@@ -37,20 +40,16 @@ export default {
       .buttons=${props.buttons}
       .anchor=${props.anchor}
     >
-      <div
-        style="font-weight: 400;font-size: 14px;line-height: 140%;text-align: center;color: #828486;"
-      >
-        ${props.content}
-      </div>
+      <div>${props.content}</div>
     </hb-dialog>`,
   argTypes: {
     layout: {
       type: { name: 'string', required: false },
-      options: ['normal', 'page', 'sheet'],
+      options: ['normal', 'sheet', 'dialog'],
       description:
-        '반응형으로 적용하려면 모바일 디바이스에서는 page 또는 sheet layout , 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
+        '반응형으로 적용하려면 모바일 디바이스에서는 sheet layout , 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
       table: {
-        type: { summary: 'normal | page | sheet' },
+        type: { summary: 'normal | sheet | dialog' },
         defaultValue: { summary: 'normal' }
       },
       control: { type: 'radio' }
@@ -107,20 +106,23 @@ type Story = StoryObj<HbDialogExpns>;
 
 export const Horizon: Story = {
   args: {
-    layout: 'normal',
-    width: '340px',
+    layout: 'dialog',
     preventBodyScroll: true,
     open: false,
     persistent: false,
     loading: false,
     disabled: false,
     hideCloseBtn: false,
-    buttonAlign: 'horizon',
+    buttonAlign: 'vertical',
     baseLoadingDuration: 0,
     headAlign: 'center',
-    icon: thunderImg,
-    title: '팝업 예시입니다!',
-    content: '팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.팝업 텍스트입니다.',
+    image: thunderImg,
+    // icon: 'system/filled/logo-naver',
+    // iconColor: 'var(--hb__harvest--800)',
+    title: 'Title( 팝업 타이틀 )',
+    caption: 'Caption( 팝업 캡션 )',
+    content:
+      'Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 ), Content ( 팝업 컨텐츠 )',
     buttons: [
       {
         name: '닫기',
@@ -150,19 +152,19 @@ export const Horizon: Story = {
 export const Vertical: Story = {
   args: {
     ...Horizon.args,
-    open: true,
     anchor: {
       name: '탈퇴하기',
       href: 'https://www.heybit.io'
     },
+    open: true,
     buttonAlign: 'vertical'
   }
 };
 
-export const Page: Story = {
+export const Dialog: Story = {
   args: {
     ...Horizon.args,
-    layout: 'page',
+    layout: 'dialog',
     width: ''
   }
 };
@@ -171,6 +173,11 @@ export const Sheet: Story = {
   args: {
     ...Horizon.args,
     layout: 'sheet',
+    anchor: {
+      name: '탈퇴하기',
+      href: 'https://www.heybit.io'
+    },
+    buttonAlign: 'vertical',
     width: ''
   }
 };

@@ -30,15 +30,36 @@
     &.bottom-up {
       margin-bottom: 0;
     }
-    &.page-layout {
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
-      max-height: none;
+    &.dialog-layout {
+      width: 240px;
       margin: 0;
-      padding: 60px var(--husc__modal__margin) var(--husc__modal__dialog__padding-bottom);
-      box-sizing: border-box;
-      border-radius: 0;
+      padding: var(--husc__modal__dialog__padding-top) var(--husc__modal__dialog__padding-right)
+        var(--husc__modal__dialog__padding-bottom) var(--husc__modal__dialog__padding-left);
+      .hb-dialog__head {
+        margin-bottom: 0;
+        &__icon {
+          width: 36px;
+          height: 36px;
+        }
+        &__title {
+          font-size: 18px;
+          line-height: 130%;
+        }
+        &__icon-title {
+          display: flex;
+          flex-direction: column;
+          padding: 0 !important;
+          gap: 8px;
+        }
+      }
+      .hb-dialog__close-btn + .hb-dialog__head {
+        .hb-dialog__head__icon-title {
+          padding: 22px 0 0 !important;
+        }
+      }
+      .hb-dialog__body {
+        display: none;
+      }
     }
     &.sheet-layout {
       width: 100vw;
@@ -59,10 +80,10 @@
   &__close-btn {
     z-index: 2;
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 52px;
-    height: 52px;
+    top: 22px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
     padding: 0;
     border: 0;
     cursor: pointer;
@@ -70,24 +91,52 @@
     background: none;
   }
   &__head {
-    margin: 0 0 10px;
+    margin: 0 0 20px;
     text-align: var(--head-align);
     &.empty {
       margin-bottom: 0;
     }
+    &__icon-title {
+      display: flex;
+      gap: 6px;
+      padding-right: 0;
+    }
     &__icon {
-      max-width: 60px;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 0;
     }
     &__title {
+      width: 100%;
+      white-space: pre-wrap;
       display: block;
-      margin: 12px 0 0;
+      margin: 0;
       font-weight: 700;
-      font-size: 22px;
-      line-height: 1.2;
+      font-size: 20px;
+      line-height: 1.4;
       &:first-child {
         margin-top: 0;
       }
     }
+  }
+  &__close-btn + &__head {
+    .hb-dialog__head__icon-title {
+      padding-right: 34px;
+    }
+  }
+  &__caption {
+    white-space: pre-wrap;
+    text-align: var(--head-align);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--hb__black--500);
+    margin: 0;
+  }
+  .hb-dialog__head__icon-title + &__caption {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 8px 0 0;
+    color: var(--hb__black--800)
   }
   &__body {
     @include scroll();
@@ -98,11 +147,11 @@
     &__content {
       display: block;
       overflow: hidden;
-      font-weight: 400;
-      font-size: 14px;
+      font-weight: 500;
+      font-size: 15px;
       line-height: 140%;
       text-align: left;
-      color: #727476;
+      color: #36373a;
       box-sizing: border-box;
     }
   } //pnpm add -g pnpm
@@ -110,22 +159,26 @@
   &__foot {
     text-align: center;
     &__button-wrap {
+      margin-top: 0;
+      &:has(> *) {
+        margin-top: 20px;
+      }
       &.horizon {
         display: flex;
         margin-left: -10px;
         flex-direction: row;
         > * {
           flex: 1;
-          margin: 24px 0 0 10px;
+          margin: 0 0 0 10px;
           text-align: center;
         }
       }
       &.vertical {
         display: block;
         > * {
-          margin-top: 10px;
+          margin-top: 12px;
           &:first-child {
-            margin-top: 24px;
+            margin-top: 0;
           }
         }
       }
