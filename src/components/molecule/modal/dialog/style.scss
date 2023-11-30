@@ -47,6 +47,7 @@
         }
         &__icon-title {
           display: flex;
+          align-items: center;
           flex-direction: column;
           padding: 0 !important;
           gap: 8px;
@@ -136,7 +137,7 @@
     font-size: 14px;
     font-weight: 400;
     margin: 8px 0 0;
-    color: var(--hb__black--800)
+    color: var(--hb__black--800);
   }
   &__body {
     @include scroll();
