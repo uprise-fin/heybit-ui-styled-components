@@ -4,7 +4,8 @@
   &__container {
     @include scroll();
     position: relative;
-    overflow: auto;
+    //가로모드 지원을 위해 추가하신 부분인데 가로모드 미지원으로 인해 삭제하였습니다.
+    // overflow: auto;
     width: calc(100% - (var(--husc__modal__margin) * 2));
     margin: auto;
     max-height: calc(100vh - var(--husc__modal__margin) - var(--husc__modal__margin));
