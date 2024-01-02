@@ -26,6 +26,7 @@ export type HbIconName =
   | 'system/filled/logo-twitter'
   | 'system/filled/logo-usdc'
   | 'system/filled/refresh'
+  | 'system/filled/x'
   | 'system/outline/add'
   | 'system/outline/arrow-back'
   | 'system/outline/arrow-down'
