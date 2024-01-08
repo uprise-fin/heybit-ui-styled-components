@@ -8,6 +8,7 @@ export type HbHeaderType = 'normal' | 'clear';
 export interface HbHeaderGroup extends HbAnchorProps {
   name: string;
   desc: string;
+  badge?: string;
   active?: string;
 }
 export interface HbHeaderNavi extends HbAnchorProps {
@@ -15,6 +16,7 @@ export interface HbHeaderNavi extends HbAnchorProps {
   chip?: HbHeaderChip;
   group?: HbHeaderGroup[];
   groupOpen?: boolean;
+  badge?: string;
   active?: string;
 }
 
@@ -25,6 +27,7 @@ export interface HbHeaderProps {
   defaultMenu: HbHeaderDefaultMenu[];
   type?: HbHeaderType;
   user?: HbHeaderUser;
+  badge?: string;
   loggedin?: boolean;
   pending?: boolean;
   event?: () => void;
@@ -32,11 +35,13 @@ export interface HbHeaderProps {
 export interface HbHeaderDefaultMenu {
   name: string;
   active?: string;
+  badge?: string;
   event?: () => void;
 }
 export interface HbHeaderMyMenu extends HbButtonProps {
   name: string;
   chip?: HbHeaderChip;
+  badge?: string;
   event: () => void;
 }
 export interface HbHeaderUser {
