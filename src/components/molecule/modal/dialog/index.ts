@@ -178,7 +178,11 @@ export class HbDialog extends Base {
               ? html`<p part="caption" class="hb-dialog__caption">${this.caption}</p>`
               : ''}
           </div>
-          <div class="hb-dialog__body">
+          <div
+            class=${classMap({
+              ['dialog-type__content']: this.layout === 'dialog'
+            })}
+          >
             <slot class="hb-dialog__body__content"></slot>
           </div>
           <div class="hb-dialog__foot">

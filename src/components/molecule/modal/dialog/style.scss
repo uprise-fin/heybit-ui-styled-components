@@ -58,8 +58,8 @@
           padding: 22px 0 0 !important;
         }
       }
-      .hb-dialog__body {
-        display: none;
+      .dialog-type__content {
+        margin-top: 20px;
       }
     }
     &.sheet-layout {
@@ -130,14 +130,14 @@
     text-align: var(--head-align);
     font-size: 18px;
     font-weight: 700;
-    color: var(--hb__black--500);
+    color: var(--hb__black--800);
     margin: 0;
   }
   .hb-dialog__head__icon-title + &__caption {
     font-size: 14px;
     font-weight: 400;
     margin: 8px 0 0;
-    color: var(--hb__black--800);
+    color: var(--hb__black--500);
   }
   &__body {
     @include scroll();

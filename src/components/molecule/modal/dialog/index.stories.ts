@@ -40,7 +40,7 @@ export default {
       .buttons=${props.buttons}
       .anchor=${props.anchor}
     >
-      <div>${props.content}</div>
+      ${props.content}
     </hb-dialog>`,
   argTypes: {
     layout: {
