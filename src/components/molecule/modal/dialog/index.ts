@@ -180,7 +180,7 @@ export class HbDialog extends Base {
           </div>
           <div
             class=${classMap({
-              ['dialog-type__content']: this.layout === 'dialog'
+              ['dialog-type__content']: this.layout === 'dialog' && !!this.textContent.trim().length
             })}
           >
             <slot class="hb-dialog__body__content"></slot>
