@@ -93,4 +93,14 @@
     display: inline-flex;
     flex: 0 0 auto;
   }
+  &__send {
+    padding: 6px 10px;
+    background-color: var(--hb__black--100);
+    border-radius: 30px;
+    &-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
 }

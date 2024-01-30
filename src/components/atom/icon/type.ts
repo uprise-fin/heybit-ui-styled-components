@@ -26,6 +26,7 @@ export type HbIconName =
   | 'system/filled/logo-twitter'
   | 'system/filled/logo-usdc'
   | 'system/filled/refresh'
+  | 'system/filled/send'
   | 'system/filled/x'
   | 'system/outline/add'
   | 'system/outline/arrow-back'
@@ -39,6 +40,8 @@ export type HbIconName =
   | 'system/outline/clear'
   | 'system/outline/close'
   | 'system/outline/danger'
+  | 'system/outline/eye-hide'
+  | 'system/outline/eye-show'
   | 'system/outline/info'
   | 'system/outline/less'
   | 'system/outline/logo-binance'
@@ -58,4 +61,5 @@ export type HbIconName =
   | 'system/outline/menu-side'
   | 'system/outline/more'
   | 'system/outline/qr'
-  | 'system/outline/refresh';
+  | 'system/outline/refresh'
+  | 'system/outline/send';

@@ -1,5 +1,6 @@
 import { componentVariables } from '@/components/atom/variable/type';
 import { Base } from '@/components/base';
+import { colorPalette } from '@/index';
 import { getElement } from '@/utils';
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -19,6 +20,9 @@ import { HbButtonProps } from '@/index';
  * @property maxlength 최대글자수
  * @property type 텍스트 숫자 비번
  * @property error 텍스트 숫자 비번
+ * @property readonly 텍스트 숫자 비번
+ * @property clearable 텍스트 숫자 비번
+ * @property isValidated 텍스트 숫자 비번
  * @slot slot--left - optional, 왼쪽 영역(아이콘)
  * @slot slot--right - optional, 오른쪽 영역(버튼)
  * @csspart slot--left
@@ -45,6 +49,12 @@ export class HbInput extends Base {
   decimal: number = 2;
 
   comma: number = 3;
+
+  clearable = false;
+
+  isValidated = false;
+
+  _countdown: number = 60;
 
   _readonly: boolean = false;
 
@@ -105,7 +115,9 @@ export class HbInput extends Base {
       _readonly: { type: Boolean, Reflect: true },
       disabled: { type: Boolean, Reflect: true },
       _disabled: { type: Boolean, Reflect: true },
-      nowrap: { type: Boolean, Reflect: true }
+      nowrap: { type: Boolean, Reflect: true },
+      clearable: { type: Boolean, Reflect: true },
+      isValidated: { type: Boolean, Reflect: true }
     };
   }
 
@@ -183,7 +195,29 @@ export class HbInput extends Base {
         ?disabled=${this._disabled}
       ></textarea>
       <i class="hb-input__border" part="border"></i>
-      <slot name="slot--right" part="slot--right" class="hb-input__slot"></slot>
+      <slot name="slot--right" part="slot--right" class="hb-input__slot">
+        ${this.clearable
+          ? html`
+              <hb-icon
+                class="hb-input__clear"
+                size="medium"
+                icon="system/filled/clear"
+                style="--husc__icon__color: ${colorPalette.black[300]}; cursor: pointer;"
+                @click=${() => (this.value = '')}
+              ></hb-icon>
+            `
+          : ''}
+        ${this.isValidated
+          ? html`
+              <hb-icon
+                class="hb-input__validated"
+                size="medium"
+                icon="system/filled/checkbox-able"
+                style="--husc__icon__color: ${colorPalette.green[300]};"
+              ></hb-icon>
+            `
+          : ''}
+      </slot>
     `;
   }
 

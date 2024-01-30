@@ -10,6 +10,8 @@ export interface HbInputProps {
   decimal?: number;
   error?: boolean;
   readonly?: boolean;
+  clearable?: boolean;
+  isValidated?: boolean;
 }
 export interface HbInputEvent extends InputEvent {
   target: HbInput;
