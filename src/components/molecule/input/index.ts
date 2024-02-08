@@ -175,6 +175,9 @@ export class HbInput extends Base {
     return this.maxlength || Infinity;
   }
 
+  /**
+   * @deprecated textArea대신 input을 사용할 수 있게 개선해야함.
+   */
   render() {
     return html`
       <slot name="slot--left" part="slot--left" class="hb-input__slot"></slot>
