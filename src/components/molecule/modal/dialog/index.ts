@@ -12,6 +12,7 @@ import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { customElement } from 'lit/decorators.js';
+import { HbIconName } from '@/components/atom/icon/type';
 
 /**
  * @fires close 닫기
@@ -55,7 +56,7 @@ export class HbDialog extends Base {
 
   headAlign: HorizonAlign = 'center';
 
-  icon = '';
+  icon: HbIconName | undefined;
 
   iconColor = '';
 
@@ -159,7 +160,7 @@ export class HbDialog extends Base {
                         icon=${this.icon}
                         class="hb-dialog__head__icon"
                         style=${this.iconColor ? `--husc__icon__color:${this.iconColor}` : ''}
-                      ></hb-img>`
+                      ></hb-icon>`
                     : this.image
                     ? html`<hb-img
                         part="image"
