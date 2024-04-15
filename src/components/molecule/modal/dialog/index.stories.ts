@@ -45,17 +45,12 @@ export default {
   argTypes: {
     layout: {
       type: { name: 'string', required: false },
-      options: ['normal', 'sheet', 'dialog'],
-      description:
-        '반응형으로 적용하려면 모바일 디바이스에서는 sheet layout , 데스크탑 이상의 크기(1020px)에서는 normal layout을 사용합니다.',
+      options: ['sheet', 'dialog'],
       table: {
-        type: { summary: 'normal | sheet | dialog' },
-        defaultValue: { summary: 'normal' }
+        type: { summary: 'sheet | dialog' },
+        defaultValue: { summary: 'dialog' }
       },
       control: { type: 'radio' }
-    },
-    width: {
-      description: 'normal type dialog에만 해당합니다.'
     },
     preventBodyScroll: {
       description: `dialog가 열릴 때, modal-open 클래스 추가 여부를 결정합니다. 클래스가 있는 경우, body { overflow: hidden; }을 주어 스크롤 제어가 가능합니다.`,
@@ -64,6 +59,7 @@ export default {
       }
     },
     open: {
+      type: { name: 'boolean', required: true },
       table: {
         defaultValue: { summary: 'false' }
       }
@@ -163,9 +159,7 @@ export const Vertical: Story = {
 
 export const Dialog: Story = {
   args: {
-    ...Horizon.args,
-    layout: 'dialog',
-    width: ''
+    ...Horizon.args
   }
 };
 
@@ -177,7 +171,6 @@ export const Sheet: Story = {
       name: '탈퇴하기',
       href: 'https://www.heybit.io'
     },
-    buttonAlign: 'vertical',
-    width: ''
+    buttonAlign: 'vertical'
   }
 };
