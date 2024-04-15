@@ -74,13 +74,13 @@ export class HbModal extends Base {
 
   static get properties() {
     return {
-      open: { type: Boolean, Reflect: true },
-      persistent: { type: Boolean, Reflect: true },
-      width: { type: String, Reflect: true },
-      height: { type: String, Reflect: true },
-      transitionType: { type: String, Reflect: true },
-      verticalAlign: { type: String, Reflect: true },
-      horizonAlign: { type: String, Reflect: true }
+      open: { type: Boolean, reflect: true },
+      persistent: { type: Boolean, reflect: true },
+      width: { type: String, reflect: true },
+      height: { type: String, reflect: true },
+      transitionType: { type: String, reflect: true },
+      verticalAlign: { type: String, reflect: true },
+      horizonAlign: { type: String, reflect: true }
     };
   }
 
