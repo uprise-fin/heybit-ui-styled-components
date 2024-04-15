@@ -52,7 +52,7 @@ export class HbDialog extends Base {
 
   height = '0px';
 
-  open: boolean;
+  open = false;
 
   headAlign: HorizonAlign = 'center';
 
@@ -72,11 +72,11 @@ export class HbDialog extends Base {
 
   buttonAlign: HbModalButtonAlign = 'horizon';
 
-  anchor: HbDialogAnchor;
+  anchor: HbDialogAnchor | undefined;
 
-  buttons: HbDialogButton[];
+  buttons: HbDialogButton[] = [];
 
-  disabled: boolean;
+  disabled = false;
 
   preventBodyScroll = true;
 
@@ -85,8 +85,7 @@ export class HbDialog extends Base {
   }
 
   get eventDisabled() {
-    if (this.buttons && this.buttons?.length)
-      return this.buttons.map((x) => x.loading).some((x) => x);
+    if (this.buttons.length) return this.buttons.map((x) => x.loading).some((x) => x);
     return this.loading;
   }
 
@@ -120,6 +119,7 @@ export class HbDialog extends Base {
     document.body.classList.toggle(this._bodyClass, this.preventBodyScroll && this.open);
     return html`
       <hb-modal
+        data-role=${this.layout}
         @close=${this.onClose}
         verticalAlign=${this.layout === 'sheet' ? 'bottom' : 'middle'}
         width=${this.layout === 'dialog' ? this.width : 'auto'}
@@ -181,30 +181,30 @@ export class HbDialog extends Base {
           </div>
           <div
             class=${classMap({
-              ['dialog-type__content']: this.layout === 'dialog' && !!this.textContent.trim().length
+              ['dialog-type__content']: this.layout === 'dialog'
             })}
           >
             <slot class="hb-dialog__body__content"></slot>
           </div>
           <div class="hb-dialog__foot">
             <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
-              ${this.buttons?.map(
+              ${this.buttons.map(
                 (x, i) =>
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || x.disabled || this.disabled}
                     type="rectangle"
                     @event=${this.adapterEvent.bind(this, x, i)}
-                    theme=${x.theme}
+                    theme=${x.theme || 'primary'}
                     size=${this.layout === 'dialog' ? 'small' : 'medium'}
                     >${x.name}</hb-button
                   >`
-              )}${this.anchor && this.anchor.name
+              )}${this.anchor?.name
                 ? html`<hb-anchor
                     ?disabled=${this.eventDisabled || this.disabled}
                     class="hb-dialog__foot__anc"
-                    href=${this.anchor.href}
-                    target=${this.anchor.target}
+                    href=${this.anchor.href || '#'}
+                    target=${this.anchor.target || '_self'}
                     @event=${this.anchor.event}
                     >${this.anchor.name}</hb-anchor
                   >`
@@ -218,6 +218,7 @@ export class HbDialog extends Base {
 
   async adapterEvent(button: HbDialogButton, index: number) {
     const { event } = button;
+    if (!event) return;
     if (this.baseLoadingDuration) {
       const on = this.buttons.slice();
       const off = this.buttons.slice();
