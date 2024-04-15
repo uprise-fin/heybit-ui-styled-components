@@ -28,40 +28,34 @@
       var(--husc__modal__dialog__padding-bottom) var(--husc__modal__dialog__padding-left);
     border-radius: calc(var(--husc__border__radius) * 4);
     background: var(--husc__modal__background);
+    width: 240px;
+    margin: 0;
+    padding: var(--husc__modal__dialog__padding-top) var(--husc__modal__dialog__padding-right)
+      var(--husc__modal__dialog__padding-bottom) var(--husc__modal__dialog__padding-left);
+    .hb-dialog__head {
+      &__icon {
+        width: 36px;
+        height: 36px;
+      }
+      &__title {
+        font-size: 18px;
+        line-height: 130%;
+      }
+      &__icon-title {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 0 !important;
+        gap: 8px;
+      }
+    }
+    .hb-dialog__close-btn + .hb-dialog__head {
+      .hb-dialog__head__icon-title {
+        padding: 22px 0 0 !important;
+      }
+    }
     &.bottom-up {
       margin-bottom: 0;
-    }
-    &.dialog-layout {
-      width: 240px;
-      margin: 0;
-      padding: var(--husc__modal__dialog__padding-top) var(--husc__modal__dialog__padding-right)
-        var(--husc__modal__dialog__padding-bottom) var(--husc__modal__dialog__padding-left);
-      .hb-dialog__head {
-        margin-bottom: 0;
-        &__icon {
-          width: 36px;
-          height: 36px;
-        }
-        &__title {
-          font-size: 18px;
-          line-height: 130%;
-        }
-        &__icon-title {
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          padding: 0 !important;
-          gap: 8px;
-        }
-      }
-      .hb-dialog__close-btn + .hb-dialog__head {
-        .hb-dialog__head__icon-title {
-          padding: 22px 0 0 !important;
-        }
-      }
-      .dialog-type__content {
-        margin-top: 20px;
-      }
     }
     &.sheet-layout {
       width: 100vw;
@@ -77,6 +71,25 @@
         var(--husc__modal__sheet-dialog__padding-left);
       box-sizing: border-box;
       border-radius: calc(var(--husc__border__radius) * 6) calc(var(--husc__border__radius) * 6) 0 0;
+
+      .hb-dialog__head {
+        &__icon {
+          width: 30px;
+          height: 30px;
+        }
+        &__title {
+          font-size: 20px;
+        }
+        &__icon-title {
+          flex-direction: row;
+        }
+      }
+
+      .hb-dialog__close-btn + .hb-dialog__head {
+        .hb-dialog__head__icon-title {
+          padding-top: 0 !important;
+        }
+      }
     }
   }
   &__close-btn {
