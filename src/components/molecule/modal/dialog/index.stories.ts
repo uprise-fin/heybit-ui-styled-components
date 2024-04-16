@@ -4,6 +4,7 @@ import desktopImg from '~/static/sample-desktop.png';
 import thunderImg from '~/static/sample-thunder.svg';
 import './index';
 import type { HbDialog } from './index';
+import { dialogLayout } from '../type';
 import { horizonAligns } from '@/components/atom/variable/type';
 interface HbDialogExpns extends HbDialog {
   content: string;
@@ -45,10 +46,10 @@ export default {
   argTypes: {
     layout: {
       type: { name: 'string', required: false },
-      options: ['sheet', 'dialog'],
+      options: dialogLayout,
       table: {
-        type: { summary: 'sheet | dialog' },
-        defaultValue: { summary: 'dialog' }
+        type: { summary: dialogLayout.join(' | ') },
+        defaultValue: { summary: 'normal' }
       },
       control: { type: 'radio' }
     },

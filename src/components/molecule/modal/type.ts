@@ -38,3 +38,6 @@ export interface HbDialogAnchor extends HbAnchorProps {
 }
 
 export type HbModalButtonAlign = 'vertical' | 'horizon';
+
+export const dialogLayout = ['dialog', 'normal', 'sheet'] as const;
+export type HbDialogLayout = (typeof dialogLayout)[number];
