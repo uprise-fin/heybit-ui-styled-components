@@ -12,6 +12,7 @@ import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { customElement } from 'lit/decorators.js';
+import { HbIconName } from '@/components/atom/icon/type';
 
 /**
  * @fires close 닫기
@@ -51,11 +52,11 @@ export class HbDialog extends Base {
 
   height = '0px';
 
-  open: boolean;
+  open = false;
 
   headAlign: HorizonAlign = 'center';
 
-  icon = '';
+  icon: HbIconName | undefined;
 
   iconColor = '';
 
@@ -71,11 +72,11 @@ export class HbDialog extends Base {
 
   buttonAlign: HbModalButtonAlign = 'horizon';
 
-  anchor: HbDialogAnchor;
+  anchor: HbDialogAnchor | undefined;
 
-  buttons: HbDialogButton[];
+  buttons: HbDialogButton[] = [];
 
-  disabled: boolean;
+  disabled = false;
 
   preventBodyScroll = true;
 
@@ -84,34 +85,33 @@ export class HbDialog extends Base {
   }
 
   get eventDisabled() {
-    if (this.buttons && this.buttons?.length)
-      return this.buttons.map((x) => x.loading).some((x) => x);
+    if (this.buttons.length) return this.buttons.map((x) => x.loading).some((x) => x);
     return this.loading;
   }
 
   static get properties() {
     return {
-      layout: { type: String, Reflect: true },
-      open: { type: Boolean, Reflect: true },
-      buttons: { type: Array, Reflect: true },
-      anchor: { type: Object, Reflect: true },
-      disabled: { type: Boolean, Reflect: true },
-      preventBodyScroll: { type: Boolean, Reflect: true },
-      eventDisabled: { type: Boolean, Reflect: true },
-      persistent: { type: Boolean, Reflect: true },
-      hideCloseBtn: { type: Boolean, Reflect: true },
-      width: { type: String, Reflect: true },
-      height: { type: String, Reflect: true },
-      loading: { type: Boolean, Reflect: true },
-      baseLoadingDuration: { type: Number, Reflect: true },
-      buttonAlign: { type: String, Reflect: true },
-      headAlign: { type: String, Reflect: true },
-      title: { type: String, Reflect: true },
-      caption: { type: String, Reflect: true },
-      icon: { type: String, Reflect: true },
-      iconColor: { type: String, Reflect: true },
-      image: { type: String, Reflect: true },
-      transitionType: { type: String, Reflect: true }
+      layout: { type: String, reflect: true },
+      open: { type: Boolean, reflect: true },
+      buttons: { type: Array, reflect: true },
+      anchor: { type: Object, reflect: true },
+      disabled: { type: Boolean, reflect: true },
+      preventBodyScroll: { type: Boolean, reflect: true },
+      eventDisabled: { type: Boolean, reflect: true },
+      persistent: { type: Boolean, reflect: true },
+      hideCloseBtn: { type: Boolean, reflect: true },
+      width: { type: String, reflect: true },
+      height: { type: String, reflect: true },
+      loading: { type: Boolean, reflect: true },
+      baseLoadingDuration: { type: Number, reflect: true },
+      buttonAlign: { type: String, reflect: true },
+      headAlign: { type: String, reflect: true },
+      title: { type: String, reflect: true },
+      caption: { type: String, reflect: true },
+      icon: { type: String, reflect: true },
+      iconColor: { type: String, reflect: true },
+      image: { type: String, reflect: true },
+      transitionType: { type: String, reflect: true }
     };
   }
 
@@ -159,7 +159,7 @@ export class HbDialog extends Base {
                         icon=${this.icon}
                         class="hb-dialog__head__icon"
                         style=${this.iconColor ? `--husc__icon__color:${this.iconColor}` : ''}
-                      ></hb-img>`
+                      ></hb-icon>`
                     : this.image
                     ? html`<hb-img
                         part="image"
@@ -187,23 +187,23 @@ export class HbDialog extends Base {
           </div>
           <div class="hb-dialog__foot">
             <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
-              ${this.buttons?.map(
+              ${this.buttons.map(
                 (x, i) =>
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || x.disabled || this.disabled}
                     type="rectangle"
                     @event=${this.adapterEvent.bind(this, x, i)}
-                    theme=${x.theme}
+                    theme=${x.theme || 'primary'}
                     size=${this.layout === 'dialog' ? 'small' : 'medium'}
                     >${x.name}</hb-button
                   >`
-              )}${this.anchor && this.anchor.name
+              )}${this.anchor?.name
                 ? html`<hb-anchor
                     ?disabled=${this.eventDisabled || this.disabled}
                     class="hb-dialog__foot__anc"
-                    href=${this.anchor.href}
-                    target=${this.anchor.target}
+                    href=${this.anchor.href || '#'}
+                    target=${this.anchor.target || '_self'}
                     @event=${this.anchor.event}
                     >${this.anchor.name}</hb-anchor
                   >`
@@ -217,6 +217,7 @@ export class HbDialog extends Base {
 
   async adapterEvent(button: HbDialogButton, index: number) {
     const { event } = button;
+    if (!event) return;
     if (this.baseLoadingDuration) {
       const on = this.buttons.slice();
       const off = this.buttons.slice();

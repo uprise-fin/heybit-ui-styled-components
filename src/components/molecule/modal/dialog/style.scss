@@ -13,7 +13,7 @@
 
 .hb-dialog {
   &__container {
-    overflow-y: scroll;
+    overflow-y: auto;
     position: relative;
     display: flex;
 
