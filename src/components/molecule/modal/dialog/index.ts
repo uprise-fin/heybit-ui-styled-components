@@ -42,7 +42,7 @@ export class HbDialog extends Base {
 
   _bodyClass = 'modal-open';
 
-  layout = 'dialog';
+  layout = 'normal';
 
   loading = false;
 
