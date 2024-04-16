@@ -119,10 +119,9 @@ export class HbDialog extends Base {
     document.body.classList.toggle(this._bodyClass, this.preventBodyScroll && this.open);
     return html`
       <hb-modal
-        data-role=${this.layout}
         @close=${this.onClose}
         verticalAlign=${this.layout === 'sheet' ? 'bottom' : 'middle'}
-        width=${this.layout === 'dialog' ? this.width : 'auto'}
+        width=${this.layout === 'normal' ? this.width : 'auto'}
         height=${this.height}
         ?open=${this.open}
         ?persistent=${this.persistent || this.eventDisabled}
@@ -179,7 +178,11 @@ export class HbDialog extends Base {
               ? html`<p part="caption" class="hb-dialog__caption">${this.caption}</p>`
               : ''}
           </div>
-          <div>
+          <div
+            class=${classMap({
+              ['dialog-type__content']: this.layout === 'dialog' && !!this.textContent.trim().length
+            })}
+          >
             <slot class="hb-dialog__body__content"></slot>
           </div>
           <div class="hb-dialog__foot">
