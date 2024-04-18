@@ -1,5 +1,6 @@
 import type { Size } from '@/index';
 export interface HbButtonProps {
+  plain?: boolean;
   size?: Size;
   theme?: HbButtonTheme;
   loading?: boolean;
@@ -13,10 +14,10 @@ export interface HbButtonProps {
   event?: () => void;
 }
 export const hbButtonNativeTypes = ['button', 'submit'] as const;
-export type HbButtonNativeType = typeof hbButtonNativeTypes[number];
+export type HbButtonNativeType = (typeof hbButtonNativeTypes)[number];
 export type HbButtonSlots = 'slot--left' | 'slot--right';
 export const hbButtonTypes = ['rectangle', 'radius', 'circle'] as const;
-export type HbButtonType = typeof hbButtonTypes[number];
+export type HbButtonType = (typeof hbButtonTypes)[number];
 export const hbButtonThemes = [
   'primary',
   'secondary',
@@ -29,4 +30,4 @@ export const hbButtonThemes = [
   'harvest',
   'defi'
 ] as const;
-export type HbButtonTheme = typeof hbButtonThemes[number];
+export type HbButtonTheme = (typeof hbButtonThemes)[number];
