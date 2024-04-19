@@ -52,7 +52,7 @@ export class HbDialog extends Base {
 
   height = '0px';
 
-  open = false;
+  open = true;
 
   headAlign: HorizonAlign = 'center';
 
@@ -80,12 +80,19 @@ export class HbDialog extends Base {
 
   preventBodyScroll = true;
 
+  get _buttons() {
+    console.log('layout', this.layout);
+    console.log('open', this.open);
+    console.log('buttons', this.buttons);
+    return this.buttons || [];
+  }
+
   get transitionType(): HbTransitionType {
     return this.layout === 'sheet' ? 'bottom-up' : 'zoom';
   }
 
   get eventDisabled() {
-    if (this.buttons.length) return this.buttons.map((x) => x.loading).some((x) => x);
+    if (this._buttons.length) return this._buttons.map((x) => x.loading).some((x) => x);
     return this.loading;
   }
 
@@ -180,14 +187,15 @@ export class HbDialog extends Base {
           </div>
           <div
             class=${classMap({
-              ['dialog-type__content']: this.layout === 'dialog' && !!this.textContent.trim().length
+              ['dialog-type__content']:
+                this.layout === 'dialog' && !!this.textContent?.trim().length
             })}
           >
             <slot class="hb-dialog__body__content"></slot>
           </div>
           <div class="hb-dialog__foot">
             <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
-              ${this.buttons.map(
+              ${this._buttons.map(
                 (x, i) =>
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
@@ -219,8 +227,8 @@ export class HbDialog extends Base {
     const { event } = button;
     if (!event) return;
     if (this.baseLoadingDuration) {
-      const on = this.buttons.slice();
-      const off = this.buttons.slice();
+      const on = this._buttons.slice();
+      const off = this._buttons.slice();
       on[index].loading = true;
       this.buttons = on;
       await Promise.all([event(), wait(this.baseLoadingDuration)]);
