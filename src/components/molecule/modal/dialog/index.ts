@@ -52,7 +52,7 @@ export class HbDialog extends Base {
 
   height = '0px';
 
-  open = true;
+  open = false;
 
   headAlign: HorizonAlign = 'center';
 
@@ -74,16 +74,13 @@ export class HbDialog extends Base {
 
   anchor: HbDialogAnchor | undefined;
 
-  buttons: HbDialogButton[] = [];
+  buttons: HbDialogButton[] | undefined;
 
   disabled = false;
 
   preventBodyScroll = true;
 
   get _buttons() {
-    console.log('layout', this.layout);
-    console.log('open', this.open);
-    console.log('buttons', this.buttons);
     return this.buttons || [];
   }
 
