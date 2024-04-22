@@ -207,7 +207,7 @@ export class HbDialog extends Base {
                 ? html`<hb-anchor
                     ?disabled=${this.eventDisabled || this.disabled}
                     class="hb-dialog__foot__anc"
-                    href=${this.anchor.href || '#'}
+                    href=${this.anchor.href || ''}
                     target=${this.anchor.target || '_self'}
                     @event=${this.anchor.event}
                     >${this.anchor.name}</hb-anchor
