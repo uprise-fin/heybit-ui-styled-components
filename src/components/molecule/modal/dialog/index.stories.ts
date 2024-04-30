@@ -129,6 +129,7 @@ export const Horizon: Story = {
       {
         name: '열기',
         theme: 'secondary',
+        baseLoadingDuration: 500,
         event: function () {
           console.log('2');
         }
