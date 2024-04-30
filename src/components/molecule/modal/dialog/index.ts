@@ -7,7 +7,6 @@ import {
   HbDialogButton,
   HbModalButtonAlign
 } from '@/components/molecule/modal/type';
-import { wait } from '@/utils';
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -45,8 +44,6 @@ export class HbDialog extends Base {
   layout = 'normal';
 
   loading = false;
-
-  baseLoadingDuration = 500;
 
   width = componentVariables.modal.width.dialog + 'px';
 
@@ -107,7 +104,6 @@ export class HbDialog extends Base {
       width: { type: String, reflect: true },
       height: { type: String, reflect: true },
       loading: { type: Boolean, reflect: true },
-      baseLoadingDuration: { type: Number, reflect: true },
       buttonAlign: { type: String, reflect: true },
       headAlign: { type: String, reflect: true },
       title: { type: String, reflect: true },
@@ -219,20 +215,6 @@ export class HbDialog extends Base {
         </div>
       </hb-modal>
     `;
-  }
-
-  async adapterEvent(button: HbDialogButton, index: number) {
-    const { event } = button;
-    if (!event) return;
-    if (this.baseLoadingDuration) {
-      const on = this._buttons.slice();
-      const off = this._buttons.slice();
-      on[index].loading = true;
-      this.buttons = on;
-      await Promise.all([event(), wait(this.baseLoadingDuration)]);
-      off[index].loading = false;
-      this.buttons = off;
-    } else event();
   }
 
   onClose() {

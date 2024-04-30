@@ -35,7 +35,6 @@ export default {
       .caption=${props.caption}
       .buttonAlign=${props.buttonAlign}
       ?loading=${props.loading}
-      .baseLoadingDuration=${props.baseLoadingDuration}
       ?persistent=${props.persistent}
       ?hideCloseBtn=${props.hideCloseBtn}
       .buttons=${props.buttons}
@@ -111,7 +110,6 @@ export const Horizon: Story = {
     disabled: false,
     hideCloseBtn: false,
     buttonAlign: 'horizon',
-    baseLoadingDuration: 0,
     headAlign: 'center',
     image: thunderImg,
     // icon: 'system/filled/logo-naver',
