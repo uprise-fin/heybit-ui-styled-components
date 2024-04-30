@@ -193,12 +193,12 @@ export class HbDialog extends Base {
           <div class="hb-dialog__foot">
             <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
               ${this._buttons.map(
-                (x) =>
+                (x, i) =>
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || x.disabled || this.disabled}
                     type=${x.type || 'rectangle'}
-                    @event=${x.event}
+                    @event=${this.adapterEvent.bind(this, x, i)}
                     theme=${x.theme || 'primary'}
                     size=${this.layout === 'dialog' ? 'small' : 'medium'}
                     >${x.name}</hb-button
