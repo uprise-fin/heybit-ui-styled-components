@@ -197,6 +197,7 @@ export class HbDialog extends Base {
                   html`<hb-button
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || x.disabled || this.disabled}
+                    baseLoadingDuration=${x.baseLoadingDuration || 0}
                     type=${x.type || 'rectangle'}
                     @event=${x.event}
                     theme=${x.theme || 'primary'}
