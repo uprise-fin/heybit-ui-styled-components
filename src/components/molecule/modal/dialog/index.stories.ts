@@ -105,12 +105,12 @@ export const Horizon: Story = {
   args: {
     layout: 'dialog',
     preventBodyScroll: true,
-    open: false,
+    open: true,
     persistent: false,
     loading: false,
     disabled: false,
     hideCloseBtn: false,
-    buttonAlign: 'vertical',
+    buttonAlign: 'horizon',
     baseLoadingDuration: 0,
     headAlign: 'center',
     image: thunderImg,
@@ -153,14 +153,15 @@ export const Vertical: Story = {
       name: '탈퇴하기',
       href: 'https://www.heybit.io'
     },
-    open: true,
+    open: false,
     buttonAlign: 'vertical'
   }
 };
 
 export const Dialog: Story = {
   args: {
-    ...Horizon.args
+    ...Horizon.args,
+    open: false
   }
 };
 
@@ -172,6 +173,7 @@ export const Sheet: Story = {
       name: '탈퇴하기',
       href: 'https://www.heybit.io'
     },
+    open: false,
     buttonAlign: 'vertical'
   }
 };
