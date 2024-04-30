@@ -198,7 +198,7 @@ export class HbDialog extends Base {
                     ?loading=${this.loading || x.loading}
                     ?disabled=${this.eventDisabled || x.disabled || this.disabled}
                     type=${x.type || 'rectangle'}
-                    @event=${this.adapterEvent.bind(this, x, i)}
+                    @event=${() => this.adapterEvent(x, i)}
                     theme=${x.theme || 'primary'}
                     size=${this.layout === 'dialog' ? 'small' : 'medium'}
                     >${x.name}</hb-button
