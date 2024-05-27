@@ -47,28 +47,27 @@
   --hb__purple--800: #6456d9;
   --hb__purple--900: #504aca;
 
+  --hb__reward--50: #ebecfd;
+  --hb__reward--100: #cccefa;
+  --hb__reward--200: #a9aef6;
+  --hb__reward--300: #848ef3;
+  --hb__reward--400: #6872ef;
+  --hb__reward--500: #5f67ec;
+  --hb__reward--600: #5a5fe1;
+  --hb__reward--700: #5255d6;
+  --hb__reward--800: #4b4acc;
+  --hb__reward--900: #4236b6;
 
-  --hb__reward--50: #EBECFD;
-  --hb__reward--100: #CCCEFA;
-  --hb__reward--200: #A9AEF6;
-  --hb__reward--300: #848EF3;
-  --hb__reward--400: #6872EF;
-  --hb__reward--500: #5F67EC;
-  --hb__reward--600: #5A5FE1;
-  --hb__reward--700: #5255D6;
-  --hb__reward--800: #4B4ACC;
-  --hb__reward--900: #4236B6;
-
-  --hb__otc--50: #E3F4E9;
-  --hb__otc--100: #BBE4C9;
-  --hb__otc--200: #8ED2A6;
-  --hb__otc--300: #5DC184;
-  --hb__otc--400: #33B46B;
-  --hb__otc--500: #00A652;
+  --hb__otc--50: #e3f4e9;
+  --hb__otc--100: #bbe4c9;
+  --hb__otc--200: #8ed2a6;
+  --hb__otc--300: #5dc184;
+  --hb__otc--400: #33b46b;
+  --hb__otc--500: #00a652;
   --hb__otc--600: #009848;
-  --hb__otc--700: #00863D;
+  --hb__otc--700: #00863d;
   --hb__otc--800: #007532;
-  --hb__otc--900: #00561E;
+  --hb__otc--900: #00561e;
 
   --hb__black--50: #f7f8fc;
   --hb__black--100: #eff0f5;
@@ -357,4 +356,4 @@
 
 // media query 에서는 css 변수가 안 먹힘.
 // media query 용으로 브레이크 포인트는 scss변수로 선언함.
-$breakpoint: 1020px;
+$breakpoint: 1024px;

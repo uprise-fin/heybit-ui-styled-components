@@ -77,7 +77,7 @@
 // }
 
 @mixin mobile {
-  @media (max-width: $breakpoint) {
+  @media (max-width: calc($breakpoint - 1px)) {
     @content;
   }
 }
