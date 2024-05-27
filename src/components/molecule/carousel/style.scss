@@ -6,6 +6,7 @@
     overflow: hidden;
     font-family: var(--husc__font__family);
     white-space: nowrap;
+    touch-action: pan-x;
   }
   &__wrap {
     font-size: 0;
