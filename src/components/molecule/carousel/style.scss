@@ -46,7 +46,6 @@
 
   &__items {
     display: inline-flex;
-    font-size: 16px;
     white-space: normal;
     @include slot-styled('*') {
       flex: 1;
