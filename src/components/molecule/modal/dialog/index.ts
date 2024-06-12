@@ -188,28 +188,30 @@ export class HbDialog extends Base {
           </div>
           <div class="hb-dialog__foot">
             <div class="hb-dialog__foot__button-wrap ${this.buttonAlign}">
-              ${this._buttons.map(
-                (x) =>
-                  html`<hb-button
-                    ?loading=${this.loading || x.loading}
-                    ?disabled=${this.eventDisabled || x.disabled || this.disabled}
-                    baseLoadingDuration=${x.baseLoadingDuration || 0}
-                    type=${x.type || 'rectangle'}
-                    @event=${x.event}
-                    theme=${x.theme || 'primary'}
-                    size=${this.layout === 'dialog' ? 'small' : 'medium'}
-                    >${x.name}</hb-button
-                  >`
-              )}${this.anchor?.name
-                ? html`<hb-anchor
-                    ?disabled=${this.eventDisabled || this.disabled}
-                    class="hb-dialog__foot__anc"
-                    href=${this.anchor.href || ''}
-                    target=${this.anchor.target || '_self'}
-                    @event=${this.anchor.event}
-                    >${this.anchor.name}</hb-anchor
-                  >`
-                : ''}
+              <slot name="footer">
+                ${this._buttons.map(
+                  (x) =>
+                    html`<hb-button
+                      ?loading=${this.loading || x.loading}
+                      ?disabled=${this.eventDisabled || x.disabled || this.disabled}
+                      baseLoadingDuration=${x.baseLoadingDuration || 0}
+                      type=${x.type || 'rectangle'}
+                      @event=${x.event}
+                      theme=${x.theme || 'primary'}
+                      size=${this.layout === 'dialog' ? 'small' : 'medium'}
+                      >${x.name}</hb-button
+                    >`
+                )}${this.anchor?.name
+                  ? html`<hb-anchor
+                      ?disabled=${this.eventDisabled || this.disabled}
+                      class="hb-dialog__foot__anc"
+                      href=${this.anchor.href || ''}
+                      target=${this.anchor.target || '_self'}
+                      @event=${this.anchor.event}
+                      >${this.anchor.name}</hb-anchor
+                    >`
+                  : ''}
+              </slot>
             </div>
           </div>
         </div>

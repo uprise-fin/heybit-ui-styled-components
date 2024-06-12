@@ -169,7 +169,8 @@
         display: flex;
         margin-left: -10px;
         flex-direction: row;
-        > * {
+        hb-button,
+        hb-anchor {
           flex: 1;
           margin: 0 0 0 10px;
           text-align: center;
