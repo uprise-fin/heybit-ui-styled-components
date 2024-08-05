@@ -9,7 +9,6 @@
     touch-action: pan-x;
   }
   &__wrap {
-    font-size: 0;
     transition: transform var(--type) var(--duration);
     will-change: transform;
     &--drag > * {
