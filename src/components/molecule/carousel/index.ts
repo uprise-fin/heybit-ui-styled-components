@@ -174,7 +174,7 @@ export class HbCarousel extends Base {
         cloneBefore.setAttribute('slot', `fake-${slot}`);
         this.appendChild(cloneBefore);
       };
-      
+
       this.itemElements.forEach((element) => {
         cloneAppend(element, 'before');
         let i = 0;
@@ -182,6 +182,10 @@ export class HbCarousel extends Base {
           cloneAppend(element, 'after');
         }
       });
+
+      const carouselWidth = this.offsetWidth;
+      this.style.setProperty('--total-width', `${carouselWidth}%`);
+      this.style.setProperty('--total-width-after', `${carouselWidth * this.fakeLength}%`);
     }
 
     if (this.draggable) {
