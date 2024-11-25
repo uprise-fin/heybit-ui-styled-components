@@ -167,12 +167,14 @@ export class HbCarousel extends Base {
     await super.connectedCallback();
     this.itemElements = await getChildren(this.children);
     this.itemLength = this.itemElements.length;
+
     if (this.infinite) {
       const cloneAppend = (element: HTMLElement, slot: string) => {
         const cloneBefore = element.cloneNode(true) as HTMLElement;
         cloneBefore.setAttribute('slot', `fake-${slot}`);
         this.appendChild(cloneBefore);
       };
+      
       this.itemElements.forEach((element) => {
         cloneAppend(element, 'before');
         let i = 0;
@@ -393,7 +395,7 @@ export class HbCarousel extends Base {
   get infiniteSlotAfterTemplate() {
     if (this.infinite)
       return html`<slot
-        class="hb-carousel__items"
+        class="hb-carousel__items hb-carousel__items--fake-after"
         name="fake-after"
         style="width: ${this.totalWidth * this.fakeLength}%;"
       ></slot>`;
