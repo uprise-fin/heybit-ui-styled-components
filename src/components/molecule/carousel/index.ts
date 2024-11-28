@@ -2,7 +2,7 @@ import '@/components/molecule/skeleton';
 import { Base } from '@/components/base';
 import { getChildren } from '@/utils';
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
 import { HbCarouselEventStatus } from './type';
 
 /**
@@ -163,30 +163,17 @@ export class HbCarousel extends Base {
 
   onEventDoingBound = this.onEventDoing.bind(this);
 
+  @state()
+  private clonedItemsBefore: HTMLElement[] = [];
+
+  @state()
+  private clonedItemsAfter: HTMLElement[] = [];
+
   async connectedCallback() {
-    await super.connectedCallback();
+    super.connectedCallback();
+
     this.itemElements = await getChildren(this.children);
     this.itemLength = this.itemElements.length;
-
-    if (this.infinite) {
-      const cloneAppend = (element: HTMLElement, slot: string) => {
-        const cloneBefore = element.cloneNode(true) as HTMLElement;
-        cloneBefore.setAttribute('slot', `fake-${slot}`);
-        this.appendChild(cloneBefore);
-      };
-
-      this.itemElements.forEach((element) => {
-        cloneAppend(element, 'before');
-        let i = 0;
-        while (i++ < this.fakeLength) {
-          cloneAppend(element, 'after');
-        }
-      });
-
-      const carouselWidth = this.offsetWidth;
-      this.style.setProperty('--total-width', `${carouselWidth}%`);
-      this.style.setProperty('--total-width-after', `${carouselWidth * this.fakeLength}%`);
-    }
 
     if (this.draggable) {
       this.addEventListener('mousedown', this.onEventStartBound);
@@ -230,6 +217,25 @@ export class HbCarousel extends Base {
       this.onResize();
       window.addEventListener('resize', this.onResizeBound);
     }
+  }
+
+  async firstUpdated() {
+    if (!this.infinite) {
+      return;
+    }
+
+    this.itemElements = await getChildren(this.children);
+    this.itemLength = this.itemElements.length;
+
+    this.itemElements.forEach((element) => {
+      const cloneBefore = element.cloneNode(true) as HTMLElement;
+      this.clonedItemsBefore.push(cloneBefore);
+
+      for (let i = 0; i < this.fakeLength; i++) {
+        const cloneAfter = element.cloneNode(true) as HTMLElement;
+        this.clonedItemsAfter.push(cloneAfter);
+      }
+    });
   }
 
   disconnectedCallback() {
@@ -393,7 +399,9 @@ export class HbCarousel extends Base {
         class="hb-carousel__items hb-carousel__items--fake-before"
         name="fake-before"
         style="width: ${this.totalWidth}%; margin-left: ${-this.totalWidth}%;"
-      ></slot>`;
+      >
+        ${this.clonedItemsBefore.map((item) => html`${item}`)}
+      </slot>`;
   }
 
   get infiniteSlotAfterTemplate() {
@@ -402,7 +410,9 @@ export class HbCarousel extends Base {
         class="hb-carousel__items hb-carousel__items--fake-after"
         name="fake-after"
         style="width: ${this.totalWidth * this.fakeLength}%;"
-      ></slot>`;
+      >
+        ${this.clonedItemsAfter.map((item) => html`${item}`)}
+      </slot>`;
   }
 }
 

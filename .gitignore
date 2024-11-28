@@ -110,3 +110,5 @@ src/components/atom/icon/svg.ts
 
 # VSCode extensions
 .history
+
+.tool-versions

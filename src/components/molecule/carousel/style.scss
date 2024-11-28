@@ -8,21 +8,21 @@
     white-space: nowrap;
     touch-action: pan-x;
   }
-  
+
   &__wrap {
     font-size: 0;
     transition: transform var(--type) var(--duration);
     will-change: transform;
-    
+
     &--drag > * {
       pointer-events: none;
     }
   }
-  
+
   &__indicate {
     display: flex;
     justify-content: center;
-    
+
     &__btn {
       width: 6px;
       height: 6px;
@@ -32,7 +32,7 @@
       outline: none;
       border: none;
       background: none;
-      
+
       &::before {
         content: '';
         display: block;
@@ -41,7 +41,7 @@
         border-radius: 100%;
         background: var(--husc__black--200);
       }
-      
+
       &--accent {
         &::before {
           background: var(--husc__black--800);
@@ -53,24 +53,14 @@
   &__items {
     display: inline-flex;
     white-space: normal;
-    
+
     @include slot-styled('*') {
       flex: 1;
       user-select: none;
     }
-    
+
     &--fake-before {
-      /* 기본 여백 설정 */
       margin-left: -100%;
-      
-      /* TypeScript에서 설정한 CSS 변수를 활용 */
-      margin-left: calc(-1 * var(--total-width));
-    }
-    
-    &--fake-after {
-      /* 필요한 스타일 추가 */
-      width: var(--total-width-after, 100%);
-      /* 추가적인 스타일이 필요하면 여기에 작성 */
     }
   }
 }
