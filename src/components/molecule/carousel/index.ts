@@ -2,7 +2,7 @@ import '@/components/molecule/skeleton';
 import { Base } from '@/components/base';
 import { getChildren } from '@/utils';
 import { html } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { HbCarouselEventStatus } from './type';
 
 /**
@@ -12,6 +12,13 @@ import { HbCarouselEventStatus } from './type';
  * @property hideCloseBtn
  * @property icon
  * @property title
+ * @property auto Boolean, 자동롤링
+ * @property pause Boolean, 마우스오버시 멈춤
+ * @property infinite Boolean, 무한롤링 (마지막 오른쪽 아이템에서 첫 번째로 넘어가지 않고, 오른쪽으로 계속 진행)
+ * @property indicate Boolean, 인디케이터
+ * @property duration Number, 자동롤링 시간
+ * @property speed Number, 롤링 속도
+ * @property hasVariableChildren 메인 배너용, 영역 생성 후에 preload된 자식을 할당하는 등 자식이 가변적인 경우
  * @slot content - optional, 내용
  * @slot button - optional, 버튼
  * @slot anchor - optional, 앵커
@@ -28,6 +35,12 @@ export class HbCarousel extends Base {
   static get styles() {
     return [require('./style.scss').default];
   }
+
+  /**
+   * @property {boolean} hasVariableChildren 메인 배너용, 영역 생성 후에 preload된 자식을 할당하는 등 자식이 가변적인 경우
+   */
+  @property({ type: Boolean })
+  hasVariableChildren: boolean = false;
 
   //옵션
   auto = false;
@@ -155,6 +168,10 @@ export class HbCarousel extends Base {
     return `${(this.index / this.visibleLength) * -100}%`;
   }
 
+  get shouldLazyUpdate() {
+    return this.hasVariableChildren;
+  }
+
   onResizeBound = this.onResize.bind(this);
 
   onEventStartBound = this.onEventStart.bind(this);
@@ -174,6 +191,21 @@ export class HbCarousel extends Base {
 
     this.itemElements = await getChildren(this.children);
     this.itemLength = this.itemElements.length;
+
+    if (!this.shouldLazyUpdate && this.infinite) {
+      const cloneAppend = (element: HTMLElement, slot: string) => {
+        const cloneBefore = element.cloneNode(true) as HTMLElement;
+        cloneBefore.setAttribute('slot', `fake-${slot}`);
+        this.appendChild(cloneBefore);
+      };
+      this.itemElements.forEach((element) => {
+        cloneAppend(element, 'before');
+        let i = 0;
+        while (i++ < this.fakeLength) {
+          cloneAppend(element, 'after');
+        }
+      });
+    }
 
     if (this.draggable) {
       this.addEventListener('mousedown', this.onEventStartBound);
@@ -220,6 +252,10 @@ export class HbCarousel extends Base {
   }
 
   async firstUpdated() {
+    if (!this.shouldLazyUpdate) {
+      return;
+    }
+
     if (!this.infinite) {
       return;
     }
